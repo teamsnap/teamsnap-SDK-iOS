@@ -16,9 +16,9 @@
 		969E80B21BAAE7AB00CA518F /* TSPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80631BAAE7AB00CA518F /* TSPCache.m */; settings = {ASSET_TAGS = (); }; };
 		969E80B31BAAE7AB00CA518F /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionCommand.h */; settings = {ASSET_TAGS = (); }; };
 		969E80B41BAAE7AB00CA518F /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80661BAAE7AB00CA518F /* TSDKCollectionCommand.m */; settings = {ASSET_TAGS = (); }; };
-		969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80671BAAE7AB00CA518F /* TSDKCollectionJSON.h */; settings = {ASSET_TAGS = (); }; };
+		969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80671BAAE7AB00CA518F /* TSDKCollectionJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80B61BAAE7AB00CA518F /* TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */; settings = {ASSET_TAGS = (); }; };
-		969E80B71BAAE7AB00CA518F /* TSDKCollectionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */; settings = {ASSET_TAGS = (); }; };
+		969E80B71BAAE7AB00CA518F /* TSDKCollectionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80B81BAAE7AB00CA518F /* TSDKCollectionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E806A1BAAE7AB00CA518F /* TSDKCollectionObject.m */; settings = {ASSET_TAGS = (); }; };
 		969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E806C1BAAE7AB00CA518F /* NSDate+TSDKConveniences.h */; settings = {ASSET_TAGS = (); }; };
 		969E80BA1BAAE7AB00CA518F /* NSDate+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E806D1BAAE7AB00CA518F /* NSDate+TSDKConveniences.m */; settings = {ASSET_TAGS = (); }; };
@@ -32,9 +32,9 @@
 		969E80C21BAAE7AB00CA518F /* NSString+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80751BAAE7AB00CA518F /* NSString+TSDKConveniences.m */; settings = {ASSET_TAGS = (); }; };
 		969E80C31BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80771BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.h */; settings = {ASSET_TAGS = (); }; };
 		969E80C41BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80781BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.m */; settings = {ASSET_TAGS = (); }; };
-		969E80C51BAAE7AB00CA518F /* TSDKDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80791BAAE7AB00CA518F /* TSDKDataRequest.h */; settings = {ASSET_TAGS = (); }; };
+		969E80C51BAAE7AB00CA518F /* TSDKDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80791BAAE7AB00CA518F /* TSDKDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E807A1BAAE7AB00CA518F /* TSDKDataRequest.m */; settings = {ASSET_TAGS = (); }; };
-		969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E807B1BAAE7AB00CA518F /* TSDKObjectsRequest.h */; settings = {ASSET_TAGS = (); }; };
+		969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E807B1BAAE7AB00CA518F /* TSDKObjectsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80C81BAAE7AB00CA518F /* TSDKObjectsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E807C1BAAE7AB00CA518F /* TSDKObjectsRequest.m */; settings = {ASSET_TAGS = (); }; };
 		969E80C91BAAE7AB00CA518F /* TSDKMemberStatistic.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E807F1BAAE7AB00CA518F /* TSDKMemberStatistic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80CA1BAAE7AB00CA518F /* TSDKMemberStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80801BAAE7AB00CA518F /* TSDKMemberStatistic.m */; settings = {ASSET_TAGS = (); }; };
@@ -418,10 +418,12 @@
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
 				969E80F71BAAE7AB00CA518F /* TSDKTrackedItemStatus.h in Headers */,
 				969E805E1BAAE79500CA518F /* TSDKTeamSnap.h in Headers */,
+				969E80B71BAAE7AB00CA518F /* TSDKCollectionObject.h in Headers */,
+				969E80C51BAAE7AB00CA518F /* TSDKDataRequest.h in Headers */,
 				969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */,
+				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */,
-				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
 				969E80BB1BAAE7AB00CA518F /* NSMutableDictionary+integerKey.h in Headers */,
 				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
@@ -429,8 +431,6 @@
 				969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */,
 				969E80C31BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.h in Headers */,
 				969E80BD1BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.h in Headers */,
-				969E80C51BAAE7AB00CA518F /* TSDKDataRequest.h in Headers */,
-				969E80B71BAAE7AB00CA518F /* TSDKCollectionObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
