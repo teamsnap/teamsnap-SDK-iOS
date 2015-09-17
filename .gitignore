@@ -14,8 +14,8 @@ profile
 .idea/*
 
 # user-specific settings
-Teamsnap.xcodeproj/project.xcworkspace/*
-Teamsnap.xcodeproj/xcuserdata/*
+TeamSnapSDK.xcodeproj/project.xcworkspace/*
+TeamSnapSDK.xcodeproj/xcuserdata/*
 Reveal.framework/Headers
 Reveal.framework/Headers
 Reveal.framework/Reveal
