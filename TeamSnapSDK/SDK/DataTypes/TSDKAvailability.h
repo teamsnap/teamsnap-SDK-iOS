@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
 
-#import <TeamSnapSDK/TeamSnapSDK.h>
+#import <Foundation/Foundation.h>
+#import "TSDKCollectionObject.h"
+#import "TSDKObjectsRequest.h"
 
 @interface TSDKAvailability : TSDKCollectionObject
 
