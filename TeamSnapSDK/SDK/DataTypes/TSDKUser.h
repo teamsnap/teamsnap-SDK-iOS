@@ -27,5 +27,6 @@
 @property (nonatomic, weak) NSURL *linkTeams;
 
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion;
 
 @end

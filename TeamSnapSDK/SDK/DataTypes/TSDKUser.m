@@ -26,4 +26,12 @@
     }];
 }
 
+- (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion {
+    [TSDKObjectsRequest listTeams:teamIds WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
 @end

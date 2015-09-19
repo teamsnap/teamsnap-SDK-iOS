@@ -84,6 +84,20 @@ static NSArray *supportedSDKObjects;
     }
 }
 
++(void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion {
+    NSString * path = [NSString stringWithFormat:@"https://apiv3.teamsnap.com/teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
+
+    [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:path] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSArray *teams;
+        if (success) {
+            teams = [self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]];
+        }
+        if (completion) {
+            completion(success, complete, teams, error);
+        }
+    }];
+}
+
 + (void)bulkLoadTeamData:(TSDKTeam *)team types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion {
     if (!objectDataTypes) {
         objectDataTypes = @[@"event", @"member"];
