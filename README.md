@@ -10,7 +10,7 @@ That is what should be distributed/linked
 
 # tvOS - TeamSnapSDKTV
 Build for the tvOS simulator. The universal binary will be located somewhere like:
-~/Library/Developer/Xcode/DerivedData/TeamSnapSDKTV-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-TVuniversal/TeamSnapSDK.framework
+~/Library/Developer/Xcode/DerivedData/TeamSnapSDKTV-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-TVuniversal/TeamSnapSDKTV.framework
 
 # usage
 Drag the framework into your frameworks group, and copy files. 
