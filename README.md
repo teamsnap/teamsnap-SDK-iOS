@@ -18,9 +18,9 @@ make sure it appears under your Target->Build Phases->Link Binary With LIbraies 
 target->General->Embedded Binaries (Does not happen automatically)
 
 To use:
-#import <TeamSnapSDK/TeamSnapSDK.h>
+ #import <TeamSnapSDK/TeamSnapSDK.h>
 or
-#import <TeamSnapSDKTV/TeamSnapSDKTV.h>
+ #import <TeamSnapSDKTV/TeamSnapSDKTV.h>
 
 # errors - 
 dyld: Library not loaded: @rpath/TeamSnapSDK.framework/TeamSnapSDK
