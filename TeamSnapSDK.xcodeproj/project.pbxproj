@@ -629,6 +629,7 @@
 				96B47F151BADB33E0035F2CC /* Frameworks */,
 				96B47F161BADB33E0035F2CC /* Headers */,
 				96B47F171BADB33E0035F2CC /* Resources */,
+				96BB7B9F1BAEDCA4007CCF1A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -715,6 +716,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/${PROJECT_DIR}/TeamSnapSDK/ios-build-framework-script.sh";
+		};
+		96BB7B9F1BAEDCA4007CCF1A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/${PROJECT_DIR}/TeamSnapSDKTV/AppleTV-binary-build.sh";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1045,6 +1060,7 @@
 				96B47F1F1BADB33E0035F2CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
