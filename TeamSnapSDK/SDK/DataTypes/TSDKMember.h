@@ -72,6 +72,39 @@
 @property (nonatomic, weak) NSURL *linkContacts;
 @property (nonatomic, weak) NSURL *linkMemberFiles;
 
+-(void)getBroadcastEmailsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastEmailAttachmentsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastSmsesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberLinksWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPhoneNumbersWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPhotoWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getStatisticDataWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getForumSubscriptionsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomDataWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getContactPhoneNumbersWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediaWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberThumbnailWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getForumTopicsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediumCommentsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getCustomFieldsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getAssignmentsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getCustomDataWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberStatisticsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getAvailabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberBalancesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTrackedItemStatusesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getUserWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getForumPostsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPaymentsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomFieldsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueRegistrantDocumentsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getContactsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberFilesWithCompletion:(TSDKArrayCompletionBlock)completion;
+
 @property (readonly) NSString *fullName;
 
 @end

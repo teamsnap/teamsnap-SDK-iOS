@@ -158,11 +158,16 @@
         }
     }
     
+    NSMutableString *linkGettersString = [[NSMutableString alloc] init];
+    
     for (NSString *key in self.links) {
         NSString *linkKey = [NSString stringWithFormat:@"link_%@",key];
         NSString *camelCaseKey = [linkKey underscoresToCamelCase];
+        NSString *getKey = [NSString stringWithFormat:@"get_%@",key];
+        
         [dynamicProperties addObject:camelCaseKey];
         [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSURL *%@;\n", camelCaseKey]];
+        [linkGettersString appendFormat:@"-(void)%@WithCompletion:(TSDKArrayCompletionBlock)completion;\n", [getKey underscoresToCamelCase]];
     }
     
     NSMutableString *dynamicString = [NSMutableString stringWithString:@"@dynamic "];
@@ -171,6 +176,8 @@
     [dynamicString appendString:@";"];
     
     NSString *SDKName = [NSString stringWithFormat:@"+ (NSString *)SDKType {\n  return @\"%@\";\n}\n", self.type];
+    
+    [mutableResult appendFormat:@"\n\n%@", linkGettersString];
     
     [mutableResult appendFormat:@"\n\n/*\n%@\n\n%@\n*/", dynamicString, SDKName];
     

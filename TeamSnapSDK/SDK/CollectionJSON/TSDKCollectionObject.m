@@ -10,6 +10,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
 #import "NSString+TSDKConveniences.h"
+#import "TSDKDataRequest.h"
 
 @implementation TSDKCollectionObject
 
@@ -136,6 +137,20 @@ static void setIntegerPropertyIMP(id self, SEL _cmd, NSInteger value) {
     [self setInteger:value forKey:[key camelCaseToUnderscores]];
 }
 
+static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock completion) {
+    NSString *property = NSStringFromSelector(_cmd);
+    NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
+    
+    if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
+        linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
+    }
+    
+    NSURL *link = [self getLink:linkPropertyName];
+    NSLog(@"%@ - %@", linkPropertyName, link);
+
+    [self arrayFromLink:link WithCompletion:completion];
+}
+
 
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
@@ -149,40 +164,44 @@ static void setIntegerPropertyIMP(id self, SEL _cmd, NSInteger value) {
     }
     
     objc_property_t theProperty = class_getProperty(self, [property cStringUsingEncoding:[NSString defaultCStringEncoding]]);
-    
-    const char * propertyAttrs = property_getAttributes(theProperty);
-    NSString *propertyType = [NSString stringWithFormat:@"%s" , propertyAttrs];
-    
-    NSString *selectorCommandString = NSStringFromSelector(aSEL);
-    
-    if ([selectorCommandString isSetter]) {
-        if ([propertyType containsString:@"NSDate"]) {
-            class_addMethod([self class], aSEL, (IMP)setDatePropertyIMP, "v@:@");
-        } else if ([propertyType containsString:@"NSURL"]) {
-            class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
+    if (theProperty) {
+        const char * propertyAttrs = property_getAttributes(theProperty);
+        NSString *propertyType = [NSString stringWithFormat:@"%s" , propertyAttrs];
+        
+        NSString *selectorCommandString = NSStringFromSelector(aSEL);
+        
+        if ([selectorCommandString isSetter]) {
+            if ([propertyType containsString:@"NSDate"]) {
+                class_addMethod([self class], aSEL, (IMP)setDatePropertyIMP, "v@:@");
+            } else if ([propertyType containsString:@"NSURL"]) {
+                class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
+            } else if ([propertyType hasPrefix:@"TB,"]) {
+                class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
+            } else if ([propertyType hasPrefix:@"Tq,"]) {
+                class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
+            } else {
+                class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
+            }
+        } if ([propertyType containsString:@"NSDate"]) {
+            class_addMethod([self class], aSEL, (IMP)datePropertyIMP, "@@:");
+        } if ([propertyType containsString:@"NSURL"]) {
+            if ([property rangeOfString:@"link"].location ==  0) {
+                class_addMethod([self class], aSEL, (IMP)linkPropertyIMP, "@@:");
+            } else {
+                class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
+            }
         } else if ([propertyType hasPrefix:@"TB,"]) {
-            class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
+            class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
         } else if ([propertyType hasPrefix:@"Tq,"]) {
-            class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
+            class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
         } else {
-            class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
+            class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
-    } if ([propertyType containsString:@"NSDate"]) {
-        class_addMethod([self class], aSEL, (IMP)datePropertyIMP, "@@:");
-    } if ([propertyType containsString:@"NSURL"]) {
-        if ([property rangeOfString:@"link"].location ==  0) {
-            class_addMethod([self class], aSEL, (IMP)linkPropertyIMP, "@@:");
-        } else {
-            class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
-        }
-    } else if ([propertyType hasPrefix:@"TB,"]) {
-        class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
-    } else if ([propertyType hasPrefix:@"Tq,"]) {
-        class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
+        return YES;
     } else {
-        class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
+        class_addMethod([self class], aSEL, (IMP)getArrayFromLinkIMP, "v@:@");
+        return YES;
     }
-    return YES;
 }
 
 - (NSInteger)objectIdentifier {
@@ -290,6 +309,20 @@ static void setIntegerPropertyIMP(id self, SEL _cmd, NSInteger value) {
 
 - (BOOL)isNewObject {
     return ([_collection.data[@"id"] integerValue] <=0);
+}
+
+- (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock) completion {
+    [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                completion(success, complete, (NSArray *)[objects collection], error);
+            }
+//            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
+//            ((id(^)())(completion(success, complete, rosters, error));
+        }
+    }];
+
+
 }
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL {
