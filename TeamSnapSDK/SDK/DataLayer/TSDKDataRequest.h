@@ -18,6 +18,7 @@ typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDic
 
 @interface TSDKDataRequest : NSObject
 
++ (NSURL *)baseURL;
 + (NSURL *)appendPathToBaseURL:(NSString *)path;
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key;
