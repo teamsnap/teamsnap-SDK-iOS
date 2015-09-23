@@ -23,6 +23,7 @@ typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDic
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key;
 + (NSMutableDictionary *)requestHeaders;
++ (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKCompletionBlock)completionBlock;
 
