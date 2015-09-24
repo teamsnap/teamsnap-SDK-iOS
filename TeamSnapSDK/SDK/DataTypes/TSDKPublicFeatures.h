@@ -6,7 +6,6 @@
 //  Copyright © 2015 jasonr. All rights reserved.
 //
 
-#import <TeamSnapSDK/TeamSnapSDK.h>
 #import "TSDKCollectionObject.h"
 
 @interface TSDKPublicFeatures : NSObject

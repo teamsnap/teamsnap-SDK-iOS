@@ -7,6 +7,7 @@
 //
 
 #import "TSDKPublicFeatures.h"
+#import "TSDKCollectionJSON.h"
 
 NSString * const TSDKUserSupportVersion = @"ios_support_ticket_v1";
 NSString * const TSDKaysBetweenPushNoteRemindersKey = @"ios_days_between_push_note_reminders";
