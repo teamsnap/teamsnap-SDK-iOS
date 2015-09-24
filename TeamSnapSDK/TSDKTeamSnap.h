@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TSDKUser, TSDKTeam;
+@class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos;
 
 @interface TSDKTeamSnap : NSObject
 
@@ -14,10 +14,13 @@
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *OAuthToken;
+@property (strong, nonatomic) TSDKRootLinks *rootLinks;
 
 + (instancetype)sharedInstance;
 
-- (void)connectWithCompletion:(void (^)(bool success, NSString *message))completion;
+- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion;
 - (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion;
-
+- (void)logout;
+- (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
+- (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
 @end

@@ -42,3 +42,6 @@ FOUNDATION_EXPORT const unsigned char TeamSnapSDKVersionString[];
 #import <TeamSnapSDK/TSDKTeamPreferences.h>
 #import <TeamSnapSDK/TSDKTeamStatistic.h>
 #import <TeamSnapSDK/TSDKTrackedItemStatus.h>
+#import <TeamSnapSDK/TSDKRootLinks.h>
+#import <TeamSnapSDK/TSDKTslPhotos.h>
+#import <TeamSnapSDK/TSDKPublicFeatures.h>
