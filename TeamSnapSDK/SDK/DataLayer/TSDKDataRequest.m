@@ -25,6 +25,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
 
 @implementation TSDKDataRequest
 
++(NSURL *)baseURL {
+    return [NSURL URLWithString:baseURL];
+}
+
 +(NSURL *)appendPathToBaseURL:(NSString *)path {
     NSURL *url =[NSURL URLWithString:path relativeToURL:[NSURL URLWithString:baseURL]];
     return url;

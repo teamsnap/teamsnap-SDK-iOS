@@ -17,4 +17,6 @@
 - (NSString *)underscoresToCamelCase;
 - (BOOL)isSetter;
 
+- (NSString *)linkForGetProperty;
+
 @end
