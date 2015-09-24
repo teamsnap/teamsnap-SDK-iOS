@@ -151,6 +151,20 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     [self arrayFromLink:link WithCompletion:completion];
 }
 
+static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
+    NSString *property = NSStringFromSelector(_cmd);
+    NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
+    
+    if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
+        linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
+    }
+    
+    NSURL *link = [self getLink:linkPropertyName];
+    NSLog(@"%@ - %@", linkPropertyName, link);
+    
+    [self objectFromLink:link WithCompletion:completion];
+}
+
 
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
@@ -199,7 +213,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
         }
         return YES;
     } else {
-        class_addMethod([self class], aSEL, (IMP)getArrayFromLinkIMP, "v@:@");
+        class_addMethod([self class], aSEL, (IMP)getObjectFromLinkIMP, "v@:@");
         return YES;
     }
 }
@@ -315,7 +329,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                completion(success, complete, (NSArray *)[objects collection], error);
+                completion(success, complete, [objects collection], error);
             }
 //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
 //            ((id(^)())(completion(success, complete, rosters, error));
@@ -324,6 +338,21 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
 
 
 }
+
+- (void)objectFromLink:(NSURL *)link WithCompletion:(TSDKCompletionBlock) completion {
+    [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                completion(success, complete, [objects collection], error);
+            }
+            //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
+            //            ((id(^)())(completion(success, complete, rosters, error));
+        }
+    }];
+    
+    
+}
+
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL {
     NSData *collectionData = [self.collection dataEncodedForSave];
