@@ -18,4 +18,13 @@
     [self setValue:value forKey:[[NSNumber numberWithInteger:integerKey] stringValue]];
 }
 
+- (id)objectForIntegerKey:(NSInteger)integerKey {
+    return [self objectForKey:[[NSNumber numberWithInteger:integerKey] stringValue]];
+}
+
+- (void)setObject:(id)anObject forIntegerKey:(NSInteger)integerKey {
+    [self setObject:anObject forKey:[[NSNumber numberWithInteger:integerKey] stringValue]];
+}
+
+
 @end

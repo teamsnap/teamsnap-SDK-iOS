@@ -12,5 +12,7 @@
 
 - (id)valueForIntegerKey:(NSInteger)integerKey;
 - (void)setValue:(id)value forIntegerKey:(NSInteger)integerKey;
+- (id)objectForIntegerKey:(NSInteger)integerKey;
+- (void)setObject:(id)anObject forIntegerKey:(NSInteger)integerKey;
 
 @end

@@ -49,14 +49,26 @@
     return self;
 }
 
+- (void)setTimeZone:(NSTimeZone *)timeZone {
+    [self setTimeZoneIanaName:timeZone.name];
+}
+
+- (NSTimeZone *)timeZone {
+    return [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
+}
+
 - (void)addEvent:(TSDKEvent *)event {
-    [self.events setValue:event forIntegerKey:event.objectIdentifier];
+    [self.events setObject:event forIntegerKey:event.objectIdentifier];
     [self dirtyEventLists];
 }
 
 - (void)addMember:(TSDKMember *)member {
-    [self.members setValue:member forIntegerKey:member.objectIdentifier];
+    [self.members setObject:member forIntegerKey:member.objectIdentifier];
     [self dirtyMemberLists];
+}
+
+- (TSDKMember *)memberWithID:(NSInteger)memberId {
+    return [self.members objectForIntegerKey:memberId];
 }
 
 - (void)dirtyEventLists {
