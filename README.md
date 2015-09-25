@@ -21,12 +21,26 @@ make sure it appears under your Target->Build Phases->Link Binary With LIbraies 
 target->General->Embedded Binaries (Does not happen automatically)
 
 To use:
-```
+```objective-c
 #import <TeamSnapSDK/TeamSnapSDK.h>
 ```
 or
-```
+```objective-c
 #import <TeamSnapSDKTV/TeamSnapSDKTV.h>
+```
+
+# sample Code:
+```objective-c
+    [[TSDKTeamSnap sharedInstance] loginWithUserName:@"" andPassword:@"" completion:^(bool success, NSString *message) {
+        [[[TSDKTeamSnap sharedInstance] teamSnapUser] teamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            self.teams = objects;
+            for (TSDKTeam *team in self.teams) {
+                if ([team.name isEqualToString:@"Rebels 12U"]) {
+                    [weakSelf getmembersForTeam:team];
+                }
+            }
+        }];
+    }];
 ```
 
 # errors - 
