@@ -25,5 +25,6 @@
 + (void)listTrackedItemsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
 
 + (TSDKUser *)processLoginCollectionJSON:(TSDKCollectionJSON *)containerCollection;
++ (NSArray *)SDKObjectsFromCollection:(TSDKCollectionJSON *)containerCollection;
 
 @end

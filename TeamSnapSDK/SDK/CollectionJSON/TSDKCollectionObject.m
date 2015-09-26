@@ -9,6 +9,7 @@
 #import <objc/runtime.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
+#import "TSDKObjectsRequest.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKDataRequest.h"
 
@@ -213,7 +214,7 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
         }
         return YES;
     } else {
-        class_addMethod([self class], aSEL, (IMP)getObjectFromLinkIMP, "v@:@");
+        class_addMethod([self class], aSEL, (IMP)getArrayFromLinkIMP, "v@:@");
         return YES;
     }
 }
@@ -329,7 +330,8 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
     [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                completion(success, complete, [objects collection], error);
+                NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                completion(success, complete, result, error);
             }
 //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
 //            ((id(^)())(completion(success, complete, rosters, error));
