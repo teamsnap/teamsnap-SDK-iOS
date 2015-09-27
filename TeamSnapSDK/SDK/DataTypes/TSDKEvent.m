@@ -10,7 +10,7 @@
 
 }
 
- @dynamic uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, tracksAvailability, isCanceled, isTbd, endDate, resultsUrl, name, repeatingType, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, repeatingTypeCode, startDate, doesntCountTowardsRecord, pointsForOpponent, gameTypeCode, updatedAt, arrivalDate, isOvertime, repeatingUuid, results, notes, durationInMinutes, linkAssignments, linkAvailabilities, linkTeam, linkLocation;
+@dynamic uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, repeatingType, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, repeatingTypeCode, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAssignments, linkAvailabilities, linkTeam, linkDivisionLocation, linkLocation, linkStatisticData;
 
 + (NSString *)SDKType {
     return @"event";
