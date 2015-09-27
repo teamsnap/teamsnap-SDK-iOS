@@ -39,6 +39,22 @@
     }
 }
 
+- (void)myMembersOnTeamId:(NSInteger)teamId withCompletion:(TSDKArrayCompletionBlock)completion {
+    [self myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        NSArray *resultMembers = nil;
+        if (success) {
+            NSIndexSet *memberIndexes = [objects indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
+                return (member.teamId == teamId);
+            }];
+            resultMembers = [objects objectsAtIndexes:memberIndexes];
+
+        }
+        if (completion) {
+            completion(success, complete, resultMembers, error);
+        }
+    }];
+}
+
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion {
     [TSDKObjectsRequest listTeamsForUser:self WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {

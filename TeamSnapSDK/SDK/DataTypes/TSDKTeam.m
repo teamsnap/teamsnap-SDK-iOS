@@ -59,34 +59,34 @@
 
 - (void)addEvent:(TSDKEvent *)event {
     [self.events setObject:event forIntegerKey:event.objectIdentifier];
-    [self dirtyEventLists];
+    [self dirtySortedEventLists];
 }
 
 - (void)addMember:(TSDKMember *)member {
     [self.members setObject:member forIntegerKey:member.objectIdentifier];
-    [self dirtyMemberLists];
+    [self dirtySortedMemberLists];
 }
 
 - (TSDKMember *)memberWithID:(NSInteger)memberId {
     return [self.members objectForIntegerKey:memberId];
 }
 
-- (void)dirtyEventLists {
+- (void)dirtySortedEventLists {
     self.sortedEvents = nil;
 }
 
-- (void)dirtyMemberLists {
+- (void)dirtySortedMemberLists {
     self.sortedMembers = nil;
 }
 
-- (NSArray *)membersSorted {
-    if (!self.sortedMembers) {
-        self.sortedMembers = [NSMutableArray arrayWithArray:[self.members allValues]];
-        [self.sortedMembers sortUsingComparator:^NSComparisonResult(TSDKMember *member1, TSDKMember *member2) {
+- (NSArray *)sortedMembers {
+    if (!_sortedMembers) {
+        _sortedMembers = [NSMutableArray arrayWithArray:[_members allValues]];
+        [_sortedMembers sortUsingComparator:^NSComparisonResult(TSDKMember *member1, TSDKMember *member2) {
             return [member1.fullName compare:member2.fullName];
         }];
     }
-    return self.sortedMembers;
+    return _sortedMembers;
 }
 
 - (NSArray *)eventsSorted {
@@ -121,15 +121,19 @@
 }
 
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion {
-    if (self.membersUpdated) {
+    if (self.membersUpdated && self.sortedMembers) {
         if (completion) {
             completion(YES, YES, self.sortedMembers, nil);
         }
     } else {
         [TSDKObjectsRequest listRosterForTeam:self completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            [self.members removeAllObjects];
+            for (TSDKMember *member in objects) {
+                [self.members setObject:member forIntegerKey:member.objectIdentifier];
+            }
             self.membersUpdated = [NSDate date];
             if (completion) {
-                completion(success, complete, objects, error);
+                completion(success, complete, self.sortedMembers, error);
             }
         }];
     }

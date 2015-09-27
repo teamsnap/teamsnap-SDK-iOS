@@ -32,5 +32,6 @@
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion;
 - (void)myMembersOnTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)myMembersOnTeamId:(NSInteger)teamId withCompletion:(TSDKArrayCompletionBlock)completion;
 
 @end
