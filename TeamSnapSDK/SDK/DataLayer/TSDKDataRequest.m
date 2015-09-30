@@ -129,7 +129,44 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }];
 }
 
++ (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completionBlock {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    
+    for (NSString *headerKeys in requestHeaders) {
+        [request setValue:[requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
+    }
+    
+    if (OAuthToken) {
+        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+    }
+    
+    [request setHTTPMethod:@"GET"];
+    
+    NSLog(@"Curl:\n%@", [request getCurlEquivalent]);
+    
+    [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
+    NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
+        
+        BOOL success = NO;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            success = [httpResponse wasSuccess];
+        }
+        UIImage *image = nil;
+        if (success) {
+            image = [UIImage imageWithData:data];
+        }
+        
+        if (completionBlock) {
+            completionBlock(image);
+        }
+    }];
+    
+    [remoteTask resume];
+}
 
+/*
 + (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock {
     
 }
@@ -137,6 +174,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 + (void)syncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock {
     
 }
+ */
 
 + (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
      NSString *scopes = @"read write";

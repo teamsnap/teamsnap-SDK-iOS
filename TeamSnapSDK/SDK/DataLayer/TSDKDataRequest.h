@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @class TSDKCollectionJSON;
 
@@ -15,6 +16,7 @@ typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJ
 typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *OAuthToken, NSError *error);
 typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray *objects, NSError *error);
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *objects, NSError *error);
+typedef void (^TSDKImageCompletionBlock)(UIImage *);
 
 @interface TSDKDataRequest : NSObject
 
@@ -26,6 +28,7 @@ typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDic
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKCompletionBlock)completionBlock;
++ (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completion;
 
 + (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock;
 + (void)syncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock;

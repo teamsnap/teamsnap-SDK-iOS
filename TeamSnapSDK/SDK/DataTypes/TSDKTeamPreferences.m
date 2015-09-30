@@ -16,4 +16,20 @@
     return @"team_preferences";
 }
 
+-(void)getTeamPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
+    [TSDKDataRequest requestImageForPath:self.linkTeamPhoto withCompletion:^(UIImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+}
+
+-(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
+    [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(UIImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+}
+
 @end

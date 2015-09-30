@@ -28,4 +28,20 @@
     return (self.isOwner);
 }
 
+-(void)getMemberPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
+    [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(UIImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+}
+
+-(void)getMemberThumbnailWithCompletion:(TSDKImageCompletionBlock)completion {
+    [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail withCompletion:^(UIImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+}
+
 @end
