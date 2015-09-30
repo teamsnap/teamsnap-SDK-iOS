@@ -44,4 +44,8 @@
 @property (nonatomic) BOOL hasRosterPhotos; //Example: 1
 @property (nonatomic) BOOL hasClubs; //Example: 1
 
+-(BOOL)freeTrial;
+-(BOOL)freeNotTrial;
+-(BOOL)freePlan;
+
 @end

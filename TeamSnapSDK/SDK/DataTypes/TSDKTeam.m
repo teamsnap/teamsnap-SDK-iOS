@@ -8,6 +8,8 @@
 #import "TSDKProfileTimer.h"
 #import "TSDKEvent.h"
 #import "TSDKMember.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKPlan.h"
 #import "NSMutableDictionary+integerKey.h"
 
 @interface TSDKTeam()
@@ -57,12 +59,31 @@
     return [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
 }
 
+- (TSDKPlan *)plan {
+    return [[TSDKTeamSnap sharedInstance] planWithId:self.planId];
+}
+
+- (void)setPlan:(TSDKPlan *)plan {
+    self.planId = plan.objectIdentifier;
+}
+
+- (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+    if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
+        [self addEvent:(TSDKEvent *)bulkObject];
+        self.eventsUpdated = [NSDate date];
+    } else if ([bulkObject isKindOfClass:[TSDKMember class]]) {
+        [self addMember:(TSDKMember *)bulkObject];
+        self.membersUpdated = [NSDate date];
+    }
+}
+
 - (void)addEvent:(TSDKEvent *)event {
     [self.events setObject:event forIntegerKey:event.objectIdentifier];
     [self dirtySortedEventLists];
 }
 
 - (void)addMember:(TSDKMember *)member {
+    [member setTeam:self];
     [self.members setObject:member forIntegerKey:member.objectIdentifier];
     [self dirtySortedMemberLists];
 }

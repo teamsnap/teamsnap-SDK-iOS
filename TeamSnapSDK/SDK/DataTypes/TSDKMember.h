@@ -106,5 +106,9 @@
 -(void)getMemberFilesWithCompletion:(TSDKArrayCompletionBlock)completion;
 
 @property (readonly) NSString *fullName;
+@property (strong, nonatomic) TSDKTeam *team;
+
+- (BOOL)isAtLeastManager;
+- (BOOL)isAtLeastOwner;
 
 @end

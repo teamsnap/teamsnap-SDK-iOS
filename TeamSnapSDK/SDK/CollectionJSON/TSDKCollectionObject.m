@@ -23,6 +23,7 @@
     self = [super init];
     if (self) {
         _changedValues = [[NSMutableSet alloc] init];
+        _logHeader - NO;
     }
     return self;
 }

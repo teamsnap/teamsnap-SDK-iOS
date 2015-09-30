@@ -33,6 +33,7 @@
 #import "TSDKMemberStatistic.h"
 #import "TSDKTeamPreferences.h"
 #import "TSDKPlan.h"
+#import "TSDKTeamSnap.h"
 
 static NSArray *supportedSDKObjects;
 
@@ -110,18 +111,63 @@ static NSArray *supportedSDKObjects;
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
             parsedObjects = [self SDKObjectsFromCollection:objects];
             for (TSDKCollectionObject *sdkObject in parsedObjects) {
-                if ([sdkObject isKindOfClass:[TSDKEvent class]]) {
-                    [team addEvent:(TSDKEvent *)sdkObject];
-                } else if ([sdkObject isKindOfClass:[TSDKMember class]]) {
-                    [team addMember:(TSDKMember *)sdkObject];
-                }
+                [team processBulkLoadedObject:sdkObject];
             }
-            team.membersUpdated = [NSDate date];
-            team.eventsUpdated = [NSDate date];
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
         }
         NSLog(@"Done %ld",parsedObjects.count);
     }];
+}
+
+
++ (void)bulkLoadTeamDataForTeamIds:(NSArray *)teamIds types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion {
+    if (!objectDataTypes) {
+        objectDataTypes = @[@"event", @"member"];
+    }
+    
+    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", [teamIds componentsJoinedByString:@","], [objectDataTypes componentsJoinedByString:@","]]];
+    
+    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSArray *parsedObjects;
+        if (success) {
+            [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
+            parsedObjects = [self SDKObjectsFromCollection:objects];
+            NSMutableArray *teams = [[NSMutableArray alloc] init];
+            for (TSDKCollectionObject *sdkObject in parsedObjects) {
+                if ([sdkObject isKindOfClass:[TSDKTeam class]]) {
+                    [teams addObject:sdkObject];
+                } else if ([sdkObject isKindOfClass:[TSDKPlan class]]) {
+                    [[TSDKTeamSnap sharedInstance] addPlan:(TSDKPlan *)sdkObject];
+                } else {
+                    if ([[sdkObject.collection data] objectForKey:@"team_id"]) {
+                        TSDKTeam *team = [self teamWithId:[[[sdkObject.collection data] objectForKey:@"team_id"] integerValue] inTeamsArray:teams];
+                        if (team) {
+                            [team processBulkLoadedObject:sdkObject];
+                        }
+                    } else {
+                        NSLog(@"Unknwon object: %@", sdkObject);
+                    }
+                }
+            }
+            
+            [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
+        }
+        NSLog(@"Done %ld",parsedObjects.count);
+        if (completion) {
+            completion(success, complete, parsedObjects, error);
+        }
+    }];
+}
+
++ (TSDKTeam *)teamWithId:(NSInteger)teamId inTeamsArray:(NSArray *)teams {
+    NSUInteger teamIndex = [teams indexOfObjectPassingTest:^BOOL(TSDKTeam *team, NSUInteger idx, BOOL * _Nonnull stop) {
+        return (team.objectIdentifier == teamId);
+    }];
+    if (teamIndex != NSNotFound) {
+        return [teams objectAtIndex:teamIndex];
+    } else {
+        return nil;
+    }
 }
 
 + (void)listEventsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion {
@@ -254,9 +300,16 @@ static NSArray *supportedSDKObjects;
 + (TSDKCollectionObject *)teamSnapObjectFromCollectionJSON:(TSDKCollectionJSON *)collectionJSON {
     TSDKCollectionObject *result = nil;
     static NSMutableDictionary *unknownTypes;
+    static NSMutableDictionary *logHeadersForTypes;
+    
     if (!unknownTypes) {
         unknownTypes = [[NSMutableDictionary alloc] init];
     }
+    
+    if (!logHeadersForTypes) {
+        logHeadersForTypes = [[NSMutableDictionary alloc] init];
+    }
+    
     
     NSUInteger classIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class objClass, NSUInteger idx, BOOL *stop) {
         return [[objClass SDKType] isEqualToString:collectionJSON.type];
@@ -264,6 +317,10 @@ static NSArray *supportedSDKObjects;
     
     if (classIndex!=NSNotFound) {
         result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
+        if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
+            NSLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
+            [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
+        }
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
         

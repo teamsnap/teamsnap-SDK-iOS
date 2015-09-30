@@ -16,4 +16,17 @@
     return @"plan";
 }
 
+
+-(BOOL)freeTrial {
+    return [self.planType isEqualToString:@"trial"];
+}
+
+-(BOOL)freeNotTrial{
+    return [self.planType isEqualToString:@"free"];
+}
+
+-(BOOL)freePlan {
+    return ([self freeTrial] || [self.planType isEqualToString:@"free"]);
+}
+
 @end

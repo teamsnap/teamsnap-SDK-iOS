@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) TSDKCollectionJSON *collection;
 @property (nonatomic, strong) NSMutableSet *changedValues;
+@property (nonatomic) BOOL logHeader;
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (NSString *)SDKType;

@@ -6,10 +6,13 @@
 #import "TSDKUser.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKMember.h"
+#import "TSDKTeam.h"
+#import "NSMutableDictionary+integerKey.h"
 
 @interface TSDKUser()
 
-@property (strong, nonatomic) NSMutableArray *myMembersOnTeams;
+@property (strong, atomic) NSMutableArray *myMembersOnTeams;
+@property (strong, atomic) NSDictionary *teams;
 
 @end
 
@@ -68,6 +71,38 @@
         if (completion) {
             completion(success, complete, objects, error);
         }
+    }];
+}
+
+- (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
+    __typeof__(self) __weak weakSelf = self;
+
+    NSArray *objectDataTypes = @[@"team", @"plan", @"team_preferences"];
+    
+    [self myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        NSMutableArray *teamIds = [[NSMutableArray alloc] init];
+        for (TSDKMember *member in objects) {
+            NSString *teamId = [NSString stringWithFormat:@"%ld", (long)member.teamId];
+            
+            if (![teamIds containsObject:teamId]) {
+                [teamIds addObject:[NSString stringWithFormat:@"%ld", (long)[teamId integerValue]]];
+            }
+        }
+        [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            NSMutableDictionary *teams = [[NSMutableDictionary alloc] init];
+            if(success) {
+                for (TSDKCollectionObject *object in objects) {
+                    if ([object isKindOfClass:[TSDKTeam class]]) {
+                        [teams setObject:object forIntegerKey:object.objectIdentifier];
+                    }
+                }
+            }
+            weakSelf.teams = [NSDictionary dictionaryWithDictionary:teams];
+            if (completion) {
+                completion(success, complete, [teams allValues], error);
+            }
+        }];
+
     }];
 }
 

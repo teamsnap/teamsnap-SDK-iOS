@@ -20,4 +20,12 @@
     return [[NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
+- (BOOL)isAtLeastManager {
+    return (self.isManager || self.isOwner);
+}
+
+- (BOOL)isAtLeastOwner {
+    return (self.isOwner);
+}
+
 @end

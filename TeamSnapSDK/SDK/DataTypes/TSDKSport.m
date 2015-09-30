@@ -16,4 +16,36 @@
     return @"sport";
 }
 
+-(NSString *)memberDescription {
+    if (self.isNonSport) {
+        return NSLocalizedString(@"Member", nil);
+    } else {
+        return NSLocalizedString(@"Player", nil);
+    }
+}
+
+-(NSString *)membersDescription {
+    if (self.isNonSport) {
+        return NSLocalizedString(@"Members", nil);
+    } else {
+        return NSLocalizedString(@"Players", nil);
+    }
+}
+
+-(NSString *)nonMemberDescription {
+    if (self.isNonSport) {
+        return NSLocalizedString(@"Non-Member", nil);
+    } else {
+        return NSLocalizedString(@"Non-Player", nil);
+    }
+}
+
+-(NSString *)nonMembersDescription {
+    if (self.isNonSport) {
+        return NSLocalizedString(@"Non-Members", nil);
+    } else {
+        return NSLocalizedString(@"Non-Players", nil);
+    }
+}
+
 @end

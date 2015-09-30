@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos;
+@class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan;
 
 @interface TSDKTeamSnap : NSObject
 
@@ -23,4 +23,8 @@
 - (void)logout;
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
+- (void)addPlan:(TSDKPlan *)plan;
+- (TSDKPlan *)planWithId:(NSInteger)planId;
+- (void)planForPlanId:(NSInteger)planId WithCompletion:(void (^)(TSDKPlan *plan))completion;
+
 @end

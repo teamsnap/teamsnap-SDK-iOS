@@ -4,11 +4,12 @@
 //
 
 #import "TSDKTeamSnap.h"
+#import "NSObject+TSDKIntegerOtNotFound.h"
+#import "NSMutableDictionary+integerKey.h"
 #import "TSDKUser.h"
 #import "TSDKDataRequest.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKCollectionJSON.h"
-#import "NSObject+TSDKIntegerOtNotFound.h"
 #import "TSDKTeam.h"
 #import "TSDKMember.h"
 #import "TSDKTrackedItem.h"
@@ -16,10 +17,13 @@
 #import "TSDKRootLinks.h"
 #import "TSDKPublicFeatures.h"
 #import "TSDKTslPhotos.h"
+#import "TSDKPlan.h"
+
 
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
+@property (nonatomic, strong) NSMutableDictionary *plans;
 
 @end
 
@@ -136,9 +140,16 @@
                 }
             }];
         }];
+        
+        [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlans withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success) {
+                NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                for (TSDKPlan *plan in plans) {
+                    [weakSelf addPlan:plan];
+                }
+            }
+        }];
     }];
-    
-    
 }
 
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
@@ -153,6 +164,39 @@
             }
         }];
     }];
+}
+
+- (NSMutableDictionary *)plans {
+    if (!_plans) {
+        _plans = [[NSMutableDictionary alloc] init];
+    }
+    return _plans;
+}
+
+- (void)addPlan:(TSDKPlan *)plan {
+    [self.plans setObject:plan forIntegerKey:plan.objectIdentifier];
+}
+
+- (TSDKPlan *)planWithId:(NSInteger)planId {
+    return [_plans objectForIntegerKey:planId];
+}
+
+- (void)planForPlanID:(NSInteger)planId WithCompletion:(void (^)(TSDKPlan *plan))completion {
+    if (_plans && [_plans objectForIntegerKey:planId]) {
+        if (completion) {
+            completion([_plans objectForIntegerKey:planId]);
+        }
+    } else {
+        [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlans withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *planObjcts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            for (TSDKPlan *plan in planObjcts) {
+                [self addPlan:plan];
+            }
+            if (completion) {
+                completion([_plans objectForIntegerKey:planId]);
+            }
+        }];
+    }
 }
 
 #pragma mark - Cache
