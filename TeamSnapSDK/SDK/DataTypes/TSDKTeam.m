@@ -10,6 +10,8 @@
 #import "TSDKMember.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKPlan.h"
+#import "TSDKTeamResults.h"
+#import "TSDKTeamPreferences.h"
 #import "NSMutableDictionary+integerKey.h"
 
 @interface TSDKTeam()
@@ -74,6 +76,10 @@
     } else if ([bulkObject isKindOfClass:[TSDKMember class]]) {
         [self addMember:(TSDKMember *)bulkObject];
         self.membersUpdated = [NSDate date];
+    } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
+        self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+    } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
+        self.teamResults = (TSDKTeamResults *)bulkObject;
     }
 }
 
@@ -133,7 +139,7 @@
 
 - (void)bulkLoadDataWithCompleteion:(TSDKArrayCompletionBlock)completion {
     [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeam"];
-    [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"event", @"member", @"assignment", @"broadcast_email", @"broadcast_sms", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum", @"forum_topic", @"forum_post", @"location", @"opponent", @"team_fee", @"tracked_item", @"tracked_item_status", @"team_statistic",@"statistic", @"statistic_datum", @"statistic_group", @"sport",@"member_statistic", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+    [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"team_results", @"event", @"member", @"assignment", @"broadcast_email", @"broadcast_sms", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum", @"forum_topic", @"forum_post", @"location", @"opponent", @"team_fee", @"tracked_item", @"tracked_item_status", @"team_statistic",@"statistic", @"statistic_datum", @"statistic_group", @"sport",@"member_statistic", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeam" logResult:YES];
         if (completion) {
             completion(success, complete, objects, error);

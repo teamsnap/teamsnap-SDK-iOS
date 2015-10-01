@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@import UIKit;
+#import <UIkit/UIKit.h>
 
 @class TSDKCollectionJSON;
 
@@ -16,7 +16,7 @@ typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJ
 typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *OAuthToken, NSError *error);
 typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray *objects, NSError *error);
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *objects, NSError *error);
-typedef void (^TSDKImageCompletionBlock)(UIImage *);
+typedef void (^TSDKImageCompletionBlock)(UIImage *image);
 
 @interface TSDKDataRequest : NSObject
 

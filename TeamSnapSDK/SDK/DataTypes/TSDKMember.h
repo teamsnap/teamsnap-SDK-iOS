@@ -13,7 +13,7 @@
 
 @property (nonatomic) BOOL isInvited; //Example: 0
 @property (nonatomic) BOOL isInvitable; //Example: 0
-@property (nonatomic, weak) NSString *birthday; //Example: 1967-05-12
+@property (nonatomic, weak) NSDate *birthday; //Example: 1967-05-12
 @property (nonatomic) NSInteger hideAge; //Example: 0
 @property (nonatomic) BOOL isNonPlayer; //Example: 1
 @property (nonatomic, weak) NSString *jerseyNumber; //Example: 19
@@ -114,5 +114,7 @@
 
 - (BOOL)isAtLeastManager;
 - (BOOL)isAtLeastOwner;
+
+- (NSInteger)age;
 
 @end

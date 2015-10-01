@@ -34,6 +34,7 @@
 #import "TSDKTeamPreferences.h"
 #import "TSDKPlan.h"
 #import "TSDKTeamSnap.h"
+#import "TSDKTeamResults.h"
 
 static NSArray *supportedSDKObjects;
 
@@ -66,6 +67,7 @@ static NSArray *supportedSDKObjects;
                                 [TSDKMemberStatistic class],
                                 [TSDKPlan class],
                                 [TSDKTeamPreferences class],
+                                [TSDKTeamResults class]
                                 ];
     }
     return supportedSDKObjects;
@@ -115,7 +117,6 @@ static NSArray *supportedSDKObjects;
             }
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
         }
-        NSLog(@"Done %ld",parsedObjects.count);
     }];
 }
 
@@ -152,7 +153,6 @@ static NSArray *supportedSDKObjects;
             
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
         }
-        NSLog(@"Done %ld",parsedObjects.count);
         if (completion) {
             completion(success, complete, parsedObjects, error);
         }

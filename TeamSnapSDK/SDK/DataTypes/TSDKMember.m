@@ -44,4 +44,19 @@
     }];
 }
 
+-(NSInteger)age {
+    if (self.birthday && (![self.birthday isEqual:[NSNull null]])) {
+        NSDate* now = [NSDate date];
+        NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                           components:NSCalendarUnitYear
+                                           fromDate:self.birthday
+                                           toDate:now
+                                           options:0];
+        NSInteger age = [ageComponents year];
+        return age;
+    } else {
+        return 0;
+    }
+}
+
 @end

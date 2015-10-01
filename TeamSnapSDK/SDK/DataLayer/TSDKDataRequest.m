@@ -141,6 +141,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     [request setHTTPMethod:@"GET"];
+    [request setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
     NSLog(@"Curl:\n%@", [request getCurlEquivalent]);
     

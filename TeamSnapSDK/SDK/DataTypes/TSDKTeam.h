@@ -7,7 +7,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 
-@class TSDKEvent, TSDKMember, TSDKPlan, TSDKTeamPreferences;
+@class TSDKEvent, TSDKMember, TSDKPlan, TSDKTeamPreferences, TSDKTeamResults;
 
 @interface TSDKTeam : TSDKCollectionObject
 
@@ -160,6 +160,7 @@
 @property (nonatomic, strong) NSDate *eventsUpdated;
 
 @property (strong, nonatomic) TSDKTeamPreferences *teamPrefrences;
+@property (strong, nonatomic) TSDKTeamResults *teamResults;
 @property (weak, nonatomic) NSTimeZone *timeZone;
 @property (weak, nonatomic) TSDKPlan *plan;
 @property (strong, atomic) TSDKMember *activeRosterMember;
