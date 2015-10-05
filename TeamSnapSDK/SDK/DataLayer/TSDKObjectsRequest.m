@@ -7,6 +7,7 @@
 //
 
 #import "TSDKObjectsRequest.h"
+#import <objc/runtime.h>
 #import "TSDKTeam.h"
 #import "TSDKUser.h"
 #import "TSDKMember.h"
@@ -36,41 +37,35 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKTeamResults.h"
 
-static NSArray *supportedSDKObjects;
+static NSMutableArray *supportedSDKObjects;
 
 @implementation TSDKObjectsRequest
 
 + (NSArray *)supportedSDKObjects {
     if (!supportedSDKObjects) {
-        supportedSDKObjects = @[
-                                [TSDKTeam class],
-                                [TSDKUser class],
-                                [TSDKMember class],
-                                [TSDKEvent class],
-                                [TSDKTrackedItem class],
-                                [TSDKAssignment class],
-                                [TSDKBroadcastEmail class],
-                                [TSDKBroadcastSms class],
-                                [TSDKCustomField class],
-                                [TSDKCustomDatum class],
-                                [TSDKForumTopic class],
-                                [TSDKForumPost class],
-                                [TSDKLocation class],
-                                [TSDKOpponent class],
-                                [TSDKTeamFee class],
-                                [TSDKTrackedItemStatus class],
-                                [TSDKStatistic class],
-                                [TSDKStatisticDatum class],
-                                [TSDKStatisticGroup class],
-                                [TSDKTeamStatistic class],
-                                [TSDKSport class],
-                                [TSDKMemberStatistic class],
-                                [TSDKPlan class],
-                                [TSDKTeamPreferences class],
-                                [TSDKTeamResults class]
-                                ];
+        NSMutableArray *supportedbjects = [[NSMutableArray alloc] init];
+        
+        int numClasses;
+        Class *classes = NULL;
+        numClasses = objc_getClassList(NULL, 0);
+        
+        if (numClasses > 0 ) {
+            classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
+            numClasses = objc_getClassList(classes, numClasses);
+            for (int i = 0; i < numClasses; i++) {
+                NSString *className = [NSString stringWithUTF8String:class_getName(classes[i])];
+                if([className hasPrefix:@"TSDK"]) {
+                    Class class = NSClassFromString(className);
+                    if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
+                        [supportedbjects addObject:class];
+                    }
+                }
+            }
+            free(classes);
+        }
+        supportedSDKObjects = supportedbjects;
     }
-    return supportedSDKObjects;
+    return  supportedSDKObjects;
 }
 
 + (void)listTeamsForUser:(TSDKUser *)user WithCompletion:(TSDKArrayCompletionBlock)completion {

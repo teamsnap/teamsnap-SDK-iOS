@@ -77,7 +77,7 @@
 - (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
     __typeof__(self) __weak weakSelf = self;
 
-    NSArray *objectDataTypes = @[@"team", @"plan", @"team_preferences"];
+    NSArray *objectDataTypes = @[@"team", @"plan", @"team_preferences", @"team_results"];
     
     [self myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSMutableArray *teamIds = [[NSMutableArray alloc] init];
