@@ -153,6 +153,8 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     [self arrayFromLink:link WithCompletion:completion];
 }
 
+/*
+Not tested:
 static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
     NSString *property = NSStringFromSelector(_cmd);
     NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
@@ -166,7 +168,7 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
     
     [self objectFromLink:link WithCompletion:completion];
 }
-
+*/
 
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
@@ -333,6 +335,8 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                 completion(success, complete, result, error);
+            } else {
+                completion(success, complete, nil, error);
             }
 //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
 //            ((id(^)())(completion(success, complete, rosters, error));
@@ -342,11 +346,15 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
 
 }
 
+/*
+ Not Tested
 - (void)objectFromLink:(NSURL *)link WithCompletion:(TSDKCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+            if ([objects collection]) {
                 completion(success, complete, [objects collection], error);
+            } else {
+                completion(success, complete, nil, error);
             }
             //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
             //            ((id(^)())(completion(success, complete, rosters, error));
@@ -355,6 +363,7 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
     
     
 }
+ */
 
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL {
