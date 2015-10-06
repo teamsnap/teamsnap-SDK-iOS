@@ -10,7 +10,7 @@
 
 @implementation TSDKTeamStatistic
 
-@dynamic average, total, linkTeam, linkStatistic;
+@dynamic average, total, statisticId, linkTeam, linkStatistic;
 
 + (NSString *)SDKType {
     return @"team_statistic";
