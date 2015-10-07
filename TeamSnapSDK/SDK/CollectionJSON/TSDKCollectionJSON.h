@@ -10,7 +10,7 @@
 
 @interface TSDKCollectionJSON : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSString *href;
+@property (nonatomic, strong) NSURL *href;
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSMutableDictionary *links;

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGBase.h>
+#import "TSDKObjectsRequest.h"
 
 @class TSDKCollectionJSON;
 
@@ -34,6 +35,8 @@
 - (NSURL *)getLink:(NSString *)aKey;
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
+
+- (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;
 + (instancetype)collectionObjectFromDataInFileURL:(NSURL *)fileURL;

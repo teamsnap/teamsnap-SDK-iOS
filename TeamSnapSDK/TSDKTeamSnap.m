@@ -94,7 +94,7 @@
         TSDKTeamSnap __weak *weakSelf = self;
         
 //        [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) { //self.rootLinks.linkPublicFeatures
-            [TSDKDataRequest requestJSONObjectsForPath:[[TSDKDataRequest baseURL] URLByAppendingPathComponent:@"/public_features"]  sendDataDictionary:nil method:nil withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+            [TSDKDataRequest requestJSONObjectsForPath:[[TSDKDataRequest baseURL] URLByAppendingPathComponent:@"public_features"]  sendDataDictionary:nil method:nil withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
                 self.publicFeatures = [[TSDKPublicFeatures alloc] initWithCollection:objects];
                 if (completion) {
                     completion(weakSelf.publicFeatures);

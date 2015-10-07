@@ -9,7 +9,6 @@
 #import <objc/runtime.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
-#import "TSDKObjectsRequest.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKDataRequest.h"
 
@@ -344,6 +343,16 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
     }];
 
 
+}
+
+- (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [TSDKDataRequest requestObjectsForPath:self.collection.href withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [self setCollection:[objects.collection objectAtIndex:0]];
+        if (completion) {
+            completion(YES, YES, @[self], nil);
+        } else {
+        }
+    }];
 }
 
 /*

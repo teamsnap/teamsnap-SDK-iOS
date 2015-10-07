@@ -59,7 +59,7 @@
 }
 
 -(void)parseJSON:(NSDictionary *)collection {
-    self.href = [collection objectForKey:@"href"];
+    self.href = [NSURL URLWithString:[collection objectForKey:@"href"]];
     self.version = [collection objectForKey:@"version"];
     
     NSArray *datum;
