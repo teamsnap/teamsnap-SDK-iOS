@@ -98,6 +98,15 @@
     return [self.members objectForIntegerKey:memberId];
 }
 
+- (NSArray *)membersWithUserId:(NSInteger)userId {
+    NSArray *arrayOfMembers = [self.members allValues];
+    
+    NSIndexSet *indexSet = [arrayOfMembers indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
+        return (member.userId == userId);
+    }];
+    return [arrayOfMembers objectsAtIndexes:indexSet];
+}
+
 - (void)dirtySortedEventLists {
     self.sortedEvents = nil;
 }
