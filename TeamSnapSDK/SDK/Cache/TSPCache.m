@@ -127,9 +127,11 @@ NSFileManager static *_fileManager = nil;
     }
     NSArray *keys = [dictionaryOfObjects allKeys];
     
-    BOOL success = [keys writeToURL:[self pathForObjectCollectionOfClass:objectClass] atomically:YES];
-    if (!success) {
-        NSLog(@"Failed");
+    if ([self pathForObjectCollectionOfClass:objectClass]) {
+        BOOL success = [keys writeToURL:[self pathForObjectCollectionOfClass:objectClass] atomically:YES];
+        if (!success) {
+            NSLog(@"Failed");
+        }
     }
 }
 
