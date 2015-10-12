@@ -37,6 +37,7 @@
 - (BOOL)isNewObject;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;
 + (instancetype)collectionObjectFromDataInFileURL:(NSURL *)fileURL;

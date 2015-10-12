@@ -168,12 +168,15 @@
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
 - (TSDKMember *)memberWithID:(NSInteger)memberId;
+- (NSArray *)membersWithUserId:(NSInteger)userId;
 - (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject;
 - (void)bulkLoadImportantDataWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)bulkLoadDataWithCompleteion:(TSDKArrayCompletionBlock)completion;
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)eventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
+
+-(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion;
 
 - (void)trackedItems:(TSDKArrayCompletionBlock)completion;
 

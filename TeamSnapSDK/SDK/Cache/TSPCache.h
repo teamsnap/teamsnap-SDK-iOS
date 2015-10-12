@@ -24,5 +24,7 @@
 
 +(void)saveObject:(TSDKCollectionObject *)collectionObject;
 +(TSDKCollectionObject *)objectOfClass:(Class)objectClass withId:(NSUInteger)objectId;
++ (void)saveDictionaryOfObjects:(NSDictionary *)dictionaryOfObjects ofType:(Class)objectClass;
++ (NSDictionary *)loadDictionaryOfObjectsOfType:(Class)objectClass;
 
 @end

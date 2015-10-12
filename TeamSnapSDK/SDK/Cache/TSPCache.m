@@ -25,7 +25,21 @@ NSFileManager static *_fileManager = nil;
         NSString *directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
         _rootPath = [NSURL fileURLWithPath:directory isDirectory:YES];
     }
+    if (![[self fileManager] fileExistsAtPath:[_rootPath path]]) {
+        [[self fileManager] createDirectoryAtPath:[_rootPath path] withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+
     return _rootPath;
+}
+
++(NSURL *)cacheBasePath {
+    if (!_basePath) {
+        return nil;
+    }
+    if (![[self fileManager] fileExistsAtPath:[_basePath path]]) {
+        [[self fileManager] createDirectoryAtPath:[_basePath path] withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return _basePath;
 }
 
 +(void)setCacheMaxAgeInMinutes:(NSUInteger)maxAge {
@@ -45,12 +59,19 @@ NSFileManager static *_fileManager = nil;
 
 +(NSURL *)pathForObjectClass:(Class)objectClass {
     NSString *className = NSStringFromClass(objectClass);
-    return  [_basePath URLByAppendingPathComponent:className];
+    NSURL *destination = [self.cacheBasePath URLByAppendingPathComponent:className];
+    if (destination && ![[self fileManager] fileExistsAtPath:[destination path]]) {
+        [[self fileManager] createDirectoryAtPath:[destination path] withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return destination;
 }
 
 +(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSUInteger)objectId {
-    NSString *className = NSStringFromClass(objectClass);
-    return  [[_basePath URLByAppendingPathComponent:className] URLByAppendingPathComponent:[NSString stringWithFormat:@"%ld", (long)objectId]];
+    return  [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:[NSString stringWithFormat:@"%ld", (long)objectId]];
+}
+
++ (NSURL *)pathForObjectCollectionOfClass:(Class)objectClass {
+    return [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:@"collection"];
 }
 
 +(BOOL)isValidCacheFile:(NSURL *)fileURLPath {
@@ -61,14 +82,14 @@ NSFileManager static *_fileManager = nil;
     if (attrs) {
         NSDate *fileCreationDate = (NSDate*)[attrs objectForKey: NSFileCreationDate];
         NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:fileCreationDate];
-        return (elapsedTime > (_maxCacheAgeMinutes * 60));
+        return (elapsedTime < (_maxCacheAgeMinutes * 60));
     }
     return NO;
 }
 
 +(void)invalidateAll {
     NSError *error = nil;
-    [self.fileManager removeItemAtURL:_basePath error:&error];
+    [self.fileManager removeItemAtURL:self.cacheBasePath error:&error];
 }
 
 +(void)invaidateObjectsOfClass:(Class)objectClass {
@@ -83,10 +104,11 @@ NSFileManager static *_fileManager = nil;
     [self.fileManager removeItemAtURL:classCachePath error:&error];
 }
 
-
 +(void)saveObject:(TSDKCollectionObject *)collectionObject {
-    if (collectionObject) {
-        [collectionObject writeToFileURL:[self pathForObjectClass:[collectionObject class] withId:collectionObject.objectIdentifier]];
+    if (_basePath) {
+        if (collectionObject) {
+            [collectionObject writeToFileURL:[self pathForObjectClass:[collectionObject class] withId:collectionObject.objectIdentifier]];
+        }
     }
 }
 
@@ -97,6 +119,42 @@ NSFileManager static *_fileManager = nil;
         return resultObject;
     }
     return nil;
+}
+
++ (void)saveDictionaryOfObjects:(NSDictionary *)dictionaryOfObjects ofType:(Class)objectClass {
+    for (TSDKCollectionObject *object in [dictionaryOfObjects allValues]) {
+        [self saveObject:object];
+    }
+    NSArray *keys = [dictionaryOfObjects allKeys];
+    
+    BOOL success = [keys writeToURL:[self pathForObjectCollectionOfClass:objectClass] atomically:YES];
+    if (!success) {
+        NSLog(@"Failed");
+    }
+}
+
++ (NSDictionary *)loadDictionaryOfObjectsOfType:(Class)objectClass {
+    NSURL *cacheFileURL = [self pathForObjectCollectionOfClass:objectClass];
+    if (cacheFileURL) {
+        NSArray *keys = [NSArray arrayWithContentsOfURL:cacheFileURL];
+        NSMutableDictionary *resultDictionary = [[NSMutableDictionary alloc] init];
+        
+        for (NSString *key in keys) {
+            TSDKCollectionObject *object = [self objectOfClass:objectClass withId:[key integerValue]];
+            if (object) {
+                [resultDictionary setObject:object forKey:key];
+            } else {
+                return nil;
+            }
+        }
+        if (resultDictionary.count >0 ) {
+            return resultDictionary;
+        } else {
+            return nil;
+        }
+    } else {
+        return nil;
+    }
 }
 
 @end

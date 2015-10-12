@@ -16,4 +16,8 @@
     return nil;
 }
 
+- (BOOL)logHeader {
+    return YES;
+}
+
 @end

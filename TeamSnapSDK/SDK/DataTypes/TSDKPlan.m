@@ -10,12 +10,11 @@
 
 @implementation TSDKPlan
 
-@dynamic hasTextMessaging, hasSeasons, hasStatistics, platform, hasPhotos, hasCustomFields, hasHideMarketplaceTab, annualPrice, hasAvailabilities, hasSponsorships, hasTeamMedia, hasSslSecurity, hasOffSeason, hasAdFree, monthlyPriceDescription, name, uploadQuotaInMb, hasTracking, hasExternalEmail, hasPayments, hasTeamLogo, hasWeather, hasTeamColors, platformVersion, planType, hasRss, hasPaypal, hasAssignments, hasCustomDomain, monthlyPrice, hasRosterPhotos, hasClubs;
+@dynamic hasTextMessaging, hasSeasons, hasStatistics, platform, hasPhotos, hasCustomFields, hasHideMarketplaceTab, annualPrice, hasAvailabilities, hasSponsorships, hasTeamMedia, hasSslSecurity, hasOffSeason, hasAdFree, monthlyPriceDescription, name, uploadQuotaInMb, hasTracking, isActive, hasPayments, hasTeamLogo, hasWeather, hasTeamColors, planType, hasRss, hasPaypal, hasExternalEmail, hasAssignments, hasCustomDomain, platformVersion, monthlyPrice, hasRosterPhotos, hasClubs;
 
 + (NSString *)SDKType {
     return @"plan";
 }
-
 
 -(BOOL)freeTrial {
     return [self.planType isEqualToString:@"trial"];

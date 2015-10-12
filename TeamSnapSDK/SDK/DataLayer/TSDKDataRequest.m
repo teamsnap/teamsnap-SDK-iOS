@@ -130,6 +130,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completionBlock {
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     
     for (NSString *headerKeys in requestHeaders) {

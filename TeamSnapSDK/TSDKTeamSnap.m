@@ -110,16 +110,22 @@
             completion(self.rootLinks);
         }
     } else {
-        TSDKTeamSnap __weak *weakSelf = self;
-        
-        [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            if (success) {
-                weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
-            }
-            if (completion) {
-                completion(weakSelf.rootLinks);
-            }
-        }];
+        self.rootLinks = (TSDKRootLinks *)[TSPCache objectOfClass:[TSDKRootLinks class] withId:0];
+        if (self.rootLinks) {
+            completion(self.rootLinks);
+        } else {
+            TSDKTeamSnap __weak *weakSelf = self;
+            
+            [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                if (success) {
+                    weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
+                }
+                [TSPCache saveObject:weakSelf.rootLinks];
+                if (completion) {
+                    completion(weakSelf.rootLinks);
+                }
+            }];
+        }
     }
 }
 
@@ -140,16 +146,41 @@
                 }
             }];
         }];
-        
-        [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlans withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            if (success) {
-                NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                for (TSDKPlan *plan in plans) {
-                    [weakSelf addPlan:plan];
-                }
-            }
+                
+        [self getPlansWithCompletion:^(bool success, NSString *message) {
+            
         }];
     }];
+}
+
+- (void)getPlansWithCompletion:(void (^)(bool success, NSString *message))completion {
+    if (_plans) {
+        if (completion) {
+            completion(YES, nil);
+        }
+    } else {
+        NSDictionary *cachedPlans = [TSPCache loadDictionaryOfObjectsOfType:[TSDKPlan class]];
+        if (cachedPlans) {
+            _plans = [NSMutableDictionary dictionaryWithDictionary:cachedPlans];
+            if (completion) {
+                completion(YES, nil);
+            }
+        } else {
+            [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+                [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlans withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                    if (success) {
+                        NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                        NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
+                        for (TSDKPlan *plan in plans) {
+                            [tempPlanDictionary setObject:plan forIntegerKey:plan.objectIdentifier];
+                        }
+                        _plans = tempPlanDictionary;
+                        [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
+                    }
+                }];
+            }];
+        }
+    }
 }
 
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
@@ -201,7 +232,11 @@
 
 #pragma mark - Cache
 - (void)setCachePathURL:(NSURL *)cachePath {
-    [TSPCache setCacheRootPath:cachePath];
+    if (cachePath) {
+        [TSPCache setCacheRootPath:cachePath];
+    } else {
+        [TSPCache setCacheRootPath:[TSPCache cacheRootPath]];
+    }
 }
 
 - (void)setCacheTimeoutMinutes:(NSUInteger)timeoutMinutes {

@@ -37,6 +37,9 @@
 }
 
 -(void) startTimeWithId:(id)timerId {
+    if (!timerId) {
+        NSLog(@"About to crash: %@",[NSThread callStackSymbols]);
+    }
     [self.timers setObject:[NSDate date] forKey:timerId];
 }
 

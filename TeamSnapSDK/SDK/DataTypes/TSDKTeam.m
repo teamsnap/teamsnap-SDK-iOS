@@ -69,6 +69,17 @@
     self.planId = plan.objectIdentifier;
 }
 
+- (void)getTeamPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [super arrayFromLink:[self linkTeamPreferences] WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        if (success && objects.count>=1) {
+            [self processBulkLoadedObject:[objects objectAtIndex:0]];
+        }
+        if (completion) {
+            completion(success, YES, objects, error);
+        }
+    }];
+}
+
 - (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
     if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
         [self addEvent:(TSDKEvent *)bulkObject];
@@ -204,6 +215,16 @@
         }
     }];
     
+}
+
+-(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
+    if ([self.teamPrefrences linkTeamLogo]) {
+        [self.teamPrefrences getTeamLogoWithCompletion:completion];
+    } else {
+        if (completion) {
+            completion(nil);
+        }
+    }
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {

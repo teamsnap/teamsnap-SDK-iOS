@@ -23,8 +23,12 @@
 - (void)logout;
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
+- (void)getPlansWithCompletion:(void (^)(bool success, NSString *message))completion;
 - (void)addPlan:(TSDKPlan *)plan;
 - (TSDKPlan *)planWithId:(NSInteger)planId;
 - (void)planForPlanId:(NSInteger)planId WithCompletion:(void (^)(TSDKPlan *plan))completion;
+- (void)setCachePathURL:(NSURL *)cachePath;
+- (void)setCacheTimeoutMinutes:(NSUInteger)timeoutMinutes;
+- (void)clearCache;
 
 @end

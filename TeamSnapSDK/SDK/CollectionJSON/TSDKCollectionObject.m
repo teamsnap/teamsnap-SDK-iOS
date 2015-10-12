@@ -390,7 +390,7 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
     TSDKCollectionJSON *collection = [TSDKCollectionJSON collectionJSONForEncodedData:[NSData dataWithContentsOfURL:fileURL]];
     TSDKCollectionObject *collectionObject;
     if (collection) {
-        collectionObject = [[TSDKCollectionObject alloc] initWithCollection:collection];
+        collectionObject = [[self.class alloc] initWithCollection:collection];
     }
     
     return collectionObject;

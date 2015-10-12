@@ -74,10 +74,8 @@
     }];
 }
 
-- (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
+- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion {
     __typeof__(self) __weak weakSelf = self;
-
-    NSArray *objectDataTypes = @[@"team", @"team_preferences", @"team_results"];
     
     [self myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSMutableArray *teamIds = [[NSMutableArray alloc] init];
@@ -102,8 +100,13 @@
                 completion(success, complete, [teams allValues], error);
             }
         }];
-
+        
     }];
+
+}
+
+- (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [self bulkLoadDataTypes:@[@"team", @"team_preferences", @"team_results", @"plan"] WithCompletion:completion];
 }
 
 @end
