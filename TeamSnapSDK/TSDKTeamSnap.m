@@ -167,7 +167,7 @@
             }
         } else {
             [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
-                [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlans withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                     if (success) {
                         NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                         NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
@@ -218,7 +218,7 @@
             completion([_plans objectForIntegerKey:planId]);
         }
     } else {
-        [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlans withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *planObjcts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
             for (TSDKPlan *plan in planObjcts) {
                 [self addPlan:plan];

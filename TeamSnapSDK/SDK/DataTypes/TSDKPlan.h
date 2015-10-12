@@ -18,7 +18,7 @@
 @property (nonatomic) BOOL hasPhotos; //Example: 0
 @property (nonatomic) BOOL hasCustomFields; //Example: 0
 @property (nonatomic) BOOL hasHideMarketplaceTab; //Example: 0
-@property (nonatomic, weak) NSString *annualPrice; //Example: **NULL**
+@property (nonatomic) NSInteger annualPrice; //Example: **NULL**
 @property (nonatomic) BOOL hasAvailabilities; //Example: 0
 @property (nonatomic) BOOL hasSponsorships; //Example: 0
 @property (nonatomic) BOOL hasTeamMedia; //Example: 0
