@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
 #import <UIkit/UIKit.h>
+#else
+#import <AppKit/AppKit.h>
+#endif
 
 @class TSDKCollectionJSON;
 
@@ -16,7 +20,11 @@ typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJ
 typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *OAuthToken, NSError *error);
 typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray *objects, NSError *error);
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *objects, NSError *error);
+#if TARGET_OS_IPHONE
 typedef void (^TSDKImageCompletionBlock)(UIImage *image);
+#else 
+typedef void (^TSDKImageCompletionBlock)(NSImage *image);
+#endif
 
 @interface TSDKDataRequest : NSObject
 

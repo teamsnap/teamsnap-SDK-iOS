@@ -17,19 +17,35 @@
 }
 
 -(void)getTeamPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
+#if TARGET_OS_IPHONE
     [TSDKDataRequest requestImageForPath:self.linkTeamPhoto withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
     }];
+#else
+    [TSDKDataRequest requestImageForPath:self.linkTeamPhoto withCompletion:^(NSImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+#endif
 }
 
 -(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
+#if TARGET_OS_IPHONE
     [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
     }];
+#else
+    [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(NSImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+#endif
 }
 
 @end

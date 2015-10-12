@@ -29,19 +29,35 @@
 }
 
 -(void)getMemberPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
+#if TARGET_OS_IPHONE
     [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
     }];
+#else
+    [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(NSImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+#endif
 }
 
 -(void)getMemberThumbnailWithCompletion:(TSDKImageCompletionBlock)completion {
+#if TARGET_OS_IPHONE
     [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
     }];
+#else
+    [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail withCompletion:^(NSImage *image) {
+        if (completion) {
+            completion(image);
+        }
+    }];
+#endif
 }
 
 -(NSInteger)age {

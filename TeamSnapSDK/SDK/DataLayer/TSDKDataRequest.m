@@ -155,11 +155,17 @@ static NSRecursiveLock *accessDetailsLock = nil;
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             success = [httpResponse wasSuccess];
         }
+#if TARGET_OS_IPHONE
         UIImage *image = nil;
         if (success) {
             image = [UIImage imageWithData:data];
         }
-        
+#else
+        NSImage *image = nil;
+        if (success) {
+            image = [[NSImage alloc] initWithData:data];
+        }
+#endif
         if (completionBlock) {
             completionBlock(image);
         }
