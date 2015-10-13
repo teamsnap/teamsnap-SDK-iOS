@@ -80,6 +80,17 @@
     }];
 }
 
+- (void)getTeamResultsWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [super arrayFromLink:[self linkTeamResults] WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        if (success && objects.count>=1) {
+            [self processBulkLoadedObject:[objects objectAtIndex:0]];
+        }
+        if (completion) {
+            completion(success, YES, objects, error);
+        }
+    }];
+}
+
 - (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
     if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
         [self addEvent:(TSDKEvent *)bulkObject];
