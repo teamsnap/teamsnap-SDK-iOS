@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL logHeader;
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
++ (void)dumpClassSelectorInfo:(SEL)aSEL;
 + (NSString *)SDKType;
 - (NSInteger)objectIdentifier;
 - (NSDictionary *)dataToSave;

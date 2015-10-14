@@ -43,7 +43,12 @@
 
 static id propertyIMP(id self, SEL _cmd) {
     NSString *command = [[NSStringFromSelector(_cmd) camelCaseToUnderscores] stripClassNameFromDescriptor:NSStringFromClass([self class])];
-    return [[[self collection] data] valueForKey:command];
+    id value = [[[self collection] data] valueForKey:command];
+    if ([value isEqual:[NSNull null]]) {
+        return nil;
+    } else {
+        return value;
+    }
 }
 
 static id datePropertyIMP(id self, SEL _cmd) {
@@ -169,6 +174,43 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
 }
 */
 
+static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
+    const char * attrs = property_getAttributes( property );
+    if ( attrs == NULL )
+        return NO;
+    
+    const char * e = strchr( attrs, ',' );
+    if ( e == NULL )
+        return NO;
+    
+    int len = (int)(e - attrs);
+    memcpy( buffer, attrs, len );
+    buffer[len] = '\0';
+    
+    return YES;
+}
+
++ (void)dumpClassSelectorInfo {
+    NSMutableString *output = [[NSMutableString alloc] init];
+    unsigned int outCount, i;
+    objc_property_t *properties = class_copyPropertyList([self class], &outCount);
+    [output appendFormat:@"\n%@", [self class]];
+    for (i = 0; i < outCount; i++) {
+        objc_property_t property = properties[i];
+        const char *propName = property_getName(property);
+        if(propName) {
+            //const char *propType = getPropertyType(property);
+            char propType[256];
+            if (!property_getTypeString(property, propType)) {
+                continue;
+            }
+            NSString *propertyName = [NSString stringWithUTF8String:propName];
+            NSString *propertyType = [NSString stringWithUTF8String:propType];
+            [output appendFormat:@"\n* %@ (%@)", propertyName, propertyType];
+        }
+    }
+    NSLog(@"%@", output);
+}
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
     //NSString *command = [NSStringFromSelector(aSEL) camelCaseToUnderscores];
@@ -179,6 +221,8 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
         [property deleteCharactersInRange:NSMakeRange(property.length -1,1)];
         [property replaceCharactersInRange:NSMakeRange(0, 1) withString:[[property substringToIndex:1] lowercaseString]];
     }
+
+    //[self dumpClassSelectorInfo];
     
     objc_property_t theProperty = class_getProperty(self, [property cStringUsingEncoding:[NSString defaultCStringEncoding]]);
     if (theProperty) {
@@ -207,9 +251,9 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
             }
-        } else if ([propertyType hasPrefix:@"TB,"]) {
+        } else if ([propertyType hasPrefix:@"Tc,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
-        } else if ([propertyType hasPrefix:@"Tq,"]) {
+        } else if ([propertyType hasPrefix:@"Ti,"]) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
