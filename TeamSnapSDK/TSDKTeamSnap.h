@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKDataRequest.h"
 
 @class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan;
 
@@ -22,6 +23,7 @@
 - (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion;
 - (void)logout;
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
+- (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
 - (void)getPlansWithCompletion:(void (^)(bool success, NSString *message))completion;
 - (void)addPlan:(TSDKPlan *)plan;

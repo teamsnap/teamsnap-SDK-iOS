@@ -24,7 +24,7 @@
 + (void)listAvailabilitesForEvent:(TSDKEvent *)event completion:(TSDKArrayCompletionBlock)completion;
 + (void)listRosterForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
 + (void)listTrackedItemsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
-
++ (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;
 + (TSDKUser *)processLoginCollectionJSON:(TSDKCollectionJSON *)containerCollection;
 + (NSArray *)SDKObjectsFromCollection:(TSDKCollectionJSON *)containerCollection;
 

@@ -36,6 +36,7 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKTeamResults.h"
+#import "TSDKInviteStatus.h"
 
 static NSMutableArray *supportedSDKObjects;
 
@@ -266,6 +267,22 @@ static NSMutableArray *supportedSDKObjects;
             }
         }];
     }
+}
+
++ (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
+    NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", emailAddress]];
+    
+    [TSDKDataRequest requestObjectsForPath:invitationFinderPath withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (success) {
+            TSDKInviteStatus *inviteStatus;
+            if ([objects.collection count] > 0) {
+                inviteStatus = [[TSDKInviteStatus alloc] initWithCollection:[objects.collection objectAtIndex:0]];
+            }
+            if (completionBlock) {
+                completionBlock(success, YES, inviteStatus, error);
+            }
+        }
+    }];
 }
 
 + (NSArray *)SDKObjectsFromCollection:(TSDKCollectionJSON *)containerCollection {

@@ -191,6 +191,10 @@
     }
 }
 
+- (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
+    [TSDKObjectsRequest invitationStatusForEmailAddress:emailAddress withCompletion:completionBlock];
+}
+
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
     [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkTslPhotos withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
