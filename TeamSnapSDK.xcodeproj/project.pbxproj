@@ -24,7 +24,7 @@
 		969E805F1BAAE79500CA518F /* TSDKTeamSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */; };
 		969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80621BAAE7AB00CA518F /* TSPCache.h */; };
 		969E80B21BAAE7AB00CA518F /* TSPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80631BAAE7AB00CA518F /* TSPCache.m */; };
-		969E80B31BAAE7AB00CA518F /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionCommand.h */; };
+		969E80B31BAAE7AB00CA518F /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80B41BAAE7AB00CA518F /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80661BAAE7AB00CA518F /* TSDKCollectionCommand.m */; };
 		969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80671BAAE7AB00CA518F /* TSDKCollectionJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80B61BAAE7AB00CA518F /* TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */; };
@@ -165,7 +165,7 @@
 		96B47F601BADB4810035F2CC /* NSObject+TSDKIntegerOtNotFound.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80731BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m */; };
 		96B47F611BADB4810035F2CC /* NSString+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80741BAAE7AB00CA518F /* NSString+TSDKConveniences.h */; };
 		96B47F621BADB4810035F2CC /* NSString+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80751BAAE7AB00CA518F /* NSString+TSDKConveniences.m */; };
-		96B47F631BADB4850035F2CC /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionCommand.h */; };
+		96B47F631BADB4850035F2CC /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F641BADB4850035F2CC /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80661BAAE7AB00CA518F /* TSDKCollectionCommand.m */; };
 		96B47F651BADB4850035F2CC /* TSDKCollectionJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80671BAAE7AB00CA518F /* TSDKCollectionJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F661BADB4850035F2CC /* TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */; };

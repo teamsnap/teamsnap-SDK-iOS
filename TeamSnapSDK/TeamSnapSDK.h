@@ -17,6 +17,9 @@ FOUNDATION_EXPORT const unsigned char TeamSnapSDKVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <TeamSnapSDK/PublicHeader.h>
 
 #import <TeamSnapSDK/TSDKTeamSnap.h>
+#import <teamSnapSDK/TSDKCollectionCommand.h>
+#import <teamSnapSDK/TSDKCollectionJSON.h>
+#import <teamSnapSDK/TSDKCollectionObject.h>
 #import <TeamSnapSDK/TSDKUser.h>
 #import <TeamSnapSDK/TSDKTeam.h>
 #import <TeamSnapSDK/TSDKEvent.h>
