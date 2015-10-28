@@ -92,6 +92,7 @@
 }
 
 - (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+    NSLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
     if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
         [self addEvent:(TSDKEvent *)bulkObject];
         self.eventsUpdated = [NSDate date];
@@ -99,6 +100,7 @@
         [self addMember:(TSDKMember *)bulkObject];
         self.membersUpdated = [NSDate date];
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
+        NSLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
         self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
         self.teamResults = (TSDKTeamResults *)bulkObject;

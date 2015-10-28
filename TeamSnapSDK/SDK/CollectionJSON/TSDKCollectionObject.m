@@ -221,8 +221,6 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         [property deleteCharactersInRange:NSMakeRange(property.length -1,1)];
         [property replaceCharactersInRange:NSMakeRange(0, 1) withString:[[property substringToIndex:1] lowercaseString]];
     }
-
-    //[self dumpClassSelectorInfo];
     
     objc_property_t theProperty = class_getProperty(self, [property cStringUsingEncoding:[NSString defaultCStringEncoding]]);
     if (theProperty) {
@@ -251,9 +249,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
             }
-        } else if ([propertyType hasPrefix:@"Tc,"]) {
+        } else if (([propertyType hasPrefix:@"TB,"]) || ([propertyType hasPrefix:@"Tc,"])) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
-        } else if ([propertyType hasPrefix:@"Ti,"]) {
+        } else if (([propertyType hasPrefix:@"Tq,"]) || ([propertyType hasPrefix:@"Ti,"])) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
@@ -310,7 +308,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     if ([_collection.data[key] isEqual:[NSNull null]]) {
         return 0;
     }
-    return [_collection.data[key] integerValue];
+    NSNumber *value = _collection.data[key];
+    return value.integerValue;
 }
 
 - (void)setInteger:(NSInteger)value forKey:(NSString *)aKey {

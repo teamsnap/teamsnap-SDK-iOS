@@ -29,7 +29,6 @@
 
 @implementation TSDKTeamSnap
 
-
 + (instancetype)sharedInstance {
     static TSDKTeamSnap *_sharedInstance;
     static dispatch_once_t onceToken;
@@ -83,6 +82,13 @@
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
     self.rootLinks = nil;
+}
+
+- (NSMutableArray *)teams {
+    if (!_teams) {
+        _teams = [[NSMutableArray alloc] init];
+    }
+    return _teams;
 }
 
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {

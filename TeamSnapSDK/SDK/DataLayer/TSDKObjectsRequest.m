@@ -71,12 +71,12 @@ static NSMutableArray *supportedSDKObjects;
 + (void)listTeamsForUser:(TSDKUser *)user WithCompletion:(TSDKArrayCompletionBlock)completion {
     if (user) {
         [TSDKDataRequest requestObjectsForPath:user.linkTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *teams;
+            
             if (success) {
-                teams = [self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]];
+                [TSDKTeamSnap sharedInstance].teams = [NSMutableArray arrayWithArray:[self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]]];
             }
             if (completion) {
-                completion(success, complete, teams, error);
+                completion(success, complete, [TSDKTeamSnap sharedInstance].teams, error);
             }
         }];
     }
@@ -128,7 +128,7 @@ static NSMutableArray *supportedSDKObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
             parsedObjects = [self SDKObjectsFromCollection:objects];
-            NSMutableArray *teams = [[NSMutableArray alloc] init];
+            NSMutableArray *teams = [[TSDKTeamSnap sharedInstance] teams];
             for (TSDKCollectionObject *sdkObject in parsedObjects) {
                 if ([sdkObject isKindOfClass:[TSDKTeam class]]) {
                     [teams addObject:sdkObject];
