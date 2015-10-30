@@ -18,7 +18,7 @@ static NSString *OauthURL = @"https://cogsworth.teamsnap.com/oauth/token";
 static NSString *clientId;
 static NSString *clientSecret;
 
-static NSMutableDictionary *requestHeaders = nil;
+static NSMutableDictionary *_requestHeaders = nil;
 static NSString *OAuthToken = nil;
 
 static NSRecursiveLock *accessDetailsLock = nil;
@@ -44,22 +44,37 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key {
-    if (!requestHeaders) {
-        requestHeaders = [[NSMutableDictionary alloc] init];
-    }
-    [requestHeaders setObject:value forKey:key];
+    [self.requestHeaders setObject:value forKey:key];
 }
 
 + (NSMutableDictionary *)requestHeaders {
-    return requestHeaders;
+    if (!_requestHeaders) {
+        _requestHeaders = [[NSMutableDictionary alloc] init];
+        [_requestHeaders setObject:@"application/json" forKey:@"Accept"];
+        [_requestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
+        [_requestHeaders setObject:@"TeamSnapSDK/1.0 (iPhone Simulator; iOS 8.1; Scale/2.00)" forKey:@"User-Agent"];
+        [_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
+        
+        NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
+        [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            float q = 1.0f - (idx * 0.1f);
+            [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
+            *stop = q <= 0.5f;
+        }];
+        [_requestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
+        
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        [_requestHeaders setObject:version forKey:@"X-Client-Version"];
+    }
+    return _requestHeaders;
 }
 
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock {
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
 
-    for (NSString *headerKeys in requestHeaders) {
-        [request setValue:[requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
+    for (NSString *headerKeys in self.requestHeaders) {
+        [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
     }
 
     if (OAuthToken) {
@@ -133,8 +148,8 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     
-    for (NSString *headerKeys in requestHeaders) {
-        [request setValue:[requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
+    for (NSString *headerKeys in self.requestHeaders) {
+        [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
     }
     
     if (OAuthToken) {
@@ -182,21 +197,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
      NSString *scopes = @"read write";
     
     NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, clientId, clientSecret, scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
-
-    [TSDKDataRequest addRequestHeaderValue:@"application/json" forKey:@"Accept"];
-    [TSDKDataRequest addRequestHeaderValue:@"iOS" forKey:@"X-Client-Source"];
-    [TSDKDataRequest addRequestHeaderValue:@"TeamSnapSDK/1.0 (iPhone Simulator; iOS 8.1; Scale/2.00)" forKey:@"User-Agent"];
-    
-    NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
-    [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        float q = 1.0f - (idx * 0.1f);
-        [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
-        *stop = q <= 0.5f;
-    }];
-    [self addRequestHeaderValue:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
-    
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [TSDKDataRequest addRequestHeaderValue:version forKey:@"X-Client-Version"];
     
     [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSString *OAuthToken = nil;

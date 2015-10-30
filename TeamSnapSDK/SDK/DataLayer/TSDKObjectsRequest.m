@@ -112,6 +112,9 @@ static NSMutableArray *supportedSDKObjects;
                 [team processBulkLoadedObject:sdkObject];
             }
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
+            if (completion) {
+                completion(success, complete, parsedObjects, error);
+            }
         }
     }];
 }

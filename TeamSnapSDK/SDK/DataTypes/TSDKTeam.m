@@ -160,9 +160,9 @@
 }
 
 - (void)bulkLoadImportantDataWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeam"];
+    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeamImportant"];
     [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"event", @"member", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum",@"location", @"opponent", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeam" logResult:YES];
+        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeamImportant" logResult:YES];
         if (completion) {            
             completion(success, complete, objects, error);
         }
