@@ -11,8 +11,8 @@
 
 @interface TSDKInviteStatus : TSDKCollectionObject
 
-@property (nonatomic) BOOL user_exists; //Example: 1
-@property (nonatomic) BOOL invitation_pending; //Example: 0
+@property (nonatomic) BOOL isExistingUser; //Example: 1
+@property (nonatomic) BOOL isInvitationPending; //Example: 0
 @property (nonatomic, weak) NSString *emailAddress;
 
 @end

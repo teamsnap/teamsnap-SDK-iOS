@@ -11,7 +11,7 @@
 @implementation TSDKInviteStatus
 
 
-@dynamic user_exists, invitation_pending, emailAddress;
+@dynamic isExistingUser, isInvitationPending, emailAddress;
 
 + (NSString *)SDKType {
     return @"invite_status";
