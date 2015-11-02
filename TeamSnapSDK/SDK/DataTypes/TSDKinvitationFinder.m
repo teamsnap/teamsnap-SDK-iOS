@@ -6,14 +6,14 @@
 //  Copyright © 2015 jasonr. All rights reserved.
 //
 
-#import "TSDKInviteStatus.h"
+#import "TSDKinvitationFinder.h"
 
-@implementation TSDKInviteStatus
+@implementation TSDKinvitationFinder
 
 
 @dynamic isExistingUser, isInvitationPending, emailAddress;
 
 + (NSString *)SDKType {
-    return @"invite_status";
+    return @"invitation_finder";
 }
 @end

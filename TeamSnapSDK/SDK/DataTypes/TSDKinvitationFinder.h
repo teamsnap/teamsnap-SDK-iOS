@@ -9,7 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKInviteStatus : TSDKCollectionObject
+@interface TSDKinvitationFinder : TSDKCollectionObject
 
 @property (nonatomic) BOOL isExistingUser; //Example: 1
 @property (nonatomic) BOOL isInvitationPending; //Example: 0
