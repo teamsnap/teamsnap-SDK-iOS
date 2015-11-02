@@ -18,8 +18,9 @@
 @property (nonatomic, weak) NSURL *linkPlansAll;
 @property (nonatomic, weak) NSURL *linkTeamsPreferences;
 @property (nonatomic, weak) NSURL *linkStatistics;
-@property (nonatomic, weak) NSURL *linkTeamMediaGroups;
+@property (nonatomic, weak) NSURL *linkSchemas;
 @property (nonatomic, weak) NSURL *linkDivisionContactEmailAddresses;
+@property (nonatomic, weak) NSURL *linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *linkMemberStatistics;
 @property (nonatomic, weak) NSURL *linkMemberEmailAddresses;
 @property (nonatomic, weak) NSURL *linkDivisionLocations;
@@ -64,8 +65,8 @@
 @property (nonatomic, weak) NSURL *linkBroadcastSmses;
 @property (nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
 @property (nonatomic, weak) NSURL *linkLeagueRegistrantDocuments;
-@property (nonatomic, weak) NSURL *linkReferrals;
 @property (nonatomic, weak) NSURL *linkPublicFeatures;
+@property (nonatomic, weak) NSURL *linkReferrals;
 @property (nonatomic, weak) NSURL *linkPaypalCurrencies;
 @property (nonatomic, weak) NSURL *linkTeamFees;
 @property (nonatomic, weak) NSURL *linkTeamMediumComments;
@@ -95,8 +96,9 @@
 -(void)getPlansAllWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamsPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getStatisticsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamMediaGroupsWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getSchemasWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediaGroupsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberStatisticsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionLocationsWithCompletion:(TSDKArrayCompletionBlock)completion;
@@ -141,8 +143,8 @@
 -(void)getBroadcastSmsesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getBroadcastEmailAttachmentsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getLeagueRegistrantDocumentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getReferralsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getPublicFeaturesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getReferralsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getPaypalCurrenciesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamFeesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamMediumCommentsWithCompletion:(TSDKArrayCompletionBlock)completion;

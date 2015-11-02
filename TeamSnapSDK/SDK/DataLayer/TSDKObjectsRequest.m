@@ -36,7 +36,7 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKTeamResults.h"
-#import "TSDKInviteStatus.h"
+#import "TSDKinvitationFinder.h"
 
 static NSMutableArray *supportedSDKObjects;
 
@@ -277,9 +277,9 @@ static NSMutableArray *supportedSDKObjects;
     
     [TSDKDataRequest requestObjectsForPath:invitationFinderPath withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (success) {
-            TSDKInviteStatus *inviteStatus;
+            TSDKinvitationFinder *inviteStatus;
             if ([objects.collection count] > 0) {
-                inviteStatus = [[TSDKInviteStatus alloc] initWithCollection:[objects.collection objectAtIndex:0]];
+                inviteStatus = [[TSDKinvitationFinder alloc] initWithCollection:[objects.collection objectAtIndex:0]];
             }
             if (completionBlock) {
                 completionBlock(success, YES, inviteStatus, error);
