@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		960556D21BE15F87003AB59D /* TSDKInviteStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKInviteStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		960556D31BE15F87003AB59D /* TSDKInviteStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKInviteStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		960556D41BE15F87003AB59D /* TSDKInviteStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKInviteStatus.m */; };
-		960556D51BE15F87003AB59D /* TSDKInviteStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKInviteStatus.m */; };
+		960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		960556D31BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
+		960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
 		964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */; };
 		964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -194,8 +194,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		960556D01BE15F87003AB59D /* TSDKInviteStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKInviteStatus.h; sourceTree = "<group>"; };
-		960556D11BE15F87003AB59D /* TSDKInviteStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKInviteStatus.m; sourceTree = "<group>"; };
+		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKinvitationFinder.h; sourceTree = "<group>"; };
+		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
 		964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRootLinks.h; sourceTree = "<group>"; };
 		964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRootLinks.m; sourceTree = "<group>"; };
 		964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTslPhotos.h; sourceTree = "<group>"; };
@@ -477,8 +477,8 @@
 				964CDDEC1BB4519400909D11 /* TSDKPublicFeatures.m */,
 				964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */,
 				964CDDE61BB4514B00909D11 /* TSDKTslPhotos.m */,
-				960556D01BE15F87003AB59D /* TSDKInviteStatus.h */,
-				960556D11BE15F87003AB59D /* TSDKInviteStatus.m */,
+				960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */,
+				960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -555,7 +555,7 @@
 				96F4FC3F1BBDA389000D04B9 /* TSDKTeamResults.h in Headers */,
 				969E80B71BAAE7AB00CA518F /* TSDKCollectionObject.h in Headers */,
 				969E80C51BAAE7AB00CA518F /* TSDKDataRequest.h in Headers */,
-				960556D21BE15F87003AB59D /* TSDKInviteStatus.h in Headers */,
+				960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */,
 				969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */,
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
@@ -604,7 +604,7 @@
 				96B47F5F1BADB4810035F2CC /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
 				96B47F391BADB4410035F2CC /* TSDKPlan.h in Headers */,
 				96B47F551BADB4740035F2CC /* TSDKDataRequest.h in Headers */,
-				960556D31BE15F87003AB59D /* TSDKInviteStatus.h in Headers */,
+				960556D31BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */,
 				96B47F591BADB4810035F2CC /* NSDate+TSDKConveniences.h in Headers */,
 				96B47F311BADB4410035F2CC /* TSDKForumTopic.h in Headers */,
 				96B47F351BADB4410035F2CC /* TSDKMember.h in Headers */,
@@ -797,7 +797,7 @@
 				969E80CE1BAAE7AB00CA518F /* TSDKStatisticDatum.m in Sources */,
 				969E80C01BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
 				969E80D21BAAE7AB00CA518F /* TSDKTeamStatistic.m in Sources */,
-				960556D41BE15F87003AB59D /* TSDKInviteStatus.m in Sources */,
+				960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */,
 				969E80F01BAAE7AB00CA518F /* TSDKTeam.m in Sources */,
 				969E80E81BAAE7AB00CA518F /* TSDKMember.m in Sources */,
 				969E80D41BAAE7AB00CA518F /* TSDKAssignment.m in Sources */,
@@ -875,7 +875,7 @@
 				96B47F5C1BADB4810035F2CC /* NSMutableDictionary+integerKey.m in Sources */,
 				96B47F4E1BADB4640035F2CC /* TSDKStatisticDatum.m in Sources */,
 				96B47F261BADB4410035F2CC /* TSDKBroadcastEmail.m in Sources */,
-				960556D51BE15F87003AB59D /* TSDKInviteStatus.m in Sources */,
+				960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */,
 				96B47F301BADB4410035F2CC /* TSDKForumPost.m in Sources */,
 				96B47F381BADB4410035F2CC /* TSDKOpponent.m in Sources */,
 				96B47F321BADB4410035F2CC /* TSDKForumTopic.m in Sources */,

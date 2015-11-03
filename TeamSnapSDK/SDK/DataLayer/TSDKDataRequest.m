@@ -53,7 +53,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [_requestHeaders setObject:@"application/json" forKey:@"Accept"];
         [_requestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
         [_requestHeaders setObject:@"TeamSnapSDK/1.0 (iPhone Simulator; iOS 8.1; Scale/2.00)" forKey:@"User-Agent"];
-        [_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
+        //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
         
         NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
         [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

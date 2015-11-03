@@ -9,10 +9,10 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKInviteStatus : TSDKCollectionObject
+@interface TSDKinvitationFinder : TSDKCollectionObject
 
-@property (nonatomic) BOOL userExists; //Example: 1
-@property (nonatomic) BOOL invitationPending; //Example: 0
+@property (nonatomic) BOOL isExistingUser; //Example: 1
+@property (nonatomic) BOOL isInvitationPending; //Example: 0
 @property (nonatomic, weak) NSString *emailAddress;
 
 @end
