@@ -274,7 +274,7 @@ static NSMutableArray *supportedSDKObjects;
 }
 
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
-    NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", emailAddress]];
+    NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", [emailAddress stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]]]];
     
     [TSDKDataRequest requestObjectsForPath:invitationFinderPath withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (success) {
