@@ -30,7 +30,6 @@
             }
         }
         
-        self.data = [jsonDict objectForKey:@"data"];
         self.href = [jsonDict objectForKey:@"href"];
         self.rel = [jsonDict objectForKey:@"rel"];
         self.prompt = [jsonDict objectForKey:@"prompt"];

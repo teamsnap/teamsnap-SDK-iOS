@@ -7,6 +7,7 @@
 //
 
 #import "TSDKMember.h"
+#import "TSDKDataRequest.h"
 
 @implementation TSDKMember
 

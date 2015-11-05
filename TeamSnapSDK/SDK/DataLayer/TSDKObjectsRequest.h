@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSDKDataRequest.h"
 #import "TSDKCollectionJSON.h"
-
+#import "TSDKCompletionBlockTypes.h"
 
 @class TSDKTeam, TSDKEvent, TSDKUser;
+
 
 @interface TSDKObjectsRequest : NSObject
 

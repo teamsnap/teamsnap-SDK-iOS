@@ -50,3 +50,4 @@ FOUNDATION_EXPORT const unsigned char TeamSnapSDKVersionString[];
 #import <TeamSnapSDK/TSDKPublicFeatures.h>
 #import <TeamSnapSDK/TSDKTeamResults.h>
 #import <TeamSnapSDK/TSDKInvitationFinder.h>
+#import <TeamSnapSDK/TSDKCompletionBlockTypes.h>

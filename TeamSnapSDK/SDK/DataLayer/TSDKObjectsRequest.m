@@ -8,6 +8,7 @@
 
 #import "TSDKObjectsRequest.h"
 #import <objc/runtime.h>
+#import "TSDKDataRequest.h"
 #import "TSDKTeam.h"
 #import "TSDKUser.h"
 #import "TSDKMember.h"

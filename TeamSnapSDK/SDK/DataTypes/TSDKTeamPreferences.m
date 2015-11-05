@@ -7,6 +7,7 @@
 //
 
 #import "TSDKTeamPreferences.h"
+#import "TSDKDataRequest.h"
 
 @implementation TSDKTeamPreferences
 
