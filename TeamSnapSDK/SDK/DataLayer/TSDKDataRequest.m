@@ -29,6 +29,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
     return [NSURL URLWithString:baseURL];
 }
 
++ (void)setBaseURL:(NSURL *)URL {
+    baseURL = [URL absoluteString];
+}
+
 +(NSURL *)appendPathToBaseURL:(NSString *)path {
     NSURL *url =[NSURL URLWithString:path relativeToURL:[NSURL URLWithString:baseURL]];
     return url;

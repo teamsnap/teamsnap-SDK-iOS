@@ -18,6 +18,8 @@
 @property (strong, nonatomic) TSDKRootLinks *rootLinks;
 
 + (instancetype)sharedInstance;
++ (NSURL *)baseURL;
++ (void)setBaseURL:(NSURL *)url;
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion;
 - (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion;

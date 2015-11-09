@@ -22,6 +22,8 @@ typedef void (^TSDKImageCompletionBlock)(UIImage *image);
 @interface TSDKDataRequest : NSObject
 
 + (NSURL *)baseURL;
++ (void)setBaseURL:(NSURL *)URL;
+
 + (NSURL *)appendPathToBaseURL:(NSString *)path;
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key;

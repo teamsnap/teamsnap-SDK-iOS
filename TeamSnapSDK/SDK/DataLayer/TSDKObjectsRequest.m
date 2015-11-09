@@ -85,9 +85,11 @@ static NSMutableArray *supportedSDKObjects;
 }
 
 +(void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion {
-    NSString * path = [NSString stringWithFormat:@"https://apiv3.teamsnap.com/teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
+    NSString *searchString = [NSString stringWithFormat:@"teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
+    
+    NSURL *path = [NSURL URLWithString:searchString relativeToURL:[TSDKDataRequest baseURL]];
 
-    [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:path] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:path withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *teams;
         if (success) {
             teams = [self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]];
@@ -277,14 +279,14 @@ static NSMutableArray *supportedSDKObjects;
     NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", [emailAddress stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]]]];
     
     [TSDKDataRequest requestObjectsForPath:invitationFinderPath withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        TSDKinvitationFinder *inviteStatus = nil;
         if (success) {
-            TSDKinvitationFinder *inviteStatus;
             if ([objects.collection count] > 0) {
                 inviteStatus = [[TSDKinvitationFinder alloc] initWithCollection:[objects.collection objectAtIndex:0]];
             }
-            if (completionBlock) {
-                completionBlock(success, YES, inviteStatus, error);
-            }
+        }
+        if (completionBlock) {
+            completionBlock(success, YES, inviteStatus, error);
         }
     }];
 }

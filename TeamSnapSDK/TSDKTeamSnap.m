@@ -39,6 +39,14 @@
     return _sharedInstance;
 }
 
++ (NSURL *)baseURL {
+    return [TSDKDataRequest baseURL];
+}
+
++ (void)setBaseURL:(NSURL *)url {
+    [TSDKDataRequest setBaseURL:url];
+}
+
 - (void)setClientId:(NSString *)clientId {
     [TSDKDataRequest setClientId:clientId];
     _clientId = clientId;
