@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKCompletionBlockTypes.h"
 
 @interface TSDKCollectionCommand : NSObject
 
@@ -16,5 +17,6 @@
 @property (nonatomic, strong) NSString *prompt;
 
 - (instancetype)initWithJSONDict:(NSDictionary *)jsonDict;
+-(void)executeWithCompletion:(TSDKCompletionBlock)completion;
 
 @end

@@ -8,7 +8,7 @@
 
 #ifndef TSDKCompletionBlockTypes_h
 #define TSDKCompletionBlockTypes_h
-@class TSDKinvitationFinder, UIImage;
+@class TSDKinvitationFinder, UIImage, TSDKCollectionJSON;
 
 typedef void (^TSDKJSONCompletionBlock)(BOOL success, BOOL complete, id objects, NSError *error);
 typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error);

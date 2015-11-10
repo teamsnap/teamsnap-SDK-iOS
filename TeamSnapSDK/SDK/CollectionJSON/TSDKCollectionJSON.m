@@ -110,6 +110,7 @@
     if ([collection objectForKey:@"template"]) {
         TSDKCollectionJSON *template = [[TSDKCollectionJSON alloc] init];
         [template parseJSON:[collection objectForKey:@"template"]];
+        template.href = self.href;
         _collectionTemplate = template;
     }
     
@@ -170,6 +171,24 @@
         [linkGettersString appendFormat:@"-(void)%@WithCompletion:(TSDKArrayCompletionBlock)completion;\n", [getKey underscoresToCamelCase]];
     }
     
+    NSMutableString *actionsString = [[NSMutableString alloc] init];
+
+    for (NSString *key in self.commands) {
+        NSString *commandKey = [NSString stringWithFormat:@"action_%@", key];
+        NSString *camelCaseKey = [commandKey underscoresToCamelCase];
+        TSDKCollectionCommand *commandDictionary = [self.commands objectForKey:key];
+        
+        NSMutableString *paramaters = [[NSMutableString alloc] init];
+        for (NSString *key in commandDictionary.data) {
+            if (paramaters.length == 0) {
+                [paramaters appendFormat:@"%@:(NSString *)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
+            } else {
+                [paramaters appendFormat:@"%@:(NSString *)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
+            }
+        }
+        [actionsString appendFormat:@"-(void)%@%@WithCompletion:(TSDKCompletionBlock)completion; //%@\n", camelCaseKey, paramaters, commandDictionary.prompt];
+    }
+    
     NSMutableString *dynamicString = [NSMutableString stringWithString:@"@dynamic "];
     NSString *commaSeperated = [[dynamicProperties valueForKey:@"description"] componentsJoinedByString:@", "];
     [dynamicString appendString:commaSeperated];
@@ -178,6 +197,7 @@
     NSString *SDKName = [NSString stringWithFormat:@"+ (NSString *)SDKType {\n  return @\"%@\";\n}\n", self.type];
     
     [mutableResult appendFormat:@"\n\n%@", linkGettersString];
+    [mutableResult appendFormat:@"\n\n%@", actionsString];
     
     [mutableResult appendFormat:@"\n\n/*\n%@\n\n%@\n*/", dynamicString, SDKName];
     

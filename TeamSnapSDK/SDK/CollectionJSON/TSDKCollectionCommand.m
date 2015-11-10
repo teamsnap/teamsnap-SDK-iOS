@@ -7,6 +7,8 @@
 //
 
 #import "TSDKCollectionCommand.h"
+#import "TSDKDataRequest.h"
+#import "TSDKCompletionBlockTypes.h"
 
 @implementation TSDKCollectionCommand
 
@@ -35,6 +37,12 @@
         self.prompt = [jsonDict objectForKey:@"prompt"];
     }
     return self;
+}
+
+-(void)executeWithCompletion:(TSDKCompletionBlock)completion {
+    NSURL *destinationURL = [NSURL URLWithString:self.href];
+    
+    [TSDKDataRequest requestObjectsForPath:destinationURL sendDataDictionary:self.data method:@"POST" withCompletion:completion];
 }
 
 @end

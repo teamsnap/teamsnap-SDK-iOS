@@ -134,7 +134,9 @@
                 if (success) {
                     weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
                 }
-                [TSPCache saveObject:weakSelf.rootLinks];
+                if (self.OAuthToken) {
+                    [TSPCache saveObject:weakSelf.rootLinks];
+                }
                 if (completion) {
                     completion(weakSelf.rootLinks);
                 }
@@ -201,6 +203,18 @@
 
 - (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
     [TSDKObjectsRequest invitationStatusForEmailAddress:emailAddress withCompletion:completionBlock];
+}
+
+- (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKCompletionBlock)completionBlock {
+    [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+        if (self.rootLinks && self.rootLinks.collection.links.count > 0) {
+            [[self rootLinks] actionSendInvitationsToEmailaddress:emailAddress WithCompletion:completionBlock];
+        } else {
+            if (completionBlock) {
+                completionBlock(NO, NO, nil, nil);
+            }
+        }
+    }];
 }
 
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
