@@ -7,6 +7,9 @@
 //
 
 #import "TSDKForumPost.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKDataRequest.h"
+#import "TSDKRootLinks.h"
 
 @implementation TSDKForumPost
 @dynamic wasBroadcasted, createdAt, posterName, message, memberId, forumTopicId, divisionMemberId, updatedAt, linkMember, linkForumTopic, linkTeam, linkDivisionMember;
@@ -14,5 +17,21 @@
 + (NSString *)SDKType {
     return @"forum_post";
 }
+
++(void)addPost:(TSDKForumPost *)post withCompletion:(TSDKCompletionBlock)completion {
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:[NSNumber numberWithInteger:post.objectIdentifier] forKey:@"forum_topic_id"];
+    [data setObject:[NSNumber numberWithInteger:post.divisionMemberId] forKey:@"division_member_id"];
+    [data setObject:[NSNumber numberWithInteger:post.memberId] forKey:@"member_id"];
+    [data setObject:post.message forKey:@"message"];
+    [data setObject:[NSNumber numberWithBool:post.wasBroadcasted] forKey:@"broadcast_to_team"];
+    
+    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumPosts] sendDataDictionary:data method:@"POST" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
 
 @end
