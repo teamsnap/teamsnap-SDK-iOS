@@ -152,7 +152,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     }
     
     NSURL *link = [self getLink:linkPropertyName];
-    NSLog(@"%@ - %@", linkPropertyName, link);
+    NSLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
 
     [self arrayFromLink:link WithCompletion:completion];
 }

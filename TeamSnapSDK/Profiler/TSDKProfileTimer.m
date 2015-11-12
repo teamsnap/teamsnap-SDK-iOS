@@ -37,48 +37,63 @@
 }
 
 -(void) startTimeWithId:(id)timerId {
-    if (!timerId) {
-        NSLog(@"About to crash: %@",[NSThread callStackSymbols]);
+    if (timerId) {
+        [self.timers setObject:[NSDate date] forKey:timerId];
     }
-    [self.timers setObject:[NSDate date] forKey:timerId];
 }
 
 -(NSTimeInterval) getElapsedTimeForId:(id)timerId {
-    NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:[self.timers objectForKey:timerId]];
-    [self addElapsedTime:elapsedTime toTotalForId:timerId];
-    return elapsedTime;
+    if (timerId) {
+        NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:[self.timers objectForKey:timerId]];
+        [self addElapsedTime:elapsedTime toTotalForId:timerId];
+        return elapsedTime;
+    } else {
+        return 0.00f;
+    }
 }
 
 -(NSTimeInterval) getElapsedTimeForId:(id)timerId  logResult:(BOOL)logResult {
-    NSTimeInterval elepasedTime = [self getElapsedTimeForId:timerId];
-    if (logResult) {
-        NSLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, [self cumulativeTimeForId:timerId]);
+    if (timerId) {
+        NSTimeInterval elepasedTime = [self getElapsedTimeForId:timerId];
+        if (logResult) {
+            NSLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, [self cumulativeTimeForId:timerId]);
+        }
+        return elepasedTime;
+    } else {
+        return 0.00f;
     }
-    return elepasedTime;
 }
 
 -(void) addElapsedTime:(NSTimeInterval)elapsedTime toTotalForId:(id)timerId {
-    NSNumber *totalTimeNumber = [_totalTimes objectForKey:timerId];
-    NSTimeInterval totalTime = elapsedTime;
-    if (totalTimeNumber) {
-        totalTime = elapsedTime + [totalTimeNumber floatValue];
+    if (timerId) {
+        NSNumber *totalTimeNumber = [_totalTimes objectForKey:timerId];
+        NSTimeInterval totalTime = elapsedTime;
+        if (totalTimeNumber) {
+            totalTime = elapsedTime + [totalTimeNumber floatValue];
+        }
+        NSNumber *ETN = [NSNumber numberWithFloat:totalTime];
+        [_totalTimes setObject:ETN forKey:timerId];
     }
-    NSNumber *ETN = [NSNumber numberWithFloat:totalTime];
-    [_totalTimes setObject:ETN forKey:timerId];
 }
 
 -(NSTimeInterval) cumulativeTimeForId:(id)timerId {
-    NSNumber *totalTimeNumber = [_totalTimes objectForKey:timerId];
-    if (totalTimeNumber) {
-        return [totalTimeNumber floatValue];
+    if (timerId) {
+        NSNumber *totalTimeNumber = [_totalTimes objectForKey:timerId];
+        if (totalTimeNumber) {
+            return [totalTimeNumber floatValue];
+        } else {
+            return 0.00f;
+        }
     } else {
-        return 0.00;
+        return 0.00f;
     }
 }
 
 - (void)resetTimerWithId:(id)timerId {
-    [self.totalTimes removeObjectForKey:timerId];
-    [self.timers removeObjectForKey:timerId];
+    if (timerId) {
+        [self.totalTimes removeObjectForKey:timerId];
+        [self.timers removeObjectForKey:timerId];
+    }
 }
 
 - (void)resetAllTimers {

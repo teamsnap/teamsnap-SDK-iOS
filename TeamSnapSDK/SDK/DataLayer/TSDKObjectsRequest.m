@@ -148,7 +148,7 @@ static NSMutableArray *supportedSDKObjects;
                             [team processBulkLoadedObject:sdkObject];
                         }
                     } else {
-                        NSLog(@"Unknwon object: %@", sdkObject);
+                        NSLog(@"Unknown parent Object from bulk load: %@", [sdkObject class]);
                     }
                 }
             }
