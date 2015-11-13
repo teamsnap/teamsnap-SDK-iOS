@@ -21,6 +21,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _collection = [[TSDKCollectionJSON alloc] init];
         _changedValues = [[NSMutableSet alloc] init];
         _logHeader = NO;
     }

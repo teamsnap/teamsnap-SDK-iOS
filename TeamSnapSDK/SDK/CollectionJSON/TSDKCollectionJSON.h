@@ -19,6 +19,7 @@
 @property (nonatomic, strong) TSDKCollectionJSON *collectionTemplate;
 @property (nonatomic, strong) id collection;
 
++(NSDictionary *)dictionaryToCollectionJSON:(NSDictionary *)dictionary;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
 - (instancetype)initWithJSON:(NSDictionary *)JSON;
 + (instancetype)collectionJSONForEncodedData:(NSData *)objectData;
