@@ -53,6 +53,19 @@
     return self;
 }
 
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationContry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
+    self = [self init];
+    if (self) {
+        self.name = name;
+        self.locationCountry = locationContry;
+        self.locationPostalCode = locationPostalCode;
+        self.timeZoneIanaName  = ianaTimeZoneName;
+        self.collection.data[@"time_zone"] = ianaTimeZoneName;
+        self.sportId = sportId;
+    }
+    return self;
+}
+
 - (void)setTimeZone:(NSTimeZone *)timeZone {
     [self setTimeZoneIanaName:timeZone.name];
 }

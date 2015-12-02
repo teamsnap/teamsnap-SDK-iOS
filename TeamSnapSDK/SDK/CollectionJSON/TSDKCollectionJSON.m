@@ -9,6 +9,7 @@
 #import "TSDKCollectionJSON.h"
 #import "TSDKCollectionCommand.h"
 #import "NSString+TSDKConveniences.h"
+#import "TSDKCollectionObject.h"
 
 @implementation TSDKCollectionJSON
 
@@ -125,7 +126,9 @@
         TSDKCollectionJSON *template = [[TSDKCollectionJSON alloc] init];
         [template parseJSON:[collection objectForKey:@"template"]];
         template.href = self.href;
-        _collectionTemplate = template;
+        if (_collection && [[_collection objectAtIndex:0] isKindOfClass:[TSDKCollectionJSON class]] && [[_collection objectAtIndex:0] type] && ![TSDKCollectionObject templateForClass:[[_collection objectAtIndex:0] type]]) {
+            [TSDKCollectionObject setTemplate:template.data forClass:[[_collection objectAtIndex:0] type]];
+        }
     }
     
     if ([collection objectForKey:@"commands"]) {

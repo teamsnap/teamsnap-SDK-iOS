@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSMutableDictionary *links;
 @property (nonatomic, strong) NSMutableDictionary *data;
 @property (nonatomic, strong) NSMutableDictionary *commands;
-@property (nonatomic, strong) TSDKCollectionJSON *collectionTemplate;
 @property (nonatomic, strong) id collection;
 
 +(NSDictionary *)dictionaryToCollectionJSON:(NSDictionary *)dictionary;

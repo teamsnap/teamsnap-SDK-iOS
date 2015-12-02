@@ -11,11 +11,71 @@
 #import "TSDKCollectionJSON.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKDataRequest.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
 
 @implementation TSDKCollectionObject
 
+static NSMutableDictionary *_templates;
+static NSMutableDictionary *_classURLs;
+
++(NSDictionary *)templateForClass:(NSString *)className {
+    return [_templates objectForKey:className];
+}
+
++(NSDictionary *)template {
+    return [self templateForClass:[self SDKType]];
+}
+
++(void)setTemplate:(NSDictionary *)template {
+    [self setTemplate:template forClass:[self SDKType]];
+}
+
++(void)setTemplate:(NSDictionary *)template forClass:(NSString *)className {
+    if (template) {
+        [self.templates setObject:template forKey:className];
+    } else {
+        [_templates removeObjectForKey:className];
+    }
+}
+
++(NSMutableDictionary *)templates {
+    if (!_templates) {
+        _templates = [[NSMutableDictionary alloc] init];
+    }
+    return _templates;
+}
+
++(NSURL *)classURLForClass:(NSString *)class {
+    return [[self classURLs] objectForKey:class];
+}
+
++(NSURL *)classURL {
+    return [self classURLForClass:[self SDKType]];
+}
+
++(void)setClassURL:(NSURL *)URL forClass:(NSString *)class {
+    [[self classURLs] setObject:URL forKey:class];
+}
+
+
++(void)setClassURL:(NSURL *)URL {
+    [self setClassURL:URL forClass:[self SDKType]];
+}
+
++(NSMutableDictionary *)classURLs {
+    if (!_classURLs) {
+        _classURLs = [[NSMutableDictionary alloc] init];
+    }
+    return _classURLs;
+}
+
 + (NSString *)SDKType {
     return nil;
+}
+
++ (NSString *)SDKREL {
+    return [NSString stringWithFormat:@"%@s", self.SDKType];
 }
 
 - (instancetype)init {
@@ -258,9 +318,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
         return YES;
-    } else {
+    } else if ([property length]>15 && [[property substringFromIndex:[property length]-15] isEqualToString:@"WithCompletion:"]) {
         class_addMethod([self class], aSEL, (IMP)getArrayFromLinkIMP, "v@:@");
         return YES;
+    } else {
+        return NO;
     }
 }
 
@@ -278,10 +340,19 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     
     if ([self isNewObject]) {
         NSArray *allKeys = [_collection.data allKeys];
-        for (NSString *key in allKeys) {
-            if (![key isEqualToString:@"id"]) {
-                NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
-                [tempDataToSave addObject:itemDictionary];
+        if ([[self class] template]) {
+            for (NSString *key in [[self class] template]) {
+                if( _collection.data[key]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                    [tempDataToSave addObject:itemDictionary];
+                }
+            }
+        } else {
+            for (NSString *key in allKeys) {
+                if (![key isEqualToString:@"id"]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                    [tempDataToSave addObject:itemDictionary];
+                }
             }
         }
     } else {
@@ -370,6 +441,35 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (BOOL)isNewObject {
     return ([_collection.data[@"id"] integerValue] <=0);
+}
+
+- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock {
+    NSDictionary *dataToSave = [self dataToSave];
+    if ([self isNewObject]) {
+        NSDictionary *postObject = @{@"template": dataToSave};
+        NSURL *URL;
+        if ([[self class] classURL]) {
+            URL = [[self class] classURL];
+        } else {
+            URL = [NSURL URLWithString:[[[[[TSDKTeamSnap sharedInstance] rootLinks] collection] links] objectForKey:[[self class] SDKREL]]];
+        }
+        __typeof__(self) __weak weakSelf = self;
+        
+        [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
+                [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
+            }
+            if (completionBlock) {
+                completionBlock(success, complete, objects, error);
+            }
+        }];
+    } else {
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:dataToSave method:@"PUT" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completionBlock) {
+                completionBlock(success, complete, objects, error);
+            }
+        }];
+    }
 }
 
 - (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock) completion {

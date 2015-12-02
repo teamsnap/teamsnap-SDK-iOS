@@ -20,7 +20,15 @@
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (void)dumpClassSelectorInfo:(SEL)aSEL;
++(NSDictionary *)template;
++(NSDictionary *)templateForClass:(NSString *)className;
++(void)setTemplate:(NSDictionary *)template;
++(void)setTemplate:(NSDictionary *)template forClass:(NSString *)className;
++(NSURL *)classURL;
++(void)setClassURL:(NSURL *)URL;
+
 + (NSString *)SDKType;
++ (NSString *)SDKREL;
 - (NSInteger)objectIdentifier;
 - (NSDictionary *)dataToSave;
 - (NSString *)getString:(NSString *)key;
@@ -36,6 +44,7 @@
 - (NSURL *)getLink:(NSString *)aKey;
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
+- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock)completion;

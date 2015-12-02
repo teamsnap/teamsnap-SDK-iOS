@@ -165,6 +165,7 @@
 @property (weak, nonatomic) TSDKPlan *plan;
 @property (strong, atomic) TSDKMember *activeRosterMember;
 
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationContry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
 - (TSDKMember *)memberWithID:(NSInteger)memberId;

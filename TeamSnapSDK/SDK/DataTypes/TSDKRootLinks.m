@@ -7,6 +7,7 @@
 //
 
 #import "TSDKRootLinks.h"
+#import "TSDKDataRequest.h"
 #import "TSDKCollectionCommand.h"
 
 @implementation TSDKRootLinks
@@ -16,6 +17,16 @@
 
 + (NSString *)SDKType {
     return nil;
+}
+
+-(void)getSchemasWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+//        NSLog(@"Shemas %@", objects);
+        
+        if (completion) {
+            completion(success, complete, nil, error);
+        }
+    }];
 }
 
 
