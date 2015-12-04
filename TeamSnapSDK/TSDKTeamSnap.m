@@ -19,6 +19,7 @@
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
 
+NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey";
 
 @interface TSDKTeamSnap()
 
@@ -194,6 +195,9 @@
                         }
                         _plans = tempPlanDictionary;
                         [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
+                    }
+                    if (completion) {
+                        completion(success, error.localizedDescription);
                     }
                 }];
             }];

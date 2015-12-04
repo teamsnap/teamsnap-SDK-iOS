@@ -12,6 +12,7 @@
 #import "NSMutableURLRequest+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKProfileTimer.h"
+#import "TSDKTeamSnap.h"
 
 static NSString *baseURL = @"https://api.teamsnap.com/v3/";
 static NSString *OauthURL = @"https://cogsworth.teamsnap.com/oauth/token";
@@ -114,10 +115,30 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         id JSON = nil;
         
+        requestCompleted = success;
+        
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
             JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
+        } else {
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            
+            if (data) {
+                JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
+                if (errorJSON.errorTitle) {
+                    userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
+                }
+                if (errorJSON.errorMessage) {
+                    userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
+                }
+                NSInteger errorCode = 0;
+                if (errorJSON.errorCode != NSNotFound) {
+                    errorCode = [userInfo[@"errorCode"] integerValue];
+                }
+                error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            }
         }
 
         if (completionBlock) {

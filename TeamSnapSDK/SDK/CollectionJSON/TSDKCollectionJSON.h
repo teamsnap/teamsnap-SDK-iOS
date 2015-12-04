@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSURL *href;
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *errorTitle;
+@property (nonatomic, strong) NSString *errorMessage;
+@property (nonatomic) NSInteger errorCode;
 @property (nonatomic, strong) NSMutableDictionary *links;
 @property (nonatomic, strong) NSMutableDictionary *data;
 @property (nonatomic, strong) NSMutableDictionary *commands;
