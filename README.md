@@ -30,6 +30,32 @@ or
 ```
 
 # sample Code:
+From a viewController
+```objective-c
+        SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:@"" scope:@"read+write" redirectURL:@"customURL://" completion:^{
+            NSLog(@"VC Presented");
+        }];
+```
+
+in your applicationDelegate:
+```objective-c
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    if ([[TSDKTeamSnap sharedInstance] processLoginCallback:url completion:^(bool success, NSString *message) {
+        if (success) {
+            NSLog(@"Logged in %@", [[[TSDKTeamSnap sharedInstance] teamSnapUser] firstName]);
+        } else {
+            NSLog(@"Login Failed");
+        }
+    }]) {
+        // dismiss the Safari View Controller from step 1
+        return YES;
+    } else {
+        NSLog(@"Not Processed");
+        return NO;
+    }
+}
+```
+
 ```objective-c
     [[TSDKTeamSnap sharedInstance] loginWithUserName:@"" andPassword:@"" completion:^(bool success, NSString *message) {
         [[[TSDKTeamSnap sharedInstance] teamSnapUser] teamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
