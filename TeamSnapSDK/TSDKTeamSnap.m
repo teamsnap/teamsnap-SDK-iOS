@@ -18,6 +18,7 @@
 #import "TSDKPublicFeatures.h"
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
+#import <SafariServices/SafariServices.h>
 
 @interface TSDKTeamSnap()
 
@@ -89,6 +90,58 @@
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
     self.rootLinks = nil;
+}
+
+- (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion {
+    
+    NSString *OAuthURLString = [NSString stringWithFormat:@"https://auth.teamsnap.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", clientId, redirectURL, scope];
+    
+    NSURL *OAuthURL = [NSURL URLWithString:OAuthURLString];
+    
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:OAuthURL];
+    
+    [viewController presentViewController:svc animated:YES completion:^{
+        if (completion) {
+            completion();
+        }
+    }];
+
+    return svc;
+}
+
+- (NSMutableDictionary *)queryDictionaryForReturnURL:(NSURL *)URL {
+    NSString *query = URL.fragment;
+    NSArray *queryComponents = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *queryDictionary = [[NSMutableDictionary alloc] init];
+    for (NSString *part in queryComponents) {
+        NSArray *param = [part componentsSeparatedByString:@"="];
+        if (param.count == 2) {
+            [queryDictionary setObject:param[1] forKey:param[0]];
+        }
+    }
+    return queryDictionary;
+}
+
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion {
+    NSMutableDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
+    
+    if ([queryDictionary objectForKey:@"access_token"]) {
+        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(bool success, NSString *message) {
+            if (completion) {
+                completion(success, message);
+            }
+        }];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (NSMutableArray *)teams {
+    if (!_teams) {
+        _teams = [[NSMutableArray alloc] init];
+    }
+    return _teams;
 }
 
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
