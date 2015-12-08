@@ -74,6 +74,14 @@
     }];
 }
 
+- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes forTeamIds:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion {
+    [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion {
     __typeof__(self) __weak weakSelf = self;
     

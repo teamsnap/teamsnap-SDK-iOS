@@ -33,6 +33,7 @@
 - (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion;
 - (void)myMembersOnTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)myMembersOnTeamId:(NSInteger)teamId withCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes forTeamIds:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 @end

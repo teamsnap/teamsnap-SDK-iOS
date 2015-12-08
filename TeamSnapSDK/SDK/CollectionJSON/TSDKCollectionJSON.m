@@ -36,6 +36,7 @@
         self.data = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableDictionary alloc] init];
         _collection = nil;
+        _errorCode = NSNotFound;
     }
     return self;
 }
@@ -135,6 +136,18 @@
         for (NSDictionary *commandDictionary in [collection objectForKey:@"commands"]) {
             TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
             [_commands setObject:command forKey:command.rel];
+        }
+    }
+    if ([collection objectForKey:@"error"] && [[collection objectForKey:@"error"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *errorDictionary = [collection objectForKey:@"error"];
+        if ([errorDictionary objectForKey:@"title"] && [[errorDictionary objectForKey:@"title"] isKindOfClass:[NSString class]]) {
+            _errorTitle = [errorDictionary objectForKey:@"title"];
+        }
+        if ([errorDictionary objectForKey:@"message"] && [[errorDictionary objectForKey:@"message"] isKindOfClass:[NSString class]]) {
+            _errorMessage = [errorDictionary objectForKey:@"message"];
+        }
+        if ([errorDictionary objectForKey:@"code"] && [[errorDictionary objectForKey:@"code"] isKindOfClass:[NSString class]]) {
+            _errorCode = [[errorDictionary objectForKey:@"code"] integerValue];
         }
     }
 }

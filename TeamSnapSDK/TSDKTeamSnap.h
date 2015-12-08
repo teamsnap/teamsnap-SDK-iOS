@@ -8,6 +8,8 @@
 
 @class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan;
 
+extern NSString * const TSDKTeamSnapSDKErrorDomainKey;
+
 @interface TSDKTeamSnap : NSObject
 
 @property (nonatomic, strong) TSDKUser *teamSnapUser;
