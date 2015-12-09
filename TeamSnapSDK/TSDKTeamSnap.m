@@ -108,14 +108,14 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     } else {
         TSDKTeamSnap __weak *weakSelf = self;
         
-//        [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) { //self.rootLinks.linkPublicFeatures
-            [TSDKDataRequest requestJSONObjectsForPath:[[TSDKDataRequest baseURL] URLByAppendingPathComponent:@"public_features"]  sendDataDictionary:nil method:nil withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-                self.publicFeatures = [[TSDKPublicFeatures alloc] initWithCollection:objects];
-                if (completion) {
-                    completion(weakSelf.publicFeatures);
-                }
-            }];
-//        }];
+        //        [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) { //self.rootLinks.linkPublicFeatures
+        [TSDKDataRequest requestJSONObjectsForPath:[[TSDKDataRequest baseURL] URLByAppendingPathComponent:@"public_features"]  sendDataDictionary:nil method:nil withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+            self.publicFeatures = [[TSDKPublicFeatures alloc] initWithCollection:objects];
+            if (completion) {
+                completion(weakSelf.publicFeatures);
+            }
+        }];
+        //        }];
     }
 }
 
@@ -153,19 +153,19 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
             if (success) {
                 weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
                 success = (BOOL)weakSelf.teamSnapUser;
-            
+                
                 [[[TSDKTeamSnap sharedInstance] teamSnapUser] myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
                     NSString *message = nil;
-                
+                    
                     if (completion) {
-                    completion(success, message);
+                        completion(success, message);
                     }
                 }];
             } else {
                 completion(success, error.description);
             }
         }];
-                
+        
         [self getPlansWithCompletion:^(bool success, NSString *message) {
             
         }];

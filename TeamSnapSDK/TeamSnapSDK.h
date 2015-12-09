@@ -24,6 +24,11 @@ FOUNDATION_EXPORT const unsigned char TeamSnapSDKVersionString[];
 #import <TeamSnapSDK/TSDKTeam.h>
 #import <TeamSnapSDK/TSDKEvent.h>
 #import <TeamSnapSDK/TSDKMember.h>
+#import <TeamSnapSDK/TSDKMemberEmailAddress.h>
+#import <TeamSnapSDK/TSDKMemberPhoneNumber.h>
+#import <TeamSnapSDK/TSDKContact.h>
+#import <TeamSnapSDK/TSDKContactEmailAddress.h>
+#import <TeamSnapSDK/TSDKContactPhoneNumber.h>
 #import <TeamSnapSDK/TSDKTrackedItem.h>
 #import <TeamSnapSDK/TSDKAssignment.h>
 #import <TeamSnapSDK/TSDKAvailability.h>
