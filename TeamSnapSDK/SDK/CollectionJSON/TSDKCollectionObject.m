@@ -13,6 +13,7 @@
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
+#import "TSDKProcessBulkObjectProtocol.h"
 
 @implementation TSDKCollectionObject
 
@@ -477,6 +478,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (completion) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
+                    for (TSDKCollectionObject *object in result) {
+                        [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
+                    }
+                }
                 completion(success, complete, result, error);
             } else {
                 completion(success, complete, nil, error);

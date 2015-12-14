@@ -13,6 +13,7 @@
 		960556D31BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
 		960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
+		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; };
 		964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */; };
 		964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -219,6 +220,7 @@
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKinvitationFinder.h; sourceTree = "<group>"; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
+		9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProcessBulkObjectProtocol.h; sourceTree = "<group>"; };
 		964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRootLinks.h; sourceTree = "<group>"; };
 		964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRootLinks.m; sourceTree = "<group>"; };
 		964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTslPhotos.h; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */,
 				969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */,
 				969E806A1BAAE7AB00CA518F /* TSDKCollectionObject.m */,
+				9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */,
 			);
 			path = CollectionJSON;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */,
 				969E80CF1BAAE7AB00CA518F /* TSDKStatisticGroup.h in Headers */,
 				969E80F11BAAE7AB00CA518F /* TSDKTeamFee.h in Headers */,
+				9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */,
 				969E80CB1BAAE7AB00CA518F /* TSDKStatistic.h in Headers */,
 				969E80CD1BAAE7AB00CA518F /* TSDKStatisticDatum.h in Headers */,
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
