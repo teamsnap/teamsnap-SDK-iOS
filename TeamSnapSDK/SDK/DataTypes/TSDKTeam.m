@@ -194,19 +194,16 @@
 }
 
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion {
-    NSMutableArray *stringDataTypes = [[NSMutableArray alloc] init];
-    for (Class class in dataTypes) {
-        if ([class isSubclassOfClass:[TSDKCollectionObject class]]) {
-            [stringDataTypes addObject:[class SDKType]];
-        }
-    }
-    if (stringDataTypes.count>0) {
-        [TSDKObjectsRequest bulkLoadTeamData:self types:stringDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+    if (dataTypes.count>0) {
+        [TSDKObjectsRequest bulkLoadTeamData:self types:dataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
                 completion(success, complete, objects, error);
             }
         }];
-
+    } else {
+        if (completion) {
+            completion(NO, NO, nil, nil);
+        }
     }
 }
 
