@@ -104,20 +104,36 @@
     }];
 }
 
-- (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+#pragma mark -
+#pragma mark TSDKProcessBulkObjectProtocol
+- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+    BOOL lProcessed = NO;
+    
     NSLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
     if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
         [self addEvent:(TSDKEvent *)bulkObject];
         self.eventsUpdated = [NSDate date];
+        lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKMember class]]) {
         [self addMember:(TSDKMember *)bulkObject];
         self.membersUpdated = [NSDate date];
+        lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
         NSLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
         self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+        lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
         self.teamResults = (TSDKTeamResults *)bulkObject;
+        lProcessed = YES;
     }
+    if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
+        NSInteger memberId = [[bulkObject.collection.data objectForKey:@"member_id"] integerValue];
+        TSDKMember *member = [self memberWithID:memberId];
+        if (member) {
+            lProcessed = [member processBulkLoadedObject:(TSDKCollectionObject *)bulkObject];
+        }
+    }
+    return lProcessed;
 }
 
 - (void)addEvent:(TSDKEvent *)event {

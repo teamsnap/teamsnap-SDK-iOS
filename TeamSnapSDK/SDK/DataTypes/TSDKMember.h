@@ -8,8 +8,9 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKProcessBulkObjectProtocol.h"
 
-@interface TSDKMember : TSDKCollectionObject
+@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
 @property (nonatomic) BOOL isInvited; //Example: 0
 @property (nonatomic) BOOL isInvitable; //Example: 0
@@ -110,7 +111,11 @@
 
 
 @property (readonly) NSString *fullName;
-@property (strong, nonatomic) TSDKTeam *team;
+@property (assign, nonatomic) TSDKTeam *team;
+@property (strong, nonatomic) NSMutableDictionary *contacts;
+@property (strong, nonatomic) NSMutableDictionary *emailAddresses;
+@property (strong, nonatomic) NSMutableDictionary *phoneNumbers;
+
 
 - (BOOL)isAtLeastManager;
 - (BOOL)isAtLeastOwner;

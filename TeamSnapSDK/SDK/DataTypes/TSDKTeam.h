@@ -6,10 +6,11 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
+#import "TSDKProcessBulkObjectProtocol.h"
 
 @class TSDKEvent, TSDKMember, TSDKPlan, TSDKTeamPreferences, TSDKTeamResults;
 
-@interface TSDKTeam : TSDKCollectionObject
+@interface TSDKTeam : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
 @property (nonatomic) NSInteger canExportMedia; //Example: 1
 @property (nonatomic, weak) NSString *leagueUrl; //Example:
@@ -170,7 +171,6 @@
 - (void)addMember:(TSDKMember *)member;
 - (TSDKMember *)memberWithID:(NSInteger)memberId;
 - (NSArray *)membersWithUserId:(NSInteger)userId;
-- (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject;
 - (void)bulkLoadImportantDataWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)bulkLoadDataWithCompleteion:(TSDKArrayCompletionBlock)completion;
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion;
