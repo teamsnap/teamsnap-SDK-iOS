@@ -107,9 +107,12 @@ static NSMutableArray *supportedSDKObjects;
 
 + (void)bulkLoadTeamData:(TSDKTeam *)team types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion {
     if (!objectDataTypes) {
-        objectDataTypes = @[@"event", @"member"];
+        objectDataTypes = @[[TSDKEvent class], [TSDKMember class]];
     }
-    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [objectDataTypes componentsJoinedByString:@","]]];
+    
+    NSArray *stringDataTypes = [self objectTypeStringsFromClasses:objectDataTypes];
+    
+    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
     
     [TSDKDataRequest requestObjectsForPath:bulkTeamURL withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
@@ -130,17 +133,19 @@ static NSMutableArray *supportedSDKObjects;
 
 + (void)bulkLoadTeamDataForTeamIds:(NSArray *)teamIds types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion {
     if (!objectDataTypes) {
-        objectDataTypes = @[@"event", @"member"];
+        objectDataTypes = @[[TSDKEvent class], [TSDKMember class]];
     }
     
-    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", [teamIds componentsJoinedByString:@","], [objectDataTypes componentsJoinedByString:@","]]];
+    NSArray *stringDataTypes = [self objectTypeStringsFromClasses:objectDataTypes];
+    
+    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", [teamIds componentsJoinedByString:@","], [stringDataTypes componentsJoinedByString:@","]]];
     
     [TSDKDataRequest requestObjectsForPath:bulkTeamURL withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
             parsedObjects = [self SDKObjectsFromCollection:objects];
-            NSMutableArray *teams = [[TSDKTeamSnap sharedInstance] teams];
+            NSMutableArray *teams = [NSMutableArray arrayWithArray:[[TSDKTeamSnap sharedInstance] teams]];
             for (TSDKCollectionObject *sdkObject in parsedObjects) {
                 if ([sdkObject isKindOfClass:[TSDKTeam class]]) {
                     [teams addObject:sdkObject];
@@ -164,6 +169,17 @@ static NSMutableArray *supportedSDKObjects;
             completion(success, complete, parsedObjects, error);
         }
     }];
+}
+
++ (NSArray *)objectTypeStringsFromClasses:(NSArray *)objectDataTypes {
+    NSMutableArray *stringDataTypes = [[NSMutableArray alloc] init];
+    
+    for (Class class in objectDataTypes) {
+        if ([class isSubclassOfClass:[TSDKCollectionObject class]]) {
+            [stringDataTypes addObject:[class SDKType]];
+        }
+    }
+    return [NSArray arrayWithArray:stringDataTypes];
 }
 
 + (TSDKTeam *)teamWithId:(NSInteger)teamId inTeamsArray:(NSArray *)teams {

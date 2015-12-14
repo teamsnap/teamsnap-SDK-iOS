@@ -12,6 +12,11 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
 #import "TSDKTeamPreferences.h"
+#import "TSDKLocation.h"
+#import "TSDKOpponent.h"
+#import "TSDKCustomField.h"
+#import "TSDKCustomDatum.h"
+
 #import "NSMutableDictionary+integerKey.h"
 
 @interface TSDKTeam()
@@ -188,25 +193,21 @@
     return self.sortedEvents;
 }
 
-- (void)bulkLoadImportantDataWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeamImportant"];
-    [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"event", @"member", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum",@"location", @"opponent", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeamImportant" logResult:YES];
-        if (completion) {            
-            completion(success, complete, objects, error);
+- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion {
+    NSMutableArray *stringDataTypes = [[NSMutableArray alloc] init];
+    for (Class class in dataTypes) {
+        if ([class isSubclassOfClass:[TSDKCollectionObject class]]) {
+            [stringDataTypes addObject:[class SDKType]];
         }
-    }];
-}
+    }
+    if (stringDataTypes.count>0) {
+        [TSDKObjectsRequest bulkLoadTeamData:self types:stringDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            if (completion) {
+                completion(success, complete, objects, error);
+            }
+        }];
 
-
-- (void)bulkLoadDataWithCompleteion:(TSDKArrayCompletionBlock)completion {
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeam"];
-    [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"team_results", @"event", @"member", @"assignment", @"broadcast_email", @"broadcast_sms", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum", @"forum_topic", @"forum_post", @"location", @"opponent", @"team_fee", @"tracked_item", @"tracked_item_status", @"team_statistic",@"statistic", @"statistic_datum", @"statistic_group", @"sport",@"member_statistic", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeam" logResult:YES];
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
+    }
 }
 
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion {

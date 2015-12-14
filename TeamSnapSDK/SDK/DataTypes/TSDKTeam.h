@@ -171,8 +171,7 @@
 - (void)addMember:(TSDKMember *)member;
 - (TSDKMember *)memberWithID:(NSInteger)memberId;
 - (NSArray *)membersWithUserId:(NSInteger)userId;
-- (void)bulkLoadImportantDataWithCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)bulkLoadDataWithCompleteion:(TSDKArrayCompletionBlock)completion;
+- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)eventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
