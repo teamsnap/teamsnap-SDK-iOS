@@ -13,7 +13,8 @@
 		960556D31BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
 		960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
-		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; };
+		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */; };
 		964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -652,6 +653,7 @@
 				965B7D2E1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
 				96B47F431BADB4410035F2CC /* TSDKTrackedItem.h in Headers */,
 				96B47F671BADB4850035F2CC /* TSDKCollectionObject.h in Headers */,
+				9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */,
 				96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */,
 				96B47F211BADB4410035F2CC /* TSDKAssignment.h in Headers */,
 				96B47F3F1BADB4410035F2CC /* TSDKTeamFee.h in Headers */,
