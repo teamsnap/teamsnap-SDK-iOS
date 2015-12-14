@@ -10,9 +10,9 @@
 
 @interface TSDKUser : TSDKCollectionObject
 
-@property (nonatomic) NSInteger teamsCount;
-@property (nonatomic) NSInteger facebookId;
-@property (nonatomic) BOOL receivesNewsletter;
+@property (nonatomic, assign) NSInteger teamsCount;
+@property (nonatomic, assign) NSInteger facebookId;
+@property (nonatomic, assign) BOOL receivesNewsletter;
 @property (nonatomic, weak) NSDate *createdAt;
 @property (nonatomic, weak) NSString *addressState;
 @property (nonatomic, weak) NSDate *birthday;
@@ -22,7 +22,7 @@
 @property (nonatomic, weak) NSString *lastName;
 @property (nonatomic, weak) NSString *email;
 @property (nonatomic, weak) NSString *addressCountry;
-@property (nonatomic) BOOL isAdmin; //Example: 0
+@property (nonatomic, assign) BOOL isAdmin; //Example: 0
 @property (nonatomic, weak) NSURL *linkMembers;
 @property (nonatomic, weak) NSURL *linkTeams;
 

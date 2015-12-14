@@ -12,28 +12,28 @@
 
 @interface TSDKTeam : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
-@property (nonatomic) NSInteger canExportMedia; //Example: 1
+@property (nonatomic, assign) NSInteger canExportMedia; //Example: 1
 @property (nonatomic, weak) NSString *leagueUrl; //Example:
-@property (nonatomic) BOOL isInLeague; //Example: 0
-@property (nonatomic) NSInteger hasReachedRosterLimit; //Example: 0
+@property (nonatomic, assign) BOOL isInLeague; //Example: 0
+@property (nonatomic, assign) NSInteger hasReachedRosterLimit; //Example: 0
 @property (nonatomic, weak) NSString *timeZoneOffset; //Example: -07:00
 @property (nonatomic, weak) NSString *locationLatitude; //Example: 40.036037
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-09-14T14:53:18Z
-@property (nonatomic) NSInteger hasExportableMedia; //Example: 1
+@property (nonatomic, assign) NSInteger hasExportableMedia; //Example: 1
 @property (nonatomic, weak) NSString *timeZoneIanaName; //Example: America/Denver
 @property (nonatomic, weak) NSString *locationPostalCode; //Example: 80302
 @property (nonatomic, weak) NSString *name; //Example: TeamSnap
 @property (nonatomic, weak) NSString *locationLongitude; //Example: -105.349559
-@property (nonatomic) NSInteger planId; //Example: 26
+@property (nonatomic, assign) NSInteger planId; //Example: 26
 @property (nonatomic, weak) NSString *leagueName; //Example:
 @property (nonatomic, weak) NSString *timeZoneDescription; //Example: Mountain Time (US & Canada)
-@property (nonatomic) NSInteger rosterLimit; //Example: 4000
+@property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
 @property (nonatomic, weak) NSString *seasonName; //Example:
 @property (nonatomic, weak) NSString *locationCountry; //Example: United States
 @property (nonatomic, weak) NSString *divisionName; //Example:
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-27T03:32:51Z
-@property (nonatomic) BOOL isArchivedSeason; //Example: 0
-@property (nonatomic) NSInteger sportId; //Example: 52
+@property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
+@property (nonatomic, assign) NSInteger sportId; //Example: 52
 @property (nonatomic, weak) NSURL *linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *linkContactEmailAddresses;
 @property (nonatomic, weak) NSURL *linkAvailabilities;

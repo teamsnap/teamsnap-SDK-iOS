@@ -174,11 +174,11 @@
             
             id value = [self.data objectForKey:key];
             if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSArray class]]) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSArray *%@;\n",camelCaseKey]];
             } else if ([value isKindOfClass:[NSNumber class]]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic) NSInteger %@; //Example: %@ \n",camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) NSInteger %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSNull class]]) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *%@; //Example: %@ \n", camelCaseKey, @"**NULL**"]];
             } else if ([(NSString *)value dateFromRCF3339DateTimeString]) {

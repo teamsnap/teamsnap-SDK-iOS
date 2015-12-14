@@ -13,13 +13,13 @@
 
 @property (nonatomic, weak) NSString *smsGatewayId; //Example: verizon
 @property (nonatomic, weak) NSString *smsEmailAddress; //Example: 2402059238@vtext.com
-@property (nonatomic) NSInteger teamId; //Example: 153832
-@property (nonatomic) NSInteger smsEnabled; //Example: 1
-@property (nonatomic) NSInteger memberId; //Example: 1942977
-@property (nonatomic) BOOL isHidden; //Example: 0
+@property (nonatomic, assign) NSInteger teamId; //Example: 153832
+@property (nonatomic, assign) NSInteger smsEnabled; //Example: 1
+@property (nonatomic, assign) NSInteger memberId; //Example: 1942977
+@property (nonatomic, assign) BOOL isHidden; //Example: 0
 @property (nonatomic, weak) NSString *label; //Example: Mom's cell
 @property (nonatomic, weak) NSString *phoneNumber; //Example: 240 205 9238
-@property (nonatomic) NSInteger preferred; //Example: 0
+@property (nonatomic, assign) NSInteger preferred; //Example: 0
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkSmsGateway;
 @property (nonatomic, weak) NSURL *linkTeam;

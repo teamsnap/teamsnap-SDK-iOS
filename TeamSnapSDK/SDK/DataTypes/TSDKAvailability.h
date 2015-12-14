@@ -15,10 +15,10 @@
 @property (nonatomic, weak) NSString *status;
 @property (nonatomic, weak) NSString *notes;
 @property (nonatomic, weak) NSString *notesAuthorMemberId;
-@property (nonatomic) NSInteger statusCode;
-@property (nonatomic) NSInteger memberId;
-@property (nonatomic) NSInteger eventId;
-@property (nonatomic) NSInteger teamId;
+@property (nonatomic, assign) NSInteger statusCode;
+@property (nonatomic, assign) NSInteger memberId;
+@property (nonatomic, assign) NSInteger eventId;
+@property (nonatomic, assign) NSInteger teamId;
 @property (nonatomic, weak) NSDate *createdAt;
 @property (nonatomic, weak) NSDate *updatedAt;
 @property (nonatomic, weak) NSURL *linkEvent;

@@ -11,12 +11,12 @@
 
 @interface TSDKTeamResults : TSDKCollectionObject
 
-@property (nonatomic) NSInteger losses; //Example: 3
+@property (nonatomic, assign) NSInteger losses; //Example: 3
 @property (nonatomic, weak) NSString *overallRecord; //Example: 7-3
-@property (nonatomic) NSInteger teamId; //Example: 153832
-@property (nonatomic) NSInteger wins; //Example: 7
-@property (nonatomic) NSInteger overtimeLosses; //Example: 0
-@property (nonatomic) NSInteger ties; //Example: 0
+@property (nonatomic, assign) NSInteger teamId; //Example: 153832
+@property (nonatomic, assign) NSInteger wins; //Example: 7
+@property (nonatomic, assign) NSInteger overtimeLosses; //Example: 0
+@property (nonatomic, assign) NSInteger ties; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeam;
 
 

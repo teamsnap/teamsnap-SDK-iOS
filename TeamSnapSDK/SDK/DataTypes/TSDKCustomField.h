@@ -8,7 +8,7 @@
 @interface TSDKCustomField : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *name; //Example: Size
-@property (nonatomic) NSInteger teamId; //Example: 71118
+@property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, weak) NSString *kind; //Example: Menu
 @property (nonatomic, weak) NSArray *options;
 @property (nonatomic, weak) NSString *helpText; //Example:

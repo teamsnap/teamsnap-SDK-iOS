@@ -11,12 +11,12 @@
 
 @interface TSDKContact : TSDKCollectionObject
 
-@property (nonatomic) BOOL isInvitable; //Example: 1
+@property (nonatomic, assign) BOOL isInvitable; //Example: 1
 @property (nonatomic, weak) NSString *addressCity; //Example: **NULL**
 @property (nonatomic, weak) NSString *invitationCode; //Example: **NULL**
 @property (nonatomic, weak) NSString *addressZip; //Example: **NULL**
 @property (nonatomic, weak) NSString *userId; //Example: **NULL**
-@property (nonatomic) NSInteger memberId; //Example: 1943020
+@property (nonatomic, assign) NSInteger memberId; //Example: 1943020
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2013-03-19T22:43:00Z
 @property (nonatomic, weak) NSString *addressState; //Example: **NULL**
 @property (nonatomic, weak) NSString *lastName; //Example: Rahaim
@@ -29,7 +29,7 @@
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2013-03-19T22:43:00Z
 @property (nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
 @property (nonatomic, weak) NSString *firstName; //Example: Jason
-@property (nonatomic) NSInteger teamId; //Example: 153832
+@property (nonatomic, assign) NSInteger teamId; //Example: 153832
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkTeam;

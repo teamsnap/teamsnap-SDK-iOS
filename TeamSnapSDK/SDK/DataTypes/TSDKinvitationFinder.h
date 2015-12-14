@@ -11,8 +11,8 @@
 
 @interface TSDKinvitationFinder : TSDKCollectionObject
 
-@property (nonatomic) BOOL isExistingUser; //Example: 1
-@property (nonatomic) BOOL isInvitationPending; //Example: 0
+@property (nonatomic, assign) BOOL isExistingUser; //Example: 1
+@property (nonatomic, assign) BOOL isInvitationPending; //Example: 0
 @property (nonatomic, weak) NSString *emailAddress;
 
 @end
