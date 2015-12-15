@@ -465,7 +465,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             }
         }];
     } else {
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:dataToSave method:@"PUT" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSDictionary *postObject = @{@"template": dataToSave};
+
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (completionBlock) {
                 completionBlock(success, complete, objects, error);
             }

@@ -75,6 +75,11 @@
     [self setTimeZoneIanaName:timeZone.name];
 }
 
+- (void)setTimeZoneIanaName:(NSString *)timeZoneIanaName {
+    [self setString:timeZoneIanaName forKey:@"time_zone_iana_name"];
+    self.collection.data[@"time_zone"] = timeZoneIanaName;
+}
+
 - (NSTimeZone *)timeZone {
     return [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
 }
