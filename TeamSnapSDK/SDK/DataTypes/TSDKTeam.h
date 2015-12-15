@@ -16,7 +16,6 @@
 @property (nonatomic, weak) NSString *leagueUrl; //Example:
 @property (nonatomic, assign) BOOL isInLeague; //Example: 0
 @property (nonatomic, assign) NSInteger hasReachedRosterLimit; //Example: 0
-@property (nonatomic, weak) NSString *timeZoneOffset; //Example: -07:00
 @property (nonatomic, weak) NSString *locationLatitude; //Example: 40.036037
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-09-14T14:53:18Z
 @property (nonatomic, assign) NSInteger hasExportableMedia; //Example: 1
@@ -26,7 +25,6 @@
 @property (nonatomic, weak) NSString *locationLongitude; //Example: -105.349559
 @property (nonatomic, assign) NSInteger planId; //Example: 26
 @property (nonatomic, weak) NSString *leagueName; //Example:
-@property (nonatomic, weak) NSString *timeZoneDescription; //Example: Mountain Time (US & Canada)
 @property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
 @property (nonatomic, weak) NSString *seasonName; //Example:
 @property (nonatomic, weak) NSString *locationCountry; //Example: United States
