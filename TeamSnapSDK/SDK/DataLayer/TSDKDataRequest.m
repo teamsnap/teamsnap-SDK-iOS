@@ -92,7 +92,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [request setHTTPMethod:@"GET"];
     }
 
-    if (([method isEqualToString:@"POST"] || [method isEqualToString:@"PUT"]) && dataEnvelope) {
+    if (([method isEqualToString:@"POST"] || [method isEqualToString:@"PUT"] || [method isEqualToString:@"PATCH"]) && dataEnvelope) {
         NSError *error = nil;
         //NSData *data = [NSJSONSerialization dataWithJSONObject:dataEnvelope options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments) error:&error];
 
