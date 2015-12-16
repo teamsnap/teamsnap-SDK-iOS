@@ -13,6 +13,7 @@
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
+#import "TSDKProcessBulkObjectProtocol.h"
 
 @implementation TSDKCollectionObject
 
@@ -464,7 +465,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             }
         }];
     } else {
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:dataToSave method:@"PUT" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSDictionary *postObject = @{@"template": dataToSave};
+
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (completionBlock) {
                 completionBlock(success, complete, objects, error);
             }
@@ -477,6 +480,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (completion) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
+                    for (TSDKCollectionObject *object in result) {
+                        [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
+                    }
+                }
                 completion(success, complete, result, error);
             } else {
                 completion(success, complete, nil, error);

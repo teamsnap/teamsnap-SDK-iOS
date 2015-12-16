@@ -11,13 +11,13 @@
 
 @interface TSDKForumPost : TSDKCollectionObject
 
-@property (nonatomic) BOOL wasBroadcasted; //Example: **NULL**
+@property (nonatomic, assign) BOOL wasBroadcasted; //Example: **NULL**
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-25T18:19:51Z
 @property (nonatomic, weak) NSString *posterName; //Example: Jason R
 @property (nonatomic, weak) NSString *message; //Example: <p>This is a test post!</p>
-@property (nonatomic) NSInteger memberId; //Example: 993324
-@property (nonatomic) NSInteger forumTopicId; //Example: 611875
-@property (nonatomic) NSInteger divisionMemberId; //Example: **NULL**
+@property (nonatomic, assign) NSInteger memberId; //Example: 993324
+@property (nonatomic, assign) NSInteger forumTopicId; //Example: 611875
+@property (nonatomic, assign) NSInteger divisionMemberId; //Example: **NULL**
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2013-02-08T18:22:04Z
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkForumTopic;

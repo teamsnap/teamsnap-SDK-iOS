@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *errorTitle;
 @property (nonatomic, strong) NSString *errorMessage;
-@property (nonatomic) NSInteger errorCode;
+@property (nonatomic, assign) NSInteger errorCode;
 @property (nonatomic, strong) NSMutableDictionary *links;
 @property (nonatomic, strong) NSMutableDictionary *data;
 @property (nonatomic, strong) NSMutableDictionary *commands;

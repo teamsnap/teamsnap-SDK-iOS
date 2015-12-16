@@ -12,6 +12,11 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
 #import "TSDKTeamPreferences.h"
+#import "TSDKLocation.h"
+#import "TSDKOpponent.h"
+#import "TSDKCustomField.h"
+#import "TSDKCustomDatum.h"
+
 #import "NSMutableDictionary+integerKey.h"
 
 @interface TSDKTeam()
@@ -27,7 +32,7 @@
     
 }
 
-@dynamic canExportMedia, leagueUrl, isInLeague, hasReachedRosterLimit, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, divisionName, createdAt, isArchivedSeason, sportId, linkTeamMediaGroups, linkContactEmailAddresses, linkAvailabilities, linkForumTopics, linkMembersPreferences, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkSport, linkCalendarWebcal, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkManagers, linkLeagueRegistrantDocuments, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkStatistics, linkMembers, linkSponsors, linkMemberBalances, linkBroadcastSmses, linkMemberStatistics, linkStatisticGroups, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkStatisticData, linkContactPhoneNumbers, linkMemberFiles, linkMemberPayments, linkLeagueCustomFields, linkCustomFields, linkLocations, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkTeamPublicSite;
+@dynamic canExportMedia, leagueUrl, isInLeague, hasReachedRosterLimit, locationLatitude, updatedAt, hasExportableMedia, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, rosterLimit, seasonName, locationCountry, divisionName, createdAt, isArchivedSeason, sportId, linkTeamMediaGroups, linkContactEmailAddresses, linkAvailabilities, linkForumTopics, linkMembersPreferences, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkSport, linkCalendarWebcal, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkManagers, linkLeagueRegistrantDocuments, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkStatistics, linkMembers, linkSponsors, linkMemberBalances, linkBroadcastSmses, linkMemberStatistics, linkStatisticGroups, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkStatisticData, linkContactPhoneNumbers, linkMemberFiles, linkMemberPayments, linkLeagueCustomFields, linkCustomFields, linkLocations, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkTeamPublicSite;
 
 + (NSString *)SDKType {
     return @"team";
@@ -70,6 +75,12 @@
     [self setTimeZoneIanaName:timeZone.name];
 }
 
+- (void)setTimeZoneIanaName:(NSString *)timeZoneIanaName {
+    [self setString:timeZoneIanaName forKey:@"time_zone_iana_name"];
+    self.collection.data[@"time_zone"] = timeZoneIanaName;
+    [self.changedValues addObject:@"time_zone"];
+}
+
 - (NSTimeZone *)timeZone {
     return [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
 }
@@ -104,20 +115,36 @@
     }];
 }
 
-- (void)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+#pragma mark -
+#pragma mark TSDKProcessBulkObjectProtocol
+- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+    BOOL lProcessed = NO;
+    
     NSLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
     if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
         [self addEvent:(TSDKEvent *)bulkObject];
         self.eventsUpdated = [NSDate date];
+        lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKMember class]]) {
         [self addMember:(TSDKMember *)bulkObject];
         self.membersUpdated = [NSDate date];
+        lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
         NSLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
         self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+        lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
         self.teamResults = (TSDKTeamResults *)bulkObject;
+        lProcessed = YES;
     }
+    if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
+        NSInteger memberId = [[bulkObject.collection.data objectForKey:@"member_id"] integerValue];
+        TSDKMember *member = [self memberWithID:memberId];
+        if (member) {
+            lProcessed = [member processBulkLoadedObject:(TSDKCollectionObject *)bulkObject];
+        }
+    }
+    return lProcessed;
 }
 
 - (void)addEvent:(TSDKEvent *)event {
@@ -172,25 +199,18 @@
     return self.sortedEvents;
 }
 
-- (void)bulkLoadImportantDataWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeamImportant"];
-    [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"event", @"member", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum",@"location", @"opponent", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeamImportant" logResult:YES];
-        if (completion) {            
-            completion(success, complete, objects, error);
-        }
-    }];
-}
-
-
-- (void)bulkLoadDataWithCompleteion:(TSDKArrayCompletionBlock)completion {
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BulkLoadTeam"];
-    [TSDKObjectsRequest bulkLoadTeamData:self types:@[@"team", @"team_results", @"event", @"member", @"assignment", @"broadcast_email", @"broadcast_sms", @"custom_field", @"custom_datum", @"league_custom_field", @"league_custom_datum", @"forum_topic", @"forum_post", @"location", @"opponent", @"team_fee", @"tracked_item", @"tracked_item_status", @"team_statistic",@"statistic", @"statistic_datum", @"statistic_group", @"sport",@"member_statistic", @"team_preferences", @"plan"] completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BulkLoadTeam" logResult:YES];
+- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion {
+    if (dataTypes.count>0) {
+        [TSDKObjectsRequest bulkLoadTeamData:self types:dataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            if (completion) {
+                completion(success, complete, objects, error);
+            }
+        }];
+    } else {
         if (completion) {
-            completion(success, complete, objects, error);
+            completion(NO, NO, nil, nil);
         }
-    }];
+    }
 }
 
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion {

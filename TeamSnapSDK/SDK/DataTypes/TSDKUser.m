@@ -6,7 +6,10 @@
 #import "TSDKUser.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKMember.h"
+#import "TSDKTeamPreferences.h"
 #import "TSDKTeam.h"
+#import "TSDKPlan.h"
+#import "TSDKTeamResults.h"
 #import "NSMutableDictionary+integerKey.h"
 
 @interface TSDKUser()
@@ -103,9 +106,11 @@
                     }
                 }
             }
-            weakSelf.teams = [NSDictionary dictionaryWithDictionary:teams];
+            if (teams.count > 0) {
+                weakSelf.teams = [NSDictionary dictionaryWithDictionary:teams];
+            }
             if (completion) {
-                completion(success, complete, [teams allValues], error);
+                completion(success, complete, objects, error);
             }
         }];
         
@@ -114,7 +119,17 @@
 }
 
 - (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [self bulkLoadDataTypes:@[@"team", @"team_preferences", @"team_results", @"plan"] WithCompletion:completion];
+    [self bulkLoadDataTypes:@[[TSDKTeam class], [TSDKTeamPreferences class], [TSDKTeamResults class], [TSDKPlan class]] WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        
+        NSIndexSet *indexes = [objects indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            return [obj isKindOfClass:[TSDKTeam class]];
+        }];
+        
+        NSArray *teams = [objects objectsAtIndexes:indexes];
+        if (completion) {
+            completion(success, complete, teams, error);
+        }
+    }];
 }
 
 @end

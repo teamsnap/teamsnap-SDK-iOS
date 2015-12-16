@@ -8,37 +8,38 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKProcessBulkObjectProtocol.h"
 
-@interface TSDKMember : TSDKCollectionObject
+@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
-@property (nonatomic) BOOL isInvited; //Example: 0
-@property (nonatomic) BOOL isInvitable; //Example: 0
+@property (nonatomic, assign) BOOL isInvited; //Example: 0
+@property (nonatomic, assign) BOOL isInvitable; //Example: 0
 @property (nonatomic, weak) NSDate *birthday; //Example: 1967-05-12
-@property (nonatomic) NSInteger hideAge; //Example: 0
-@property (nonatomic) BOOL isNonPlayer; //Example: 1
+@property (nonatomic, assign) NSInteger hideAge; //Example: 0
+@property (nonatomic, assign) BOOL isNonPlayer; //Example: 1
 @property (nonatomic, weak) NSString *jerseyNumber; //Example: 19
 @property (nonatomic, weak) NSString *addressCity; //Example: Fuquay-Varina
 @property (nonatomic, weak) NSString *invitationCode; //Example: r53e4a619e54e39f2d93e14d2
 @property (nonatomic, weak) NSString *addressZip; //Example: 27526
 @property (nonatomic, weak) NSDate *lastLoggedInAt; //Example: 2015-09-16T22:34:28Z
 @property (nonatomic, weak) NSString *position; //Example:
-@property (nonatomic) NSInteger teamId; //Example: 71118
+@property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, weak) NSString *addressState; //Example: NC
-@property (nonatomic) BOOL isOwner; //Example: 1
-@property (nonatomic) NSInteger userId; //Example: 388192
+@property (nonatomic, assign) BOOL isOwner; //Example: 1
+@property (nonatomic, assign) NSInteger userId; //Example: 388192
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-09-16T22:34:28Z
 @property (nonatomic, weak) NSString *lastName; //Example: R
-@property (nonatomic) BOOL hasFacebookPostScoresEnabled; //Example: 1
-@property (nonatomic) BOOL isOwnershipPending; //Example: <null>
-@property (nonatomic) NSInteger hideAddress; //Example: 0
+@property (nonatomic, assign) BOOL hasFacebookPostScoresEnabled; //Example: 1
+@property (nonatomic, assign) BOOL isOwnershipPending; //Example: <null>
+@property (nonatomic, assign) NSInteger hideAddress; //Example: 0
 @property (nonatomic, weak) NSString *invitationDeclined; //Example: **NULL**
 @property (nonatomic, weak) NSString *addressStreet1; //Example: 716 Papsworth Ct.
 @property (nonatomic, weak) NSString *gender; //Example: Male
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-03-25T23:46:02Z
 @property (nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
 @property (nonatomic, weak) NSString *firstName; //Example: Jason
-@property (nonatomic) BOOL isActivated; //Example: 1
-@property (nonatomic) BOOL isManager; //Example: 1
+@property (nonatomic, assign) BOOL isActivated; //Example: 1
+@property (nonatomic, assign) BOOL isManager; //Example: 1
 @property (nonatomic, weak) NSURL *linkBroadcastEmails;
 @property (nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
 @property (nonatomic, weak) NSURL *linkBroadcastSmses;
@@ -110,7 +111,11 @@
 
 
 @property (readonly) NSString *fullName;
-@property (strong, nonatomic) TSDKTeam *team;
+@property (assign, nonatomic) TSDKTeam *team;
+@property (strong, nonatomic) NSMutableDictionary *contacts;
+@property (strong, nonatomic) NSMutableDictionary *emailAddresses;
+@property (strong, nonatomic) NSMutableDictionary *phoneNumbers;
+
 
 - (BOOL)isAtLeastManager;
 - (BOOL)isAtLeastOwner;
