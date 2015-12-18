@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGBase.h>
 #import "TSDKObjectsRequest.h"
+#import "TSDKCollectionCommand.h"
 
 @class TSDKCollectionJSON;
 
@@ -24,6 +25,11 @@
 +(NSDictionary *)templateForClass:(NSString *)className;
 +(void)setTemplate:(NSDictionary *)template;
 +(void)setTemplate:(NSDictionary *)template forClass:(NSString *)className;
++(NSMutableDictionary *)commands;
++(TSDKCollectionCommand *)commandForKey:(NSString *)commandName;
++(NSMutableDictionary *)commandsForClass:(NSString *)className;
++(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName;
+
 +(NSURL *)classURL;
 +(void)setClassURL:(NSURL *)URL;
 

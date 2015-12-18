@@ -111,7 +111,7 @@
     id items = [collection objectForKey:@"items"];
     if (!items) {
 
-    } if ([items isKindOfClass:[NSArray class]]) {
+    } else if ([items isKindOfClass:[NSArray class]]) {
         _collection = [[NSMutableArray alloc] init];
         for (id item in items) {
             if ([item isKindOfClass:[NSDictionary class]]) {

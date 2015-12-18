@@ -174,6 +174,8 @@
 - (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)eventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
 
+- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion;
+
 -(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion;
 
 - (void)trackedItems:(TSDKArrayCompletionBlock)completion;

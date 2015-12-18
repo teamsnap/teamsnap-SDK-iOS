@@ -53,7 +53,7 @@
 - (BOOL)isAtLeastOwner {
     return (self.isOwner);
 }
-
+#if TARGET_OS_IPHONE
 -(void)getMemberPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(UIImage *image) {
         if (completion) {
@@ -69,7 +69,7 @@
         }
     }];
 }
-
+#endif
 -(NSInteger)age {
     if (self.birthday && (![self.birthday isEqual:[NSNull null]])) {
         NSDate* now = [NSDate date];

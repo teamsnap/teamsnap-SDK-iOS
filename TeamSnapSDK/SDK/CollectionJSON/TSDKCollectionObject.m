@@ -18,6 +18,7 @@
 @implementation TSDKCollectionObject
 
 static NSMutableDictionary *_templates;
+static NSMutableDictionary *_commandDictionary;
 static NSMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
@@ -45,6 +46,35 @@ static NSMutableDictionary *_classURLs;
         _templates = [[NSMutableDictionary alloc] init];
     }
     return _templates;
+}
+
+
++(NSDictionary *)commandDictionary {
+    if (!_commandDictionary) {
+        _commandDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return _commandDictionary;
+}
+
++(NSMutableDictionary *)commands {
+    return [self commandsForClass:[self SDKType]];
+}
+
++(TSDKCollectionCommand *)commandForKey:(NSString *)commandName {
+    return [[self commands] objectForKey:commandName];
+}
+
++(NSMutableDictionary *)commandsForClass:(NSString *)className {
+    NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
+    if (!commands) {
+        commands = [[NSMutableDictionary alloc] init];
+        [[self commandDictionary] setValue:commands forKey:className];
+    }
+    return commands;
+}
+
++(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName {
+    return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
 }
 
 +(NSURL *)classURLForClass:(NSString *)class {
@@ -343,7 +373,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         NSArray *allKeys = [_collection.data allKeys];
         if ([[self class] template]) {
             for (NSString *key in [[self class] template]) {
-                if( _collection.data[key]) {
+                if(![key isEqualToString:@"type"] && _collection.data[key]) {
                     NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
                     [tempDataToSave addObject:itemDictionary];
                 }

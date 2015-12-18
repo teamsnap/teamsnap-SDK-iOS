@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TSDKCompletionBlockTypes.h"
-#import <UIkit/UIKit.h>
 
 @class TSDKCollectionJSON, TSDKinvitationFinder;
 

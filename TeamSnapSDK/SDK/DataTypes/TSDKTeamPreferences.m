@@ -17,6 +17,7 @@
     return @"team_preferences";
 }
 
+#if TARGET_OS_IPHONE
 -(void)getTeamPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkTeamPhoto withCompletion:^(UIImage *image) {
         if (completion) {
@@ -32,5 +33,5 @@
         }
     }];
 }
-
+#endif
 @end

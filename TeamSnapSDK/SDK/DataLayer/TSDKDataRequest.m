@@ -7,6 +7,9 @@
 //
 
 #import "TSDKDataRequest.h"
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 #import "NSHTTPURLResponse+convenience.h"
 #import "TSDKCollectionJSON.h"
 #import "NSMutableURLRequest+TSDKConveniences.h"
@@ -169,6 +172,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }];
 }
 
+#if TARGET_OS_IPHONE
 + (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completionBlock {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
@@ -207,6 +211,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     [remoteTask resume];
 }
+#endif
 
 /*
 + (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock {
