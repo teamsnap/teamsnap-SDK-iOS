@@ -10,6 +10,7 @@
 #import "TSDKDataRequest.h"
 #import "TSDKCollectionCommand.h"
 #import "TSPCache.h"
+#import "TSDKTeamSnap.h"
 
 @interface TSDKRootLinks()
 @property (nonatomic, assign) BOOL schemas;
@@ -24,7 +25,7 @@
     return nil;
 }
 
-- (void)processSchemasArray:(NSArray *)schemasArray {    
+- (void)processSchemasArray:(NSArray *)schemasArray {
     for (id object in schemasArray) {
         if ([object isKindOfClass:[NSDictionary class]]) {
             NSDictionary *schemaDictionary = (NSDictionary *)object;
@@ -108,6 +109,35 @@
     } else {
         if (completion) {
             completion(NO, NO, nil, nil);
+        }
+    }
+}
+
+- (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
+    TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"welcome"];
+    if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+        collectionCommand.data[@"client_id"] = [[TSDKTeamSnap sharedInstance] clientId];
+        collectionCommand.data[@"email_address"] = emailAddress;
+        collectionCommand.data[@"redirect_uri"] = [callbackURL absoluteString];
+        [collectionCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completion) {
+                completion(success, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
+                userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+            } else {
+                userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
+                userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+            }
+            NSInteger errorCode = 1;
+            
+            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            completion(NO, error);
         }
     }
 }

@@ -308,7 +308,7 @@
 		969E80A21BAAE7AB00CA518F /* TSDKPlan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKPlan.m; sourceTree = "<group>"; };
 		969E80A31BAAE7AB00CA518F /* TSDKSport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKSport.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		969E80A41BAAE7AB00CA518F /* TSDKSport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSport.m; sourceTree = "<group>"; };
-		969E80A51BAAE7AB00CA518F /* TSDKTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKTeam.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80A51BAAE7AB00CA518F /* TSDKTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKTeam.h; sourceTree = "<group>"; };
 		969E80A61BAAE7AB00CA518F /* TSDKTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeam.m; sourceTree = "<group>"; };
 		969E80A71BAAE7AB00CA518F /* TSDKTeamFee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamFee.h; sourceTree = "<group>"; };
 		969E80A81BAAE7AB00CA518F /* TSDKTeamFee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamFee.m; sourceTree = "<group>"; };
