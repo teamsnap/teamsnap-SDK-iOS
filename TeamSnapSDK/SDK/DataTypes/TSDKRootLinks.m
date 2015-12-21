@@ -25,6 +25,8 @@
 }
 
 - (void)processSchemasArray:(NSArray *)schemasArray {
+    NSMutableString *classesNoTemplate = [[NSMutableString alloc] init];
+    
     for (id object in schemasArray) {
         if ([object isKindOfClass:[NSDictionary class]]) {
             NSDictionary *schemaDictionary = (NSDictionary *)object;
@@ -40,7 +42,13 @@
                         [template setValue:templateDictionary[@"value"] forKey:templateDictionary[@"name"]];
                     }
                 }
+                if (!type) {
+                    type = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"rel"];
+                }
                 [TSDKCollectionObject setTemplate:[NSDictionary dictionaryWithDictionary:template] forClass:type];
+            }
+            if (!type) {
+                type = [self typeFromRel:[[schemaDictionary objectForKey:@"collection"] objectForKey:@"rel"]];
             }
             if (type) {
                 if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"commands"]) {
@@ -103,6 +111,18 @@
         if (completion) {
             completion(NO, NO, nil, nil);
         }
+    }
+}
+
+-(NSString *)typeFromRel:(NSString *)rel {
+    if (!rel) {
+        return nil;
+    } else if ([rel isEqualToString:@"root"]) {
+        return @"root";
+    } else if ([[rel substringFromIndex:rel.length-3] isEqualToString:@"ies"]) {
+        return [NSString stringWithFormat:@"%@%@", [rel substringToIndex:rel.length-3],@"y"];
+    } else {
+        return [rel substringToIndex:rel.length-1];
     }
 }
 
