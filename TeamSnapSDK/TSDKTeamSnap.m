@@ -120,7 +120,7 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
 }
 
 - (void)rootLinksWithCompletion:(TSDKRootLinkCompletionBlock)completion {
-    TSDKArrayCompletionBlock schemaCompletionBlock  = ^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+    TSDKSimpleCompletionBlock schemaCompletionBlock  = ^(BOOL success, NSError *error) {
         if (success) {
             if (completion) {
                 completion(self.rootLinks);
@@ -135,7 +135,7 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     } else {
         self.rootLinks = (TSDKRootLinks *)[TSPCache objectOfClass:[TSDKRootLinks class] withId:0];
         if (self.rootLinks) {
-            completion(self.rootLinks);
+            [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
         } else {
             TSDKTeamSnap __weak *weakSelf = self;
             

@@ -57,13 +57,17 @@ NSFileManager static *_fileManager = nil;
     return _fileManager;
 }
 
-+(NSURL *)pathForObjectClass:(Class)objectClass {
-    NSString *className = NSStringFromClass(objectClass);
++(NSURL *)pathForObjectClassName:(NSString *)className {
     NSURL *destination = [self.cacheBasePath URLByAppendingPathComponent:className];
     if (destination && ![[self fileManager] fileExistsAtPath:[destination path]]) {
         [[self fileManager] createDirectoryAtPath:[destination path] withIntermediateDirectories:YES attributes:nil error:nil];
     }
     return destination;
+}
+
++(NSURL *)pathForObjectClass:(Class)objectClass {
+    NSString *className = NSStringFromClass(objectClass);
+    return [self pathForObjectClassName:className];
 }
 
 +(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSUInteger)objectId {
@@ -158,5 +162,53 @@ NSFileManager static *_fileManager = nil;
         return nil;
     }
 }
+
++ (BOOL)saveSchemas:(NSArray *)schemaArray WithVersion:(NSString *)schemaVersion {
+    NSURL *schemaCachePath = [self pathForObjectClassName:@"schemas"];
+    NSURL *versionFileURL = [schemaCachePath URLByAppendingPathComponent:@"version"];
+    NSError *error;
+
+    [schemaVersion writeToURL:versionFileURL atomically:YES encoding: NSASCIIStringEncoding error:&error];
+
+    NSURL *fileURL = [schemaCachePath URLByAppendingPathComponent:@"schemaArray"];
+
+    
+    NSData *schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray];
+    [schemaData writeToURL:fileURL options:NSDataWritingAtomic error:&error];
+    
+    if (error) {
+        return NO;
+    } else {
+        return YES;
+    }
+    
+}
+
++ (NSArray *)loadSchemasIfCachedVersion:(NSString *)schemaVersion {
+    if (!schemaVersion) {
+        return nil;
+    }
+    NSURL *schemaCachePath = [self pathForObjectClassName:@"schemas"];
+    NSURL *versionFileURL = [schemaCachePath URLByAppendingPathComponent:@"version"];
+    NSURL *fileURL = [schemaCachePath URLByAppendingPathComponent:@"schemaArray"];
+
+    NSError *error;
+    if ([[self fileManager] fileExistsAtPath:[versionFileURL path]]) {
+        NSString *cachedVersion = [NSString stringWithContentsOfURL:versionFileURL encoding:NSASCIIStringEncoding error:&error];
+        if (cachedVersion && [cachedVersion isEqualToString:schemaVersion]) {
+            NSData *schemaData = [NSData dataWithContentsOfURL:fileURL];
+            
+            NSArray *schemaArray = [NSKeyedUnarchiver unarchiveObjectWithData:schemaData];
+            return schemaArray;
+        } else {
+            [[self fileManager] removeItemAtURL:versionFileURL error:&error];
+            [[self fileManager] removeItemAtURL:fileURL error:&error];
+        }
+        return nil;
+    } else {
+        return nil;
+    }
+}
+
 
 @end

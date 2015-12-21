@@ -9,9 +9,10 @@
 #import "TSDKRootLinks.h"
 #import "TSDKDataRequest.h"
 #import "TSDKCollectionCommand.h"
+#import "TSPCache.h"
 
 @interface TSDKRootLinks()
-@property (nonatomic, strong) NSArray *schemas;
+@property (nonatomic, assign) BOOL schemas;
 @end
 
 @implementation TSDKRootLinks
@@ -23,53 +24,72 @@
     return nil;
 }
 
--(void)getSchemasWithCompletion:(TSDKArrayCompletionBlock)completion {
-    if (self.schemas) {
-        if (completion) {
-            completion(YES, YES, self.schemas, nil);
-        }
-    } else {
-        [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-            if ([objects isKindOfClass:[NSArray class]]) {
-                if (success) {
-                    self.schemas = objects;
+- (void)processSchemasArray:(NSArray *)schemasArray {
+    for (id object in schemasArray) {
+        if ([object isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *schemaDictionary = (NSDictionary *)object;
+            
+            NSString *type = nil;
+            if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"template"]) {
+                NSArray *templateArray = [[[schemaDictionary objectForKey:@"collection"] objectForKey:@"template"] objectForKey:@"data"];
+                NSMutableDictionary *template = [[NSMutableDictionary alloc] init];
+                for (NSDictionary *templateDictionary in templateArray) {
+                    if ([templateDictionary[@"name"] isEqualToString:@"type"]) {
+                        type = templateDictionary[@"value"];
+                    } else {
+                        [template setValue:templateDictionary[@"value"] forKey:templateDictionary[@"name"]];
+                    }
                 }
-
-                NSArray *schemasArray = (NSArray *)objects;
-                for (id object in schemasArray) {
-                    if ([object isKindOfClass:[NSDictionary class]]) {
-                        NSDictionary *schemaDictionary = (NSDictionary *)object;
-                        
-                        NSString *type = nil;
-                        if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"template"]) {
-                            NSArray *templateArray = [[[schemaDictionary objectForKey:@"collection"] objectForKey:@"template"] objectForKey:@"data"];
-                            NSMutableDictionary *template = [[NSMutableDictionary alloc] init];
-                            for (NSDictionary *templateDictionary in templateArray) {
-                                if ([templateDictionary[@"name"] isEqualToString:@"type"]) {
-                                    type = templateDictionary[@"value"];
-                                } else {
-                                    [template setValue:templateDictionary[@"value"] forKey:templateDictionary[@"name"]];
-                                }
-                            }
-                            [TSDKCollectionObject setTemplate:[NSDictionary dictionaryWithDictionary:template] forClass:type];
-                        }
-                        if (type) {
-                            if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"commands"]) {
-                                NSArray *commands = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"commands"];
-                                for (NSDictionary *commandDictionary in commands) {
-                                    TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
-                                    [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
-                                    NSLog(@"%@ Command\n%@", type, command);
-                                }
-                            }
-                        }
+                [TSDKCollectionObject setTemplate:[NSDictionary dictionaryWithDictionary:template] forClass:type];
+            }
+            if (type) {
+                if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"commands"]) {
+                    NSArray *commands = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"commands"];
+                    for (NSDictionary *commandDictionary in commands) {
+                        TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
+                        [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
+                        NSLog(@"%@ Command\n%@", type, command);
                     }
                 }
             }
+        }
+    }
+}
+
+-(void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    NSLog(@"Root version %@", self.collection.version);
+    if (self.schemas) {
+        if (completion) {
+            completion(YES, nil);
+        }
+    } else {
+        NSArray *versionComponents = [self.collection.version componentsSeparatedByString:@"."];
+        NSString *majorMinorVersion = nil;
+        if (versionComponents.count>1) {
+            majorMinorVersion = [NSString stringWithFormat:@"%@.%@", versionComponents[0],versionComponents[1]];
+        }
+        
+        NSArray *schemasArray = [TSPCache loadSchemasIfCachedVersion:majorMinorVersion];
+        if (schemasArray && (schemasArray.count>0)) {
+            [self processSchemasArray:schemasArray];
             if (completion) {
-                completion(success, complete, objects, error);
+                completion(YES, nil);
             }
-        }];
+        } else {
+            [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+                if ([objects isKindOfClass:[NSArray class]]) {
+                    self.schemas = success;
+                    NSArray *schemasArray = (NSArray *)objects;
+                    
+                    [TSPCache saveSchemas:schemasArray WithVersion:majorMinorVersion];
+
+                    [self processSchemasArray:schemasArray];
+                }
+                if (completion) {
+                    completion(success, error);
+                }
+            }];
+        }
     }
 }
 

@@ -252,7 +252,7 @@
 		969E80661BAAE7AB00CA518F /* TSDKCollectionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionCommand.m; sourceTree = "<group>"; };
 		969E80671BAAE7AB00CA518F /* TSDKCollectionJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKCollectionJSON.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionJSON.m; sourceTree = "<group>"; };
-		969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKCollectionObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKCollectionObject.h; sourceTree = "<group>"; };
 		969E806A1BAAE7AB00CA518F /* TSDKCollectionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObject.m; sourceTree = "<group>"; };
 		969E806C1BAAE7AB00CA518F /* NSDate+TSDKConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TSDKConveniences.h"; sourceTree = "<group>"; };
 		969E806D1BAAE7AB00CA518F /* NSDate+TSDKConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TSDKConveniences.m"; sourceTree = "<group>"; };

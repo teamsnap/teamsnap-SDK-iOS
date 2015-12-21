@@ -240,7 +240,6 @@
     [coder encodeObject:_version forKey:@"version"];
     [coder encodeObject:_links forKey:@"links"];
     [coder encodeObject:_data forKey:@"data"];
-    [coder encodeObject:_commands forKey:@"commands"];
     [coder encodeObject:_collection forKey:@"collection"];
 }
 

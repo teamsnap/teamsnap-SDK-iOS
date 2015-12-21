@@ -90,7 +90,7 @@
 @property (nonatomic, weak) NSURL *linkBroadcastAlerts;
 
 
--(void)getSchemasWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion;
 -(void)getContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getAvailabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion;

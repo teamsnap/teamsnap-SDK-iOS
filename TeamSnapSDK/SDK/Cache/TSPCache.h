@@ -27,4 +27,7 @@
 + (void)saveDictionaryOfObjects:(NSDictionary *)dictionaryOfObjects ofType:(Class)objectClass;
 + (NSDictionary *)loadDictionaryOfObjectsOfType:(Class)objectClass;
 
++ (BOOL)saveSchemas:(NSArray *)schemaArray WithVersion:(NSString *)schemaVersion;
++ (NSArray *)loadSchemasIfCachedVersion:(NSString *)schemaVersion;
+
 @end
