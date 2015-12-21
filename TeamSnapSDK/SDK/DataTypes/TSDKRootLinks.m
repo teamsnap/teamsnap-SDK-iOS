@@ -24,9 +24,7 @@
     return nil;
 }
 
-- (void)processSchemasArray:(NSArray *)schemasArray {
-    NSMutableString *classesNoTemplate = [[NSMutableString alloc] init];
-    
+- (void)processSchemasArray:(NSArray *)schemasArray {    
     for (id object in schemasArray) {
         if ([object isKindOfClass:[NSDictionary class]]) {
             NSDictionary *schemaDictionary = (NSDictionary *)object;
