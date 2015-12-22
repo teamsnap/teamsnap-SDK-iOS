@@ -21,7 +21,6 @@
 + (void)bulkLoadTeamDataForTeamIds:(NSArray *)teamIds types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
 + (void)listEventsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
 + (void)listEventsForTeam:(TSDKTeam *)team startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
-+ (void)listAvailabilitesForEvent:(TSDKEvent *)event completion:(TSDKArrayCompletionBlock)completion;
 + (void)listRosterForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
 + (void)listTrackedItemsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;

@@ -20,7 +20,7 @@
 @property (nonatomic, assign) BOOL logHeader;
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
-+ (void)dumpClassSelectorInfo:(SEL)aSEL;
++ (void)dumpClassSelectorInfo;
 +(NSDictionary *)template;
 +(NSDictionary *)templateForClass:(NSString *)className;
 +(void)setTemplate:(NSDictionary *)template;

@@ -36,6 +36,10 @@
 @property (nonatomic, weak) NSURL *linkContactEmailAddresses;
 
 
+@end
+
+@interface TSDKContact (ForwardedMethods)
+
 -(void)getMemberWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getContactPhoneNumbersWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;

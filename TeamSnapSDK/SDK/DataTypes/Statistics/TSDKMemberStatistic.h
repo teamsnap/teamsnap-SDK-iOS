@@ -24,6 +24,9 @@
 @property (nonatomic, weak) NSURL *linkStatistic;
 @property (nonatomic, weak) NSURL *linkTeam;
 
+@end
+
+@interface TSDKMemberStatistic (ForwardedMethods)
 
 -(void)getMemberWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getStatisticWithCompletion:(TSDKArrayCompletionBlock)completion;

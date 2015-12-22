@@ -34,7 +34,7 @@ extern NSString * const TSDKTeamSnapSDKErrorDomainKey;
 - (void)getPlansWithCompletion:(void (^)(bool success, NSString *message))completion;
 - (void)addPlan:(TSDKPlan *)plan;
 - (TSDKPlan *)planWithId:(NSInteger)planId;
-- (void)planForPlanId:(NSInteger)planId WithCompletion:(void (^)(TSDKPlan *plan))completion;
+- (void)planForPlanId:(NSInteger)planId withCompletion:(void (^)(TSDKPlan *plan))completion;
 - (void)setCachePathURL:(NSURL *)cachePath;
 - (void)setCacheTimeoutMinutes:(NSUInteger)timeoutMinutes;
 - (void)clearCache;

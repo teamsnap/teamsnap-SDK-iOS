@@ -258,7 +258,7 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     return [_plans objectForIntegerKey:planId];
 }
 
-- (void)planForPlanID:(NSInteger)planId WithCompletion:(void (^)(TSDKPlan *plan))completion {
+- (void)planForPlanId:(NSInteger)planId withCompletion:(void (^)(TSDKPlan *plan))completion {
     if (_plans && [_plans objectForIntegerKey:planId]) {
         if (completion) {
             completion([_plans objectForIntegerKey:planId]);

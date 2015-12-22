@@ -28,6 +28,9 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkContact;
 
+@end
+
+@interface TSDKContactPhoneNumber (ForwardedMethods)
 
 -(void)getSmsGatewayWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberWithCompletion:(TSDKArrayCompletionBlock)completion;

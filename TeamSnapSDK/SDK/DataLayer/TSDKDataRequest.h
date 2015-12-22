@@ -25,8 +25,8 @@
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKCompletionBlock)completionBlock;
 + (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completion;
 
-+ (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock;
-+ (void)syncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock;
+//+ (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock;
+//+ (void)syncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock;
 + (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion;
 
 + (void)setClientId:(NSString *)clientId;

@@ -26,8 +26,6 @@
 @property (nonatomic, weak) NSURL *linkMembers;
 @property (nonatomic, weak) NSURL *linkTeams;
 
--(void)getMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
-
 // Non Auto-generated
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion;
@@ -36,4 +34,10 @@
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes forTeamIds:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
+@end
+
+@interface TSDKUser (ForwardedMethods)
+
+-(void)getMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
+
 @end

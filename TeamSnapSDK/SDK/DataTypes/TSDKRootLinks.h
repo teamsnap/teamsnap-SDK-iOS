@@ -89,8 +89,16 @@
 @property (nonatomic, weak) NSURL *linkXyzzy;
 @property (nonatomic, weak) NSURL *linkBroadcastAlerts;
 
-
+-(void)getSchemasArrayWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion;
+
++(void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion; //Send any pending invitations for a specified email address
++(void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion;
+
+
+@end
+
+@interface TSDKRootLinks (ForwardedMethods)
 -(void)getContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getAvailabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion;
@@ -167,8 +175,5 @@
 -(void)getRandomWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getXyzzyWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getBroadcastAlertsWithCompletion:(TSDKArrayCompletionBlock)completion;
-
--(void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion; //Send any pending invitations for a specified email address
-- (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion;
 
 @end
