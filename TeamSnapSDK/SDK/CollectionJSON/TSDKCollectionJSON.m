@@ -108,6 +108,10 @@
         self.type = [self.data objectForKey:@"type"];
     }
     
+    if ([collection objectForKey:@"rel"]) {
+        self.rel = [collection objectForKey:@"rel"];
+    }
+    
     id items = [collection objectForKey:@"items"];
     if (!items) {
 
@@ -154,6 +158,10 @@
 
 - (NSString *)getObjectiveCHeaderSkeleton {
     NSMutableString *mutableResult = [[NSMutableString alloc] init];
+    NSString *objectType = self.type;
+    if (!objectType && self.rel) {
+        self.type = self.rel;
+    }
     
     [mutableResult appendString:@"// Copyright (c) 2015 TeamSnap. All rights reserved.\n"];
     [mutableResult appendString:@"//\n"];
@@ -202,8 +210,7 @@
     }
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];
-
-    for (NSString *key in [[self class] commands]) {
+    for (NSString *key in [TSDKCollectionObject commandsForClass:self.type]) {
         NSString *commandKey = [NSString stringWithFormat:@"action_%@", key];
         NSString *camelCaseKey = [commandKey underscoresToCamelCase];
         TSDKCollectionCommand *commandDictionary = [self.commands objectForKey:key];
@@ -216,7 +223,7 @@
                 [paramaters appendFormat:@"%@:(NSString *)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
             }
         }
-        [actionsString appendFormat:@"-(void)%@%@WithCompletion:(TSDKCompletionBlock)completion; //%@\n", camelCaseKey, paramaters, commandDictionary.prompt];
+        [actionsString appendFormat:@"+(void)%@%@WithCompletion:(TSDKCompletionBlock)completion; //%@\n", camelCaseKey, paramaters, commandDictionary.prompt];
     }
     
     NSMutableString *dynamicString = [NSMutableString stringWithString:@"@dynamic "];
@@ -226,8 +233,13 @@
     
     NSString *SDKName = [NSString stringWithFormat:@"+ (NSString *)SDKType {\n  return @\"%@\";\n}\n", self.type];
     
-    [mutableResult appendFormat:@"\n\n%@", linkGettersString];
     [mutableResult appendFormat:@"\n\n%@", actionsString];
+    
+    [mutableResult appendString:@"\n\n@end\n\n"];
+    [mutableResult appendString:[NSString stringWithFormat:@"@interface %@ (ForwardedMethods)\n\n", className]];
+
+    [mutableResult appendFormat:@"%@\n", linkGettersString];
+    [mutableResult appendString:@"\n@end\n\n"];
     
     [mutableResult appendFormat:@"\n\n/*\n%@\n\n%@\n*/", dynamicString, SDKName];
     

@@ -65,12 +65,16 @@ static NSMutableDictionary *_classURLs;
 }
 
 +(NSMutableDictionary *)commandsForClass:(NSString *)className {
-    NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
-    if (!commands) {
-        commands = [[NSMutableDictionary alloc] init];
-        [[self commandDictionary] setValue:commands forKey:className];
+    if (className) {
+        NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
+        if (!commands) {
+            commands = [[NSMutableDictionary alloc] init];
+            [[self commandDictionary] setValue:commands forKey:className];
+        }
+        return commands;
+    } else {
+        return nil;
     }
-    return commands;
 }
 
 +(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName {
