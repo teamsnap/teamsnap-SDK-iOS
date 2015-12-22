@@ -165,23 +165,26 @@ NSFileManager static *_fileManager = nil;
 
 + (BOOL)saveSchemas:(NSArray *)schemaArray WithVersion:(NSString *)schemaVersion {
     NSURL *schemaCachePath = [self pathForObjectClassName:@"schemas"];
-    NSURL *versionFileURL = [schemaCachePath URLByAppendingPathComponent:@"version"];
-    NSError *error;
+    if (schemaCachePath) {
+        NSURL *versionFileURL = [schemaCachePath URLByAppendingPathComponent:@"version"];
+        NSError *error;
 
-    [schemaVersion writeToURL:versionFileURL atomically:YES encoding: NSASCIIStringEncoding error:&error];
+        [schemaVersion writeToURL:versionFileURL atomically:YES encoding: NSASCIIStringEncoding error:&error];
 
-    NSURL *fileURL = [schemaCachePath URLByAppendingPathComponent:@"schemaArray"];
+        NSURL *fileURL = [schemaCachePath URLByAppendingPathComponent:@"schemaArray"];
 
-    
-    NSData *schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray];
-    [schemaData writeToURL:fileURL options:NSDataWritingAtomic error:&error];
-    
-    if (error) {
-        return NO;
+        
+        NSData *schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray];
+        [schemaData writeToURL:fileURL options:NSDataWritingAtomic error:&error];
+        
+        if (error) {
+            return NO;
+        } else {
+            return YES;
+        }
     } else {
-        return YES;
+        return NO;
     }
-    
 }
 
 + (NSArray *)loadSchemasIfCachedVersion:(NSString *)schemaVersion {

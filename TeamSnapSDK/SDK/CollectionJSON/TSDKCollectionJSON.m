@@ -203,7 +203,7 @@
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];
 
-    for (NSString *key in self.commands) {
+    for (NSString *key in [[self class] commands]) {
         NSString *commandKey = [NSString stringWithFormat:@"action_%@", key];
         NSString *camelCaseKey = [commandKey underscoresToCamelCase];
         TSDKCollectionCommand *commandDictionary = [self.commands objectForKey:key];

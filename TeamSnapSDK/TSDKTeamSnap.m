@@ -133,33 +133,30 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     if (self.rootLinks) {
         [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
     } else {
-        self.rootLinks = (TSDKRootLinks *)[TSPCache objectOfClass:[TSDKRootLinks class] withId:0];
-        if (self.rootLinks) {
-            [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
-        } else {
-            TSDKTeamSnap __weak *weakSelf = self;
+        TSDKTeamSnap __weak *weakSelf = self;
+        
+        [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success) {
+                weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
             
-            [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-                if (success) {
-                    weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
-                
-                    if (self.OAuthToken) {
-                        [TSPCache saveObject:weakSelf.rootLinks];
-                    }
-                
-                    [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
-                } else {
-                    if (completion) {
-                        completion(weakSelf.rootLinks);
-                    }
+                if (self.OAuthToken) {
+                    [TSPCache saveObject:weakSelf.rootLinks];
                 }
-            }];
-        }
+            
+                [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+            } else {
+                if (completion) {
+                    completion(weakSelf.rootLinks);
+                }
+            }
+        }];
     }
 }
 
 - (void)processInitialConnectionWithCompletion:(void (^)(bool success, NSString *message))completion {
     TSDKTeamSnap __weak *weakSelf = self;
+    self.rootLinks = nil;
+    
     [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
@@ -222,15 +219,7 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
 }
 
 - (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKCompletionBlock)completionBlock {
-    [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
-        if (self.rootLinks && self.rootLinks.collection.links.count > 0) {
-            [[self rootLinks] actionSendInvitationsToEmailaddress:emailAddress WithCompletion:completionBlock];
-        } else {
-            if (completionBlock) {
-                completionBlock(NO, NO, nil, nil);
-            }
-        }
-    }];
+    [TSDKRootLinks actionSendInvitationsToEmailaddress:emailAddress WithCompletion:completionBlock];
 }
 
 - (void)sendNewUserWelcomeToEmail:(NSString *)email callbackURL:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock {

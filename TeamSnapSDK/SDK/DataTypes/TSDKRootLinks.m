@@ -14,6 +14,7 @@
 
 @interface TSDKRootLinks()
 @property (nonatomic, assign) BOOL schemas;
+@property (nonatomic, assign) BOOL unauthenticatedSchemas;
 @end
 
 @implementation TSDKRootLinks
@@ -55,7 +56,6 @@
                     for (NSDictionary *commandDictionary in commands) {
                         TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
                         [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
-                        NSLog(@"%@ Command\n%@", type, command);
                     }
                 }
             }
@@ -63,83 +63,118 @@
     }
 }
 
--(void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion {
-    NSLog(@"Root version %@", self.collection.version);
-    if (self.schemas) {
+- (void)getSchemasArrayWithCompletion:(TSDKArrayCompletionBlock) completion {
+    NSArray *versionComponents = [self.collection.version componentsSeparatedByString:@"."];
+    NSString *majorMinorVersion = nil;
+    if (versionComponents.count>1) {
+        majorMinorVersion = [NSString stringWithFormat:@"%@.%@", versionComponents[0],versionComponents[1]];
+    }
+    
+    NSArray *schemasArray = [TSPCache loadSchemasIfCachedVersion:majorMinorVersion];
+    if (schemasArray && (schemasArray.count>0)) {
+        [self processSchemasArray:schemasArray];
+        if (completion) {
+            completion(YES, YES, schemasArray, nil);
+        }
+    } else {
+        [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+            if ([objects isKindOfClass:[NSArray class]]) {
+                if ([[TSDKTeamSnap sharedInstance] teamSnapUser]) {
+                    self.schemas = success;
+                    self.unauthenticatedSchemas = success;
+                } else {
+                    self.unauthenticatedSchemas = success;
+                }
+                
+                NSArray *schemasArray = (NSArray *)objects;
+                if ([[TSDKTeamSnap sharedInstance] teamSnapUser]) {
+                    [TSPCache saveSchemas:schemasArray WithVersion:majorMinorVersion];
+                }
+                
+                [self processSchemasArray:schemasArray];
+                
+                if (completion) {
+                    completion(success, success, schemasArray, error);
+                }
+            } else {
+                if (completion) {
+                    completion(success, success, nil, error);
+                }
+            }
+        }];
+    }
+}
+
+- (void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    if ([[TSDKTeamSnap sharedInstance] teamSnapUser] && self.schemas) {
+        if (completion) {
+            completion(YES, nil);
+        }
+    } else if (![[TSDKTeamSnap sharedInstance] teamSnapUser] && self.unauthenticatedSchemas) {
         if (completion) {
             completion(YES, nil);
         }
     } else {
-        NSArray *versionComponents = [self.collection.version componentsSeparatedByString:@"."];
-        NSString *majorMinorVersion = nil;
-        if (versionComponents.count>1) {
-            majorMinorVersion = [NSString stringWithFormat:@"%@.%@", versionComponents[0],versionComponents[1]];
-        }
-        
-        NSArray *schemasArray = [TSPCache loadSchemasIfCachedVersion:majorMinorVersion];
-        if (schemasArray && (schemasArray.count>0)) {
-            [self processSchemasArray:schemasArray];
-            if (completion) {
-                completion(YES, nil);
-            }
-        } else {
-            [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-                if ([objects isKindOfClass:[NSArray class]]) {
-                    self.schemas = success;
-                    NSArray *schemasArray = (NSArray *)objects;
-                    
-                    [TSPCache saveSchemas:schemasArray WithVersion:majorMinorVersion];
-
-                    [self processSchemasArray:schemasArray];
-                }
-                if (completion) {
-                    completion(success, error);
-                }
-            }];
-        }
-    }
-}
-
-
--(void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
-    TSDKCollectionCommand *collectionCommand = [self.collection.commands objectForKey:@"send_invitations"];
-    if (collectionCommand) {
-        [collectionCommand.data setObject:emailAddress forKey:@"email_address"];
-        [collectionCommand executeWithCompletion:completion];
-    } else {
-        if (completion) {
-            completion(NO, NO, nil, nil);
-        }
-    }
-}
-
-- (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
-    TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"welcome"];
-    if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
-        collectionCommand.data[@"client_id"] = [[TSDKTeamSnap sharedInstance] clientId];
-        collectionCommand.data[@"email_address"] = emailAddress;
-        collectionCommand.data[@"redirect_uri"] = [callbackURL absoluteString];
-        [collectionCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [self getSchemasArrayWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
                 completion(success, error);
             }
         }];
-    } else {
-        if (completion) {
-            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-            if (![[TSDKTeamSnap sharedInstance] clientId]) {
-                userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
-                userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
-            } else {
-                userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
-                userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
-            }
-            NSInteger errorCode = 1;
-            
-            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
-            completion(NO, error);
-        }
     }
+}
+
+
++ (void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            TSDKCollectionCommand *collectionCommand = [rootLinks.collection.commands objectForKey:@"send_invitations"];
+            if (collectionCommand) {
+                [collectionCommand.data setObject:emailAddress forKey:@"email_address"];
+                [collectionCommand executeWithCompletion:completion];
+            } else {
+                if (completion) {
+                    completion(NO, NO, nil, nil);
+                }
+            }
+        } else {
+            completion(NO, NO, nil, nil);
+        }
+     }];
+}
+
++ (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"welcome"];
+            if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+                collectionCommand.data[@"client_id"] = [[TSDKTeamSnap sharedInstance] clientId];
+                collectionCommand.data[@"email_address"] = emailAddress;
+                collectionCommand.data[@"redirect_uri"] = [callbackURL absoluteString];
+                [collectionCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                    if (completion) {
+                        completion(success, error);
+                    }
+                }];
+            } else {
+                if (completion) {
+                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                    if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
+                        userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+                    } else {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
+                        userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+                    }
+                    NSInteger errorCode = 1;
+                    
+                    NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    completion(NO, error);
+                }
+            }
+        } else {
+            completion(NO, nil);
+        }
+    }];
 }
 
 -(NSString *)typeFromRel:(NSString *)rel {
