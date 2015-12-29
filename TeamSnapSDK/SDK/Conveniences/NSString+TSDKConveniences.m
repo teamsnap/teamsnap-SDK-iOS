@@ -129,15 +129,13 @@
     }
 }
 
--(NSString *)typeFromRel:(NSString *)rel {
-    if (!rel) {
-        return nil;
-    } else if ([rel isEqualToString:@"root"]) {
+-(NSString *)typeFromRel {
+    if ([self isEqualToString:@"root"]) {
         return @"root";
-    } else if ([[rel substringFromIndex:rel.length-3] isEqualToString:@"ies"]) {
-        return [NSString stringWithFormat:@"%@%@", [rel substringToIndex:rel.length-3],@"y"];
+    } else if ([[self substringFromIndex:self.length-3] isEqualToString:@"ies"]) {
+        return [NSString stringWithFormat:@"%@%@", [self substringToIndex:self.length-3],@"y"];
     } else {
-        return [rel substringToIndex:rel.length-1];
+        return [self substringToIndex:self.length-1];
     }
 }
 

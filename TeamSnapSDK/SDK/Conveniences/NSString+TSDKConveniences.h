@@ -18,6 +18,6 @@
 - (BOOL)isSetter;
 
 - (NSString *)linkForGetProperty;
-- (NSString *)typeFromRel:(NSString *)rel;
+- (NSString *)typeFromRel;
 
 @end
