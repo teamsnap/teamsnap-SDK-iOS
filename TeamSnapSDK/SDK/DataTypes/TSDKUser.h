@@ -6,9 +6,9 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
+#import "TSDKProcessBulkObjectProtocol.h"
 
-
-@interface TSDKUser : TSDKCollectionObject
+@interface TSDKUser : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
 @property (nonatomic, assign) NSInteger teamsCount;
 @property (nonatomic, assign) NSInteger facebookId;
@@ -23,8 +23,12 @@
 @property (nonatomic, weak) NSString *email;
 @property (nonatomic, weak) NSString *addressCountry;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
-@property (nonatomic, weak) NSURL *linkMembers;
+@property (nonatomic, weak) NSURL *linkTeamsPreferences;
+@property (nonatomic, weak) NSURL *linkPersonas;
+@property (nonatomic, weak) NSURL *linkFacebookPages;
 @property (nonatomic, weak) NSURL *linkTeams;
+@property (nonatomic, weak) NSURL *linkMembers;
+@property (nonatomic, weak) NSURL *linkActiveTeams;
 
 // Non Auto-generated
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion;
@@ -38,6 +42,11 @@
 
 @interface TSDKUser (ForwardedMethods)
 
+-(void)getTeamsPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getPersonasWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getFacebookPagesWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getActiveTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 
 @end
