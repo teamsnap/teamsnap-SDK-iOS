@@ -122,7 +122,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
         
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
-            JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if (data) {
+                JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            }
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
         } else {
             NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
