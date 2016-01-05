@@ -115,7 +115,9 @@
 
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion;
 
+#if TARGET_OS_IPHONE
 -(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion;
+#endif
 
 - (void)trackedItems:(TSDKArrayCompletionBlock)completion;
 

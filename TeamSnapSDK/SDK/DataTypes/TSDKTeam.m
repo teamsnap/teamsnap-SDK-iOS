@@ -279,6 +279,7 @@
     
 }
 
+#if TARGET_OS_IPHONE
 -(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
     if ([self.teamPrefrences linkTeamLogo]) {
         [self.teamPrefrences getTeamLogoWithCompletion:completion];
@@ -288,6 +289,7 @@
         }
     }
 }
+#endif
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
