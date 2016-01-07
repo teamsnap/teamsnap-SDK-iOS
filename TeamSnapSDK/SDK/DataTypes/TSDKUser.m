@@ -81,6 +81,18 @@
     }];
 }
 
+- (NSArray *)myMembersAcrossAllTeams {
+    return _myMembersOnTeams;
+}
+
+- (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
+    NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
+        return (member.teamId == teamId);
+    }];
+    NSArray *resultMembers = [_myMembersOnTeams objectsAtIndexes:memberIndexes];
+    return resultMembers;
+}
+
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion {
     [TSDKObjectsRequest listTeamsForUser:self WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {
