@@ -14,8 +14,8 @@
 
 @interface TSDKUser()
 
-@property (strong, atomic) NSMutableArray *myMembersOnTeams;
-@property (strong, atomic) NSDictionary *teams;
+@property (strong, nonatomic) NSMutableArray *myMembersOnTeams;
+@property (strong, nonatomic) NSDictionary *teams;
 
 @end
 
@@ -23,10 +23,28 @@
 
 }
 
-@dynamic teamsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkMembers, linkTeams;
+@dynamic teamsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams;
 
 + (NSString *)SDKType {
     return @"user";
+}
+
+- (NSMutableArray *)myMembersOnTeams {
+    if (!_myMembersOnTeams) {
+        _myMembersOnTeams = [[NSMutableArray alloc] init];
+    }
+    return _myMembersOnTeams;
+}
+
+- (void)addMember:(TSDKMember *)newMember {
+    NSUInteger existingMember = [self.myMembersOnTeams indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
+        return (member.objectIdentifier == newMember.objectIdentifier);
+    }];
+    
+    if (existingMember != NSNotFound) {
+        [self.myMembersOnTeams removeObjectAtIndex:existingMember];
+    }
+    [self.myMembersOnTeams addObject:newMember];
 }
 
 - (void)myMembersOnTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
@@ -36,8 +54,10 @@
         }
     } else {
         __typeof__(self) __weak weakSelf = self;
-        [self getMembersWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            weakSelf.myMembersOnTeams = [NSMutableArray arrayWithArray:objects];
+        [self getPersonasWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            for (TSDKMember *member in objects) {
+                [weakSelf addMember:member];
+            }
             if (completion) {
                 completion(success, complete, weakSelf.myMembersOnTeams, nil);
             }
@@ -59,6 +79,18 @@
             completion(success, complete, resultMembers, error);
         }
     }];
+}
+
+- (NSArray *)myMembersAcrossAllTeams {
+    return _myMembersOnTeams;
+}
+
+- (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
+    NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
+        return (member.teamId == teamId);
+    }];
+    NSArray *resultMembers = [_myMembersOnTeams objectsAtIndexes:memberIndexes];
+    return resultMembers;
 }
 
 - (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion {
@@ -131,5 +163,16 @@
         }
     }];
 }
+
+- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
+    BOOL lProcessed = NO;
+    if ([bulkObject isKindOfClass:[TSDKMember class]]) {
+        lProcessed = YES;
+        [self addMember:(TSDKMember *)bulkObject];
+    }
+    
+    return lProcessed;
+}
+
 
 @end

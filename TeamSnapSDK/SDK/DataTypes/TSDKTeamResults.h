@@ -19,6 +19,9 @@
 @property (nonatomic, assign) NSInteger ties; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeam;
 
+@end
+
+@interface TSDKTeamResults(ForwardedMethods)
 
 -(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;
 

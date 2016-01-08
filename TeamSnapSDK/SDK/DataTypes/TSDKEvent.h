@@ -57,15 +57,17 @@
 @property (nonatomic, weak) NSURL *linkLocation;
 @property (nonatomic, weak) NSURL *linkStatisticData;
 
+@property (nonatomic, strong) NSMutableDictionary *availabilitiesByRoster;
+
+@end
+
+@interface TSDKEvent (ForwardedMethods)
+
 -(void)getAssignmentsWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getAvailabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionLocationWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getLocationWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getStatisticDataWithCompletion:(TSDKArrayCompletionBlock)completion;
-
-@property (nonatomic, strong) NSMutableDictionary *availabilitiesByRoster;
-
-- (void)availabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion;
 
 @end

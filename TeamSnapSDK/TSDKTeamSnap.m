@@ -119,35 +119,44 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     }
 }
 
-- (void)rootLinksWithCompletion:(void (^)(TSDKRootLinks *rootLinks))completion {
-    if (self.rootLinks) {
-        if (completion) {
-            completion(self.rootLinks);
-        }
-    } else {
-        self.rootLinks = (TSDKRootLinks *)[TSPCache objectOfClass:[TSDKRootLinks class] withId:0];
-        if (self.rootLinks) {
-            completion(self.rootLinks);
+- (void)rootLinksWithCompletion:(TSDKRootLinkCompletionBlock)completion {
+    TSDKSimpleCompletionBlock schemaCompletionBlock  = ^(BOOL success, NSError *error) {
+        if (success) {
+            if (completion) {
+                completion(self.rootLinks);
+            }
         } else {
-            TSDKTeamSnap __weak *weakSelf = self;
+            completion(nil);
+        }
+    };
+    
+    if (self.rootLinks) {
+        [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+    } else {
+        TSDKTeamSnap __weak *weakSelf = self;
+        
+        [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success) {
+                weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
             
-            [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-                if (success) {
-                    weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
-                }
                 if (self.OAuthToken) {
                     [TSPCache saveObject:weakSelf.rootLinks];
                 }
+            
+                [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+            } else {
                 if (completion) {
                     completion(weakSelf.rootLinks);
                 }
-            }];
-        }
+            }
+        }];
     }
 }
 
 - (void)processInitialConnectionWithCompletion:(void (^)(bool success, NSString *message))completion {
     TSDKTeamSnap __weak *weakSelf = self;
+    self.rootLinks = nil;
+    
     [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
@@ -210,16 +219,15 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
 }
 
 - (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKCompletionBlock)completionBlock {
+    [TSDKRootLinks actionSendInvitationsToEmailaddress:emailAddress WithCompletion:completionBlock];
+}
+
+- (void)sendNewUserWelcomeToEmail:(NSString *)email callbackURL:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock {
     [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
-        if (self.rootLinks && self.rootLinks.collection.links.count > 0) {
-            [[self rootLinks] actionSendInvitationsToEmailaddress:emailAddress WithCompletion:completionBlock];
-        } else {
-            if (completionBlock) {
-                completionBlock(NO, NO, nil, nil);
-            }
-        }
+        
     }];
 }
+
 
 - (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
     [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
@@ -250,7 +258,7 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     return [_plans objectForIntegerKey:planId];
 }
 
-- (void)planForPlanID:(NSInteger)planId WithCompletion:(void (^)(TSDKPlan *plan))completion {
+- (void)planForPlanId:(NSInteger)planId withCompletion:(void (^)(TSDKPlan *plan))completion {
     if (_plans && [_plans objectForIntegerKey:planId]) {
         if (completion) {
             completion([_plans objectForIntegerKey:planId]);

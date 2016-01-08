@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 //! Project version number for TeamSnapSDK.
 FOUNDATION_EXPORT double TeamSnapSDKVersionNumber;
 

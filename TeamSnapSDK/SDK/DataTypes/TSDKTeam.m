@@ -38,6 +38,22 @@
     return @"team";
 }
 
++(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withCompletion:(TSDKCompletionBlock)completion {
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
+    command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
+    command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
+    command.data[@"time_zone"] = timeZone.name;
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
+- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion {
+    [self setTimeZone:timeZone];
+    [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withCompletion:completion];
+}
 
 - (id)init {
     self = [super init];
@@ -263,6 +279,7 @@
     
 }
 
+#if TARGET_OS_IPHONE
 -(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
     if ([self.teamPrefrences linkTeamLogo]) {
         [self.teamPrefrences getTeamLogoWithCompletion:completion];
@@ -272,6 +289,7 @@
         }
     }
 }
+#endif
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];

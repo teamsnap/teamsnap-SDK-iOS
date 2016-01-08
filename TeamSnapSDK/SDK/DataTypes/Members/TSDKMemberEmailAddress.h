@@ -23,6 +23,9 @@
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkTeam;
 
+@end
+
+@interface TSDKMemberEmailAddress(ForwardedMethods)
 
 -(void)getMemberWithCompletion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;

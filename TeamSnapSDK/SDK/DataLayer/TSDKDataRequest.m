@@ -7,6 +7,9 @@
 //
 
 #import "TSDKDataRequest.h"
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 #import "NSHTTPURLResponse+convenience.h"
 #import "TSDKCollectionJSON.h"
 #import "NSMutableURLRequest+TSDKConveniences.h"
@@ -119,7 +122,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
         
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
-            JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if (data) {
+                JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            }
             [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
         } else {
             NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
@@ -169,6 +174,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }];
 }
 
+#if TARGET_OS_IPHONE
 + (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completionBlock {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
@@ -207,6 +213,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     [remoteTask resume];
 }
+#endif
 
 /*
 + (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock {

@@ -24,11 +24,4 @@
     return self;
 }
 
-- (void)availabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [TSDKObjectsRequest listAvailabilitesForEvent:self completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSLog(@"here");
-    }];
-    
-}
-
 @end

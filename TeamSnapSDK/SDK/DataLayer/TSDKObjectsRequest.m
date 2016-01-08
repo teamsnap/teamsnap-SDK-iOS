@@ -247,27 +247,6 @@ static NSMutableArray *supportedSDKObjects;
     }
 }
 
-+ (void)listAvailabilitesForEvent:(TSDKEvent *)event completion:(TSDKArrayCompletionBlock)completion {
-    if (event) {
-        NSMutableString *availabilityURLString = [NSMutableString stringWithString:[event.linkAvailabilities absoluteString]];
-        
-        [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:availabilityURLString] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            //            NSArray *availabilites;
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                TSDKCollectionJSON *collection = [(NSArray *)[objects collection] objectAtIndex:0];
-            }
-            //            if (success) {
-            //                events = [self SDKObjectsFromCollection:objects collectionType:TSDKDataTypeIdentifierEventObject];
-            //            }
-            //            if (completion) {
-            //                completion(success, complete, events, error);
-            //            }
-        }];
-    }
-}
-
-
-
 + (void)listRosterForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion {
     if (team) {
         [TSDKDataRequest requestObjectsForPath:team.linkMembers withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {

@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSURL *href;
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *rel;
 @property (nonatomic, strong) NSString *errorTitle;
 @property (nonatomic, strong) NSString *errorMessage;
 @property (nonatomic, assign) NSInteger errorCode;
