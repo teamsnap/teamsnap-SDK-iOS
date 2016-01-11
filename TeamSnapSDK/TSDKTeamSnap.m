@@ -93,13 +93,6 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     self.rootLinks = nil;
 }
 
-- (NSMutableArray *)teams {
-    if (!_teams) {
-        _teams = [[NSMutableArray alloc] init];
-    }
-    return _teams;
-}
-
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
     if (self.publicFeatures) {
         if (completion) {

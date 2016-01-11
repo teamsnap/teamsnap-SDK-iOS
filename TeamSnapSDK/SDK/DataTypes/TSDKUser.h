@@ -40,6 +40,10 @@
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes forTeamIds:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)addTeam:(TSDKTeam *)team;
+
+@property (strong, nonatomic) NSMutableDictionary *teams;
+
 @end
 
 @interface TSDKUser (ForwardedMethods)

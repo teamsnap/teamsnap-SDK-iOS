@@ -11,11 +11,11 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
 #import "NSMutableDictionary+integerKey.h"
+#import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKUser()
 
 @property (strong, nonatomic) NSMutableArray *myMembersOnTeams;
-@property (strong, nonatomic) NSDictionary *teams;
 
 @end
 
@@ -27,6 +27,17 @@
 
 + (NSString *)SDKType {
     return @"user";
+}
+
+- (NSMutableDictionary *)teams {
+    if (!_teams) {
+        _teams = [[NSMutableDictionary alloc] init];
+    }
+    return _teams;
+}
+
+- (void)addTeam:(TSDKTeam *)team {
+    [self.teams refreshCollectionObject:team];
 }
 
 - (NSMutableArray *)myMembersOnTeams {
@@ -130,16 +141,12 @@
             }
         }
         [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            NSMutableDictionary *teams = [[NSMutableDictionary alloc] init];
             if(success) {
                 for (TSDKCollectionObject *object in objects) {
                     if ([object isKindOfClass:[TSDKTeam class]]) {
-                        [teams setObject:object forIntegerKey:object.objectIdentifier];
+                        [weakSelf addTeam:(TSDKTeam *)object];
                     }
                 }
-            }
-            if (teams.count > 0) {
-                weakSelf.teams = [NSDictionary dictionaryWithDictionary:teams];
             }
             if (completion) {
                 completion(success, complete, objects, error);

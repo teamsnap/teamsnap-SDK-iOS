@@ -13,7 +13,6 @@ extern NSString * const TSDKTeamSnapSDKErrorDomainKey;
 @interface TSDKTeamSnap : NSObject
 
 @property (nonatomic, strong) TSDKUser *teamSnapUser;
-@property (nonatomic, strong) NSMutableArray *teams;
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSString *OAuthToken;

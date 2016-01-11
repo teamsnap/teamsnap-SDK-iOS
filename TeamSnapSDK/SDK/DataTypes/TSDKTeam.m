@@ -18,6 +18,7 @@
 #import "TSDKCustomDatum.h"
 
 #import "NSMutableDictionary+integerKey.h"
+#import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKTeam()
 @property (nonatomic, strong) NSMutableDictionary *members;
@@ -147,10 +148,18 @@
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
         NSLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
-        self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+        if (self.teamPrefrences) {
+            [self.teamPrefrences setCollection:bulkObject.collection];
+        } else {
+            self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+        }
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
-        self.teamResults = (TSDKTeamResults *)bulkObject;
+        if (self.teamResults) {
+            [self.teamResults setCollection:bulkObject.collection];
+        } else {
+            self.teamResults = (TSDKTeamResults *)bulkObject;
+        }
         lProcessed = YES;
     }
     if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
@@ -164,13 +173,12 @@
 }
 
 - (void)addEvent:(TSDKEvent *)event {
-    [self.events setObject:event forIntegerKey:event.objectIdentifier];
+    [self.events refreshCollectionObject:event];
     [self dirtySortedEventLists];
 }
 
 - (void)addMember:(TSDKMember *)member {
-    [member setTeam:self];
-    [self.members setObject:member forIntegerKey:member.objectIdentifier];
+    [self.members refreshCollectionObject:member];
     [self dirtySortedMemberLists];
 }
 
