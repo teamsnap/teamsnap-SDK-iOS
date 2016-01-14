@@ -75,11 +75,11 @@
     return self;
 }
 
-- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationContry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
     self = [self init];
     if (self) {
         [super setString:name forKey:@"name"];
-        [super setString:locationContry forKey:@"location_contry"];
+        [super setString:locationCountry forKey:@"location_country"];
         [super setString:locationPostalCode forKey:@"location_postal_code"];
         [super setString:ianaTimeZoneName forKey:@"time_zone_iana_name"];
         [super setString:ianaTimeZoneName forKey:@"time_zone"];
