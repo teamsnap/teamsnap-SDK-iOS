@@ -43,6 +43,8 @@
 		965B7D461C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
 		965B7D481C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
+		96966BD31C4989A8000828E1 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96966BD41C4989C4000828E1 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
 		969E804B1BAAE62E00CA518F /* TeamSnapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969E80401BAAE62D00CA518F /* TeamSnapSDK.framework */; };
 		969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E804F1BAAE62E00CA518F /* TeamSnapSDKTests.m */; };
 		969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805A1BAAE79500CA518F /* TeamSnapSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -678,6 +680,7 @@
 				96B47F511BADB4640035F2CC /* TSDKTeamStatistic.h in Headers */,
 				96B47F2F1BADB4410035F2CC /* TSDKForumPost.h in Headers */,
 				96B47F4F1BADB4640035F2CC /* TSDKStatisticGroup.h in Headers */,
+				96966BD31C4989A8000828E1 /* TSDKConstants.h in Headers */,
 				96B47F331BADB4410035F2CC /* TSDKLocation.h in Headers */,
 				96B47F5B1BADB4810035F2CC /* NSMutableDictionary+integerKey.h in Headers */,
 				96F4E7D91C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */,
@@ -945,6 +948,7 @@
 				96B47F6E1BADB4BC0035F2CC /* TSDKTeamSnap.m in Sources */,
 				965B7D481C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,
 				96B47F2A1BADB4410035F2CC /* TSDKCustomDatum.m in Sources */,
+				96966BD41C4989C4000828E1 /* TSDKConstants.m in Sources */,
 				96B47F441BADB4410035F2CC /* TSDKTrackedItem.m in Sources */,
 				965B7D301C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
 				96B47F621BADB4810035F2CC /* NSString+TSDKConveniences.m in Sources */,
