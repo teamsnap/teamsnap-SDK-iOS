@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; };
+		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -222,6 +224,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56458AA11C49723D007EE9B8 /* TSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKConstants.h; sourceTree = "<group>"; };
+		56458AA21C49723D007EE9B8 /* TSDKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKConstants.m; sourceTree = "<group>"; };
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 				969E805A1BAAE79500CA518F /* TeamSnapSDK.h */,
 				969E805B1BAAE79500CA518F /* TSDKTeamSnap.h */,
 				969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */,
+				56458AA11C49723D007EE9B8 /* TSDKConstants.h */,
+				56458AA21C49723D007EE9B8 /* TSDKConstants.m */,
 				969E80451BAAE62D00CA518F /* Info.plist */,
 				969E80FB1BAAE7B500CA518F /* Profiler */,
 				969E80601BAAE7AB00CA518F /* SDK */,
@@ -593,6 +599,7 @@
 				969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */,
 				969E80E31BAAE7AB00CA518F /* TSDKForumTopic.h in Headers */,
 				969E80DD1BAAE7AB00CA518F /* TSDKCustomField.h in Headers */,
+				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				969E80D31BAAE7AB00CA518F /* TSDKAssignment.h in Headers */,
 				969E80EB1BAAE7AB00CA518F /* TSDKPlan.h in Headers */,
 				969E80E11BAAE7AB00CA518F /* TSDKForumPost.h in Headers */,
@@ -863,6 +870,7 @@
 				969E80F41BAAE7AB00CA518F /* TSDKTeamPreferences.m in Sources */,
 				969E80B21BAAE7AB00CA518F /* TSPCache.m in Sources */,
 				969E80DA1BAAE7AB00CA518F /* TSDKBroadcastSms.m in Sources */,
+				56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
 				965B7D2F1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
 				969E80CA1BAAE7AB00CA518F /* TSDKMemberStatistic.m in Sources */,

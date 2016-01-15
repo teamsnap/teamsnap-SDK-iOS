@@ -19,8 +19,6 @@
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
 
-NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey";
-
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
