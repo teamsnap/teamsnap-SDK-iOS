@@ -16,6 +16,7 @@
 #import "TSDKOpponent.h"
 #import "TSDKCustomField.h"
 #import "TSDKCustomDatum.h"
+#import "TSDKUser.h"
 
 #import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
@@ -73,6 +74,31 @@
         _events = [aDecoder decodeObjectForKey:@"eventsArray"];
     }
     return self;
+}
+
+- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock {
+    BOOL isNewTeam = self.isNewObject;
+    
+    [super saveWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (isNewTeam) {
+            if (success) {
+                TSDKCollectionJSON *saveTeamResultCollectionJSON = objects;
+                [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                    if (completionBlock) {
+                        completionBlock(success, complete, saveTeamResultCollectionJSON, error);
+                    }
+                }];
+            } else {
+                if (completionBlock) {
+                    completionBlock(success, complete, objects, error);
+                }
+            }
+        } else {
+            if (completionBlock) {
+                completionBlock(success, complete, objects, error);
+            }
+        }
+    }];
 }
 
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {

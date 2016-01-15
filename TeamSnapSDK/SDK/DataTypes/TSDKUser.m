@@ -64,16 +64,20 @@
             completion(YES, YES, _myMembersOnTeams, nil);
         }
     } else {
-        __typeof__(self) __weak weakSelf = self;
-        [self getPersonasWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            for (TSDKMember *member in objects) {
-                [weakSelf addMember:member];
-            }
-            if (completion) {
-                completion(success, complete, weakSelf.myMembersOnTeams, nil);
-            }
-        }];
+        [self getPersonasWithCompletion:completion];
     }
+}
+
+- (void)getPersonasWithCompletion:(TSDKArrayCompletionBlock)completion {
+    __typeof__(self) __weak weakSelf = self;
+    [self arrayFromLink:self.linkPersonas WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        for (TSDKMember *member in objects) {
+            [weakSelf addMember:member];
+        }
+        if (completion) {
+            completion(success, complete, weakSelf.myMembersOnTeams, nil);
+        }
+    }];
 }
 
 - (void)myMembersOnTeamId:(NSInteger)teamId withCompletion:(TSDKArrayCompletionBlock)completion {
