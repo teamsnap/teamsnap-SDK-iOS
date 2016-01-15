@@ -19,8 +19,6 @@
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
 
-NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey";
-
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
@@ -91,13 +89,6 @@ NSString * const TSDKTeamSnapSDKErrorDomainKey = @"TSDKTeamSnapSDKErrorDomainKey
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
     self.rootLinks = nil;
-}
-
-- (NSMutableArray *)teams {
-    if (!_teams) {
-        _teams = [[NSMutableArray alloc] init];
-    }
-    return _teams;
 }
 
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {

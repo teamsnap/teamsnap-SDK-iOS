@@ -16,6 +16,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKProfileTimer.h"
 #import "TSDKTeamSnap.h"
+#import "TSDKConstants.h"
 
 static NSString *baseURL = @"https://api.teamsnap.com/v3/";
 static NSString *OauthURL = @"https://cogsworth.teamsnap.com/oauth/token";
@@ -142,6 +143,11 @@ static NSRecursiveLock *accessDetailsLock = nil;
                 if (errorJSON.errorCode != NSNotFound) {
                     errorCode = [userInfo[@"errorCode"] integerValue];
                 }
+                
+                if([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                    userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
+                }
+                
                 error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
             }
         }

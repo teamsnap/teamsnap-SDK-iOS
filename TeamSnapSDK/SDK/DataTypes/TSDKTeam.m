@@ -16,8 +16,10 @@
 #import "TSDKOpponent.h"
 #import "TSDKCustomField.h"
 #import "TSDKCustomDatum.h"
+#import "TSDKUser.h"
 
 #import "NSMutableDictionary+integerKey.h"
+#import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKTeam()
 @property (nonatomic, strong) NSMutableDictionary *members;
@@ -74,15 +76,40 @@
     return self;
 }
 
-- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationContry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
+- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock {
+    BOOL isNewTeam = self.isNewObject;
+    
+    [super saveWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (isNewTeam) {
+            if (success) {
+                TSDKCollectionJSON *saveTeamResultCollectionJSON = objects;
+                [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                    if (completionBlock) {
+                        completionBlock(success, complete, saveTeamResultCollectionJSON, error);
+                    }
+                }];
+            } else {
+                if (completionBlock) {
+                    completionBlock(success, complete, objects, error);
+                }
+            }
+        } else {
+            if (completionBlock) {
+                completionBlock(success, complete, objects, error);
+            }
+        }
+    }];
+}
+
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
     self = [self init];
     if (self) {
-        self.name = name;
-        self.locationCountry = locationContry;
-        self.locationPostalCode = locationPostalCode;
-        self.timeZoneIanaName  = ianaTimeZoneName;
-        self.collection.data[@"time_zone"] = ianaTimeZoneName;
-        self.sportId = sportId;
+        [super setString:name forKey:@"name"];
+        [super setString:locationCountry forKey:@"location_country"];
+        [super setString:locationPostalCode forKey:@"location_postal_code"];
+        [super setString:ianaTimeZoneName forKey:@"time_zone_iana_name"];
+        [super setString:ianaTimeZoneName forKey:@"time_zone"];
+        [super setInteger:sportId forKey:@"sport_id"];
     }
     return self;
 }
@@ -147,10 +174,18 @@
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
         NSLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
-        self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+        if (self.teamPrefrences) {
+            [self.teamPrefrences setCollection:bulkObject.collection];
+        } else {
+            self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+        }
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
-        self.teamResults = (TSDKTeamResults *)bulkObject;
+        if (self.teamResults) {
+            [self.teamResults setCollection:bulkObject.collection];
+        } else {
+            self.teamResults = (TSDKTeamResults *)bulkObject;
+        }
         lProcessed = YES;
     }
     if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
@@ -164,13 +199,12 @@
 }
 
 - (void)addEvent:(TSDKEvent *)event {
-    [self.events setObject:event forIntegerKey:event.objectIdentifier];
+    [self.events refreshCollectionObject:event];
     [self dirtySortedEventLists];
 }
 
 - (void)addMember:(TSDKMember *)member {
-    [member setTeam:self];
-    [self.members setObject:member forIntegerKey:member.objectIdentifier];
+    [self.members refreshCollectionObject:member];
     [self dirtySortedMemberLists];
 }
 

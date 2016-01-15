@@ -11,6 +11,7 @@
 #import "TSDKCollectionCommand.h"
 #import "TSPCache.h"
 #import "TSDKTeamSnap.h"
+#import "TSDKConstants.h"
 
 @interface TSDKRootLinks()
 @property (nonatomic, assign) BOOL schemas;

@@ -7,6 +7,8 @@
 //
 
 #import "TSDKObjectsRequest.h"
+#import "NSMutableDictionary+integerKey.h"
+#import "NSMutableDictionary+refreshCollectionData.h"
 #import <objc/runtime.h>
 #import "TSDKDataRequest.h"
 #import "TSDKTeam.h"
@@ -80,10 +82,13 @@ static NSMutableArray *supportedSDKObjects;
         [TSDKDataRequest requestObjectsForPath:user.linkTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             
             if (success) {
-                [TSDKTeamSnap sharedInstance].teams = [NSMutableArray arrayWithArray:[self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]]];
+                NSArray *newTeams = [NSMutableArray arrayWithArray:[self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]]];
+                for (TSDKTeam *team in newTeams) {
+                    [user.teams refreshCollectionObject:team];
+                }
             }
             if (completion) {
-                completion(success, complete, [TSDKTeamSnap sharedInstance].teams, error);
+                completion(success, complete, user.teams.allValues, error);
             }
         }];
     }
@@ -145,15 +150,14 @@ static NSMutableArray *supportedSDKObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
             parsedObjects = [self SDKObjectsFromCollection:objects];
-            NSMutableArray *teams = [NSMutableArray arrayWithArray:[[TSDKTeamSnap sharedInstance] teams]];
             for (TSDKCollectionObject *sdkObject in parsedObjects) {
                 if ([sdkObject isKindOfClass:[TSDKTeam class]]) {
-                    [teams addObject:sdkObject];
+                    [[[TSDKTeamSnap sharedInstance] teamSnapUser] addTeam:(TSDKTeam *)sdkObject];
                 } else if ([sdkObject isKindOfClass:[TSDKPlan class]]) {
                     [[TSDKTeamSnap sharedInstance] addPlan:(TSDKPlan *)sdkObject];
                 } else {
                     if ([[sdkObject.collection data] objectForKey:@"team_id"]) {
-                        TSDKTeam *team = [self teamWithId:[[[sdkObject.collection data] objectForKey:@"team_id"] integerValue] inTeamsArray:teams];
+                        TSDKTeam *team =[[[[TSDKTeamSnap sharedInstance] teamSnapUser] teams] objectForIntegerKey:[[[sdkObject.collection data] objectForKey:@"team_id"] integerValue]];
                         if (team) {
                             [team processBulkLoadedObject:sdkObject];
                         }
