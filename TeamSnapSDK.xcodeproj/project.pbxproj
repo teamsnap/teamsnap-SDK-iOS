@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; };
+		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -599,7 +599,6 @@
 				969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */,
 				969E80E31BAAE7AB00CA518F /* TSDKForumTopic.h in Headers */,
 				969E80DD1BAAE7AB00CA518F /* TSDKCustomField.h in Headers */,
-				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				969E80D31BAAE7AB00CA518F /* TSDKAssignment.h in Headers */,
 				969E80EB1BAAE7AB00CA518F /* TSDKPlan.h in Headers */,
 				969E80E11BAAE7AB00CA518F /* TSDKForumPost.h in Headers */,
@@ -637,6 +636,7 @@
 				960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */,
 				969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */,
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
+				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */,
