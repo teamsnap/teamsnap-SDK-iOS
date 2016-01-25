@@ -77,24 +77,7 @@ static NSMutableArray *supportedSDKObjects;
     return  supportedSDKObjects;
 }
 
-+ (void)listTeamsForUser:(TSDKUser *)user WithCompletion:(TSDKArrayCompletionBlock)completion {
-    if (user) {
-        [TSDKDataRequest requestObjectsForPath:user.linkTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            
-            if (success) {
-                NSArray *newTeams = [NSMutableArray arrayWithArray:[self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]]];
-                for (TSDKTeam *team in newTeams) {
-                    [user.teams refreshCollectionObject:team];
-                }
-            }
-            if (completion) {
-                completion(success, complete, user.teams.allValues, error);
-            }
-        }];
-    }
-}
-
-+(void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion {
++ (void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion {
     NSString *searchString = [NSString stringWithFormat:@"teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
     
     NSURL *path = [NSURL URLWithString:searchString relativeToURL:[TSDKDataRequest baseURL]];

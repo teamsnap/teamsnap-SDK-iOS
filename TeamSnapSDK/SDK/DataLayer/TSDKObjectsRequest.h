@@ -15,8 +15,7 @@
 
 @interface TSDKObjectsRequest : NSObject
 
-+ (void)listTeamsForUser:(TSDKUser *)user WithCompletion:(TSDKArrayCompletionBlock)completion;
-+(void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
++ (void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
 + (void)bulkLoadTeamData:(TSDKTeam *)team types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
 + (void)bulkLoadTeamDataForTeamIds:(NSArray *)teamIds types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
 + (void)listEventsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion;
