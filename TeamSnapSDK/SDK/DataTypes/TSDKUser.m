@@ -108,12 +108,30 @@
     return resultMembers;
 }
 
-- (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [TSDKObjectsRequest listTeamsForUser:self WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+- (void)getTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [TSDKDataRequest requestObjectsForPath:self.linkTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [self processGetTeamsResult:objects];
         if (completion) {
-            completion(success, complete, objects, error);
+            completion(success, complete, self.teams.allValues, error);
         }
     }];
+}
+
+- (void)getActiveTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [TSDKDataRequest requestObjectsForPath:self.linkActiveTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [self processGetTeamsResult:objects];
+        if (completion) {
+            completion(success, complete, self.teams.allValues, error);
+        }
+    }];
+}
+
+- (void)processGetTeamsResult:(TSDKCollectionJSON *)objects {
+    NSArray *newTeams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+    
+    for (TSDKTeam *team in newTeams) {
+        [self.teams refreshCollectionObject:team];
+    }
 }
 
 - (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion {

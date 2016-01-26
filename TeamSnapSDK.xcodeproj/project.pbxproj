@@ -310,7 +310,7 @@
 		969E809A1BAAE7AB00CA518F /* TSDKForumTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKForumTopic.m; sourceTree = "<group>"; };
 		969E809B1BAAE7AB00CA518F /* TSDKLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKLocation.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		969E809C1BAAE7AB00CA518F /* TSDKLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKLocation.m; sourceTree = "<group>"; };
-		969E809D1BAAE7AB00CA518F /* TSDKMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKMember.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E809D1BAAE7AB00CA518F /* TSDKMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKMember.h; sourceTree = "<group>"; };
 		969E809E1BAAE7AB00CA518F /* TSDKMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKMember.m; sourceTree = "<group>"; };
 		969E809F1BAAE7AB00CA518F /* TSDKOpponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKOpponent.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		969E80A01BAAE7AB00CA518F /* TSDKOpponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKOpponent.m; sourceTree = "<group>"; };
@@ -328,7 +328,7 @@
 		969E80AC1BAAE7AB00CA518F /* TSDKTrackedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTrackedItem.m; sourceTree = "<group>"; };
 		969E80AD1BAAE7AB00CA518F /* TSDKTrackedItemStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTrackedItemStatus.h; sourceTree = "<group>"; };
 		969E80AE1BAAE7AB00CA518F /* TSDKTrackedItemStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTrackedItemStatus.m; sourceTree = "<group>"; };
-		969E80AF1BAAE7AB00CA518F /* TSDKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKUser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80AF1BAAE7AB00CA518F /* TSDKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKUser.h; sourceTree = "<group>"; };
 		969E80B01BAAE7AB00CA518F /* TSDKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKUser.m; sourceTree = "<group>"; };
 		969E80FC1BAAE7B500CA518F /* TSDKProfileTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProfileTimer.h; sourceTree = "<group>"; };
 		969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKProfileTimer.m; sourceTree = "<group>"; };

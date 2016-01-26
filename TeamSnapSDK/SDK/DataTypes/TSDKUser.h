@@ -31,7 +31,6 @@
 @property (nonatomic, weak) NSURL *linkActiveTeams;
 
 // Non Auto-generated
-- (void)teamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion;
 - (void)myMembersOnTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (NSArray *)myMembersAcrossAllTeams;

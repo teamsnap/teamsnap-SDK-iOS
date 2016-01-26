@@ -10,7 +10,7 @@
 
 @implementation TSDKMemberEmailAddress
 
-@dynamic teamId, updatedAt, receivesTeamEmails, createdAt, email, isHidden, label, memberId, isInvited, linkMember, linkTeam;
+@dynamic teamId, updatedAt, receivesTeamEmails, createdAt, email, isHidden, label, memberId, invitationState, isInvited, linkMember, linkTeam;
 
 + (NSString *)SDKType {
     return @"member_email_address";

@@ -18,6 +18,7 @@
 @property (nonatomic, weak) NSString *email; //Example: Jason@jasonr.com
 @property (nonatomic, assign) BOOL isHidden; //Example: 0
 @property (nonatomic, weak) NSString *label; //Example:
+@property (nonatomic, weak) NSString *invitationState; // Example: complete, new
 @property (nonatomic, assign) NSInteger memberId; //Example: 1943020
 @property (nonatomic, assign) BOOL isInvited; //Example: 0
 @property (nonatomic, weak) NSURL *linkMember;
