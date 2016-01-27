@@ -150,18 +150,30 @@
     }];
 }
 
+- (void)teamIdsForAllMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion {
+    [self myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        NSMutableArray *teamIds = nil;
+        if (success) {
+            teamIds = [[NSMutableArray alloc] init];
+            for (TSDKMember *member in objects) {
+                NSString *teamId = [NSString stringWithFormat:@"%ld", (long)member.teamId];
+                if (teamId != 0) {
+                    if (![teamIds containsObject:teamId]) {
+                        [teamIds addObject:[NSString stringWithFormat:@"%ld", (long)[teamId integerValue]]];
+                    }
+                }
+            }
+        }
+        if (completion) {
+            completion(success, complete, [NSArray arrayWithArray:teamIds], error);
+        }
+    }];
+}
+
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion {
     __typeof__(self) __weak weakSelf = self;
     
-    [self myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSMutableArray *teamIds = [[NSMutableArray alloc] init];
-        for (TSDKMember *member in objects) {
-            NSString *teamId = [NSString stringWithFormat:@"%ld", (long)member.teamId];
-            
-            if (![teamIds containsObject:teamId]) {
-                [teamIds addObject:[NSString stringWithFormat:@"%ld", (long)[teamId integerValue]]];
-            }
-        }
+    [self teamIdsForAllMyTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *teamIds, NSError *error) {
         [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if(success) {
                 for (TSDKCollectionObject *object in objects) {
