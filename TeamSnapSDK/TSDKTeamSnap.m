@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
 @property (nonatomic, strong) NSMutableDictionary *plans;
+@property (nonatomic, strong) SFSafariViewController *loginView;
 
 @end
 
@@ -98,15 +99,15 @@
     
     NSURL *OAuthURL = [NSURL URLWithString:OAuthURLString];
     
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:OAuthURL];
+    self.loginView = [[SFSafariViewController alloc] initWithURL:OAuthURL];
     
-    [viewController presentViewController:svc animated:YES completion:^{
+    [viewController presentViewController:self.loginView animated:YES completion:^{
         if (completion) {
             completion();
         }
     }];
 
-    return svc;
+    return self.loginView;
 }
 
 - (NSMutableDictionary *)queryDictionaryForReturnURL:(NSURL *)URL {
@@ -124,8 +125,10 @@
 
 - (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion {
     NSMutableDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
-    
     if ([queryDictionary objectForKey:@"access_token"]) {
+        if (self.loginView) {
+            [self.loginView dismissViewControllerAnimated:NO completion:nil];
+        }
         [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(bool success, NSString *message) {
             if (completion) {
                 completion(success, message);
