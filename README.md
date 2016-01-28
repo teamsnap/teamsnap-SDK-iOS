@@ -32,7 +32,7 @@ or
 # sample Code:
 From a viewController
 ```objective-c
-        SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:@"" scope:@"read+write" redirectURL:@"customURL://" completion:^{
+        SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:@"XXXXXXXXXXXXXXXXXX" scope:@"read+write" redirectURL:@"customURL://" completion:^{
             NSLog(@"VC Presented");
         }];
 ```
@@ -47,7 +47,6 @@ in your applicationDelegate:
             NSLog(@"Login Failed");
         }
     }]) {
-        // dismiss the Safari View Controller from step 1
         return YES;
     } else {
         NSLog(@"Not Processed");
@@ -56,18 +55,22 @@ in your applicationDelegate:
 }
 ```
 
-```objective-c
-    [[TSDKTeamSnap sharedInstance] loginWithUserName:@"" andPassword:@"" completion:^(bool success, NSString *message) {
-        [[[TSDKTeamSnap sharedInstance] teamSnapUser] teamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            self.teams = objects;
-            for (TSDKTeam *team in self.teams) {
-                if ([team.name isEqualToString:@"Rebels 12U"]) {
-                    [weakSelf getmembersForTeam:team];
-                }
-            }
-        }];
-    }];
+in your info.plist:
+Add a URL type with a URL scheme that matches your callback URL from Above
+```JSON
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.example.playerlineup</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>customURL</string>
+			</array>
+		</dict>
+	</array>
 ```
+
 
 # errors - 
 ```
