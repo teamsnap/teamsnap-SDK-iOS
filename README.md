@@ -1,5 +1,6 @@
 # teamsnap-SDK-iOS
 Source code for the TeamSnap iOS SDK
+For information on the TeamSnap API, and to get client tokens for your application check out http://developer.teamsnap.com
 
 #iOS TemSnapSDK
 Build for simulator. The universal binary will be located somewhere like:
