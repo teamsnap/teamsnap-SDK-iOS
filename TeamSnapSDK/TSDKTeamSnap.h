@@ -21,7 +21,6 @@
 + (void)setBaseURL:(NSURL *)url;
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion;
-- (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion;
 - (void)logout;
 - (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion;
 - (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion;
