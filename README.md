@@ -1,20 +1,6 @@
 # teamsnap-SDK-iOS
-Source code for the TeamSnap iOS SDK
+TeamSnap iOS SDK
 For information on the TeamSnap API, and to get client tokens for your application check out http://developer.teamsnap.com
-
-#iOS TemSnapSDK
-Build for simulator. The universal binary will be located somewhere like:
-```
-~/Library/Developer/Xcode/DerivedData/TeamSnapSDK-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-universal/TeamSnapSDK.framework
-```
-
-That is what should be distributed/linked
-
-# tvOS - TeamSnapSDKTV
-Build for the tvOS simulator. The universal binary will be located somewhere like:
-```
-~/Library/Developer/Xcode/DerivedData/TeamSnapSDKTV-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-TVuniversal/TeamSnapSDKTV.framework
-```
 
 # usage
 Drag the framework into your frameworks group, and copy files. 
@@ -82,4 +68,18 @@ Reason: image not found
   
 You forgot to embed the binary:
 target->General->Embedded Binaries (Does not happen automatically)
+
+#Building iOS TemSnapSDK
+Build for simulator. The universal binary will be located somewhere like:
+```
+~/Library/Developer/Xcode/DerivedData/TeamSnapSDK-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-universal/TeamSnapSDK.framework
+```
+
+That is what should be distributed/linked
+
+# tvOS - TeamSnapSDKTV
+Build for the tvOS simulator. The universal binary will be located somewhere like:
+```
+~/Library/Developer/Xcode/DerivedData/TeamSnapSDKTV-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-TVuniversal/TeamSnapSDKTV.framework
+```
 
