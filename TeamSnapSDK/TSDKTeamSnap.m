@@ -78,15 +78,6 @@
     [self connectWithCompletion:completion];
 }
 
-- (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion {
-    TSDKTeamSnap __weak *weakSelf = self;
-    [TSDKDataRequest loginWithUser:userName password:password onCompletion:^(BOOL success, NSString *OAuthToken, NSError *error) {
-        _OAuthToken = OAuthToken;
-        
-        [weakSelf processInitialConnectionWithCompletion:completion];
-    }];
-}
-
 - (void)logout {
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
@@ -138,13 +129,6 @@
     } else {
         return NO;
     }
-}
-
-- (NSMutableArray *)teams {
-    if (!_teams) {
-        _teams = [[NSMutableArray alloc] init];
-    }
-    return _teams;
 }
 
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {

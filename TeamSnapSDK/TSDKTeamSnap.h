@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SafariServices/SafariServices.h>
 #import "TSDKDataRequest.h"
 
 @class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan, SFSafariViewController;

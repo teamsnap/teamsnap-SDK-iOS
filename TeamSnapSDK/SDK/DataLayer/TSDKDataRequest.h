@@ -28,8 +28,6 @@
 + (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completion;
 #endif
 
-+ (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion;
-
 + (void)setClientId:(NSString *)clientId;
 + (void)setClientSecret:(NSString *)clientSecret;
 + (void)setOAuthToken:(NSString *)token;
