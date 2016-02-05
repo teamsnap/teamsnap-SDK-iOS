@@ -18,7 +18,9 @@
 #import "TSDKPublicFeatures.h"
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
+#if TARGET_OS_IPHONE
 #import <SafariServices/SafariServices.h>
+#endif
 
 @interface TSDKTeamSnap()
 
@@ -84,6 +86,7 @@
     self.rootLinks = nil;
 }
 
+#if TARGET_OS_IPHONE
 - (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion {
     
     NSString *OAuthURLString = [NSString stringWithFormat:@"https://auth.teamsnap.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", clientId, redirectURL, scope];
@@ -130,6 +133,7 @@
         return NO;
     }
 }
+#endif
 
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
     if (self.publicFeatures) {
