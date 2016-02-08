@@ -15,6 +15,8 @@
 		960556D31BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
 		960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
+		96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */; };
+		96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */ = {isa = PBXBuildFile; fileRef = 96121EC01C64FE2000E32902 /* NSDictionary+dump.m */; };
 		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -232,6 +234,9 @@
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
+		96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCollectionJSONTests.m; path = CollectionJSON/TSDKCollectionJSONTests.m; sourceTree = "<group>"; };
+		96121EBF1C64FE2000E32902 /* NSDictionary+dump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+dump.h"; path = "Conveniences/NSDictionary+dump.h"; sourceTree = "<group>"; };
+		96121EC01C64FE2000E32902 /* NSDictionary+dump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+dump.m"; path = "Conveniences/NSDictionary+dump.m"; sourceTree = "<group>"; };
 		9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProcessBulkObjectProtocol.h; sourceTree = "<group>"; };
 		964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRootLinks.h; sourceTree = "<group>"; };
 		964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRootLinks.m; sourceTree = "<group>"; };
@@ -370,6 +375,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96121EBB1C64E42700E32902 /* CollectionJSON */ = {
+			isa = PBXGroup;
+			children = (
+				96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */,
+			);
+			name = CollectionJSON;
+			sourceTree = "<group>";
+		};
 		965B7D2A1C18C55C009AF13E /* Members */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,8 +439,11 @@
 		969E804E1BAAE62E00CA518F /* TeamSnapSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				96121EBB1C64E42700E32902 /* CollectionJSON */,
 				969E804F1BAAE62E00CA518F /* TeamSnapSDKTests.m */,
 				969E80511BAAE62E00CA518F /* Info.plist */,
+				96121EBF1C64FE2000E32902 /* NSDictionary+dump.h */,
+				96121EC01C64FE2000E32902 /* NSDictionary+dump.m */,
 			);
 			path = TeamSnapSDKTests;
 			sourceTree = "<group>";
@@ -932,6 +948,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
+				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
+				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
