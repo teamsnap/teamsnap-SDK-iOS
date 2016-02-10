@@ -1,19 +1,6 @@
 # teamsnap-SDK-iOS
-Source code for the TeamSnap iOS SDK
-
-#iOS TemSnapSDK
-Build for simulator. The universal binary will be located somewhere like:
-```
-~/Library/Developer/Xcode/DerivedData/TeamSnapSDK-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-universal/TeamSnapSDK.framework
-```
-
-That is what should be distributed/linked
-
-# tvOS - TeamSnapSDKTV
-Build for the tvOS simulator. The universal binary will be located somewhere like:
-```
-~/Library/Developer/Xcode/DerivedData/TeamSnapSDKTV-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-TVuniversal/TeamSnapSDKTV.framework
-```
+TeamSnap iOS SDK
+For information on the TeamSnap API, and to get client tokens for your application check out http://developer.teamsnap.com
 
 # usage
 Drag the framework into your frameworks group, and copy files. 
@@ -32,7 +19,7 @@ or
 # sample Code:
 From a viewController
 ```objective-c
-        SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:@"" scope:@"read+write" redirectURL:@"customURL://" completion:^{
+        SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:@"XXXXXXXXXXXXXXXXXX" scope:@"read+write" redirectURL:@"customURL://" completion:^{
             NSLog(@"VC Presented");
         }];
 ```
@@ -47,7 +34,6 @@ in your applicationDelegate:
             NSLog(@"Login Failed");
         }
     }]) {
-        // dismiss the Safari View Controller from step 1
         return YES;
     } else {
         NSLog(@"Not Processed");
@@ -56,18 +42,22 @@ in your applicationDelegate:
 }
 ```
 
-```objective-c
-    [[TSDKTeamSnap sharedInstance] loginWithUserName:@"" andPassword:@"" completion:^(bool success, NSString *message) {
-        [[[TSDKTeamSnap sharedInstance] teamSnapUser] teamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            self.teams = objects;
-            for (TSDKTeam *team in self.teams) {
-                if ([team.name isEqualToString:@"Rebels 12U"]) {
-                    [weakSelf getmembersForTeam:team];
-                }
-            }
-        }];
-    }];
+in your info.plist:
+Add a URL type with a URL scheme that matches your callback URL from Above
+```JSON
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.example.playerlineup</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>customURL</string>
+			</array>
+		</dict>
+	</array>
 ```
+
 
 # errors - 
 ```
@@ -78,4 +68,18 @@ Reason: image not found
   
 You forgot to embed the binary:
 target->General->Embedded Binaries (Does not happen automatically)
+
+#Building iOS TemSnapSDK
+Build for simulator. The universal binary will be located somewhere like:
+```
+~/Library/Developer/Xcode/DerivedData/TeamSnapSDK-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-universal/TeamSnapSDK.framework
+```
+
+That is what should be distributed/linked
+
+# tvOS - TeamSnapSDKTV
+Build for the tvOS simulator. The universal binary will be located somewhere like:
+```
+~/Library/Developer/Xcode/DerivedData/TeamSnapSDKTV-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-TVuniversal/TeamSnapSDKTV.framework
+```
 

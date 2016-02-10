@@ -18,11 +18,15 @@
 #import "TSDKPublicFeatures.h"
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
+#if TARGET_OS_IPHONE
+#import <SafariServices/SafariServices.h>
+#endif
 
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
 @property (nonatomic, strong) NSMutableDictionary *plans;
+@property (nonatomic, strong) SFSafariViewController *loginView;
 
 @end
 
@@ -76,20 +80,60 @@
     [self connectWithCompletion:completion];
 }
 
-- (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion {
-    TSDKTeamSnap __weak *weakSelf = self;
-    [TSDKDataRequest loginWithUser:userName password:password onCompletion:^(BOOL success, NSString *OAuthToken, NSError *error) {
-        _OAuthToken = OAuthToken;
-        
-        [weakSelf processInitialConnectionWithCompletion:completion];
-    }];
-}
-
 - (void)logout {
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
     self.rootLinks = nil;
 }
+
+#if TARGET_OS_IPHONE
+- (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion {
+    
+    NSString *OAuthURLString = [NSString stringWithFormat:@"https://auth.teamsnap.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", clientId, redirectURL, scope];
+    
+    NSURL *OAuthURL = [NSURL URLWithString:OAuthURLString];
+    
+    self.loginView = [[SFSafariViewController alloc] initWithURL:OAuthURL];
+    
+    [viewController presentViewController:self.loginView animated:YES completion:^{
+        if (completion) {
+            completion();
+        }
+    }];
+
+    return self.loginView;
+}
+
+- (NSMutableDictionary *)queryDictionaryForReturnURL:(NSURL *)URL {
+    NSString *query = URL.fragment;
+    NSArray *queryComponents = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *queryDictionary = [[NSMutableDictionary alloc] init];
+    for (NSString *part in queryComponents) {
+        NSArray *param = [part componentsSeparatedByString:@"="];
+        if (param.count == 2) {
+            [queryDictionary setObject:param[1] forKey:param[0]];
+        }
+    }
+    return queryDictionary;
+}
+
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion {
+    NSMutableDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
+    if ([queryDictionary objectForKey:@"access_token"]) {
+        if (self.loginView) {
+            [self.loginView dismissViewControllerAnimated:NO completion:nil];
+        }
+        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(bool success, NSString *message) {
+            if (completion) {
+                completion(success, message);
+            }
+        }];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+#endif
 
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
     if (self.publicFeatures) {

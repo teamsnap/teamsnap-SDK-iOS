@@ -24,6 +24,8 @@
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkTeam;
 
++(void)actionInvite:(NSArray *)memberEmailAddresses asSenderMemberId:(NSInteger)senderMemberId withCompletion:(TSDKCompletionBlock)completion;
+-(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withCompletion:(TSDKCompletionBlock)completion;
 @end
 
 @interface TSDKMemberEmailAddress(ForwardedMethods)

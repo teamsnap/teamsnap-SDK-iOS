@@ -6,7 +6,11 @@
 #import <Foundation/Foundation.h>
 #import "TSDKDataRequest.h"
 
-@class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan;
+#if TARGET_OS_IPHONE
+#import <SafariServices/SafariServices.h>
+#endif
+
+@class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan, SFSafariViewController;
 
 @interface TSDKTeamSnap : NSObject
 
@@ -21,8 +25,13 @@
 + (void)setBaseURL:(NSURL *)url;
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion;
-- (void)loginWithUserName:(NSString *)userName andPassword:(NSString *)password completion:(void (^)(bool success, NSString *message))completion;
 - (void)logout;
+
+#if TARGET_OS_IPHONE
+- (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion;
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion;
+#endif
+
 - (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
 - (void)rootLinksWithCompletion:(TSDKRootLinkCompletionBlock)completion;
 - (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;

@@ -12,6 +12,8 @@
 #import "TSDKMemberPhoneNumber.h"
 #import "TSDKContact.h"
 #import "NSMutableDictionary+integerKey.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKUser.h"
 
 @implementation TSDKMember
 
@@ -19,6 +21,10 @@
 
 + (NSString *)SDKType {
     return @"member";
+}
+
+-(TSDKTeam *)team {
+    return [[[[TSDKTeamSnap sharedInstance] teamSnapUser] teams] objectForIntegerKey:self.teamId];
 }
 
 - (NSMutableDictionary *)contacts {
