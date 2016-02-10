@@ -328,54 +328,41 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if ([selectorCommandString isSetter]) {
             if ([propertyType containsString:@"NSDate"]) {
                 class_addMethod([self class], aSEL, (IMP)setDatePropertyIMP, "v@:@");
-                return YES;
             } else if ([propertyType containsString:@"NSURL"]) {
                 class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
-                return YES;
             } else if ([propertyType hasPrefix:@"TB,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
-                return YES;
             } else if ([propertyType hasPrefix:@"Tc,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:c");
-                return YES;
             } else if ([propertyType hasPrefix:@"Tq,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
-                return YES;
             } else if ([propertyType hasPrefix:@"Ti,"] || [propertyType hasPrefix:@"Ti,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:i");
-                return YES;
             } else {
                 class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
-                return YES;
             }
+            return YES;
         } if ([propertyType containsString:@"NSDate"]) {
             class_addMethod([self class], aSEL, (IMP)datePropertyIMP, "@@:");
             return YES;
         } if ([propertyType containsString:@"NSURL"]) {
             if ([property rangeOfString:@"link"].location ==  0) {
                 class_addMethod([self class], aSEL, (IMP)linkPropertyIMP, "@@:");
-                return YES;
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
-                return YES;
             }
         } else if ([propertyType hasPrefix:@"TB,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
-            return YES;
         } else if ([propertyType hasPrefix:@"Tc,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "c@:");
-            return YES;
         } else if ([propertyType hasPrefix:@"Tq,"]) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
-            return YES;
         } else if ([propertyType hasPrefix:@"Ti,"]) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "i@:");
-            return YES;
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
-            return YES;
         }
-        return NO;
+        return YES;
     } else if ([property length]>15 && [[property substringFromIndex:[property length]-15] isEqualToString:@"WithCompletion:"]) {
         class_addMethod([self class], aSEL, (IMP)getArrayFromLinkIMP, "v@:@");
         return YES;
