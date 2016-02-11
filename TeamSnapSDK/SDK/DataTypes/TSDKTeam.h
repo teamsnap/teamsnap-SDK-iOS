@@ -97,18 +97,13 @@
 @property (nonatomic, strong) NSDate *membersUpdated;
 @property (nonatomic, strong) NSDate *eventsUpdated;
 
-@property (strong, nonatomic) TSDKTeamPreferences *teamPrefrences;
-@property (strong, nonatomic) TSDKTeamResults *teamResults;
 @property (weak, nonatomic) NSTimeZone *timeZone;
-@property (weak, nonatomic) TSDKPlan *plan;
-@property (strong, atomic) TSDKMember *activeRosterMember;
 
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
-- (TSDKMember *)memberWithID:(NSInteger)memberId;
-- (NSArray *)membersWithUserId:(NSInteger)userId;
-- (NSArray *)sortedMembers;
+//- (TSDKMember *)memberWithID:(NSInteger)memberId;
+//- (NSArray *)membersWithUserId:(NSInteger)userId;
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
@@ -119,8 +114,6 @@
 #if TARGET_OS_IPHONE
 -(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion;
 #endif
-
-- (void)trackedItems:(TSDKArrayCompletionBlock)completion;
 
 @end
 

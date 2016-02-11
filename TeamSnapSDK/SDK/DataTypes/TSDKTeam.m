@@ -28,6 +28,10 @@
 @property (nonatomic, strong) NSMutableArray *sortedEvents;
 @property (nonatomic, strong) NSMutableArray *sortedMembers;
 
+@property (strong, nonatomic) TSDKTeamPreferences *teamPrefrences;
+@property (strong, nonatomic) TSDKTeamResults *teamResults;
+@property (weak, nonatomic) TSDKPlan *plan;
+
 @end
 
 @implementation TSDKTeam {
@@ -318,6 +322,9 @@
     if ([self.teamPrefrences linkTeamLogo]) {
         [self.teamPrefrences getTeamLogoWithCompletion:completion];
     } else {
+        [self getTeamPreferencesWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+            
+        }];
         if (completion) {
             completion(nil);
         }
