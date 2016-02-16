@@ -332,23 +332,33 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
             } else if ([propertyType hasPrefix:@"TB,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
+            } else if ([propertyType hasPrefix:@"Tc,"]) {
+                class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:c");
             } else if ([propertyType hasPrefix:@"Tq,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
+            } else if ([propertyType hasPrefix:@"Ti,"] || [propertyType hasPrefix:@"Ti,"]) {
+                class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:i");
             } else {
                 class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
             }
+            return YES;
         } if ([propertyType containsString:@"NSDate"]) {
             class_addMethod([self class], aSEL, (IMP)datePropertyIMP, "@@:");
+            return YES;
         } if ([propertyType containsString:@"NSURL"]) {
             if ([property rangeOfString:@"link"].location ==  0) {
                 class_addMethod([self class], aSEL, (IMP)linkPropertyIMP, "@@:");
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
             }
-        } else if (([propertyType hasPrefix:@"TB,"]) || ([propertyType hasPrefix:@"Tc,"])) {
+        } else if ([propertyType hasPrefix:@"TB,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
-        } else if (([propertyType hasPrefix:@"Tq,"]) || ([propertyType hasPrefix:@"Ti,"])) {
+        } else if ([propertyType hasPrefix:@"Tc,"]) {
+            class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "c@:");
+        } else if ([propertyType hasPrefix:@"Tq,"]) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
+        } else if ([propertyType hasPrefix:@"Ti,"]) {
+            class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "i@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }

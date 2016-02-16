@@ -101,7 +101,6 @@
 @property (strong, nonatomic) TSDKTeamResults *teamResults;
 @property (weak, nonatomic) NSTimeZone *timeZone;
 @property (weak, nonatomic) TSDKPlan *plan;
-@property (strong, atomic) TSDKMember *activeRosterMember;
 
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
