@@ -18,6 +18,7 @@
 @implementation TSDKProfileTimer
 
 + (instancetype) sharedInstance {
+#ifdef DEBUG
     static TSDKProfileTimer *_sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -25,6 +26,9 @@
     });
     
     return _sharedInstance;
+#else
+    return nil;
+#endif
 }
 
 -(instancetype) init {
