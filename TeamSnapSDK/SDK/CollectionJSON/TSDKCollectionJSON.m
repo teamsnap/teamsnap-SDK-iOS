@@ -84,7 +84,7 @@
     } else if (![collection objectForKey:@"data"]) {
     } else if ([[collection objectForKey:@"data"] isEqual:[NSNull null]]) {
     } else {
-        NSLog(@"Data is %@", [[collection objectForKey:@"data"] class]);
+        DLog(@"Data is %@", [[collection objectForKey:@"data"] class]);
     }
     for (NSDictionary *data in datum) {
         NSString *dataType = [data objectForKey:@"type"];
@@ -93,7 +93,7 @@
         } else if ([data objectForKey:@"value"]) {
             if (dataType && [dataType isEqualToString:@"DateTime"]) {
             } else if (dataType) {
-                NSLog(@"DataType: %@", dataType);
+                DLog(@"DataType: %@", dataType);
             }
             [self.data setObject:[data objectForKey:@"value"] forKey:[data objectForKey:@"name"]];
         }
@@ -125,7 +125,7 @@
             }
         }
     } else if ([items isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"Dictionary of %lu Items", (unsigned long)[(NSDictionary *)items count]);
+        DLog(@"Dictionary of %lu Items", (unsigned long)[(NSDictionary *)items count]);
     }
     if ([collection objectForKey:@"template"]) {
         TSDKCollectionJSON *template = [[TSDKCollectionJSON alloc] init];

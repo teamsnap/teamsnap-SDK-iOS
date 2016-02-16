@@ -105,7 +105,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     }
 
-    NSLog(@"Curl:\n%@", [request getCurlEquivalent]);
+    DLog(@"Curl:\n%@", [request getCurlEquivalent]);
 
     [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
     NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -196,7 +196,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [request setHTTPMethod:@"GET"];
     [request setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
-    NSLog(@"Curl:\n%@", [request getCurlEquivalent]);
+    DLog(@"Curl:\n%@", [request getCurlEquivalent]);
     
     [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
     NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
