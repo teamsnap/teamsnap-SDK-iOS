@@ -163,7 +163,7 @@
 - (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
     BOOL lProcessed = NO;
     
-    NSLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
+    DLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
     if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
         [self addEvent:(TSDKEvent *)bulkObject];
         self.eventsUpdated = [NSDate date];
@@ -173,7 +173,7 @@
         self.membersUpdated = [NSDate date];
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
-        NSLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
+        DLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
         if (self.teamPrefrences) {
             [self.teamPrefrences setCollection:bulkObject.collection];
         } else {

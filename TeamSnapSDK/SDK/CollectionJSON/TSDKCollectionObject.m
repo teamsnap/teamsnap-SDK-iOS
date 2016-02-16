@@ -248,7 +248,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     }
     
     NSURL *link = [self getLink:linkPropertyName];
-    NSLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
+    DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
 
     [self arrayFromLink:link WithCompletion:completion];
 }
@@ -264,7 +264,7 @@ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completi
     }
     
     NSURL *link = [self getLink:linkPropertyName];
-    NSLog(@"%@ - %@", linkPropertyName, link);
+    DLog(@"%@ - %@", linkPropertyName, link);
     
     [self objectFromLink:link WithCompletion:completion];
 }
@@ -305,7 +305,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             [output appendFormat:@"\n* %@ (%@)", propertyName, propertyType];
         }
     }
-    NSLog(@"%@", output);
+    DLog(@"%@", output);
 }
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
