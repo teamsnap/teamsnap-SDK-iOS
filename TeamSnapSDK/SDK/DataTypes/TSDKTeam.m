@@ -30,7 +30,6 @@
 
 @property (strong, nonatomic) TSDKTeamPreferences *teamPrefrences;
 @property (strong, nonatomic) TSDKTeamResults *teamResults;
-@property (weak, nonatomic) TSDKPlan *plan;
 
 @end
 
