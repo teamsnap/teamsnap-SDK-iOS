@@ -145,7 +145,7 @@ static NSMutableArray *supportedSDKObjects;
                             [team processBulkLoadedObject:sdkObject];
                         }
                     } else {
-                        NSLog(@"Unknown parent Object from bulk load: %@", [sdkObject class]);
+                        DLog(@"Unknown parent Object from bulk load: %@", [sdkObject class]);
                     }
                 }
             }
@@ -323,14 +323,14 @@ static NSMutableArray *supportedSDKObjects;
     if (classIndex!=NSNotFound) {
         result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
         if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
-            NSLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
+            DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
             [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
         }
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
         
         if (![unknownTypes objectForKey:collectionJSON.type]) {
-            NSLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
+            DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
             [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
         }
     }

@@ -18,6 +18,7 @@
 @implementation TSDKProfileTimer
 
 + (instancetype) sharedInstance {
+#ifdef DEBUG
     static TSDKProfileTimer *_sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -25,6 +26,9 @@
     });
     
     return _sharedInstance;
+#else
+    return nil;
+#endif
 }
 
 -(instancetype) init {
@@ -56,7 +60,7 @@
     if (timerId) {
         NSTimeInterval elepasedTime = [self getElapsedTimeForId:timerId];
         if (logResult) {
-            NSLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, [self cumulativeTimeForId:timerId]);
+            DLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, [self cumulativeTimeForId:timerId]);
         }
         return elepasedTime;
     } else {

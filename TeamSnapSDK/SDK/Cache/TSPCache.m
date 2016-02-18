@@ -5,7 +5,6 @@
 //  Created by Jason Rahaim on 8/19/15.
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
-
 #import "TSPCache.h"
 
 NSURL static *_rootPath = nil;
@@ -134,7 +133,7 @@ NSFileManager static *_fileManager = nil;
     if ([self pathForObjectCollectionOfClass:objectClass]) {
         BOOL success = [keys writeToURL:[self pathForObjectCollectionOfClass:objectClass] atomically:YES];
         if (!success) {
-            NSLog(@"Failed");
+            DLog(@"Failed");
         }
     }
 }
