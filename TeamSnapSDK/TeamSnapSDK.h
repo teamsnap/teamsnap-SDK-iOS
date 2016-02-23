@@ -15,6 +15,8 @@
 // In this header, you should import all the public headers of your framework using statements like #import <TeamSnapSDK/PublicHeader.h>
 
 #import <TeamSnapSDK/TSDKTeamSnap.h>
+#import <TeamSnapSDK/TSDKRequestConfiguration.h>
+#import <TeamSnapSDK/TSDKRequestConfiguration.h>
 #import <teamSnapSDK/TSDKCollectionCommand.h>
 #import <teamSnapSDK/TSDKCollectionJSON.h>
 #import <teamSnapSDK/TSDKCollectionObject.h>
