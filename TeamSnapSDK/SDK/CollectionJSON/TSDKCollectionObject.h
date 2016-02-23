@@ -35,6 +35,9 @@
 
 + (NSString *)SDKType;
 + (NSString *)SDKREL;
++ (NSString *)completionBlockTypeName;
++ (NSString *)completionBlockArrayDescription;
+
 - (NSInteger)objectIdentifier;
 - (NSDictionary *)dataToSave;
 - (NSString *)getString:(NSString *)key;

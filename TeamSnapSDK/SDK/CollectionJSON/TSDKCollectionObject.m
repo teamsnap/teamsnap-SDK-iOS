@@ -110,7 +110,18 @@ static NSMutableDictionary *_classURLs;
 }
 
 + (NSString *)SDKREL {
+    if ([[self.SDKType substringFromIndex:[self.SDKType length]-1] isEqualToString:@"s"]) {
+        return [NSString stringWithFormat:@"%@es", self.SDKType];
+    }
     return [NSString stringWithFormat:@"%@s", self.SDKType];
+}
+
++ (NSString *)completionBlockTypeName {
+    return [NSString stringWithFormat:@"%@CompletionBlock",  NSStringFromClass(self)];
+}
+
++ (NSString *)completionBlockArrayDescription {
+    return [NSString stringWithFormat:@"typedef void (^%@)(BOOL success, BOOL complete, NSArray <%@ *> *%@, NSError *error);", [self completionBlockTypeName], NSStringFromClass(self), [self SDKREL]];
 }
 
 - (instancetype)init {

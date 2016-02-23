@@ -9,6 +9,7 @@
 #import "TSDKObjectsRequest.h"
 #import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "NSString+TSDKConveniences.h"
 #import <objc/runtime.h>
 #import "TSDKDataRequest.h"
 #import "TSDKTeam.h"
@@ -348,4 +349,35 @@ static NSMutableArray *supportedSDKObjects;
     }
     return nil;
 }
+
++ (void)dumpCompletionTypes {
+    NSMutableString *classCompletionBlockString = [[NSMutableString alloc] init];
+    //        NSMutableString *includeHeadersString = [[NSMutableString alloc] init];
+    for (Class class in supportedSDKObjects) {
+        [classCompletionBlockString appendFormat:@"%@\n", [[class completionBlockArrayDescription]  underscoresToCamelCase]];
+    }
+    DLog(@"\n%@", [supportedSDKObjects componentsJoinedByString:@","]);
+    DLog(@"\n%@",classCompletionBlockString);
+}
+
++ (NSString *)typeForRel:(NSString *)rel {
+    NSInteger typeIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [[class SDKREL] isEqualToString:rel];
+    }];
+    if (typeIndex != NSNotFound) {
+        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKType];
+    }
+    return nil;
+}
+
++ (NSString *)relForType:(NSString *)type {
+    NSInteger typeIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [[class SDKType] isEqualToString:type];
+    }];
+    if (typeIndex != NSNotFound) {
+        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKREL];
+    }
+    return nil;
+}
+
 @end

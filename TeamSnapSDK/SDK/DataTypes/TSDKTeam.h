@@ -103,8 +103,6 @@
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
-//- (TSDKMember *)memberWithID:(NSInteger)memberId;
-//- (NSArray *)membersWithUserId:(NSInteger)userId;
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;

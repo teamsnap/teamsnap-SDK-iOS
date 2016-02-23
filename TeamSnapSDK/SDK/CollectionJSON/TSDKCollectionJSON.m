@@ -206,7 +206,13 @@
         
         [dynamicProperties addObject:camelCaseKey];
         [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSURL *%@;\n", camelCaseKey]];
-        [linkGettersString appendFormat:@"-(void)%@WithCompletion:(TSDKArrayCompletionBlock)completion;\n", [getKey underscoresToCamelCase]];
+        
+        NSString *typeString = [TSDKObjectsRequest typeForRel:key];
+        if (!typeString) {
+            typeString = getKey;
+        }
+        
+        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDK%@ArrayCompletionBlock)completion;\n", [getKey underscoresToCamelCase], [typeString underscoresToMixedCase]];
     }
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];

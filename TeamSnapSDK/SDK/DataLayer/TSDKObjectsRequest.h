@@ -25,5 +25,7 @@
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;
 + (TSDKUser *)processLoginCollectionJSON:(TSDKCollectionJSON *)containerCollection;
 + (NSArray *)SDKObjectsFromCollection:(TSDKCollectionJSON *)containerCollection;
++ (NSString *)typeForRel:(NSString *)rel;
++ (NSString *)relForType:(NSString *)type;
 
 @end

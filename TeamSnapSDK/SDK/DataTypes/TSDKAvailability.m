@@ -16,4 +16,8 @@
     return @"availability";
 }
 
++ (NSString *)SDKREL {
+    return @"availabilities";
+}
+
 @end

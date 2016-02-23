@@ -15,4 +15,8 @@
     return @"custom_datum";
 }
 
++ (NSString *)SDKREL {
+    return @"custom_data";
+}
+
 @end
