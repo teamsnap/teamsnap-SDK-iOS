@@ -47,6 +47,7 @@
 #import "TSDKTeamResults.h"
 #import "TSDKinvitationFinder.h"
 #import "TSDKTeamMediaGroup.h"
+#import "TSDKMemberPreferences.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
