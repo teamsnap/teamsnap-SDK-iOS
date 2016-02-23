@@ -62,3 +62,4 @@
 #import <TeamSnapSDK/TSDKMemberPreferences.h>
 #import <TeamSnapSDK/TSDKTeamMediumComment.h>
 #import <TeamSnapSDK/TSDKForumSubscription.h>
+#import <TeamSnapSDK/TSDKTeamMedium.h>

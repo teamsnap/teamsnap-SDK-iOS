@@ -10,7 +10,7 @@
 
 @implementation TSDKSport
 
-@dynamic hasShootouts, hasStatisticTemplate, shootoutLabel, overtimeLabel, hasCustomizedLanguage, isNonSport, overtimeAbbrev, tracksPoints, hasOvertime, lowScoreWins, shootoutAbbrev, name, tracksOvertimeLosses;
+@dynamic hasShootouts, hasStatisticTemplate, shootoutLabel, overtimeLabel, hasCustomizedLanguage, isNonSport, overtimeAbbrev, tracksPoints, hasOvertime, lowScoreWins, shootoutAbbrev, name, tracksOvertimeLosses, linkSportLogo;
 
 + (NSString *)SDKType {
     return @"sport";

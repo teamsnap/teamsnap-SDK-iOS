@@ -25,3 +25,12 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 
 @end
+
+@interface TSDKCustomDatum (ForwardedMethods)
+
+-(void)getCustomFieldWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomFieldArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+
+
+@end

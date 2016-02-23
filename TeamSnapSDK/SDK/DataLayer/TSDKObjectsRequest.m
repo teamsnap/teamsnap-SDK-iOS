@@ -49,6 +49,7 @@
 #import "TSDKTeamMediaGroup.h"
 #import "TSDKMemberPreferences.h"
 #import "TSDKForumSubscription.h"
+#import "TSDKTeamMedium.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

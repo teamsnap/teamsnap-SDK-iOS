@@ -8,7 +8,7 @@
 
 #ifndef TSDKCompletionBlockTypes_h
 #define TSDKCompletionBlockTypes_h
-@class TSDKinvitationFinder, UIImage, TSDKCollectionJSON, TSDKRootLinks, TSDKLocation,TSDKBroadcastEmail,TSDKBroadcastSms,TSDKContact,TSDKTeamResults,TSDKStatisticGroup,TSDKAvailability,TSDKUser,TSDKCustomField,TSDKMemberStatistic,TSDKTeamFee,TSDKTeamPreferences,TSDKPlan,TSDKContactEmailAddress,TSDKinvitationFinder,TSDKTeamStatistic,TSDKTeam,TSDKMemberPhoneNumber,TSDKCollectionObject,TSDKOpponent,TSDKEvent,TSDKForumPost,TSDKStatistic,TSDKTrackedItemStatus,TSDKSport,TSDKMemberEmailAddress,TSDKStatisticDatum,TSDKAssignment,TSDKTrackedItem,TSDKMember,TSDKCustomDatum,TSDKForumTopic,TSDKContactPhoneNumber;
+@class TSDKinvitationFinder, UIImage, TSDKCollectionJSON, TSDKRootLinks, TSDKStatistic,TSDKUser,TSDKAvailability,TSDKCustomField,TSDKTeamFee,TSDKMemberStatistic,TSDKTeamPreferences,TSDKBroadcastEmail,TSDKLocation,TSDKCustomDatum,TSDKContactPhoneNumber,TSDKForumTopic,TSDKMemberPhoneNumber,TSDKCollectionObject,TSDKOpponent,TSDKPlan,TSDKContactEmailAddress,TSDKTeamStatistic,TSDKinvitationFinder,TSDKTeam,TSDKForumSubscription,TSDKBroadcastSms,TSDKTeamResults,TSDKContact,TSDKTslPhotos,TSDKRootLinks,TSDKSport,TSDKTrackedItemStatus,TSDKTeamMediumComment,TSDKMemberEmailAddress,TSDKTeamMediaGroup,TSDKAssignment,TSDKStatisticDatum,TSDKTrackedItem,TSDKMember,TSDKEvent,TSDKForumPost,TSDKMemberPreferences,TSDKStatisticGroup;
 
 typedef void (^TSDKJSONCompletionBlock)(BOOL success, BOOL complete, id objects, NSError *error);
 typedef void (^TSDKSimpleCompletionBlock)(BOOL success, NSError *error);
@@ -20,37 +20,41 @@ typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray *o
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *objects, NSError *error);
 typedef void (^TSDKImageCompletionBlock)(UIImage *image);
 
+typedef void (^TSDKStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKStatistic *> *statistics, NSError *error);
+typedef void (^TSDKUserArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKUser *> *users, NSError *error);
+typedef void (^TSDKAvailabilityArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKAvailability *> *availabilities, NSError *error);
+typedef void (^TSDKCustomFieldArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomField *> *customFields, NSError *error);
 typedef void (^TSDKTeamFeeArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamFee *> *teamFees, NSError *error);
+typedef void (^TSDKMemberStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberStatistic *> *memberStatistics, NSError *error);
+typedef void (^TSDKTeamPreferencesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamPreferences *> *teamsPreferences, NSError *error);
+typedef void (^TSDKBroadcastEmailArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastEmail *> *broadcastEmails, NSError *error);
+typedef void (^TSDKLocationArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKLocation *> *locations, NSError *error);
+typedef void (^TSDKCustomDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomDatum *> *customData, NSError *error);
+typedef void (^TSDKContactPhoneNumberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContactPhoneNumber *> *contactPhoneNumbers, NSError *error);
+typedef void (^TSDKForumTopicArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumTopic *> *forumTopics, NSError *error);
+typedef void (^TSDKMemberPhoneNumberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberPhoneNumber *> *memberPhoneNumbers, NSError *error);
+typedef void (^TSDKOpponentArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKOpponent *> *opponents, NSError *error);
+typedef void (^TSDKPlanArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKPlan *> *plans, NSError *error);
+typedef void (^TSDKContactEmailAddressArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContactEmailAddress *> *contactEmailAddresses, NSError *error);
+typedef void (^TSDKTeamStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamStatistic *> *teamStatistics, NSError *error);
+typedef void (^TSDKinvitationFinderArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKinvitationFinder *> *invitationFinders, NSError *error);
+typedef void (^TSDKTeamArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeam *> *teams, NSError *error);
+typedef void (^TSDKForumSubscriptionArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumSubscription *> *forumSubscriptions, NSError *error);
+typedef void (^TSDKBroadcastSmsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastSms *> *broadcastSmses, NSError *error);
+typedef void (^TSDKTeamResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamResults *> *teamResultses, NSError *error);
+typedef void (^TSDKContactArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContact *> *contacts, NSError *error);
+typedef void (^TSDKSportArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKSport *> *sports, NSError *error);
+typedef void (^TSDKTrackedItemStatusArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTrackedItemStatus *> *trackedItemStatuses, NSError *error);
+typedef void (^TSDKTeamMediumCommentArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamMediumComment *> *teamMediumComments, NSError *error);
+typedef void (^TSDKMemberEmailAddressArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberEmailAddress *> *memberEmailAddresses, NSError *error);
+typedef void (^TSDKTeamMediaGroupArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamMediaGroup *> *teamMediaGroups, NSError *error);
+typedef void (^TSDKAssignmentArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKAssignment *> *assignments, NSError *error);
+typedef void (^TSDKStatisticDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKStatisticDatum *> *statisticData, NSError *error);
+typedef void (^TSDKTrackedItemArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTrackedItem *> *trackedItems, NSError *error);
+typedef void (^TSDKMemberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMember *> *members, NSError *error);
 typedef void (^TSDKEventArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKEvent *> *events, NSError *error);
 typedef void (^TSDKForumPostArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumPost *> *forumPosts, NSError *error);
+typedef void (^TSDKMemberPreferencesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberPreferences *> *memberPreferenceses, NSError *error);
 typedef void (^TSDKStatisticGroupArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKStatisticGroup *> *statisticGroups, NSError *error);
-typedef void (^TSDKStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKStatistic *> *statistics, NSError *error);
-typedef void (^TSDKAssignmentArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKAssignment *> *assignments, NSError *error);
-typedef void (^TSDKTrackedItemArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTrackedItem *> *trackedItems, NSError *error);
-typedef void (^TSDKStatisticDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKStatisticDatum *> *statisticData, NSError *error);
-typedef void (^TSDKMemberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMember *> *members, NSError *error);
-typedef void (^TSDKTeamStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamStatistic *> *teamStatistics, NSError *error);
-typedef void (^TSDKTeamArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeam *> *teams, NSError *error);
-typedef void (^TSDKContactEmailAddressArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContactEmailAddress *> *contactEmailAddresses, NSError *error);
-typedef void (^TSDKinvitationFinderArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKinvitationFinder *> *invitationFinders, NSError *error);
-typedef void (^TSDKSportArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKSport *> *sports, NSError *error);
-typedef void (^TSDKMemberEmailAddressArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberEmailAddress *> *memberEmailAddresses, NSError *error);
-typedef void (^TSDKTrackedItemStatusArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTrackedItemStatus *> *trackedItemStatuses, NSError *error);
-typedef void (^TSDKMemberPhoneNumberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberPhoneNumber *> *memberPhoneNumbers, NSError *error);
-typedef void (^TSDKPlanArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKPlan *> *plans, NSError *error);
-typedef void (^TSDKOpponentArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKOpponent *> *opponents, NSError *error);
-typedef void (^TSDKCustomDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomDatum *> *customData, NSError *error);
-typedef void (^TSDKForumTopicArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumTopic *> *forumTopics, NSError *error);
-typedef void (^TSDKContactPhoneNumberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContactPhoneNumber *> *contactPhoneNumbers, NSError *error);
-typedef void (^TSDKBroadcastSmsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastSms *> *broadcastSmses, NSError *error);
-typedef void (^TSDKBroadcastEmailArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastEmail *> *broadcastEmails, NSError *error);
-typedef void (^TSDKContactArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContact *> *contacts, NSError *error);
-typedef void (^TSDKTeamResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamResults *> *teamResultses, NSError *error);
-typedef void (^TSDKCustomFieldArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomField *> *customFields, NSError *error);
-typedef void (^TSDKMemberStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberStatistic *> *memberStatistics, NSError *error);
-typedef void (^TSDKAvailabilityArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKAvailability *> *availabilities, NSError *error);
-typedef void (^TSDKUserArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKUser *> *users, NSError *error);
-typedef void (^TSDKTeamPreferencesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamPreferences *> *teamsPreferences, NSError *error);
-typedef void (^TSDKLocationArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKLocation *> *locations, NSError *error);
 
 #endif /* TSDKCompletionBlockTypes_h */

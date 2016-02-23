@@ -23,3 +23,12 @@
 @property (nonatomic, weak) NSURL *linkTrackedItem;
 
 @end
+
+@interface TSDKTrackedItemStatus (ForwardedMethods)
+
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getTrackedItemWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTrackedItemArrayCompletionBlock)completion;
+
+
+@end
