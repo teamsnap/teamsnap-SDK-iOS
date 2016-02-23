@@ -46,6 +46,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKTeamResults.h"
 #import "TSDKinvitationFinder.h"
+#import "TSDKTeamMediaGroup.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

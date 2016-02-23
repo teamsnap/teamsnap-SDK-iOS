@@ -58,3 +58,4 @@
 #import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
 #import <TeamSnapSDK/TSDKProcessBulkObjectProtocol.h>
 #import <TeamSnapSDK/TSDKConstants.h>
+#import <TeamSnapSDK/TSDKTeamMediaGroup.h>

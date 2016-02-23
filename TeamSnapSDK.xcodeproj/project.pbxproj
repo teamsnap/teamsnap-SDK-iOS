@@ -52,6 +52,10 @@
 		969B7E991C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969B7E9A1C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */; };
 		969B7E9B1C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */; };
+		969B7EA21C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EA01C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EA31C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EA01C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EA41C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EA11C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m */; };
+		969B7EA51C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EA11C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m */; };
 		969E804B1BAAE62E00CA518F /* TeamSnapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969E80401BAAE62D00CA518F /* TeamSnapSDK.framework */; };
 		969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E804F1BAAE62E00CA518F /* TeamSnapSDKTests.m */; };
 		969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805A1BAAE79500CA518F /* TeamSnapSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -259,6 +263,8 @@
 		9696ACC01C1715E000FA7F64 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRequestConfiguration.h; sourceTree = "<group>"; };
 		969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRequestConfiguration.m; sourceTree = "<group>"; };
+		969B7EA01C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamMediaGroup.h; sourceTree = "<group>"; };
+		969B7EA11C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamMediaGroup.m; sourceTree = "<group>"; };
 		969E80401BAAE62D00CA518F /* TeamSnapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeamSnapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		969E80451BAAE62D00CA518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		969E804A1BAAE62E00CA518F /* TeamSnapSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeamSnapSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -567,6 +573,8 @@
 				964CDDE61BB4514B00909D11 /* TSDKTslPhotos.m */,
 				960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */,
 				960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */,
+				969B7EA01C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h */,
+				969B7EA11C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -627,6 +635,7 @@
 				969E80CF1BAAE7AB00CA518F /* TSDKStatisticGroup.h in Headers */,
 				969E80F11BAAE7AB00CA518F /* TSDKTeamFee.h in Headers */,
 				9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */,
+				969B7EA21C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
 				969E80CB1BAAE7AB00CA518F /* TSDKStatistic.h in Headers */,
 				969E80CD1BAAE7AB00CA518F /* TSDKStatisticDatum.h in Headers */,
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
@@ -696,6 +705,7 @@
 				96B47F3F1BADB4410035F2CC /* TSDKTeamFee.h in Headers */,
 				96B47F6B1BADB4AA0035F2CC /* TSDKProfileTimer.h in Headers */,
 				96B47F691BADB4A10035F2CC /* TSPCache.h in Headers */,
+				969B7EA31C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
 				96B47F511BADB4640035F2CC /* TSDKTeamStatistic.h in Headers */,
 				96B47F2F1BADB4410035F2CC /* TSDKForumPost.h in Headers */,
 				96B47F4F1BADB4640035F2CC /* TSDKStatisticGroup.h in Headers */,
@@ -908,6 +918,7 @@
 				969E805F1BAAE79500CA518F /* TSDKTeamSnap.m in Sources */,
 				969E80CE1BAAE7AB00CA518F /* TSDKStatisticDatum.m in Sources */,
 				969E80C01BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
+				969B7EA41C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */,
 				969E80D21BAAE7AB00CA518F /* TSDKTeamStatistic.m in Sources */,
 				96F4E7DA1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */,
 				960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */,
@@ -983,6 +994,7 @@
 				96B47F501BADB4640035F2CC /* TSDKStatisticGroup.m in Sources */,
 				96B47F4A1BADB4640035F2CC /* TSDKMemberStatistic.m in Sources */,
 				96B47F461BADB4410035F2CC /* TSDKTrackedItemStatus.m in Sources */,
+				969B7EA51C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */,
 				96B47F2E1BADB4410035F2CC /* TSDKEvent.m in Sources */,
 				96B47F421BADB4410035F2CC /* TSDKTeamPreferences.m in Sources */,
 				96B47F2C1BADB4410035F2CC /* TSDKCustomField.m in Sources */,
