@@ -14,31 +14,38 @@
 
 @interface TSDKTeam : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
-@property (nonatomic, assign) NSInteger canExportMedia; //Example: 1
+@property (nonatomic, assign) NSInteger sportId; //Example: 52
 @property (nonatomic, weak) NSString *leagueUrl; //Example:
 @property (nonatomic, assign) BOOL isInLeague; //Example: 0
-@property (nonatomic, assign) NSInteger hasReachedRosterLimit; //Example: 0
+@property (nonatomic, assign) BOOL hasReachedRosterLimit; //Example: 0
+@property (nonatomic, assign) NSInteger canExportMedia; //Example: 1
+@property (nonatomic, weak) NSString *timeZoneOffset; //Example: -07:00
 @property (nonatomic, weak) NSString *locationLatitude; //Example: 40.036037
-@property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-09-14T14:53:18Z
-@property (nonatomic, assign) NSInteger hasExportableMedia; //Example: 1
+@property (nonatomic, weak) NSDate *updatedAt; //Example: 2016-02-22T21:26:59Z
+@property (nonatomic, assign) BOOL hasExportableMedia; //Example: 1
+@property (nonatomic, weak) NSDate *lastAccessedAt; //Example: 2016-02-22T21:32:04Z
 @property (nonatomic, weak) NSString *timeZoneIanaName; //Example: America/Denver
 @property (nonatomic, weak) NSString *locationPostalCode; //Example: 80302
 @property (nonatomic, weak) NSString *name; //Example: TeamSnap
 @property (nonatomic, weak) NSString *locationLongitude; //Example: -105.349559
 @property (nonatomic, assign) NSInteger planId; //Example: 26
 @property (nonatomic, weak) NSString *leagueName; //Example:
+@property (nonatomic, weak) NSString *timeZoneDescription; //Example: Mountain Time (US & Canada)
 @property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
 @property (nonatomic, weak) NSString *seasonName; //Example:
 @property (nonatomic, weak) NSString *locationCountry; //Example: United States
+@property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 130056353
 @property (nonatomic, weak) NSString *divisionName; //Example:
+@property (nonatomic, weak) NSString *humanizedMediaStorageUsed; //Example: 124.03 MB
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-27T03:32:51Z
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
-@property (nonatomic, assign) NSInteger sportId; //Example: 52
+@property (nonatomic, assign) BOOL isRetired; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *linkContactEmailAddresses;
+@property (nonatomic, weak) NSURL *linkDivisionContactEmailAddresses;
+@property (nonatomic, weak) NSURL *linkMembersPreferences;
 @property (nonatomic, weak) NSURL *linkAvailabilities;
 @property (nonatomic, weak) NSURL *linkForumTopics;
-@property (nonatomic, weak) NSURL *linkMembersPreferences;
 @property (nonatomic, weak) NSURL *linkOwner;
 @property (nonatomic, weak) NSURL *linkDivisionMembersPreferences;
 @property (nonatomic, weak) NSURL *linkTeamMediumComments;
@@ -52,48 +59,56 @@
 @property (nonatomic, weak) NSURL *linkContacts;
 @property (nonatomic, weak) NSURL *linkMembersCsvExport;
 @property (nonatomic, weak) NSURL *linkTrackedItemStatuses;
+@property (nonatomic, weak) NSURL *linkDivisionContacts;
 @property (nonatomic, weak) NSURL *linkManagers;
 @property (nonatomic, weak) NSURL *linkLeagueRegistrantDocuments;
+@property (nonatomic, weak) NSURL *linkStatisticAggregates;
 @property (nonatomic, weak) NSURL *linkDivisionLocations;
 @property (nonatomic, weak) NSURL *linkOpponents;
 @property (nonatomic, weak) NSURL *linkCalendarHttpGamesOnly;
 @property (nonatomic, weak) NSURL *linkCustomData;
+@property (nonatomic, weak) NSURL *linkDivisionContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkTeamPreferences;
 @property (nonatomic, weak) NSURL *linkCalendarHttp;
 @property (nonatomic, weak) NSURL *linkDivisionTeamStandings;
 @property (nonatomic, weak) NSURL *linkPaymentNotes;
 @property (nonatomic, weak) NSURL *linkPlan;
 @property (nonatomic, weak) NSURL *linkTeamFees;
+@property (nonatomic, weak) NSURL *linkEventsOverview;
 @property (nonatomic, weak) NSURL *linkMemberPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkMemberLinks;
 @property (nonatomic, weak) NSURL *linkDivisionMembers;
 @property (nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
 @property (nonatomic, weak) NSURL *linkTeamStatistics;
 @property (nonatomic, weak) NSURL *linkMemberEmailAddresses;
-@property (nonatomic, weak) NSURL *linkStatistics;
 @property (nonatomic, weak) NSURL *linkMembers;
+@property (nonatomic, weak) NSURL *linkStatistics;
 @property (nonatomic, weak) NSURL *linkSponsors;
 @property (nonatomic, weak) NSURL *linkMemberBalances;
-@property (nonatomic, weak) NSURL *linkBroadcastSmses;
-@property (nonatomic, weak) NSURL *linkMemberStatistics;
 @property (nonatomic, weak) NSURL *linkStatisticGroups;
+@property (nonatomic, weak) NSURL *linkMemberStatistics;
 @property (nonatomic, weak) NSURL *linkOpponentsResults;
 @property (nonatomic, weak) NSURL *linkPaypalCurrency;
 @property (nonatomic, weak) NSURL *linkTrackedItems;
 @property (nonatomic, weak) NSURL *linkAssignments;
 @property (nonatomic, weak) NSURL *linkTeamResults;
 @property (nonatomic, weak) NSURL *linkLeagueCustomData;
-@property (nonatomic, weak) NSURL *linkStatisticData;
 @property (nonatomic, weak) NSURL *linkContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkMemberFiles;
+@property (nonatomic, weak) NSURL *linkDivisionMemberPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkMemberPayments;
+@property (nonatomic, weak) NSURL *linkStatisticData;
+@property (nonatomic, weak) NSURL *linkDivisionMemberEmailAddresses;
 @property (nonatomic, weak) NSURL *linkLeagueCustomFields;
 @property (nonatomic, weak) NSURL *linkCustomFields;
 @property (nonatomic, weak) NSURL *linkLocations;
 @property (nonatomic, weak) NSURL *linkBroadcastEmails;
 @property (nonatomic, weak) NSURL *linkEventsCsvExport;
 @property (nonatomic, weak) NSURL *linkCalendarWebcalGamesOnly;
+@property (nonatomic, weak) NSURL *linkEventStatistics;
 @property (nonatomic, weak) NSURL *linkTeamPublicSite;
+@property (nonatomic, weak) NSURL *linkBroadcastAlerts;
+
 
 // Non-Autogenerated properties/methods
 @property (nonatomic, strong) NSDate *membersUpdated;
@@ -105,11 +120,9 @@
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
-//- (TSDKMember *)memberWithID:(NSInteger)memberId;
-//- (NSArray *)membersWithUserId:(NSInteger)userId;
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)eventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
+
+- (void)getEventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
 
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion;
 
