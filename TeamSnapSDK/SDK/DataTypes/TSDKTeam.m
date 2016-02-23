@@ -86,7 +86,7 @@
         if (isNewTeam) {
             if (success) {
                 TSDKCollectionJSON *saveTeamResultCollectionJSON = objects;
-                [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
                     if (completionBlock) {
                         completionBlock(success, complete, saveTeamResultCollectionJSON, error);
                     }
@@ -266,13 +266,13 @@
     }
 }
 
-- (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion {
+- (void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
     if (self.membersUpdated && self.sortedMembers) {
         if (completion) {
             completion(YES, YES, self.sortedMembers, nil);
         }
     } else {
-        [TSDKObjectsRequest listRosterForTeam:self completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        [self arrayFromLink:self.linkMembers withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             [self.members removeAllObjects];
             for (TSDKMember *member in objects) {
                 [self.members setObject:member forIntegerKey:member.objectIdentifier];

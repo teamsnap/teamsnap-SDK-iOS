@@ -7,6 +7,7 @@
 //
 
 #import "TSDKCollectionJSON.h"
+#import "TSDKCompletionBlockTypes.h"
 #import "TSDKCollectionCommand.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
@@ -209,10 +210,15 @@
         
         NSString *typeString = [TSDKObjectsRequest typeForRel:key];
         if (!typeString) {
-            typeString = getKey;
+            typeString = key;
         }
         
-        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDK%@ArrayCompletionBlock)completion;\n", [getKey underscoresToCamelCase], [typeString underscoresToMixedCase]];
+        NSString *completionBlockName = [NSString stringWithFormat:@"TSDK%@ArrayCompletionBlock", [typeString underscoresToMixedCase]];
+        if ([[TSDKObjectsRequest knownCompletionTypes] indexOfObject:completionBlockName] == NSNotFound) {
+            completionBlockName = @"TSDKArrayCompletionBlock";
+        }
+        
+        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(%@)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
     }
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];

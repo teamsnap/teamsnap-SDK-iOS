@@ -7,6 +7,7 @@
 //
 
 #import <objc/runtime.h>
+#import "TSDKRequestConfiguration.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
 #import "NSString+TSDKConveniences.h"
@@ -117,7 +118,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 + (NSString *)completionBlockTypeName {
-    return [NSString stringWithFormat:@"%@CompletionBlock",  NSStringFromClass(self)];
+    return [NSString stringWithFormat:@"%@ArrayCompletionBlock",  NSStringFromClass(self)];
 }
 
 + (NSString *)completionBlockArrayDescription {
@@ -264,6 +265,20 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     [self arrayFromLink:link WithCompletion:completion];
 }
 
+static void getArrayFromLinkWithConfigurationIMP(id self, SEL _cmd, TSDKRequestConfiguration *configuration, TSDKArrayCompletionBlock completion) {
+    NSString *property = NSStringFromSelector(_cmd);
+    NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
+    
+    if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
+        linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
+    }
+    
+    NSURL *link = [self getLink:linkPropertyName];
+    DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
+    
+    [self arrayFromLink:link withConfiguration:configuration completion:completion];
+}
+
 /*
 Not tested:
 static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
@@ -376,6 +391,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         return YES;
     } else if ([property length]>15 && [[property substringFromIndex:[property length]-15] isEqualToString:@"WithCompletion:"]) {
         class_addMethod([self class], aSEL, (IMP)getArrayFromLinkIMP, "v@:@");
+        return YES;
+    } else if ([property length]>29 && [[property substringFromIndex:[property length]-29] isEqualToString:@"WithConfiguration:completion:"]) {
+        class_addMethod([self class], aSEL, (IMP)getArrayFromLinkWithConfigurationIMP, "v@:@:@");
         return YES;
     } else {
         return NO;
@@ -550,6 +568,28 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }];
 
 
+}
+
+- (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
+    [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
+                    for (TSDKCollectionObject *object in result) {
+                        [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
+                    }
+                }
+                completion(success, complete, result, error);
+            } else {
+                completion(success, complete, nil, error);
+            }
+            //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
+            //            ((id(^)())(completion(success, complete, rosters, error));
+        }
+    }];
+    
+    
 }
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {

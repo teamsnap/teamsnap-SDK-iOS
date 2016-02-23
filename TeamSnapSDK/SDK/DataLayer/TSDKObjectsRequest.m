@@ -48,6 +48,7 @@
 #import "TSDKinvitationFinder.h"
 
 static NSMutableArray *supportedSDKObjects;
+static NSArray *knownCompletionTypes;
 
 @implementation TSDKObjectsRequest
 
@@ -348,6 +349,17 @@ static NSMutableArray *supportedSDKObjects;
         }
     }
     return nil;
+}
+
++ (NSArray *)knownCompletionTypes {
+    if (!knownCompletionTypes) {
+        NSMutableArray *completionTypes = [[NSMutableArray alloc] init];
+        for (Class class in supportedSDKObjects) {
+            [completionTypes addObject:[class completionBlockTypeName]];
+        }
+        knownCompletionTypes = [NSArray arrayWithArray:completionTypes];
+    }
+    return knownCompletionTypes;
 }
 
 + (void)dumpCompletionTypes {

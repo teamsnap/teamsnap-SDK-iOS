@@ -4,6 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKCompletionBlockTypes.h"
+#import "TSDKRequestConfiguration.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
@@ -103,8 +105,9 @@
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
+//- (TSDKMember *)memberWithID:(NSInteger)memberId;
+//- (NSArray *)membersWithUserId:(NSInteger)userId;
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)eventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
 
@@ -118,65 +121,73 @@
 
 @interface TSDKTeam (ForwardedMethods)
 
--(void)getTeamMediaGroupsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getContactEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getAvailabilitiesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getForumTopicsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMembersPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getOwnerWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getDivisionMembersPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamMediumCommentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getForumSubscriptionsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getEventsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamPaypalPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getForumPostsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamMediaWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getSportWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getCalendarWebcalWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getContactsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMembersCsvExportWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTrackedItemStatusesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getManagersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getLeagueRegistrantDocumentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getDivisionLocationsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getOpponentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getCalendarHttpGamesOnlyWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getCustomDataWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getCalendarHttpWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getDivisionTeamStandingsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getPaymentNotesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getPlanWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamFeesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberPhoneNumbersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberLinksWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getDivisionMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getBroadcastEmailAttachmentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamStatisticsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberEmailAddressesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getStatisticsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getSponsorsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberBalancesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getBroadcastSmsesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberStatisticsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getStatisticGroupsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getOpponentsResultsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getPaypalCurrencyWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTrackedItemsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getAssignmentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamResultsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getLeagueCustomDataWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getStatisticDataWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getContactPhoneNumbersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberFilesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberPaymentsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getLeagueCustomFieldsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getCustomFieldsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getLocationsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getBroadcastEmailsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getEventsCsvExportWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getCalendarWebcalGamesOnlyWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamPublicSiteWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediaGroupsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock)completion;
+-(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityArrayCompletionBlock)completion;
+-(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumTopicArrayCompletionBlock)completion;
+-(void)getOwnerWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getDivisionMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
+-(void)getTeamPaypalPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumPostArrayCompletionBlock)completion;
+-(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getSportWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKSportArrayCompletionBlock)completion;
+-(void)getCalendarWebcalWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getContactsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactArrayCompletionBlock)completion;
+-(void)getMembersCsvExportWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTrackedItemStatusesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTrackedItemStatusArrayCompletionBlock)completion;
+-(void)getDivisionContactsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getManagersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueRegistrantDocumentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getStatisticAggregatesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getDivisionLocationsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getOpponentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKOpponentArrayCompletionBlock)completion;
+-(void)getCalendarHttpGamesOnlyWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomDatumArrayCompletionBlock)completion;
+-(void)getDivisionContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion;
+-(void)getCalendarHttpWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getDivisionTeamStandingsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getPaymentNotesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getPlanWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPlanArrayCompletionBlock)completion;
+-(void)getTeamFeesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamFeeArrayCompletionBlock)completion;
+-(void)getEventsOverviewWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock)completion;
+-(void)getMemberLinksWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastEmailAttachmentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamStatisticArrayCompletionBlock)completion;
+-(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock)completion;
+-(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticArrayCompletionBlock)completion;
+-(void)getSponsorsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getStatisticGroupsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticGroupArrayCompletionBlock)completion;
+-(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberStatisticArrayCompletionBlock)completion;
+-(void)getOpponentsResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getPaypalCurrencyWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTrackedItemsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTrackedItemArrayCompletionBlock)completion;
+-(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAssignmentArrayCompletionBlock)completion;
+-(void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamResultsArrayCompletionBlock)completion;
+-(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
+-(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticDatumArrayCompletionBlock)completion;
+-(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomFieldArrayCompletionBlock)completion;
+-(void)getLocationsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKLocationArrayCompletionBlock)completion;
+-(void)getBroadcastEmailsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKBroadcastEmailArrayCompletionBlock)completion;
+-(void)getEventsCsvExportWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getCalendarWebcalGamesOnlyWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 @end

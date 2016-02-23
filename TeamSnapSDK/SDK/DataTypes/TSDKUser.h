@@ -4,6 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKRequestConfiguration.h"
+#import "TSDKCompletionBlockTypes.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
@@ -47,11 +49,10 @@
 
 @interface TSDKUser (ForwardedMethods)
 
--(void)getTeamsPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getPersonasWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getFacebookPagesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getActiveTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
-
+-(void)getTeamsPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion;
+-(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getFacebookPagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 @end

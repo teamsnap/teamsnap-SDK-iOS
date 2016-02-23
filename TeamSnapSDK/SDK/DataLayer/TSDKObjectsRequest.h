@@ -27,5 +27,7 @@
 + (NSArray *)SDKObjectsFromCollection:(TSDKCollectionJSON *)containerCollection;
 + (NSString *)typeForRel:(NSString *)rel;
 + (NSString *)relForType:(NSString *)type;
++ (NSArray *)knownCompletionTypes;
++ (void)dumpCompletionTypes;
 
 @end

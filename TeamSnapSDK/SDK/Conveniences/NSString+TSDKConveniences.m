@@ -124,6 +124,8 @@
 - (NSString *)linkForGetProperty {
     if ([[self substringToIndex:3] isEqualToString:@"get"] && [[self substringFromIndex:self.length - 15] isEqualToString:@"WithCompletion:"]) {
         return [NSString stringWithFormat:@"link%@",[[self substringToIndex:self.length - 15]substringFromIndex:3]];
+    } else if ([[self substringToIndex:3] isEqualToString:@"get"] && [[self substringFromIndex:self.length - 29] isEqualToString:@"WithConfiguration:completion:"]) {
+        return [NSString stringWithFormat:@"link%@",[[self substringToIndex:self.length - 29]substringFromIndex:3]];
     } else {
         return nil;
     }
