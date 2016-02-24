@@ -104,8 +104,8 @@
 //+(void)actionInitiateRegistrationClientid:(NSString *)clientId redirectUri:(NSString *)redirectUri emailAddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion; //Send a signup email to an unregistered user to start the registration process
 //+(void)actionSendInvitationsEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion; //Send any pending invitations for a specified email address
 
--(void)getSchemasArrayWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion;
+-(void)getSchemasArrayWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getSchemasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKSimpleCompletionBlock)completion;
 
 +(void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion; //Send any pending invitations for a specified email address
 +(void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion;

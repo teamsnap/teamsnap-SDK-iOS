@@ -43,7 +43,7 @@
     return @"team";
 }
 
-+(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withCompletion:(TSDKCompletionBlock)completion {
++(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
     command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
     command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
@@ -57,7 +57,7 @@
 
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     [self setTimeZone:timeZone];
-    [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withCompletion:completion];
+    [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
 - (id)init {

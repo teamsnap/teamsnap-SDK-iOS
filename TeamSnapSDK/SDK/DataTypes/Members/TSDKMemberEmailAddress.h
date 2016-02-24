@@ -26,8 +26,8 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 
 
-+(void)actionInvite:(NSArray *)memberEmailAddresses asSenderMemberId:(NSInteger)senderMemberId withCompletion:(TSDKCompletionBlock)completion;
--(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withCompletion:(TSDKCompletionBlock)completion;
++(void)actionInvite:(NSArray *)memberEmailAddresses asSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
+-(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 
 @end
 

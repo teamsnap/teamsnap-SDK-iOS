@@ -16,7 +16,7 @@
     return @"member_email_address";
 }
 
-+(void)actionInvite:(NSArray *)emailAddresses asSenderMemberId:(NSInteger)senderMemberId withCompletion:(TSDKCompletionBlock)completion {
++(void)actionInvite:(NSArray *)emailAddresses asSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     if (emailAddresses && emailAddresses.count>0) {
         TSDKMemberEmailAddress *firstMemberEmailAddress = [emailAddresses objectAtIndex:0];
 
@@ -43,8 +43,8 @@
     }
 }
 
--(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withCompletion:(TSDKCompletionBlock)completion {
-    [TSDKMemberEmailAddress actionInvite:@[self] asSenderMemberId:senderMemberId withCompletion:completion];
+-(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
+    [TSDKMemberEmailAddress actionInvite:@[self] asSenderMemberId:senderMemberId withConfiguration:configuration completion:completion];
 }
 
 @end

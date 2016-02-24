@@ -18,7 +18,7 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkForumPosts;
 
-+(void)addNewTopicWithTitle:(NSString *)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSInteger)teamId withCompletion:(TSDKCompletionBlock)completion;
++(void)addNewTopicWithTitle:(NSString *)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 
 @end
 

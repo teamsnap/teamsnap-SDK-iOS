@@ -166,7 +166,7 @@
     };
     
     if (self.rootLinks) {
-        [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+        [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
     } else {
         TSDKTeamSnap __weak *weakSelf = self;
         
@@ -178,7 +178,7 @@
                     [TSPCache saveObject:weakSelf.rootLinks];
                 }
             
-                [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+                [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {
                 if (completion) {
                     completion(weakSelf.rootLinks);

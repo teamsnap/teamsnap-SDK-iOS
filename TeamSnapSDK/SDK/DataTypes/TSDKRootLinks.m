@@ -64,7 +64,7 @@
     }
 }
 
-- (void)getSchemasArrayWithCompletion:(TSDKArrayCompletionBlock) completion {
+- (void)getSchemasArrayWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     NSArray *versionComponents = [self.collection.version componentsSeparatedByString:@"."];
     NSString *majorMinorVersion = nil;
     if (versionComponents.count>1) {
@@ -106,7 +106,7 @@
     }
 }
 
-- (void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion {
+- (void)getSchemasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKSimpleCompletionBlock)completion {
     if ([[TSDKTeamSnap sharedInstance] teamSnapUser] && self.schemas) {
         if (completion) {
             completion(YES, nil);
@@ -116,7 +116,7 @@
             completion(YES, nil);
         }
     } else {
-        [self getSchemasArrayWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        [self getSchemasArrayWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
                 completion(success, error);
             }
