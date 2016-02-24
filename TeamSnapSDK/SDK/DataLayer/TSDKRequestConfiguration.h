@@ -10,6 +10,8 @@
 
 @interface TSDKRequestConfiguration : NSObject
 
++ (instancetype)forceReload;
+
 @property (nonatomic, assign) BOOL forceReload;
 
 @end
