@@ -127,7 +127,7 @@
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion;
 
 #if TARGET_OS_IPHONE
--(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion;
+-(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 #endif
 
 @end

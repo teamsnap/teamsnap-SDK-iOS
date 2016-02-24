@@ -311,12 +311,13 @@
 }
 
 #if TARGET_OS_IPHONE
--(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
+-(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
+#warning needs refactor - JLR
     if ([self.teamPrefrences linkTeamLogo]) {
-        [self.teamPrefrences getTeamLogoWithCompletion:completion];
+        [self.teamPrefrences getTeamLogoWithConfiguration:configuration completion:completion];
     } else {
-        [self getTeamPreferencesWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            
+        [self getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+
         }];
         if (completion) {
             completion(nil);

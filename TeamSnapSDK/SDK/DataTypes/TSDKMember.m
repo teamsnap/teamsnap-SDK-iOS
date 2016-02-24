@@ -68,7 +68,7 @@
     return (self.isOwner);
 }
 #if TARGET_OS_IPHONE
--(void)getMemberPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
+-(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
@@ -76,7 +76,7 @@
     }];
 }
 
--(void)getMemberThumbnailWithCompletion:(TSDKImageCompletionBlock)completion {
+-(void)getMemberThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);

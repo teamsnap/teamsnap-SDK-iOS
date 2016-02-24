@@ -126,7 +126,7 @@
 
 
 + (void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [rootLinks.collection.commands objectForKey:@"send_invitations"];
             if (collectionCommand) {
@@ -144,7 +144,7 @@
 }
 
 + (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"welcome"];
             if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {

@@ -10,7 +10,7 @@
 #import <SafariServices/SafariServices.h>
 #endif
 
-@class TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan, SFSafariViewController;
+@class TSDKRequestConfiguration, TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan, SFSafariViewController;
 
 @interface TSDKTeamSnap : NSObject
 
@@ -32,12 +32,12 @@
 - (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion;
 #endif
 
-- (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
-- (void)rootLinksWithCompletion:(TSDKRootLinkCompletionBlock)completion;
-- (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;
-- (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKCompletionBlock)completionBlock;
-- (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
-- (void)getPlansWithCompletion:(void (^)(bool success, NSString *message))completion;
+- (void)publicFeaturesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
+- (void)rootLinksWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKRootLinkCompletionBlock)completion;
+- (void)invitationStatusForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInviteStatusCompletionBlock)completionBlock;
+- (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
+- (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
+- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion;
 - (void)addPlan:(TSDKPlan *)plan;
 - (TSDKPlan *)planWithId:(NSInteger)planId;
 - (void)planForPlanId:(NSInteger)planId withCompletion:(void (^)(TSDKPlan *plan))completion;

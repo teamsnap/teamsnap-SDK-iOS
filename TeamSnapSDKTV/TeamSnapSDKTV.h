@@ -25,7 +25,7 @@ FOUNDATION_EXPORT const unsigned char TeamSnapSDKTVVersionString[];
 #import <TeamSnapSDKTV/TSDKAssignment.h>
 #import <TeamSnapSDKTV/TSDKAvailability.h>
 #import <TeamSnapSDKTV/TSDKBroadcastEmail.h>
-#import <TeamSnapSDKTV/TSDKBroadcastSms.h>
+#import <TeamSnapSDKTV/TSDKBroadcastAlert.h>
 #import <TeamSnapSDKTV/TSDKCustomDatum.h>
 #import <TeamSnapSDKTV/TSDKCustomField.h>
 #import <TeamSnapSDKTV/TSDKForumPost.h>

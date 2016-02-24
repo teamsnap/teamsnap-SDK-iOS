@@ -1,5 +1,5 @@
 //
-//  TSDKBroadcastSms.m
+//  TSDKBroadcastAlert.m
 //  SDKPlayground
 //
 //  Created by Jason Rahaim on 9/1/15.

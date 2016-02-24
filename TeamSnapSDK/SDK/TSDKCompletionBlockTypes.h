@@ -47,7 +47,7 @@ typedef void (^TSDKBroadcastEmailArrayCompletionBlock)(BOOL success, BOOL comple
 typedef void (^TSDKLocationArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKLocation *> *locations, NSError *error);
 typedef void (^TSDKContactArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContact *> *contacts, NSError *error);
 typedef void (^TSDKMemberBalanceArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberBalance *> *memberBalances, NSError *error);
-typedef void (^TSDKBroadcastSmsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastAlert *> *broadcastSmses, NSError *error);
+typedef void (^TSDKBroadcastAlertArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastAlert *> *broadcastAlerts, NSError *error);
 typedef void (^TSDKForumSubscriptionArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumSubscription *> *forumSubscriptions, NSError *error);
 typedef void (^TSDKPaymentNoteArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKPaymentNote *> *paymentNotes, NSError *error);
 typedef void (^TSDKTslPhotosArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTslPhotos *> *tslPhotoses, NSError *error);

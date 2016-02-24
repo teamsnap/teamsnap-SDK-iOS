@@ -33,7 +33,7 @@
 #import <TeamSnapSDK/TSDKAssignment.h>
 #import <TeamSnapSDK/TSDKAvailability.h>
 #import <TeamSnapSDK/TSDKBroadcastEmail.h>
-#import <TeamSnapSDK/TSDKBroadcastSms.h>
+#import <TeamSnapSDK/TSDKBroadcastAlert.h>
 #import <TeamSnapSDK/TSDKCustomDatum.h>
 #import <TeamSnapSDK/TSDKCustomField.h>
 #import <TeamSnapSDK/TSDKForumPost.h>
@@ -67,3 +67,4 @@
 #import <TeamSnapSDK/TSDKPaymentNote.h>
 #import <TeamSnapSDK/TSDKMemberBalance.h>
 #import <TeamSnapSDK/TSDKOpponentResults.h>
+#import <TeamSnapSDK/TSDKEventStatistic.h>
