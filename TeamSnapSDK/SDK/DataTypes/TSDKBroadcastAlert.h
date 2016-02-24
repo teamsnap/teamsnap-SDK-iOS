@@ -5,7 +5,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKBroadcastSms : TSDKCollectionObject
+@interface TSDKBroadcastAlert : TSDKCollectionObject
 
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2012-05-25T18:16:56Z
 @property (nonatomic, assign) BOOL isDraft; //Example: 0

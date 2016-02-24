@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
 
-#import "TSDKBroadcastSms.h"
+#import "TSDKBroadcastAlert.h"
 
-@implementation TSDKBroadcastSms
+@implementation TSDKBroadcastAlert
 
 @dynamic updatedAt, isDraft, createdAt, memberId, recipientNames, teamId, body, recipientCount, linkTeam, linkMember;
 
