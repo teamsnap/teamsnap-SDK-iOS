@@ -63,3 +63,7 @@
 #import <TeamSnapSDK/TSDKTeamMediumComment.h>
 #import <TeamSnapSDK/TSDKForumSubscription.h>
 #import <TeamSnapSDK/TSDKTeamMedium.h>
+#import <TeamSnapSDK/TSDKMemberPayment.h>
+#import <TeamSnapSDK/TSDKPaymentNote.h>
+#import <TeamSnapSDK/TSDKMemberBalance.h>
+#import <TeamSnapSDK/TSDKOpponentResults.h>

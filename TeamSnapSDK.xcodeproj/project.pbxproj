@@ -72,6 +72,22 @@
 		969B7ECF1C7CB28300FD3EA0 /* TSDKTeamMedium.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7ECC1C7CB28300FD3EA0 /* TSDKTeamMedium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969B7ED01C7CB28300FD3EA0 /* TSDKTeamMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7ECD1C7CB28300FD3EA0 /* TSDKTeamMedium.m */; };
 		969B7ED11C7CB28300FD3EA0 /* TSDKTeamMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7ECD1C7CB28300FD3EA0 /* TSDKTeamMedium.m */; };
+		969B7ED91C7CBB5000FD3EA0 /* TSDKPaymentNote.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7ED71C7CBB5000FD3EA0 /* TSDKPaymentNote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EDA1C7CBB5000FD3EA0 /* TSDKPaymentNote.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7ED71C7CBB5000FD3EA0 /* TSDKPaymentNote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EDB1C7CBB5000FD3EA0 /* TSDKPaymentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7ED81C7CBB5000FD3EA0 /* TSDKPaymentNote.m */; };
+		969B7EDC1C7CBB5000FD3EA0 /* TSDKPaymentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7ED81C7CBB5000FD3EA0 /* TSDKPaymentNote.m */; };
+		969B7EDF1C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EDD1C7CBBB300FD3EA0 /* TSDKMemberPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EE01C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EDD1C7CBBB300FD3EA0 /* TSDKMemberPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EE11C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EDE1C7CBBB300FD3EA0 /* TSDKMemberPayment.m */; };
+		969B7EE21C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EDE1C7CBBB300FD3EA0 /* TSDKMemberPayment.m */; };
+		969B7EF21C7CC77600FD3EA0 /* TSDKMemberBalance.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EF01C7CC77600FD3EA0 /* TSDKMemberBalance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EF31C7CC77600FD3EA0 /* TSDKMemberBalance.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EF01C7CC77600FD3EA0 /* TSDKMemberBalance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EF41C7CC77600FD3EA0 /* TSDKMemberBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EF11C7CC77600FD3EA0 /* TSDKMemberBalance.m */; };
+		969B7EF51C7CC77600FD3EA0 /* TSDKMemberBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EF11C7CC77600FD3EA0 /* TSDKMemberBalance.m */; };
+		969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EF61C7CF30600FD3EA0 /* TSDKOpponentResults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EF91C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 969B7EF61C7CF30600FD3EA0 /* TSDKOpponentResults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969B7EFA1C7CF30600FD3EA0 /* TSDKOpponentResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EF71C7CF30600FD3EA0 /* TSDKOpponentResults.m */; };
+		969B7EFB1C7CF30600FD3EA0 /* TSDKOpponentResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 969B7EF71C7CF30600FD3EA0 /* TSDKOpponentResults.m */; };
 		969E804B1BAAE62E00CA518F /* TeamSnapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969E80401BAAE62D00CA518F /* TeamSnapSDK.framework */; };
 		969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E804F1BAAE62E00CA518F /* TeamSnapSDKTests.m */; };
 		969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805A1BAAE79500CA518F /* TeamSnapSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -266,15 +282,15 @@
 		964CDDE61BB4514B00909D11 /* TSDKTslPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTslPhotos.m; sourceTree = "<group>"; };
 		964CDDEB1BB4519400909D11 /* TSDKPublicFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKPublicFeatures.h; sourceTree = "<group>"; };
 		964CDDEC1BB4519400909D11 /* TSDKPublicFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKPublicFeatures.m; sourceTree = "<group>"; };
-		965B7D2B1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberPhoneNumber.h; path = Members/TSDKMemberPhoneNumber.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		965B7D2B1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberPhoneNumber.h; path = Members/TSDKMemberPhoneNumber.h; sourceTree = "<group>"; };
 		965B7D2C1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberPhoneNumber.m; path = Members/TSDKMemberPhoneNumber.m; sourceTree = "<group>"; };
-		965B7D311C18C7EE009AF13E /* TSDKMemberEmailAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberEmailAddress.h; path = Members/TSDKMemberEmailAddress.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		965B7D311C18C7EE009AF13E /* TSDKMemberEmailAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberEmailAddress.h; path = Members/TSDKMemberEmailAddress.h; sourceTree = "<group>"; };
 		965B7D321C18C7EE009AF13E /* TSDKMemberEmailAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberEmailAddress.m; path = Members/TSDKMemberEmailAddress.m; sourceTree = "<group>"; };
 		965B7D371C18CA80009AF13E /* TSDKContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContact.h; path = Members/TSDKContact.h; sourceTree = "<group>"; };
 		965B7D381C18CA80009AF13E /* TSDKContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContact.m; path = Members/TSDKContact.m; sourceTree = "<group>"; };
 		965B7D3D1C18CAE1009AF13E /* TSDKContactEmailAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContactEmailAddress.h; path = Members/TSDKContactEmailAddress.h; sourceTree = "<group>"; };
 		965B7D3E1C18CAE1009AF13E /* TSDKContactEmailAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactEmailAddress.m; path = Members/TSDKContactEmailAddress.m; sourceTree = "<group>"; };
-		965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContactPhoneNumber.h; path = Members/TSDKContactPhoneNumber.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContactPhoneNumber.h; path = Members/TSDKContactPhoneNumber.h; sourceTree = "<group>"; };
 		965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactPhoneNumber.m; path = Members/TSDKContactPhoneNumber.m; sourceTree = "<group>"; };
 		9696ACC01C1715E000FA7F64 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRequestConfiguration.h; sourceTree = "<group>"; };
@@ -289,6 +305,14 @@
 		969B7EC21C7CAE2600FD3EA0 /* TSDKForumSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKForumSubscription.m; path = Messages/TSDKForumSubscription.m; sourceTree = "<group>"; };
 		969B7ECC1C7CB28300FD3EA0 /* TSDKTeamMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKTeamMedium.h; path = Media/TSDKTeamMedium.h; sourceTree = "<group>"; };
 		969B7ECD1C7CB28300FD3EA0 /* TSDKTeamMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKTeamMedium.m; path = Media/TSDKTeamMedium.m; sourceTree = "<group>"; };
+		969B7ED71C7CBB5000FD3EA0 /* TSDKPaymentNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKPaymentNote.h; path = Payments/TSDKPaymentNote.h; sourceTree = "<group>"; };
+		969B7ED81C7CBB5000FD3EA0 /* TSDKPaymentNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKPaymentNote.m; path = Payments/TSDKPaymentNote.m; sourceTree = "<group>"; };
+		969B7EDD1C7CBBB300FD3EA0 /* TSDKMemberPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMemberPayment.h; path = Payments/TSDKMemberPayment.h; sourceTree = "<group>"; };
+		969B7EDE1C7CBBB300FD3EA0 /* TSDKMemberPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberPayment.m; path = Payments/TSDKMemberPayment.m; sourceTree = "<group>"; };
+		969B7EF01C7CC77600FD3EA0 /* TSDKMemberBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMemberBalance.h; path = Payments/TSDKMemberBalance.h; sourceTree = "<group>"; };
+		969B7EF11C7CC77600FD3EA0 /* TSDKMemberBalance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberBalance.m; path = Payments/TSDKMemberBalance.m; sourceTree = "<group>"; };
+		969B7EF61C7CF30600FD3EA0 /* TSDKOpponentResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKOpponentResults.h; sourceTree = "<group>"; };
+		969B7EF71C7CF30600FD3EA0 /* TSDKOpponentResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKOpponentResults.m; sourceTree = "<group>"; };
 		969E80401BAAE62D00CA518F /* TeamSnapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeamSnapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		969E80451BAAE62D00CA518F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		969E804A1BAAE62E00CA518F /* TeamSnapSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeamSnapSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,13 +345,13 @@
 		969E807A1BAAE7AB00CA518F /* TSDKDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKDataRequest.m; sourceTree = "<group>"; };
 		969E807B1BAAE7AB00CA518F /* TSDKObjectsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKObjectsRequest.h; sourceTree = "<group>"; };
 		969E807C1BAAE7AB00CA518F /* TSDKObjectsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKObjectsRequest.m; sourceTree = "<group>"; };
-		969E807F1BAAE7AB00CA518F /* TSDKMemberStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKMemberStatistic.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E807F1BAAE7AB00CA518F /* TSDKMemberStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKMemberStatistic.h; sourceTree = "<group>"; };
 		969E80801BAAE7AB00CA518F /* TSDKMemberStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKMemberStatistic.m; sourceTree = "<group>"; };
 		969E80811BAAE7AB00CA518F /* TSDKStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatistic.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		969E80821BAAE7AB00CA518F /* TSDKStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKStatistic.m; sourceTree = "<group>"; };
-		969E80831BAAE7AB00CA518F /* TSDKStatisticDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatisticDatum.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80831BAAE7AB00CA518F /* TSDKStatisticDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatisticDatum.h; sourceTree = "<group>"; };
 		969E80841BAAE7AB00CA518F /* TSDKStatisticDatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKStatisticDatum.m; sourceTree = "<group>"; };
-		969E80851BAAE7AB00CA518F /* TSDKStatisticGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatisticGroup.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80851BAAE7AB00CA518F /* TSDKStatisticGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatisticGroup.h; sourceTree = "<group>"; };
 		969E80861BAAE7AB00CA518F /* TSDKStatisticGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKStatisticGroup.m; sourceTree = "<group>"; };
 		969E80871BAAE7AB00CA518F /* TSDKTeamStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamStatistic.h; sourceTree = "<group>"; };
 		969E80881BAAE7AB00CA518F /* TSDKTeamStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamStatistic.m; sourceTree = "<group>"; };
@@ -335,13 +359,13 @@
 		969E808A1BAAE7AB00CA518F /* TSDKAssignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAssignment.m; sourceTree = "<group>"; };
 		969E808B1BAAE7AB00CA518F /* TSDKAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKAvailability.h; sourceTree = "<group>"; };
 		969E808C1BAAE7AB00CA518F /* TSDKAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailability.m; sourceTree = "<group>"; };
-		969E808D1BAAE7AB00CA518F /* TSDKBroadcastEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKBroadcastEmail.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E808D1BAAE7AB00CA518F /* TSDKBroadcastEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKBroadcastEmail.h; sourceTree = "<group>"; };
 		969E808E1BAAE7AB00CA518F /* TSDKBroadcastEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKBroadcastEmail.m; sourceTree = "<group>"; };
 		969E808F1BAAE7AB00CA518F /* TSDKBroadcastSms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKBroadcastSms.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		969E80901BAAE7AB00CA518F /* TSDKBroadcastSms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKBroadcastSms.m; sourceTree = "<group>"; };
 		969E80911BAAE7AB00CA518F /* TSDKCustomDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKCustomDatum.h; sourceTree = "<group>"; };
 		969E80921BAAE7AB00CA518F /* TSDKCustomDatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCustomDatum.m; sourceTree = "<group>"; };
-		969E80931BAAE7AB00CA518F /* TSDKCustomField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKCustomField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80931BAAE7AB00CA518F /* TSDKCustomField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKCustomField.h; sourceTree = "<group>"; };
 		969E80941BAAE7AB00CA518F /* TSDKCustomField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCustomField.m; sourceTree = "<group>"; };
 		969E80951BAAE7AB00CA518F /* TSDKEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKEvent.h; sourceTree = "<group>"; };
 		969E80961BAAE7AB00CA518F /* TSDKEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKEvent.m; sourceTree = "<group>"; };
@@ -355,7 +379,7 @@
 		969E809E1BAAE7AB00CA518F /* TSDKMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKMember.m; sourceTree = "<group>"; };
 		969E809F1BAAE7AB00CA518F /* TSDKOpponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKOpponent.h; sourceTree = "<group>"; };
 		969E80A01BAAE7AB00CA518F /* TSDKOpponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKOpponent.m; sourceTree = "<group>"; };
-		969E80A11BAAE7AB00CA518F /* TSDKPlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKPlan.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80A11BAAE7AB00CA518F /* TSDKPlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKPlan.h; sourceTree = "<group>"; };
 		969E80A21BAAE7AB00CA518F /* TSDKPlan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKPlan.m; sourceTree = "<group>"; };
 		969E80A31BAAE7AB00CA518F /* TSDKSport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKSport.h; sourceTree = "<group>"; };
 		969E80A41BAAE7AB00CA518F /* TSDKSport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSport.m; sourceTree = "<group>"; };
@@ -446,6 +470,19 @@
 				969B7EC21C7CAE2600FD3EA0 /* TSDKForumSubscription.m */,
 			);
 			name = Messages;
+			sourceTree = "<group>";
+		};
+		969B7ED61C7CBB3400FD3EA0 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				969B7ED71C7CBB5000FD3EA0 /* TSDKPaymentNote.h */,
+				969B7ED81C7CBB5000FD3EA0 /* TSDKPaymentNote.m */,
+				969B7EDD1C7CBBB300FD3EA0 /* TSDKMemberPayment.h */,
+				969B7EDE1C7CBBB300FD3EA0 /* TSDKMemberPayment.m */,
+				969B7EF01C7CC77600FD3EA0 /* TSDKMemberBalance.h */,
+				969B7EF11C7CC77600FD3EA0 /* TSDKMemberBalance.m */,
+			);
+			name = Payments;
 			sourceTree = "<group>";
 		};
 		969E80361BAAE62D00CA518F = {
@@ -567,6 +604,7 @@
 		969E807D1BAAE7AB00CA518F /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				969B7ED61C7CBB3400FD3EA0 /* Payments */,
 				969B7EC01C7CADFD00FD3EA0 /* Messages */,
 				969B7EB41C7CA98800FD3EA0 /* Media */,
 				965B7D2A1C18C55C009AF13E /* Members */,
@@ -623,6 +661,8 @@
 				960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */,
 				969B7EA01C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h */,
 				969B7EA11C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m */,
+				969B7EF61C7CF30600FD3EA0 /* TSDKOpponentResults.h */,
+				969B7EF71C7CF30600FD3EA0 /* TSDKOpponentResults.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -678,6 +718,7 @@
 				969E80E11BAAE7AB00CA518F /* TSDKForumPost.h in Headers */,
 				969E80DB1BAAE7AB00CA518F /* TSDKCustomDatum.h in Headers */,
 				965B7D451C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */,
+				969B7ED91C7CBB5000FD3EA0 /* TSDKPaymentNote.h in Headers */,
 				969E80D51BAAE7AB00CA518F /* TSDKAvailability.h in Headers */,
 				969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */,
 				969B7ECE1C7CB28300FD3EA0 /* TSDKTeamMedium.h in Headers */,
@@ -688,6 +729,7 @@
 				969E80CB1BAAE7AB00CA518F /* TSDKStatistic.h in Headers */,
 				969E80CD1BAAE7AB00CA518F /* TSDKStatisticDatum.h in Headers */,
 				969B7EAC1C7CA33500FD3EA0 /* TSDKMemberPreferences.h in Headers */,
+				969B7EDF1C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */,
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
 				965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
 				969E80DF1BAAE7AB00CA518F /* TSDKEvent.h in Headers */,
@@ -696,6 +738,7 @@
 				969E80F31BAAE7AB00CA518F /* TSDKTeamPreferences.h in Headers */,
 				969E80EF1BAAE7AB00CA518F /* TSDKTeam.h in Headers */,
 				969E80D11BAAE7AB00CA518F /* TSDKTeamStatistic.h in Headers */,
+				969B7EF21C7CC77600FD3EA0 /* TSDKMemberBalance.h in Headers */,
 				969B7E981C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h in Headers */,
 				969E80C91BAAE7AB00CA518F /* TSDKMemberStatistic.h in Headers */,
 				965B7D391C18CA80009AF13E /* TSDKContact.h in Headers */,
@@ -718,6 +761,7 @@
 				969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */,
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
 				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
+				969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */,
@@ -740,9 +784,11 @@
 				96B47F411BADB4410035F2CC /* TSDKTeamPreferences.h in Headers */,
 				96B47F231BADB4410035F2CC /* TSDKAvailability.h in Headers */,
 				96B47F611BADB4810035F2CC /* NSString+TSDKConveniences.h in Headers */,
+				969B7EDA1C7CBB5000FD3EA0 /* TSDKPaymentNote.h in Headers */,
 				96B47F531BADB4740035F2CC /* NSHTTPURLResponse+convenience.h in Headers */,
 				96B47F2D1BADB4410035F2CC /* TSDKEvent.h in Headers */,
 				96B47F5D1BADB4810035F2CC /* NSMutableURLRequest+TSDKConveniences.h in Headers */,
+				969B7EF31C7CC77600FD3EA0 /* TSDKMemberBalance.h in Headers */,
 				969B7EC41C7CAE2600FD3EA0 /* TSDKForumSubscription.h in Headers */,
 				96481EB51C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch in Headers */,
 				969B7ECF1C7CB28300FD3EA0 /* TSDKTeamMedium.h in Headers */,
@@ -783,12 +829,14 @@
 				96B47F2B1BADB4410035F2CC /* TSDKCustomField.h in Headers */,
 				965B7D461C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */,
 				96B47F571BADB4740035F2CC /* TSDKObjectsRequest.h in Headers */,
+				969B7EF91C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
 				96B47F3B1BADB4410035F2CC /* TSDKSport.h in Headers */,
 				96B47F271BADB4410035F2CC /* TSDKBroadcastSms.h in Headers */,
 				96B47F3D1BADB4410035F2CC /* TSDKTeam.h in Headers */,
 				965B7D341C18C7EE009AF13E /* TSDKMemberEmailAddress.h in Headers */,
 				965B7D401C18CAE1009AF13E /* TSDKContactEmailAddress.h in Headers */,
 				969B7E991C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h in Headers */,
+				969B7EE01C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */,
 				96B47F4D1BADB4640035F2CC /* TSDKStatisticDatum.h in Headers */,
 				96B47F631BADB4850035F2CC /* TSDKCollectionCommand.h in Headers */,
 				96B47F471BADB4410035F2CC /* TSDKUser.h in Headers */,
@@ -994,6 +1042,7 @@
 				969E80EE1BAAE7AB00CA518F /* TSDKSport.m in Sources */,
 				969E80F61BAAE7AB00CA518F /* TSDKTrackedItem.m in Sources */,
 				969E80FF1BAAE7B500CA518F /* TSDKProfileTimer.m in Sources */,
+				969B7EE11C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */,
 				965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
@@ -1004,6 +1053,7 @@
 				964CDDEA1BB4514B00909D11 /* TSDKTslPhotos.m in Sources */,
 				969B7EC51C7CAE2600FD3EA0 /* TSDKForumSubscription.m in Sources */,
 				969E80EC1BAAE7AB00CA518F /* TSDKPlan.m in Sources */,
+				969B7EF41C7CC77600FD3EA0 /* TSDKMemberBalance.m in Sources */,
 				969E80D81BAAE7AB00CA518F /* TSDKBroadcastEmail.m in Sources */,
 				96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				969E80CC1BAAE7AB00CA518F /* TSDKStatistic.m in Sources */,
@@ -1011,6 +1061,8 @@
 				969E80B61BAAE7AB00CA518F /* TSDKCollectionJSON.m in Sources */,
 				964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */,
 				969E80E41BAAE7AB00CA518F /* TSDKForumTopic.m in Sources */,
+				969B7EDB1C7CBB5000FD3EA0 /* TSDKPaymentNote.m in Sources */,
+				969B7EFA1C7CF30600FD3EA0 /* TSDKOpponentResults.m in Sources */,
 				969E80F21BAAE7AB00CA518F /* TSDKTeamFee.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,6 +1096,7 @@
 				96966BD41C4989C4000828E1 /* TSDKConstants.m in Sources */,
 				96B47F441BADB4410035F2CC /* TSDKTrackedItem.m in Sources */,
 				965B7D301C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
+				969B7EFB1C7CF30600FD3EA0 /* TSDKOpponentResults.m in Sources */,
 				96B47F621BADB4810035F2CC /* NSString+TSDKConveniences.m in Sources */,
 				96B47F4C1BADB4640035F2CC /* TSDKStatistic.m in Sources */,
 				96B47F661BADB4850035F2CC /* TSDKCollectionJSON.m in Sources */,
@@ -1065,9 +1118,12 @@
 				96F4FC421BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				96B47F6A1BADB4A10035F2CC /* TSPCache.m in Sources */,
 				96B47F3E1BADB4410035F2CC /* TSDKTeam.m in Sources */,
+				969B7EF51C7CC77600FD3EA0 /* TSDKMemberBalance.m in Sources */,
+				969B7EDC1C7CBB5000FD3EA0 /* TSDKPaymentNote.m in Sources */,
 				96B47F5E1BADB4810035F2CC /* NSMutableURLRequest+TSDKConveniences.m in Sources */,
 				96B47F481BADB4410035F2CC /* TSDKUser.m in Sources */,
 				969B7EAF1C7CA33500FD3EA0 /* TSDKMemberPreferences.m in Sources */,
+				969B7EE21C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */,
 				969B7EBA1C7CA9F800FD3EA0 /* TSDKTeamMediumComment.m in Sources */,
 				96B47F541BADB4740035F2CC /* NSHTTPURLResponse+convenience.m in Sources */,
 				96B47F221BADB4410035F2CC /* TSDKAssignment.m in Sources */,

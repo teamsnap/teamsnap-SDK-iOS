@@ -11,7 +11,7 @@
 
 @interface TSDKForumPost : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *wasBroadcasted; //Example: **NULL**
+@property (nonatomic, assign) BOOL wasBroadcasted; //Example: **NULL**
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-25T18:19:51Z
 @property (nonatomic, weak) NSString *posterName; //Example: Jason R
 @property (nonatomic, weak) NSString *message; //Example: <p>This is a test post!</p>

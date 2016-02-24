@@ -16,3 +16,10 @@
 @property (nonatomic, weak) NSURL *linkCustomData;
 
 @end
+
+@interface TSDKCustomField (ForwardedMethods)
+
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomDatumArrayCompletionBlock)completion;
+
+@end

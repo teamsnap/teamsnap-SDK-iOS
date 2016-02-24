@@ -11,15 +11,16 @@
 
 @interface TSDKMemberStatistic : TSDKCollectionObject
 
-@property (nonatomic, assign) NSInteger teamId; //Example: 153832
-@property (nonatomic, assign) NSInteger totalRankingForQuery; //Example: 1
-@property (nonatomic, assign) NSInteger average; //Example: 2.4
-@property (nonatomic, assign) NSInteger averageRankingForQuery; //Example: 2
+@property (nonatomic, weak) NSString *averageRankingForQuery; //Example: **NULL**
+@property (nonatomic, assign) NSInteger countGamesPlayed; //Example: 0
+@property (nonatomic, weak) NSString *average; //Example: **NULL**
+@property (nonatomic, weak) NSString *averageRanking; //Example: **NULL**
+@property (nonatomic, weak) NSString *totalRankingForQuery; //Example: **NULL**
 @property (nonatomic, assign) NSInteger statisticId; //Example: 776832
-@property (nonatomic, assign) NSInteger memberId; //Example: 3061193
-@property (nonatomic, assign) NSInteger averageRanking; //Example: 2
-@property (nonatomic, assign) NSInteger total; //Example: 24
-@property (nonatomic, assign) NSInteger totalRanking; //Example: 1
+@property (nonatomic, weak) NSString *total; //Example: **NULL**
+@property (nonatomic, assign) NSInteger teamId; //Example: 153832
+@property (nonatomic, weak) NSString *totalRanking; //Example: **NULL**
+@property (nonatomic, assign) NSInteger memberId; //Example: 1942977
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkStatistic;
 @property (nonatomic, weak) NSURL *linkTeam;
@@ -28,8 +29,8 @@
 
 @interface TSDKMemberStatistic (ForwardedMethods)
 
--(void)getMemberWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getStatisticWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getStatisticWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 
 @end

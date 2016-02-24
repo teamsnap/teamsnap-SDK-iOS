@@ -102,6 +102,9 @@
     
     NSArray *links = [NSArray arrayWithArray:[collection objectForKey:@"links"]];
     for (NSDictionary *link in links) {
+        if (![link objectForKey:@"href"]) {
+            DLog(@"No Value");
+        }
         [self.links setObject:[link objectForKey:@"href"] forKey:[link objectForKey:@"rel"]];
     }
     

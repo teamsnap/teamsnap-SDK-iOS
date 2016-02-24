@@ -10,7 +10,7 @@
 
 @implementation TSDKMemberStatistic
 
-@dynamic teamId, totalRankingForQuery, average, averageRankingForQuery, statisticId, memberId, averageRanking, total, totalRanking, linkMember, linkStatistic, linkTeam;
+@dynamic averageRankingForQuery, countGamesPlayed, average, averageRanking, totalRankingForQuery, statisticId, total, teamId, totalRanking, memberId, linkMember, linkStatistic, linkTeam;
 
 + (NSString *)SDKType {
     return @"member_statistic";

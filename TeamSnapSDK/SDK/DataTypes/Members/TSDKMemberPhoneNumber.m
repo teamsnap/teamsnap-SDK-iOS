@@ -10,7 +10,7 @@
 
 @implementation TSDKMemberPhoneNumber
 
-@dynamic smsGatewayId, smsEmailAddress, teamId, smsEnabled, memberId, isHidden, label, phoneNumber, preferred, linkMember, linkSmsGateway, linkTeam;
+@dynamic label, isPreferred, phoneNumber, isHidden, smsEnabled, preferred, smsEmailAddress, createdAt, updatedAt, teamId, smsGatewayId, memberId, linkMember, linkSmsGateway, linkTeam;
 
 + (NSString *)SDKType {
     return @"member_phone_number";

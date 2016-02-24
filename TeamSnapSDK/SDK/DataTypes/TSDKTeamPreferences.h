@@ -12,40 +12,29 @@
 @interface TSDKTeamPreferences : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger tslScorePushEnabled; //Example: 1
-@property (nonatomic, weak) NSString *trackedItemsIsPrivate; //Example: **NULL**
+@property (nonatomic, assign) BOOL trackedItemsIsPrivate; //Example: **NULL**
 @property (nonatomic, weak) NSString *memberSortOrder; //Example: last
-@property (nonatomic, weak) NSString *teamMessage; //Example: <p>This is a longer message</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p>in that it should make the cell really long.</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p>Test</p>
+@property (nonatomic, weak) NSString *teamMessage; //Example: <p>Test</p>
 @property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
 @property (nonatomic, weak) NSString *globalUniformHome; //Example: White shirt, grey pants
-@property (nonatomic, assign) NSInteger tslEnabled; //Example: 1
-@property (nonatomic, assign) NSInteger paymentsIgnoreNonPlayers; //Example: 0
-@property (nonatomic, assign) NSInteger remindersSendGame; //Example: 0
-@property (nonatomic, assign) NSInteger globalUseInternationalDate; //Example: 0
+@property (nonatomic, assign) BOOL tslEnabled; //Example: 1
+@property (nonatomic, assign) BOOL paymentsIgnoreNonPlayers; //Example: 0
+@property (nonatomic, assign) BOOL remindersSendGame; //Example: 0
+@property (nonatomic, assign) BOOL globalUseInternationalDate; //Example: 0
 @property (nonatomic, assign) NSInteger availabilityGameCutoff; //Example: 72
 @property (nonatomic, assign) BOOL isTrackedItemsPrivate; //Example: <null>
 @property (nonatomic, weak) NSString *assignmentsEnableFor; //Example: Events
-@property (nonatomic, assign) NSInteger trackedItemsIgnoreNonPlayers; //Example: 0
+@property (nonatomic, assign) BOOL trackedItemsIgnoreNonPlayers; //Example: 0
 @property (nonatomic, assign) BOOL isYouth; //Example: 1
 @property (nonatomic, assign) BOOL isTslPushEnabled; //Example: 1
-@property (nonatomic, assign) NSInteger tracksPoints; //Example: 1
+@property (nonatomic, assign) BOOL tracksPoints; //Example: 1
 @property (nonatomic, assign) NSInteger availabilityEventCutoff; //Example: 72
 @property (nonatomic, assign) BOOL isCoed; //Example: 1
 @property (nonatomic, assign) BOOL paymentsShowTab; //Example: 1
 @property (nonatomic, assign) NSInteger remindersSendEvent; //Example: 0
 @property (nonatomic, weak) NSString *alternateSportName; //Example:
 @property (nonatomic, assign) NSInteger colorSchemeCd; //Example: 0
-@property (nonatomic, assign) NSInteger announcementAboveHomePhoto; //Example: 1
+@property (nonatomic, assign) BOOL announcementAboveHomePhoto; //Example: 1
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2016-02-23T14:50:23Z
 @property (nonatomic, assign) BOOL isPaymentsPrivate; //Example: 0
 @property (nonatomic, assign) BOOL teamMediaShowTab; //Example: 1
@@ -55,9 +44,9 @@
 @property (nonatomic, weak) NSString *globalUniformAway; //Example: Blue shirt, gray pants
 @property (nonatomic, assign) NSInteger globalUseInternationalTime; //Example: 0
 @property (nonatomic, assign) BOOL assignmentsShowTab; //Example: 1
-@property (nonatomic, assign) NSInteger leagueControlledSettings; //Example: 0
+@property (nonatomic, assign) BOOL leagueControlledSettings; //Example: 0
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-03-25T23:46:01Z
-@property (nonatomic, assign) NSInteger tslPushEnabled; //Example: 1
+@property (nonatomic, assign) BOOL tslPushEnabled; //Example: 1
 @property (nonatomic, assign) BOOL statisticsShowTab; //Example: 1
 @property (nonatomic, assign) BOOL isTslScorePushEnabled; //Example: 1
 @property (nonatomic, assign) BOOL marketplaceShowTab; //Example: 1

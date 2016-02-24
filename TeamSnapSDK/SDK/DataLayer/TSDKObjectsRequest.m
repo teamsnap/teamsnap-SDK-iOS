@@ -50,6 +50,10 @@
 #import "TSDKMemberPreferences.h"
 #import "TSDKForumSubscription.h"
 #import "TSDKTeamMedium.h"
+#import "TSDKPaymentNote.h"
+#import "TSDKMemberPayment.h"
+#import "TSDKMemberBalance.h"
+#import "TSDKOpponentResults.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

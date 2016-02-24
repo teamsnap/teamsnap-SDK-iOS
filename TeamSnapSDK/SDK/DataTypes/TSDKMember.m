@@ -17,7 +17,7 @@
 
 @implementation TSDKMember
 
-@dynamic isManager, isInvitable, birthday, hideAge, isNonPlayer, jerseyNumber, addressCity, invitationCode, addressZip, lastLoggedInAt, position, teamId, addressState, isOwner, userId, updatedAt, isAlertable, lastName, hasFacebookPostScoresEnabled, isOwnershipPending, isEmailable, hideAddress, invitationDeclined, addressStreet1, gender, createdAt, addressStreet2, firstName, isActivated, isInvited, linkBroadcastEmails, linkBroadcastEmailAttachments, linkMemberLinks, linkMemberPreferences, linkTeam, linkMemberPhoneNumbers, linkMemberPhoto, linkMemberEmailAddresses, linkStatisticData, linkForumSubscriptions, linkLeagueCustomData, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamMedia, linkMemberThumbnail, linkForumTopics, linkTeamMediumComments, linkCustomFields, linkAssignments, linkCustomData, linkMemberStatistics, linkAvailabilities, linkMemberBalances, linkTrackedItemStatuses, linkUser, linkForumPosts, linkBroadcastAlerts, linkMemberPayments, linkLeagueCustomFields, linkLeagueRegistrantDocuments, linkContacts, linkMemberFiles;
+@dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isInvited, isActivated, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, gender, isOwner, isAddressHidden, updatedAt, isAlertable, linkBroadcastEmails, linkBroadcastEmailAttachments, linkMemberLinks, linkMemberPreferences, linkTeam, linkMemberPhoneNumbers, linkStatisticData, linkMemberEmailAddresses, linkForumSubscriptions, linkLeagueCustomData, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamMedia, linkTrackedItemStatuses, linkForumTopics, linkTeamMediumComments, linkCustomFields, linkAssignments, linkCustomData, linkMemberStatistics, linkAvailabilities, linkMemberBalances, linkForumPosts, linkBroadcastAlerts, linkMemberPayments, linkLeagueCustomFields, linkLeagueRegistrantDocuments, linkContacts, linkMemberFiles, linkMemberPhoto, linkMemberThumbnail;
 
 + (NSString *)SDKType {
     return @"member";
@@ -83,6 +83,7 @@
         }
     }];
 }
+
 #endif
 -(NSInteger)age {
     if (self.birthday && (![self.birthday isEqual:[NSNull null]])) {
