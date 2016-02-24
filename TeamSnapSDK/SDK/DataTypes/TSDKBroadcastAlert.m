@@ -13,7 +13,7 @@
 @dynamic updatedAt, isDraft, createdAt, memberId, recipientNames, teamId, body, recipientCount, linkTeam, linkMember;
 
 + (NSString *)SDKType {
-    return @"broadcast_sms";
+    return @"broadcast_alert";
 }
 
 @end

@@ -19,3 +19,11 @@
 @property (nonatomic, weak) NSURL *linkMember;
 
 @end
+
+@interface TSDKBroadcastAlert (ForwardedMethods)
+
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+
+
+@end
