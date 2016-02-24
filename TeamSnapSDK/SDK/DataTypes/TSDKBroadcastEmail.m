@@ -10,7 +10,7 @@
 
 @implementation TSDKBroadcastEmail
 
-@dynamic attachmentCount, body, subject, createdAt, recipientCount, recipientNames, isDraft, updatedAt, attachmentNames, teamId, isSms, memberId, linkBroadcastEmailAttachments, linkTeam, linkMember;
+@dynamic subject, attachmentCount, body, createdAt, fromEmailAddress, recipientCount, recipientNames, isDraft, updatedAt, attachmentNames, teamId, memberId, linkBroadcastEmailAttachments, linkTeam, linkMember;
 
 + (NSString *)SDKType {
     return @"broadcast_email";

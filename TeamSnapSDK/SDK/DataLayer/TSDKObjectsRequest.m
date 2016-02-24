@@ -26,7 +26,7 @@
 #import "NSDate+TSDKConveniences.h"
 #import "TSDKProfileTimer.h"
 #import "TSDKBroadcastEmail.h"
-#import "TSDKBroadcastSms.h"
+#import "TSDKBroadcastAlert.h"
 #import "TSDKCustomField.h"
 #import "TSDKCustomDatum.h"
 #import "TSDKForumTopic.h"
