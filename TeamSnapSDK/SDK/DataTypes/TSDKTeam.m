@@ -55,7 +55,7 @@
     }];
 }
 
-- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion {
+- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     [self setTimeZone:timeZone];
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withCompletion:completion];
 }
@@ -251,7 +251,7 @@
     return self.sortedEvents;
 }
 
-- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion {
+- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     if (dataTypes.count>0) {
         [TSDKObjectsRequest bulkLoadTeamData:self types:dataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {

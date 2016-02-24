@@ -120,11 +120,11 @@
 - (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId;
 - (void)addEvent:(TSDKEvent *)event;
 - (void)addMember:(TSDKMember *)member;
-- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 - (void)getEventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
 
-- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion;
+- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 
 #if TARGET_OS_IPHONE
 -(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
@@ -134,16 +134,16 @@
 
 @interface TSDKTeam (ForwardedMethods)
 
--(void)getTeamMediaGroupsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediaGroupsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamMediaGroupArrayCompletionBlock)completion;
 -(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock)completion;
 -(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityArrayCompletionBlock)completion;
 -(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumTopicArrayCompletionBlock)completion;
--(void)getOwnerWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getOwnerWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamMediumCommentArrayCompletionBlock)completion;
+-(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumSubscriptionArrayCompletionBlock)completion;
 -(void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
 -(void)getTeamPaypalPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumPostArrayCompletionBlock)completion;
@@ -154,7 +154,7 @@
 -(void)getMembersCsvExportWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getTrackedItemStatusesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTrackedItemStatusArrayCompletionBlock)completion;
 -(void)getDivisionContactsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getManagersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getManagersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getLeagueRegistrantDocumentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getStatisticAggregatesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionLocationsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
@@ -165,7 +165,7 @@
 -(void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion;
 -(void)getCalendarHttpWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionTeamStandingsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getPaymentNotesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getPaymentNotesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPaymentNoteArrayCompletionBlock)completion;
 -(void)getPlanWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPlanArrayCompletionBlock)completion;
 -(void)getTeamFeesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamFeeArrayCompletionBlock)completion;
 -(void)getEventsOverviewWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
@@ -178,7 +178,7 @@
 -(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
 -(void)getStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticArrayCompletionBlock)completion;
 -(void)getSponsorsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberBalanceArrayCompletionBlock)completion;
 -(void)getStatisticGroupsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticGroupArrayCompletionBlock)completion;
 -(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberStatisticArrayCompletionBlock)completion;
 -(void)getOpponentsResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
@@ -190,7 +190,7 @@
 -(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
 -(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPaymentArrayCompletionBlock)completion;
 -(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticDatumArrayCompletionBlock)completion;
 -(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
@@ -199,8 +199,8 @@
 -(void)getBroadcastEmailsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKBroadcastEmailArrayCompletionBlock)completion;
 -(void)getEventsCsvExportWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getCalendarWebcalGamesOnlyWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventStatisticArrayCompletionBlock)completion;
 -(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock)completion;
 
 @end

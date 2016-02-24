@@ -293,7 +293,7 @@
     return [_plans objectForIntegerKey:planId];
 }
 
-- (void)planForPlanId:(NSInteger)planId withCompletion:(void (^)(TSDKPlan *plan))completion {
+- (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
     if (_plans && [_plans objectForIntegerKey:planId]) {
         if (completion) {
             completion([_plans objectForIntegerKey:planId]);
