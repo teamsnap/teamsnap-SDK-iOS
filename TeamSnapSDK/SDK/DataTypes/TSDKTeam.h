@@ -126,10 +126,6 @@
 
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 
-#if TARGET_OS_IPHONE
--(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
-#endif
-
 @end
 
 @interface TSDKTeam (ForwardedMethods)

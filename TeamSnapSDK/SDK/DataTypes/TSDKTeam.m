@@ -299,22 +299,6 @@
     }];
 }
 
-#if TARGET_OS_IPHONE
--(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-#warning needs refactor - JLR
-    if ([self.teamPreferences linkTeamLogo]) {
-        [self.teamPreferences getTeamLogoWithConfiguration:configuration completion:completion];
-    } else {
-        [self getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-
-        }];
-        if (completion) {
-            completion(nil);
-        }
-    }
-}
-#endif
-
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
 }
