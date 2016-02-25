@@ -28,19 +28,22 @@
 @property (nonatomic, strong) NSMutableArray *sortedEvents;
 @property (nonatomic, strong) NSMutableArray *sortedMembers;
 
+@property (strong, nonatomic) TSDKTeamPreferences *teamPrefrences;
+@property (strong, nonatomic) TSDKTeamResults *teamResults;
+
 @end
 
 @implementation TSDKTeam {
     
 }
 
-@dynamic canExportMedia, leagueUrl, isInLeague, hasReachedRosterLimit, locationLatitude, updatedAt, hasExportableMedia, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, rosterLimit, seasonName, locationCountry, divisionName, createdAt, isArchivedSeason, sportId, linkTeamMediaGroups, linkContactEmailAddresses, linkAvailabilities, linkForumTopics, linkMembersPreferences, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkSport, linkCalendarWebcal, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkManagers, linkLeagueRegistrantDocuments, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkStatistics, linkMembers, linkSponsors, linkMemberBalances, linkBroadcastSmses, linkMemberStatistics, linkStatisticGroups, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkStatisticData, linkContactPhoneNumbers, linkMemberFiles, linkMemberPayments, linkLeagueCustomFields, linkCustomFields, linkLocations, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkTeamPublicSite;
+@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, humanizedMediaStorageUsed, createdAt, isArchivedSeason, isRetired, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkSport, linkCalendarWebcal, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMemberFiles, linkDivisionMemberPhoneNumbers, linkMemberPayments, linkStatisticData, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkCustomFields, linkLocations, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts;
 
 + (NSString *)SDKType {
     return @"team";
 }
 
-+(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withCompletion:(TSDKCompletionBlock)completion {
++(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
     command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
     command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
@@ -52,9 +55,9 @@
     }];
 }
 
-- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withCompletion:(TSDKCompletionBlock)completion {
+- (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     [self setTimeZone:timeZone];
-    [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withCompletion:completion];
+    [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
 - (id)init {
@@ -83,7 +86,7 @@
         if (isNewTeam) {
             if (success) {
                 TSDKCollectionJSON *saveTeamResultCollectionJSON = objects;
-                [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
                     if (completionBlock) {
                         completionBlock(success, complete, saveTeamResultCollectionJSON, error);
                     }
@@ -173,7 +176,6 @@
         self.membersUpdated = [NSDate date];
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
-        DLog(@"\nProcess Team Preferences: %@ (%ld)", self.name, (long)self.objectIdentifier);
         if (self.teamPrefrences) {
             [self.teamPrefrences setCollection:bulkObject.collection];
         } else {
@@ -249,7 +251,7 @@
     return self.sortedEvents;
 }
 
-- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withCompletion:(TSDKArrayCompletionBlock)completion {
+- (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     if (dataTypes.count>0) {
         [TSDKObjectsRequest bulkLoadTeamData:self types:dataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
@@ -263,18 +265,13 @@
     }
 }
 
-- (void)membersWithCompletion:(TSDKArrayCompletionBlock)completion {
+- (void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
     if (self.membersUpdated && self.sortedMembers) {
         if (completion) {
             completion(YES, YES, self.sortedMembers, nil);
         }
     } else {
-        [TSDKObjectsRequest listRosterForTeam:self completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            [self.members removeAllObjects];
-            for (TSDKMember *member in objects) {
-                [self.members setObject:member forIntegerKey:member.objectIdentifier];
-            }
-            self.membersUpdated = [NSDate date];
+        [self arrayFromLink:self.linkMembers withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
                 completion(success, complete, self.sortedMembers, error);
             }
@@ -282,7 +279,7 @@
     }
 }
 
-- (void)allEventsWithCompletion:(TSDKArrayCompletionBlock)completion {
+- (void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
     if (self.eventsUpdated) {
         if (completion) {
             completion(YES, YES, self.eventsSorted, nil);
@@ -296,7 +293,7 @@
     }
 }
 
-- (void)eventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion {
+- (void)getEventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
     [TSDKObjectsRequest listEventsForTeam:self startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {
             completion(success, complete, objects, error);
@@ -314,10 +311,14 @@
 }
 
 #if TARGET_OS_IPHONE
--(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
+-(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
+#warning needs refactor - JLR
     if ([self.teamPrefrences linkTeamLogo]) {
-        [self.teamPrefrences getTeamLogoWithCompletion:completion];
+        [self.teamPrefrences getTeamLogoWithConfiguration:configuration completion:completion];
     } else {
+        [self getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+
+        }];
         if (completion) {
             completion(nil);
         }
@@ -327,8 +328,6 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
-    //[coder encodeObject:_rosters forKey:@"rosterArray"];
-    //[coder encodeObject:_events forKey:@"eventsArray"];
 }
 
 @end

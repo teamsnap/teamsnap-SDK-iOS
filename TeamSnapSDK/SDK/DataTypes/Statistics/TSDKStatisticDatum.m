@@ -16,4 +16,9 @@
     return @"statistic_datum";
 }
 
++ (NSString *)SDKREL {
+    return @"statistic_data";
+}
+
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TSDKCollectionJSON.h"
+#import "TSDKCompletionBlockTypes.h"
 #import "TSDKCollectionCommand.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
@@ -101,6 +102,9 @@
     
     NSArray *links = [NSArray arrayWithArray:[collection objectForKey:@"links"]];
     for (NSDictionary *link in links) {
+        if (![link objectForKey:@"href"]) {
+            DLog(@"No Value");
+        }
         [self.links setObject:[link objectForKey:@"href"] forKey:[link objectForKey:@"rel"]];
     }
     
@@ -206,7 +210,18 @@
         
         [dynamicProperties addObject:camelCaseKey];
         [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSURL *%@;\n", camelCaseKey]];
-        [linkGettersString appendFormat:@"-(void)%@WithCompletion:(TSDKArrayCompletionBlock)completion;\n", [getKey underscoresToCamelCase]];
+        
+        NSString *typeString = [TSDKObjectsRequest typeForRel:key];
+        if (!typeString) {
+            typeString = key;
+        }
+        
+        NSString *completionBlockName = [NSString stringWithFormat:@"TSDK%@ArrayCompletionBlock", [typeString underscoresToMixedCase]];
+        if ([[TSDKObjectsRequest knownCompletionTypes] indexOfObject:completionBlockName] == NSNotFound) {
+            completionBlockName = @"TSDKArrayCompletionBlock";
+        }
+        
+        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(%@)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
     }
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];

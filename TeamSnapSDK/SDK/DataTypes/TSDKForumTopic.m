@@ -19,7 +19,7 @@
     return @"forum_topic";
 }
 
-+(void)addNewTopicWithTitle:(NSString *)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSInteger)teamId withCompletion:(TSDKCompletionBlock)completion {
++(void)addNewTopicWithTitle:(NSString *)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
     if (title && title.length>0) {
         [data setObject:title forKey:@"title"];

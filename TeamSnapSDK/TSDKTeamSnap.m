@@ -65,19 +65,19 @@
     _OAuthToken = OAuthToken;
 }
 
-- (void)connectWithCompletion:(void (^)(bool success, NSString *message))completion {
+- (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion {
     if (self.teamSnapUser) {
         if (completion) {
             completion(YES, nil);
         }
     } else {
-        [self processInitialConnectionWithCompletion:completion];
+        [self processInitialConnectionWithConfiguration:nil completion:completion];
     }
 }
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion {
     [self setOAuthToken:OAuthToken];
-    [self connectWithCompletion:completion];
+    [self connectWithConfiguration:nil completion:completion];
 }
 
 - (void)logout {
@@ -135,7 +135,7 @@
 }
 #endif
 
-- (void)publicFeaturesWithCompletion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
+- (void)publicFeaturesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
     if (self.publicFeatures) {
         if (completion) {
             completion(self.publicFeatures);
@@ -154,7 +154,7 @@
     }
 }
 
-- (void)rootLinksWithCompletion:(TSDKRootLinkCompletionBlock)completion {
+- (void)rootLinksWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKRootLinkCompletionBlock)completion {
     TSDKSimpleCompletionBlock schemaCompletionBlock  = ^(BOOL success, NSError *error) {
         if (success) {
             if (completion) {
@@ -166,7 +166,7 @@
     };
     
     if (self.rootLinks) {
-        [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+        [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
     } else {
         TSDKTeamSnap __weak *weakSelf = self;
         
@@ -178,7 +178,7 @@
                     [TSPCache saveObject:weakSelf.rootLinks];
                 }
             
-                [self.rootLinks getSchemasWithCompletion:schemaCompletionBlock];
+                [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {
                 if (completion) {
                     completion(weakSelf.rootLinks);
@@ -188,17 +188,17 @@
     }
 }
 
-- (void)processInitialConnectionWithCompletion:(void (^)(bool success, NSString *message))completion {
+- (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion {
     TSDKTeamSnap __weak *weakSelf = self;
     self.rootLinks = nil;
     
-    [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
                 success = (BOOL)weakSelf.teamSnapUser;
                 
-                [[[TSDKTeamSnap sharedInstance] teamSnapUser] myMembersOnTeamsWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                [[[TSDKTeamSnap sharedInstance] teamSnapUser] myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
                     NSString *message = nil;
                     
                     if (completion) {
@@ -210,13 +210,13 @@
             }
         }];
         
-        [self getPlansWithCompletion:^(bool success, NSString *message) {
+        [self getPlansWithConfiguration:configuration completion:^(bool success, NSString *message) {
             
         }];
     }];
 }
 
-- (void)getPlansWithCompletion:(void (^)(bool success, NSString *message))completion {
+- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion {
     if (_plans) {
         if (completion) {
             completion(YES, nil);
@@ -229,7 +229,7 @@
                 completion(YES, nil);
             }
         } else {
-            [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+            [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
                 [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                     if (success) {
                         NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
@@ -249,23 +249,23 @@
     }
 }
 
-- (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
+- (void)invitationStatusForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInviteStatusCompletionBlock)completionBlock {
     [TSDKObjectsRequest invitationStatusForEmailAddress:emailAddress withCompletion:completionBlock];
 }
 
-- (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKCompletionBlock)completionBlock {
+- (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
     [TSDKRootLinks actionSendInvitationsToEmailaddress:emailAddress WithCompletion:completionBlock];
 }
 
-- (void)sendNewUserWelcomeToEmail:(NSString *)email callbackURL:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock {
-    [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+- (void)sendNewUserWelcomeToEmail:(NSString *)email callbackURL:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
         
     }];
 }
 
 
-- (void)tslPhotoUploadURLWithCompletion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
-    [self rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+- (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkTslPhotos withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             TSDKTslPhotos *tslPhoto = nil;
             if (success) {
@@ -293,7 +293,7 @@
     return [_plans objectForIntegerKey:planId];
 }
 
-- (void)planForPlanId:(NSInteger)planId withCompletion:(void (^)(TSDKPlan *plan))completion {
+- (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
     if (_plans && [_plans objectForIntegerKey:planId]) {
         if (completion) {
             completion([_plans objectForIntegerKey:planId]);

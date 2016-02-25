@@ -10,7 +10,7 @@
 
 @implementation TSDKContact
 
-@dynamic isInvitable, addressCity, invitationCode, addressZip, userId, memberId, updatedAt, addressState, lastName, hideAddress, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses;
+@dynamic isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, hideAddress, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses;
 
 + (NSString *)SDKType {
     return @"contact";

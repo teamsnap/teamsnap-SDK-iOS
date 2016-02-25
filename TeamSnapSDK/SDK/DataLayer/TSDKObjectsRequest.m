@@ -9,6 +9,7 @@
 #import "TSDKObjectsRequest.h"
 #import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "NSString+TSDKConveniences.h"
 #import <objc/runtime.h>
 #import "TSDKDataRequest.h"
 #import "TSDKTeam.h"
@@ -25,7 +26,7 @@
 #import "NSDate+TSDKConveniences.h"
 #import "TSDKProfileTimer.h"
 #import "TSDKBroadcastEmail.h"
-#import "TSDKBroadcastSms.h"
+#import "TSDKBroadcastAlert.h"
 #import "TSDKCustomField.h"
 #import "TSDKCustomDatum.h"
 #import "TSDKForumTopic.h"
@@ -45,8 +46,18 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKTeamResults.h"
 #import "TSDKinvitationFinder.h"
+#import "TSDKTeamMediaGroup.h"
+#import "TSDKMemberPreferences.h"
+#import "TSDKForumSubscription.h"
+#import "TSDKTeamMedium.h"
+#import "TSDKPaymentNote.h"
+#import "TSDKMemberPayment.h"
+#import "TSDKMemberBalance.h"
+#import "TSDKOpponentResults.h"
+#import "TSDKEventStatistic.h"
 
 static NSMutableArray *supportedSDKObjects;
+static NSArray *knownCompletionTypes;
 
 @implementation TSDKObjectsRequest
 
@@ -348,4 +359,46 @@ static NSMutableArray *supportedSDKObjects;
     }
     return nil;
 }
+
++ (NSArray *)knownCompletionTypes {
+    if (!knownCompletionTypes) {
+        NSMutableArray *completionTypes = [[NSMutableArray alloc] init];
+        for (Class class in supportedSDKObjects) {
+            [completionTypes addObject:[class completionBlockTypeName]];
+        }
+        knownCompletionTypes = [NSArray arrayWithArray:completionTypes];
+    }
+    return knownCompletionTypes;
+}
+
++ (void)dumpCompletionTypes {
+    NSMutableString *classCompletionBlockString = [[NSMutableString alloc] init];
+    //        NSMutableString *includeHeadersString = [[NSMutableString alloc] init];
+    for (Class class in supportedSDKObjects) {
+        [classCompletionBlockString appendFormat:@"%@\n", [[class completionBlockArrayDescription]  underscoresToCamelCase]];
+    }
+    DLog(@"\n%@", [supportedSDKObjects componentsJoinedByString:@","]);
+    DLog(@"\n%@",classCompletionBlockString);
+}
+
++ (NSString *)typeForRel:(NSString *)rel {
+    NSInteger typeIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [[class SDKREL] isEqualToString:rel];
+    }];
+    if (typeIndex != NSNotFound) {
+        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKType];
+    }
+    return nil;
+}
+
++ (NSString *)relForType:(NSString *)type {
+    NSInteger typeIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [[class SDKType] isEqualToString:type];
+    }];
+    if (typeIndex != NSNotFound) {
+        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKREL];
+    }
+    return nil;
+}
+
 @end

@@ -18,7 +18,7 @@
     return @"forum_post";
 }
 
-+(void)addPost:(TSDKForumPost *)post withCompletion:(TSDKCompletionBlock)completion {
++(void)addPost:(TSDKForumPost *)post withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
     [data setObject:[NSNumber numberWithInteger:post.forumTopicId] forKey:@"forum_topic_id"];
     //[data setObject:[NSNumber numberWithInteger:post.divisionMemberId] forKey:@"division_member_id"];

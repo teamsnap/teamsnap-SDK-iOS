@@ -17,4 +17,14 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkStatistics;
 
+//+(void)actionReorderStatisticGroupsWithCompletion:(TSDKCompletionBlock)completion; //(null)
+
+@end
+
+@interface TSDKStatisticGroup (ForwardedMethods)
+
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticArrayCompletionBlock)completion;
+
+
 @end

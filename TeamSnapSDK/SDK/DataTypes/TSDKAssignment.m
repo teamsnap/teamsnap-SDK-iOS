@@ -15,4 +15,5 @@
 + (NSString *)SDKType {
     return @"assignment";
 }
+
 @end

@@ -5,7 +5,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKBroadcastSms : TSDKCollectionObject
+@interface TSDKBroadcastAlert : TSDKCollectionObject
 
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2012-05-25T18:16:56Z
 @property (nonatomic, assign) BOOL isDraft; //Example: 0
@@ -17,5 +17,13 @@
 @property (nonatomic, assign) NSInteger recipientCount; //Example: 1
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkMember;
+
+@end
+
+@interface TSDKBroadcastAlert (ForwardedMethods)
+
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+
 
 @end

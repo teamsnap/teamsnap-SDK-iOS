@@ -9,8 +9,6 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@class TSDKForumPost;
-
 @interface TSDKForumTopic : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *title; //Example: Test Post
@@ -20,7 +18,14 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkForumPosts;
 
++(void)addNewTopicWithTitle:(NSString *)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 
-+(void)addNewTopicWithTitle:(NSString *)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSInteger)teamId withCompletion:(TSDKCompletionBlock)completion;
+@end
+
+@interface TSDKForumTopic (ForwardedMethods)
+
+-(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumPostArrayCompletionBlock)completion;
 
 @end

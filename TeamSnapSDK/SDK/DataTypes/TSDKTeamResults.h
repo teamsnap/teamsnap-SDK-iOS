@@ -11,18 +11,19 @@
 
 @interface TSDKTeamResults : TSDKCollectionObject
 
-@property (nonatomic, assign) NSInteger losses; //Example: 3
-@property (nonatomic, weak) NSString *overallRecord; //Example: 7-3
-@property (nonatomic, assign) NSInteger teamId; //Example: 153832
-@property (nonatomic, assign) NSInteger wins; //Example: 7
+@property (nonatomic, assign) NSInteger losses; //Example: 13
+@property (nonatomic, weak) NSString *overallRecord; //Example: 18-13-2
+@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, assign) NSInteger wins; //Example: 18
 @property (nonatomic, assign) NSInteger overtimeLosses; //Example: 0
-@property (nonatomic, assign) NSInteger ties; //Example: 0
+@property (nonatomic, assign) NSInteger ties; //Example: 2
 @property (nonatomic, weak) NSURL *linkTeam;
 
 @end
 
-@interface TSDKTeamResults(ForwardedMethods)
+@interface TSDKTeamResults (ForwardedMethods)
 
--(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+
 
 @end

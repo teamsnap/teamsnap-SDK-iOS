@@ -15,6 +15,8 @@
 // In this header, you should import all the public headers of your framework using statements like #import <TeamSnapSDK/PublicHeader.h>
 
 #import <TeamSnapSDK/TSDKTeamSnap.h>
+#import <TeamSnapSDK/TSDKRequestConfiguration.h>
+#import <TeamSnapSDK/TSDKRequestConfiguration.h>
 #import <teamSnapSDK/TSDKCollectionCommand.h>
 #import <teamSnapSDK/TSDKCollectionJSON.h>
 #import <teamSnapSDK/TSDKCollectionObject.h>
@@ -31,7 +33,7 @@
 #import <TeamSnapSDK/TSDKAssignment.h>
 #import <TeamSnapSDK/TSDKAvailability.h>
 #import <TeamSnapSDK/TSDKBroadcastEmail.h>
-#import <TeamSnapSDK/TSDKBroadcastSms.h>
+#import <TeamSnapSDK/TSDKBroadcastAlert.h>
 #import <TeamSnapSDK/TSDKCustomDatum.h>
 #import <TeamSnapSDK/TSDKCustomField.h>
 #import <TeamSnapSDK/TSDKForumPost.h>
@@ -56,3 +58,13 @@
 #import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
 #import <TeamSnapSDK/TSDKProcessBulkObjectProtocol.h>
 #import <TeamSnapSDK/TSDKConstants.h>
+#import <TeamSnapSDK/TSDKTeamMediaGroup.h>
+#import <TeamSnapSDK/TSDKMemberPreferences.h>
+#import <TeamSnapSDK/TSDKTeamMediumComment.h>
+#import <TeamSnapSDK/TSDKForumSubscription.h>
+#import <TeamSnapSDK/TSDKTeamMedium.h>
+#import <TeamSnapSDK/TSDKMemberPayment.h>
+#import <TeamSnapSDK/TSDKPaymentNote.h>
+#import <TeamSnapSDK/TSDKMemberBalance.h>
+#import <TeamSnapSDK/TSDKOpponentResults.h>
+#import <TeamSnapSDK/TSDKEventStatistic.h>

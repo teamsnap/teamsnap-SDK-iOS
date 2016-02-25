@@ -11,14 +11,20 @@
 
 @implementation TSDKTeamPreferences
 
-@dynamic globalUniformAway, marketplaceShowTab, statisticsShowTab, createdAt, availabilityEventCutoff, teamId, teamMessage, assignmentsShowTab, isPaymentsPrivate, colorSchemeCd, availabilitiesSortOrder, shareAvailabilityNotes, tslEnabled, alternateSportName, assignmentsEnableFor, paymentsIgnoreNonPlayers, availabilityGameCutoff, filesShowTab, availabilitiesShowTab, currencySymbol, assignmentsEnableForCode, isCoed, tslPushEnabled, leagueControlledSettings, remindersSendGame, managerDefaultAvailability, tslScorePushEnabled, introductionText, trackedItemsIgnoreNonPlayers, announcementAboveHomePhoto, globalUseInternationalDate, teamMediaShowTab, memberSortOrder, tracksPoints, teamHeadline, skillLevel, isYouth, gender, globalUseInternationalTime, showDivisionStandings, updatedAt, hideHeader, ageGroup, paymentsShowTab, isTrackedItemsPrivate, globalUniformHome, remindersSendEvent, trackedItemsIsPrivate, trackedItemsShowTab, linkTeam, linkTeamPhoto, linkTeamLogo;
+@dynamic tslScorePushEnabled, trackedItemsIsPrivate, memberSortOrder, teamMessage, availabilitiesShowTab, globalUniformHome, tslEnabled, paymentsIgnoreNonPlayers, remindersSendGame, globalUseInternationalDate, availabilityGameCutoff, isTrackedItemsPrivate, assignmentsEnableFor, trackedItemsIgnoreNonPlayers, isYouth, isTslPushEnabled, tracksPoints, availabilityEventCutoff, isCoed, paymentsShowTab, remindersSendEvent, alternateSportName, colorSchemeCd, announcementAboveHomePhoto, updatedAt, isPaymentsPrivate, teamMediaShowTab, skillLevel, trackedItemsShowTab, teamHeadline, globalUniformAway, globalUseInternationalTime, assignmentsShowTab, leagueControlledSettings, createdAt, tslPushEnabled, statisticsShowTab, isTslScorePushEnabled, marketplaceShowTab, teamId, shareAvailabilityNotes, assignmentsEnableForCode, isTslEnabled, managerDefaultAvailability, gender, filesShowTab, showDivisionStandings, ageGroup, availabilitiesSortOrder, currencySymbol, hideHeader, linkTeam, linkTeamPhoto, linkTeamLogo;
+;
 
 + (NSString *)SDKType {
     return @"team_preferences";
 }
 
++ (NSString *)SDKREL {
+    return @"teams_preferences";
+}
+
+
 #if TARGET_OS_IPHONE
--(void)getTeamPhotoWithCompletion:(TSDKImageCompletionBlock)completion {
+-(void)getTeamPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkTeamPhoto withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
@@ -26,7 +32,7 @@
     }];
 }
 
--(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion {
+-(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);

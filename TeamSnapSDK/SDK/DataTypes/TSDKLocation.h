@@ -21,3 +21,11 @@
 @property (nonatomic, weak) NSURL *linkEvents;
 
 @end
+
+@interface TSDKLocation (ForwardedMethods)
+
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
+
+
+@end

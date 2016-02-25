@@ -20,7 +20,7 @@
 
 @implementation TSDKRootLinks
 
-@dynamic linkSchemas, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkAvailabilities, linkForumTopics, linkMembersPreferences, linkTeamMediaGroups, linkTeamsResults, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPublicSites, linkTeams, linkForumPosts, linkTeamMedia, linkSelf, linkSports, linkContacts, linkTrackedItemStatuses, linkCountries, linkLeagueRegistrantDocuments, linkSmsGateways, linkGeocodedLocations, linkPaypalCurrencies, linkDivisionLocations, linkOpponents, linkCustomData, linkDivisionContactPhoneNumbers, linkTslMetadata, linkTeamsPreferences, linkDivisionTeamStandings, linkPaymentNotes, linkTeamFees, linkMemberPhoneNumbers, linkMemberLinks, linkTeamsPaypalPreferences, linkDivisionMembers, linkBroadcastEmailAttachments, linkForecasts, linkTeamStatistics, linkMemberEmailAddresses, linkStatistics, linkMembers, linkMe, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkPublicFeatures, linkPlansAll, linkOpponentsResults, linkReferrals, linkTrackedItems, linkTslPhotos, linkUsers, linkAssignments, linkRoot, linkSweet, linkLeagueCustomData, linkStatisticData, linkContactPhoneNumbers, linkApiv2Root, linkMemberPayments, linkMemberFiles, linkPlans, linkLeagueCustomFields, linkCustomFields, linkLocations, linkDivisionMemberEmailAddresses, linkDivisionMemberPhoneNumbers, linkBroadcastEmails, linkDude, linkTimeZones, linkRandom, linkXyzzy, linkBroadcastAlerts;
+@dynamic linkDivisionContactPhoneNumbers, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkLocations, linkTeamMediumComments, linkTeamsPreferences, linkMemberLinks, linkForumTopics, linkTeamMedia, linkEvents, linkStatistics, linkSweet, linkTrackedItemStatuses, linkTslPhotos, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamPublicSites, linkAssignments, linkDivisionMemberPhoneNumbers, linkDude, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkPublicFeatures, linkTslChats, linkRandom, linkPlansAll, linkMemberStatistics, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkReferrals, linkLeagueCustomData, linkSports, linkAvailabilities, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkMembersPreferences, linkTslMetadata, linkDivisionsPreferences, linkOpponents, linkApiv2Root, linkMemberEmailAddresses, linkStatisticData, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkXyzzy, linkPaymentNotes, linkForumPosts, linkContacts, linkCountries;
 ;
 
 + (NSString *)SDKType {
@@ -64,7 +64,7 @@
     }
 }
 
-- (void)getSchemasArrayWithCompletion:(TSDKArrayCompletionBlock) completion {
+- (void)getSchemasArrayWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     NSArray *versionComponents = [self.collection.version componentsSeparatedByString:@"."];
     NSString *majorMinorVersion = nil;
     if (versionComponents.count>1) {
@@ -106,7 +106,7 @@
     }
 }
 
-- (void)getSchemasWithCompletion:(TSDKSimpleCompletionBlock)completion {
+- (void)getSchemasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKSimpleCompletionBlock)completion {
     if ([[TSDKTeamSnap sharedInstance] teamSnapUser] && self.schemas) {
         if (completion) {
             completion(YES, nil);
@@ -116,7 +116,7 @@
             completion(YES, nil);
         }
     } else {
-        [self getSchemasArrayWithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        [self getSchemasArrayWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
                 completion(success, error);
             }
@@ -126,7 +126,7 @@
 
 
 + (void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [rootLinks.collection.commands objectForKey:@"send_invitations"];
             if (collectionCommand) {
@@ -144,7 +144,7 @@
 }
 
 + (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithCompletion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"welcome"];
             if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {

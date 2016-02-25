@@ -4,6 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKRequestConfiguration.h"
+#import "TSDKCompletionBlockTypes.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
@@ -31,14 +33,14 @@
 @property (nonatomic, weak) NSURL *linkActiveTeams;
 
 // Non Auto-generated
-- (void)TeamsWithIDs:(NSArray *)teamIds completion:(TSDKArrayCompletionBlock)completion;
-- (void)myMembersOnTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)TeamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+- (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 - (NSArray *)myMembersAcrossAllTeams;
-- (void)myMembersOnTeamId:(NSInteger)teamId withCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)myMembersOnTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 - (NSArray *)myMembersOnTeamId:(NSInteger)teamId;
-- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes forTeamIds:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes WithCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)loadTeamOverviewForMyTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes forTeamIds:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+- (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 - (void)addTeam:(TSDKTeam *)team;
 
 @property (strong, nonatomic) NSMutableDictionary *teams;
@@ -47,11 +49,10 @@
 
 @interface TSDKUser (ForwardedMethods)
 
--(void)getTeamsPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getPersonasWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getFacebookPagesWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getMembersWithCompletion:(TSDKArrayCompletionBlock)completion;
--(void)getActiveTeamsWithCompletion:(TSDKArrayCompletionBlock)completion;
-
+-(void)getTeamsPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion;
+-(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getFacebookPagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 @end

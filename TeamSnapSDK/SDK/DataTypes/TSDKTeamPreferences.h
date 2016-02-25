@@ -11,68 +11,76 @@
 
 @interface TSDKTeamPreferences : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *globalUniformAway; //Example:
-@property (nonatomic, assign) BOOL marketplaceShowTab; //Example: 0
-@property (nonatomic, assign) BOOL statisticsShowTab; //Example: 0
-@property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-27T03:32:51Z
-@property (nonatomic, weak) NSString *availabilityEventCutoff; //Example: **NULL**
-@property (nonatomic, assign) NSInteger teamId; //Example: 1
-@property (nonatomic, weak) NSString *teamMessage; //Example: <p><span style="font-size:
-@property (nonatomic, assign) BOOL assignmentsShowTab; //Example: 1
-@property (nonatomic, assign) BOOL isPaymentsPrivate; //Example: 0
-@property (nonatomic, assign) NSInteger colorSchemeCd; //Example: 13
-@property (nonatomic, weak) NSString *availabilitiesSortOrder; //Example: jersey
-@property (nonatomic, assign) NSInteger shareAvailabilityNotes; //Example: 0
-@property (nonatomic, assign) BOOL tslEnabled; //Example: 1
-@property (nonatomic, weak) NSString *alternateSportName; //Example: Global Domination
-@property (nonatomic, weak) NSString *assignmentsEnableFor; //Example: Games and Events
-@property (nonatomic, assign) NSInteger paymentsIgnoreNonPlayers; //Example: 0
-@property (nonatomic, weak) NSString *availabilityGameCutoff; //Example: **NULL**
-@property (nonatomic, assign) BOOL filesShowTab; //Example: 1
-@property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
-@property (nonatomic, weak) NSString *currencySymbol; //Example: $
-@property (nonatomic, assign) NSInteger assignmentsEnableForCode; //Example: 0
-@property (nonatomic, assign) BOOL isCoed; //Example: 1
-@property (nonatomic, assign) NSInteger tslPushEnabled; //Example: 1
-@property (nonatomic, assign) NSInteger leagueControlledSettings; //Example: 0
-@property (nonatomic, assign) NSInteger remindersSendGame; //Example: 0
-@property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
 @property (nonatomic, assign) NSInteger tslScorePushEnabled; //Example: 1
-@property (nonatomic, weak) NSString *introductionText; //Example: Hi,
-@property (nonatomic, assign) NSInteger trackedItemsIgnoreNonPlayers; //Example: 0
-@property (nonatomic, assign) NSInteger announcementAboveHomePhoto; //Example: 1
-@property (nonatomic, assign) NSInteger globalUseInternationalDate; //Example: 0
-@property (nonatomic, assign) BOOL teamMediaShowTab; //Example: 1
+@property (nonatomic, assign) BOOL trackedItemsIsPrivate; //Example: **NULL**
 @property (nonatomic, weak) NSString *memberSortOrder; //Example: last
-@property (nonatomic, assign) NSInteger tracksPoints; //Example: 0
-@property (nonatomic, weak) NSString *teamHeadline; //Example: Welcome
-@property (nonatomic, weak) NSString *skillLevel; //Example: Competitive
-@property (nonatomic, assign) BOOL isYouth; //Example: 0
-@property (nonatomic, weak) NSString *gender; //Example: Coed
-@property (nonatomic, assign) NSInteger globalUseInternationalTime; //Example: 0
-@property (nonatomic, assign) BOOL showDivisionStandings; //Example: 0
-@property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-09-30T05:00:03Z
-@property (nonatomic, assign) NSInteger hideHeader; //Example: 0
-@property (nonatomic, weak) NSString *ageGroup; //Example:
+@property (nonatomic, weak) NSString *teamMessage; //Example: <p>Test</p>
+@property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
+@property (nonatomic, weak) NSString *globalUniformHome; //Example: White shirt, grey pants
+@property (nonatomic, assign) BOOL tslEnabled; //Example: 1
+@property (nonatomic, assign) BOOL paymentsIgnoreNonPlayers; //Example: 0
+@property (nonatomic, assign) BOOL remindersSendGame; //Example: 0
+@property (nonatomic, assign) BOOL globalUseInternationalDate; //Example: 0
+@property (nonatomic, assign) NSInteger availabilityGameCutoff; //Example: 72
+@property (nonatomic, assign) BOOL isTrackedItemsPrivate; //Example: <null>
+@property (nonatomic, weak) NSString *assignmentsEnableFor; //Example: Events
+@property (nonatomic, assign) BOOL trackedItemsIgnoreNonPlayers; //Example: 0
+@property (nonatomic, assign) BOOL isYouth; //Example: 1
+@property (nonatomic, assign) BOOL isTslPushEnabled; //Example: 1
+@property (nonatomic, assign) BOOL tracksPoints; //Example: 1
+@property (nonatomic, assign) NSInteger availabilityEventCutoff; //Example: 72
+@property (nonatomic, assign) BOOL isCoed; //Example: 1
 @property (nonatomic, assign) BOOL paymentsShowTab; //Example: 1
-@property (nonatomic, assign) BOOL isTrackedItemsPrivate; //Example: 0
-@property (nonatomic, weak) NSString *globalUniformHome; //Example:
 @property (nonatomic, assign) NSInteger remindersSendEvent; //Example: 0
-@property (nonatomic, assign) NSInteger trackedItemsIsPrivate; //Example: 0
+@property (nonatomic, weak) NSString *alternateSportName; //Example:
+@property (nonatomic, assign) NSInteger colorSchemeCd; //Example: 0
+@property (nonatomic, assign) BOOL announcementAboveHomePhoto; //Example: 1
+@property (nonatomic, weak) NSDate *updatedAt; //Example: 2016-02-23T14:50:23Z
+@property (nonatomic, assign) BOOL isPaymentsPrivate; //Example: 0
+@property (nonatomic, assign) BOOL teamMediaShowTab; //Example: 1
+@property (nonatomic, weak) NSString *skillLevel; //Example: **NULL**
 @property (nonatomic, assign) BOOL trackedItemsShowTab; //Example: 1
+@property (nonatomic, weak) NSString *teamHeadline; //Example: A message from the Team Manager...
+@property (nonatomic, weak) NSString *globalUniformAway; //Example: Blue shirt, gray pants
+@property (nonatomic, assign) NSInteger globalUseInternationalTime; //Example: 0
+@property (nonatomic, assign) BOOL assignmentsShowTab; //Example: 1
+@property (nonatomic, assign) BOOL leagueControlledSettings; //Example: 0
+@property (nonatomic, weak) NSDate *createdAt; //Example: 2012-03-25T23:46:01Z
+@property (nonatomic, assign) BOOL tslPushEnabled; //Example: 1
+@property (nonatomic, assign) BOOL statisticsShowTab; //Example: 1
+@property (nonatomic, assign) BOOL isTslScorePushEnabled; //Example: 1
+@property (nonatomic, assign) BOOL marketplaceShowTab; //Example: 1
+@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, assign) NSInteger shareAvailabilityNotes; //Example: 0
+@property (nonatomic, assign) NSInteger assignmentsEnableForCode; //Example: 2
+@property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
+@property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
+@property (nonatomic, weak) NSString *gender; //Example: **NULL**
+@property (nonatomic, assign) BOOL filesShowTab; //Example: 1
+@property (nonatomic, assign) BOOL showDivisionStandings; //Example: 0
+@property (nonatomic, weak) NSString *ageGroup; //Example: **NULL**
+@property (nonatomic, weak) NSString *availabilitiesSortOrder; //Example: date
+@property (nonatomic, weak) NSString *currencySymbol; //Example: $
+@property (nonatomic, assign) NSInteger hideHeader; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkTeamPhoto;
 @property (nonatomic, weak) NSURL *linkTeamLogo;
 
 // Not AutoGenerated:
 #if TARGET_OS_IPHONE
--(void)getTeamPhotoWithCompletion:(TSDKImageCompletionBlock)completion;
--(void)getTeamLogoWithCompletion:(TSDKImageCompletionBlock)completion;
+-(void)getTeamPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
+-(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 #endif
+
+//+(void)actionUploadTeamPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
+//+(void)actionUploadTeamLogoWithCompletion:(TSDKCompletionBlock)completion; //(null)
+//+(void)actionRemoveTeamLogoWithCompletion:(TSDKCompletionBlock)completion; //(null)
+//+(void)actionRemoveTeamPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
 
 @end
 
 @interface TSDKTeamPreferences (ForwardedMethods)
--(void)getTeamWithCompletion:(TSDKArrayCompletionBlock)completion;
+
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 
 @end

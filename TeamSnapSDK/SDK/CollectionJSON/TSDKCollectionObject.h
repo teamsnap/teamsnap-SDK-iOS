@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKRequestConfiguration.h"
 #import <CoreGraphics/CGBase.h>
 #import "TSDKObjectsRequest.h"
 #import "TSDKCollectionCommand.h"
@@ -35,6 +36,9 @@
 
 + (NSString *)SDKType;
 + (NSString *)SDKREL;
++ (NSString *)completionBlockTypeName;
++ (NSString *)completionBlockArrayDescription;
+
 - (NSInteger)objectIdentifier;
 - (NSDictionary *)dataToSave;
 - (NSString *)getString:(NSString *)key;
@@ -54,6 +58,7 @@
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;
 + (instancetype)collectionObjectFromDataInFileURL:(NSURL *)fileURL;
