@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKRequestConfiguration.h"
 #import "TSDKCollectionJSON.h"
 #import "TSDKCompletionBlockTypes.h"
 
@@ -15,7 +16,7 @@
 
 @interface TSDKObjectsRequest : NSObject
 
-+ (void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion;
++ (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 + (void)bulkLoadTeamData:(TSDKTeam *)team types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
 + (void)bulkLoadTeamDataForTeamIds:(NSArray *)teamIds types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
 + (void)listEventsForTeam:(TSDKTeam *)team startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;

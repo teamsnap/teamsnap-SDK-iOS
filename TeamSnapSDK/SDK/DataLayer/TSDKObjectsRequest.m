@@ -88,7 +88,7 @@ static NSArray *knownCompletionTypes;
     return  supportedSDKObjects;
 }
 
-+ (void)listTeams:(NSArray *)teamIds WithCompletion:(TSDKArrayCompletionBlock)completion {
++ (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     NSString *searchString = [NSString stringWithFormat:@"teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
     
     NSURL *path = [NSURL URLWithString:searchString relativeToURL:[TSDKDataRequest baseURL]];
