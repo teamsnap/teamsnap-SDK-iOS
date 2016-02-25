@@ -160,15 +160,15 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [remoteTask resume];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock {
-    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
++ (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completionBlock) {
             completionBlock(success, complete, objects, error);
         }
     }];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKCompletionBlock)completionBlock {
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
     [self requestJSONObjectsForPath:URL sendDataDictionary:dataEnvelope method:method withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
         TSDKCollectionJSON *containerCollection = nil;
         if ([objects isKindOfClass:[NSDictionary class]]) {

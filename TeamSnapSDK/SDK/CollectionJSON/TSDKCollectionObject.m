@@ -262,7 +262,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     NSURL *link = [self getLink:linkPropertyName];
     DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
 
-    [self arrayFromLink:link WithCompletion:completion];
+    [self arrayFromLink:link withConfiguration:[TSDKRequestConfiguration new] completion:completion];
 }
 
 static void getArrayFromLinkWithConfigurationIMP(id self, SEL _cmd, TSDKRequestConfiguration *configuration, TSDKArrayCompletionBlock completion) {
@@ -529,7 +529,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         }
         __typeof__(self) __weak weakSelf = self;
         
-        [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                 [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
             }
@@ -540,7 +540,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     } else {
         NSDictionary *postObject = @{@"template": dataToSave};
 
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (completionBlock) {
                 completionBlock(success, complete, objects, error);
             }
@@ -548,30 +548,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
-- (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock) completion {
-    [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completion) {
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
-                    for (TSDKCollectionObject *object in result) {
-                        [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
-                    }
-                }
-                completion(success, complete, result, error);
-            } else {
-                completion(success, complete, nil, error);
-            }
-//            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
-//            ((id(^)())(completion(success, complete, rosters, error));
-        }
-    }];
-
-
-}
-
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
-    [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:link withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
@@ -593,7 +571,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [TSDKDataRequest requestObjectsForPath:self.collection.href withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:self.collection.href withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         [self setCollection:[objects.collection objectAtIndex:0]];
         if (completion) {
             completion(YES, YES, @[self], nil);

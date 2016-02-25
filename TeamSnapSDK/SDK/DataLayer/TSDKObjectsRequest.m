@@ -93,7 +93,7 @@ static NSArray *knownCompletionTypes;
     
     NSURL *path = [NSURL URLWithString:searchString relativeToURL:[TSDKDataRequest baseURL]];
 
-    [TSDKDataRequest requestObjectsForPath:path withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:path withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *teams;
         if (success) {
             teams = [self SDKObjectsFromCollection:objects collectionType:[TSDKTeam SDKType]];
@@ -113,7 +113,7 @@ static NSArray *knownCompletionTypes;
     
     NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
     
-    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
@@ -139,7 +139,7 @@ static NSArray *knownCompletionTypes;
     
     NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", [teamIds componentsJoinedByString:@","], [stringDataTypes componentsJoinedByString:@","]]];
     
-    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
@@ -191,21 +191,6 @@ static NSArray *knownCompletionTypes;
     }
 }
 
-+ (void)listEventsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion {
-    if (team) {
-        [TSDKDataRequest requestObjectsForPath:team.linkEvents withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *teams;
-            if (success) {
-                teams = [self SDKObjectsFromCollection:objects collectionType:[TSDKEvent SDKType]];
-            }
-            if (completion) {
-                completion(success, complete, teams, error);
-            }
-        }];
-    }
-    
-}
-
 + (void)listEventsForTeam:(TSDKTeam *)team startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion {
     if (team) {
         NSMutableString *eventByDateURLString = [NSMutableString stringWithString:[team.linkEvents absoluteString]];
@@ -216,7 +201,7 @@ static NSArray *knownCompletionTypes;
             [eventByDateURLString appendFormat:@"&started_before=%@", [endDate RCF3339DateTimeString]];
         }
 
-        [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:eventByDateURLString] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:eventByDateURLString] withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *events;
             if (success) {
                 events = [self SDKObjectsFromCollection:objects collectionType:[TSDKEvent SDKType]];
@@ -229,54 +214,10 @@ static NSArray *knownCompletionTypes;
 
 }
 
-+ (void)listAvailabilitesForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion {
-    if (team) {
-        NSMutableString *availabilityURLString = [NSMutableString stringWithString:[team.linkAvailabilities absoluteString]];
-        
-        [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:availabilityURLString] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-//            NSArray *availabilites;
-//            if (success) {
-//                events = [self SDKObjectsFromCollection:objects collectionType:TSDKDataTypeIdentifierEventObject];
-//            }
-//            if (completion) {
-//                completion(success, complete, events, error);
-//            }
-        }];
-    }
-}
-
-+ (void)listRosterForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion {
-    if (team) {
-        [TSDKDataRequest requestObjectsForPath:team.linkMembers withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *rosters;
-            if (success) {
-                rosters = [self SDKObjectsFromCollection:objects collectionType:[TSDKMember SDKType]];
-            }
-            if (completion) {
-                completion(success, complete, rosters, error);
-            }
-        }];
-    }
-}
-
-+ (void)listTrackedItemsForTeam:(TSDKTeam *)team completion:(TSDKArrayCompletionBlock)completion {
-    if (team) {
-        [TSDKDataRequest requestObjectsForPath:team.linkTrackedItems withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *trackedItems;
-            if (success) {
-                trackedItems = [self SDKObjectsFromCollection:objects collectionType:[TSDKTrackedItem SDKType]];
-            }
-            if (completion) {
-                completion(success, complete, trackedItems, error);
-            }
-        }];
-    }
-}
-
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
     NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", [emailAddress stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]]]];
     
-    [TSDKDataRequest requestObjectsForPath:invitationFinderPath withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:invitationFinderPath withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         TSDKinvitationFinder *inviteStatus = nil;
         if (success) {
             if ([objects.collection count] > 0) {

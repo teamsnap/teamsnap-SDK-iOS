@@ -70,7 +70,7 @@
 
 -(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
     __typeof__(self) __weak weakSelf = self;
-    [self arrayFromLink:self.linkPersonas WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+    [self arrayFromLink:self.linkPersonas withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         for (TSDKMember *member in objects) {
             [weakSelf addMember:member];
         }
@@ -109,7 +109,7 @@
 }
 
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
-    [TSDKDataRequest requestObjectsForPath:self.linkTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:self.linkTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         [self processGetTeamsResult:objects];
         if (completion) {
             completion(success, complete, self.teams.allValues, error);
@@ -118,7 +118,7 @@
 }
 
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
-    [TSDKDataRequest requestObjectsForPath:self.linkActiveTeams withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:self.linkActiveTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         [self processGetTeamsResult:objects];
         if (completion) {
             completion(success, complete, self.teams.allValues, error);

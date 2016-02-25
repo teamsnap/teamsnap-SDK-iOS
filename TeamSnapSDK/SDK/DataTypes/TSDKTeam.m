@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSMutableArray *sortedEvents;
 @property (nonatomic, strong) NSMutableArray *sortedMembers;
 
-@property (strong, nonatomic) TSDKTeamPreferences *teamPrefrences;
+@property (strong, nonatomic) TSDKTeamPreferences *teamPreferences;
 @property (strong, nonatomic) TSDKTeamResults *teamResults;
 
 @end
@@ -139,26 +139,24 @@
     self.planId = plan.objectIdentifier;
 }
 
-- (void)getTeamPreferencesWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [super arrayFromLink:[self linkTeamPreferences] WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        if (success && objects.count>=1) {
-            [self processBulkLoadedObject:[objects objectAtIndex:0]];
-        }
+- (void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion {
+    if (!configuration.forceReload && self.teamPreferences) {
         if (completion) {
-            completion(success, YES, objects, error);
+            completion(YES, YES, @[self.teamPreferences], nil);
         }
-    }];
+    } else {
+        [self arrayFromLink:self.linkTeamPreferences withConfiguration:configuration completion:completion];
+    }
 }
 
-- (void)getTeamResultsWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [super arrayFromLink:[self linkTeamResults] WithCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        if (success && objects.count>=1) {
-            [self processBulkLoadedObject:[objects objectAtIndex:0]];
-        }
+- (void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamResultsArrayCompletionBlock)completion {
+    if (!configuration.forceReload && self.teamResults) {
         if (completion) {
-            completion(success, YES, objects, error);
+            completion(YES, YES, @[self.teamResults], nil);
         }
-    }];
+    } else {
+        [self arrayFromLink:self.linkTeamResults withConfiguration:configuration completion:completion];
+    }
 }
 
 #pragma mark -
@@ -176,10 +174,10 @@
         self.membersUpdated = [NSDate date];
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
-        if (self.teamPrefrences) {
-            [self.teamPrefrences setCollection:bulkObject.collection];
+        if (self.teamPreferences) {
+            [self.teamPreferences setCollection:bulkObject.collection];
         } else {
-            self.teamPrefrences = (TSDKTeamPreferences *)bulkObject;
+            self.teamPreferences = (TSDKTeamPreferences *)bulkObject;
         }
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
@@ -266,7 +264,7 @@
 }
 
 - (void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
-    if (self.membersUpdated && self.sortedMembers) {
+    if (!configuration.forceReload && self.membersUpdated && self.sortedMembers) {
         if (completion) {
             completion(YES, YES, self.sortedMembers, nil);
         }
@@ -280,12 +278,12 @@
 }
 
 - (void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    if (self.eventsUpdated) {
+    if (!configuration.forceReload && self.eventsUpdated) {
         if (completion) {
             completion(YES, YES, self.eventsSorted, nil);
         }
     } else {
-        [TSDKObjectsRequest listEventsForTeam:self completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        [self arrayFromLink:self.linkEvents withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
             if (completion) {
                 completion(success, complete, objects, error);
             }
@@ -301,20 +299,11 @@
     }];
 }
 
-- (void)trackedItems:(TSDKArrayCompletionBlock)completion {
-    [TSDKObjectsRequest listTrackedItemsForTeam:self completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
-    
-}
-
 #if TARGET_OS_IPHONE
 -(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
 #warning needs refactor - JLR
-    if ([self.teamPrefrences linkTeamLogo]) {
-        [self.teamPrefrences getTeamLogoWithConfiguration:configuration completion:completion];
+    if ([self.teamPreferences linkTeamLogo]) {
+        [self.teamPreferences getTeamLogoWithConfiguration:configuration completion:completion];
     } else {
         [self getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
 

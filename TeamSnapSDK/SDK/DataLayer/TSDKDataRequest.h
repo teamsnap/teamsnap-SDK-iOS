@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKRequestConfiguration.h"
 #import "TSDKCompletionBlockTypes.h"
 
 @class TSDKCollectionJSON, TSDKinvitationFinder;
@@ -21,8 +22,8 @@
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key;
 + (NSMutableDictionary *)requestHeaders;
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock;
-+ (void)requestObjectsForPath:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock;
-+ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKCompletionBlock)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
 
 #if TARGET_OS_IPHONE
 + (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completion;

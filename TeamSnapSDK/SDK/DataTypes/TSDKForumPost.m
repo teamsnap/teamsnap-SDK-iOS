@@ -27,7 +27,7 @@
     [data setObject:[NSNumber numberWithBool:post.wasBroadcasted] forKey:@"broadcast_to_team"];
     NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:data];
     
-    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumPosts] sendDataDictionary:postObject method:@"POST" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumPosts] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
             completion(success, complete, objects, error);
         }

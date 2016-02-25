@@ -33,7 +33,7 @@
     [data setObject:[NSNumber numberWithInteger:teamId] forKey:@"team_id"];
     NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:data];
 
-    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumTopics] sendDataDictionary:postObject method:@"POST" withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumTopics] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
             completion(success, complete, objects, error);
         }

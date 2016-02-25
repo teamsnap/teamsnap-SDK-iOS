@@ -170,7 +170,7 @@
     } else {
         TSDKTeamSnap __weak *weakSelf = self;
         
-        [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
             
@@ -193,7 +193,7 @@
     self.rootLinks = nil;
     
     [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
-        [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
                 success = (BOOL)weakSelf.teamSnapUser;
@@ -230,7 +230,7 @@
             }
         } else {
             [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
-                [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                     if (success) {
                         NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                         NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
@@ -266,7 +266,7 @@
 
 - (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
     [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
-        [TSDKDataRequest requestObjectsForPath:rootLinks.linkTslPhotos withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:rootLinks.linkTslPhotos withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             TSDKTslPhotos *tslPhoto = nil;
             if (success) {
                 tslPhoto = [[TSDKTslPhotos alloc] initWithCollection:objects];
@@ -299,7 +299,7 @@
             completion([_plans objectForIntegerKey:planId]);
         }
     } else {
-        [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *planObjcts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
             for (TSDKPlan *plan in planObjcts) {
                 [self addPlan:plan];

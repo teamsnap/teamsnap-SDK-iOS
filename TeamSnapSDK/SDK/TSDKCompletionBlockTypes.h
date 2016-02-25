@@ -47,7 +47,7 @@ typedef void (^TSDKSportArrayCompletionBlock)(BOOL success, BOOL complete, NSArr
 typedef void (^TSDKMemberEmailAddressArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberEmailAddress *> *memberEmailAddresses, NSError *error);
 typedef void (^TSDKMemberBalanceArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberBalance *> *memberBalances, NSError *error);
 typedef void (^TSDKContactArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContact *> *contacts, NSError *error);
-typedef void (^TSDKTeamResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamResults *> *teamResultses, NSError *error);
+typedef void (^TSDKTeamResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamResults *> *teamsResults, NSError *error);
 typedef void (^TSDKTslPhotosArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTslPhotos *> *tslPhotoses, NSError *error);
 typedef void (^TSDKPaymentNoteArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKPaymentNote *> *paymentNotes, NSError *error);
 typedef void (^TSDKOpponentResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKOpponentResults *> *opponentResultses, NSError *error);
