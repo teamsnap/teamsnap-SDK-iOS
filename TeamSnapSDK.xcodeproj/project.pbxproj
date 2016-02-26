@@ -17,6 +17,10 @@
 		960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
 		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
+		963A1B601C80E4BB006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		963A1B611C80E4C0006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
 		96481EB41C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 96481EB31C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch */; };
 		96481EB51C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 96481EB31C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch */; };
 		964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -279,6 +283,8 @@
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
 		9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProcessBulkObjectProtocol.h; sourceTree = "<group>"; };
+		963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKAvailabilityGroups.h; sourceTree = "<group>"; };
+		963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
 		96481EB31C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamSnapSDK_PrefixHeader.pch; sourceTree = "<group>"; };
 		964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRootLinks.h; sourceTree = "<group>"; };
 		964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRootLinks.m; sourceTree = "<group>"; };
@@ -619,6 +625,8 @@
 				969E808A1BAAE7AB00CA518F /* TSDKAssignment.m */,
 				969E808B1BAAE7AB00CA518F /* TSDKAvailability.h */,
 				969E808C1BAAE7AB00CA518F /* TSDKAvailability.m */,
+				963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */,
+				963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */,
 				969E808D1BAAE7AB00CA518F /* TSDKBroadcastEmail.h */,
 				969E808E1BAAE7AB00CA518F /* TSDKBroadcastEmail.m */,
 				969E808F1BAAE7AB00CA518F /* TSDKBroadcastAlert.h */,
@@ -731,6 +739,7 @@
 				969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */,
 				969B7ECE1C7CB28300FD3EA0 /* TSDKTeamMedium.h in Headers */,
 				969E80CF1BAAE7AB00CA518F /* TSDKStatisticGroup.h in Headers */,
+				963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */,
 				969E80F11BAAE7AB00CA518F /* TSDKTeamFee.h in Headers */,
 				9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */,
 				969B7EA21C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
@@ -853,6 +862,7 @@
 				96B47F491BADB4640035F2CC /* TSDKMemberStatistic.h in Headers */,
 				96B47F251BADB4410035F2CC /* TSDKBroadcastEmail.h in Headers */,
 				96B47F371BADB4410035F2CC /* TSDKOpponent.h in Headers */,
+				963A1B601C80E4BB006D695E /* TSDKAvailabilityGroups.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1029,7 @@
 				969B7F041C7DE58C00FD3EA0 /* TSDKEventStatistic.m in Sources */,
 				969E80DA1BAAE7AB00CA518F /* TSDKBroadcastAlert.m in Sources */,
 				56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */,
+				963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
 				965B7D2F1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
 				969E80CA1BAAE7AB00CA518F /* TSDKMemberStatistic.m in Sources */,
@@ -1090,6 +1101,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963A1B611C80E4C0006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				96B47F5A1BADB4810035F2CC /* NSDate+TSDKConveniences.m in Sources */,
 				96B47F581BADB4740035F2CC /* TSDKObjectsRequest.m in Sources */,
 				965B7D421C18CAE1009AF13E /* TSDKContactEmailAddress.m in Sources */,

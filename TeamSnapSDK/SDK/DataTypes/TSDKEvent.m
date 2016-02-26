@@ -4,6 +4,7 @@
 //
 
 #import "TSDKEvent.h"
+#import "TSDKAvailabilityGroups.h"
 
 
 @implementation TSDKEvent {
@@ -22,6 +23,18 @@
         _availabilitiesByRoster = [[NSMutableDictionary alloc] init];
     }
     return self;
+}
+
+-(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityGroupCompletionBlock)completion {
+    [self arrayFromLink:self.linkAvailabilities withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        TSDKAvailabilityGroups *availability = nil;
+        if (success) {
+            availability = [[TSDKAvailabilityGroups alloc] initWithAvailabilityArray:objects];
+        }
+        if (completion) {
+            completion(success, complete, availability, error);
+        }
+    }];
 }
 
 @end

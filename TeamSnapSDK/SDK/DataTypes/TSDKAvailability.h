@@ -9,6 +9,14 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef enum TSDKAvailabilityState : NSUInteger  {
+    TSDKAvailabilityIsUnknown = 0,
+    TSDKAvailabilityIsAvailable = 1,
+    TSDKAvailabilityIsNotAvailable = 2,
+    TSDKAvailabilityIsMaybeAvailable = 3
+} TSDKAvailabilityState;
+
+
 @interface TSDKAvailability : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *status; //Example: Yes. I will be there.

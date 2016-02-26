@@ -68,3 +68,4 @@
 #import <TeamSnapSDK/TSDKMemberBalance.h>
 #import <TeamSnapSDK/TSDKOpponentResults.h>
 #import <TeamSnapSDK/TSDKEventStatistic.h>
+#import <TeamSnapSDK/TSDKAvailabilityGroups.h>
