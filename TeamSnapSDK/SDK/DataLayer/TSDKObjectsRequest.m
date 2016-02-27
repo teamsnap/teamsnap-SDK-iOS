@@ -193,15 +193,17 @@ static NSArray *knownCompletionTypes;
 
 + (void)listEventsForTeam:(TSDKTeam *)team startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion {
     if (team) {
-        NSMutableString *eventByDateURLString = [NSMutableString stringWithString:[team.linkEvents absoluteString]];
+        
+        NSMutableDictionary *dateParamaters = [[NSMutableDictionary alloc] init];
         if (startDate) {
-            [eventByDateURLString appendFormat:@"&started_after=%@", [startDate RCF3339DateTimeString]];
+            [dateParamaters setValue:[startDate RCF3339DateTimeString] forKey:@"started_after"];
         }
+        
         if (endDate) {
-            [eventByDateURLString appendFormat:@"&started_before=%@", [endDate RCF3339DateTimeString]];
+            [dateParamaters setValue:[endDate RCF3339DateTimeString] forKey:@"started_before"];
         }
-
-        [TSDKDataRequest requestObjectsForPath:[NSURL URLWithString:eventByDateURLString] withConfiguration:[TSDKRequestConfiguration forceReload] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        
+        [TSDKDataRequest requestObjectsForPath:team.linkEvents searchParamaters:dateParamaters sendDataDictionary:nil method:nil withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *events;
             if (success) {
                 events = [self SDKObjectsFromCollection:objects collectionType:[TSDKEvent SDKType]];
@@ -211,7 +213,6 @@ static NSArray *knownCompletionTypes;
             }
         }];
     }
-
 }
 
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {

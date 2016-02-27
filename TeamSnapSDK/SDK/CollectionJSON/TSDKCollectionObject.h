@@ -57,6 +57,7 @@
 - (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion;
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;

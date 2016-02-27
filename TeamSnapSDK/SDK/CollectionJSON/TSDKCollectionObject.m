@@ -548,26 +548,29 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
-- (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
-    [TSDKDataRequest requestObjectsForPath:link withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completion) {
+- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
+    [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSArray *result = nil;
+        if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                NSArray *result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                 if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
                     for (TSDKCollectionObject *object in result) {
                         [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
                     }
                 }
-                completion(success, complete, result, error);
-            } else {
-                completion(success, complete, nil, error);
             }
-            //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
-            //            ((id(^)())(completion(success, complete, rosters, error));
+        }
+        if (completion) {
+            completion(success, complete, result, error);
         }
     }];
     
     
+}
+
+- (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
+    [self arrayFromLink:link searchParams:nil withConfiguration:configuration completion:completion];
 }
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {

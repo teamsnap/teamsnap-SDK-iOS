@@ -299,6 +299,12 @@
     }];
 }
 
+- (void)getEventWithId:(NSInteger)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
+    NSDictionary *searchParams = @{@"eventId": [NSNumber numberWithInteger:eventId]};
+    
+    [self arrayFromLink:self.linkEvents searchParams:searchParams withConfiguration:configuration completion:completion];
+}
+
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
 }
