@@ -394,7 +394,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             }
         } else {
             for (NSString *key in allKeys) {
-                if (![key isEqualToString:@"id"]) {
+                if (_collection.data[key] && ![key isEqualToString:@"id"]) {
                     NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
                     [tempDataToSave addObject:itemDictionary];
                 }
@@ -402,8 +402,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         }
     } else {
         for (NSString *key in _changedValues) {
-            NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
-            [tempDataToSave addObject:itemDictionary];
+            if (_collection.data[key]) {
+                NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                [tempDataToSave addObject:itemDictionary];
+            }
         }
     }
     NSDictionary *data = @{@"data" : tempDataToSave};
