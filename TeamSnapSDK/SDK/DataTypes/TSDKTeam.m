@@ -300,7 +300,7 @@
 }
 
 - (void)getEventWithId:(NSInteger)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    NSDictionary *searchParams = @{@"eventId": [NSNumber numberWithInteger:eventId]};
+    NSDictionary *searchParams = @{@"id": [NSNumber numberWithInteger:eventId]};
     
     [self arrayFromLink:self.linkEvents searchParams:searchParams withConfiguration:configuration completion:completion];
 }
