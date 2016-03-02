@@ -19,6 +19,7 @@
 @property (nonatomic, strong) TSDKCollectionJSON *collection;
 @property (nonatomic, strong) NSMutableSet *changedValues;
 @property (nonatomic, assign) BOOL logHeader;
+@property (nonatomic, strong) NSDate *lastUpdate;
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (void)dumpClassSelectorInfo;

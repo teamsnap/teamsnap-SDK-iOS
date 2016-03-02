@@ -131,6 +131,7 @@ static NSMutableDictionary *_classURLs;
         _collection = [[TSDKCollectionJSON alloc] init];
         _changedValues = [[NSMutableSet alloc] init];
         _logHeader = NO;
+        _lastUpdate = nil;
     }
     return self;
 }
@@ -141,6 +142,11 @@ static NSMutableDictionary *_classURLs;
         [self setCollection:collection];
     }
     return self;
+}
+
+- (void)setCollection:(TSDKCollectionJSON *)collection {
+    _collection = collection;
+    _lastUpdate = [NSDate date];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
