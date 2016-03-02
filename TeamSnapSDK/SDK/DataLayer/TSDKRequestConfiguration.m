@@ -10,11 +10,12 @@
 
 @implementation TSDKRequestConfiguration
 
-+ (instancetype)forceReload {
++ (instancetype)forceReload:(BOOL)forceReload {
     TSDKRequestConfiguration *configurartion = [self new];
-    [configurartion setForceReload:YES];
+    [configurartion setForceReload:forceReload];
     return configurartion;
 }
+
 
 - (instancetype)init {
     self = [super init];
