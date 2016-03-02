@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSArray <TSDKAvailability *> * notAvailabile;
 @property (nonatomic, strong) NSArray <TSDKAvailability *> * maybeAvailabile;
 @property (nonatomic, strong) NSArray <TSDKAvailability *> * unknwownAvailability;
+@property (nonatomic, strong) NSDate * lastUpdate;
 
 - (instancetype)initWithAvailabilityArray:(NSArray <TSDKAvailability *> *)availabilities;
 - (TSDKAvailability *)availabilityForMemberId:(NSInteger)memberId;

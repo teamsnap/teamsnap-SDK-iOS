@@ -38,7 +38,7 @@
         }];
         
         _maybeAvailabile = [availabilities objectsAtIndexes:maybeAvailableIndexes];
-
+        self.lastUpdate = [NSDate date];
     }
     return self;
 }
