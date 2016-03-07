@@ -23,15 +23,12 @@
         [super setString:body forKey:@"body"];
         [super setInteger:teamId forKey:@"team_id"];
         [super setInteger:sender.objectIdentifier forKey:@"member_id"];
-        NSMutableString *commaSeparatedMemberIds = [[NSMutableString alloc] init];
+        NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
         for(TSDKMember *recipient in recipients) {
-            if(recipient != recipients.lastObject) {
-                [commaSeparatedMemberIds appendString:[NSString stringWithFormat:@"%ld, ", (long)recipient.objectIdentifier]];
-            } else {
-                [commaSeparatedMemberIds appendString:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
-            }
+            [recipientIDs addObject:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
         }
-        [super setString:commaSeparatedMemberIds forKey:@"recipient_ids"];
+        
+        [super setArray:recipientIDs forKey:@"recipient_ids"];
     }
     return self;
 }

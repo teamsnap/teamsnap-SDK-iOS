@@ -52,6 +52,10 @@
 - (void)setBool:(BOOL)value forKey:(NSString *)aKey;
 - (CGFloat)getFloat:(NSString *)key;
 - (void)setFloat:(CGFloat)value forKey:(NSString *)aKey;
+
+- (void)setArray:(NSArray <NSString *> *)value forKey:(NSString *)aKey;
+- (NSArray <NSString *> *)getArrayForKey:(NSString *)key;
+
 - (NSURL *)getLink:(NSString *)aKey;
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;

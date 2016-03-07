@@ -523,6 +523,17 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     [self setObject:@(value) forKey:aKey];
 }
 
+- (void)setArray:(NSArray <NSString *> *)value forKey:(NSString *)aKey {
+    [self setObject:value forKey:aKey];
+}
+
+- (NSArray <NSString *> *)getArrayForKey:(NSString *)key {
+    if ([_collection.data[key] isEqual:[NSNull null]] || [_collection.data[key] isKindOfClass:[NSArray class]] == NO) {
+        return nil;
+    }
+    return _collection.data[key];
+}
+
 - (NSURL *)getLink:(NSString *)aKey {
     if ([_collection.links[aKey] isEqual:[NSNull null]]) {
         return nil;
