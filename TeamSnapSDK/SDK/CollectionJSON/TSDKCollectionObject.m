@@ -418,7 +418,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             [_changedValues setObject:[NSNull null] forKey:aKey];
         }
     }
-    _collection.data[aKey] = value;
+    if (value) {
+        _collection.data[aKey] = value;
+    } else {
+        _collection.data[aKey] = [NSNull null];
+    }
 }
 
 - (void)undoChanges {
