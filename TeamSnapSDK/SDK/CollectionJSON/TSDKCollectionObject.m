@@ -129,7 +129,7 @@ static NSMutableDictionary *_classURLs;
     self = [super init];
     if (self) {
         _collection = [[TSDKCollectionJSON alloc] init];
-        _changedValues = [[NSMutableSet alloc] init];
+        _changedValues = [[NSMutableDictionary alloc] init];
         _logHeader = NO;
         _lastUpdate = nil;
     }
@@ -411,8 +411,21 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
+    if (![_changedValues objectForKey:aKey]) {
+        if (_collection.data[aKey]) {
+            [_changedValues setObject:_collection.data[aKey] forKey:aKey];
+        } else {
+            [_changedValues setObject:[NSNull null] forKey:aKey];
+        }
+    }
     _collection.data[aKey] = value;
-    [_changedValues addObject:aKey];
+}
+
+- (void)undoChanges {
+    for (NSString *key in _changedValues) {
+        self.collection.data[key] = _changedValues[key];
+    }
+    [_changedValues removeAllObjects];
 }
 
 - (NSDictionary *)dataToSave {
@@ -538,6 +551,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         __typeof__(self) __weak weakSelf = self;
         
         [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success) {
+                [_changedValues removeAllObjects];
+            }
             if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                 [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
             }
@@ -549,6 +565,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         NSDictionary *postObject = @{@"template": dataToSave};
 
         [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success) {
+                [_changedValues removeAllObjects];
+            }
             if (completionBlock) {
                 completionBlock(success, complete, objects, error);
             }

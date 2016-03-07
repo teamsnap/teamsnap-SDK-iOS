@@ -17,7 +17,7 @@
 @interface TSDKCollectionObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) TSDKCollectionJSON *collection;
-@property (nonatomic, strong) NSMutableSet *changedValues;
+@property (nonatomic, strong) NSMutableDictionary *changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong) NSDate *lastUpdate;
 
@@ -55,6 +55,7 @@
 - (NSURL *)getLink:(NSString *)aKey;
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
+- (void)undoChanges;
 - (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
