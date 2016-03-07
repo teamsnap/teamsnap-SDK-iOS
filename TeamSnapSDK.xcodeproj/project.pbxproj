@@ -51,6 +51,7 @@
 		965B7D461C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
 		965B7D481C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
+		968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */; };
 		96966BD31C4989A8000828E1 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96966BD41C4989C4000828E1 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
 		9696ACC11C1715E000FA7F64 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9696ACC01C1715E000FA7F64 /* SafariServices.framework */; };
@@ -307,6 +308,7 @@
 		965B7D3E1C18CAE1009AF13E /* TSDKContactEmailAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactEmailAddress.m; path = Members/TSDKContactEmailAddress.m; sourceTree = "<group>"; };
 		965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContactPhoneNumber.h; path = Members/TSDKContactPhoneNumber.h; sourceTree = "<group>"; };
 		965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactPhoneNumber.m; path = Members/TSDKContactPhoneNumber.m; sourceTree = "<group>"; };
+		968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObjectTests.m; sourceTree = "<group>"; };
 		9696ACC01C1715E000FA7F64 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRequestConfiguration.h; sourceTree = "<group>"; };
 		969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRequestConfiguration.m; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */,
+				968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */,
 			);
 			name = CollectionJSON;
 			sourceTree = "<group>";
@@ -1111,6 +1114,7 @@
 			files = (
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
+				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
