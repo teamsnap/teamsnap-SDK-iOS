@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
+		5699E27A1C90A6EE0061EC1D /* TSDKMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5699E2781C90A6EE0061EC1D /* TSDKMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5699E2791C90A6EE0061EC1D /* TSDKMessage.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -282,6 +284,8 @@
 /* Begin PBXFileReference section */
 		56458AA11C49723D007EE9B8 /* TSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKConstants.h; sourceTree = "<group>"; };
 		56458AA21C49723D007EE9B8 /* TSDKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKConstants.m; sourceTree = "<group>"; };
+		5699E2781C90A6EE0061EC1D /* TSDKMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessage.h; path = Messages/TSDKMessage.h; sourceTree = "<group>"; };
+		5699E2791C90A6EE0061EC1D /* TSDKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMessage.m; path = Messages/TSDKMessage.m; sourceTree = "<group>"; };
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
@@ -496,6 +500,8 @@
 			children = (
 				969B7EC11C7CAE2600FD3EA0 /* TSDKForumSubscription.h */,
 				969B7EC21C7CAE2600FD3EA0 /* TSDKForumSubscription.m */,
+				5699E2781C90A6EE0061EC1D /* TSDKMessage.h */,
+				5699E2791C90A6EE0061EC1D /* TSDKMessage.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
 				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
+				5699E27A1C90A6EE0061EC1D /* TSDKMessage.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */,
@@ -1077,6 +1084,7 @@
 				969E80E21BAAE7AB00CA518F /* TSDKForumPost.m in Sources */,
 				969E80F81BAAE7AB00CA518F /* TSDKTrackedItemStatus.m in Sources */,
 				969E80DC1BAAE7AB00CA518F /* TSDKCustomDatum.m in Sources */,
+				5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */,
 				969E80C21BAAE7AB00CA518F /* NSString+TSDKConveniences.m in Sources */,
 				969B7EAE1C7CA33500FD3EA0 /* TSDKMemberPreferences.m in Sources */,
 				965B7D3B1C18CA80009AF13E /* TSDKContact.m in Sources */,
