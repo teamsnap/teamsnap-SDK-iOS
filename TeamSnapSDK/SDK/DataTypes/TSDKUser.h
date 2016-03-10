@@ -27,6 +27,8 @@
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeamsPreferences;
 @property (nonatomic, weak) NSURL *linkPersonas;
+@property (nonatomic, weak) NSURL *linkMessages;
+@property (nonatomic, weak) NSURL *linkMemberMessageData;
 @property (nonatomic, weak) NSURL *linkFacebookPages;
 @property (nonatomic, weak) NSURL *linkTeams;
 @property (nonatomic, weak) NSURL *linkMembers;
@@ -55,4 +57,6 @@
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMessagesDatumArrayCompletionBlock)completion;
+-(void)getMemberMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 @end

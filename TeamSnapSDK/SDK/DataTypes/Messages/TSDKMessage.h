@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) NSString * _Nullable body; //Example: Test!
 @property (nonatomic, weak) NSArray * _Nullable recipients;
+@property (nonatomic, weak) NSString * _Nullable recipientNames; // Example: John, Fred, Mark
 @property (nonatomic, weak) NSString * _Nullable subject; //Example: **NULL**
 @property (nonatomic, assign) NSInteger memberId; //Example: 166
 @property (nonatomic, assign) NSInteger smsed; //Example: 0
