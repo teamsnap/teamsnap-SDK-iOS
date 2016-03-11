@@ -91,7 +91,7 @@
 @property (nonatomic, weak) NSURL *linkTeamResults;
 @property (nonatomic, weak) NSURL *linkLeagueCustomData;
 @property (nonatomic, weak) NSURL *linkContactPhoneNumbers;
-@property (nonatomic, weak) NSURL *linkMemberMessageData;
+@property (nonatomic, weak) NSURL *linkMessageData;
 @property (nonatomic, weak) NSURL *linkMemberFiles;
 @property (nonatomic, weak) NSURL *linkMemberPayments;
 @property (nonatomic, weak) NSURL *linkDivisionMemberPhoneNumbers;
@@ -191,7 +191,7 @@
 -(void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamResultsArrayCompletionBlock)completion;
 -(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
--(void)getMemberMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPaymentArrayCompletionBlock)completion;
 -(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;

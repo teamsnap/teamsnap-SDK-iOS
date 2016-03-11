@@ -28,7 +28,7 @@
 @property (nonatomic, weak) NSURL *linkTeamsPreferences;
 @property (nonatomic, weak) NSURL *linkPersonas;
 @property (nonatomic, weak) NSURL *linkMessages;
-@property (nonatomic, weak) NSURL *linkMemberMessageData;
+@property (nonatomic, weak) NSURL *linkMessageData;
 @property (nonatomic, weak) NSURL *linkFacebookPages;
 @property (nonatomic, weak) NSURL *linkTeams;
 @property (nonatomic, weak) NSURL *linkMembers;
@@ -58,5 +58,4 @@
 -(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMessagesDatumArrayCompletionBlock)completion;
--(void)getMemberMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
-@end
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;@end
