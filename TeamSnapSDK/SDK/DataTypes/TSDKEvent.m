@@ -4,6 +4,7 @@
 //
 
 #import "TSDKEvent.h"
+#import "NSDate+TSDKConveniences.h"
 #import "TSDKAvailabilityGroups.h"
 #import "TSDKMember.h"
 
@@ -79,5 +80,26 @@
         }
     }];
 }
+
+- (NSComparisonResult)compareStartDate:(TSDKEvent *)compareEvent {
+    if (self.isTbd && compareEvent.isTbd) {
+        return [self.startDate compare:compareEvent.startDate];
+    } else if (self.isTbd && (compareEvent.isTbd == NO)) {
+        if ([self.startDate isSameDayAs:compareEvent.startDate]) {
+            return NSOrderedAscending;
+        } else {
+            return [self.startDate compare:compareEvent.startDate];
+        }
+    } else if ((self.isTbd == NO)  && compareEvent.isTbd) {
+        if ([self.startDate isSameDayAs:compareEvent.startDate]) {
+            return NSOrderedDescending;
+        } else {
+            return [self.startDate compare:compareEvent.startDate];
+        }
+    } else {
+        return [self.startDate compare:compareEvent.startDate];
+    }
+}
+
 
 @end
