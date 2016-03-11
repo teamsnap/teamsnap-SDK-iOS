@@ -17,8 +17,9 @@
 @interface TSDKCollectionObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) TSDKCollectionJSON *collection;
-@property (nonatomic, strong) NSMutableSet *changedValues;
+@property (nonatomic, strong) NSMutableDictionary *changedValues;
 @property (nonatomic, assign) BOOL logHeader;
+@property (nonatomic, strong) NSDate *lastUpdate;
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (void)dumpClassSelectorInfo;
@@ -51,13 +52,18 @@
 - (void)setBool:(BOOL)value forKey:(NSString *)aKey;
 - (CGFloat)getFloat:(NSString *)key;
 - (void)setFloat:(CGFloat)value forKey:(NSString *)aKey;
+
+- (void)setArray:(NSArray <NSString *> *)value forKey:(NSString *)aKey;
+- (NSArray <NSString *> *)getArrayForKey:(NSString *)key;
+
 - (NSURL *)getLink:(NSString *)aKey;
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
+- (void)undoChanges;
 - (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
-- (void)arrayFromLink:(NSURL *)link WithCompletion:(TSDKArrayCompletionBlock)completion;
+- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion;
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;

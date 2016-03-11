@@ -160,16 +160,30 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [remoteTask resume];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL withCompletion:(TSDKCompletionBlock)completionBlock {
-    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
++ (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completionBlock) {
             completionBlock(success, complete, objects, error);
         }
     }];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKCompletionBlock)completionBlock {
-    [self requestJSONObjectsForPath:URL sendDataDictionary:dataEnvelope method:method withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
++ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
+
+    if (searchParamaters) {
+        NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
+        for (NSString *key in searchParamaters) {
+            [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@",key, [searchParamaters objectForKey:key]]];
+        }
+        NSString *separator = @"&";
+        if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
+            separator = @"?";
+        }
+        [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
+    }
+    
+    [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
         TSDKCollectionJSON *containerCollection = nil;
         if ([objects isKindOfClass:[NSDictionary class]]) {
             containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
@@ -178,6 +192,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
             completionBlock(success, complete, containerCollection, error);
         }
     }];
+}
+
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    [self requestObjectsForPath:URL searchParamaters:nil sendDataDictionary:dataEnvelope method:method withConfiguration:configuration completion:completionBlock];
 }
 
 #if TARGET_OS_IPHONE

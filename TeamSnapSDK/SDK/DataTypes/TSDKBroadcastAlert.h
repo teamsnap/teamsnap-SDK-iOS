@@ -18,6 +18,8 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkMember;
 
+- (instancetype)initWithBody:(NSString *)body teamId:(NSInteger)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(TSDKMember *)sender;
+
 @end
 
 @interface TSDKBroadcastAlert (ForwardedMethods)

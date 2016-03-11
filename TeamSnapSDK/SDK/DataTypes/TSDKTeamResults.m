@@ -15,4 +15,8 @@
     return @"team_results";
 }
 
++ (NSString *)SDKREL {
+    return @"teams_results";    
+}
+
 @end

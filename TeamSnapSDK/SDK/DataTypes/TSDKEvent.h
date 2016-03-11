@@ -16,10 +16,10 @@
 @property (nonatomic, assign) BOOL isGame; //Example: 1
 @property (nonatomic, weak) NSString *label; //Example:
 @property (nonatomic, weak) NSString *gameType; //Example: Home
-@property (nonatomic, weak) NSString *shootoutPointsForTeam; //Example: **NULL**
-@property (nonatomic, weak) NSString *shootoutPointsForOpponent; //Example: **NULL**
+@property (nonatomic, assign) NSInteger shootoutPointsForTeam; //Example: **NULL**
+@property (nonatomic, assign) NSInteger shootoutPointsForOpponent; //Example: **NULL**
 @property (nonatomic, weak) NSString *timeZoneDescription; //Example: Eastern Time (US & Canada)
-@property (nonatomic, assign) NSInteger tracksAvailability; //Example: 1
+@property (nonatomic, assign) BOOL tracksAvailability; //Example: 1
 @property (nonatomic, assign) BOOL isCanceled; //Example: 0
 @property (nonatomic, weak) NSString *sourceTimeZoneIanaName; //Example: America/New_York
 @property (nonatomic, weak) NSString *divisionLocationId; //Example: **NULL**
@@ -31,7 +31,7 @@
 @property (nonatomic, weak) NSString *name; //Example:
 @property (nonatomic, weak) NSString *repeatingType; //Example: **NULL**
 @property (nonatomic, assign) BOOL isShootout; //Example: 0
-@property (nonatomic, weak) NSString *pointsForTeam; //Example: **NULL**
+@property (nonatomic, assign) NSInteger pointsForTeam; //Example: **NULL**
 @property (nonatomic, assign) NSInteger locationId; //Example: 714660
 @property (nonatomic, assign) NSInteger minutesToArriveEarly; //Example: 0
 @property (nonatomic, weak) NSString *formattedResults; //Example: **NULL**
@@ -39,7 +39,7 @@
 @property (nonatomic, weak) NSDate *startDate; //Example: 2012-05-19T04:00:00Z
 @property (nonatomic, assign) NSInteger doesntCountTowardsRecord; //Example: 1
 @property (nonatomic, weak) NSString *timeZone; //Example: Eastern Time (US & Canada)
-@property (nonatomic, weak) NSString *pointsForOpponent; //Example: **NULL**
+@property (nonatomic, assign) NSInteger pointsForOpponent; //Example: **NULL**
 @property (nonatomic, assign) NSInteger gameTypeCode; //Example: 1
 @property (nonatomic, weak) NSString *timeZoneOffset; //Example: -05:00
 @property (nonatomic, weak) NSDate *arrivalDate; //Example: 2012-05-19T04:00:00Z
@@ -60,17 +60,20 @@
 @property (nonatomic, weak) NSURL *linkStatisticData;
 @property (nonatomic, weak) NSURL *linkCalendarSingleEvent;
 
-//+(void)actionUpdateFinalScoreWithCompletion:(TSDKCompletionBlock)completion; //(null)
++(void)actionUpdateFinalScoreForEvent:(TSDKEvent *)event completion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionBulkCreateWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionSendAvailabilityRemindersWithCompletion:(TSDKCompletionBlock)completion; //(null)
 
 @property (nonatomic, strong) NSMutableDictionary *availabilitiesByRoster;
 
+- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKCompletionBlock)completionBlock;
+- (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock)completion;
+
 @end
 
 @interface TSDKEvent (ForwardedMethods)
 
--(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityArrayCompletionBlock)completion;
+-(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityGroupCompletionBlock)completion;
 -(void)getLocationWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKLocationArrayCompletionBlock)completion;
 -(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionLocationWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
