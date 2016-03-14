@@ -7,6 +7,7 @@
 #import "NSDate+TSDKConveniences.h"
 #import "TSDKAvailabilityGroups.h"
 #import "TSDKMember.h"
+#import "TSDKOpponent.h"
 
 
 @implementation TSDKEvent {
@@ -98,6 +99,30 @@
         }
     } else {
         return [self.startDate compare:compareEvent.startDate];
+    }
+}
+
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent {
+    if (self.isGame && opponent) {
+        if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
+            if ((self.label) && (![self.label isEqualToString:@""])) {
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ at %2$@", @"Indicating there is an Event Named #1 at opponent #2"), self.label, opponent.name];
+            } else {
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-at %@", @"Indicating there is an Event at OPPONENT"), opponent.name];
+            }
+        } else {
+            if (self.label && (![self.label isEqualToString:@""])) {
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ vs. %2$@", @"Indicating there is an Event Named #1 against opponent #2"), self.label, opponent.name];
+            } else {
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-vs. %@", @"Indicating there is an Event against OPPONENT"), opponent.name];
+            }
+        }
+    } else {
+        if (!self.name || (self.name.length == 0)) {
+            return NSLocalizedString(@"Event", nil);
+        } else {
+            return self.name;
+        }
     }
 }
 
