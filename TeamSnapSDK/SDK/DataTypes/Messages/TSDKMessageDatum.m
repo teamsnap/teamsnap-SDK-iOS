@@ -16,4 +16,8 @@
     return @"message_datum";
 }
 
++ (NSString *)SDKREL {
+    return @"message_data";
+}
+
 @end

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
-		5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 5688F54B1C91E2D80005C330 /* TSDKMessageDatum.h */; };
+		5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 5688F54B1C91E2D80005C330 /* TSDKMessageDatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5688F54E1C91E2D80005C330 /* TSDKMessageDatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 5688F54C1C91E2D80005C330 /* TSDKMessageDatum.m */; };
 		5699E27A1C90A6EE0061EC1D /* TSDKMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5699E2781C90A6EE0061EC1D /* TSDKMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5699E2791C90A6EE0061EC1D /* TSDKMessage.m */; };
@@ -808,6 +808,7 @@
 				969E80C51BAAE7AB00CA518F /* TSDKDataRequest.h in Headers */,
 				960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */,
 				969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */,
+				5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */,
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
 				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
@@ -823,7 +824,6 @@
 				969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */,
 				964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */,
 				969E80C31BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.h in Headers */,
-				5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */,
 				969E80BD1BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
