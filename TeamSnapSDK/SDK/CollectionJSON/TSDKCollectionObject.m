@@ -590,6 +590,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
+- (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    if (self.isNewObject == NO) {
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:nil method:@"DELETE" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completion) {
+                completion(success, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            completion(YES, nil);
+        }
+    }
+}
+
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *result = nil;
