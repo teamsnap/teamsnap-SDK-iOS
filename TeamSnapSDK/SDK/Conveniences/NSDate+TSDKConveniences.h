@@ -15,4 +15,7 @@
 - (NSString *)YYYYMMDDString;
 
 - (NSString *)RCF3339DateTimeString;
+
+- (BOOL)isSameDayAs:(NSDate *)dateToCompare;
+
 @end
