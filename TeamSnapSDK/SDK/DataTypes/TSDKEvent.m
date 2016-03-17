@@ -60,14 +60,14 @@
     }];
 }
 
-- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKCompletionBlock)completionBlock {
+- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion {
     if (member) {
         [self setBool:YES forKey:@"notify_team"];
         [self setInteger:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
         [self setBool:NO forKey:@"notify_team"];
     }
-    [self saveWithCompletion:completionBlock];
+    [self saveWithCompletion:completion];
 }
 
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityGroupCompletionBlock)completion {

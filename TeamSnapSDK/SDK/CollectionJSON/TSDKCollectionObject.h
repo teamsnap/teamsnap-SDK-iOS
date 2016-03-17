@@ -60,7 +60,7 @@
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
 - (void)undoChanges;
-- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock;
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion;
