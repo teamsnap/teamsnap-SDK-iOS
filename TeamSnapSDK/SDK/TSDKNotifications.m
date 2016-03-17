@@ -6,7 +6,7 @@
 //  Copyright © 2016 teamsnap. All rights reserved.
 //
 
-#import "TSDKNotificatons.h"
+#import "TSDKNotifications.h"
 #import "TSDKCollectionObject.h"
 
 NSString * const TSDKNotificationObjectType = @"TSDKNotificationObjectType";
@@ -20,11 +20,12 @@ NSString * const TSDKNotificationDeleted = @"TSDKNotificationDeleted";
 @implementation TSDKNotifications 
 
 + (void)postObject:(TSDKCollectionObject *)notificationObject type:(NSString *)notificationType {
-    NSDictionary *userInfo = @{@"type": notificationType, @"object":notificationObject};
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationObjectType object:notificationObject userInfo:userInfo];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationObjectClass object:NSStringFromClass([notificationObject class]) userInfo:userInfo];
+    if ([notificationObject isKindOfClass:[TSDKCollectionObject class]]) {
+        NSDictionary *userInfo = @{@"type": notificationType, @"object":notificationObject};
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationObjectType object:notificationObject userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationObjectClass object:[[notificationObject class] SDKType] userInfo:userInfo];
+    }
 }
 
 + (void)postSavedObject:(TSDKCollectionObject *)notificationObject {
