@@ -26,7 +26,7 @@ extern NSString * _Nonnull const TSDKObjectDeleted;
 + (void)postDeletedObject:(TSDKCollectionObject * _Nonnull)notificationObject;
 
 + (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
-+ (void)listedToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
++ (void)listenToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 + (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 
 @end
