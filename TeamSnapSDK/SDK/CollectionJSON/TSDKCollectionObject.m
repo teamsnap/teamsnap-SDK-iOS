@@ -595,7 +595,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
     if (self.isNewObject == NO) {
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:nil method:@"DELETE" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSDictionary *dataToSave = [self dataToSave];
+        NSDictionary *postObject = @{@"template": dataToSave};
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"DELETE" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [TSDKNotifications postDeletedObject:self];
             }
