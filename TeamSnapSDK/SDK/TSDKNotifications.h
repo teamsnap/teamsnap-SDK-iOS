@@ -8,24 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const TSDKNotificationObjectType;
-extern NSString * const TSDKNotificationObjectClass;
+extern NSString * _Nonnull const TSDKNotificationsForObject;
+extern NSString * _Nonnull const TSDKNotificationsForObjectClass;
 
-
-extern NSString * const TSDKNotificationSaved;
-extern NSString * const TSDKNotificationAdded;
-extern NSString * const TSDKNotificationRefreshed;
-extern NSString * const TSDKNotificationDeleted;
+extern NSString * _Nonnull const TSDKObectSaved;
+extern NSString * _Nonnull const TSDKObjectAdded;
+extern NSString * _Nonnull const TSDKObjectRefreshed;
+extern NSString * _Nonnull const TSDKObjectDeleted;
 
 @class  TSDKCollectionObject;
 
 @interface TSDKNotifications : NSObject
 
-+ (void)postSavedObject:(TSDKCollectionObject *)notificationObject;
-+ (void)postNewObject:(TSDKCollectionObject *)notificationObject;
-+ (void)postRefreshedObject:(TSDKCollectionObject *)notificationObject;
-+ (void)postDeletedObject:(TSDKCollectionObject *)notificationObject;
++ (void)postSavedObject:(TSDKCollectionObject * _Nonnull)notificationObject;
++ (void)postNewObject:(TSDKCollectionObject * _Nonnull)notificationObject;
++ (void)postRefreshedObject:(TSDKCollectionObject * _Nonnull)notificationObject;
++ (void)postDeletedObject:(TSDKCollectionObject * _Nonnull)notificationObject;
 
-
++ (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
++ (void)listedToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
++ (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 
 @end

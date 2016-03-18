@@ -9,13 +9,13 @@
 #import "TSDKNotifications.h"
 #import "TSDKCollectionObject.h"
 
-NSString * const TSDKNotificationObjectType = @"TSDKNotificationObjectType";
-NSString * const TSDKNotificationObjectClass = @"TSDKNotificationObjectClass";
+NSString * const TSDKNotificationsForObject = @"TSDKNotificationsForObject";
+NSString * const TSDKNotificationsForObjectClass = @"TSDKNotificationsForObjectClass";
 
-NSString * const TSDKNotificationSaved = @"TSDKNotificationSaved";
-NSString * const TSDKNotificationAdded = @"TSDKNotificationAdded";
-NSString * const TSDKNotificationRefreshed = @"TSDKNotificationRefreshed";
-NSString * const TSDKNotificationDeleted = @"TSDKNotificationDeleted";
+NSString * const TSDKObjectSaved = @"TSDKNotificationSaved";
+NSString * const TSDKObjectAdded = @"TSDKNotificationAdded";
+NSString * const TSDKObjectRefreshed = @"TSDKNotificationRefreshed";
+NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
 
 @implementation TSDKNotifications 
 
@@ -23,25 +23,37 @@ NSString * const TSDKNotificationDeleted = @"TSDKNotificationDeleted";
     if ([notificationObject isKindOfClass:[TSDKCollectionObject class]]) {
         NSDictionary *userInfo = @{@"type": notificationType, @"object":notificationObject};
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationObjectType object:notificationObject userInfo:userInfo];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationObjectClass object:[[notificationObject class] SDKType] userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationsForObject object:notificationObject userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TSDKNotificationsForObjectClass object:[[notificationObject class] SDKType] userInfo:userInfo];
     }
 }
 
 + (void)postSavedObject:(TSDKCollectionObject *)notificationObject {
-    [self postObject:notificationObject type:TSDKNotificationSaved];
+    [self postObject:notificationObject type:TSDKObjectSaved];
 }
 
 + (void)postDeletedObject:(TSDKCollectionObject *)notificationObject {
-    [self postObject:notificationObject type:TSDKNotificationDeleted];
+    [self postObject:notificationObject type:TSDKObjectDeleted];
 }
 
 + (void)postNewObject:(TSDKCollectionObject *)notificationObject {
-    [self postObject:notificationObject type:TSDKNotificationAdded];
+    [self postObject:notificationObject type:TSDKObjectAdded];
 }
 
 + (void)postRefreshedObject:(TSDKCollectionObject *)notificationObject {
-    [self postObject:notificationObject type:TSDKNotificationRefreshed];
+    [self postObject:notificationObject type:TSDKObjectRefreshed];
+}
+
++ (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObject object:collectionObject];
+}
+
++ (void)listedToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObject object:nil];
+}
+
++ (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObjectClass object:[class SDKType]];
 }
 
 @end
