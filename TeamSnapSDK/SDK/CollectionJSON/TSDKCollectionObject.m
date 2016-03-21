@@ -15,6 +15,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
 #import "TSDKProcessBulkObjectProtocol.h"
+#import "TSDKNotifications.h"
 
 @implementation TSDKCollectionObject
 
@@ -568,6 +569,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [_changedValues removeAllObjects];
+                [TSDKNotifications postSavedObject:self];
             }
             if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                 [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
@@ -582,6 +584,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [_changedValues removeAllObjects];
+                [TSDKNotifications postNewObject:self];
             }
             if (completion) {
                 completion(success, weakSelf, error);
@@ -592,7 +595,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
     if (self.isNewObject == NO) {
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:nil method:@"DELETE" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSDictionary *dataToSave = [self dataToSave];
+        NSDictionary *postObject = @{@"template": dataToSave};
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"DELETE" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (success) {
+                [TSDKNotifications postDeletedObject:self];
+            }
             if (completion) {
                 completion(success, error);
             }
@@ -632,6 +640,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {
     [TSDKDataRequest requestObjectsForPath:self.collection.href withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         [self setCollection:[objects.collection objectAtIndex:0]];
+        if (success) {
+            [TSDKNotifications postRefreshedObject:self];
+        }
         if (completion) {
             completion(YES, YES, @[self], nil);
         } else {
