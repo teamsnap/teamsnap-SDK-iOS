@@ -28,5 +28,9 @@ extern NSString * _Nonnull const TSDKObjectDeleted;
 + (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 + (void)listenToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 + (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
++ (void)removeListenerForObject:(TSDKCollectionObject * _Nonnull)object forObserver:(id _Nonnull)observer;
++ (void)removeListerToAllObjectChangesObserver:(id _Nonnull)observer;
++ (void)removeListenerForClass:(Class _Nonnull)class  forObserver:(id _Nonnull)observer;
++ (void)removeAllListenersForObserver:(id _Nonnull)observer;
 
 @end
