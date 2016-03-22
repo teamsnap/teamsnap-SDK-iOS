@@ -68,6 +68,8 @@
 
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKCompletionBlock)completionBlock;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock)completion;
+- (NSComparisonResult)compareStartDate:(TSDKEvent *)compareEvent;
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent;
 
 @end
 
