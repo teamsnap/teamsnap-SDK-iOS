@@ -553,7 +553,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     return ([_collection.data[@"id"] integerValue] <=0);
 }
 
-- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock {
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
     NSDictionary *dataToSave = [self dataToSave];
     if ([self isNewObject]) {
         NSDictionary *postObject = @{@"template": dataToSave};
@@ -572,21 +572,35 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                 [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
             }
-            if (completionBlock) {
-                completionBlock(success, complete, objects, error);
+            if (completion) {
+                completion(success, weakSelf, error);
             }
         }];
     } else {
         NSDictionary *postObject = @{@"template": dataToSave};
-
+        __typeof__(self) __weak weakSelf = self;
         [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [_changedValues removeAllObjects];
             }
-            if (completionBlock) {
-                completionBlock(success, complete, objects, error);
+            if (completion) {
+                completion(success, weakSelf, error);
             }
         }];
+    }
+}
+
+- (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    if (self.isNewObject == NO) {
+        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:nil method:@"DELETE" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completion) {
+                completion(success, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            completion(YES, nil);
+        }
     }
 }
 
