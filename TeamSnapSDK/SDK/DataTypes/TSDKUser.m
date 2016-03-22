@@ -29,6 +29,15 @@
     return @"user";
 }
 
++ (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    TSDKCollectionCommand *command = [self commandForKey:@"update_final_score"];
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+}
+
 - (NSMutableDictionary *)teams {
     if (!_teams) {
         _teams = [[NSMutableDictionary alloc] init];
