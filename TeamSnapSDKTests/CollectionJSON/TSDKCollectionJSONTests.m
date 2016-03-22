@@ -70,8 +70,11 @@
     NSDate *date = [@"2016-03-22T13:34:04Z" dateFromRCF3339DateTimeString];
     XCTAssertNotNil(date, "Date conversion failed");
     
-    NSDate *secondDate = [@"2016-04-12T00:00:00+00:00" dateFromRCF3339DateTimeString];
+    NSDate *secondDate = [@"2016-04-12T00:00:00.000+00:00" dateFromRCF3339DateTimeString];
     XCTAssertNotNil(secondDate, "Date conversion failed");
+
+    NSDate *thirdDate = [@"2016-04-12T00:00:00+00:00" dateFromRCF3339DateTimeString];
+    XCTAssertNotNil(thirdDate, "Date conversion failed");
     
 }
 

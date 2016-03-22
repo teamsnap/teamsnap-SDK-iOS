@@ -33,6 +33,9 @@
     if (!result) {
         result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"];
     }
+    if (!result) {
+        result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZZZ"];
+    }
     return result;
 }
 
