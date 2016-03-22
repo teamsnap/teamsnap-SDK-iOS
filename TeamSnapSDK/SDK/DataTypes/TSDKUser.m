@@ -30,7 +30,7 @@
 }
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock)completion {
-    TSDKCollectionCommand *command = [self commandForKey:@"update_final_score"];
+    TSDKCollectionCommand *command = [self commandForKey:@"send_trial_expiring_reminder"];
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
             completion(success, error);
