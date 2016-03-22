@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "TSDKCollectionJSON.h"
 #import "NSDictionary+dump.h"
+#import "NSString+TSDKConveniences.h"
 
 @interface TSDKCollectionJSONTests : XCTestCase
 
@@ -65,6 +66,13 @@
     XCTAssertEqualObjects(subCollection.data[@"id"], [NSNumber numberWithInteger:2]);
 }
 
-
+- (void)testDateConversion {
+    NSDate *date = [@"2016-03-22T13:34:04Z" dateFromRCF3339DateTimeString];
+    XCTAssertNotNil(date, "Date conversion failed");
+    
+    NSDate *secondDate = [@"2016-04-12T00:00:00+00:00" dateFromRCF3339DateTimeString];
+    XCTAssertNotNil(secondDate, "Date conversion failed");
+    
+}
 
 @end
