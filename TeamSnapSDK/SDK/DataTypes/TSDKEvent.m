@@ -60,15 +60,37 @@
     }];
 }
 
-- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion {
+- (void)setNotifyTeamAsMember:(TSDKMember *)member {
     if (member) {
         [self setBool:YES forKey:@"notify_team"];
         [self setInteger:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
+        [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];
     }
-    [self saveWithCompletion:completion];
 }
+
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
+    // if they call save, don't notify team;
+    [self setNotifyTeamAsMember:nil];
+    [super saveWithCompletion:completion];
+}
+
+- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion {
+    [self setNotifyTeamAsMember:member];
+    [super saveWithCompletion:completion];
+}
+
+- (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    [self setNotifyTeamAsMember:nil];
+    [super deleteWithCompletion:completion];
+}
+
+- (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
+    [self setNotifyTeamAsMember:member];
+    [super deleteWithCompletion:completion];
+}
+
 
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityGroupCompletionBlock)completion {
     [self arrayFromLink:self.linkAvailabilities withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
