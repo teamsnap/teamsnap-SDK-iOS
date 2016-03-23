@@ -10,6 +10,15 @@
 
 @interface TSDKSport : TSDKCollectionObject
 
+extern const NSInteger TSPSportBaseball;
+extern const NSInteger TSPSportSoftBall;
+extern const NSInteger TSPSportKickball;
+extern const NSInteger TSPSportSlowPitch;
+extern const NSInteger TSPSportSoccer;
+extern const NSInteger TSPSportFootball;
+extern const NSInteger TSPSportHockey;
+extern const NSInteger TSPSportNonSportGroup;
+
 @property (nonatomic, assign) BOOL hasShootouts; //Example: 0
 @property (nonatomic, assign) BOOL hasStatisticTemplate; //Example: 1
 @property (nonatomic, weak) NSString *shootoutLabel; //Example: **NULL**

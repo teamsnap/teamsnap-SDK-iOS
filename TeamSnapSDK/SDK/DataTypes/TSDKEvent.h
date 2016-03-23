@@ -66,8 +66,11 @@
 
 @property (nonatomic, strong) NSMutableDictionary *availabilitiesByRoster;
 
-- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKCompletionBlock)completionBlock;
+- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock)completion;
+- (NSComparisonResult)compareStartDate:(TSDKEvent *)compareEvent;
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent;
+- (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion;
 
 @end
 

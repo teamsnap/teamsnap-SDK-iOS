@@ -79,26 +79,25 @@
     return self;
 }
 
-- (void)saveWithCompletion:(TSDKCompletionBlock)completionBlock {
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion{
     BOOL isNewTeam = self.isNewObject;
     
-    [super saveWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [super saveWithCompletion:^(BOOL success, TSDKCollectionObject *saved, NSError *error) {
         if (isNewTeam) {
             if (success) {
-                TSDKCollectionJSON *saveTeamResultCollectionJSON = objects;
                 [[[TSDKTeamSnap sharedInstance] teamSnapUser] getPersonasWithConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-                    if (completionBlock) {
-                        completionBlock(success, complete, saveTeamResultCollectionJSON, error);
+                    if (completion) {
+                        completion(success, saved, error);
                     }
                 }];
             } else {
-                if (completionBlock) {
-                    completionBlock(success, complete, objects, error);
+                if (completion) {
+                    completion(success, saved, error);
                 }
             }
         } else {
-            if (completionBlock) {
-                completionBlock(success, complete, objects, error);
+            if (completion) {
+                completion(success, saved, error);
             }
         }
     }];
