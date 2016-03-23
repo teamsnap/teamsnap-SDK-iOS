@@ -12,6 +12,7 @@
 
 @interface TSDKMessage : TSDKCollectionObject
 
+NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) NSString *status; //Example: received
 @property (nonatomic, assign) NSInteger memberId; //Example: 230
 @property (nonatomic, assign) NSInteger userId; //Example: 11
@@ -38,6 +39,7 @@
 @property (nonatomic, weak) NSURL *linkDivision;
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkUser;
+NS_ASSUME_NONNULL_END
 
 + (void)actionMarkMessageAsRead:(TSDKMessage * _Nonnull)message completion:(TSDKCompletionBlock _Nullable)completion;
 
