@@ -184,6 +184,7 @@
 		969E80FA1BAAE7AB00CA518F /* TSDKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80B01BAAE7AB00CA518F /* TSDKUser.m */; };
 		969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80FC1BAAE7B500CA518F /* TSDKProfileTimer.h */; };
 		969E80FF1BAAE7B500CA518F /* TSDKProfileTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */; };
+		96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */; };
 		96B47F1C1BADB33E0035F2CC /* TeamSnapSDKTV.h in Headers */ = {isa = PBXBuildFile; fileRef = 96B47F1B1BADB33E0035F2CC /* TeamSnapSDKTV.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F211BADB4410035F2CC /* TSDKAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80891BAAE7AB00CA518F /* TSDKAssignment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F221BADB4410035F2CC /* TSDKAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E808A1BAAE7AB00CA518F /* TSDKAssignment.m */; };
@@ -1124,6 +1125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
+				96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
