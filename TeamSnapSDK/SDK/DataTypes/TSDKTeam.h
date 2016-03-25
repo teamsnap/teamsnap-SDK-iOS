@@ -34,11 +34,11 @@
 @property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
 @property (nonatomic, weak) NSString *seasonName; //Example:
 @property (nonatomic, weak) NSString *locationCountry; //Example: United States
-@property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 0
-@property (nonatomic, weak) NSString *divisionName; //Example: **NULL**
-@property (nonatomic, weak) NSString *humanizedMediaStorageUsed; //Example: 0 B
-@property (nonatomic, weak) NSDate *createdAt; //Example: 2016-03-04T19:07:11Z
-@property (nonatomic, weak) NSString *divisionId; //Example: **NULL**
+@property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 130056353
+@property (nonatomic, weak) NSString *divisionName; //Example:
+@property (nonatomic, weak) NSString *humanizedMediaStorageUsed; //Example: 124.03 MB
+@property (nonatomic, weak) NSDate *billedAt; //Example: 2013-09-20T00:00:00.000+00:00
+@property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-27T03:32:51Z
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeamMediaGroups;
