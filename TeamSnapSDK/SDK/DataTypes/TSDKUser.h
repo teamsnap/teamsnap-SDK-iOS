@@ -35,6 +35,8 @@
 @property (nonatomic, weak) NSURL *linkActiveTeams;
 
 // Non Auto-generated
++ (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock)completion;
+
 - (void)TeamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 - (NSArray *)myMembersAcrossAllTeams;

@@ -29,7 +29,14 @@
 }
 
 - (NSDate *)dateFromRCF3339DateTimeString {
-    return [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    NSDate *result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    if (!result) {
+        result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"];
+    }
+    if (!result) {
+        result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZZZ"];
+    }
+    return result;
 }
 
 - (NSDate *)dateFromJustDate {
