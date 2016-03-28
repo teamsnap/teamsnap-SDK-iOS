@@ -10,6 +10,11 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSUInteger, TSDKMessageType) {
+    TSDKMessageTypeAlert,
+    TSDKMessageTypeEmail
+};
+
 @interface TSDKMessage : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString * _Nullable status; //Example: received

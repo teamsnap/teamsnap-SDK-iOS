@@ -9,6 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
+#import "TSDKMessage.h"
 
 @class TSDKEvent, TSDKMember, TSDKPlan, TSDKTeamPreferences, TSDKTeamResults;
 
@@ -197,7 +198,7 @@
 -(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMessagesArrayCompletionBlock)completion;
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
 -(void)getLocationsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKLocationArrayCompletionBlock)completion;
 -(void)getCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomFieldArrayCompletionBlock)completion;
 -(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticDatumArrayCompletionBlock)completion;

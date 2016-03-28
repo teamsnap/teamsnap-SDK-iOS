@@ -9,6 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
+#import "TSDKMessage.h"
 
 @interface TSDKUser : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
@@ -59,5 +60,5 @@
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
--(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMessagesDatumArrayCompletionBlock)completion;
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
 -(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;@end
