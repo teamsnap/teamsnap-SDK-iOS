@@ -13,6 +13,7 @@
 
 @interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
+@property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, weak) NSString *lastName; //Example: Invite
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
