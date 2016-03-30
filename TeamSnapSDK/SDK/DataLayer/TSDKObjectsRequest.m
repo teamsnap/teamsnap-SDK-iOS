@@ -57,6 +57,7 @@
 #import "TSDKEventStatistic.h"
 #import "TSDKMessage.h"
 #import "TSDKMessageDatum.h"
+#import "TSDKDivisionLocation.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
