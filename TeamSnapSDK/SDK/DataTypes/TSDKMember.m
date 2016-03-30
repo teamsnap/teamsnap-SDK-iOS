@@ -23,10 +23,6 @@
     return @"member";
 }
 
-- (BOOL)logHeader {
-    return YES;
-}
-
 -(TSDKTeam *)team {
     return [[[[TSDKTeamSnap sharedInstance] teamSnapUser] teams] objectForIntegerKey:self.teamId];
 }
