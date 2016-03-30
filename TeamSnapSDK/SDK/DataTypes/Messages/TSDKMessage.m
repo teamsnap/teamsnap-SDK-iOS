@@ -28,4 +28,8 @@
     }];
 }
 
+- (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion {
+    [TSDKMessage actionMarkMessageAsRead:self completion:completion];
+}
+
 @end

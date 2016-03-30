@@ -44,7 +44,9 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 @property (nonatomic, weak) NSURL * _Nullable linkTeam;
 @property (nonatomic, weak) NSURL * _Nullable linkUser;
 
+// not auto generated
 + (void)actionMarkMessageAsRead:(TSDKMessage * _Nonnull)message completion:(TSDKCompletionBlock _Nullable)completion;
+- (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 @end
 
