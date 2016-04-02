@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(NSUInteger, TSDKMessageType) {
     TSDKMessageTypeAlert,
-    TSDKMessageTypeEmail
+    TSDKMessageTypeEmail,
+    TSDKMessageTypeUnknown
 };
 
 @interface TSDKMessage : TSDKCollectionObject
@@ -47,6 +48,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 // not auto generated
 + (void)actionMarkMessageAsRead:(TSDKMessage * _Nonnull)message completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion;
+- (TSDKMessageType)getMessageType;
 
 @end
 

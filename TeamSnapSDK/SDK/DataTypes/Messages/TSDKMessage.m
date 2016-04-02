@@ -9,12 +9,28 @@
 #import "TSDKMessage.h"
 #import "TSDKMember.h"
 
+@interface TSDKMessage()
+
+@property (nonatomic, weak) NSString *messageType; //Example: Email
+
+@end
+
 @implementation TSDKMessage
 
-@dynamic status, memberId, userId, updatedAt, subject, senderType, recipientNames, flags, body, pushed, contactId, messageId, emailed, readAt, senderName, recipients, createdAt, smsed, divisionId, senderId, teamId, linkMember, linkSender, linkDivision, linkTeam, linkUser;
+@dynamic status, memberId, userId, updatedAt, subject, senderType, recipientNames, flags, body, pushed, contactId, messageId, emailed, readAt, senderName, recipients, createdAt, smsed, divisionId, senderId, teamId, linkMember, linkSender, linkDivision, linkTeam, linkUser, messageType;
 
 + (NSString *)SDKType {
     return @"message";
+}
+
+- (TSDKMessageType)getMessageType {
+    if([self.messageType isEqualToString:@"Alert"]) {
+        return TSDKMessageTypeAlert;
+    } else if([self.messageType isEqualToString:@"Email"]) {
+        return TSDKMessageTypeEmail;
+    } else {
+        return TSDKMessageTypeUnknown;
+    }
 }
 
 + (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {    
