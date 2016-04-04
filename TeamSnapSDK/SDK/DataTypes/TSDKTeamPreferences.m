@@ -33,11 +33,17 @@
 }
 
 -(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-    [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(UIImage *image) {
-        if (completion) {
-            completion(image);
+    if(self.linkTeamLogo) {
+        [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(UIImage *image) {
+            if (completion) {
+                completion(image);
+            }
+        }];
+    } else {
+        if(completion) {
+            completion(nil);
         }
-    }];
+    }
 }
 #endif
 @end

@@ -23,7 +23,7 @@
 
 }
 
-@dynamic teamsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams;
+@dynamic teamsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData;
 
 + (NSString *)SDKType {
     return @"user";
@@ -224,5 +224,16 @@
     return lProcessed;
 }
 
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
+    
+    NSDictionary *searchParams;
+    if(type == TSDKMessageTypeAlert) {
+        searchParams = @{@"message_type": @"Alert"};
+    } else if(type == TSDKMessageTypeEmail) {
+        searchParams = @{@"message_type": @"Email"};
+    }
+    
+    [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
+}
 
 @end

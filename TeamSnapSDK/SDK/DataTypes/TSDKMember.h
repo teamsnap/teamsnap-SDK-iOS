@@ -9,9 +9,11 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
+#import "TSDKMessage.h"
 
 @interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
+@property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, weak) NSString *lastName; //Example: Invite
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
@@ -50,8 +52,9 @@
 @property (nonatomic, weak) NSURL *linkMemberPreferences;
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkMemberPhoneNumbers;
-@property (nonatomic, weak) NSURL *linkStatisticData;
+@property (nonatomic, weak) NSURL *linkMessages;
 @property (nonatomic, weak) NSURL *linkMemberEmailAddresses;
+@property (nonatomic, weak) NSURL *linkStatisticData;
 @property (nonatomic, weak) NSURL *linkForumSubscriptions;
 @property (nonatomic, weak) NSURL *linkLeagueCustomData;
 @property (nonatomic, weak) NSURL *linkContactPhoneNumbers;
@@ -110,8 +113,9 @@
 -(void)getMemberPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPreferencesArrayCompletionBlock)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock)completion;
--(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticDatumArrayCompletionBlock)completion;
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
 -(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock)completion;
+-(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticDatumArrayCompletionBlock)completion;
 -(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumSubscriptionArrayCompletionBlock)completion;
 -(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
@@ -125,9 +129,10 @@
 -(void)getCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomDatumArrayCompletionBlock)completion;
 -(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberStatisticArrayCompletionBlock)completion;
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAvailabilityArrayCompletionBlock)completion;
--(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberBalanceArrayCompletionBlock)completion;
+-(void)getUserWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKUserArrayCompletionBlock)completion;
 -(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumPostArrayCompletionBlock)completion;
--(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock)completion;
 -(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPaymentArrayCompletionBlock)completion;
 -(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getLeagueRegistrantDocumentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;

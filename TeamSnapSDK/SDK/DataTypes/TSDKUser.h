@@ -9,6 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
+#import "TSDKMessage.h"
 
 @interface TSDKUser : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
 
@@ -27,6 +28,8 @@
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeamsPreferences;
 @property (nonatomic, weak) NSURL *linkPersonas;
+@property (nonatomic, weak) NSURL *linkMessages;
+@property (nonatomic, weak) NSURL *linkMessageData;
 @property (nonatomic, weak) NSURL *linkFacebookPages;
 @property (nonatomic, weak) NSURL *linkTeams;
 @property (nonatomic, weak) NSURL *linkMembers;
@@ -57,4 +60,5 @@
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
-@end
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;@end

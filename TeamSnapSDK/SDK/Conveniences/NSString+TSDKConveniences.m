@@ -13,13 +13,13 @@
         return nil;
     } else {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-
-        // example: 1980-01-26T06:00:00Z
-        //[dateFormatter setDateFormat:@"yyyy-MM-dd'T'H:mm:ss'Z'"];
-        //[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        
+        [dateFormatter setLocale:enUSPOSIXLocale];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
         [dateFormatter setDateFormat:incomingFormat];
-        //NSDate *date = [dateFormatter dateFromString:dateString];
         NSDate *date = nil;
         NSError *error = nil;
         [dateFormatter getObjectValue:&date forString:self range:nil error:&error];

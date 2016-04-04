@@ -55,6 +55,8 @@
 #import "TSDKMemberBalance.h"
 #import "TSDKOpponentResults.h"
 #import "TSDKEventStatistic.h"
+#import "TSDKMessage.h"
+#import "TSDKMessageDatum.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

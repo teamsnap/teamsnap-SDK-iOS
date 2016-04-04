@@ -70,3 +70,5 @@
 #import <TeamSnapSDK/TSDKEventStatistic.h>
 #import <TeamSnapSDK/TSDKAvailabilityGroups.h>
 #import <TeamSnapSDK/TSDKNotifications.h>
+#import <TeamSnapSDK/TSDKMessage.h>
+#import <TeamSnapSDK/TSDKMessageDatum.h>
