@@ -72,3 +72,4 @@
 #import <TeamSnapSDK/TSDKNotifications.h>
 #import <TeamSnapSDK/TSDKMessage.h>
 #import <TeamSnapSDK/TSDKMessageDatum.h>
+#import <TeamSnapSDK/TSDKDivisionLocation.h>

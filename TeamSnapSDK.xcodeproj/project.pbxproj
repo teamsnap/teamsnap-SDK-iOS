@@ -39,6 +39,10 @@
 		964CDDEA1BB4514B00909D11 /* TSDKTslPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDE61BB4514B00909D11 /* TSDKTslPhotos.m */; };
 		964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDEB1BB4519400909D11 /* TSDKPublicFeatures.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDEE1BB4519400909D11 /* TSDKPublicFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDEC1BB4519400909D11 /* TSDKPublicFeatures.m */; };
+		9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9652304E1CAC65EB0087FC23 /* TSDKDivisionLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */; };
+		9652304F1CAC65F00087FC23 /* TSDKDivisionLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		965230501CAC65F60087FC23 /* TSDKDivisionLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */; };
 		965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 965B7D2B1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		965B7D2E1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 965B7D2B1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		965B7D2F1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D2C1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m */; };
@@ -313,6 +317,8 @@
 		964CDDE61BB4514B00909D11 /* TSDKTslPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTslPhotos.m; sourceTree = "<group>"; };
 		964CDDEB1BB4519400909D11 /* TSDKPublicFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKPublicFeatures.h; sourceTree = "<group>"; };
 		964CDDEC1BB4519400909D11 /* TSDKPublicFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKPublicFeatures.m; sourceTree = "<group>"; };
+		9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKDivisionLocation.h; path = Leagues/TSDKDivisionLocation.h; sourceTree = "<group>"; };
+		9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDivisionLocation.m; path = Leagues/TSDKDivisionLocation.m; sourceTree = "<group>"; };
 		965B7D2B1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberPhoneNumber.h; path = Members/TSDKMemberPhoneNumber.h; sourceTree = "<group>"; };
 		965B7D2C1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberPhoneNumber.m; path = Members/TSDKMemberPhoneNumber.m; sourceTree = "<group>"; };
 		965B7D311C18C7EE009AF13E /* TSDKMemberEmailAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberEmailAddress.h; path = Members/TSDKMemberEmailAddress.h; sourceTree = "<group>"; };
@@ -474,6 +480,15 @@
 				968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */,
 			);
 			name = CollectionJSON;
+			sourceTree = "<group>";
+		};
+		9652304A1CAC65DD0087FC23 /* Leagues */ = {
+			isa = PBXGroup;
+			children = (
+				9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */,
+				9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */,
+			);
+			name = Leagues;
 			sourceTree = "<group>";
 		};
 		965B7D2A1C18C55C009AF13E /* Members */ = {
@@ -656,6 +671,7 @@
 		969E807D1BAAE7AB00CA518F /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				9652304A1CAC65DD0087FC23 /* Leagues */,
 				969B7ED61C7CBB3400FD3EA0 /* Payments */,
 				969B7EC01C7CADFD00FD3EA0 /* Messages */,
 				969B7EB41C7CA98800FD3EA0 /* Media */,
@@ -792,6 +808,7 @@
 				965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
 				969E80DF1BAAE7AB00CA518F /* TSDKEvent.h in Headers */,
 				969B7EC31C7CAE2600FD3EA0 /* TSDKForumSubscription.h in Headers */,
+				9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */,
 				969E80E71BAAE7AB00CA518F /* TSDKMember.h in Headers */,
 				969E80F31BAAE7AB00CA518F /* TSDKTeamPreferences.h in Headers */,
 				9612CD8E1C9B51AB00816460 /* TSDKNotifications.h in Headers */,
@@ -848,6 +865,7 @@
 				969B7EDA1C7CBB5000FD3EA0 /* TSDKPaymentNote.h in Headers */,
 				96B47F531BADB4740035F2CC /* NSHTTPURLResponse+convenience.h in Headers */,
 				96B47F2D1BADB4410035F2CC /* TSDKEvent.h in Headers */,
+				9652304F1CAC65F00087FC23 /* TSDKDivisionLocation.h in Headers */,
 				96B47F5D1BADB4810035F2CC /* NSMutableURLRequest+TSDKConveniences.h in Headers */,
 				969B7EF31C7CC77600FD3EA0 /* TSDKMemberBalance.h in Headers */,
 				969B7EC41C7CAE2600FD3EA0 /* TSDKForumSubscription.h in Headers */,
@@ -1101,6 +1119,7 @@
 				969B7E9A1C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m in Sources */,
 				969E80E81BAAE7AB00CA518F /* TSDKMember.m in Sources */,
 				969E80D41BAAE7AB00CA518F /* TSDKAssignment.m in Sources */,
+				9652304E1CAC65EB0087FC23 /* TSDKDivisionLocation.m in Sources */,
 				969E80E21BAAE7AB00CA518F /* TSDKForumPost.m in Sources */,
 				969E80F81BAAE7AB00CA518F /* TSDKTrackedItemStatus.m in Sources */,
 				969E80DC1BAAE7AB00CA518F /* TSDKCustomDatum.m in Sources */,
@@ -1185,6 +1204,7 @@
 				96B47F4A1BADB4640035F2CC /* TSDKMemberStatistic.m in Sources */,
 				96B47F461BADB4410035F2CC /* TSDKTrackedItemStatus.m in Sources */,
 				969B7EA51C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */,
+				965230501CAC65F60087FC23 /* TSDKDivisionLocation.m in Sources */,
 				96B47F2E1BADB4410035F2CC /* TSDKEvent.m in Sources */,
 				96B47F421BADB4410035F2CC /* TSDKTeamPreferences.m in Sources */,
 				96B47F2C1BADB4410035F2CC /* TSDKCustomField.m in Sources */,
