@@ -11,6 +11,7 @@
 
 @interface TSDKContact : TSDKCollectionObject
 
+@property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, assign) BOOL isInvitable; //Example: 0
 @property (nonatomic, weak) NSString *addressCity; //Example:
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
