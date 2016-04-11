@@ -105,7 +105,6 @@
 @property (nonatomic, weak) NSURL *linkBroadcastEmails;
 @property (nonatomic, weak) NSURL *linkEventsCsvExport;
 @property (nonatomic, weak) NSURL *linkEventStatistics;
-@property (nonatomic, weak) NSURL *linkMessageData;
 @property (nonatomic, weak) NSURL *linkBroadcastAlerts;
 @property (nonatomic, weak) NSURL *linkTeamPublicSite;
 
