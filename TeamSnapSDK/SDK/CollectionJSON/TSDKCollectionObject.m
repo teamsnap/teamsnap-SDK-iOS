@@ -477,15 +477,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSInteger)getInteger:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
-        return 0;
+    if ((!_collection.data[key]) || ([_collection.data[key] isEqual:[NSNull null]])) {
+        return NSNotFound;
     }
     NSNumber *value = _collection.data[key];
     return value.integerValue;
 }
 
 - (void)setInteger:(NSInteger)value forKey:(NSString *)aKey {
-    [self setObject:@(value) forKey:aKey];
+    if (value == NSNotFound) {
+        [self setObject:[NSNull null] forKey:aKey];
+    } else {
+        [self setObject:@(value) forKey:aKey];
+    }
+    
 }
 
 - (NSDate *)getDate:(NSString *)key {
