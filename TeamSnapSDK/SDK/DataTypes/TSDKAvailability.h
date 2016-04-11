@@ -10,10 +10,10 @@
 #import "TSDKObjectsRequest.h"
 
 typedef enum TSDKAvailabilityState : NSUInteger  {
-    TSDKAvailabilityIsUnknown = 0,
+    TSDKAvailabilityIsNotAvailable = 0,
     TSDKAvailabilityIsAvailable = 1,
-    TSDKAvailabilityIsNotAvailable = 2,
-    TSDKAvailabilityIsMaybeAvailable = 3
+    TSDKAvailabilityIsMaybeAvailable = 2,
+    TSDKAvailabilityIsNotSet = NSNotFound
 } TSDKAvailabilityState;
 
 
