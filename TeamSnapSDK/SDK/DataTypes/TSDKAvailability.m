@@ -10,7 +10,7 @@
 
 @implementation TSDKAvailability
 
-@dynamic status, notes, notesAuthorMemberId, statusCode, memberId, eventId, teamId, createdAt, updatedAt, linkEvent, linkMember, linkTeam;
+@dynamic status, notes, notesAuthorMemberId, memberId, eventId, teamId, createdAt, updatedAt, linkEvent, linkMember, linkTeam;
 
 + (NSString *)SDKType {
     return @"availability";
@@ -18,6 +18,19 @@
 
 + (NSString *)SDKREL {
     return @"availabilities";
+}
+
+- (TSDKAvailabilityState)statusCode {
+    NSInteger result = [super getInteger:@"status_code"];
+    if (result == NSNotFound) {
+        return TSDKAvailabilityIsUnknown;
+    } else {
+        return result;
+    }
+}
+
+- (void)setStatusCode:(TSDKAvailabilityState)statusCode {
+    [super setInteger:statusCode forKey:@"status_code"];
 }
 
 @end

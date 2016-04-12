@@ -22,7 +22,7 @@
         _availabile = [availabilities objectsAtIndexes:availableIndexes];
         
         NSIndexSet *unknownAvailableIndexes = [availabilities indexesOfObjectsPassingTest:^BOOL(TSDKAvailability * _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
-            return availability.statusCode == TSDKAvailabilityIsNotSet;
+            return availability.statusCode == TSDKAvailabilityIsUnknown;
         }];
         
         _unknwownAvailability = [availabilities objectsAtIndexes:unknownAvailableIndexes];
