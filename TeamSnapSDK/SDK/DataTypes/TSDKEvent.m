@@ -33,15 +33,17 @@
     if (event) {
         TSDKCollectionCommand *command = [self commandForKey:@"update_final_score"];
         
+        TSDKCollectionCommand *commandToSend = [command copy];
+        
         for (NSString *key in command.data) {
             if ([event.collection.data objectForKey:key]) {
-                [command.data setObject:[event.collection.data objectForKey:key] forKey:key];
+                [commandToSend.data setObject:[event.collection.data objectForKey:key] forKey:key];
             } else {
-                [command.data setObject:[NSNull null] forKey:key];
+                [commandToSend.data setObject:[NSNull null] forKey:key];
             }
         }
         
-        [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [commandToSend executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (completion) {
                 completion(success, complete, objects, error);
             }
