@@ -28,6 +28,28 @@
     }];
 }
 
++ (void)actionMarkMessagesAsRead:(NSArray <TSDKMessage *> *)messages completion:(TSDKCompletionBlock)completion {
+    TSDKCollectionCommand *command = [[TSDKMessage commands] objectForKey:@"mark_message_as_read"];
+
+    NSMutableString *commaSeparatedIds = [[NSMutableString alloc] init];
+    for(TSDKMessage *message in messages) {
+        if(message == [messages lastObject]) {
+            [commaSeparatedIds appendString:[NSString stringWithFormat:@"%ld", (long)message.objectIdentifier]];
+        } else {
+            [commaSeparatedIds appendString:[NSString stringWithFormat:@"%ld, ", (long)message.objectIdentifier]];
+        }
+    }
+    
+    command.data[@"id"] = commaSeparatedIds;
+    
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
+
 - (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion {
     [TSDKMessage actionMarkMessageAsRead:self completion:completion];
 }
