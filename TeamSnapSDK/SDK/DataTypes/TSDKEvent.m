@@ -56,6 +56,12 @@
 
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock)completion {
     [TSDKEvent actionUpdateFinalScoreForEvent:self completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (success) {
+            NSArray *events = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            if (events.count>0) {
+                [self setCollection:[events.firstObject collection]];
+            }
+        }
         if (completion) {
             completion(success, error);
         }
