@@ -21,7 +21,7 @@ typedef enum TSDKAvailabilityState : NSInteger  {
 
 @property (nonatomic, weak) NSString *status; //Example: Yes. I will be there.
 @property (nonatomic, weak) NSString *notes; //Example: **NULL**
-@property (nonatomic, weak) NSString *notesAuthorMemberId; //Example: **NULL**
+@property (nonatomic, assign) NSInteger notesAuthorMemberId; //Example: **NULL**
 @property (nonatomic, assign) TSDKAvailabilityState statusCode; //Example: 1
 @property (nonatomic, assign) NSInteger memberId; //Example: 993324
 @property (nonatomic, assign) NSInteger eventId; //Example: 2357548
