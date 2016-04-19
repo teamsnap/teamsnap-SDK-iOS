@@ -84,6 +84,26 @@
     }
 }
 
+- (void)testSettingObjectToSameValue {
+    TSDKEvent *event = [[TSDKEvent alloc] init];
+    NSString *testValue = @"test event";
+    event.name = testValue;
+    XCTAssertEqual(event.name, testValue);
+    XCTAssertEqual([event.changedValues objectForKey:@"name"], [NSNull null]);
+    [event.changedValues removeAllObjects];
+    
+    event.name = testValue;
+    XCTAssertEqual(event.name, testValue);
+    XCTAssertNil([event.changedValues objectForKey:@"name"]);
+
+    NSString *newValue = @"New event Name";
+
+    event.name = newValue;
+    XCTAssertEqual(event.name, newValue);
+    XCTAssertNotNil([event.changedValues objectForKey:@"name"]);
+    XCTAssertEqual([event.changedValues objectForKey:@"name"], testValue);
+}
+
 - (void)testSettingAndReadingDates {
     TSDKEvent *event = [[TSDKEvent alloc] init];
     NSDate *referenceDate = [NSDate dateWithTimeIntervalSince1970:1461074742.0];

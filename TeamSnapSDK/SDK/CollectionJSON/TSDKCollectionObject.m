@@ -413,6 +413,15 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
+    if (value) {
+        if ([value isEqual:_collection.data[aKey]]) {
+            return;
+        }
+    } else {
+        if (!_collection.data[aKey] || [_collection.data[aKey] isEqual:[NSNull null]]) {
+            return;
+        }
+    }
     if (![_changedValues objectForKey:aKey]) {
         if (_collection.data[aKey]) {
             [_changedValues setObject:_collection.data[aKey] forKey:aKey];
@@ -589,6 +598,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         __typeof__(self) __weak weakSelf = self;
         [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
+                if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
+                    [weakSelf setCollection:[objects.collection firstObject]];
+                }
                 [_changedValues removeAllObjects];
                 [TSDKNotifications postSavedObject:self];
             }
