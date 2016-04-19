@@ -11,6 +11,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
 #import "NSString+TSDKConveniences.h"
+#import "NSDate+TSDKConveniences.h"
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
@@ -508,7 +509,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setDate:(NSDate *)value forKey:(NSString *)aKey {
-    [self setObject:value forKey:aKey];
+    [self setString:[value RCF3339DateTimeString] forKey:aKey];
 }
 
 - (BOOL)getBool:(NSString *)aKey {

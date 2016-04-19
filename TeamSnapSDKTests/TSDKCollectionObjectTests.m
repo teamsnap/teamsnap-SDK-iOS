@@ -10,6 +10,7 @@
 #import "TSDKCollectionJSON.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKUser.h"
+#import "TSDKEvent.h"
 #import "NSDictionary+dump.h"
 
 @interface TSDKCollectionObjectTests : XCTestCase
@@ -81,6 +82,16 @@
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
+}
+
+- (void)testSettingAndReadingDates {
+    TSDKEvent *event = [[TSDKEvent alloc] init];
+    NSDate *referenceDate = [NSDate dateWithTimeIntervalSince1970:1461074742.0];
+    [event setStartDate:referenceDate];
+    XCTAssertNotNil(event.startDate);
+    NSLog(@"Start Date %@ %@", event.startDate, [event.collection.data objectForKey:@"start_date"]);
+    
+    XCTAssertEqual(event.startDate, referenceDate);
 }
 
 @end
