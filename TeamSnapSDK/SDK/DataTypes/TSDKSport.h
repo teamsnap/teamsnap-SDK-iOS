@@ -8,8 +8,6 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKSport : TSDKCollectionObject
-
 extern const NSInteger TSPSportBaseball;
 extern const NSInteger TSPSportSoftBall;
 extern const NSInteger TSPSportKickball;
@@ -33,6 +31,8 @@ extern const NSInteger TSPSportNetball;
 extern const NSInteger TSPSportFloorball;
 extern const NSInteger TSPSportStreetHockey;
 extern const NSInteger TSPSportNonSportGroup;
+
+@interface TSDKSport : TSDKCollectionObject
 
 @property (nonatomic, assign) BOOL hasShootouts; //Example: 0
 @property (nonatomic, assign) BOOL hasStatisticTemplate; //Example: 1
