@@ -630,6 +630,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
++ (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock) completion {
+    [TSDKDataRequest requestObjectsForPath:link searchParamaters:nil sendDataDictionary:nil method:@"GET" withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSArray *result = nil;
+        if (success) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+        }
+        if (completion) {
+            completion(success, complete, result, error);
+        }
+    }];
+}
+
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *result = nil;

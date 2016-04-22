@@ -9,7 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKRootLinks : TSDKCollectionObject
+@interface TSDKRootLinks : TSDKCollectionObject <TSDKCollectionObjectBundledDataProtocol>
 
 @property (nonatomic, weak) NSURL *linkDivisionContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkDivisions;
