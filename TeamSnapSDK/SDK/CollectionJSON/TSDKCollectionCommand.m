@@ -45,4 +45,15 @@
     [TSDKDataRequest requestObjectsForPath:destinationURL sendDataDictionary:self.data method:@"POST" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:completion];
 }
 
+- (TSDKCollectionCommand *)copyWithZone:(NSZone *)zone {
+    TSDKCollectionCommand *copy = [[TSDKCollectionCommand alloc] init];
+    if (copy) {
+        copy.href = [self.href copy];
+        copy.rel = [self.rel copy];
+        copy.prompt = [self.prompt copy];
+        copy.data = [self.data mutableCopy];
+    }
+    return copy;
+}
+
 @end

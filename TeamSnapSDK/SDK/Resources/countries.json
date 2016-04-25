@@ -1,0 +1,5535 @@
+{
+    "collection": {
+        "href": "https://api.teamsnap.com/v3/countries",
+        "items": [
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "020"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Andorra"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/020",
+                "rel": "country-020"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "784"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "United Arab Emirates"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/784",
+                "rel": "country-784"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "004"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Afghanistan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/004",
+                "rel": "country-004"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "028"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Antigua and Barbuda"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/028",
+                "rel": "country-028"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "660"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Anguilla"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/660",
+                "rel": "country-660"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "008"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Albania"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/008",
+                "rel": "country-008"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "051"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Armenia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/051",
+                "rel": "country-051"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "530"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Netherlands Antilles"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/530",
+                "rel": "country-530"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "024"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Angola"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/024",
+                "rel": "country-024"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "010"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Antarctica"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AQ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/010",
+                "rel": "country-010"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "032"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Argentina"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/032",
+                "rel": "country-032"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "016"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "American Samoa"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/016",
+                "rel": "country-016"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "040"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Austria"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/040",
+                "rel": "country-040"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "036"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Australia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/036",
+                "rel": "country-036"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "533"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Aruba"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/533",
+                "rel": "country-533"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "248"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "\u00c5land Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AX"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/248",
+                "rel": "country-248"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "031"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Azerbaijan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "AZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/031",
+                "rel": "country-031"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "070"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bosnia and Herzegovina"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/070",
+                "rel": "country-070"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "052"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Barbados"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BB"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/052",
+                "rel": "country-052"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "050"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bangladesh"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/050",
+                "rel": "country-050"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "056"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Belgium"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/056",
+                "rel": "country-056"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "854"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Burkina Faso"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/854",
+                "rel": "country-854"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "100"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bulgaria"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/100",
+                "rel": "country-100"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "048"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bahrain"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/048",
+                "rel": "country-048"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "108"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Burundi"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/108",
+                "rel": "country-108"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "204"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Benin"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BJ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/204",
+                "rel": "country-204"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "652"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Barth\u00e9lemy"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/652",
+                "rel": "country-652"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "060"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bermuda"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/060",
+                "rel": "country-060"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "096"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Brunei Darussalam"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/096",
+                "rel": "country-096"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "068"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bolivia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/068",
+                "rel": "country-068"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "535"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bonaire, Sint Eustatius and Saba"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BQ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/535",
+                "rel": "country-535"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "076"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Brazil"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/076",
+                "rel": "country-076"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "044"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bahamas"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/044",
+                "rel": "country-044"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "064"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bhutan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/064",
+                "rel": "country-064"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "074"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Bouvet Island"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BV"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/074",
+                "rel": "country-074"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "072"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Botswana"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/072",
+                "rel": "country-072"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "112"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Belarus"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/112",
+                "rel": "country-112"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "084"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Belize"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "BZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/084",
+                "rel": "country-084"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "124"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Canada"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/124",
+                "rel": "country-124"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "166"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cocos (Keeling) Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/166",
+                "rel": "country-166"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "180"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Congo, The Democratic Republic Of The"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/180",
+                "rel": "country-180"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "140"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Central African Republic"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/140",
+                "rel": "country-140"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "178"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Congo"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/178",
+                "rel": "country-178"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "756"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Switzerland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/756",
+                "rel": "country-756"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "384"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "C\u00f4te D'Ivoire"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/384",
+                "rel": "country-384"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "184"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cook Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/184",
+                "rel": "country-184"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "152"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Chile"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/152",
+                "rel": "country-152"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "120"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cameroon"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/120",
+                "rel": "country-120"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "156"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "China"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/156",
+                "rel": "country-156"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "170"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Colombia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/170",
+                "rel": "country-170"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "188"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Costa Rica"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/188",
+                "rel": "country-188"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "192"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cuba"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/192",
+                "rel": "country-192"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "132"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cape Verde"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CV"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/132",
+                "rel": "country-132"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "531"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cura\u00e7ao"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/531",
+                "rel": "country-531"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "162"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Christmas Island"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CX"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/162",
+                "rel": "country-162"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "196"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cyprus"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/196",
+                "rel": "country-196"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "203"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Czech Republic"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "CZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/203",
+                "rel": "country-203"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "276"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Germany"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "DE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/276",
+                "rel": "country-276"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "262"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Djibouti"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "DJ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/262",
+                "rel": "country-262"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "208"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Denmark"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "DK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/208",
+                "rel": "country-208"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "212"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Dominica"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "DM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/212",
+                "rel": "country-212"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "214"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Dominican Republic"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "DO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/214",
+                "rel": "country-214"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "012"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Algeria"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "DZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/012",
+                "rel": "country-012"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "218"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Ecuador"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "EC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/218",
+                "rel": "country-218"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "233"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Estonia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "EE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/233",
+                "rel": "country-233"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "818"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Egypt"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "EG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/818",
+                "rel": "country-818"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "732"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Western Sahara"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "EH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/732",
+                "rel": "country-732"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "232"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Eritrea"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ER"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/232",
+                "rel": "country-232"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "724"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Spain"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ES"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/724",
+                "rel": "country-724"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "231"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Ethiopia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ET"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/231",
+                "rel": "country-231"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "246"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Finland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "FI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/246",
+                "rel": "country-246"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "242"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Fiji"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "FJ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/242",
+                "rel": "country-242"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "238"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Falkland Islands (Malvinas)"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "FK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/238",
+                "rel": "country-238"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "583"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Micronesia, Federated States Of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "FM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/583",
+                "rel": "country-583"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "234"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Faroe Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "FO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/234",
+                "rel": "country-234"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "250"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "France"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "FR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/250",
+                "rel": "country-250"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "266"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Gabon"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/266",
+                "rel": "country-266"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "826"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "United Kingdom"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GB"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/826",
+                "rel": "country-826"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "308"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Grenada"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/308",
+                "rel": "country-308"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "268"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Georgia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/268",
+                "rel": "country-268"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "254"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "French Guiana"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/254",
+                "rel": "country-254"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "831"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guernsey"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/831",
+                "rel": "country-831"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "288"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Ghana"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/288",
+                "rel": "country-288"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "292"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Gibraltar"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/292",
+                "rel": "country-292"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "304"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Greenland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/304",
+                "rel": "country-304"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "270"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Gambia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/270",
+                "rel": "country-270"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "324"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guinea"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/324",
+                "rel": "country-324"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "312"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guadeloupe"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GP"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/312",
+                "rel": "country-312"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "226"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Equatorial Guinea"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GQ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/226",
+                "rel": "country-226"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "300"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Greece"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/300",
+                "rel": "country-300"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "239"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "South Georgia and the South Sandwich Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/239",
+                "rel": "country-239"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "320"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guatemala"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/320",
+                "rel": "country-320"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "316"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guam"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/316",
+                "rel": "country-316"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "624"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guinea-Bissau"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/624",
+                "rel": "country-624"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "328"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Guyana"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "GY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/328",
+                "rel": "country-328"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "344"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Hong Kong"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "HK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/344",
+                "rel": "country-344"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "334"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Heard and McDonald Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "HM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/334",
+                "rel": "country-334"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "340"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Honduras"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "HN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/340",
+                "rel": "country-340"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "191"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Croatia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "HR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/191",
+                "rel": "country-191"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "332"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Haiti"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "HT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/332",
+                "rel": "country-332"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "348"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Hungary"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "HU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/348",
+                "rel": "country-348"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "360"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Indonesia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ID"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/360",
+                "rel": "country-360"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "372"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Ireland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/372",
+                "rel": "country-372"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "376"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Israel"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/376",
+                "rel": "country-376"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "833"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Isle of Man"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/833",
+                "rel": "country-833"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "356"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "India"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/356",
+                "rel": "country-356"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "086"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "British Indian Ocean Territory"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/086",
+                "rel": "country-086"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "368"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Iraq"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IQ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/368",
+                "rel": "country-368"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "364"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Iran, Islamic Republic Of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/364",
+                "rel": "country-364"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "352"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Iceland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/352",
+                "rel": "country-352"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "380"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Italy"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "IT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/380",
+                "rel": "country-380"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "832"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Jersey"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "JE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/832",
+                "rel": "country-832"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "388"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Jamaica"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "JM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/388",
+                "rel": "country-388"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "400"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Jordan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "JO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/400",
+                "rel": "country-400"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "392"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Japan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "JP"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/392",
+                "rel": "country-392"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "404"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Kenya"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/404",
+                "rel": "country-404"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "417"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Kyrgyzstan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/417",
+                "rel": "country-417"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "116"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cambodia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/116",
+                "rel": "country-116"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "296"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Kiribati"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/296",
+                "rel": "country-296"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "174"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Comoros"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/174",
+                "rel": "country-174"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "659"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Kitts And Nevis"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/659",
+                "rel": "country-659"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "408"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Korea, Democratic People's Republic Of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KP"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/408",
+                "rel": "country-408"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "410"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Korea, Republic of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/410",
+                "rel": "country-410"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "414"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Kuwait"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/414",
+                "rel": "country-414"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "136"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Cayman Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/136",
+                "rel": "country-136"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "398"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Kazakhstan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "KZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/398",
+                "rel": "country-398"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "418"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Lao People's Democratic Republic"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/418",
+                "rel": "country-418"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "422"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Lebanon"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LB"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/422",
+                "rel": "country-422"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "662"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Lucia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/662",
+                "rel": "country-662"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "438"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Liechtenstein"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/438",
+                "rel": "country-438"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "144"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Sri Lanka"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/144",
+                "rel": "country-144"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "430"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Liberia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/430",
+                "rel": "country-430"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "426"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Lesotho"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/426",
+                "rel": "country-426"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "440"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Lithuania"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/440",
+                "rel": "country-440"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "442"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Luxembourg"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/442",
+                "rel": "country-442"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "428"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Latvia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LV"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/428",
+                "rel": "country-428"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "434"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Libya"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "LY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/434",
+                "rel": "country-434"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "504"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Morocco"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/504",
+                "rel": "country-504"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "492"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Monaco"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/492",
+                "rel": "country-492"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "498"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Moldova, Republic of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/498",
+                "rel": "country-498"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "499"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Montenegro"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ME"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/499",
+                "rel": "country-499"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "663"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Martin"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/663",
+                "rel": "country-663"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "450"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Madagascar"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/450",
+                "rel": "country-450"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "584"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Marshall Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/584",
+                "rel": "country-584"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "807"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Macedonia, the Former Yugoslav Republic Of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/807",
+                "rel": "country-807"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "466"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mali"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ML"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/466",
+                "rel": "country-466"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "104"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Myanmar"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/104",
+                "rel": "country-104"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "496"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mongolia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/496",
+                "rel": "country-496"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "446"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Macao"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/446",
+                "rel": "country-446"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "580"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Northern Mariana Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MP"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/580",
+                "rel": "country-580"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "474"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Martinique"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MQ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/474",
+                "rel": "country-474"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "478"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mauritania"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/478",
+                "rel": "country-478"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "500"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Montserrat"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/500",
+                "rel": "country-500"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "470"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Malta"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/470",
+                "rel": "country-470"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "480"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mauritius"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/480",
+                "rel": "country-480"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "462"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Maldives"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MV"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/462",
+                "rel": "country-462"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "454"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Malawi"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/454",
+                "rel": "country-454"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "484"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mexico"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MX"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/484",
+                "rel": "country-484"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "458"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Malaysia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/458",
+                "rel": "country-458"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "508"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mozambique"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "MZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/508",
+                "rel": "country-508"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "516"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Namibia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/516",
+                "rel": "country-516"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "540"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "New Caledonia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/540",
+                "rel": "country-540"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "562"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Niger"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/562",
+                "rel": "country-562"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "574"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Norfolk Island"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/574",
+                "rel": "country-574"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "566"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Nigeria"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/566",
+                "rel": "country-566"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "558"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Nicaragua"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/558",
+                "rel": "country-558"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "528"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Netherlands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/528",
+                "rel": "country-528"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "578"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Norway"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/578",
+                "rel": "country-578"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "524"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Nepal"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NP"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/524",
+                "rel": "country-524"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "520"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Nauru"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/520",
+                "rel": "country-520"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "570"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Niue"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/570",
+                "rel": "country-570"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "554"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "New Zealand"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "NZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/554",
+                "rel": "country-554"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "512"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Oman"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "OM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/512",
+                "rel": "country-512"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "591"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Panama"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/591",
+                "rel": "country-591"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "604"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Peru"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/604",
+                "rel": "country-604"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "258"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "French Polynesia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/258",
+                "rel": "country-258"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "598"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Papua New Guinea"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/598",
+                "rel": "country-598"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "608"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Philippines"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/608",
+                "rel": "country-608"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "586"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Pakistan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/586",
+                "rel": "country-586"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "616"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Poland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/616",
+                "rel": "country-616"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "666"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Pierre And Miquelon"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/666",
+                "rel": "country-666"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "612"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Pitcairn"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/612",
+                "rel": "country-612"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "630"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Puerto Rico"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/630",
+                "rel": "country-630"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "275"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Palestine, State of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/275",
+                "rel": "country-275"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "620"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Portugal"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/620",
+                "rel": "country-620"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "585"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Palau"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/585",
+                "rel": "country-585"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "600"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Paraguay"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "PY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/600",
+                "rel": "country-600"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "634"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Qatar"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "QA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/634",
+                "rel": "country-634"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "638"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "R\u00e9union"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "RE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/638",
+                "rel": "country-638"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "642"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Romania"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "RO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/642",
+                "rel": "country-642"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "688"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Serbia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "RS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/688",
+                "rel": "country-688"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "643"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Russian Federation"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "RU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/643",
+                "rel": "country-643"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "646"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Rwanda"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "RW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/646",
+                "rel": "country-646"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "682"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saudi Arabia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/682",
+                "rel": "country-682"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "090"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Solomon Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SB"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/090",
+                "rel": "country-090"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "690"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Seychelles"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/690",
+                "rel": "country-690"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "729"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Sudan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/729",
+                "rel": "country-729"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "752"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Sweden"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/752",
+                "rel": "country-752"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "702"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Singapore"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/702",
+                "rel": "country-702"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "654"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Helena"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/654",
+                "rel": "country-654"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "705"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Slovenia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/705",
+                "rel": "country-705"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "744"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Svalbard And Jan Mayen"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SJ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/744",
+                "rel": "country-744"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "703"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Slovakia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/703",
+                "rel": "country-703"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "694"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Sierra Leone"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/694",
+                "rel": "country-694"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "674"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "San Marino"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/674",
+                "rel": "country-674"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "686"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Senegal"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/686",
+                "rel": "country-686"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "706"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Somalia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/706",
+                "rel": "country-706"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "740"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Suriname"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/740",
+                "rel": "country-740"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "728"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "South Sudan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/728",
+                "rel": "country-728"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "678"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Sao Tome and Principe"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ST"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/678",
+                "rel": "country-678"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "222"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "El Salvador"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SV"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/222",
+                "rel": "country-222"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "534"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Sint Maarten"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SX"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/534",
+                "rel": "country-534"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "760"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Syrian Arab Republic"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/760",
+                "rel": "country-760"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "748"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Swaziland"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "SZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/748",
+                "rel": "country-748"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "796"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Turks and Caicos Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/796",
+                "rel": "country-796"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "148"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Chad"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TD"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/148",
+                "rel": "country-148"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "260"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "French Southern Territories"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/260",
+                "rel": "country-260"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "768"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Togo"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/768",
+                "rel": "country-768"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "764"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Thailand"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TH"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/764",
+                "rel": "country-764"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "762"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Tajikistan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TJ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/762",
+                "rel": "country-762"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "772"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Tokelau"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TK"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/772",
+                "rel": "country-772"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "626"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Timor-Leste"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TL"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/626",
+                "rel": "country-626"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "795"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Turkmenistan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/795",
+                "rel": "country-795"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "788"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Tunisia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/788",
+                "rel": "country-788"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "776"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Tonga"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TO"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/776",
+                "rel": "country-776"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "792"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Turkey"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TR"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/792",
+                "rel": "country-792"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "780"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Trinidad and Tobago"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/780",
+                "rel": "country-780"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "798"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Tuvalu"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TV"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/798",
+                "rel": "country-798"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "158"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Taiwan, Republic Of China"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/158",
+                "rel": "country-158"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "834"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Tanzania, United Republic of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "TZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/834",
+                "rel": "country-834"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "804"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Ukraine"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "UA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/804",
+                "rel": "country-804"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "800"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Uganda"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "UG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/800",
+                "rel": "country-800"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "581"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "United States Minor Outlying Islands"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "UM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/581",
+                "rel": "country-581"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "840"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "United States"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "US"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/840",
+                "rel": "country-840"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "858"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Uruguay"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "UY"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/858",
+                "rel": "country-858"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "860"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Uzbekistan"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "UZ"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/860",
+                "rel": "country-860"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "336"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Holy See (Vatican City State)"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/336",
+                "rel": "country-336"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "670"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Saint Vincent And The Grenedines"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VC"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/670",
+                "rel": "country-670"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "862"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Venezuela, Bolivarian Republic of"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/862",
+                "rel": "country-862"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "092"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Virgin Islands, British"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VG"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/092",
+                "rel": "country-092"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "850"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Virgin Islands, U.S."
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VI"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/850",
+                "rel": "country-850"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "704"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Vietnam"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VN"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/704",
+                "rel": "country-704"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "548"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Vanuatu"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "VU"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/548",
+                "rel": "country-548"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "876"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Wallis and Futuna"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "WF"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/876",
+                "rel": "country-876"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "882"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Samoa"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "WS"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/882",
+                "rel": "country-882"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "887"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Yemen"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "YE"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/887",
+                "rel": "country-887"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "175"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Mayotte"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "YT"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/175",
+                "rel": "country-175"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "710"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "South Africa"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ZA"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/710",
+                "rel": "country-710"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "894"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Zambia"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ZM"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/894",
+                "rel": "country-894"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "716"
+                    },
+                    {
+                        "name": "type",
+                        "value": "country"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Zimbabwe"
+                    },
+                    {
+                        "name": "iso_alpha2_code",
+                        "value": "ZW"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/716",
+                "rel": "country-716"
+            }
+        ],
+        "links": [
+            {
+                "href": "https://api.teamsnap.com/v3/",
+                "rel": "root"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/countries",
+                "rel": "self"
+            }
+        ],
+        "queries": [
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": null
+                    },
+                    {
+                        "name": "name",
+                        "value": null
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/countries/search",
+                "rel": "search"
+            }
+        ],
+        "rel": "countries",
+        "version": "3.238.2"
+    }
+}

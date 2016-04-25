@@ -58,6 +58,8 @@
 #import "TSDKMessage.h"
 #import "TSDKMessageDatum.h"
 #import "TSDKDivisionLocation.h"
+#import "TSDKCountry.h"
+#import "TSDKTimeZone.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

@@ -14,6 +14,12 @@
 
 @class TSDKCollectionJSON;
 
+@protocol TSDKCollectionObjectBundledDataProtocol <NSObject>
+
++ (NSURL *)bundledFileURL;
+
+@end
+
 @interface TSDKCollectionObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) TSDKCollectionJSON *collection;
@@ -64,6 +70,7 @@
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion;
++ (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock)completion;
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion;
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 

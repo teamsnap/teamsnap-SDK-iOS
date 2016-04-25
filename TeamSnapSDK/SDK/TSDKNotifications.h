@@ -11,7 +11,7 @@
 extern NSString * _Nonnull const TSDKNotificationsForObject;
 extern NSString * _Nonnull const TSDKNotificationsForObjectClass;
 
-extern NSString * _Nonnull const TSDKObectSaved;
+extern NSString * _Nonnull const TSDKObjectSaved;
 extern NSString * _Nonnull const TSDKObjectAdded;
 extern NSString * _Nonnull const TSDKObjectRefreshed;
 extern NSString * _Nonnull const TSDKObjectDeleted;

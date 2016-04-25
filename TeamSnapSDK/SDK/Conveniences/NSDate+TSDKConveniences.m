@@ -12,7 +12,11 @@
     NSString *result = @"";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 
-    // Sun, Feb 3, 2012
+    NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
     [dateFormatter setDateFormat:format];
 
     // [dateFormatter setDateStyle:NSDateFormatterLongStyle];
@@ -30,7 +34,7 @@
 }
 
 - (NSString *)RCF3339DateTimeString {
-    NSString *dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSz";
+    NSString *dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'";
     return [self stringWithFormat:dateFormat];
 }
 
