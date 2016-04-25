@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(NSUInteger, TSDKMessageType) {
     TSDKMessageTypeAlert,
-    TSDKMessageTypeEmail
+    TSDKMessageTypeEmail,
+    TSDKMessageTypeUnknown
 };
 
 @interface TSDKMessage : TSDKCollectionObject
@@ -24,6 +25,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 @property (nonatomic, weak) NSString * _Nullable subject; //Example: **NULL**
 @property (nonatomic, weak) NSString * _Nullable senderType; //Example: Member
 @property (nonatomic, weak) NSString * _Nullable recipientNames; //Example:
+@property (nonatomic, weak) NSString *messageType; //Example: alert
 @property (nonatomic, assign) NSInteger flags; //Example: 4
 @property (nonatomic, weak) NSString * _Nullable body; //Example: Test
 @property (nonatomic, assign) NSInteger pushed; //Example: 0
@@ -48,6 +50,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 + (void)actionMarkMessagesAsRead:(NSArray <TSDKMessage *> * _Nonnull)messages completion:(TSDKCompletionBlock _Nullable)completion;
 + (void)actionMarkMessageAsRead:(TSDKMessage * _Nonnull)message completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion;
+- (TSDKMessageType)messageTypeValue;
 
 @end
 

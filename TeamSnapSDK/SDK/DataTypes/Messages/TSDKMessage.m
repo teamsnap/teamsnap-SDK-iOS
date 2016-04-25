@@ -17,7 +17,17 @@
     return @"message";
 }
 
-+ (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {    
+- (TSDKMessageType)messageTypeValue {
+    if([self.messageType isEqualToString:@"Alert"]) {
+        return TSDKMessageTypeAlert;
+    } else if([self.messageType isEqualToString:@"Email"]) {
+        return TSDKMessageTypeEmail;
+    } else {
+        return TSDKMessageTypeUnknown;
+    }
+}
+
++ (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [[TSDKMessage commands] objectForKey:@"mark_message_as_read"];
     command.data[@"id"] = [NSNumber numberWithInteger:message.objectIdentifier];
     
