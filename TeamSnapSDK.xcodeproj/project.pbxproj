@@ -63,19 +63,17 @@
 		965B7D461C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
 		965B7D481C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
+		968457581CCE4AE000B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
+		968457591CCE4AE600B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */; };
 		969366C01CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
 		969366C11CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
-		969366C21CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
 		969366C41CC9549100721504 /* sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366C31CC9549100721504 /* sports.json */; };
 		969366C51CC9549100721504 /* sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366C31CC9549100721504 /* sports.json */; };
-		969366C61CC9549100721504 /* sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366C31CC9549100721504 /* sports.json */; };
 		969366CC1CC9556000721504 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CB1CC9556000721504 /* countries.json */; };
 		969366CD1CC9556000721504 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CB1CC9556000721504 /* countries.json */; };
-		969366CE1CC9556000721504 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CB1CC9556000721504 /* countries.json */; };
 		969366D01CC955B600721504 /* schemas.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CF1CC955B600721504 /* schemas.json */; };
 		969366D11CC955B600721504 /* schemas.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CF1CC955B600721504 /* schemas.json */; };
-		969366D21CC955B600721504 /* schemas.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CF1CC955B600721504 /* schemas.json */; };
 		969366D51CCA503800721504 /* TSDKCountry.h in Headers */ = {isa = PBXBuildFile; fileRef = 969366D31CCA503800721504 /* TSDKCountry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969366D61CCA503800721504 /* TSDKCountry.h in Headers */ = {isa = PBXBuildFile; fileRef = 969366D31CCA503800721504 /* TSDKCountry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969366D71CCA503800721504 /* TSDKCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 969366D41CCA503800721504 /* TSDKCountry.m */; };
@@ -349,6 +347,7 @@
 		965B7D3E1C18CAE1009AF13E /* TSDKContactEmailAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactEmailAddress.m; path = Members/TSDKContactEmailAddress.m; sourceTree = "<group>"; };
 		965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContactPhoneNumber.h; path = Members/TSDKContactPhoneNumber.h; sourceTree = "<group>"; };
 		965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactPhoneNumber.m; path = Members/TSDKContactPhoneNumber.m; sourceTree = "<group>"; };
+		968457571CCE4AE000B9946B /* TimeZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TimeZones.json; path = SDK/Resources/TimeZones.json; sourceTree = "<group>"; };
 		968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObjectTests.m; sourceTree = "<group>"; };
 		969366BF1CC9545300721504 /* root.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = root.json; path = SDK/Resources/root.json; sourceTree = "<group>"; };
 		969366C31CC9549100721504 /* sports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sports.json; path = SDK/Resources/sports.json; sourceTree = "<group>"; };
@@ -545,6 +544,7 @@
 				969366BF1CC9545300721504 /* root.json */,
 				969366CF1CC955B600721504 /* schemas.json */,
 				969366C31CC9549100721504 /* sports.json */,
+				968457571CCE4AE000B9946B /* TimeZones.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1081,6 +1081,7 @@
 			files = (
 				969366D01CC955B600721504 /* schemas.json in Resources */,
 				969366CC1CC9556000721504 /* countries.json in Resources */,
+				968457581CCE4AE000B9946B /* TimeZones.json in Resources */,
 				969366C41CC9549100721504 /* sports.json in Resources */,
 				969366C01CC9545300721504 /* root.json in Resources */,
 			);
@@ -1090,10 +1091,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				969366D21CC955B600721504 /* schemas.json in Resources */,
-				969366CE1CC9556000721504 /* countries.json in Resources */,
-				969366C61CC9549100721504 /* sports.json in Resources */,
-				969366C21CC9545300721504 /* root.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1103,6 +1100,7 @@
 			files = (
 				969366D11CC955B600721504 /* schemas.json in Resources */,
 				969366CD1CC9556000721504 /* countries.json in Resources */,
+				968457591CCE4AE600B9946B /* TimeZones.json in Resources */,
 				969366C51CC9549100721504 /* sports.json in Resources */,
 				969366C11CC9545300721504 /* root.json in Resources */,
 			);

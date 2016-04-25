@@ -9,7 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKTimeZone : TSDKCollectionObject
+@interface TSDKTimeZone : TSDKCollectionObject <TSDKCollectionObjectBundledDataProtocol>
 
 @property (nonatomic, weak) NSString *ianaName; //Example: Pacific/Pago_Pago
 @property (nonatomic, weak) NSString *offset; //Example: -11:00

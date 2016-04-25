@@ -10,10 +10,22 @@
 
 @implementation TSDKTimeZone
 
-@dynamic ianaName, offset, timeZoneDescription;
+@dynamic ianaName, offset;
 
 + (NSString *)SDKType {
     return @"TimeZone";
+}
+
++ (NSURL *)bundledFileURL {
+    return [[NSBundle bundleForClass:[self class]] URLForResource:[self SDKREL] withExtension:@"json"];
+}
+
+- (NSString *)timeZoneDescription {
+    return [self getString:@"description"];
+}
+
+- (void)setTimeZoneDescription:(NSString *)timeZoneDescription {
+    [self setString:timeZoneDescription forKey:@"description"];
 }
 
 @end
