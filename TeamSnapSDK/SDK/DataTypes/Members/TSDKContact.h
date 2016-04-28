@@ -8,8 +8,10 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKMessageRecipient.h"
+#import "TSDKMessageSender.h"
 
-@interface TSDKContact : TSDKCollectionObject
+@interface TSDKContact : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, assign) BOOL isInvitable; //Example: 0
@@ -18,7 +20,7 @@
 @property (nonatomic, weak) NSString *addressZip; //Example:
 @property (nonatomic, weak) NSString *invitationCode; //Example: **NULL**
 @property (nonatomic, assign) NSInteger memberId; //Example: 993324
-@property (nonatomic, weak) NSString *userId; //Example: **NULL**
+@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
 @property (nonatomic, weak) NSString *addressState; //Example:
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-10-30T17:50:41Z
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
@@ -38,7 +40,7 @@
 @property (nonatomic, weak) NSURL *linkContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkContactEmailAddresses;
-
+@property (nonatomic, weak) NSURL *linkMessages;
 
 @end
 
@@ -48,7 +50,7 @@
 -(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock)completion;
-
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
 
 @end
 
