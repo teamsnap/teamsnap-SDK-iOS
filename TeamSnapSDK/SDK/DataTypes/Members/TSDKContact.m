@@ -31,12 +31,8 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
-- (NSInteger)senderId {
+- (NSInteger)contactId {
     return self.objectIdentifier;
-}
-
-- (NSString *)senderKey {
-    return @"contact_id";
 }
 
 @end

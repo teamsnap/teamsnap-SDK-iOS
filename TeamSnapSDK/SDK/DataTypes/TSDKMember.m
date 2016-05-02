@@ -144,12 +144,8 @@
     return YES;
 }
 
-- (NSInteger)senderId {
+- (NSInteger)memberId {
     return self.objectIdentifier;
-}
-
-- (NSString *)senderKey {
-    return @"member_id";
 }
 
 @end

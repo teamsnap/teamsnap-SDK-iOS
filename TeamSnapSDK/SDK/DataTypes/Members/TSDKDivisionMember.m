@@ -32,12 +32,8 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
-- (NSInteger)senderId {
+- (NSInteger)memberId {
     return self.objectIdentifier;
-}
-
-- (NSString *)senderKey {
-    return @"member_id";
 }
 
 @end

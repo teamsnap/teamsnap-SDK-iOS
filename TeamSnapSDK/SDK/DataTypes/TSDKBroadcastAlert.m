@@ -22,7 +22,10 @@
     if(self) {
         [super setString:body forKey:@"body"];
         [super setInteger:teamId forKey:@"team_id"];
-        [super setInteger:[sender senderId] forKey:[sender senderKey]];
+        [super setInteger:[sender memberId] forKey:@"member_id"];
+        if([sender respondsToSelector:@selector(contactId)]) {
+            [super setInteger:[sender contactId] forKey:@"contact_id"];
+        }
         NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
         for(TSDKMember *recipient in recipients) {
             [recipientIDs addObject:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
