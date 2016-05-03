@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TeamSnapSDK.h"
 
 @interface TSDKDataRequestTests : XCTestCase
 
@@ -24,15 +25,22 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)testRequestObjectsForPath {
+    [TSDKDataRequest requestObjectsForPath:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (success || complete) {
+            XCTAssert(@"Returned Success on nil link");
+        }
+        XCTAssertNil(objects, @"Objects returned on nil array");
+    }];
+    
+    NSURL *url = [NSURL URLWithString:@"https://api.teamsnap.com/v3/countries"];
+    
+    [TSDKDataRequest requestObjectsForPath:url withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (success) {
+            XCTAssertNotNil(objects, @"Objects returned nil array");
+        } else {
+            XCTAssert(@"Returned !Success on /countries");
+        }
     }];
 }
 
