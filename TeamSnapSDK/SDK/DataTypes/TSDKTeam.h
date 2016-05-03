@@ -105,7 +105,6 @@
 @property (nonatomic, weak) NSURL *linkBroadcastEmails;
 @property (nonatomic, weak) NSURL *linkEventsCsvExport;
 @property (nonatomic, weak) NSURL *linkEventStatistics;
-@property (nonatomic, weak) NSURL *linkMessageData;
 @property (nonatomic, weak) NSURL *linkBroadcastAlerts;
 @property (nonatomic, weak) NSURL *linkTeamPublicSite;
 
@@ -177,7 +176,7 @@
 -(void)getEventsOverviewWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock)completion;
 -(void)getMemberLinksWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKDivisionMembersArrayCompletionBlock)completion;
 -(void)getBroadcastEmailAttachmentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamStatisticArrayCompletionBlock)completion;
 -(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock)completion;

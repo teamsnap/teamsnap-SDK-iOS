@@ -140,4 +140,12 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
+- (BOOL)canMarkAsRead {
+    return YES;
+}
+
+- (NSInteger)memberId {
+    return self.objectIdentifier;
+}
+
 @end

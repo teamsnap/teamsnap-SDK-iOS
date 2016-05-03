@@ -34,6 +34,7 @@
 @property (nonatomic, weak) NSURL *linkTeams;
 @property (nonatomic, weak) NSURL *linkMembers;
 @property (nonatomic, weak) NSURL *linkActiveTeams;
+@property (nonatomic, weak) NSURL *linkDivisionMembers;
 
 // Non Auto-generated
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock)completion;
@@ -61,4 +62,6 @@
 -(void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
--(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;@end
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+- (void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKDivisionMembersArrayCompletionBlock)completion;
+@end

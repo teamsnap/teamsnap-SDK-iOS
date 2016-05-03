@@ -73,7 +73,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [_requestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
         
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        [_requestHeaders setObject:version forKey:@"X-Client-Version"];
+        if (version) {
+            [_requestHeaders setObject:version forKey:@"X-Client-Version"];
+        }
     }
     return _requestHeaders;
 }
@@ -169,6 +171,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    
+    if (!URL) {
+        completionBlock(NO, NO, nil, nil);
+        return;
+    }
+    
     NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
 
     if (searchParamaters) {
