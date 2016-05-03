@@ -26,22 +26,34 @@
 }
 
 - (void)testRequestObjectsForPath {
+    XCTestExpectation *nilLinkExpectation = [self expectationWithDescription:@"Return from nil link"];
+    
     [TSDKDataRequest requestObjectsForPath:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (success || complete) {
             XCTAssert(@"Returned Success on nil link");
         }
         XCTAssertNil(objects, @"Objects returned on nil array");
+        [nilLinkExpectation fulfill];
     }];
     
-    NSURL *url = [NSURL URLWithString:@"https://api.teamsnap.com/v3/countries"];
+    XCTestExpectation *countriesExpectation = [self expectationWithDescription:@"Return from /random"];
+
+    NSURL *url = [NSURL URLWithString:@"https://api.teamsnap.com/v3/random"];
     
     [TSDKDataRequest requestObjectsForPath:url withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (success) {
             XCTAssertNotNil(objects, @"Objects returned nil array");
         } else {
-            XCTAssert(@"Returned !Success on /countries");
+            if (!error || (error && [[error.userInfo objectForKey:TSDKTeamSnapSDKHTTPResponseCodeKey] integerValue] != 420)) {
+              XCTAssert(@"Returned !Success on /random");
+            } else {
+                NSLog(@"Rate Limited - Not full test");
+            }
         }
+        [countriesExpectation fulfill];
     }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
 }
 
 @end
