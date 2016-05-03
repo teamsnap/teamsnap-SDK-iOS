@@ -114,4 +114,27 @@
     XCTAssertEqual(event.startDate, referenceDate);
 }
 
+- (void)testArrayFromLinkWithNilLink {
+    if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
+        TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+        
+        TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+        
+        XCTestExpectation *userExpectation = [self expectationWithDescription:@"Return from /random"];
+        
+        [user arrayFromLink:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (success || complete) {
+                XCTAssert(@"Returned Success on nil link");
+            }
+            XCTAssertNil(objects, @"Objects returned on nil array");
+            [userExpectation fulfill];
+        }];
+    } else {
+        XCTAssert(@"Collection JSON parsing failed");
+    }
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
+    
+}
+
 @end
