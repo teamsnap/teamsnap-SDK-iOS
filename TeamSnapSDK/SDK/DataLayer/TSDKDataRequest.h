@@ -12,6 +12,8 @@
 
 @class TSDKCollectionJSON, TSDKinvitationFinder;
 
+extern NSString * const OAuthURL;
+
 @interface TSDKDataRequest : NSObject
 
 + (NSURL *)baseURL;
