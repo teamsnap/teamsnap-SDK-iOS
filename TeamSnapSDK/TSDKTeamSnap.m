@@ -148,8 +148,12 @@
     [presentingViewController.view addSubview:webController.view];
 
     [webController didMoveToParentViewController:presentingViewController];
-    sleep(2);
-    dispatch_async(dispatch_get_main_queue(), ^{
+
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        //code to be executed on the main queue after delay
+        [webController.view removeFromSuperview];
         [webController dismissViewControllerAnimated:NO completion:nil];
     });
     
