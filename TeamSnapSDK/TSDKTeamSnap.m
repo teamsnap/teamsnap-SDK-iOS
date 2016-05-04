@@ -89,7 +89,7 @@
 #if TARGET_OS_IPHONE
 - (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion {
     
-    NSString *OAuthURLString = [NSString stringWithFormat:@"https://auth.teamsnap.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", clientId, redirectURL, scope];
+    NSString *OAuthURLString = [NSString stringWithFormat:@"%@/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", OAuthURL, clientId, redirectURL, scope];
     
     NSURL *OAuthURL = [NSURL URLWithString:OAuthURLString];
     
@@ -133,6 +133,35 @@
         return NO;
     }
 }
+
+- (void)logoutWithPresentingViewController:(UIViewController *)presentingViewController completion:(TSDKSimpleCompletionBlock)completion {
+    NSString *logoutURL = [NSString stringWithFormat:@"%@/logout", OAuthURL];
+    
+    [self logout];
+    
+    SFSafariViewController *webController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:logoutURL]];
+
+    [presentingViewController addChildViewController:webController];
+
+    webController.view.frame = CGRectMake(0, presentingViewController.view.frame.size.height, presentingViewController.view.frame.size.width, 100);
+
+    [presentingViewController.view addSubview:webController.view];
+
+    [webController didMoveToParentViewController:presentingViewController];
+    sleep(2);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [webController dismissViewControllerAnimated:NO completion:nil];
+    });
+    
+    if (completion) {
+        completion(YES, nil);
+    }
+}
+
+- (void)dismissVewController:(UIViewController *)viewController {
+    [viewController dismissViewControllerAnimated:NO completion:nil];
+}
+
 #endif
 
 - (void)publicFeaturesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPublicFeatures *publicFeatures))completion {
