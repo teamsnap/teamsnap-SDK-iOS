@@ -69,7 +69,7 @@ Reason: image not found
 You forgot to embed the binary:
 target->General->Embedded Binaries (Does not happen automatically)
 
-#Building iOS TemSnapSDK
+#Building iOS TeamSnapSDK
 Build for simulator. The universal binary will be located somewhere like:
 ```
 ~/Library/Developer/Xcode/DerivedData/TeamSnapSDK-bpyoduzxeamidfebntrjxkbbwxwq/Build/Products/Debug-universal/TeamSnapSDK.framework
