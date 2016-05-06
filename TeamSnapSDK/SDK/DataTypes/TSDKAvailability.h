@@ -9,11 +9,11 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef enum TSDKAvailabilityState : NSUInteger  {
-    TSDKAvailabilityIsUnknown = 0,
+typedef enum TSDKAvailabilityState : NSInteger  {
+    TSDKAvailabilityIsNotAvailable = 0,
     TSDKAvailabilityIsAvailable = 1,
-    TSDKAvailabilityIsNotAvailable = 2,
-    TSDKAvailabilityIsMaybeAvailable = 3
+    TSDKAvailabilityIsMaybeAvailable = 2,
+    TSDKAvailabilityIsUnknown = 3
 } TSDKAvailabilityState;
 
 
@@ -21,8 +21,8 @@ typedef enum TSDKAvailabilityState : NSUInteger  {
 
 @property (nonatomic, weak) NSString *status; //Example: Yes. I will be there.
 @property (nonatomic, weak) NSString *notes; //Example: **NULL**
-@property (nonatomic, weak) NSString *notesAuthorMemberId; //Example: **NULL**
-@property (nonatomic, assign) NSInteger statusCode; //Example: 1
+@property (nonatomic, assign) NSInteger notesAuthorMemberId; //Example: **NULL**
+@property (nonatomic, assign) TSDKAvailabilityState statusCode; //Example: 1
 @property (nonatomic, assign) NSInteger memberId; //Example: 993324
 @property (nonatomic, assign) NSInteger eventId; //Example: 2357548
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118

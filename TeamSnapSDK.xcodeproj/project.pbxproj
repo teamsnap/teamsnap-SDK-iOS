@@ -67,7 +67,25 @@
 		965B7D461C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
 		965B7D481C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */; };
+		968457581CCE4AE000B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
+		968457591CCE4AE600B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */; };
+		969366C01CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
+		969366C11CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
+		969366C41CC9549100721504 /* sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366C31CC9549100721504 /* sports.json */; };
+		969366C51CC9549100721504 /* sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366C31CC9549100721504 /* sports.json */; };
+		969366CC1CC9556000721504 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CB1CC9556000721504 /* countries.json */; };
+		969366CD1CC9556000721504 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CB1CC9556000721504 /* countries.json */; };
+		969366D01CC955B600721504 /* schemas.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CF1CC955B600721504 /* schemas.json */; };
+		969366D11CC955B600721504 /* schemas.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366CF1CC955B600721504 /* schemas.json */; };
+		969366D51CCA503800721504 /* TSDKCountry.h in Headers */ = {isa = PBXBuildFile; fileRef = 969366D31CCA503800721504 /* TSDKCountry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969366D61CCA503800721504 /* TSDKCountry.h in Headers */ = {isa = PBXBuildFile; fileRef = 969366D31CCA503800721504 /* TSDKCountry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969366D71CCA503800721504 /* TSDKCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 969366D41CCA503800721504 /* TSDKCountry.m */; };
+		969366D81CCA503800721504 /* TSDKCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = 969366D41CCA503800721504 /* TSDKCountry.m */; };
+		969366DB1CCA539700721504 /* TSDKTimeZone.h in Headers */ = {isa = PBXBuildFile; fileRef = 969366D91CCA539700721504 /* TSDKTimeZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969366DC1CCA539700721504 /* TSDKTimeZone.h in Headers */ = {isa = PBXBuildFile; fileRef = 969366D91CCA539700721504 /* TSDKTimeZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		969366DD1CCA539700721504 /* TSDKTimeZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 969366DA1CCA539700721504 /* TSDKTimeZone.m */; };
+		969366DE1CCA539700721504 /* TSDKTimeZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 969366DA1CCA539700721504 /* TSDKTimeZone.m */; };
 		96966BD31C4989A8000828E1 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96966BD41C4989C4000828E1 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
 		9696ACC11C1715E000FA7F64 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9696ACC01C1715E000FA7F64 /* SafariServices.framework */; };
@@ -338,7 +356,16 @@
 		965B7D3E1C18CAE1009AF13E /* TSDKContactEmailAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactEmailAddress.m; path = Members/TSDKContactEmailAddress.m; sourceTree = "<group>"; };
 		965B7D431C18CB2F009AF13E /* TSDKContactPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKContactPhoneNumber.h; path = Members/TSDKContactPhoneNumber.h; sourceTree = "<group>"; };
 		965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactPhoneNumber.m; path = Members/TSDKContactPhoneNumber.m; sourceTree = "<group>"; };
+		968457571CCE4AE000B9946B /* TimeZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TimeZones.json; path = SDK/Resources/TimeZones.json; sourceTree = "<group>"; };
 		968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObjectTests.m; sourceTree = "<group>"; };
+		969366BF1CC9545300721504 /* root.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = root.json; path = SDK/Resources/root.json; sourceTree = "<group>"; };
+		969366C31CC9549100721504 /* sports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sports.json; path = SDK/Resources/sports.json; sourceTree = "<group>"; };
+		969366CB1CC9556000721504 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = countries.json; path = SDK/Resources/countries.json; sourceTree = "<group>"; };
+		969366CF1CC955B600721504 /* schemas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = schemas.json; path = SDK/Resources/schemas.json; sourceTree = "<group>"; };
+		969366D31CCA503800721504 /* TSDKCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKCountry.h; sourceTree = "<group>"; };
+		969366D41CCA503800721504 /* TSDKCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCountry.m; sourceTree = "<group>"; };
+		969366D91CCA539700721504 /* TSDKTimeZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTimeZone.h; sourceTree = "<group>"; };
+		969366DA1CCA539700721504 /* TSDKTimeZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTimeZone.m; sourceTree = "<group>"; };
 		9696ACC01C1715E000FA7F64 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRequestConfiguration.h; sourceTree = "<group>"; };
 		969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRequestConfiguration.m; sourceTree = "<group>"; };
@@ -531,6 +558,18 @@
 			name = Members;
 			sourceTree = "<group>";
 		};
+		969366BE1CC9540200721504 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				969366CB1CC9556000721504 /* countries.json */,
+				969366BF1CC9545300721504 /* root.json */,
+				969366CF1CC955B600721504 /* schemas.json */,
+				969366C31CC9549100721504 /* sports.json */,
+				968457571CCE4AE000B9946B /* TimeZones.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		969B7EB41C7CA98800FD3EA0 /* Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +631,7 @@
 		969E80421BAAE62D00CA518F /* TeamSnapSDK */ = {
 			isa = PBXGroup;
 			children = (
+				969366BE1CC9540200721504 /* Resources */,
 				969E805A1BAAE79500CA518F /* TeamSnapSDK.h */,
 				969E805B1BAAE79500CA518F /* TSDKTeamSnap.h */,
 				969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */,
@@ -756,6 +796,10 @@
 				969B7EA11C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m */,
 				969B7EF61C7CF30600FD3EA0 /* TSDKOpponentResults.h */,
 				969B7EF71C7CF30600FD3EA0 /* TSDKOpponentResults.m */,
+				969366D31CCA503800721504 /* TSDKCountry.h */,
+				969366D41CCA503800721504 /* TSDKCountry.m */,
+				969366D91CCA539700721504 /* TSDKTimeZone.h */,
+				969366DA1CCA539700721504 /* TSDKTimeZone.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -825,6 +869,7 @@
 				969E80D51BAAE7AB00CA518F /* TSDKAvailability.h in Headers */,
 				969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */,
 				969B7ECE1C7CB28300FD3EA0 /* TSDKTeamMedium.h in Headers */,
+				969366D51CCA503800721504 /* TSDKCountry.h in Headers */,
 				969E80CF1BAAE7AB00CA518F /* TSDKStatisticGroup.h in Headers */,
 				963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */,
 				969E80F11BAAE7AB00CA518F /* TSDKTeamFee.h in Headers */,
@@ -841,6 +886,7 @@
 				969B7EC31C7CAE2600FD3EA0 /* TSDKForumSubscription.h in Headers */,
 				9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */,
 				969E80E71BAAE7AB00CA518F /* TSDKMember.h in Headers */,
+				969366DB1CCA539700721504 /* TSDKTimeZone.h in Headers */,
 				969E80F31BAAE7AB00CA518F /* TSDKTeamPreferences.h in Headers */,
 				9612CD8E1C9B51AB00816460 /* TSDKNotifications.h in Headers */,
 				969E80EF1BAAE7AB00CA518F /* TSDKTeam.h in Headers */,
@@ -893,10 +939,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				969366D61CCA503800721504 /* TSDKCountry.h in Headers */,
 				96B47F411BADB4410035F2CC /* TSDKTeamPreferences.h in Headers */,
 				96B47F231BADB4410035F2CC /* TSDKAvailability.h in Headers */,
 				96B47F611BADB4810035F2CC /* NSString+TSDKConveniences.h in Headers */,
 				969B7EDA1C7CBB5000FD3EA0 /* TSDKPaymentNote.h in Headers */,
+				969366DC1CCA539700721504 /* TSDKTimeZone.h in Headers */,
 				96B47F531BADB4740035F2CC /* NSHTTPURLResponse+convenience.h in Headers */,
 				96B47F2D1BADB4410035F2CC /* TSDKEvent.h in Headers */,
 				9652304F1CAC65F00087FC23 /* TSDKDivisionLocation.h in Headers */,
@@ -1065,6 +1113,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				969366D01CC955B600721504 /* schemas.json in Resources */,
+				969366CC1CC9556000721504 /* countries.json in Resources */,
+				968457581CCE4AE000B9946B /* TimeZones.json in Resources */,
+				969366C41CC9549100721504 /* sports.json in Resources */,
+				969366C01CC9545300721504 /* root.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,6 +1132,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				969366D11CC955B600721504 /* schemas.json in Resources */,
+				969366CD1CC9556000721504 /* countries.json in Resources */,
+				968457591CCE4AE600B9946B /* TimeZones.json in Resources */,
+				969366C51CC9549100721504 /* sports.json in Resources */,
+				969366C11CC9545300721504 /* root.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1184,7 @@
 				969B7F041C7DE58C00FD3EA0 /* TSDKEventStatistic.m in Sources */,
 				969E80DA1BAAE7AB00CA518F /* TSDKBroadcastAlert.m in Sources */,
 				5688F54E1C91E2D80005C330 /* TSDKMessageDatum.m in Sources */,
+				969366D71CCA503800721504 /* TSDKCountry.m in Sources */,
 				56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */,
 				963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
@@ -1170,6 +1229,7 @@
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
 				969E80B41BAAE7AB00CA518F /* TSDKCollectionCommand.m in Sources */,
+				969366DD1CCA539700721504 /* TSDKTimeZone.m in Sources */,
 				969E80EA1BAAE7AB00CA518F /* TSDKOpponent.m in Sources */,
 				969E80C81BAAE7AB00CA518F /* TSDKObjectsRequest.m in Sources */,
 				969E80C41BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.m in Sources */,
@@ -1217,6 +1277,8 @@
 				96B47F601BADB4810035F2CC /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
 				96B47F341BADB4410035F2CC /* TSDKLocation.m in Sources */,
 				96B47F681BADB4850035F2CC /* TSDKCollectionObject.m in Sources */,
+				969366DE1CCA539700721504 /* TSDKTimeZone.m in Sources */,
+				969366D81CCA503800721504 /* TSDKCountry.m in Sources */,
 				96B47F3A1BADB4410035F2CC /* TSDKPlan.m in Sources */,
 				96B47F6E1BADB4BC0035F2CC /* TSDKTeamSnap.m in Sources */,
 				965B7D481C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,

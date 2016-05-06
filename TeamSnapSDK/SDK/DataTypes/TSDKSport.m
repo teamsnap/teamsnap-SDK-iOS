@@ -40,6 +40,10 @@ const NSInteger TSPSportNonSportGroup = 52;
     return @"sport";
 }
 
++ (NSURL *)bundledFileURL {
+    return [[NSBundle bundleForClass:[self class]] URLForResource:[self SDKREL] withExtension:@"json"];
+}
+
 -(NSString *)memberDescription {
     if (self.isNonSport) {
         return NSLocalizedString(@"Member", nil);

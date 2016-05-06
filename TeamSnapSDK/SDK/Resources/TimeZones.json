@@ -1,0 +1,3909 @@
+{
+    "collection": {
+        "href": "https://api.teamsnap.com/v3/time_zones",
+        "items": [
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "american-samoa"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "American Samoa"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Pago_Pago"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-11:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/american-samoa",
+                "rel": "TimeZone-american-samoa"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "international-date-line-west"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "International Date Line West"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Midway"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-11:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/international-date-line-west",
+                "rel": "TimeZone-international-date-line-west"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "midway-island"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Midway Island"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Midway"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-11:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/midway-island",
+                "rel": "TimeZone-midway-island"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "hawaii"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Hawaii"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Honolulu"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/hawaii",
+                "rel": "TimeZone-hawaii"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "alaska"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Alaska"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Juneau"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-09:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/alaska",
+                "rel": "TimeZone-alaska"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "pacific-time-us-canada"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Pacific Time (US & Canada)"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Los_Angeles"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/pacific-time-us-canada",
+                "rel": "TimeZone-pacific-time-us-canada"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tijuana"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tijuana"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Tijuana"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tijuana",
+                "rel": "TimeZone-tijuana"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "arizona"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Arizona"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Phoenix"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/arizona",
+                "rel": "TimeZone-arizona"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "chihuahua"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Chihuahua"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Chihuahua"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/chihuahua",
+                "rel": "TimeZone-chihuahua"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "mazatlan"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Mazatlan"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Mazatlan"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/mazatlan",
+                "rel": "TimeZone-mazatlan"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "mountain-time-us-canada"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Mountain Time (US & Canada)"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Denver"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/mountain-time-us-canada",
+                "rel": "TimeZone-mountain-time-us-canada"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "central-america"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Central America"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Guatemala"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/central-america",
+                "rel": "TimeZone-central-america"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "central-time-us-canada"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Central Time (US & Canada)"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Chicago"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/central-time-us-canada",
+                "rel": "TimeZone-central-time-us-canada"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "guadalajara"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Guadalajara"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Mexico_City"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/guadalajara",
+                "rel": "TimeZone-guadalajara"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "mexico-city"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Mexico City"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Mexico_City"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/mexico-city",
+                "rel": "TimeZone-mexico-city"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "monterrey"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Monterrey"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Monterrey"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/monterrey",
+                "rel": "TimeZone-monterrey"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "saskatchewan"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Saskatchewan"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Regina"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/saskatchewan",
+                "rel": "TimeZone-saskatchewan"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "bogota"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Bogota"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Bogota"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/bogota",
+                "rel": "TimeZone-bogota"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "eastern-time-us-canada"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Eastern Time (US & Canada)"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/New_York"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/eastern-time-us-canada",
+                "rel": "TimeZone-eastern-time-us-canada"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "indiana-east"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Indiana (East)"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Indiana/Indianapolis"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/indiana-east",
+                "rel": "TimeZone-indiana-east"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "lima"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Lima"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Lima"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/lima",
+                "rel": "TimeZone-lima"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "quito"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Quito"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Lima"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/quito",
+                "rel": "TimeZone-quito"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "caracas"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Caracas"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Caracas"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-04:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/caracas",
+                "rel": "TimeZone-caracas"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "atlantic-time-canada"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Atlantic Time (Canada)"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Halifax"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/atlantic-time-canada",
+                "rel": "TimeZone-atlantic-time-canada"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "georgetown"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Georgetown"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Guyana"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/georgetown",
+                "rel": "TimeZone-georgetown"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "la-paz"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "La Paz"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/La_Paz"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/la-paz",
+                "rel": "TimeZone-la-paz"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "newfoundland"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Newfoundland"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/St_Johns"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-03:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/newfoundland",
+                "rel": "TimeZone-newfoundland"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "brasilia"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Brasilia"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Sao_Paulo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/brasilia",
+                "rel": "TimeZone-brasilia"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "buenos-aires"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Buenos Aires"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Argentina/Buenos_Aires"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/buenos-aires",
+                "rel": "TimeZone-buenos-aires"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "greenland"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Greenland"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Godthab"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/greenland",
+                "rel": "TimeZone-greenland"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "montevideo"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Montevideo"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Montevideo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/montevideo",
+                "rel": "TimeZone-montevideo"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "santiago"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Santiago"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "America/Santiago"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/santiago",
+                "rel": "TimeZone-santiago"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "mid-atlantic"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Mid-Atlantic"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Atlantic/South_Georgia"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/mid-atlantic",
+                "rel": "TimeZone-mid-atlantic"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "azores"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Azores"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Atlantic/Azores"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/azores",
+                "rel": "TimeZone-azores"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "cape-verde-is"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Cape Verde Is."
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Atlantic/Cape_Verde"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "-01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/cape-verde-is",
+                "rel": "TimeZone-cape-verde-is"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "casablanca"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Casablanca"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Casablanca"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+00:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/casablanca",
+                "rel": "TimeZone-casablanca"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "dublin"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Dublin"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Dublin"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+00:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/dublin",
+                "rel": "TimeZone-dublin"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "lisbon"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Lisbon"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Lisbon"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+00:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/lisbon",
+                "rel": "TimeZone-lisbon"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "london"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "London"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/London"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+00:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/london",
+                "rel": "TimeZone-london"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "monrovia"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Monrovia"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Monrovia"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+00:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/monrovia",
+                "rel": "TimeZone-monrovia"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "utc"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "UTC"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Etc/UTC"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+00:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/utc",
+                "rel": "TimeZone-utc"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "amsterdam"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Amsterdam"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Amsterdam"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/amsterdam",
+                "rel": "TimeZone-amsterdam"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "belgrade"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Belgrade"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Belgrade"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/belgrade",
+                "rel": "TimeZone-belgrade"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "berlin"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Berlin"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Berlin"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/berlin",
+                "rel": "TimeZone-berlin"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "bern"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Bern"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Berlin"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/bern",
+                "rel": "TimeZone-bern"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "bratislava"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Bratislava"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Bratislava"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/bratislava",
+                "rel": "TimeZone-bratislava"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "brussels"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Brussels"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Brussels"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/brussels",
+                "rel": "TimeZone-brussels"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "budapest"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Budapest"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Budapest"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/budapest",
+                "rel": "TimeZone-budapest"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "copenhagen"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Copenhagen"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Copenhagen"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/copenhagen",
+                "rel": "TimeZone-copenhagen"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "ljubljana"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Ljubljana"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Ljubljana"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/ljubljana",
+                "rel": "TimeZone-ljubljana"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "madrid"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Madrid"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Madrid"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/madrid",
+                "rel": "TimeZone-madrid"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "paris"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Paris"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Paris"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/paris",
+                "rel": "TimeZone-paris"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "prague"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Prague"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Prague"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/prague",
+                "rel": "TimeZone-prague"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "rome"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Rome"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Rome"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/rome",
+                "rel": "TimeZone-rome"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "sarajevo"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Sarajevo"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Sarajevo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/sarajevo",
+                "rel": "TimeZone-sarajevo"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "skopje"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Skopje"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Skopje"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/skopje",
+                "rel": "TimeZone-skopje"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "stockholm"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Stockholm"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Stockholm"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/stockholm",
+                "rel": "TimeZone-stockholm"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "vienna"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Vienna"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Vienna"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/vienna",
+                "rel": "TimeZone-vienna"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "warsaw"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Warsaw"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Warsaw"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/warsaw",
+                "rel": "TimeZone-warsaw"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "west-central-africa"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "West Central Africa"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Algiers"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/west-central-africa",
+                "rel": "TimeZone-west-central-africa"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "zagreb"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Zagreb"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Zagreb"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+01:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/zagreb",
+                "rel": "TimeZone-zagreb"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "amman"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Amman"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Amman"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/amman",
+                "rel": "TimeZone-amman"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "athens"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Athens"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Athens"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/athens",
+                "rel": "TimeZone-athens"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "bucharest"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Bucharest"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Bucharest"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/bucharest",
+                "rel": "TimeZone-bucharest"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "cairo"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Cairo"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Cairo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/cairo",
+                "rel": "TimeZone-cairo"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "harare"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Harare"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Harare"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/harare",
+                "rel": "TimeZone-harare"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "helsinki"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Helsinki"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Helsinki"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/helsinki",
+                "rel": "TimeZone-helsinki"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "istanbul"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Istanbul"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Istanbul"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/istanbul",
+                "rel": "TimeZone-istanbul"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "jerusalem"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Jerusalem"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Jerusalem"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/jerusalem",
+                "rel": "TimeZone-jerusalem"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kaliningrad"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kaliningrad"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Kaliningrad"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kaliningrad",
+                "rel": "TimeZone-kaliningrad"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kyiv"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kyiv"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Kiev"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kyiv",
+                "rel": "TimeZone-kyiv"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "pretoria"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Pretoria"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Johannesburg"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/pretoria",
+                "rel": "TimeZone-pretoria"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "riga"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Riga"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Riga"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/riga",
+                "rel": "TimeZone-riga"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "sofia"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Sofia"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Sofia"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/sofia",
+                "rel": "TimeZone-sofia"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tallinn"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tallinn"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Tallinn"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tallinn",
+                "rel": "TimeZone-tallinn"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "vilnius"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Vilnius"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Vilnius"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+02:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/vilnius",
+                "rel": "TimeZone-vilnius"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "baghdad"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Baghdad"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Baghdad"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/baghdad",
+                "rel": "TimeZone-baghdad"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kuwait"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kuwait"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kuwait"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kuwait",
+                "rel": "TimeZone-kuwait"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "minsk"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Minsk"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Minsk"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/minsk",
+                "rel": "TimeZone-minsk"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "moscow"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Moscow"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Moscow"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/moscow",
+                "rel": "TimeZone-moscow"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "nairobi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Nairobi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Africa/Nairobi"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/nairobi",
+                "rel": "TimeZone-nairobi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "riyadh"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Riyadh"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Riyadh"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/riyadh",
+                "rel": "TimeZone-riyadh"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "st-petersburg"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "St. Petersburg"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Moscow"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/st-petersburg",
+                "rel": "TimeZone-st-petersburg"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "volgograd"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Volgograd"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Volgograd"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/volgograd",
+                "rel": "TimeZone-volgograd"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tehran"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tehran"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Tehran"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+03:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tehran",
+                "rel": "TimeZone-tehran"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "abu-dhabi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Abu Dhabi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Muscat"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/abu-dhabi",
+                "rel": "TimeZone-abu-dhabi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "baku"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Baku"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Baku"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/baku",
+                "rel": "TimeZone-baku"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "muscat"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Muscat"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Muscat"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/muscat",
+                "rel": "TimeZone-muscat"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "samara"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Samara"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Europe/Samara"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/samara",
+                "rel": "TimeZone-samara"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tbilisi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tbilisi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Tbilisi"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tbilisi",
+                "rel": "TimeZone-tbilisi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "yerevan"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Yerevan"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Yerevan"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/yerevan",
+                "rel": "TimeZone-yerevan"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kabul"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kabul"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kabul"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+04:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kabul",
+                "rel": "TimeZone-kabul"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "ekaterinburg"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Ekaterinburg"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Yekaterinburg"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/ekaterinburg",
+                "rel": "TimeZone-ekaterinburg"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "islamabad"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Islamabad"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Karachi"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/islamabad",
+                "rel": "TimeZone-islamabad"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "karachi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Karachi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Karachi"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/karachi",
+                "rel": "TimeZone-karachi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tashkent"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tashkent"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Tashkent"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tashkent",
+                "rel": "TimeZone-tashkent"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "chennai"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Chennai"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kolkata"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/chennai",
+                "rel": "TimeZone-chennai"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kolkata"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kolkata"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kolkata"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kolkata",
+                "rel": "TimeZone-kolkata"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "mumbai"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Mumbai"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kolkata"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/mumbai",
+                "rel": "TimeZone-mumbai"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "new-delhi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "New Delhi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kolkata"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/new-delhi",
+                "rel": "TimeZone-new-delhi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "sri-jayawardenepura"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Sri Jayawardenepura"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Colombo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/sri-jayawardenepura",
+                "rel": "TimeZone-sri-jayawardenepura"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kathmandu"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kathmandu"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kathmandu"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+05:45"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kathmandu",
+                "rel": "TimeZone-kathmandu"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "almaty"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Almaty"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Almaty"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/almaty",
+                "rel": "TimeZone-almaty"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "astana"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Astana"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Dhaka"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/astana",
+                "rel": "TimeZone-astana"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "dhaka"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Dhaka"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Dhaka"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/dhaka",
+                "rel": "TimeZone-dhaka"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "novosibirsk"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Novosibirsk"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Novosibirsk"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/novosibirsk",
+                "rel": "TimeZone-novosibirsk"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "urumqi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Urumqi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Urumqi"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+06:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/urumqi",
+                "rel": "TimeZone-urumqi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "rangoon"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Rangoon"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Rangoon"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+06:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/rangoon",
+                "rel": "TimeZone-rangoon"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "bangkok"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Bangkok"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Bangkok"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/bangkok",
+                "rel": "TimeZone-bangkok"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "hanoi"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Hanoi"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Bangkok"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/hanoi",
+                "rel": "TimeZone-hanoi"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "jakarta"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Jakarta"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Jakarta"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/jakarta",
+                "rel": "TimeZone-jakarta"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "krasnoyarsk"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Krasnoyarsk"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Krasnoyarsk"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+07:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/krasnoyarsk",
+                "rel": "TimeZone-krasnoyarsk"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "beijing"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Beijing"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Shanghai"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/beijing",
+                "rel": "TimeZone-beijing"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "chongqing"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Chongqing"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Chongqing"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/chongqing",
+                "rel": "TimeZone-chongqing"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "hong-kong"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Hong Kong"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Hong_Kong"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/hong-kong",
+                "rel": "TimeZone-hong-kong"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "irkutsk"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Irkutsk"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Irkutsk"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/irkutsk",
+                "rel": "TimeZone-irkutsk"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kuala-lumpur"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kuala Lumpur"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kuala_Lumpur"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kuala-lumpur",
+                "rel": "TimeZone-kuala-lumpur"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "perth"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Perth"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Perth"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/perth",
+                "rel": "TimeZone-perth"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "singapore"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Singapore"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Singapore"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/singapore",
+                "rel": "TimeZone-singapore"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "taipei"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Taipei"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Taipei"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/taipei",
+                "rel": "TimeZone-taipei"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "ulaanbaatar"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Ulaanbaatar"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Ulaanbaatar"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+08:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/ulaanbaatar",
+                "rel": "TimeZone-ulaanbaatar"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "osaka"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Osaka"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Tokyo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/osaka",
+                "rel": "TimeZone-osaka"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "sapporo"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Sapporo"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Tokyo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/sapporo",
+                "rel": "TimeZone-sapporo"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "seoul"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Seoul"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Seoul"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/seoul",
+                "rel": "TimeZone-seoul"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tokyo"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tokyo"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Tokyo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tokyo",
+                "rel": "TimeZone-tokyo"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "yakutsk"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Yakutsk"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Yakutsk"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/yakutsk",
+                "rel": "TimeZone-yakutsk"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "adelaide"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Adelaide"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Adelaide"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/adelaide",
+                "rel": "TimeZone-adelaide"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "darwin"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Darwin"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Darwin"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+09:30"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/darwin",
+                "rel": "TimeZone-darwin"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "brisbane"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Brisbane"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Brisbane"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/brisbane",
+                "rel": "TimeZone-brisbane"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "canberra"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Canberra"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Melbourne"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/canberra",
+                "rel": "TimeZone-canberra"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "guam"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Guam"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Guam"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/guam",
+                "rel": "TimeZone-guam"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "hobart"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Hobart"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Hobart"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/hobart",
+                "rel": "TimeZone-hobart"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "magadan"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Magadan"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Magadan"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/magadan",
+                "rel": "TimeZone-magadan"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "melbourne"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Melbourne"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Melbourne"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/melbourne",
+                "rel": "TimeZone-melbourne"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "port-moresby"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Port Moresby"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Port_Moresby"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/port-moresby",
+                "rel": "TimeZone-port-moresby"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "sydney"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Sydney"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Australia/Sydney"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/sydney",
+                "rel": "TimeZone-sydney"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "vladivostok"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Vladivostok"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Vladivostok"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+10:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/vladivostok",
+                "rel": "TimeZone-vladivostok"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "new-caledonia"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "New Caledonia"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Noumea"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+11:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/new-caledonia",
+                "rel": "TimeZone-new-caledonia"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "solomon-is"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Solomon Is."
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Guadalcanal"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+11:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/solomon-is",
+                "rel": "TimeZone-solomon-is"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "srednekolymsk"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Srednekolymsk"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Srednekolymsk"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+11:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/srednekolymsk",
+                "rel": "TimeZone-srednekolymsk"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "auckland"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Auckland"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Auckland"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+12:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/auckland",
+                "rel": "TimeZone-auckland"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "fiji"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Fiji"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Fiji"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+12:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/fiji",
+                "rel": "TimeZone-fiji"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "kamchatka"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Kamchatka"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Asia/Kamchatka"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+12:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/kamchatka",
+                "rel": "TimeZone-kamchatka"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "marshall-is"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Marshall Is."
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Majuro"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+12:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/marshall-is",
+                "rel": "TimeZone-marshall-is"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "wellington"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Wellington"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Auckland"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+12:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/wellington",
+                "rel": "TimeZone-wellington"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "chatham-is"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Chatham Is."
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Chatham"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+12:45"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/chatham-is",
+                "rel": "TimeZone-chatham-is"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "nuku-alofa"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Nuku'alofa"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Tongatapu"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+13:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/nuku-alofa",
+                "rel": "TimeZone-nuku-alofa"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "samoa"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Samoa"
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Apia"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+13:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/samoa",
+                "rel": "TimeZone-samoa"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": "tokelau-is"
+                    },
+                    {
+                        "name": "type",
+                        "value": "TimeZone"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Tokelau Is."
+                    },
+                    {
+                        "name": "iana_name",
+                        "value": "Pacific/Fakaofo"
+                    },
+                    {
+                        "name": "offset",
+                        "value": "+13:00"
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/tokelau-is",
+                "rel": "TimeZone-tokelau-is"
+            }
+        ],
+        "links": [
+            {
+                "href": "https://api.teamsnap.com/v3/",
+                "rel": "root"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/time_zones",
+                "rel": "self"
+            }
+        ],
+        "queries": [
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": null
+                    },
+                    {
+                        "name": "team_id",
+                        "value": null
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/time_zones/search",
+                "rel": "search"
+            }
+        ],
+        "rel": "time_zones",
+        "version": "3.239.1"
+    }
+}

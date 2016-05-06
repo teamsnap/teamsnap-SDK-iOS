@@ -27,6 +27,10 @@
     return nil;
 }
 
++ (NSURL *)bundledFileURL {
+    return [[NSBundle bundleForClass:[self class]] URLForResource:[self SDKREL] withExtension:@"json"];
+}
+
 - (void)processSchemasArray:(NSArray *)schemasArray {
     for (id object in schemasArray) {
         if ([object isKindOfClass:[NSDictionary class]]) {

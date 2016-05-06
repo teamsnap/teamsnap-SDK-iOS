@@ -81,85 +81,97 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock {
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-
-    for (NSString *headerKeys in self.requestHeaders) {
-        [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
-    }
-
-    if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
-    }
-
-    if (method) {
-        [request setHTTPMethod:method];
-    } else {
-        [request setHTTPMethod:@"GET"];
-    }
-
-    if (([method isEqualToString:@"POST"] || [method isEqualToString:@"PUT"] || [method isEqualToString:@"PATCH"]) && dataEnvelope) {
-        NSError *error = nil;
-        //NSData *data = [NSJSONSerialization dataWithJSONObject:dataEnvelope options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments) error:&error];
-
-        NSData *data = [NSJSONSerialization dataWithJSONObject:dataEnvelope options:0 error:&error];
-        [request setHTTPBody:data];
-        [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    }
-
-    DLog(@"Curl:\n%@", [request getCurlEquivalent]);
-
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
-    NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
-        
+    if ([URL isFileURL]) {
+        NSLog(@"File URL");
+        NSData *data = [NSData dataWithContentsOfURL:URL];
         BOOL success = NO;
-        BOOL requestCompleted = NO;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            success = [httpResponse wasSuccess];
-        }
         id JSON = nil;
+        NSError *error;
+        if (data) {
+            success = YES;
+            JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        }
+        completionBlock(success, NO, JSON, error);
+    } else {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
         
-        requestCompleted = success;
+        for (NSString *headerKeys in self.requestHeaders) {
+            [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
+        }
         
-        if (success) {
-            [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
-            if (data) {
-                JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            }
-            [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
+        if (OAuthToken) {
+            [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        }
+        
+        if (method) {
+            [request setHTTPMethod:method];
         } else {
-            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            [request setHTTPMethod:@"GET"];
+        }
+        
+        if (([method isEqualToString:@"POST"] || [method isEqualToString:@"PUT"] || [method isEqualToString:@"PATCH"]) && dataEnvelope) {
+            NSError *error = nil;
+            //NSData *data = [NSJSONSerialization dataWithJSONObject:dataEnvelope options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments) error:&error];
             
-            if (data) {
-                JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
-                if (errorJSON.errorTitle) {
-                    userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
-                }
-                if (errorJSON.errorMessage) {
-                    userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
-                }
-                NSInteger errorCode = 0;
-                if (errorJSON.errorCode != NSNotFound) {
-                    errorCode = [userInfo[@"errorCode"] integerValue];
-                }
-                
-                if([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                    userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
-                }
-                
-                error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            NSData *data = [NSJSONSerialization dataWithJSONObject:dataEnvelope options:0 error:&error];
+            [request setHTTPBody:data];
+            [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        }
+        
+        DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+        
+        [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
+        NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
+            
+            BOOL success = NO;
+            BOOL requestCompleted = NO;
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                success = [httpResponse wasSuccess];
             }
-        }
-
-        if (completionBlock) {
-            completionBlock(success, requestCompleted, JSON, error);
-        }
-    }];
-
-    [remoteTask resume];
+            id JSON = nil;
+            
+            requestCompleted = success;
+            
+            if (success) {
+                [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
+                if (data) {
+                    JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                }
+                [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
+            } else {
+                NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                
+                if (data) {
+                    JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                    TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
+                    if (errorJSON.errorTitle) {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
+                    }
+                    if (errorJSON.errorMessage) {
+                        userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
+                    }
+                    NSInteger errorCode = 0;
+                    if (errorJSON.errorCode != NSNotFound) {
+                        errorCode = [userInfo[@"errorCode"] integerValue];
+                    }
+                    
+                    if([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                        userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
+                    }
+                    
+                    error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                }
+            }
+            
+            if (completionBlock) {
+                completionBlock(success, requestCompleted, JSON, error);
+            }
+        }];
+        
+        [remoteTask resume];
+    }
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
