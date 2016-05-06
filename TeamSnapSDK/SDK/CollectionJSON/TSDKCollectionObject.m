@@ -11,6 +11,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
 #import "NSString+TSDKConveniences.h"
+#import "NSDate+TSDKConveniences.h"
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
@@ -412,6 +413,15 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
+    if (value) {
+        if ([value isEqual:_collection.data[aKey]]) {
+            return;
+        }
+    } else {
+        if (!_collection.data[aKey] || [_collection.data[aKey] isEqual:[NSNull null]]) {
+            return;
+        }
+    }
     if (![_changedValues objectForKey:aKey]) {
         if (_collection.data[aKey]) {
             [_changedValues setObject:_collection.data[aKey] forKey:aKey];
@@ -477,15 +487,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSInteger)getInteger:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
-        return 0;
+    if ((!_collection.data[key]) || ([_collection.data[key] isEqual:[NSNull null]])) {
+        return NSNotFound;
     }
     NSNumber *value = _collection.data[key];
     return value.integerValue;
 }
 
 - (void)setInteger:(NSInteger)value forKey:(NSString *)aKey {
-    [self setObject:@(value) forKey:aKey];
+    if (value == NSNotFound) {
+        [self setObject:[NSNull null] forKey:aKey];
+    } else {
+        [self setObject:@(value) forKey:aKey];
+    }
+    
 }
 
 - (NSDate *)getDate:(NSString *)key {
@@ -503,7 +518,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setDate:(NSDate *)value forKey:(NSString *)aKey {
-    [self setObject:value forKey:aKey];
+    [self setString:[value RCF3339DateTimeString] forKey:aKey];
 }
 
 - (BOOL)getBool:(NSString *)aKey {
@@ -569,7 +584,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [_changedValues removeAllObjects];
-                [TSDKNotifications postSavedObject:self];
+                [TSDKNotifications postNewObject:self];
             }
             if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                 [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
@@ -583,8 +598,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         __typeof__(self) __weak weakSelf = self;
         [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
+                if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
+                    [weakSelf setCollection:[objects.collection firstObject]];
+                }
                 [_changedValues removeAllObjects];
-                [TSDKNotifications postNewObject:self];
+                [TSDKNotifications postSavedObject:self];
             }
             if (completion) {
                 completion(success, weakSelf, error);
@@ -610,6 +628,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             completion(YES, nil);
         }
     }
+}
+
++ (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock) completion {
+    [TSDKDataRequest requestObjectsForPath:link searchParamaters:nil sendDataDictionary:nil method:@"GET" withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSArray *result = nil;
+        if (success) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+        }
+        if (completion) {
+            completion(success, complete, result, error);
+        }
+    }];
 }
 
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {

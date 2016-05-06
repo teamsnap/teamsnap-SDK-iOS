@@ -10,8 +10,10 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
+#import "TSDKMessageRecipient.h"
+#import "TSDKMessageSender.h"
 
-@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
+@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, weak) NSString *lastName; //Example: Invite

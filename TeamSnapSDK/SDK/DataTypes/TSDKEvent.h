@@ -22,7 +22,7 @@
 @property (nonatomic, assign) BOOL tracksAvailability; //Example: 1
 @property (nonatomic, assign) BOOL isCanceled; //Example: 0
 @property (nonatomic, weak) NSString *sourceTimeZoneIanaName; //Example: America/New_York
-@property (nonatomic, weak) NSString *divisionLocationId; //Example: **NULL**
+@property (nonatomic, assign) NSInteger divisionLocationId; //Example: **NULL**
 @property (nonatomic, weak) NSString *additionalLocationDetails; //Example: **NULL**
 @property (nonatomic, weak) NSDate *endDate; //Example: 2012-05-19T06:00:00Z
 @property (nonatomic, assign) BOOL isTbd; //Example: 0

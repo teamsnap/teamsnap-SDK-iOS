@@ -10,6 +10,7 @@
 #import "TSDKCollectionJSON.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKUser.h"
+#import "TSDKEvent.h"
 #import "NSDictionary+dump.h"
 
 @interface TSDKCollectionObjectTests : XCTestCase
@@ -81,6 +82,59 @@
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
+}
+
+- (void)testSettingObjectToSameValue {
+    TSDKEvent *event = [[TSDKEvent alloc] init];
+    NSString *testValue = @"test event";
+    event.name = testValue;
+    XCTAssertEqual(event.name, testValue);
+    XCTAssertEqual([event.changedValues objectForKey:@"name"], [NSNull null]);
+    [event.changedValues removeAllObjects];
+    
+    event.name = testValue;
+    XCTAssertEqual(event.name, testValue);
+    XCTAssertNil([event.changedValues objectForKey:@"name"]);
+
+    NSString *newValue = @"New event Name";
+
+    event.name = newValue;
+    XCTAssertEqual(event.name, newValue);
+    XCTAssertNotNil([event.changedValues objectForKey:@"name"]);
+    XCTAssertEqual([event.changedValues objectForKey:@"name"], testValue);
+}
+
+- (void)testSettingAndReadingDates {
+    TSDKEvent *event = [[TSDKEvent alloc] init];
+    NSDate *referenceDate = [NSDate dateWithTimeIntervalSince1970:1461074742.0];
+    [event setStartDate:referenceDate];
+    XCTAssertNotNil(event.startDate);
+    NSLog(@"Start Date %@ %@", event.startDate, [event.collection.data objectForKey:@"start_date"]);
+    
+    XCTAssertEqual(event.startDate, referenceDate);
+}
+
+- (void)testArrayFromLinkWithNilLink {
+    if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
+        TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+        
+        TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+        
+        XCTestExpectation *userExpectation = [self expectationWithDescription:@"Return from /random"];
+        
+        [user arrayFromLink:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (success || complete) {
+                XCTAssert(@"Returned Success on nil link");
+            }
+            XCTAssertNil(objects, @"Objects returned on nil array");
+            [userExpectation fulfill];
+        }];
+    } else {
+        XCTAssert(@"Collection JSON parsing failed");
+    }
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
+    
 }
 
 @end
