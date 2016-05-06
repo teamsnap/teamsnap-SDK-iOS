@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 + (void)actionMarkMessagesAsRead:(NSArray <TSDKMessage *> * _Nonnull)messages completion:(TSDKCompletionBlock _Nullable)completion;
 + (void)actionMarkMessageAsRead:(TSDKMessage * _Nonnull)message completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion;
-- (TSDKMessageType)getMessageType;
+- (TSDKMessageType)messageTypeValue;
 
 @end
 
