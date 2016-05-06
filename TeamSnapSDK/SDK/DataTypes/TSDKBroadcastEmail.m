@@ -33,36 +33,5 @@
     }
     return self;
 }
-/*
- 
- "data": [{
- "name": "attachments",
- "value": null
- }, {
- "name": "body",
- "value": null
- }, {
- "name": "from_email_address",
- "value": null
- }, {
- "name": "is_draft",
- "value": null
- }, {
- "name": "member_id",
- "value": null
- }, {
- "name": "recipient_ids",
- "value": null
- }, {
- "name": "subject",
- "value": null
- }, {
- "name": "team_id",
- "value": null
- }, {
- "name": "type",
- "value": "broadcast_email"
- }]
- 
- */
+
 @end
