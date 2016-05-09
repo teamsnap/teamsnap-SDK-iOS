@@ -24,12 +24,12 @@
 + (NSURL *)baseURL;
 + (void)setBaseURL:(NSURL *)url;
 
-- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion;
+- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, NSString *message))completion;
 - (void)logout;
 
 #if TARGET_OS_IPHONE
 - (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion;
-- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion;
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(BOOL success, NSString *message))completion;
 #endif
 
 - (void)publicFeaturesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
@@ -37,7 +37,7 @@
 - (void)invitationStatusForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInviteStatusCompletionBlock)completionBlock;
 - (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
 - (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
-- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion;
+- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion;
 - (void)addPlan:(TSDKPlan *)plan;
 - (TSDKPlan *)planWithId:(NSInteger)planId;
 - (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion;
