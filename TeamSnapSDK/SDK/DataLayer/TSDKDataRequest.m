@@ -18,8 +18,8 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
 
-static NSString *baseURL = @"https://api.teamsnap.com/v3/";
-static NSString *OauthURL = @"https://cogsworth.teamsnap.com/oauth/token";
+static NSString * baseURL = @"https://api.teamsnap.com/v3/";
+NSString * const OAuthURL = @"https://auth.teamsnap.com";
 static NSString *clientId;
 static NSString *clientSecret;
 
@@ -274,7 +274,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, clientId, clientSecret, scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
     
-    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+    static NSString *authURL = @"https://cogsworth.teamsnap.com/oauth/token";
+
+    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:authURL] sendDataDictionary:envelope method:@"POST" withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSString *OAuthToken = nil;
         if ([objects isKindOfClass:[NSDictionary class]]) {
             if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
