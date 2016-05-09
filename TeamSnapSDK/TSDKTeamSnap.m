@@ -65,7 +65,7 @@
     _OAuthToken = OAuthToken;
 }
 
-- (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion {
+- (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion {
     if (self.teamSnapUser) {
         if (completion) {
             completion(YES, nil);
@@ -75,7 +75,7 @@
     }
 }
 
-- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(bool success, NSString *message))completion {
+- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, NSString *message))completion {
     [self setOAuthToken:OAuthToken];
     [self connectWithConfiguration:nil completion:completion];
 }
@@ -117,13 +117,13 @@
     return queryDictionary;
 }
 
-- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion {
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(BOOL success, NSString *message))completion {
     NSMutableDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
     if ([queryDictionary objectForKey:@"access_token"]) {
         if (self.loginView) {
             [self.loginView dismissViewControllerAnimated:NO completion:nil];
         }
-        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(bool success, NSString *message) {
+        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(BOOL success, NSString *message) {
             if (completion) {
                 completion(success, message);
             }
@@ -188,7 +188,7 @@
     }
 }
 
-- (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion {
+- (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion {
     TSDKTeamSnap __weak *weakSelf = self;
     self.rootLinks = nil;
     
@@ -210,13 +210,13 @@
             }
         }];
         
-        [self getPlansWithConfiguration:configuration completion:^(bool success, NSString *message) {
+        [self getPlansWithConfiguration:configuration completion:^(BOOL success, NSString *message) {
             
         }];
     }];
 }
 
-- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(bool success, NSString *message))completion {
+- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion {
     if (_plans) {
         if (completion) {
             completion(YES, nil);

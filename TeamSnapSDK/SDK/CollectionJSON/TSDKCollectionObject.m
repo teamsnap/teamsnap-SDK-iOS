@@ -186,7 +186,7 @@ static id linkPropertyIMP(id self, SEL _cmd) {
 }
 
 
-static bool boolPropertyIMP(id self, SEL _cmd) {
+static BOOL boolPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
     return [self getBool:command];
 }
