@@ -35,5 +35,6 @@ extern NSString * const OAuthURL;
 + (void)setClientId:(NSString *)clientId;
 + (void)setClientSecret:(NSString *)clientSecret;
 + (void)setOAuthToken:(NSString *)token;
++ (void)invalidateToken:(NSString *)OAuthToken completion:(TSDKSimpleCompletionBlock)completion;
 
 @end

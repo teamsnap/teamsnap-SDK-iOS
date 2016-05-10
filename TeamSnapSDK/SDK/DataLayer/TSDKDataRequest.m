@@ -15,7 +15,6 @@
 #import "NSMutableURLRequest+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKProfileTimer.h"
-#import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
 
 static NSString * baseURL = @"https://api.teamsnap.com/v3/";
@@ -78,6 +77,33 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
     }
     return _requestHeaders;
+}
+
++ (void)invalidateToken:(NSString *)OAuthToken completion:(TSDKSimpleCompletionBlock)completion {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/revoke?token=%@", OAuthURL, OAuthToken]]];
+    
+    for (NSString *headerKeys in self.requestHeaders) {
+        [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
+    }
+    
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", OAuthToken] forHTTPHeaderField:@"Authorization"];
+
+    [request setHTTPMethod:@"POST"];
+    
+    DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+    
+    NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        BOOL success = NO;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            success = [httpResponse wasSuccess];
+        }
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+
+    [remoteTask resume];
 }
 
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock {

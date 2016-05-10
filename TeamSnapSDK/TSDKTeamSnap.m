@@ -80,9 +80,8 @@
     [self connectWithConfiguration:nil completion:completion];
 }
 
-- (void)logout {
+- (void)clearCacheInformation {
     self.teamSnapUser = nil;
-    self.OAuthToken = nil;
     self.rootLinks = nil;
 }
 
@@ -134,32 +133,33 @@
     }
 }
 
-- (void)logoutWithPresentingViewController:(UIViewController *)presentingViewController completion:(TSDKSimpleCompletionBlock)completion {
+- (void)logoutWithCompletion:(TSDKSimpleCompletionBlock)completion {
     NSString *logoutURL = [NSString stringWithFormat:@"%@/logout", OAuthURL];
     
-    [self logout];
+    [self clearCacheInformation];
     
     SFSafariViewController *webController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:logoutURL]];
-
-    [presentingViewController addChildViewController:webController];
-
-    webController.view.frame = CGRectMake(0, presentingViewController.view.frame.size.height, presentingViewController.view.frame.size.width, 100);
-
-    [presentingViewController.view addSubview:webController.view];
-
-    [webController didMoveToParentViewController:presentingViewController];
-
+    UIWindow __block *logoutWindow = [[UIWindow alloc] initWithFrame:CGRectMake(-1, -1, 1, 1)];
+    logoutWindow.rootViewController = webController;
+    
+    logoutWindow.hidden = NO;
+    
     double delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //code to be executed on the main queue after delay
-        [webController.view removeFromSuperview];
-        [webController dismissViewControllerAnimated:NO completion:nil];
+        logoutWindow.hidden = YES;
+        logoutWindow = nil;
     });
     
-    if (completion) {
-        completion(YES, nil);
-    }
+    TSDKTeamSnap __weak *weakSelf = self;
+    
+    [TSDKDataRequest invalidateToken:self.OAuthToken completion:^(BOOL success, NSError * _Nullable error) {
+        weakSelf.OAuthToken = nil;
+        if (completion) {
+            completion(YES, nil);
+        }
+    }];
 }
 
 - (void)dismissVewController:(UIViewController *)viewController {

@@ -25,13 +25,12 @@
 + (void)setBaseURL:(NSURL *)url;
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, NSString *message))completion;
-- (void)logout;
 
 #if TARGET_OS_IPHONE
 - (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion;
-- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(bool success, NSString *message))completion;
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(BOOL success, NSString *message))completion;
 // OAuth doesn't require logfout, but this handles logging out of the OAuth web view. Otherwise even if you forget the OAuth token, when you present the OAuth login view it will remember the users cookies and log them in automatically.  
-- (void)logoutWithPresentingViewController:(UIViewController *)presentingViewController completion:(TSDKSimpleCompletionBlock)completion;
+- (void)logoutWithCompletion:(TSDKSimpleCompletionBlock)completion;
 #endif
 
 - (void)publicFeaturesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPublicFeatures *publicFeatures))completion;
