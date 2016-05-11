@@ -12,6 +12,8 @@
 
 @class TSDKCollectionJSON, TSDKinvitationFinder;
 
+extern NSString * const OAuthURL;
+
 @interface TSDKDataRequest : NSObject
 
 + (NSURL *)baseURL;
@@ -33,5 +35,6 @@
 + (void)setClientId:(NSString *)clientId;
 + (void)setClientSecret:(NSString *)clientSecret;
 + (void)setOAuthToken:(NSString *)token;
++ (void)invalidateToken:(NSString *)OAuthToken completion:(TSDKSimpleCompletionBlock)completion;
 
 @end
