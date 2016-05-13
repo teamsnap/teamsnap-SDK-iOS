@@ -68,7 +68,7 @@ NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
 }
 
 + (void)removeListenerForClass:(Class _Nonnull)class  forObserver:(id _Nonnull)observer {
-    [[NSNotificationCenter defaultCenter] removeObserver:observer name:TSDKNotificationsForObjectClass object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:TSDKNotificationsForObjectClass object:[class SDKType]];
 }
 
 + (void)removeAllListenersForObserver:(id _Nonnull)observer {
