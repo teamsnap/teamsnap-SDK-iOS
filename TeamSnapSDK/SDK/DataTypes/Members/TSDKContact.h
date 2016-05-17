@@ -10,8 +10,9 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
+#import "TSDKMember.h"
 
-@interface TSDKContact : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender>
+@interface TSDKContact : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, memberOrContactProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, assign) BOOL isInvitable; //Example: 0
