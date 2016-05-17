@@ -45,14 +45,17 @@ NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
 }
 
 + (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [self removeListenerForObject:collectionObject forObserver:observer];
     [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObject object:collectionObject];
 }
 
 + (void)listenToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [self removeAllListenersForObserver:observer];
     [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObject object:nil];
 }
 
 + (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [self removeListenerForClass:class forObserver:observer];
     [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObjectClass object:[class SDKType]];
 }
 
@@ -65,7 +68,7 @@ NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
 }
 
 + (void)removeListenerForClass:(Class _Nonnull)class  forObserver:(id _Nonnull)observer {
-    [[NSNotificationCenter defaultCenter] removeObserver:observer name:TSDKNotificationsForObjectClass object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:TSDKNotificationsForObjectClass object:[class SDKType]];
 }
 
 + (void)removeAllListenersForObserver:(id _Nonnull)observer {

@@ -13,7 +13,31 @@
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
 
-@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender>
+@protocol TSDKMemberOrContactProtocol <NSObject>
+
+@property (nonatomic, assign) BOOL isPushable; //Example: 1
+@property (nonatomic, assign) BOOL isInvitable; //Example: 0
+@property (nonatomic, weak) NSString *addressCity; //Example:
+@property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
+@property (nonatomic, weak) NSString *addressZip; //Example: **NULL**
+@property (nonatomic, weak) NSString *invitationCode; //Example: d3e4bd58170967126b089212
+@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
+@property (nonatomic, weak) NSString *addressState; //Example:
+@property (nonatomic, assign) BOOL isAlertable; //Example: 0
+@property (nonatomic, weak) NSString *lastName; //Example: Rahaim
+@property (nonatomic, assign) BOOL isEmailable; //Example: 0
+@property (nonatomic, weak) NSString *addressStreet1; //Example:
+@property (nonatomic, weak) NSString *addressStreet2; //Example:
+@property (nonatomic, weak) NSString *invitationDeclined; //Example: **NULL**
+@property (nonatomic, weak) NSString *firstName; //Example: Jack
+@property (nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
+@property (nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
+@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+
+@property (readonly) NSString *fullName;
+@end
+
+@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, weak) NSString *lastName; //Example: Invite
@@ -93,7 +117,6 @@
 -(void)getMemberThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 #endif
 
-@property (readonly) NSString *fullName;
 -(TSDKTeam *)team;
 @property (strong, nonatomic) NSMutableDictionary *contacts;
 @property (strong, nonatomic) NSMutableDictionary *emailAddresses;
