@@ -13,7 +13,7 @@
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
 
-@protocol memberOrContactProtocol <NSObject>
+@protocol TSDKMemberOrContactProtocol <NSObject>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, assign) BOOL isInvitable; //Example: 0
@@ -37,7 +37,7 @@
 @property (readonly) NSString *fullName;
 @end
 
-@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, memberOrContactProtocol>
+@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nonatomic, weak) NSString *lastName; //Example: Invite
