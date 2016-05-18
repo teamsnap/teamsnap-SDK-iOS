@@ -24,6 +24,7 @@
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkTeam;
 
+@property (nonatomic, weak) NSDate *dateValue;
 @end
 
 @interface TSDKCustomDatum (ForwardedMethods)

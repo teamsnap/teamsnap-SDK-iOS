@@ -31,6 +31,7 @@
 		9612CD911C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
 		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */; };
 		963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
 		963A1B601C80E4BB006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -335,6 +336,7 @@
 		9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKNotifications.h; sourceTree = "<group>"; };
 		9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNotifications.m; sourceTree = "<group>"; };
 		9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProcessBulkObjectProtocol.h; sourceTree = "<group>"; };
+		9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCustomDatumTests.m; path = DataType/TSDKCustomDatumTests.m; sourceTree = "<group>"; };
 		963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKAvailabilityGroups.h; sourceTree = "<group>"; };
 		963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
 		96481EB31C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamSnapSDK_PrefixHeader.pch; sourceTree = "<group>"; };
@@ -528,6 +530,14 @@
 			name = CollectionJSON;
 			sourceTree = "<group>";
 		};
+		9631B5E61CECA6E200215647 /* DataType */ = {
+			isa = PBXGroup;
+			children = (
+				9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */,
+			);
+			name = DataType;
+			sourceTree = "<group>";
+		};
 		9652304A1CAC65DD0087FC23 /* Leagues */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +658,7 @@
 		969E804E1BAAE62E00CA518F /* TeamSnapSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				9631B5E61CECA6E200215647 /* DataType */,
 				96DA6AA31CD8E2F200368D80 /* DataLater */,
 				96121EBB1C64E42700E32902 /* CollectionJSON */,
 				969E804F1BAAE62E00CA518F /* TeamSnapSDKTests.m */,
@@ -1254,6 +1265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */,
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
 				96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
