@@ -60,6 +60,24 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
++(void)actionInviteMember:(TSDKMember *)member team:(TSDKTeam *)team asMember:(TSDKMember *)asMember completion:(TSDKSimpleCompletionBlock)completion {
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
+    command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
+    command.data[@"member_id"] = [NSNumber numberWithInteger:member.objectIdentifier];
+    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMember.objectIdentifier];
+    
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+    
+}
+
+-(void)actionInviteMember:(TSDKMember *)member asMember:(TSDKMember *)asMember completion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKTeam actionInviteMember:member team:self asMember:asMember completion:completion];
+}
+
 - (id)init {
     self = [super init];
     if (self) {

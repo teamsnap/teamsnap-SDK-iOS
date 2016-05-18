@@ -133,7 +133,7 @@
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 - (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
 
-
+-(void)actionInviteMember:(TSDKMember *)member asMember:(TSDKMember *)asMember completion:(TSDKSimpleCompletionBlock)completion;
 
 @end
 
