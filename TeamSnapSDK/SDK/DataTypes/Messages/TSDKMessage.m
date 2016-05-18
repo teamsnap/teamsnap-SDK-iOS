@@ -9,6 +9,12 @@
 #import "TSDKMessage.h"
 #import "TSDKMember.h"
 
+@interface TSDKMessage()
+
+@property (nonatomic, weak) NSString *messageType; //Example: Email
+
+@end
+
 @implementation TSDKMessage
 
 @dynamic status, memberId, userId, updatedAt, subject, senderType, recipientNames, flags, body, pushed, contactId, messageId, emailed, readAt, senderName, recipients, createdAt, messageType, smsed, divisionId, senderId, teamId, linkMember, linkSender, linkDivision, linkTeam, linkUser;

@@ -7,6 +7,7 @@
 //
 
 #import "TSDKBroadcastEmail.h"
+#import "TSDKMember.h"
 
 @implementation TSDKBroadcastEmail
 
@@ -14,6 +15,23 @@
 
 + (NSString *)SDKType {
     return @"broadcast_email";
+}
+
+- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSInteger)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(TSDKMember *)sender {
+    self = [super init];
+    if(self) {
+        [super setString:body forKey:@"body"];
+        [super setString:subject forKey:@"subject"];
+        [super setInteger:teamId forKey:@"team_id"];
+        [super setInteger:sender.objectIdentifier forKey:@"member_id"];
+        NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
+        for(TSDKMember *recipient in recipients) {
+            [recipientIDs addObject:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
+        }
+        
+        [super setArray:recipientIDs forKey:@"recipient_ids"];
+    }
+    return self;
 }
 
 @end
