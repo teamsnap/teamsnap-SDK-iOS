@@ -14,6 +14,7 @@
 #import "NSMutableDictionary+integerKey.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKUser.h"
+#import "NSMutableString+TSDKConveniences.h"
 
 @implementation TSDKMember
 
@@ -146,6 +147,73 @@
 
 - (NSInteger)memberId {
     return self.objectIdentifier;
+}
+
+
+- (NSString *)addressCitySateZip {
+    NSMutableString *result = [[NSMutableString alloc] init];
+    
+    if (self.addressCity.length>0 && self.addressState.length>0) {
+        [result appendString:[NSString stringWithFormat:@"%@, %@", self.addressCity, self.addressState]];
+    } else if (self.addressCity.length>0 && self.addressZip.length>0) {
+        [result appendString:[NSString stringWithFormat:@"%@,", self.addressCity]];
+    } else if (self.addressCity.length>0) {
+        [result appendString:[NSString stringWithFormat:@"%@", self.addressCity]];
+    } else if (self.addressState.length>0) {
+        [result appendString:[NSString stringWithFormat:@"%@", self.addressState]];
+    }
+    if (result.length>0 && self.addressZip.length>0) {
+        [result appendString:@" "];
+    }
+    if (self.addressZip.length > 0) {
+        [result appendString:self.addressZip];
+    }
+    
+    return result;
+    
+}
+
+- (NSString *)fancyAddressString {
+    NSMutableArray *addressLines = [[NSMutableArray alloc] init];
+    
+    if (self.addressStreet1.length >0) {
+        [addressLines addObject:self.addressStreet1];
+    }
+    
+    if (self.addressStreet2.length > 0) {
+        [addressLines addObject:self.addressStreet2];
+    }
+    
+    
+    NSString *cityStateZip = [self addressCitySateZip];
+    if (cityStateZip.length>0) {
+        [addressLines addObject:cityStateZip];
+    }
+    
+    NSString *result = [addressLines componentsJoinedByString:@"\n"];
+    
+    return result;
+}
+
+-(NSString *)addressString {
+    NSMutableString *result = [[NSMutableString alloc] initWithFormat:@""];
+    
+    if (self.addressStreet1.length>0) {
+        [result appendFormat:@"%@", self.addressStreet1];
+    }
+    if (self.addressStreet2.length>0) {
+        [result appendStringWithComma:self.addressStreet2];
+    }
+    if (self.addressCity.length>0) {
+        [result appendStringWithComma:self.addressCity];
+    }
+    if (self.addressState.length>0) {
+        [result appendStringWithComma:self.addressState];
+    }
+    if (self.addressZip.length>0) {
+        [result appendFormat:@" %@", self.addressZip];
+    }
+    return [NSString stringWithString:result];
 }
 
 @end

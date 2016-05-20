@@ -35,6 +35,9 @@
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 
 @property (readonly) NSString *fullName;
+- (NSString *)fancyAddressString;
+-(NSString *)addressString;
+
 @end
 
 @interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>

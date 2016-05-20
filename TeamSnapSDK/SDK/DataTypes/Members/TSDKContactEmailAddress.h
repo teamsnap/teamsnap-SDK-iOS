@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKMemberEmailAddress.h"
 
 @interface TSDKContactEmailAddress : TSDKMemberEmailAddress
 
