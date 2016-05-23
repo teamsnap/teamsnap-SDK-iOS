@@ -41,5 +41,22 @@
     member.addressCity = @"Boulder";
     XCTAssertEqualObjects(@"101 Main Street, Suite 100, Boulder", member.addressString);
     XCTAssertEqualObjects(@"101 Main Street\nSuite 100\nBoulder", member.fancyAddressString);
+    
+    member.addressState = @"CO";
+    XCTAssertEqualObjects(@"101 Main Street, Suite 100, Boulder, CO", member.addressString);
+    XCTAssertEqualObjects(@"101 Main Street\nSuite 100\nBoulder, CO", member.fancyAddressString);
+    
+    member.addressZip = @"27526";
+    XCTAssertEqualObjects(@"101 Main Street, Suite 100, Boulder, CO 27526", member.addressString);
+    XCTAssertEqualObjects(@"101 Main Street\nSuite 100\nBoulder, CO 27526", member.fancyAddressString);
+    
+    member.addressStreet2 = nil;
+    XCTAssertEqualObjects(@"101 Main Street, Boulder, CO 27526", member.addressString);
+    XCTAssertEqualObjects(@"101 Main Street\nBoulder, CO 27526", member.fancyAddressString);
+    
+    member.addressState = nil;
+    XCTAssertEqualObjects(@"101 Main Street, Boulder 27526", member.addressString);
+    XCTAssertEqualObjects(@"101 Main Street\nBoulder, 27526", member.fancyAddressString);
+    
 }
 @end
