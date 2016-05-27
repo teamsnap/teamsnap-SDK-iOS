@@ -8,6 +8,7 @@
 #import "TSDKProfileTimer.h"
 #import "TSDKEvent.h"
 #import "TSDKMember.h"
+#import "TSDKContact.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
@@ -60,23 +61,40 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
-+(void)actionInviteMember:(TSDKMember *)member team:(TSDKTeam *)team asMember:(TSDKMember *)asMember completion:(TSDKSimpleCompletionBlock)completion {
++(void)actionInviteMember:(NSInteger)memberId team:(NSInteger)teamId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
-    command.data[@"member_id"] = [NSNumber numberWithInteger:member.objectIdentifier];
-    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMember.objectIdentifier];
+    command.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+    command.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
+    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMemberId];
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
             completion(success, error);
         }
     }];
-    
 }
 
--(void)actionInviteMember:(TSDKMember *)member asMember:(TSDKMember *)asMember completion:(TSDKSimpleCompletionBlock)completion {
-    [TSDKTeam actionInviteMember:member team:self asMember:asMember completion:completion];
++(void)actionInviteContact:(NSInteger)contactId team:(NSInteger)teamId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
+    command.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+    command.data[@"contact_id"] = [NSNumber numberWithInteger:contactId];
+    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMemberId];
+    
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
 }
+
+-(void)actionInviteMember:(NSInteger)memberId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKTeam actionInviteMember:memberId team:self.objectIdentifier asMember:asMemberId completion:completion];
+}
+
+-(void)actionInviteContact:(NSInteger)contactId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKTeam actionInviteContact:contactId team:self asMember:asMemberId completion:completion];
+}
+
 
 - (id)init {
     self = [super init];
