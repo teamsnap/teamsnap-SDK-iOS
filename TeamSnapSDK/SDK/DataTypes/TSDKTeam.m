@@ -92,7 +92,7 @@
 }
 
 -(void)actionInviteContact:(NSInteger)contactId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
-    [TSDKTeam actionInviteContact:contactId team:self asMember:asMemberId completion:completion];
+    [TSDKTeam actionInviteContact:contactId team:self.objectIdentifier asMember:asMemberId completion:completion];
 }
 
 
