@@ -16,4 +16,66 @@
     return @"member_preferences";
 }
 
+- (void)setScheduleReminderPreference:(TSDKMemberPreferencesScheduleReminder)scheduleReminderPreference {
+    switch (scheduleReminderPreference) {
+        case TSDKMemberPreferencesScheduleReminderOff:
+            self.remindersSendGame = NO;
+            self.remindersSendEvent = NO;
+            break;
+        case TSDKMemberPreferencesScheduleReminderGamesAndEvents:
+            self.remindersSendGame = YES;
+            self.remindersSendEvent = YES;
+            break;
+        case TSDKMemberPreferencesScheduleReminderGamesOnly:
+            self.remindersSendGame = YES;
+            self.remindersSendEvent = NO;
+            break;
+        default:
+            break;
+    }
+}
+
+- (TSDKMemberPreferencesScheduleReminder)scheduleReminderPreference {
+    if(self.remindersSendEvent == NO && self.remindersSendGame == NO) {
+        return TSDKMemberPreferencesScheduleReminderOff;
+    } else if(self.remindersSendEvent == YES && self.remindersSendGame == YES) {
+        return TSDKMemberPreferencesScheduleReminderGamesAndEvents;
+    } else if(self.remindersSendEvent == NO && self.remindersSendGame == YES) {
+        return TSDKMemberPreferencesScheduleReminderGamesOnly;
+    } else {
+        return TSDKMemberPreferencesScheduleReminderUnknown;
+    }
+}
+
+- (void)setManagerAvailabilityReminderPreference:(TSDKMemberPreferencesManagerAvailabilityReminder)managerAvailabilityReminderPreference {
+    switch (managerAvailabilityReminderPreference) {
+        case TSDKMemberPreferencesManagerAvailabilityReminderOff:
+            self.remindersSendManagerGame = NO;
+            self.remindersSendManagerEvent = NO;
+            break;
+        case TSDKMemberPreferencesManagerAvailabilityReminderGamesAndEvents:
+            self.remindersSendManagerGame = YES;
+            self.remindersSendManagerEvent = YES;
+            break;
+        case TSDKMemberPreferencesManagerAvailabilityReminderGamesOnly:
+            self.remindersSendManagerGame = YES;
+            self.remindersSendManagerEvent = NO;
+            break;
+        default:
+            break;
+    }
+}
+
+- (TSDKMemberPreferencesManagerAvailabilityReminder)managerAvailabilityReminderPreference {
+    if(self.remindersSendManagerEvent == NO && self.remindersSendManagerGame == NO) {
+        return TSDKMemberPreferencesManagerAvailabilityReminderOff;
+    } else if(self.remindersSendManagerEvent == YES && self.remindersSendManagerGame == YES) {
+        return TSDKMemberPreferencesManagerAvailabilityReminderGamesAndEvents;
+    } else if(self.remindersSendManagerEvent == NO && self.remindersSendManagerGame == YES) {
+        return TSDKMemberPreferencesManagerAvailabilityReminderGamesOnly;
+    } else {
+        return TSDKMemberPreferencesManagerAvailabilityReminderUnknown;
+    }
+}
+
 @end

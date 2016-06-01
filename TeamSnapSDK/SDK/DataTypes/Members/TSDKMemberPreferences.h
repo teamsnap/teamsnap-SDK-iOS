@@ -9,7 +9,24 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesScheduleReminder) {
+    TSDKMemberPreferencesScheduleReminderUnknown,
+    TSDKMemberPreferencesScheduleReminderOff,
+    TSDKMemberPreferencesScheduleReminderGamesAndEvents,
+    TSDKMemberPreferencesScheduleReminderGamesOnly,
+};
+
+typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesManagerAvailabilityReminder) {
+    TSDKMemberPreferencesManagerAvailabilityReminderUnknown,
+    TSDKMemberPreferencesManagerAvailabilityReminderOff,
+    TSDKMemberPreferencesManagerAvailabilityReminderGamesAndEvents,
+    TSDKMemberPreferencesManagerAvailabilityReminderGamesOnly,
+};
+
 @interface TSDKMemberPreferences : TSDKCollectionObject
+
+@property (nonatomic, assign) TSDKMemberPreferencesScheduleReminder scheduleReminderPreference;
+@property (nonatomic, assign) TSDKMemberPreferencesManagerAvailabilityReminder managerAvailabilityReminderPreference;
 
 @property (nonatomic, assign) NSInteger remindersSendDaysBeforeEvent; //Example: 2
 @property (nonatomic, assign) NSInteger publicSiteShowThumbnail; //Example: 0
