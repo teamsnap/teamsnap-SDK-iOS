@@ -102,6 +102,22 @@
     XCTAssertEqual(event.name, newValue);
     XCTAssertNotNil([event.changedValues objectForKey:@"name"]);
     XCTAssertEqual([event.changedValues objectForKey:@"name"], testValue);
+    
+    [event undoChanges];
+    XCTAssertNil([event.changedValues objectForKey:@"name"]);
+    
+    TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+    TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+    
+    NSDate *birthDate = [user.birthday copy];
+    user.birthday = birthDate;
+    XCTAssertTrue((user.changedValues.count == 0));
+    
+    user.birthday = [NSDate date];
+    XCTAssertNotNil([user.changedValues objectForKey:@"birthday"]);
+    
+    [user undoChanges];
+    XCTAssertTrue([user.birthday isEqualToDate:birthDate]);
 }
 
 - (void)testSettingAndReadingDates {

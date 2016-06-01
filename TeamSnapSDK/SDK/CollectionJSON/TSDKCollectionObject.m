@@ -518,7 +518,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setDate:(NSDate *)value forKey:(NSString *)aKey {
-    [self setString:[value RCF3339DateTimeString] forKey:aKey];
+    if (![[self getDate:aKey] isEqualToDate:value]) {
+        [self setString:[value RCF3339DateTimeString] forKey:aKey];
+    }
 }
 
 - (BOOL)getBool:(NSString *)aKey {
