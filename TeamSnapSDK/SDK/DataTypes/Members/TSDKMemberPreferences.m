@@ -30,6 +30,9 @@
             self.remindersSendGame = YES;
             self.remindersSendEvent = NO;
             break;
+        case TSDKMemberPreferencesScheduleReminderEventsOnly:
+            self.remindersSendGame = NO;
+            self.remindersSendEvent = YES;
         default:
             break;
     }
@@ -43,7 +46,7 @@
     } else if(self.remindersSendEvent == NO && self.remindersSendGame == YES) {
         return TSDKMemberPreferencesScheduleReminderGamesOnly;
     } else {
-        return TSDKMemberPreferencesScheduleReminderUnknown;
+        return TSDKMemberPreferencesScheduleReminderEventsOnly;
     }
 }
 
@@ -61,6 +64,9 @@
             self.remindersSendManagerGame = YES;
             self.remindersSendManagerEvent = NO;
             break;
+        case TSDKMemberPreferencesManagerAvailabilityReminderEventsOnly:
+            self.remindersSendManagerGame = NO;
+            self.remindersSendManagerEvent = YES;
         default:
             break;
     }
@@ -74,7 +80,7 @@
     } else if(self.remindersSendManagerEvent == NO && self.remindersSendManagerGame == YES) {
         return TSDKMemberPreferencesManagerAvailabilityReminderGamesOnly;
     } else {
-        return TSDKMemberPreferencesManagerAvailabilityReminderUnknown;
+        return TSDKMemberPreferencesManagerAvailabilityReminderEventsOnly;
     }
 }
 

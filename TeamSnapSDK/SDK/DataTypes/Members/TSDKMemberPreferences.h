@@ -14,13 +14,14 @@ typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesScheduleReminder) {
     TSDKMemberPreferencesScheduleReminderOff,
     TSDKMemberPreferencesScheduleReminderGamesAndEvents,
     TSDKMemberPreferencesScheduleReminderGamesOnly,
+    TSDKMemberPreferencesScheduleReminderEventsOnly
 };
 
 typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesManagerAvailabilityReminder) {
-    TSDKMemberPreferencesManagerAvailabilityReminderUnknown,
     TSDKMemberPreferencesManagerAvailabilityReminderOff,
     TSDKMemberPreferencesManagerAvailabilityReminderGamesAndEvents,
     TSDKMemberPreferencesManagerAvailabilityReminderGamesOnly,
+    TSDKMemberPreferencesManagerAvailabilityReminderEventsOnly
 };
 
 @interface TSDKMemberPreferences : TSDKCollectionObject
@@ -32,11 +33,11 @@ typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesManagerAvailabilityReminder) {
 @property (nonatomic, assign) NSInteger publicSiteShowThumbnail; //Example: 0
 @property (nonatomic, assign) NSInteger memberId; //Example: 993324
 @property (nonatomic, assign) NSInteger facebookPostScores; //Example: 1
-@property (nonatomic, assign) NSInteger remindersSendGame; //Example: 1
+@property (nonatomic, assign) BOOL remindersSendGame; //Example: 1
 @property (nonatomic, weak) NSString *scheduleShowFor; //Example: Games and Events
 @property (nonatomic, assign) NSInteger publicSiteShowLastName; //Example: 0
-@property (nonatomic, assign) NSInteger remindersSendEvent; //Example: 1
-@property (nonatomic, assign) NSInteger remindersSendManagerGame; //Example: 0
+@property (nonatomic, assign) BOOL remindersSendEvent; //Example: 1
+@property (nonatomic, assign) BOOL remindersSendManagerGame; //Example: 0
 @property (nonatomic, assign) NSInteger scheduleShowForCode; //Example: 1
 @property (nonatomic, weak) NSString *facebookPostScoresToPageName; //Example: **NULL**
 @property (nonatomic, assign) NSInteger mobileSendPushMessages; //Example: 1
@@ -53,7 +54,7 @@ typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesManagerAvailabilityReminder) {
 @property (nonatomic, assign) NSInteger facebookPostScoresToWall; //Example: 1
 @property (nonatomic, weak) NSString *facebookPageAccessToken; //Example: **NULL**
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-03-25T23:46:02Z
-@property (nonatomic, assign) NSInteger remindersSendManagerEvent; //Example: 0
+@property (nonatomic, assign) BOOL remindersSendManagerEvent; //Example: 0
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkTeam;
