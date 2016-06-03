@@ -46,6 +46,22 @@
     }
 }
 
+- (void)testObjectFromObject {
+    if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
+        TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+        
+        TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+        
+        TSDKUser *newUser = [TSDKUser objectWithObject:user];
+        XCTAssertNotNil(newUser);
+        XCTAssertTrue(newUser.isNewObject);
+        XCTAssertNil([newUser.collection.data objectForKey:@"team_id"]);
+        XCTAssertEqualObjects(newUser.lastName, @"Joe");
+    } else {
+        XCTAssert(@"Collection JSON parsing failed");
+    }
+}
+
 - (void)testSetObjectForValue {
     if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
         TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
