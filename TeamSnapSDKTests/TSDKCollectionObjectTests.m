@@ -57,6 +57,8 @@
         XCTAssertTrue(newUser.isNewObject);
         XCTAssertNil([newUser.collection.data objectForKey:@"team_id"]);
         XCTAssertEqualObjects(newUser.lastName, @"Joe");
+        NSString *objectClassName = NSStringFromClass([newUser class]);
+        XCTAssertEqualObjects(objectClassName, @"TSDKUser");
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
