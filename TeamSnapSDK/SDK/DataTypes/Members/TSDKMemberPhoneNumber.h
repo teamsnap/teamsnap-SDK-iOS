@@ -15,8 +15,7 @@
 @property (nonatomic, assign) BOOL isPreferred; //Example: 1
 @property (nonatomic, weak) NSString *phoneNumber; //Example: 9192475214
 @property (nonatomic, assign) BOOL isHidden; //Example: 0
-@property (nonatomic, assign) NSInteger smsEnabled; //Example: 1
-@property (nonatomic, assign) NSInteger preferred; //Example: 1
+@property (nonatomic, assign) BOOL smsEnabled; //Example: 1
 @property (nonatomic, weak) NSString *smsEmailAddress; //Example: 9192475214@txt.att.net
 @property (nonatomic, weak) NSString *createdAt; //Example: 2012-11-09T18:39:40.000+00:00
 @property (nonatomic, weak) NSString *updatedAt; //Example: 2012-11-09T18:39:40.000+00:00

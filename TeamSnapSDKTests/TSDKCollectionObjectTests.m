@@ -46,6 +46,24 @@
     }
 }
 
+- (void)testObjectFromObject {
+    if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
+        TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+        
+        TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+        
+        TSDKUser *newUser = [TSDKUser objectWithObject:user];
+        XCTAssertNotNil(newUser);
+        XCTAssertTrue(newUser.isNewObject);
+        XCTAssertNil([newUser.collection.data objectForKey:@"team_id"]);
+        XCTAssertEqualObjects(newUser.lastName, @"Joe");
+        NSString *objectClassName = NSStringFromClass([newUser class]);
+        XCTAssertEqualObjects(objectClassName, @"TSDKUser");
+    } else {
+        XCTAssert(@"Collection JSON parsing failed");
+    }
+}
+
 - (void)testSetObjectForValue {
     if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
         TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
@@ -102,6 +120,22 @@
     XCTAssertEqual(event.name, newValue);
     XCTAssertNotNil([event.changedValues objectForKey:@"name"]);
     XCTAssertEqual([event.changedValues objectForKey:@"name"], testValue);
+    
+    [event undoChanges];
+    XCTAssertNil([event.changedValues objectForKey:@"name"]);
+    
+    TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+    TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+    
+    NSDate *birthDate = [user.birthday copy];
+    user.birthday = birthDate;
+    XCTAssertTrue((user.changedValues.count == 0));
+    
+    user.birthday = [NSDate date];
+    XCTAssertNotNil([user.changedValues objectForKey:@"birthday"]);
+    
+    [user undoChanges];
+    XCTAssertTrue([user.birthday isEqualToDate:birthDate]);
 }
 
 - (void)testSettingAndReadingDates {

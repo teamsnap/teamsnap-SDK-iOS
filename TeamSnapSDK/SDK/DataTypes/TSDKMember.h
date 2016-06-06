@@ -35,6 +35,9 @@
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 
 @property (readonly) NSString *fullName;
+- (NSString *)fancyAddressString;
+-(NSString *)addressString;
+
 @end
 
 @interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
@@ -43,12 +46,10 @@
 @property (nonatomic, weak) NSString *lastName; //Example: Invite
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, weak) NSString *hideAddress; //Example: **NULL**
 @property (nonatomic, assign) BOOL isOwnershipPending; //Example: <null>
 @property (nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
 @property (nonatomic, weak) NSString *addressState; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasFacebookPostScoresEnabled; //Example: 0
-@property (nonatomic, weak) NSString *hideAge; //Example: **NULL**
 @property (nonatomic, weak) NSString *invitationDeclined; //Example: **NULL**
 @property (nonatomic, assign) BOOL isInvitable; //Example: 1
 @property (nonatomic, weak) NSString *addressZip; //Example: **NULL**

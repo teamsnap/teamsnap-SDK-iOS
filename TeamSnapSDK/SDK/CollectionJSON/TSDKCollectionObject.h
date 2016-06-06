@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSDate *lastUpdate;
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
++ (id)objectWithObject:(TSDKCollectionObject *)originalObject;
 + (void)dumpClassSelectorInfo;
 +(NSDictionary *)template;
 +(NSDictionary *)templateForClass:(NSString *)className;

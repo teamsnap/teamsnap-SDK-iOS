@@ -146,6 +146,32 @@ static NSMutableDictionary *_classURLs;
     return self;
 }
 
++ (id)objectWithObject:(TSDKCollectionObject *)originalObject {
+    
+    TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
+    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+    newCollection.type = originalObject.collection.type;
+    
+    NSArray *allKeys = [[newCollection data] allKeys];
+    for (NSString *key in allKeys) {
+        BOOL deleteKey = NO;
+        NSRange idFound = [key rangeOfString:@"_id"];
+        if (idFound.location == key.length-3) {
+            deleteKey = YES;
+        } else if ([key isEqualToString:@"id"]) {
+            deleteKey = YES;
+        }
+        
+        if (deleteKey) {
+            [[newCollection data] removeObjectForKey:key];
+        }
+    }
+
+    __typeof__(originalObject) newObject = [[[originalObject class] alloc] initWithCollection:newCollection];
+    
+    return newObject;
+}
+
 - (void)setCollection:(TSDKCollectionJSON *)collection {
     _collection = collection;
     _lastUpdate = [NSDate date];
@@ -518,7 +544,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setDate:(NSDate *)value forKey:(NSString *)aKey {
-    [self setString:[value RCF3339DateTimeString] forKey:aKey];
+    if (![[self getDate:aKey] isEqualToDate:value]) {
+        [self setString:[value RCF3339DateTimeString] forKey:aKey];
+    }
 }
 
 - (BOOL)getBool:(NSString *)aKey {

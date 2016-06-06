@@ -23,6 +23,9 @@
 		960556D31BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
 		960556D51BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */; };
+		960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 960E2FEF1CEF5B03004F540E /* NSMutableString+TSDKConveniences.h */; };
+		960E2FF21CEF5B03004F540E /* NSMutableString+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 960E2FF01CEF5B03004F540E /* NSMutableString+TSDKConveniences.m */; };
+		960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */; };
 		96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */; };
 		96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */ = {isa = PBXBuildFile; fileRef = 96121EC01C64FE2000E32902 /* NSDictionary+dump.m */; };
 		9612CD8E1C9B51AB00816460 /* TSDKNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,6 +34,7 @@
 		9612CD911C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
 		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */; };
 		963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
 		963A1B601C80E4BB006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -329,12 +333,16 @@
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
+		960E2FEF1CEF5B03004F540E /* NSMutableString+TSDKConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+TSDKConveniences.h"; sourceTree = "<group>"; };
+		960E2FF01CEF5B03004F540E /* NSMutableString+TSDKConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+TSDKConveniences.m"; sourceTree = "<group>"; };
+		960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberTests.m; path = DataType/TSDKMemberTests.m; sourceTree = "<group>"; };
 		96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCollectionJSONTests.m; path = CollectionJSON/TSDKCollectionJSONTests.m; sourceTree = "<group>"; };
 		96121EBF1C64FE2000E32902 /* NSDictionary+dump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+dump.h"; path = "Conveniences/NSDictionary+dump.h"; sourceTree = "<group>"; };
 		96121EC01C64FE2000E32902 /* NSDictionary+dump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+dump.m"; path = "Conveniences/NSDictionary+dump.m"; sourceTree = "<group>"; };
 		9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKNotifications.h; sourceTree = "<group>"; };
 		9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNotifications.m; sourceTree = "<group>"; };
 		9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProcessBulkObjectProtocol.h; sourceTree = "<group>"; };
+		9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCustomDatumTests.m; path = DataType/TSDKCustomDatumTests.m; sourceTree = "<group>"; };
 		963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKAvailabilityGroups.h; sourceTree = "<group>"; };
 		963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
 		96481EB31C739132008A7B73 /* TeamSnapSDK_PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamSnapSDK_PrefixHeader.pch; sourceTree = "<group>"; };
@@ -528,6 +536,15 @@
 			name = CollectionJSON;
 			sourceTree = "<group>";
 		};
+		9631B5E61CECA6E200215647 /* DataType */ = {
+			isa = PBXGroup;
+			children = (
+				9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */,
+				960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */,
+			);
+			name = DataType;
+			sourceTree = "<group>";
+		};
 		9652304A1CAC65DD0087FC23 /* Leagues */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +665,7 @@
 		969E804E1BAAE62E00CA518F /* TeamSnapSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				9631B5E61CECA6E200215647 /* DataType */,
 				96DA6AA31CD8E2F200368D80 /* DataLater */,
 				96121EBB1C64E42700E32902 /* CollectionJSON */,
 				969E804F1BAAE62E00CA518F /* TeamSnapSDKTests.m */,
@@ -712,6 +730,8 @@
 				969E80731BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m */,
 				969E80741BAAE7AB00CA518F /* NSString+TSDKConveniences.h */,
 				969E80751BAAE7AB00CA518F /* NSString+TSDKConveniences.m */,
+				960E2FEF1CEF5B03004F540E /* NSMutableString+TSDKConveniences.h */,
+				960E2FF01CEF5B03004F540E /* NSMutableString+TSDKConveniences.m */,
 			);
 			path = Conveniences;
 			sourceTree = "<group>";
@@ -905,6 +925,7 @@
 				965B7D331C18C7EE009AF13E /* TSDKMemberEmailAddress.h in Headers */,
 				969B7EB71C7CA9F800FD3EA0 /* TSDKTeamMediumComment.h in Headers */,
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
+				960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */,
 				969E80F71BAAE7AB00CA518F /* TSDKTrackedItemStatus.h in Headers */,
 				969E805E1BAAE79500CA518F /* TSDKTeamSnap.h in Headers */,
 				96F4FC3F1BBDA389000D04B9 /* TSDKTeamResults.h in Headers */,
@@ -1201,6 +1222,7 @@
 				969B7ED01C7CB28300FD3EA0 /* TSDKTeamMedium.m in Sources */,
 				969E80FA1BAAE7AB00CA518F /* TSDKUser.m in Sources */,
 				969E805F1BAAE79500CA518F /* TSDKTeamSnap.m in Sources */,
+				960E2FF21CEF5B03004F540E /* NSMutableString+TSDKConveniences.m in Sources */,
 				969E80CE1BAAE7AB00CA518F /* TSDKStatisticDatum.m in Sources */,
 				969B7EB91C7CA9F800FD3EA0 /* TSDKTeamMediumComment.m in Sources */,
 				969E80C01BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
@@ -1254,10 +1276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */,
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
 				96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
+				960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
 				96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */,
 			);

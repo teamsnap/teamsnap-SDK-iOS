@@ -133,7 +133,11 @@
 - (void)updateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
 - (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
 
++(void)actionInviteMember:(NSInteger)memberId team:(NSInteger)teamId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
+-(void)actionInviteMember:(NSInteger)memberId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
 
++(void)actionInviteContact:(NSInteger)contactId team:(NSInteger)teamId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
+-(void)actionInviteContact:(NSInteger)contactId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
 
 @end
 

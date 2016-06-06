@@ -12,7 +12,7 @@
 @interface TSDKCustomDatum : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *name; //Example: Size
-@property (nonatomic, weak) NSString *options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
+@property (nonatomic, weak) NSArray *options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
 @property (nonatomic, weak) NSString *value; //Example: Small
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
 @property (nonatomic, assign) NSInteger memberId; //Example: 1086731
@@ -24,6 +24,7 @@
 @property (nonatomic, weak) NSURL *linkMember;
 @property (nonatomic, weak) NSURL *linkTeam;
 
+@property (nonatomic, weak) NSDate *dateValue;
 @end
 
 @interface TSDKCustomDatum (ForwardedMethods)

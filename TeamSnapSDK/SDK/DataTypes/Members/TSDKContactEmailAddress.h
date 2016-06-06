@@ -8,8 +8,9 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKMemberEmailAddress.h"
 
-@interface TSDKContactEmailAddress : TSDKCollectionObject
+@interface TSDKContactEmailAddress : TSDKMemberEmailAddress
 
 @property (nonatomic, assign) NSInteger contactId; //Example: 150647
 @property (nonatomic, weak) NSURL *linkContact;

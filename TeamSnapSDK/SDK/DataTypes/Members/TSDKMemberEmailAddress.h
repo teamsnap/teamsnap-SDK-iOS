@@ -16,7 +16,7 @@
 @property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-25T18:17:49Z
 @property (nonatomic, weak) NSString *invitationState; //Example: not_invitable
 @property (nonatomic, assign) BOOL isInvited; //Example: 0
-@property (nonatomic, assign) NSInteger receivesTeamEmails; //Example: 1
+@property (nonatomic, assign) BOOL receivesTeamEmails; //Example: 1
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2014-08-29T23:49:11Z
 @property (nonatomic, weak) NSString *invitationCode; //Example: **NULL**
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118

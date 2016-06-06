@@ -7,10 +7,11 @@
 //
 
 #import "TSDKContact.h"
+#import "NSMutableString+TSDKConveniences.h"
 
 @implementation TSDKContact
 
-@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, hideAddress, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
+@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
 
 + (NSString *)SDKType {
     return @"contact";
@@ -45,6 +46,44 @@
     } else {
         return @"";
     }
+}
+
+- (NSString *)fancyAddressString {
+    if (self.addressCity.length==0 && self.addressState.length==0 && self.addressZip.length==0) {
+        if (self.addressStreet2.length==0) {
+            return [NSString stringWithFormat:@"%@", self.addressStreet1];
+        } else {
+            return [NSString stringWithFormat:@"%@\n%@", self.addressStreet1, self.addressStreet2];
+        }
+        
+    } else {
+        if (self.addressStreet2.length==0) {
+            return [NSString stringWithFormat:@"%@\n%@, %@  %@", self.addressStreet1, self.addressCity, self.addressState, self.addressZip];
+        } else {
+            return [NSString stringWithFormat:@"%@\n%@\n%@, %@  %@", self.addressStreet1, self.addressStreet2, self.addressCity, self.addressState, self.addressZip];
+        }
+    }
+}
+
+-(NSString *)addressString {
+    NSMutableString *result = [[NSMutableString alloc] initWithFormat:@""];
+    
+    if (self.addressStreet1.length>0) {
+        [result appendFormat:@"%@", self.addressStreet1];
+    }
+    if (self.addressStreet2.length>0) {
+        [result appendStringWithComma:self.addressStreet2];
+    }
+    if (self.addressCity.length>0) {
+        [result appendStringWithComma:self.addressCity];
+    }
+    if (self.addressState.length>0) {
+        [result appendStringWithComma:self.addressState];
+    }
+    if (self.addressZip.length>0) {
+        [result appendFormat:@" %@", self.addressZip];
+    }
+    return [NSString stringWithString:result];
 }
 
 @end
