@@ -17,7 +17,7 @@
     return @"broadcast_email";
 }
 
-- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSInteger)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(TSDKMember *)sender {
+- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSInteger)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(TSDKMember *)sender isDraft:(BOOL)isDraft {
     self = [super init];
     if(self) {
         [super setString:body forKey:@"body"];
@@ -28,6 +28,7 @@
         for(TSDKMember *recipient in recipients) {
             [recipientIDs addObject:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
         }
+        [super setBool:isDraft forKey:@"is_draft"];
         
         [super setArray:recipientIDs forKey:@"recipient_ids"];
     }
