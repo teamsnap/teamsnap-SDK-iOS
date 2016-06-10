@@ -8,11 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
-
-extern NSString * _Nonnull const TSDKCustomDataTypeDate;
-extern NSString * _Nonnull const TSDKCustomDataTypeMenu;
-extern NSString * _Nonnull const TSDKCustomDataTypeBool;
-extern NSString * _Nonnull const TSDKCustomDataTypeText;
+#import "TSDKCustomField.h"
 
 @interface TSDKCustomDatum : TSDKCollectionObject
 
@@ -29,6 +25,7 @@ extern NSString * _Nonnull const TSDKCustomDataTypeText;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
+@property (nonatomic, assign) CustomDataFieldType dataType;
 @property (nonatomic, weak) NSDate *_Nullable dateValue;
 - (NSString *_Nullable)displayValue;
 @end

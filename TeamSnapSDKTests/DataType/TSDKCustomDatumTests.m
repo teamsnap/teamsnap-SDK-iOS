@@ -28,7 +28,7 @@
 
 - (void)testSetDate {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
-    newDatum.kind = TSDKCustomDataTypeMenu;
+    newDatum.kind = TSDKCustomDataTypeMenuString;
     newDatum.value = @"Hello";
     
     XCTAssertNil(newDatum.dateValue);
@@ -36,7 +36,7 @@
     newDatum.value = @"1967-05-12";
     XCTAssertNil(newDatum.dateValue);
     
-    newDatum.kind = TSDKCustomDataTypeDate;
+    newDatum.kind = TSDKCustomDataTypeDateString;
     XCTAssertNotNil(newDatum.dateValue);
     
     NSDate *newDate = [NSDate dateWithTimeInterval:(3600*24) sinceDate:newDatum.dateValue];
@@ -48,7 +48,7 @@
 
 - (void)testDisplayValue {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
-    newDatum.kind = TSDKCustomDataTypeDate;
+    newDatum.dataType = TSDKCustomDataTypeDate;
 
     newDatum.value = @"1967-05-12";
     XCTAssertEqualObjects(@"May 12, 1967", newDatum.displayValue);
@@ -58,6 +58,11 @@
     
     newDatum.dateValue = newDate;
     XCTAssertEqualObjects(@"May 13, 1967", newDatum.displayValue);
+    
+    newDatum.dataType = TSDKCustomDataTypeBool;
+    newDatum.value = @"1";
+    
+    XCTAssertEqualObjects(newDatum.displayValue, @"Yes");
 }
 
 @end
