@@ -39,7 +39,11 @@ NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
                                        TSDKCustomDataTypeMenuString,
                                        TSDKCustomDataTypeBoolString,
                                        TSDKCustomDataTypeTextString];
-    return fieldTypeStringArray[fieldType];
+    if (fieldType != TSDKCustomDataTypeUnknown) {
+        return fieldTypeStringArray[fieldType];
+    } else {
+        return TSDKCustomDataTypeTextString;
+    }
 }
 
 - (CustomDataFieldType)dataType {

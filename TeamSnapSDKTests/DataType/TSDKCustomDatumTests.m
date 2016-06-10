@@ -26,6 +26,24 @@
     [super tearDown];
 }
 
+- (void)testDataType {
+    TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
+    newDatum.kind = TSDKCustomDataTypeMenuString;
+    
+    newDatum.value = @"Hello";
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeMenu);
+    
+    newDatum.dataType = TSDKCustomDataTypeDate;
+    XCTAssertEqualObjects(newDatum.kind, TSDKCustomDataTypeDateString);
+    
+    newDatum.kind = @"Foo";
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeText);
+    
+    newDatum.dataType = TSDKCustomDataTypeUnknown;
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeText);
+    XCTAssertEqualObjects(newDatum.kind, TSDKCustomDataTypeTextString);
+}
+
 - (void)testSetDate {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
     newDatum.kind = TSDKCustomDataTypeMenuString;
