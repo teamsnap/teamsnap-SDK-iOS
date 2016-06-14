@@ -18,7 +18,7 @@
 
 @implementation TSDKMember
 
-@dynamic lastName, createdAt, teamId, isOwnershipPending, addressStreet2, addressState, hasFacebookPostScoresEnabled, invitationDeclined, isInvitable, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isInvited, isActivated, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, gender, isOwner, isAddressHidden, updatedAt, isAlertable, linkBroadcastEmails, linkBroadcastEmailAttachments, linkMemberLinks, linkMemberPreferences, linkTeam, linkMemberPhoneNumbers, linkMessages, linkMemberEmailAddresses, linkStatisticData, linkForumSubscriptions, linkLeagueCustomData, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamMedia, linkTrackedItemStatuses, linkForumTopics, linkTeamMediumComments, linkCustomFields, linkAssignments, linkCustomData, linkMemberStatistics, linkAvailabilities, linkMemberBalances, linkForumPosts, linkBroadcastAlerts, linkMemberPayments, linkLeagueCustomFields, linkLeagueRegistrantDocuments, linkContacts, linkMemberFiles, isPushable, linkMemberPhoto, linkMemberThumbnail;
+@dynamic lastName, createdAt, teamId, isOwnershipPending, addressStreet2, addressState, hasFacebookPostScoresEnabled, invitationDeclined, isInvitable, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isInvited, isActivated, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, gender, isOwner, isAddressHidden, updatedAt, isAlertable, linkBroadcastEmails, linkBroadcastEmailAttachments, linkMemberLinks, linkMemberPreferences, linkTeam, linkMemberPhoneNumbers, linkMessages, linkMemberEmailAddresses, linkStatisticData, linkForumSubscriptions, linkLeagueCustomData, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamMedia, linkTrackedItemStatuses, linkForumTopics, linkTeamMediumComments, linkCustomFields, linkAssignments, linkCustomData, linkMemberStatistics, linkAvailabilities, linkMemberBalances, linkForumPosts, linkBroadcastAlerts, linkMemberPayments, linkLeagueCustomFields, linkLeagueRegistrantDocuments, linkContacts, linkMemberFiles, isPushable, linkMemberPhoto, linkMemberThumbnail, linkMemberPhotos;
 
 + (NSString *)SDKType {
     return @"member";
@@ -69,6 +69,18 @@
     return (self.isOwner);
 }
 #if TARGET_OS_IPHONE
+
+- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
+    NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
+                                              @"width":[NSNumber numberWithInteger:height]};
+    
+    [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(UIImage *image) {
         if (completion) {

@@ -357,7 +357,7 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
     NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
                                               @"width":[NSNumber numberWithInteger:height]};
     
