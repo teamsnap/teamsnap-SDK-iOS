@@ -70,7 +70,7 @@
 }
 #if TARGET_OS_IPHONE
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-    [TSDKDataRequest requestImageForPath:self.linkMemberPhoto withCompletion:^(UIImage *image) {
+    [TSDKDataRequest requestImageForPath:self.linkMemberPhoto configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
@@ -78,7 +78,7 @@
 }
 
 -(void)getMemberThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-    [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail withCompletion:^(UIImage *image) {
+    [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
