@@ -26,9 +26,27 @@
     [super tearDown];
 }
 
+- (void)testDataType {
+    TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
+    newDatum.kind = TSDKCustomDataTypeMenuString;
+    
+    newDatum.value = @"Hello";
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeMenu);
+    
+    newDatum.dataType = TSDKCustomDataTypeDate;
+    XCTAssertEqualObjects(newDatum.kind, TSDKCustomDataTypeDateString);
+    
+    newDatum.kind = @"Foo";
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeText);
+    
+    newDatum.dataType = TSDKCustomDataTypeUnknown;
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeText);
+    XCTAssertEqualObjects(newDatum.kind, TSDKCustomDataTypeTextString);
+}
+
 - (void)testSetDate {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
-    newDatum.kind = @"menu";
+    newDatum.kind = TSDKCustomDataTypeMenuString;
     newDatum.value = @"Hello";
     
     XCTAssertNil(newDatum.dateValue);
@@ -36,14 +54,33 @@
     newDatum.value = @"1967-05-12";
     XCTAssertNil(newDatum.dateValue);
     
-    newDatum.kind = @"date";
+    newDatum.kind = TSDKCustomDataTypeDateString;
     XCTAssertNotNil(newDatum.dateValue);
+    
+    NSDate *newDate = [NSDate dateWithTimeInterval:(3600*24) sinceDate:newDatum.dateValue];
+    XCTAssertEqualObjects(@"1967-05-13", [newDate YYYYMMDDString]);
+    
+    newDatum.dateValue = newDate;
+    XCTAssertEqualObjects(@"1967-05-13", newDatum.value);
+}
+
+- (void)testDisplayValue {
+    TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
+    newDatum.dataType = TSDKCustomDataTypeDate;
+
+    newDatum.value = @"1967-05-12";
+    XCTAssertEqualObjects(@"May 12, 1967", newDatum.displayValue);
     
     NSDate *newDate = [NSDate dateWithTimeInterval:(3600*24) sinceDate:newDatum.dateValue];
     XCTAssertNotEqual(@"1967-05-13", [newDate YYYYMMDDString]);
     
     newDatum.dateValue = newDate;
-    XCTAssertNotEqual(@"1967-05-13", newDatum.value);
+    XCTAssertEqualObjects(@"May 13, 1967", newDatum.displayValue);
+    
+    newDatum.dataType = TSDKCustomDataTypeBool;
+    newDatum.value = @"1";
+    
+    XCTAssertEqualObjects(newDatum.displayValue, @"Yes");
 }
 
 @end

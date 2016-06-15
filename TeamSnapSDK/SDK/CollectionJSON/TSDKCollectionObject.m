@@ -622,20 +622,26 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             }
         }];
     } else {
-        NSDictionary *postObject = @{@"template": dataToSave};
-        __typeof__(self) __weak weakSelf = self;
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            if (success) {
-                if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
-                    [weakSelf setCollection:[objects.collection firstObject]];
+        if (self.changedValues.count>0) {
+            NSDictionary *postObject = @{@"template": dataToSave};
+            __typeof__(self) __weak weakSelf = self;
+            [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                if (success) {
+                    if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
+                        [weakSelf setCollection:[objects.collection firstObject]];
+                    }
+                    [weakSelf.changedValues removeAllObjects];
+                    [TSDKNotifications postSavedObject:self];
                 }
-                [weakSelf.changedValues removeAllObjects];
-                [TSDKNotifications postSavedObject:self];
-            }
+                if (completion) {
+                    completion(success, weakSelf, error);
+                }
+            }];
+        } else {
             if (completion) {
-                completion(success, weakSelf, error);
+                completion(YES, self, nil);
             }
-        }];
+        }
     }
 }
 

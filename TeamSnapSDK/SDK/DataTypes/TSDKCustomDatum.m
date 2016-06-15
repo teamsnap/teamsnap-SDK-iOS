@@ -13,6 +13,11 @@
 @implementation TSDKCustomDatum
 @dynamic name, options, value, isPrivate, memberId, teamId, kind, customFieldId, helpText, linkCustomField, linkMember, linkTeam;
 
+// "Menu"
+// "Check Box"
+// "Text"
+// "Date"
+
 + (NSString *)SDKType {
     return @"custom_datum";
 }
@@ -22,7 +27,7 @@
 }
 
 - (NSDate *)dateValue {
-    if ([self.kind isEqualToString:@"date"]) {
+    if (self.dataType == TSDKCustomDataTypeDate) {
         return [self.value dateFromJustDate];
     } else {
         return nil;
@@ -31,6 +36,28 @@
 
 - (void)setDateValue:(NSDate *)dateValue {
     self.value = [dateValue YYYYMMDDString];
+}
+
+- (NSString *)displayValue {
+    if (self.dataType == TSDKCustomDataTypeDate) {
+        return [self.dateValue shortString];
+    } else if (self.dataType == TSDKCustomDataTypeBool) {
+        if ([self.value isEqualToString:@"1"]) {
+            return @"Yes";
+        } else {
+            return @"No";
+        }
+    } else {
+        return self.value;
+    }
+}
+
+- (CustomDataFieldType)dataType {
+    return [TSDKCustomField fieldTypeForString:self.kind];
+}
+
+- (void)setDataType:(CustomDataFieldType)dataType {
+    self.kind = [TSDKCustomField fieldTypeStringForFieldType:dataType];
 }
 
 @end

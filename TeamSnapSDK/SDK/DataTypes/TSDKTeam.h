@@ -107,6 +107,8 @@
 @property (nonatomic, weak) NSURL *linkEventStatistics;
 @property (nonatomic, weak) NSURL *linkBroadcastAlerts;
 @property (nonatomic, weak) NSURL *linkTeamPublicSite;
+@property (nonatomic, weak) NSURL *linkMemberPhotos;
+@property (nonatomic, weak) NSURL *linkTeamPhotos;
 
 // Non Collection links:
 @property (nonatomic, weak) NSURL *linkCalendarHttpGamesOnly;
@@ -138,6 +140,9 @@
 
 +(void)actionInviteContact:(NSInteger)contactId team:(NSInteger)teamId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
 -(void)actionInviteContact:(NSInteger)contactId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
+
+-(void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
+
 
 @end
 
@@ -211,5 +216,7 @@
 -(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventStatisticArrayCompletionBlock)completion;
 -(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock)completion;
 -(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
+-(void)getTeamPhotosWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 @end
