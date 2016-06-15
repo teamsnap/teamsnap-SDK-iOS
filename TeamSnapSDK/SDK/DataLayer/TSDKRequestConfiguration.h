@@ -16,7 +16,7 @@
  *
  *  @return An initialized request configuration
  */
-+ (instancetype)standardRequestConfiguration;
++ (instancetype)defaultRequestConfiguration;
 
 /**
  *  Initializes a request configuration with priority of 0.5

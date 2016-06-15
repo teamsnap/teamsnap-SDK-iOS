@@ -10,7 +10,7 @@
 
 @implementation TSDKRequestConfiguration
 
-+ (instancetype)standardRequestConfiguration {
++ (instancetype)defaultRequestConfiguration {
     TSDKRequestConfiguration *configuration = [[TSDKRequestConfiguration alloc] init];
     return configuration;
 }
