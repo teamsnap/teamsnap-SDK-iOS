@@ -629,13 +629,15 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                     [weakSelf setCollection:[objects.collection firstObject]];
                 }
-                [weakSelf.changedValues removeAllObjects];
-                [TSDKNotifications postSavedObject:self];
-            }
+                if (completion) {
+                    completion(success, weakSelf, error);
+                }
+            }];
+        } else {
             if (completion) {
-                completion(success, weakSelf, error);
+                completion(YES, self, nil);
             }
-        }];
+        }
     }
 }
 

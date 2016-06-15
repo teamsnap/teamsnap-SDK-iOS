@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */; };
+		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		563E3EF71CD012DD00B0F1FF /* TSDKDivisionMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EF51CD012DD00B0F1FF /* TSDKDivisionMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		563E3EF81CD012DD00B0F1FF /* TSDKDivisionMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E3EF61CD012DD00B0F1FF /* TSDKDivisionMember.m */; };
 		563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -307,6 +309,9 @@
 		96F4FC401BBDA389000D04B9 /* TSDKTeamResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */; };
 		96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */; };
 		96F4FC421BBDA389000D04B9 /* TSDKTeamResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */; };
+		96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96F7C52A1D104A920022FA4C /* TSDKMemberPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F7C5281D104A920022FA4C /* TSDKMemberPhoto.m */; };
+		96F7C52B1D1052A40022FA4C /* TeamSnapSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805A1BAAE79500CA518F /* TeamSnapSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +325,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKDuplicateCompletionBlockStore.h; sourceTree = "<group>"; };
+		561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKDuplicateCompletionBlockStore.m; sourceTree = "<group>"; };
 		563E3EF51CD012DD00B0F1FF /* TSDKDivisionMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKDivisionMember.h; path = Members/TSDKDivisionMember.h; sourceTree = "<group>"; };
 		563E3EF61CD012DD00B0F1FF /* TSDKDivisionMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDivisionMember.m; path = Members/TSDKDivisionMember.m; sourceTree = "<group>"; };
 		563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageRecipient.h; path = Protocols/TSDKMessageRecipient.h; sourceTree = "<group>"; };
@@ -489,6 +496,8 @@
 		96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+refreshCollectionData.m"; sourceTree = "<group>"; };
 		96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamResults.h; sourceTree = "<group>"; };
 		96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamResults.m; sourceTree = "<group>"; };
+		96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMemberPhoto.h; path = PhotoObjects/TSDKMemberPhoto.h; sourceTree = "<group>"; };
+		96F7C5281D104A920022FA4C /* TSDKMemberPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberPhoto.m; path = PhotoObjects/TSDKMemberPhoto.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -747,6 +756,8 @@
 				969E807C1BAAE7AB00CA518F /* TSDKObjectsRequest.m */,
 				969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */,
 				969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */,
+				561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */,
+				561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -754,6 +765,7 @@
 		969E807D1BAAE7AB00CA518F /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				96F7C5221D1049900022FA4C /* PhotoObjects */,
 				9652304A1CAC65DD0087FC23 /* Leagues */,
 				969B7ED61C7CBB3400FD3EA0 /* Payments */,
 				969B7EC01C7CADFD00FD3EA0 /* Messages */,
@@ -869,6 +881,15 @@
 			name = DataLater;
 			sourceTree = "<group>";
 		};
+		96F7C5221D1049900022FA4C /* PhotoObjects */ = {
+			isa = PBXGroup;
+			children = (
+				96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */,
+				96F7C5281D104A920022FA4C /* TSDKMemberPhoto.m */,
+			);
+			name = PhotoObjects;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -902,6 +923,7 @@
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
 				969B7F021C7DE58C00FD3EA0 /* TSDKEventStatistic.h in Headers */,
 				965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
+				561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */,
 				969E80DF1BAAE7AB00CA518F /* TSDKEvent.h in Headers */,
 				969B7EC31C7CAE2600FD3EA0 /* TSDKForumSubscription.h in Headers */,
 				9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */,
@@ -947,6 +969,7 @@
 				964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */,
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
 				969E80BB1BAAE7AB00CA518F /* NSMutableDictionary+integerKey.h in Headers */,
+				96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */,
 				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
 				969E80B31BAAE7AB00CA518F /* TSDKCollectionCommand.h in Headers */,
 				969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */,
@@ -994,6 +1017,7 @@
 				96B47F4F1BADB4640035F2CC /* TSDKStatisticGroup.h in Headers */,
 				9612CD8F1C9B51AB00816460 /* TSDKNotifications.h in Headers */,
 				96966BD31C4989A8000828E1 /* TSDKConstants.h in Headers */,
+				96F7C52B1D1052A40022FA4C /* TeamSnapSDK.h in Headers */,
 				969B7EAD1C7CA33500FD3EA0 /* TSDKMemberPreferences.h in Headers */,
 				96B47F331BADB4410035F2CC /* TSDKLocation.h in Headers */,
 				96B47F5B1BADB4810035F2CC /* NSMutableDictionary+integerKey.h in Headers */,
@@ -1096,6 +1120,7 @@
 		969E80371BAAE62D00CA518F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = teamsnap;
 				TargetAttributes = {
@@ -1242,6 +1267,7 @@
 				5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */,
 				969E80C21BAAE7AB00CA518F /* NSString+TSDKConveniences.m in Sources */,
 				969B7EAE1C7CA33500FD3EA0 /* TSDKMemberPreferences.m in Sources */,
+				96F7C52A1D104A920022FA4C /* TSDKMemberPhoto.m in Sources */,
 				965B7D3B1C18CA80009AF13E /* TSDKContact.m in Sources */,
 				969E80EE1BAAE7AB00CA518F /* TSDKSport.m in Sources */,
 				969E80F61BAAE7AB00CA518F /* TSDKTrackedItem.m in Sources */,
@@ -1263,6 +1289,7 @@
 				96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				969E80CC1BAAE7AB00CA518F /* TSDKStatistic.m in Sources */,
 				969E80D61BAAE7AB00CA518F /* TSDKAvailability.m in Sources */,
+				561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
 				969E80B61BAAE7AB00CA518F /* TSDKCollectionJSON.m in Sources */,
 				964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */,
 				969E80E41BAAE7AB00CA518F /* TSDKForumTopic.m in Sources */,
@@ -1465,6 +1492,7 @@
 		969E80551BAAE62E00CA518F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -1481,12 +1509,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		969E80561BAAE62E00CA518F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

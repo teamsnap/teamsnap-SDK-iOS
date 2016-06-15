@@ -78,3 +78,4 @@
 #import <TeamSnapSDK/TSDKDivisionMember.h>
 #import <TeamSnapSDK/TSDKMessageRecipient.h>
 #import <TeamSnapSDK/TSDKMessageSender.h>
+#import <TeamSnapSDK/TSDKMemberPhoto.h>

@@ -17,6 +17,7 @@
 #import "TSDKProfileTimer.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
+#import "TSDKDuplicateCompletionBlockStore.h"
 
 static NSString *baseURL = @"https://api.teamsnap.com/v3/";
 static NSString *OauthURL = @"https://cogsworth.teamsnap.com/oauth/token";
@@ -120,50 +121,61 @@ static NSRecursiveLock *accessDetailsLock = nil;
         
         DLog(@"Curl:\n%@", [request getCurlEquivalent]);
         
-        [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
-        NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
+        if([[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:request]) {
+            [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
+        } else {
+            [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
             
-            BOOL success = NO;
-            BOOL requestCompleted = NO;
-            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                success = [httpResponse wasSuccess];
-            }
-            id JSON = nil;
-            
-            requestCompleted = success;
-            
-            if (success) {
-                [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
-                if (data) {
-                    JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                }
-                [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
-            } else {
-                NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
+            NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
                 
-                if (data) {
-                    JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                    TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
-                    if (errorJSON.errorTitle) {
-                        userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
-                    }
-                    if (errorJSON.errorMessage) {
-                        userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
-                    }
-                    NSInteger errorCode = 0;
-                    if (errorJSON.errorCode != NSNotFound) {
-                        errorCode = [userInfo[@"errorCode"] integerValue];
-                    }
-                    
-                    if([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                        userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
-                    }
-                    
-                    error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                BOOL success = NO;
+                BOOL requestCompleted = NO;
+                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                    success = [httpResponse wasSuccess];
                 }
-            }
+                id JSON = nil;
+                
+                requestCompleted = success;
+                
+                if (success) {
+                    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
+                    if (data) {
+                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                    }
+                    [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
+                } else {
+                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                    
+                    if (data) {
+                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                        TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
+                        if (errorJSON.errorTitle) {
+                            userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
+                        }
+                        if (errorJSON.errorMessage) {
+                            userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
+                        }
+                        NSInteger errorCode = 0;
+                        if (errorJSON.errorCode != NSNotFound) {
+                            errorCode = [userInfo[@"errorCode"] integerValue];
+                        }
+                        
+                        if([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                            userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
+                        }
+                        
+                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    }
+                }
+                
+                for(TSDKJSONCompletionBlock completionBlock in [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request].allObjects) {
+                    completionBlock(success, requestCompleted, JSON, error);
+                }
+                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
+            }];
             
             if (completionBlock) {
                 completionBlock(success, requestCompleted, JSON, error);
