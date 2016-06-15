@@ -176,13 +176,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
                 }
                 [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
             }];
-            
-            if (completionBlock) {
-                completionBlock(success, requestCompleted, JSON, error);
-            }
-        }];
-        remoteTask.priority = configuration.priority;
-        [remoteTask resume];
+            remoteTask.priority = configuration.priority;
+            [remoteTask resume];
+        }
     }
 }
 
