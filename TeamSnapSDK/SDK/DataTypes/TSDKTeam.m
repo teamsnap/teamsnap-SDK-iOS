@@ -357,9 +357,15 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
+- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
+    
+    NSString *cropString = @"fill";
+    if (fitCrop) {
+        cropString = @"fit";
+    }
     NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
-                                              @"width":[NSNumber numberWithInteger:height]};
+                                              @"width":[NSNumber numberWithInteger:height],
+                                              @"crop":cropString};
     
     [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
