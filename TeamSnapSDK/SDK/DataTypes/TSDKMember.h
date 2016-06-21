@@ -13,6 +13,8 @@
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
 
+@class TSDKBackgroundUploadDelegateObject;
+
 @protocol TSDKMemberOrContactProtocol <NSObject>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
@@ -117,8 +119,11 @@
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
 
 #if TARGET_OS_IPHONE
++(TSDKBackgroundUploadDelegateObject *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock;
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 -(void)getMemberThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
+-(TSDKBackgroundUploadDelegateObject *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock;
+
 #endif
 
 -(TSDKTeam *)team;

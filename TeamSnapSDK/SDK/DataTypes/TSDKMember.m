@@ -15,6 +15,8 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"
+#import "TSDKBackgroundUploadDelegateObject.h"
+
 
 @implementation TSDKMember
 
@@ -100,6 +102,27 @@
             completion(image);
         }
     }];
+}
+
++(TSDKBackgroundUploadDelegateObject *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock {
+    
+    TSDKBackgroundUploadDelegateObject *backgroundUploadDelegate = [[TSDKBackgroundUploadDelegateObject alloc] initWithProgressBlock:progressBlock];
+    
+    TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
+    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
+    uploadCommand.data[@"file_name"] = @"photo.jpg";
+    NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
+    
+    uploadCommand.data[@"file"] = imageData;
+    NSURL *url = [NSURL URLWithString:uploadCommand.href];
+    
+    [TSDKDataRequest postDictionary:uploadCommand.data toURL:url delegate:backgroundUploadDelegate];
+    
+    return backgroundUploadDelegate;
+}
+
+- (TSDKBackgroundUploadDelegateObject *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock {
+    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:progressBlock];
 }
 
 #endif

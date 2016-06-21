@@ -18,6 +18,7 @@ typedef void (^TSDKSaveCompletionBlock)(BOOL success, TSDKCollectionObject *_Nul
 typedef void (^TSDKInviteStatusCompletionBlock)(BOOL success, BOOL complete, TSDKinvitationFinder *_Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *_Nullable OAuthToken, NSError *_Nullable error);
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *_Nullable objects, NSError *_Nullable error);
+typedef void (^TSDKUploadProgressBlock)(BOOL success, BOOL complete, NSUInteger totalSent, NSUInteger totalExpectedToSend, NSError *_Nullable error);
 
 
 typedef void (^TSDKCustomDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomDatum *> *_Nullable customData, NSError *_Nullable error);
