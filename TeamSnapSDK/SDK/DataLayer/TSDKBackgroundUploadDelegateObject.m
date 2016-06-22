@@ -9,12 +9,21 @@
 #import "TSDKBackgroundUploadDelegateObject.h"
 #import "NSHTTPURLResponse+convenience.h"
 
+@interface TSDKBackgroundUploadDelegateObject()
+
+@property (nonatomic, copy) TSDKUploadProgressBlock progressBlock;
+@property (nonatomic, strong) NSData *responseData;
+
+@end
+
 @implementation TSDKBackgroundUploadDelegateObject
 
 -(instancetype)initWithProgressBlock:(TSDKUploadProgressBlock)progressBlock {
     self = [super init];
     if (self) {
         _progressBlock = progressBlock;
+        _complete = NO;
+        _success = NO;
     }
     return self;
 }
@@ -30,11 +39,30 @@
         
         self.totalBytesSent =  @(task.countOfBytesSent);
         self.totalBytesExpectedToSend = @(task.countOfBytesExpectedToSend);
+        self.complete = YES;
+        self.success = success;
         
         if (self.progressBlock) {
-            self.progressBlock(success, YES, @(task.countOfBytesSent), @(task.countOfBytesExpectedToSend), error);
+            self.progressBlock(self, error);
         }
     }
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    _responseData =  data;
+}
+
+-(NSData *)responseData {
+    return _responseData;
+}
+
+-(NSString *)responseString {
+    return [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
+}
+
+-(id)responseJSON {
+    NSError *error;
+    return [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:&error];
 }
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
@@ -42,11 +70,8 @@
     self.totalBytesSent = @(totalBytesSent);
     self.totalBytesExpectedToSend = @(totalBytesExpectedToSend);
     if (self.progressBlock) {
-        self.progressBlock(YES, NO, @(totalBytesSent), @(totalBytesExpectedToSend), nil);
+        self.progressBlock(self, nil);
     }
 }
-
-
-
 
 @end
