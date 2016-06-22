@@ -18,20 +18,12 @@
     return @"forum_post";
 }
 
-+(void)addPost:(TSDKForumPost *)post withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
-    [data setObject:[NSNumber numberWithInteger:post.forumTopicId] forKey:@"forum_topic_id"];
-    //[data setObject:[NSNumber numberWithInteger:post.divisionMemberId] forKey:@"division_member_id"];
-    [data setObject:[NSNumber numberWithInteger:post.memberId] forKey:@"member_id"];
-    [data setObject:post.message forKey:@"message"];
-    [data setObject:[NSNumber numberWithBool:post.wasBroadcasted] forKey:@"broadcast_to_team"];
-    NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:data];
-    
-    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumPosts] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
++ (void)savePost:(TSDKForumPost *)post broadcastToTeam:(BOOL)broadcastToTeam completion:(TSDKSaveCompletionBlock)completion {
+    [post setInteger:post.forumTopicId forKey:@"forum_topic_id"];
+    [post setInteger:post.memberId forKey:@"member_id"];
+    [post setString:post.message forKey:@"message"];
+    [post setBool:broadcastToTeam forKey:@"broadcast_to_team"];
+    [post saveWithCompletion:completion];
 }
 
 -(void)setMessage:(NSString *)message {
@@ -47,6 +39,18 @@
     } else {
         [super setString:[message stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] forKey:@"message"];
     };
+}
+
+- (BOOL)isEqual:(id)anObject {
+    if([anObject isKindOfClass:[TSDKForumPost class]]) {
+        return self.objectIdentifier == ((TSDKForumPost *)anObject).objectIdentifier;
+    } else {
+        return [self isEqual:anObject];
+    }
+}
+
+- (NSUInteger)hash {
+    return self.objectIdentifier;
 }
 
 @end

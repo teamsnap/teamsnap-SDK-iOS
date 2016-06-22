@@ -24,7 +24,7 @@
 @property (nonatomic, weak) NSURL *linkTeam;
 @property (nonatomic, weak) NSURL *linkDivisionMember;
 
-+(void)addPost:(TSDKForumPost *)post withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion;
++ (void)savePost:(TSDKForumPost *)post broadcastToTeam:(BOOL)broadcastToTeam completion:(TSDKSaveCompletionBlock)completion;
 
 @end
 
