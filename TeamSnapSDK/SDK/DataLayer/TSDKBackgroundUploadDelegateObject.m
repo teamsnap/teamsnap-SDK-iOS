@@ -28,21 +28,21 @@
             success = [httpResponse wasSuccess];
         }
         
-        self.totalBytesSent = task.countOfBytesSent;
-        self.totalBytesExpectedToSend = task.countOfBytesExpectedToSend;
+        self.totalBytesSent =  @(task.countOfBytesSent);
+        self.totalBytesExpectedToSend = @(task.countOfBytesExpectedToSend);
         
         if (self.progressBlock) {
-            self.progressBlock(success, YES, task.countOfBytesSent, task.countOfBytesExpectedToSend, error);
+            self.progressBlock(success, YES, @(task.countOfBytesSent), @(task.countOfBytesExpectedToSend), error);
         }
     }
 }
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
     
-    self.totalBytesSent = totalBytesSent;
-    self.totalBytesExpectedToSend = totalBytesExpectedToSend;
+    self.totalBytesSent = @(totalBytesSent);
+    self.totalBytesExpectedToSend = @(totalBytesExpectedToSend);
     if (self.progressBlock) {
-        self.progressBlock(YES, NO, totalBytesSent, totalBytesExpectedToSend, nil);
+        self.progressBlock(YES, NO, @(totalBytesSent), @(totalBytesExpectedToSend), nil);
     }
 }
 

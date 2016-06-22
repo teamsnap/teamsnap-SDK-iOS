@@ -12,8 +12,8 @@
 @interface TSDKBackgroundUploadDelegateObject : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
 @property (nonatomic, copy) TSDKUploadProgressBlock progressBlock;
-@property (atomic, assign) NSUInteger totalBytesSent;
-@property (atomic, assign) NSUInteger totalBytesExpectedToSend;
+@property (atomic, assign) NSNumber *totalBytesSent;
+@property (atomic, assign) NSNumber *totalBytesExpectedToSend;
 
 -(instancetype)initWithProgressBlock:(TSDKUploadProgressBlock)progressBlock;
 
