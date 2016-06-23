@@ -12,7 +12,7 @@
 #import "TSDKRootLinks.h"
 
 @implementation TSDKForumPost
-@dynamic wasBroadcasted, createdAt, posterName, message, memberId, forumTopicId, divisionMemberId, updatedAt, linkMember, linkForumTopic, linkTeam, linkDivisionMember;
+@dynamic wasBroadcasted, createdAt, posterName, message, memberId, forumTopicId, divisionMemberId, updatedAt, linkMember, linkForumTopic, linkTeam, linkDivisionMember, teamId;
 
 + (NSString *)SDKType {
     return @"forum_post";

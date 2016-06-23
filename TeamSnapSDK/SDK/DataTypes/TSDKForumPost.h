@@ -16,6 +16,7 @@
 @property (nonatomic, weak) NSString *posterName; //Example: Jason R
 @property (nonatomic, weak) NSString *message; //Example: <p>This is a test post!</p>
 @property (nonatomic, assign) NSInteger memberId; //Example: 993324
+@property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger forumTopicId; //Example: 611875
 @property (nonatomic, weak) NSString *divisionMemberId; //Example: **NULL**
 @property (nonatomic, weak) NSDate *updatedAt; //Example: 2013-02-08T18:22:04Z
