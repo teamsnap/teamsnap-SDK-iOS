@@ -15,6 +15,7 @@ extern NSString * _Nonnull const TSDKObjectSaved;
 extern NSString * _Nonnull const TSDKObjectAdded;
 extern NSString * _Nonnull const TSDKObjectRefreshed;
 extern NSString * _Nonnull const TSDKObjectDeleted;
+extern NSString * _Nonnull const TSDKInvalidateAssociatedCaches;
 
 @class  TSDKCollectionObject;
 
@@ -24,7 +25,7 @@ extern NSString * _Nonnull const TSDKObjectDeleted;
 + (void)postNewObject:(TSDKCollectionObject * _Nonnull)notificationObject;
 + (void)postRefreshedObject:(TSDKCollectionObject * _Nonnull)notificationObject;
 + (void)postDeletedObject:(TSDKCollectionObject * _Nonnull)notificationObject;
-
++ (void)postInvalidateAssociatedCaches:(TSDKCollectionObject *)notificationObject;
 + (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 + (void)listenToAllObjectChangesObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;
 + (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector;

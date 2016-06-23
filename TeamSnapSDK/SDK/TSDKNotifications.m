@@ -16,6 +16,7 @@ NSString * const TSDKObjectSaved = @"TSDKNotificationSaved";
 NSString * const TSDKObjectAdded = @"TSDKNotificationAdded";
 NSString * const TSDKObjectRefreshed = @"TSDKNotificationRefreshed";
 NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
+NSString * const TSDKInvalidateAssociatedCaches = @"TSDKInvalidateAssociatedCaches";
 
 @implementation TSDKNotifications 
 
@@ -42,6 +43,10 @@ NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
 
 + (void)postRefreshedObject:(TSDKCollectionObject *)notificationObject {
     [self postObject:notificationObject type:TSDKObjectRefreshed];
+}
+
++ (void)postInvalidateAssociatedCaches:(TSDKCollectionObject *)notificationObject {
+    [self postObject:notificationObject type:TSDKInvalidateAssociatedCaches];
 }
 
 + (void)listenToChangesToObject:(TSDKCollectionObject * _Nonnull)collectionObject withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {

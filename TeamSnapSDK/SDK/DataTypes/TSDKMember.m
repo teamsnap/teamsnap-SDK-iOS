@@ -16,6 +16,8 @@
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"
 #import "TSDKBackgroundUploadDelegateObject.h"
+#import "TSDKMemberPhoto.h"
+#import "TSDKNotifications.h"
 
 
 @implementation TSDKMember
@@ -122,7 +124,17 @@
 }
 
 - (TSDKBackgroundUploadDelegateObject *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock {
-    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:progressBlock];
+    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadDelegateObject * _Nullable uploadStatus, NSError * _Nullable error) {
+        if (uploadStatus.complete && uploadStatus.success) {
+            TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
+            poisonPill.memberId = self.objectIdentifier;
+            poisonPill.teamId = self.teamId;
+            [TSDKNotifications postInvalidateAssociatedCaches:poisonPill];
+        }
+        if (progressBlock) {
+            progressBlock(uploadStatus, error);
+        }
+    }];
 }
 
 #endif
