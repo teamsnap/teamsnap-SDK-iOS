@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */; };
+		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		563E3EF71CD012DD00B0F1FF /* TSDKDivisionMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EF51CD012DD00B0F1FF /* TSDKDivisionMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		563E3EF81CD012DD00B0F1FF /* TSDKDivisionMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E3EF61CD012DD00B0F1FF /* TSDKDivisionMember.m */; };
 		563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -325,6 +327,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKDuplicateCompletionBlockStore.h; sourceTree = "<group>"; };
+		561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKDuplicateCompletionBlockStore.m; sourceTree = "<group>"; };
 		563E3EF51CD012DD00B0F1FF /* TSDKDivisionMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKDivisionMember.h; path = Members/TSDKDivisionMember.h; sourceTree = "<group>"; };
 		563E3EF61CD012DD00B0F1FF /* TSDKDivisionMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDivisionMember.m; path = Members/TSDKDivisionMember.m; sourceTree = "<group>"; };
 		563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageRecipient.h; path = Protocols/TSDKMessageRecipient.h; sourceTree = "<group>"; };
@@ -758,6 +762,8 @@
 				969E807C1BAAE7AB00CA518F /* TSDKObjectsRequest.m */,
 				969B7E961C7BE2A000FD3EA0 /* TSDKRequestConfiguration.h */,
 				969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */,
+				561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */,
+				561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -923,6 +929,7 @@
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
 				969B7F021C7DE58C00FD3EA0 /* TSDKEventStatistic.h in Headers */,
 				965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
+				561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */,
 				969E80DF1BAAE7AB00CA518F /* TSDKEvent.h in Headers */,
 				969B7EC31C7CAE2600FD3EA0 /* TSDKForumSubscription.h in Headers */,
 				9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */,
@@ -1290,6 +1297,7 @@
 				96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				969E80CC1BAAE7AB00CA518F /* TSDKStatistic.m in Sources */,
 				969E80D61BAAE7AB00CA518F /* TSDKAvailability.m in Sources */,
+				561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
 				969E80B61BAAE7AB00CA518F /* TSDKCollectionJSON.m in Sources */,
 				964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */,
 				969E80E41BAAE7AB00CA518F /* TSDKForumTopic.m in Sources */,

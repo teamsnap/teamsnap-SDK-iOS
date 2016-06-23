@@ -10,10 +10,22 @@
 
 @implementation TSDKRequestConfiguration
 
-+ (instancetype)forceReload:(BOOL)forceReload {
-    TSDKRequestConfiguration *configurartion = [self new];
-    [configurartion setForceReload:forceReload];
-    return configurartion;
++ (instancetype)defaultRequestConfiguration {
+    TSDKRequestConfiguration *configuration = [[TSDKRequestConfiguration alloc] init];
+    return configuration;
+}
+
++ (instancetype)requestConfigurationWithForceReload:(BOOL)forceReload {
+    TSDKRequestConfiguration *configuration = [[TSDKRequestConfiguration alloc] init];
+    [configuration setForceReload:forceReload];
+    return configuration;
+}
+
++ (instancetype)requestConfigurationWithForceReload:(BOOL)forceReload withPriority:(CGFloat)priority;{
+    TSDKRequestConfiguration *configuration = [[TSDKRequestConfiguration alloc] init];
+    [configuration setForceReload:forceReload];
+    [configuration setPriority:priority];
+    return configuration;
 }
 
 
@@ -21,6 +33,7 @@
     self = [super init];
     if (self) {
         _forceReload = NO;
+        _priority = NSURLSessionTaskPriorityDefault;
     }
     return self;
 }
