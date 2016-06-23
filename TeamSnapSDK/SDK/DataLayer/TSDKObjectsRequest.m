@@ -118,7 +118,7 @@ static NSArray *knownCompletionTypes;
     
     NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
     
-    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
@@ -144,7 +144,7 @@ static NSArray *knownCompletionTypes;
     
     NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", [teamIds componentsJoinedByString:@","], [stringDataTypes componentsJoinedByString:@","]]];
     
-    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
             [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
@@ -223,7 +223,7 @@ static NSArray *knownCompletionTypes;
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
     NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", [emailAddress stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]]]];
     
-    [TSDKDataRequest requestObjectsForPath:invitationFinderPath withConfiguration:[TSDKRequestConfiguration forceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    [TSDKDataRequest requestObjectsForPath:invitationFinderPath withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         TSDKinvitationFinder *inviteStatus = nil;
         if (success) {
             if ([objects.collection count] > 0) {

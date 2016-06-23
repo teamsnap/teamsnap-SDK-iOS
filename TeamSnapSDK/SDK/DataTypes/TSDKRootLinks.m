@@ -82,7 +82,7 @@
             completion(YES, YES, schemasArray, nil);
         }
     } else {
-        [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+        [TSDKDataRequest requestJSONObjectsForPath:self.linkSchemas sendDataDictionary:nil method:@"GET" configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
             if ([objects isKindOfClass:[NSArray class]]) {
                 if ([[TSDKTeamSnap sharedInstance] teamSnapUser]) {
                     self.schemas = success;

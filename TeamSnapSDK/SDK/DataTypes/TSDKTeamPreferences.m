@@ -25,7 +25,7 @@
 
 #if TARGET_OS_IPHONE
 -(void)getTeamPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-    [TSDKDataRequest requestImageForPath:self.linkTeamPhoto withCompletion:^(UIImage *image) {
+    [TSDKDataRequest requestImageForPath:self.linkTeamPhoto configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
@@ -34,7 +34,7 @@
 
 -(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     if(self.linkTeamLogo) {
-        [TSDKDataRequest requestImageForPath:self.linkTeamLogo withCompletion:^(UIImage *image) {
+        [TSDKDataRequest requestImageForPath:self.linkTeamLogo configuration:configuration withCompletion:^(UIImage *image) {
             if (completion) {
                 completion(image);
             }

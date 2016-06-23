@@ -81,7 +81,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     return _requestHeaders;
 }
 
-+ (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withCompletion:(TSDKJSONCompletionBlock)completionBlock {
++ (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKJSONCompletionBlock)completionBlock {
     if ([URL isFileURL]) {
         NSLog(@"File URL");
         NSData *data = [NSData dataWithContentsOfURL:URL];
@@ -176,7 +176,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
                 }
                 [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
             }];
-            
+            remoteTask.priority = configuration.priority;
             [remoteTask resume];
         }
     }
@@ -211,7 +211,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
     }
     
-    [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+    [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
         TSDKCollectionJSON *containerCollection = nil;
         if ([objects isKindOfClass:[NSDictionary class]]) {
             containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
@@ -227,7 +227,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 #if TARGET_OS_IPHONE
-+ (void)requestImageForPath:(NSURL *)URL withCompletion:(TSDKImageCompletionBlock)completionBlock {
++ (void)requestImageForPath:(NSURL *)URL configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKImageCompletionBlock)completionBlock {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     
@@ -262,7 +262,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
             completionBlock(image);
         }
     }];
-    
+    remoteTask.priority = configuration.priority;
     [remoteTask resume];
 }
 #endif
@@ -282,7 +282,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, clientId, clientSecret, scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
     
-    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSString *OAuthToken = nil;
         if ([objects isKindOfClass:[NSDictionary class]]) {
             if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
