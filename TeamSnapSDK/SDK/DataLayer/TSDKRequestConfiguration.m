@@ -33,7 +33,7 @@
     self = [super init];
     if (self) {
         _forceReload = NO;
-        _priority = NSURLSessionTaskPriorityDefault;
+        _priority = 0.5;
     }
     return self;
 }
