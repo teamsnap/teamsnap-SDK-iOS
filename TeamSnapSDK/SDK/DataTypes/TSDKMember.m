@@ -127,9 +127,10 @@
     return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadDelegateObject * _Nullable uploadStatus, NSError * _Nullable error) {
         if (uploadStatus.complete && uploadStatus.success) {
             TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
+            [poisonPill setInteger:self.objectIdentifier forKey:@"id"];
             poisonPill.memberId = self.objectIdentifier;
             poisonPill.teamId = self.teamId;
-            [TSDKNotifications postInvalidateAssociatedCaches:poisonPill];
+            [TSDKNotifications postInvalidateAssociatedObjects:poisonPill];
         }
         if (progressBlock) {
             progressBlock(uploadStatus, error);
