@@ -79,3 +79,4 @@
 #import <TeamSnapSDK/TSDKMessageRecipient.h>
 #import <TeamSnapSDK/TSDKMessageSender.h>
 #import <TeamSnapSDK/TSDKMemberPhoto.h>
+#import <TeamsnapSDK/TSDKBackgroundUploadDelegateObject.h>

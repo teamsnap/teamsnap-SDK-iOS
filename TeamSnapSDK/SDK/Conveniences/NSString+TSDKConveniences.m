@@ -4,43 +4,23 @@
 //
 
 #import "NSString+TSDKConveniences.h"
-
+#import "NSDateFormatter+TSDKConvenience.h"
 
 @implementation NSString (TSDKConveniences)
 
--(NSDate *)dateFromFormat:(NSString *)incomingFormat {
-    if ([self isEqualToString:@""]) {
-        return nil;
-    } else {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        
-        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        
-        [dateFormatter setLocale:enUSPOSIXLocale];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-        
-        [dateFormatter setDateFormat:incomingFormat];
-        NSDate *date = nil;
-        NSError *error = nil;
-        [dateFormatter getObjectValue:&date forString:self range:nil error:&error];
-
-        return date;
-    }
-}
-
 - (NSDate *)dateFromRCF3339DateTimeString {
-    NSDate *result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    NSDate *result = [[NSDateFormatter RCF3339Style1DateFormatter] dateFromString:self];
     if (!result) {
-        result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"];
+        result = [[NSDateFormatter RCF3339Style2DateFormatter] dateFromString:self];
     }
     if (!result) {
-        result = [self dateFromFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZZZ"];
+        result = [[NSDateFormatter RCF3339Style3DateFormatter] dateFromString:self];
     }
     return result;
 }
 
 - (NSDate *)dateFromJustDate {
-    return [self dateFromFormat:@"yyyy'-'MM'-'dd"];
+    return [[NSDateFormatter yearMonthDateFormatter] dateFromString:self];
 }
 
 - (NSString *)addClassNameToDescriptor:(NSString *)className {
@@ -146,6 +126,15 @@
     } else {
         return [self substringToIndex:self.length-1];
     }
+}
+
++ (NSString *)GUID {
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    NSString *result = [NSString stringWithFormat:@"%@", string];
+    CFRelease(theUUID);
+    CFRelease(string);
+    return  result;
 }
 
 @end

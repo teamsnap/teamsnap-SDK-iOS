@@ -15,6 +15,10 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"
+#import "TSDKBackgroundUploadProgressMonitorDelegate.h"
+#import "TSDKMemberPhoto.h"
+#import "TSDKNotifications.h"
+
 
 @implementation TSDKMember
 
@@ -70,9 +74,14 @@
 }
 #if TARGET_OS_IPHONE
 
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
+- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
+    NSString *cropString = @"fill";
+    if (fitCrop) {
+        cropString = @"fit";
+    }
     NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
-                                              @"width":[NSNumber numberWithInteger:height]};
+                                              @"width":[NSNumber numberWithInteger:height],
+                                              @"crop":cropString};
     
     [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
@@ -93,6 +102,38 @@
     [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
+        }
+    }];
+}
+
++(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock {
+    
+    TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
+    
+    TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
+    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
+    uploadCommand.data[@"file_name"] = @"photo.jpg";
+    NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
+    
+    uploadCommand.data[@"file"] = imageData;
+    NSURL *url = [NSURL URLWithString:uploadCommand.href];
+    
+    [TSDKDataRequest postDictionary:uploadCommand.data toURL:url delegate:backgroundUploadDelegate];
+    
+    return backgroundUploadDelegate;
+}
+
+- (TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock {
+    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadProgressMonitorDelegate * _Nullable uploadStatus, NSError * _Nullable error) {
+        if (uploadStatus.complete && uploadStatus.success) {
+            TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
+            [poisonPill setInteger:self.objectIdentifier forKey:@"id"];
+            poisonPill.memberId = self.objectIdentifier;
+            poisonPill.teamId = self.teamId;
+            [TSDKNotifications postInvalidateAssociatedObjects:poisonPill];
+        }
+        if (progressBlock) {
+            progressBlock(uploadStatus, error);
         }
     }];
 }

@@ -7,9 +7,6 @@
 
 @interface NSDate (TSDKConveniences)
 
-
-- (NSString *)stringWithFormat:(NSString *)format;
-
 - (NSString *)shortString;
 
 - (NSString *)YYYYMMDDString;
