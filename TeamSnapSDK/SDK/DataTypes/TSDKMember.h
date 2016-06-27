@@ -13,7 +13,7 @@
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
 
-@class TSDKBackgroundUploadDelegateObject;
+@class TSDKBackgroundUploadProgressMonitorDelegate;
 
 @protocol TSDKMemberOrContactProtocol <NSObject>
 
@@ -119,10 +119,12 @@
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
 
 #if TARGET_OS_IPHONE
-+(TSDKBackgroundUploadDelegateObject *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock;
++(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock;
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 -(void)getMemberThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
--(TSDKBackgroundUploadDelegateObject *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock;
+
+// Returns the object that will receive the progress update callbacks so it can be stored immediately to an associated object and/or directly queried for the upload progress at any time (not just when the progress block is fired).
+-(TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock;
 
 #endif
 

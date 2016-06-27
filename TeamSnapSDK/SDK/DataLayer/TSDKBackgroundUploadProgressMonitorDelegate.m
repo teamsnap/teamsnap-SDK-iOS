@@ -6,17 +6,17 @@
 //  Copyright © 2016 teamsnap. All rights reserved.
 //
 
-#import "TSDKBackgroundUploadDelegateObject.h"
+#import "TSDKBackgroundUploadProgressMonitorDelegate.h"
 #import "NSHTTPURLResponse+convenience.h"
 
-@interface TSDKBackgroundUploadDelegateObject()
+@interface TSDKBackgroundUploadProgressMonitorDelegate()
 
 @property (nonatomic, copy) TSDKUploadProgressBlock progressBlock;
 @property (nonatomic, strong) NSData *responseData;
 
 @end
 
-@implementation TSDKBackgroundUploadDelegateObject
+@implementation TSDKBackgroundUploadProgressMonitorDelegate
 
 -(instancetype)initWithProgressBlock:(TSDKUploadProgressBlock)progressBlock {
     self = [super init];

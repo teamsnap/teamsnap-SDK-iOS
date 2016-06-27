@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCompletionBlockTypes.h"
 
-@interface TSDKBackgroundUploadDelegateObject : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
+@interface TSDKBackgroundUploadProgressMonitorDelegate : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) NSNumber *totalBytesSent;
 @property (nonatomic, strong) NSNumber *totalBytesExpectedToSend;

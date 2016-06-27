@@ -15,7 +15,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"
-#import "TSDKBackgroundUploadDelegateObject.h"
+#import "TSDKBackgroundUploadProgressMonitorDelegate.h"
 #import "TSDKMemberPhoto.h"
 #import "TSDKNotifications.h"
 
@@ -106,9 +106,9 @@
     }];
 }
 
-+(TSDKBackgroundUploadDelegateObject *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock {
++(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock {
     
-    TSDKBackgroundUploadDelegateObject *backgroundUploadDelegate = [[TSDKBackgroundUploadDelegateObject alloc] initWithProgressBlock:progressBlock];
+    TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
     uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
@@ -123,8 +123,8 @@
     return backgroundUploadDelegate;
 }
 
-- (TSDKBackgroundUploadDelegateObject *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock {
-    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadDelegateObject * _Nullable uploadStatus, NSError * _Nullable error) {
+- (TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock {
+    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadProgressMonitorDelegate * _Nullable uploadStatus, NSError * _Nullable error) {
         if (uploadStatus.complete && uploadStatus.success) {
             TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
             [poisonPill setInteger:self.objectIdentifier forKey:@"id"];

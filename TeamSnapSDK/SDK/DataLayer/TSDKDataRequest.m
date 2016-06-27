@@ -18,7 +18,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
 #import "NSString+TSDKConveniences.h"
-#import "TSDKBackgroundUploadDelegateObject.h"
+#import "TSDKBackgroundUploadProgressMonitorDelegate.h"
 #import "TSDKDuplicateCompletionBlockStore.h"
 
 static NSString *baseURL = @"https://api.teamsnap.com/v3/";
