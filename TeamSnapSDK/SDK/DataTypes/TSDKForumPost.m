@@ -19,9 +19,6 @@
 }
 
 + (void)savePost:(TSDKForumPost *)post broadcastToTeam:(BOOL)broadcastToTeam completion:(TSDKSaveCompletionBlock)completion {
-    [post setInteger:post.forumTopicId forKey:@"forum_topic_id"];
-    [post setInteger:post.memberId forKey:@"member_id"];
-    [post setString:post.message forKey:@"message"];
     [post setBool:broadcastToTeam forKey:@"broadcast_to_team"];
     [post saveWithCompletion:completion];
 }
