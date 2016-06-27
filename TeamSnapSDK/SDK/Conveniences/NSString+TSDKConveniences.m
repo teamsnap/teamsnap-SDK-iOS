@@ -148,7 +148,7 @@
     }
 }
 
-+ (NSString *)getGUID {
++ (NSString *)GUID {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     NSString *result = [NSString stringWithFormat:@"%@", string];

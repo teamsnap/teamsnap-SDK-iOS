@@ -20,6 +20,6 @@
 - (NSString *)linkForGetProperty;
 - (NSString *)typeFromRel;
 
-+(NSString *)getGUID;
++(NSString *)GUID;
 
 @end

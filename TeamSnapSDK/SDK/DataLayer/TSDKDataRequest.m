@@ -315,7 +315,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (NSData *)multiPartPostDataFromDictionary:(NSDictionary *)postDictionary request:(NSMutableURLRequest *)request {
-    NSString *boundaryConstant = [NSString stringWithFormat:@"__TeamSnapMultiPart%@__", [NSString getGUID]];
+    NSString *boundaryConstant = [NSString stringWithFormat:@"__TeamSnapMultiPart%@__", [NSString GUID]];
     NSMutableData *postData = [self multiPartPostDataFromDictionary:postDictionary parentKeys:[[NSArray alloc] init] boundaryConstant:boundaryConstant];
     [postData appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -343,11 +343,11 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSURL *uploadCacheFile = [NSURL fileURLWithPath:[cacheDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", [NSString getGUID]]]];
+    NSURL *uploadCacheFile = [NSURL fileURLWithPath:[cacheDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", [NSString GUID]]]];
     
     [[self multiPartPostDataFromDictionary:postDictionary request:request] writeToURL:uploadCacheFile atomically:YES];
     
-    NSURLSessionConfiguration *uploadConfigObject = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[NSString getGUID]];
+    NSURLSessionConfiguration *uploadConfigObject = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[NSString GUID]];
     uploadConfigObject.allowsCellularAccess = YES;
     
     NSURLSession *uploadsession = [NSURLSession sessionWithConfiguration:uploadConfigObject delegate:delegate delegateQueue:nil];
