@@ -17,6 +17,8 @@
 #import "TSDKProfileTimer.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
+#import "NSString+TSDKConveniences.h"
+#import "TSDKBackgroundUploadProgressMonitorDelegate.h"
 #import "TSDKDuplicateCompletionBlockStore.h"
 
 static NSString *baseURL = @"https://api.teamsnap.com/v3/";
@@ -226,6 +228,136 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [self requestObjectsForPath:URL searchParamaters:nil sendDataDictionary:dataEnvelope method:method withConfiguration:configuration completion:completionBlock];
 }
 
+# pragma mark - Multipart uploads
+
++ (NSString *)mimeTypeForData:(NSData *)data {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    
+    switch (c) {
+        case 0xFF:
+            return @"image/jpeg";
+            break;
+        case 0x89:
+            return @"image/png";
+            break;
+        case 0x47:
+            return @"image/gif";
+            break;
+        case 0x49:
+        case 0x4D:
+            return @"image/tiff";
+            break;
+        case 0x25:
+            return @"application/pdf";
+            break;
+        case 0xD0:
+            return @"application/vnd";
+            break;
+        case 0x46:
+            return @"text/plain";
+            break;
+        default:
+            return @"application/octet-stream";
+    }
+    return nil;
+}
+
++ (NSMutableData *)multiPartPostDataFromDictionary:(NSDictionary *)postDictionary parentKeys:(NSArray *)parentKeys boundaryConstant:(NSString *)boundaryConstant {
+    NSMutableData *postData = [[NSMutableData alloc] init];
+    
+    NSMutableData *binaryPartData = [[NSMutableData alloc] init];
+    
+    for (NSString *key in postDictionary.allKeys) {
+        if ([key isEqualToString:@"supressed_file_name"]) {
+            continue;
+        }
+
+        NSObject *value = [postDictionary objectForKey:key];
+        if (!value || [value isEqual:[NSNull null]]) {
+            continue;
+        }
+        if ([value isKindOfClass:[NSString class]] && [(NSString *)value length]==0) {
+            continue;
+        }
+        NSMutableString *multipartKey = [NSMutableString stringWithString:key];
+        if (parentKeys.count>0) {
+            multipartKey = [NSMutableString stringWithString:[parentKeys objectAtIndex:0]];
+            for (NSInteger nLoop = 1; nLoop < parentKeys.count; nLoop++) {
+                [multipartKey appendString:[NSString stringWithFormat:@"[%@]", [parentKeys objectAtIndex:nLoop]]];
+            }
+            [multipartKey appendString:[NSString stringWithFormat:@"[%@]", key]];
+        }
+        
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            [postData appendData:[self multiPartPostDataFromDictionary:(NSDictionary *)value parentKeys:[parentKeys arrayByAddingObjectsFromArray:@[key]] boundaryConstant:boundaryConstant]];
+        } else if ([value isKindOfClass:[NSString class]]) {
+            [postData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n", multipartKey, value] dataUsingEncoding:NSUTF8StringEncoding]];
+        } else if ([value isKindOfClass:[NSNumber class]]) {
+            [postData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n", multipartKey, value] dataUsingEncoding:NSUTF8StringEncoding]];
+        } else if ([value isKindOfClass:[NSData class]]) {
+            NSString *fileName = [postDictionary objectForKey:@"file_name"];
+            if (!fileName) {
+                fileName = [postDictionary objectForKey:@"supressed_file_name"];
+            }
+            [binaryPartData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [binaryPartData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\nContent-Type: %@\r\n\r\n", multipartKey , fileName, [self mimeTypeForData:(NSData *)value]] dataUsingEncoding:NSUTF8StringEncoding]];
+            [binaryPartData appendData:(NSData *)value];
+            [binaryPartData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }
+    
+    [postData appendData:binaryPartData];
+    return postData;
+}
+
++ (NSData *)multiPartPostDataFromDictionary:(NSDictionary *)postDictionary request:(NSMutableURLRequest *)request {
+    NSString *boundaryConstant = [NSString stringWithFormat:@"__TeamSnapMultiPart%@__", [NSString GUID]];
+    NSMutableData *postData = [self multiPartPostDataFromDictionary:postDictionary parentKeys:[[NSArray alloc] init] boundaryConstant:boundaryConstant];
+    [postData appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%zu", (unsigned long)[postData length]];
+
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"close" forHTTPHeaderField:@"Connection"];
+    
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundaryConstant];
+    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    return postData;
+}
+
++ (void)postDictionary:(NSDictionary *)postDictionary toURL:(NSURL *)url delegate:(id<NSURLSessionDataDelegate>)delegate {
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    for (NSString *headerKeys in self.requestHeaders) {
+        [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
+    }
+    
+    if (OAuthToken) {
+        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+    }
+    
+    NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSURL *uploadCacheFile = [NSURL fileURLWithPath:[cacheDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", [NSString GUID]]]];
+    
+    [[self multiPartPostDataFromDictionary:postDictionary request:request] writeToURL:uploadCacheFile atomically:YES];
+    
+    NSURLSessionConfiguration *uploadConfigObject = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[NSString GUID]];
+    uploadConfigObject.allowsCellularAccess = YES;
+    
+    NSURLSession *uploadsession = [NSURLSession sessionWithConfiguration:uploadConfigObject delegate:delegate delegateQueue:nil];
+    
+    NSURLSessionDataTask *remoteTask = [uploadsession uploadTaskWithRequest:request fromFile:uploadCacheFile];
+
+    
+    [remoteTask resume];
+}
+
 #if TARGET_OS_IPHONE
 + (void)requestImageForPath:(NSURL *)URL configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKImageCompletionBlock)completionBlock {
     
@@ -266,16 +398,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [remoteTask resume];
 }
 #endif
-
-/*
-+ (void)asyncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock {
-    
-}
-
-+ (void)syncRequestObjectsForPaths:(NSArray *)paths withCompletion:(TSDKCompletionBlock)completionBlock {
-    
-}
- */
 
 + (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
      NSString *scopes = @"read write";

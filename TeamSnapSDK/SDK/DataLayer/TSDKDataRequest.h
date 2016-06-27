@@ -25,6 +25,7 @@
 + (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
++ (void)postDictionary:(NSDictionary *)postDictionary toURL:(NSURL *)url delegate:(id<NSURLSessionDataDelegate>)delegate;
 
 #if TARGET_OS_IPHONE
 + (void)requestImageForPath:(NSURL *)URL configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKImageCompletionBlock)completionBlock;

@@ -141,7 +141,7 @@
 +(void)actionInviteContact:(NSInteger)contactId team:(NSInteger)teamId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
 -(void)actionInviteContact:(NSInteger)contactId asMember:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
 
--(void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
+- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
 
 
 @end

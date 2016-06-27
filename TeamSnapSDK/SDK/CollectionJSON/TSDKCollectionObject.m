@@ -716,26 +716,6 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }];
 }
 
-/*
- Not Tested
-- (void)objectFromLink:(NSURL *)link WithCompletion:(TSDKCompletionBlock) completion {
-    [TSDKDataRequest requestObjectsForPath:link withCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completion) {
-            if ([objects collection]) {
-                completion(success, complete, [objects collection], error);
-            } else {
-                completion(success, complete, nil, error);
-            }
-            //            void (^completionBlock)() = (__bridge typeof TSDKArrayCompletionBlock) completion;
-            //            ((id(^)())(completion(success, complete, rosters, error));
-        }
-    }];
-    
-    
-}
- */
-
-
 - (BOOL)writeToFileURL:(NSURL *)fileURL {
     NSData *collectionData = [self.collection dataEncodedForSave];
     NSError *error;
