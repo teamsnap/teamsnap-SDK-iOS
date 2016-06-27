@@ -757,12 +757,26 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     return collectionObject;
 }
 
-- (BOOL)isEqual:(id)anObject {
-    if([anObject isKindOfClass:[self class]]) {
-        return self.objectIdentifier == ((TSDKCollectionObject *)anObject).objectIdentifier;
-    } else {
-        return [super isEqual:anObject];
+#pragma mark - NSObject
+
+- (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *)collectionObject {
+    if (!collectionObject) {
+        return NO;
     }
+    
+    return self.objectIdentifier == collectionObject.objectIdentifier;
+}
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+    
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToCollectionObject:(TSDKCollectionObject *)object];
 }
 
 - (NSUInteger)hash {
