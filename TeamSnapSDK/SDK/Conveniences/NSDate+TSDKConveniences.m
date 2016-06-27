@@ -4,38 +4,20 @@
 //
 
 #import "NSDate+TSDKConveniences.h"
-
+#import "NSDateFormatter+TSDKConvenience.h"
 
 @implementation NSDate (TSDKConveniences)
 
-- (NSString *)stringWithFormat:(NSString *)format {
-    NSString *result = @"";
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-
-    NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    
-    [dateFormatter setLocale:enUSPOSIXLocale];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    [dateFormatter setDateFormat:format];
-
-    // [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-    // [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    result = [dateFormatter stringFromDate:self];
-    return result;
-}
-
 - (NSString *)shortString {
-    return [self stringWithFormat:@"MMM d, yyyy"];
+    return [[NSDateFormatter monthDateYearFormatter] stringFromDate:self];
 }
 
 -(NSString *)YYYYMMDDString {
-    return [self stringWithFormat:@"yyyy-MM-dd"];
+    return [[NSDateFormatter yearMonthDateFormatter] stringFromDate:self];
 }
 
 - (NSString *)RCF3339DateTimeString {
-    NSString *dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'";
-    return [self stringWithFormat:dateFormat];
+    return [[NSDateFormatter RCF3339Style1DateFormatter] stringFromDate:self];
 }
 
 - (BOOL)isSameDayAs:(NSDate *)dateToCompare {
