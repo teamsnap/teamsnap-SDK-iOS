@@ -41,16 +41,4 @@
     };
 }
 
-- (BOOL)isEqual:(id)anObject {
-    if([anObject isKindOfClass:[TSDKForumPost class]]) {
-        return self.objectIdentifier == ((TSDKForumPost *)anObject).objectIdentifier;
-    } else {
-        return [self isEqual:anObject];
-    }
-}
-
-- (NSUInteger)hash {
-    return self.objectIdentifier;
-}
-
 @end

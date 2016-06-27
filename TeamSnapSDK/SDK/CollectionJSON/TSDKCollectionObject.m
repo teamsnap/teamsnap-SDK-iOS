@@ -757,4 +757,16 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     return collectionObject;
 }
 
+- (BOOL)isEqual:(id)anObject {
+    if([anObject isKindOfClass:[self class]]) {
+        return self.objectIdentifier == ((TSDKCollectionObject *)anObject).objectIdentifier;
+    } else {
+        return [super isEqual:anObject];
+    }
+}
+
+- (NSUInteger)hash {
+    return self.objectIdentifier;
+}
+
 @end
