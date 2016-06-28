@@ -12,26 +12,15 @@
 #import "TSDKRootLinks.h"
 
 @implementation TSDKForumPost
-@dynamic wasBroadcasted, createdAt, posterName, message, memberId, forumTopicId, divisionMemberId, updatedAt, linkMember, linkForumTopic, linkTeam, linkDivisionMember;
+@dynamic wasBroadcasted, createdAt, posterName, message, memberId, forumTopicId, divisionMemberId, updatedAt, linkMember, linkForumTopic, linkTeam, linkDivisionMember, teamId;
 
 + (NSString *)SDKType {
     return @"forum_post";
 }
 
-+(void)addPost:(TSDKForumPost *)post withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
-    [data setObject:[NSNumber numberWithInteger:post.forumTopicId] forKey:@"forum_topic_id"];
-    //[data setObject:[NSNumber numberWithInteger:post.divisionMemberId] forKey:@"division_member_id"];
-    [data setObject:[NSNumber numberWithInteger:post.memberId] forKey:@"member_id"];
-    [data setObject:post.message forKey:@"message"];
-    [data setObject:[NSNumber numberWithBool:post.wasBroadcasted] forKey:@"broadcast_to_team"];
-    NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:data];
-    
-    [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumPosts] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
++ (void)savePost:(TSDKForumPost *)post broadcastToTeam:(BOOL)broadcastToTeam completion:(TSDKSaveCompletionBlock)completion {
+    [post setBool:broadcastToTeam forKey:@"broadcast_to_team"];
+    [post saveWithCompletion:completion];
 }
 
 -(void)setMessage:(NSString *)message {

@@ -11,6 +11,8 @@
 
 @interface TSDKForumTopic : TSDKCollectionObject
 
+@property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-25T18:19:51Z
+@property (nonatomic, weak) NSDate *updatedAt; //Example: 2013-02-08T18:22:04Z
 @property (nonatomic, weak) NSString *title; //Example: Test Post
 @property (nonatomic, assign) BOOL isAnnouncement; //Example: 0
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
