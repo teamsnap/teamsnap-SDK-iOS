@@ -551,7 +551,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (BOOL)getBool:(NSString *)aKey {
     if ([_collection.data[aKey] isEqual:[NSNull null]]) {
-        return false;
+        return NO;
     }
     return [(NSNumber *) _collection.data[aKey] boolValue];
 }
