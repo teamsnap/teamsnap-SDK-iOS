@@ -25,6 +25,23 @@
     [super tearDown];
 }
 
+- (void)testFullName {
+    TSDKMember *member = [[TSDKMember alloc] init];
+    XCTAssertEqualObjects(@"", member.fullName);
+    
+    [member.collection.data setValue:[NSNull null] forKey:@"first_name"];
+    XCTAssertEqualObjects(@"", member.fullName);
+    
+    [member.collection.data setValue:[NSNull null] forKey:@"last_name"];
+    XCTAssertEqualObjects(@"", member.fullName);
+    
+    member.firstName = @"Ronnie";
+    XCTAssertEqualObjects(@"Ronnie", member.fullName);
+    
+    member.lastName = @"Reagan";
+    XCTAssertEqualObjects(@"Ronnie Reagan", member.fullName);
+}
+
 - (void)testAddressString {
     TSDKMember *member = [[TSDKMember alloc] init];
     XCTAssertNotEqual(@"", member.addressString);

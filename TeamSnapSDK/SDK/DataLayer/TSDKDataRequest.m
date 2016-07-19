@@ -9,6 +9,7 @@
 #import "TSDKDataRequest.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#import "TSDKNetworkActivityIndicator.h"
 #endif
 #import "NSHTTPURLResponse+convenience.h"
 #import "TSDKCollectionJSON.h"
@@ -129,7 +130,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
             
             [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
+#if TARGET_OS_IPHONE
+            [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
+#endif
             NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+#if TARGET_OS_IPHONE
+                [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
+#endif
                 [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
                 
                 BOOL success = NO;
@@ -377,7 +384,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
     DLog(@"Curl:\n%@", [request getCurlEquivalent]);
     
     [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
+#if TARGET_OS_IPHONE
+    [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
+#endif
     NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+#if TARGET_OS_IPHONE
+        [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
+#endif
         [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
         
         BOOL success = NO;
