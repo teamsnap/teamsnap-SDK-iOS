@@ -151,6 +151,14 @@
     
     referenceDate = [referenceDate dateByAddingTimeInterval:100];
     XCTAssertEqualObjects(event.startDate, referenceDate);
+    
+    event.endDate = nil;
+    XCTAssertNil(event.endDate);
+    
+    XCTAssertNotNil(event.startDate);
+    
+    event.startDate = nil;
+    XCTAssertNil(event.startDate);
 }
 
 - (void)testArrayFromLinkWithNilLink {
