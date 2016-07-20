@@ -547,7 +547,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         return nil;
     }
     NSString *dateString = self.collection.data[key];
-    if (!dateString) {
+    if (dateString.length == 0) {
         return nil;
     }
     

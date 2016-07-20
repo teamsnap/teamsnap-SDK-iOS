@@ -159,6 +159,15 @@
     
     event.startDate = nil;
     XCTAssertNil(event.startDate);
+    
+    // testing when JSON date string == ""
+    if ([_userCollectionJSON.collection isKindOfClass:[NSArray class]] ) {
+        TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
+        
+        TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
+        [user.collection.data setObject:@"" forKey:@"created_at"];
+        XCTAssertNoThrow(user.createdAt);
+    }
 }
 
 - (void)testArrayFromLinkWithNilLink {
