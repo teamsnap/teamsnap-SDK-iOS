@@ -143,9 +143,22 @@
     NSDate *referenceDate = [NSDate dateWithTimeIntervalSince1970:1461074742.0];
     [event setStartDate:referenceDate];
     XCTAssertNotNil(event.startDate);
-    NSLog(@"Start Date %@ %@", event.startDate, [event.collection.data objectForKey:@"start_date"]);
     
-    XCTAssertEqual(event.startDate, referenceDate);
+    XCTAssertEqualObjects(event.startDate, referenceDate);
+    
+    event.startDate = [NSDate dateWithTimeIntervalSince1970:1461074842.0];
+    XCTAssertNotEqualObjects(event.startDate, referenceDate);
+    
+    referenceDate = [referenceDate dateByAddingTimeInterval:100];
+    XCTAssertEqualObjects(event.startDate, referenceDate);
+    
+    event.endDate = nil;
+    XCTAssertNil(event.endDate);
+    
+    XCTAssertNotNil(event.startDate);
+    
+    event.startDate = nil;
+    XCTAssertNil(event.startDate);
 }
 
 - (void)testArrayFromLinkWithNilLink {

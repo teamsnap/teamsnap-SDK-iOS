@@ -18,6 +18,12 @@
 #import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKNotifications.h"
 
+@interface TSDKCollectionObject()
+
+@property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
+
+@end
+
 @implementation TSDKCollectionObject
 
 static NSMutableDictionary *_templates;
@@ -26,6 +32,13 @@ static NSMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
     return [_templates objectForKey:className];
+}
+
+- (NSMutableDictionary *)cachedDatesLookup {
+    if (!_cachedDatesLookup) {
+        _cachedDatesLookup = [[NSMutableDictionary alloc] init];
+    }
+    return _cachedDatesLookup;
 }
 
 +(NSDictionary *)template {
@@ -534,18 +547,29 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         return nil;
     }
     NSString *dateString = self.collection.data[key];
-    NSDate *date;
-    if ([dateString length]>10) {
-        date = [dateString dateFromRCF3339DateTimeString];
-    } else {
-        date = [dateString dateFromJustDate];
+    if (!dateString) {
+        return nil;
+    }
+    
+    NSDate *date = [self.cachedDatesLookup objectForKey:dateString];
+    if (!date) {
+        if ([dateString length]>10) {
+            date = [dateString dateFromRCF3339DateTimeString];
+        } else {
+            date = [dateString dateFromJustDate];
+        }
+        [self.cachedDatesLookup setObject:date forKey:dateString];
     }
     return date;
 }
 
 - (void)setDate:(NSDate *)value forKey:(NSString *)aKey {
     if (![[self getDate:aKey] isEqualToDate:value]) {
-        [self setString:[value RCF3339DateTimeString] forKey:aKey];
+        NSString *dateString = [value RCF3339DateTimeString];
+        [self setString:dateString forKey:aKey];
+        if (dateString) {
+            [self.cachedDatesLookup setObject:value forKey:dateString];
+        }
     }
 }
 
