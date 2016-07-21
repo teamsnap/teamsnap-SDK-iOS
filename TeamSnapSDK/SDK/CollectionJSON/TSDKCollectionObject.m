@@ -567,7 +567,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     if (![[self getDate:aKey] isEqualToDate:value]) {
         NSString *dateString = [value RCF3339DateTimeString];
         [self setString:dateString forKey:aKey];
-        if (dateString) {
+        if ([dateString length]) {
             [self.cachedDatesLookup setObject:value forKey:dateString];
         }
     }
