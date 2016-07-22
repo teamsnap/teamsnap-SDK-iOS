@@ -86,4 +86,8 @@
     return [NSString stringWithString:result];
 }
 
+- (BOOL)hasExistingInvitation {
+    return (self.isInvitable && self.invitationCode);
+}
+
 @end
