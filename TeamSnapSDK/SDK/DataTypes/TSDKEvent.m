@@ -86,6 +86,12 @@
 
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion {
     [self setNotifyTeamAsMember:member];
+    
+    // Until we have better support for Repeating events make sure repeating_include is set to "none"
+    if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
+        [self.changedValues setObject:self.repeatingUuid forKey:@"repeating_uuid"];
+        [self setString:@"none" forKey:@"repeating_include"];
+    }
     [super saveWithCompletion:completion];
 }
 
