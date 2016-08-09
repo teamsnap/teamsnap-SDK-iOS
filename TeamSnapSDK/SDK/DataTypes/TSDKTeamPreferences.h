@@ -31,7 +31,7 @@
 @property (nonatomic, assign) NSInteger availabilityEventCutoff; //Example: 72
 @property (nonatomic, assign) BOOL isCoed; //Example: 1
 @property (nonatomic, assign) BOOL paymentsShowTab; //Example: 1
-@property (nonatomic, assign) NSInteger remindersSendEvent; //Example: 0
+@property (nonatomic, assign) BOOL remindersSendEvent; //Example: 0
 @property (nonatomic, weak) NSString *alternateSportName; //Example:
 @property (nonatomic, assign) NSInteger colorSchemeCd; //Example: 0
 @property (nonatomic, assign) BOOL announcementAboveHomePhoto; //Example: 1

@@ -16,40 +16,6 @@
     return @"member_preferences";
 }
 
-- (void)setScheduleReminderPreference:(TSDKMemberPreferencesScheduleReminder)scheduleReminderPreference {
-    switch (scheduleReminderPreference) {
-        case TSDKMemberPreferencesScheduleReminderOff:
-            self.remindersSendGame = NO;
-            self.remindersSendEvent = NO;
-            break;
-        case TSDKMemberPreferencesScheduleReminderGamesAndEvents:
-            self.remindersSendGame = YES;
-            self.remindersSendEvent = YES;
-            break;
-        case TSDKMemberPreferencesScheduleReminderGamesOnly:
-            self.remindersSendGame = YES;
-            self.remindersSendEvent = NO;
-            break;
-        case TSDKMemberPreferencesScheduleReminderEventsOnly:
-            self.remindersSendGame = NO;
-            self.remindersSendEvent = YES;
-        default:
-            break;
-    }
-}
-
-- (TSDKMemberPreferencesScheduleReminder)scheduleReminderPreference {
-    if(self.remindersSendEvent == NO && self.remindersSendGame == NO) {
-        return TSDKMemberPreferencesScheduleReminderOff;
-    } else if(self.remindersSendEvent == YES && self.remindersSendGame == YES) {
-        return TSDKMemberPreferencesScheduleReminderGamesAndEvents;
-    } else if(self.remindersSendEvent == NO && self.remindersSendGame == YES) {
-        return TSDKMemberPreferencesScheduleReminderGamesOnly;
-    } else {
-        return TSDKMemberPreferencesScheduleReminderEventsOnly;
-    }
-}
-
 - (void)setManagerAvailabilityReminderPreference:(TSDKMemberPreferencesManagerAvailabilityReminder)managerAvailabilityReminderPreference {
     switch (managerAvailabilityReminderPreference) {
         case TSDKMemberPreferencesManagerAvailabilityReminderOff:
