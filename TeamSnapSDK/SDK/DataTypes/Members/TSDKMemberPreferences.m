@@ -10,7 +10,7 @@
 
 @implementation TSDKMemberPreferences
 
-@dynamic remindersSendDaysBeforeEvent, publicSiteShowThumbnail, memberId, facebookPostScores, remindersSendGame, scheduleShowFor, publicSiteShowLastName, remindersSendEvent, remindersSendManagerGame, scheduleShowForCode, facebookPostScoresToPageName, mobileSendPushMessages, updatedAt, remindersSendManagerDaysBeforeEvent, facebookPostScoresToPageId, assignmentsHidePast, scheduleHidePast, facebookPoliteScores, remindersSendDaysBeforeGame, availabilityShowPast, remindersSendManagerDaysBeforeGame, facebookOnlyPostWins, facebookPostScoresToWall, facebookPageAccessToken, createdAt, remindersSendManagerEvent, teamId, linkMember, linkTeam;
+@dynamic gameReminderPreference, remindersSendDaysBeforeEvent, publicSiteShowThumbnail, memberId, facebookPostScores, remindersSendGame, scheduleShowFor, publicSiteShowLastName, remindersSendEvent, remindersSendManagerGame, scheduleShowForCode, facebookPostScoresToPageName, mobileSendPushMessages, updatedAt, assignmentsHidePast, facebookPostScoresToPageId, remindersSendManagerDaysBeforeEvent, scheduleHidePast, facebookPoliteScores, eventReminderPreference, remindersSendDaysBeforeGame, availabilityShowPast, remindersSendManagerDaysBeforeGame, facebookOnlyPostWins, facebookPostScoresToWall, facebookPageAccessToken, createdAt, remindersSendManagerEvent, teamId, linkMember, linkTeam;
 
 + (NSString *)SDKType {
     return @"member_preferences";
