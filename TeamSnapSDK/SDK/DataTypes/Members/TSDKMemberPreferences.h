@@ -9,22 +9,11 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSUInteger, TSDKMemberPreferencesManagerAvailabilityReminder) {
-    TSDKMemberPreferencesManagerAvailabilityReminderOff,
-    TSDKMemberPreferencesManagerAvailabilityReminderGamesAndEvents,
-    TSDKMemberPreferencesManagerAvailabilityReminderGamesOnly,
-    TSDKMemberPreferencesManagerAvailabilityReminderEventsOnly
-};
-
 @interface TSDKMemberPreferences : TSDKCollectionObject
-
-@property (nonatomic, assign) TSDKMemberPreferencesManagerAvailabilityReminder managerAvailabilityReminderPreference;
 
 @property (nonatomic, weak) NSString *gameReminderPreference; //Example: none
 @property (nonatomic, weak) NSString *eventReminderPreference; //Example: member
 
-@property (nonatomic, assign) BOOL remindersSendGame; //Example: **NULL**
-@property (nonatomic, assign) BOOL remindersSendEvent; //Example: **NULL**
 @property (nonatomic, assign) BOOL remindersSendManagerGame; //Example: 1
 @property (nonatomic, assign) BOOL remindersSendManagerEvent; //Example: 0
 
