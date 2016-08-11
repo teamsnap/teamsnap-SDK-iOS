@@ -558,7 +558,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         } else {
             date = [dateString dateFromJustDate];
         }
-        [self.cachedDatesLookup setObject:date forKey:dateString];
+        if (date) {
+            [self.cachedDatesLookup setObject:date forKey:dateString];
+        } else {
+            return nil;
+        }
     }
     return date;
 }
