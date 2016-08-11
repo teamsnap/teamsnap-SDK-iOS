@@ -168,6 +168,9 @@
         [user.collection.data setObject:@"" forKey:@"created_at"];
         XCTAssertNoThrow(user.createdAt);
     }
+    
+    [[event.collection data] setObject:@"8-13" forKey:@"start_date"];
+    XCTAssertNoThrow(event.startDate);
 }
 
 - (void)testArrayFromLinkWithNilLink {
