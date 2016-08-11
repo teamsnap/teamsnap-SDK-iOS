@@ -80,8 +80,7 @@
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
     // if they call save, don't notify team;
-    [self setNotifyTeamAsMember:nil];
-    [super saveWithCompletion:completion];
+    [self saveAndNotifyTeamAsRosterMember:nil completion:completion];
 }
 
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion {
@@ -96,12 +95,15 @@
 }
 
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
-    [self setNotifyTeamAsMember:nil];
-    [super deleteWithCompletion:completion];
+    [self deleteAndShouldNotifyTeamAsRosterMember:nil completion:completion];
 }
 
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
     [self setNotifyTeamAsMember:member];
+    if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
+        [self.changedValues setObject:self.repeatingUuid forKey:@"repeating_uuid"];
+        [self setString:@"none" forKey:@"repeating_include"];
+    }
     [super deleteWithCompletion:completion];
 }
 
