@@ -37,7 +37,7 @@
 @property (nonatomic, weak) NSString *formattedResults; //Example: **NULL**
 @property (nonatomic, weak) NSString *repeatingTypeCode; //Example: **NULL**
 @property (nonatomic, weak) NSDate *startDate; //Example: 2012-05-19T04:00:00Z
-@property (nonatomic, assign) NSInteger doesntCountTowardsRecord; //Example: 1
+@property (nonatomic, assign) BOOL doesntCountTowardsRecord; //Example: 1
 @property (nonatomic, weak) NSString *timeZone; //Example: Eastern Time (US & Canada)
 @property (nonatomic, assign) NSInteger pointsForOpponent; //Example: **NULL**
 @property (nonatomic, assign) NSInteger gameTypeCode; //Example: 1
