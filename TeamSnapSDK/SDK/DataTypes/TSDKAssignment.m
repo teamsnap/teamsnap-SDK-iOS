@@ -10,10 +10,14 @@
 
 @implementation TSDKAssignment
 
-@dynamic teamId, memberId, assignmentDescription, eventId, linkEvent, linkMember, linkTeam;
+@dynamic updatedAt, isEditable, createdAt, memberId, managerCreated, assignmentDescription, eventId, teamId, linkMember, linkMemberAssignments, linkEvent, linkTeam;
 
 + (NSString *)SDKType {
     return @"assignment";
+}
+
+- (BOOL)logHeader {
+    return YES;
 }
 
 @end
