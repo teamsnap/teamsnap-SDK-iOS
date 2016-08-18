@@ -61,7 +61,7 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSInteger)teamId asMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSInteger)teamId asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
     command.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
     
@@ -81,7 +81,7 @@
     if(arrayOfContactIds.count) {
         command.data[@"contact_id"] = arrayOfContactIds;
     }
-    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:member.objectIdentifier];
+    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMemberId];
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
@@ -91,8 +91,8 @@
 }
 
 
-- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
-    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMember:member completion:completion];
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
 }
 
 
