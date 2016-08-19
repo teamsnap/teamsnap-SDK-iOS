@@ -39,7 +39,6 @@
 @property (readonly) NSString *fullName;
 - (NSString *)fancyAddressString;
 -(NSString *)addressString;
-- (BOOL)hasExistingInvitation;
 
 @end
 
