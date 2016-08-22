@@ -9,6 +9,12 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef enum : NSUInteger {
+    TSDKTeamPreferenceAvailabilitiesSortOrderName,
+    TSDKTeamPreferenceAvailabilitiesSortOrderJerseyNumber,
+    TSDKTeamPreferenceAvailabilitiesSortOrderDateSet,
+} TSDKTeamPreferenceAvailabilitiesSortOrder;
+
 @interface TSDKTeamPreferences : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger tslScorePushEnabled; //Example: 1
@@ -59,7 +65,7 @@
 @property (nonatomic, assign) BOOL filesShowTab; //Example: 1
 @property (nonatomic, assign) BOOL showDivisionStandings; //Example: 0
 @property (nonatomic, weak) NSString *ageGroup; //Example: **NULL**
-@property (nonatomic, weak) NSString *availabilitiesSortOrder; //Example: date
+
 @property (nonatomic, weak) NSString *currencySymbol; //Example: $
 @property (nonatomic, assign) NSInteger hideHeader; //Example: 0
 @property (nonatomic, weak) NSURL *linkTeam;
@@ -71,6 +77,9 @@
 -(void)getTeamPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 -(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 #endif
+
+- (TSDKTeamPreferenceAvailabilitiesSortOrder)availabilitiesSortOrderPreference;
+- (void)setAvailabilitySortOrderPreference:(TSDKTeamPreferenceAvailabilitiesSortOrder)sortOrderPreference;
 
 //+(void)actionUploadTeamPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionUploadTeamLogoWithCompletion:(TSDKCompletionBlock)completion; //(null)
