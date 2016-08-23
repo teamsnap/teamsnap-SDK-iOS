@@ -16,8 +16,4 @@
     return @"assignment";
 }
 
-- (BOOL)logHeader {
-    return YES;
-}
-
 @end
