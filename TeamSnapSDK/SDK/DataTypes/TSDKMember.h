@@ -39,7 +39,6 @@
 - (nonnull NSString *)fullName;
 - (nullable NSString *)fancyAddressString;
 - (nullable NSString *)addressString;
-- (BOOL)hasExistingInvitation;
 
 @end
 
