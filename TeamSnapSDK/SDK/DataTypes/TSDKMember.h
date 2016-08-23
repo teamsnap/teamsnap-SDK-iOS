@@ -36,9 +36,10 @@
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 
-@property (readonly) NSString *fullName;
-- (NSString *)fancyAddressString;
--(NSString *)addressString;
+- (nonnull NSString *)fullName;
+- (nullable NSString *)fancyAddressString;
+- (nullable NSString *)addressString;
+- (BOOL)hasExistingInvitation;
 
 @end
 
