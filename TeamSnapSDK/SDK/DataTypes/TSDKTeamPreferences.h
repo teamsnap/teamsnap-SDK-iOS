@@ -84,6 +84,7 @@ typedef enum : NSUInteger {
 
 - (TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference;
 - (void)setMemberSortOrderPreference:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference;
+- (NSString *)rawValueForMemberSortOrder:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference;
 
 - (TSDKTeamPreferenceAvailabilitiesSortOrder)availabilitiesSortOrderPreference;
 - (void)setAvailabilitySortOrderPreference:(TSDKTeamPreferenceAvailabilitiesSortOrder)sortOrderPreference;

@@ -55,7 +55,7 @@
 #endif
 
 - (TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
-    if([[self.memberSortOrder lowercaseString] isEqualToString:[@"last" lowercaseString]]) {
+    if([[self.memberSortOrder lowercaseString] isEqualToString:[[self rawValueForMemberSortOrder:TSDKTeamPreferenceMemberSortOrderLastName] lowercaseString]]) {
         return TSDKTeamPreferenceMemberSortOrderLastName;
     } else {
         return TSDKTeamPreferenceMemberSortOrderFirstName;
@@ -63,13 +63,19 @@
 }
 
 - (void)setMemberSortOrderPreference:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    self.memberSortOrder = [self rawValueForMemberSortOrder:memberSortOrderPreference];
+}
+
+- (NSString *)rawValueForMemberSortOrder:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
     switch (memberSortOrderPreference) {
-        case TSDKTeamPreferenceMemberSortOrderFirstName:
-            self.memberSortOrder = @"first";
-            break;
         case TSDKTeamPreferenceMemberSortOrderLastName:
-            self.memberSortOrder = @"last";
+            return @"last";
+            break;
+        case TSDKTeamPreferenceMemberSortOrderFirstName:
+            return @"first";
+            break;
         default:
+            return @"first";
             break;
     }
 }
