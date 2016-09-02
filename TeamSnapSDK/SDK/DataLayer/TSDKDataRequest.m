@@ -85,6 +85,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKJSONCompletionBlock)completionBlock {
+    if (URL == nil) {
+        if (completionBlock) {
+            completionBlock(NO, NO, nil, nil);
+        }
+        return;
+    }
     if ([URL isFileURL]) {
         NSLog(@"File URL");
         NSData *data = [NSData dataWithContentsOfURL:URL];
@@ -98,6 +104,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
         completionBlock(success, NO, JSON, error);
     } else {
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        if (request == nil) {
+            if (completionBlock) {
+                completionBlock(NO, NO, nil, nil);
+            }
+            return;
+        }
         
         for (NSString *headerKeys in self.requestHeaders) {
             [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
@@ -202,7 +214,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
     
     if (!URL) {
-        completionBlock(NO, NO, nil, nil);
+        if (completionBlock) {
+            completionBlock(NO, NO, nil, nil);
+        }
         return;
     }
     
