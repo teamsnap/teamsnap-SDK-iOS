@@ -733,13 +733,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {
     [TSDKDataRequest requestObjectsForPath:self.collection.href withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        [self setCollection:[objects.collection objectAtIndex:0]];
         if (success) {
+            [self setCollection:[objects.collection objectAtIndex:0]];
             [TSDKNotifications postRefreshedObject:self];
         }
         if (completion) {
-            completion(YES, YES, @[self], nil);
-        } else {
+            completion(success, complete, @[self], error);
         }
     }];
 }
