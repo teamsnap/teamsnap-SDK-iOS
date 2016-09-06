@@ -35,6 +35,23 @@
         XCTAssertNil(objects, @"Objects returned on nil array");
         [nilLinkExpectation fulfill];
     }];
+
+    // test if we don't have a completeion block
+    [TSDKDataRequest requestObjectsForPath:nil withConfiguration:nil completion:nil];
+
+    XCTestExpectation *nilLinkExpectation2 = [self expectationWithDescription:@"Return from nil link"];
+    
+    [TSDKDataRequest requestObjectsForPath:nil searchParamaters:nil sendDataDictionary:nil method:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (success || complete) {
+            XCTAssert(@"Returned Success on nil link");
+        }
+        XCTAssertNil(objects, @"Objects returned on nil array");
+        [nilLinkExpectation2 fulfill];
+    }];
+    
+    
+    // test if we don't have a completeion block
+    [TSDKDataRequest requestObjectsForPath:nil searchParamaters:nil sendDataDictionary:nil method:nil withConfiguration:nil completion:nil];
     
     XCTestExpectation *countriesExpectation = [self expectationWithDescription:@"Return from /random"];
 
@@ -52,6 +69,24 @@
         }
         [countriesExpectation fulfill];
     }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
+    
+}
+
+- (void)testRequestJSONObjectsForPath {
+    XCTestExpectation *nilLinkExpectation = [self expectationWithDescription:@"Return from nil link"];
+    
+    [TSDKDataRequest requestJSONObjectsForPath:nil sendDataDictionary:nil method:@"POST" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+        if (success || complete) {
+            XCTAssert(@"Returned Success on nil link");
+        }
+        XCTAssertNil(objects, @"Objects returned on nil array");
+        
+        [nilLinkExpectation fulfill];
+    }];
+    
+    [TSDKDataRequest requestJSONObjectsForPath:nil sendDataDictionary:nil method:@"POST" configuration:nil withCompletion:nil];
     
     [self waitForExpectationsWithTimeout:5 handler:nil];
 }
