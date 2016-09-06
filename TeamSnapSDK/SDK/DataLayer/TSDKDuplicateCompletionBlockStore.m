@@ -35,6 +35,10 @@
 }
 
 - (BOOL)existingRequestExistsMatchingRequest:(NSURLRequest *)request {
+    if (request == nil) {
+        return NO;
+    }
+    
     if([self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]] != nil) {
         return YES;
     }
@@ -42,6 +46,11 @@
 }
 
 - (void)addCompletionBlock:(TSDKJSONCompletionBlock)completionBlock forRequest:(NSURLRequest *)request {
+    
+    if (request == nil) {
+        return;
+    }
+    
     if([[self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]] isKindOfClass:[NSMutableSet class]]) {
         NSMutableSet* set = [self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
         [set addObject:completionBlock];
@@ -53,10 +62,18 @@
 }
 
 - (NSSet *)completionBlocksForRequest:(NSURLRequest *)request {
+    if (request == nil) {
+        return [[NSSet alloc] init];
+    }
+    
     return [self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
 }
 
 - (void)removeAllCompletionBlocksForRequest:(NSURLRequest *)request {
+    if (request == nil) {
+        return;
+    }
+    
     [self.completionBlocksKeyedByRequest removeObjectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
 }
 

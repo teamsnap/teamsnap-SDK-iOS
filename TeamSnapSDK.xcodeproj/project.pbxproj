@@ -307,6 +307,8 @@
 		96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */; };
 		96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */; };
+		96E052171D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E052161D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m */; };
+		96E052181D775F43005155C3 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		96F4E7D81C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */; };
 		96F4E7D91C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */; };
 		96F4E7DA1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */; };
@@ -504,6 +506,7 @@
 		96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKBackgroundUploadProgressMonitorDelegate.h; sourceTree = "<group>"; };
 		96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKBackgroundUploadProgressMonitorDelegate.m; sourceTree = "<group>"; };
 		96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDataRequestTests.m; path = DataLayer/TSDKDataRequestTests.m; sourceTree = "<group>"; };
+		96E052161D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDuplicateCompletionBlockStoreTests.m; path = DataLayer/TSDKDuplicateCompletionBlockStoreTests.m; sourceTree = "<group>"; };
 		96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+refreshCollectionData.h"; sourceTree = "<group>"; };
 		96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+refreshCollectionData.m"; sourceTree = "<group>"; };
 		96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamResults.h; sourceTree = "<group>"; };
@@ -895,6 +898,7 @@
 			isa = PBXGroup;
 			children = (
 				96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */,
+				96E052161D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m */,
 			);
 			name = DataLater;
 			sourceTree = "<group>";
@@ -1330,7 +1334,9 @@
 				9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */,
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
 				96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */,
+				96E052171D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
+				96E052181D775F43005155C3 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
