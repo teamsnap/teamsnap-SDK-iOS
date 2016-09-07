@@ -155,15 +155,45 @@
 }
 
 - (void)addPhoneNumber:(TSDKMemberPhoneNumber *)phoneNumber {
+    BOOL isNewPhoneNumber = NO;
+    if([self.phoneNumbers objectForIntegerKey:phoneNumber.objectIdentifier] == nil) {
+        isNewPhoneNumber = YES;
+    }
     [self.phoneNumbers setObject:phoneNumber forIntegerKey:phoneNumber.objectIdentifier];
+    
+    if(isNewPhoneNumber) {
+        [TSDKNotifications postNewObject:phoneNumber];
+    } else {
+        [TSDKNotifications postRefreshedObject:phoneNumber];
+    }
 }
 
 - (void)addEmailAddress:(TSDKMemberEmailAddress *)emailAddress {
+    BOOL isNewEmail = NO;
+    if([self.emailAddresses objectForIntegerKey:emailAddress.objectIdentifier] == nil) {
+        isNewEmail = YES;
+    }
     [self.emailAddresses setObject:emailAddress forIntegerKey:emailAddress.objectIdentifier];
+    
+    if(isNewEmail) {
+        [TSDKNotifications postNewObject:emailAddress];
+    } else {
+        [TSDKNotifications postRefreshedObject:emailAddress];
+    }
 }
 
 - (void)addContact:(TSDKContact *)contact {
+    BOOL isNewContact = NO;
+    if([self.contacts objectForIntegerKey:contact.objectIdentifier] == nil) {
+        isNewContact = YES;
+    }
     [self.contacts setObject:contact forIntegerKey:contact.objectIdentifier];
+    
+    if(isNewContact) {
+        [TSDKNotifications postNewObject:contact];
+    } else {
+        [TSDKNotifications postRefreshedObject:contact];
+    }
 }
 
 - (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
