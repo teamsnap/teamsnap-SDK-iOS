@@ -10,6 +10,8 @@
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #import "TSDKNetworkActivityIndicator.h"
+#include <sys/types.h>
+#include <sys/sysctl.h>
 #endif
 #import "NSHTTPURLResponse+convenience.h"
 #import "TSDKCollectionJSON.h"
@@ -26,6 +28,7 @@ static NSString *baseURL = @"https://api.teamsnap.com/v3/";
 static NSString *OauthURL = @"https://cogsworth.teamsnap.com/oauth/token";
 static NSString *clientId;
 static NSString *clientSecret;
+static NSString *_device;
 
 static NSMutableDictionary *_requestHeaders = nil;
 static NSString *OAuthToken = nil;
@@ -60,12 +63,49 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [self.requestHeaders setObject:value forKey:key];
 }
 
+#if TARGET_OS_IPHONE
++ (NSString *) platform{
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithUTF8String:machine];
+    free(machine);
+    return platform;
+}
+
++ (NSString *)deviceInfo {
+    if (!_device) {
+        NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+        CGFloat scale = [UIScreen mainScreen].scale;
+        NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *appName = [infoDict objectForKey:@"CFBundleExecutable"];
+        NSString *version = [infoDict objectForKey:@"CFBundleShortVersionString"];
+        NSString *build = [infoDict objectForKey:@"CFBundleVersion"];
+        _device = [NSString stringWithFormat:@"%@/%@.%@ TeamSnapSDK/1.0 (%@; %@; Scale/%2.1f)", appName, version, build,self.platform, systemVersion, scale];
+    }
+    return _device;
+}
+
+#else
++ (NSString *)deviceInfo {
+    if (_device) {
+        NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *appName = [infoDict objectForKey:@"CFBundleExecutable"];
+        NSString *version = [infoDict objectForKey:@"CFBundleShortVersionString"];
+        NSString *build = [infoDict objectForKey:@"CFBundleVersion"];
+        _device = [NSString stringWithFormat:@"%@/%@.%@ TeamSnapSDK/1.0", appName, version, build];
+    }
+    return _device;
+}
+#endif
+
 + (NSMutableDictionary *)requestHeaders {
     if (!_requestHeaders) {
         _requestHeaders = [[NSMutableDictionary alloc] init];
         [_requestHeaders setObject:@"application/json" forKey:@"Accept"];
         [_requestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
-        [_requestHeaders setObject:@"TeamSnapSDK/1.0 (iPhone Simulator; iOS 8.1; Scale/2.00)" forKey:@"User-Agent"];
+        [_requestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
         //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
         
         NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
