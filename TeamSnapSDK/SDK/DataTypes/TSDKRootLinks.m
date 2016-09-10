@@ -63,6 +63,14 @@
                         [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
                     }
                 }
+                if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"]) {
+                    NSArray *queries = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"];
+                    for (NSDictionary *queryDictionary in queries) {
+                        TSDKCollectionCommand *query = [[TSDKCollectionCommand alloc] initWithJSONDict:queryDictionary];
+                        [[TSDKCollectionObject queriesForClass:type] setValue:query forKey:query.rel];
+                    }
+                }
+                
             }
         }
     }

@@ -36,6 +36,7 @@
         self.links = [[NSMutableDictionary alloc] init];
         self.data = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableDictionary alloc] init];
+        self.queries = [[NSMutableDictionary alloc] init];
         _collection = nil;
         _errorCode = NSNotFound;
     }
@@ -52,6 +53,7 @@
         _data = [aDecoder decodeObjectForKey:@"data"];
         _collection = [aDecoder decodeObjectForKey:@"collection"];
         _commands = [aDecoder decodeObjectForKey:@"commands"];
+        _queries = [aDecoder decodeObjectForKey:@"queries"];
     }
     return self;
 }
@@ -146,6 +148,12 @@
             [_commands setObject:command forKey:command.rel];
         }
     }
+    if ([collection objectForKey:@"queries"]) {
+        for (NSDictionary *queryDictionary in [collection objectForKey:@"queries"]) {
+            TSDKCollectionCommand *query = [[TSDKCollectionCommand alloc] initWithJSONDict:queryDictionary];
+            [_queries setObject:query forKey:query.rel];
+        }
+    }
     if ([collection objectForKey:@"error"] && [[collection objectForKey:@"error"] isKindOfClass:[NSDictionary class]]) {
         NSDictionary *errorDictionary = [collection objectForKey:@"error"];
         if ([errorDictionary objectForKey:@"title"] && [[errorDictionary objectForKey:@"title"] isKindOfClass:[NSString class]]) {
@@ -228,7 +236,7 @@
     for (NSString *key in [TSDKCollectionObject commandsForClass:self.type]) {
         NSString *commandKey = [NSString stringWithFormat:@"action_%@", key];
         NSString *camelCaseKey = [commandKey underscoresToCamelCase];
-        TSDKCollectionCommand *commandDictionary = [self.commands objectForKey:key];
+        TSDKCollectionCommand *commandDictionary = [TSDKCollectionObject commandForClass:self.type forKey:key];
         
         NSMutableString *paramaters = [[NSMutableString alloc] init];
         for (NSString *key in commandDictionary.data) {
@@ -238,8 +246,37 @@
                 [paramaters appendFormat:@"%@:(NSString *)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
             }
         }
-        [actionsString appendFormat:@"+(void)%@%@WithCompletion:(TSDKCompletionBlock)completion; //%@\n", camelCaseKey, paramaters, commandDictionary.prompt];
+        
+        if (commandDictionary.prompt.length>0) {
+            [actionsString appendFormat:@"//%@\n", commandDictionary.prompt];
+        }
+        
+        [actionsString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock)completion;\n\n", camelCaseKey, paramaters];
     }
+
+    NSMutableString *queryString = [[NSMutableString alloc] init];
+    for (NSString *key in [TSDKCollectionObject queriesForClass:self.type]) {
+        NSString *queryKey = [NSString stringWithFormat:@"query_%@", key];
+        NSString *camelCaseKey = [queryKey underscoresToCamelCase];
+        TSDKCollectionCommand *queryDictionary = [TSDKCollectionObject queryForClass:self.type forKey:key];
+        
+        NSMutableString *paramaters = [[NSMutableString alloc] init];
+        for (NSString *key in queryDictionary.data) {
+            if (paramaters.length == 0) {
+                [paramaters appendFormat:@"%@:(NSString *)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
+            } else {
+                [paramaters appendFormat:@"%@:(NSString *)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
+            }
+        }
+        
+        if (queryDictionary.prompt.length>0) {
+            [queryString appendFormat:@"//%@\n", queryDictionary.prompt];
+        }
+        
+        [queryString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock)completion;\n\n", camelCaseKey, paramaters];
+    }
+
+    
     
     NSMutableString *dynamicString = [NSMutableString stringWithString:@"@dynamic "];
     NSString *commaSeperated = [[dynamicProperties valueForKey:@"description"] componentsJoinedByString:@", "];
@@ -249,6 +286,8 @@
     NSString *SDKName = [NSString stringWithFormat:@"+ (NSString *)SDKType {\n  return @\"%@\";\n}\n", self.type];
     
     [mutableResult appendFormat:@"\n\n%@", actionsString];
+
+    [mutableResult appendFormat:@"\n\n%@", queryString];
     
     [mutableResult appendString:@"\n\n@end\n\n"];
     [mutableResult appendString:[NSString stringWithFormat:@"@interface %@ (ForwardedMethods)\n\n", className]];
@@ -268,6 +307,9 @@
     [coder encodeObject:_links forKey:@"links"];
     [coder encodeObject:_data forKey:@"data"];
     [coder encodeObject:_collection forKey:@"collection"];
+#warning need to enable encodeWithCode for TSDKCollectionCommands
+    //[coder encodeObject:_commands forKey:@"commands"];
+    //[coder encodeObject:_queries forKey:@"queries"];
 }
 
 @end
