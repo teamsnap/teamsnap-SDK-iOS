@@ -190,6 +190,40 @@
     }];
 }
 
++(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            TSDKCollectionCommand *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
+            if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+                queryCommand.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+                queryCommand.data[@"version"] = version;
+                [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                    if (completion) {
+                        completion(success, complete, objects, error);
+                    }
+                }];
+            } else {
+                if (completion) {
+                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                    if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
+                        userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+                    } else {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
+                        userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+                    }
+                    NSInteger errorCode = 1;
+                    
+                    NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    completion(NO, NO, nil, error);
+                }
+            }
+        } else {
+            completion(NO, NO, nil,  nil);
+        }
+    }];
+}
+
 -(NSString *)typeFromRel:(NSString *)rel {
     if (!rel) {
         return nil;
