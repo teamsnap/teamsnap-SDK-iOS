@@ -191,7 +191,7 @@
     }];
 }
 
-+(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKCompletionBlock)completion {
++(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
@@ -199,8 +199,14 @@
                 queryCommand.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
                 queryCommand.data[@"version"] = version;
                 [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                    NSString *firebaseToken = nil;
+                    
+                    if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                        TSDKCollectionJSON *tokenCollectonObject = [(NSArray *)[objects collection] firstObject];
+                        firebaseToken = [[tokenCollectonObject data] objectForKey:@"token"];
+                    }
                     if (completion) {
-                        completion(success, complete, objects, error);
+                        completion(success, firebaseToken, error);
                     }
                 }];
             } else {
@@ -216,11 +222,11 @@
                     NSInteger errorCode = 1;
                     
                     NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
-                    completion(NO, NO, nil, error);
+                    completion(NO, nil, error);
                 }
             }
         } else {
-            completion(NO, NO, nil,  nil);
+            completion(NO, nil,  nil);
         }
     }];
 }
