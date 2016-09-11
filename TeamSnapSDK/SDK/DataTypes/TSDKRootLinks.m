@@ -8,6 +8,7 @@
 
 #import "TSDKRootLinks.h"
 #import "TSDKDataRequest.h"
+#import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 #import "TSPCache.h"
 #import "TSDKTeamSnap.h"
@@ -66,7 +67,7 @@
                 if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"]) {
                     NSArray *queries = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"];
                     for (NSDictionary *queryDictionary in queries) {
-                        TSDKCollectionCommand *query = [[TSDKCollectionCommand alloc] initWithJSONDict:queryDictionary];
+                        TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];
                         [[TSDKCollectionObject queriesForClass:type] setValue:query forKey:query.rel];
                     }
                 }
@@ -193,7 +194,7 @@
 +(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKCompletionBlock)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
-            TSDKCollectionCommand *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
+            TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
             if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
                 queryCommand.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
                 queryCommand.data[@"version"] = version;

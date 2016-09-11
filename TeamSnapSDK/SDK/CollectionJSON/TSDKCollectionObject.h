@@ -10,6 +10,7 @@
 #import "TSDKRequestConfiguration.h"
 #import <CoreGraphics/CGBase.h>
 #import "TSDKObjectsRequest.h"
+#import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 
 @class TSDKCollectionJSON;
@@ -40,9 +41,9 @@
 +(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName;
 
 +(NSMutableDictionary *)queries;
-+(TSDKCollectionCommand *)queryForKey:(NSString *)commandName;
++(TSDKCollectionQuery *)queryForKey:(NSString *)commandName;
 +(NSMutableDictionary *)queriesForClass:(NSString *)className;
-+(TSDKCollectionCommand *)queryForClass:(NSString *)className forKey:(NSString *)queryName;
++(TSDKCollectionQuery *)queryForClass:(NSString *)className forKey:(NSString *)queryName;
 
 +(NSURL *)classURL;
 +(void)setClassURL:(NSURL *)URL;

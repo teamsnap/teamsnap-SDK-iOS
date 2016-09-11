@@ -8,6 +8,7 @@
 
 #import "TSDKCollectionJSON.h"
 #import "TSDKCompletionBlockTypes.h"
+#import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
@@ -150,7 +151,7 @@
     }
     if ([collection objectForKey:@"queries"]) {
         for (NSDictionary *queryDictionary in [collection objectForKey:@"queries"]) {
-            TSDKCollectionCommand *query = [[TSDKCollectionCommand alloc] initWithJSONDict:queryDictionary];
+            TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];
             [_queries setObject:query forKey:query.rel];
         }
     }
@@ -258,7 +259,7 @@
     for (NSString *key in [TSDKCollectionObject queriesForClass:self.type]) {
         NSString *queryKey = [NSString stringWithFormat:@"query_%@", key];
         NSString *camelCaseKey = [queryKey underscoresToCamelCase];
-        TSDKCollectionCommand *queryDictionary = [TSDKCollectionObject queryForClass:self.type forKey:key];
+        TSDKCollectionQuery *queryDictionary = [TSDKCollectionObject queryForClass:self.type forKey:key];
         
         NSMutableString *paramaters = [[NSMutableString alloc] init];
         for (NSString *key in queryDictionary.data) {

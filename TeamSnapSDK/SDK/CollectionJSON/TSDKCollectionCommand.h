@@ -1,22 +1,13 @@
 //
 //  TSDKCollectionCommand.h
-//  SDKPlayground
+//  TeamSnapSDK
 //
-//  Created by Jason Rahaim on 3/7/15.
-//  Copyright (c) 2015 TeamSnap. All rights reserved.
+//  Created by Jason Rahaim on 9/10/16.
+//  Copyright © 2016 teamsnap. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "TSDKCompletionBlockTypes.h"
+#import "TSDKCollectionQuery.h"
 
-@interface TSDKCollectionCommand : NSObject <NSCopying>
-
-@property (nonatomic, strong) NSMutableDictionary *data;
-@property (nonatomic, strong) NSString *href;
-@property (nonatomic, strong) NSString *rel;
-@property (nonatomic, strong) NSString *prompt;
-
-- (instancetype)initWithJSONDict:(NSDictionary *)jsonDict;
--(void)executeWithCompletion:(TSDKCompletionBlock)completion;
+@interface TSDKCollectionCommand : TSDKCollectionQuery
 
 @end

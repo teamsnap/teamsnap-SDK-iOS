@@ -109,7 +109,7 @@ static NSMutableDictionary *_classURLs;
     return [self queriesForClass:[self SDKType]];
 }
 
-+(TSDKCollectionCommand *)queryForKey:(NSString *)queryName {
++(TSDKCollectionQuery *)queryForKey:(NSString *)queryName {
     return [[self queries] objectForKey:queryName];
 }
 
@@ -126,7 +126,7 @@ static NSMutableDictionary *_classURLs;
     }
 }
 
-+(TSDKCollectionCommand *)queryForClass:(NSString *)className forKey:(NSString *)queryName {
++(TSDKCollectionQuery *)queryForClass:(NSString *)className forKey:(NSString *)queryName {
     return [[[self queryDictionary] objectForKey:className] objectForKey:queryName];
 }
 
