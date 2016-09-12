@@ -43,7 +43,7 @@ xcodebuild -project "${PROJECT_FILE_PATH}" -target "${TARGET_NAME}" -configurati
 # Copy the framework structure to the universal folder (clean it first)
 rm -rf "${UNIVERSAL_OUTPUTFOLDER}"
 mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
-cp -R "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework"
+cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework"
 
 # Smash them together to combine all architectures
 lipo -create  "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${SIMULATOR_32BIT_BUILD_DIR}/i386/${PROJECT_NAME}.framework/${PROJECT_NAME}" -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}"
