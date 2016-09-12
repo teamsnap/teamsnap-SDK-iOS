@@ -8,7 +8,7 @@
 
 #ifndef TSDKCompletionBlockTypes_h
 #define TSDKCompletionBlockTypes_h
-@class TSDKinvitationFinder, UIImage, TSDKCollectionJSON, TSDKRootLinks,TSDKCustomDatum,TSDKForumTopic,TSDKContactPhoneNumber,TSDKEventStatistic,TSDKMemberPayment,TSDKMemberPhoneNumber,TSDKTeamMediumComment,TSDKTeamMediaGroup,TSDKStatisticDatum,TSDKAssignment,TSDKTrackedItem,TSDKMember,TSDKEvent,TSDKForumPost,TSDKMemberPreferences,TSDKCollectionObject,TSDKOpponent,TSDKPlan,TSDKContactEmailAddress,TSDKTeamMedium,TSDKinvitationFinder,TSDKTeamStatistic,TSDKTeam,TSDKTrackedItemStatus,TSDKSport,TSDKMemberEmailAddress,TSDKMemberBalance,TSDKContact,TSDKTeamResults,TSDKTslPhotos,TSDKPaymentNote,TSDKRootLinks,TSDKOpponentResults,TSDKStatistic,TSDKStatisticGroup,TSDKAvailability,TSDKUser,TSDKCustomField,TSDKMemberStatistic,TSDKTeamFee,TSDKTeamPreferences,TSDKLocation,TSDKBroadcastEmail,TSDKForumSubscription,TSDKBroadcastAlert, TSDKAvailabilityGroups, TSDKMessage, TSDKMessageDatum, TSDKDivisionMember, TSDKMemberPhoto, TSDKBackgroundUploadProgressMonitorDelegate;
+@class TSDKinvitationFinder, UIImage, TSDKCollectionJSON, TSDKRootLinks,TSDKCustomDatum,TSDKForumTopic,TSDKContactPhoneNumber,TSDKEventStatistic,TSDKMemberPayment,TSDKMemberPhoneNumber,TSDKTeamMediumComment,TSDKTeamMediaGroup,TSDKStatisticDatum,TSDKAssignment,TSDKTrackedItem,TSDKMember,TSDKEvent,TSDKForumPost,TSDKMemberPreferences,TSDKCollectionObject,TSDKOpponent,TSDKPlan,TSDKContactEmailAddress,TSDKTeamMedium,TSDKinvitationFinder,TSDKTeamStatistic,TSDKTeam,TSDKTrackedItemStatus,TSDKSport,TSDKMemberEmailAddress,TSDKMemberBalance,TSDKContact,TSDKTeamResults,TSDKTslPhotos,TSDKPaymentNote,TSDKRootLinks,TSDKOpponentResults,TSDKStatistic,TSDKStatisticGroup,TSDKAvailability,TSDKUser,TSDKCustomField,TSDKMemberStatistic,TSDKTeamFee,TSDKTeamPreferences,TSDKLocation,TSDKBroadcastEmail,TSDKForumSubscription,TSDKBroadcastAlert, TSDKAvailabilityGroups, TSDKMessage, TSDKMessageDatum, TSDKDivisionMember, TSDKMemberPhoto, TSDKBackgroundUploadProgressMonitorDelegate, TSDKLeagueCustomDatum, TSDKLeagueCustomField;
 
 typedef void (^TSDKJSONCompletionBlock)(BOOL success, BOOL complete, id _Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKSimpleCompletionBlock)(BOOL success, NSError *_Nullable error);
@@ -22,6 +22,7 @@ typedef void (^TSDKUploadProgressBlock)(TSDKBackgroundUploadProgressMonitorDeleg
 
 
 typedef void (^TSDKCustomDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomDatum *> *_Nullable customData, NSError *_Nullable error);
+typedef void (^TSDKCustomLeagueDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKLeagueCustomDatum *> *_Nullable customData, NSError *_Nullable error);
 typedef void (^TSDKForumTopicArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumTopic *> *_Nullable forumTopics, NSError *_Nullable error);
 typedef void (^TSDKContactPhoneNumberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContactPhoneNumber *> *_Nullable contactPhoneNumbers, NSError *_Nullable error);
 typedef void (^TSDKEventStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKEventStatistic *> *_Nullable eventStatistics, NSError *_Nullable error);
@@ -55,6 +56,7 @@ typedef void (^TSDKStatisticGroupArrayCompletionBlock)(BOOL success, BOOL comple
 typedef void (^TSDKAvailabilityArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKAvailability *> *_Nullable availabilities, NSError *_Nullable error);
 typedef void (^TSDKUserArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKUser *> *_Nullable users, NSError *_Nullable error);
 typedef void (^TSDKCustomFieldArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomField *> *_Nullable customFields, NSError *_Nullable error);
+typedef void (^TSDKLeagueCustomFieldArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKLeagueCustomField *> *_Nullable customFields, NSError *_Nullable error);
 typedef void (^TSDKMemberStatisticArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberStatistic *> *_Nullable memberStatistics, NSError *_Nullable error);
 typedef void (^TSDKTeamFeeArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamFee *> *_Nullable teamFees, NSError *_Nullable error);
 
