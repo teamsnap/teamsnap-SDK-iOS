@@ -80,3 +80,5 @@
 #import <TeamSnapSDK/TSDKMessageSender.h>
 #import <TeamSnapSDK/TSDKMemberPhoto.h>
 #import <TeamsnapSDK/TSDKBackgroundUploadProgressMonitorDelegate.h>
+#import <TeamsnapSDK/TSDKLeagueCustomDatum.h>
+#import <TeamsnapSDK/TSDKLeagueCustomField.h>
