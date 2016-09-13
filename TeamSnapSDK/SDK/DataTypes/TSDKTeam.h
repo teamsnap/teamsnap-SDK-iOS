@@ -199,14 +199,14 @@
 -(void)getTrackedItemsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTrackedItemArrayCompletionBlock)completion;
 -(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKAssignmentArrayCompletionBlock)completion;
 -(void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamResultsArrayCompletionBlock)completion;
--(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomLeagueDatumArrayCompletionBlock)completion;
 -(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
 -(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPaymentArrayCompletionBlock)completion;
 -(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKLeagueCustomFieldArrayCompletionBlock)completion;
 -(void)getLocationsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKLocationArrayCompletionBlock)completion;
 -(void)getCustomFieldsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCustomFieldArrayCompletionBlock)completion;
 -(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticDatumArrayCompletionBlock)completion;
