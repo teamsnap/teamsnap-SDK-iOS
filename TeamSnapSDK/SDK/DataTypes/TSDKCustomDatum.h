@@ -10,24 +10,32 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKCustomField.h"
 
-@interface TSDKCustomDatum : TSDKCollectionObject
+@protocol TSDKCustomDataProtocol <NSObject>
 
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Size
 @property (nonatomic, weak) NSArray *_Nullable options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
 @property (nonatomic, weak) NSString *_Nullable value; //Example: Small
-@property (nonatomic, assign) BOOL isPrivate; //Example: 0
 @property (nonatomic, assign) NSInteger memberId; //Example: 1086731
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable kind; //Example: Menu
-@property (nonatomic, assign) NSInteger customFieldId; //Example: 25383
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
-@property (nonatomic, weak) NSURL *_Nullable linkCustomField;
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, assign) BOOL isPrivate; //Example: 0
 
 @property (nonatomic, assign) CustomDataFieldType dataType;
 @property (nonatomic, weak) NSDate *_Nullable dateValue;
 - (NSString *_Nullable)displayValue;
+
+@end
+
+@interface TSDKCustomDatum : TSDKCollectionObject <TSDKCustomDataProtocol>
+
+
+@property (nonatomic, assign) NSInteger customFieldId; //Example: 25383
+@property (nonatomic, weak) NSURL *_Nullable linkCustomField;
+@property (nonatomic, weak) NSURL *_Nullable linkMember;
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+
+
 @end
 
 @interface TSDKCustomDatum (ForwardedMethods)

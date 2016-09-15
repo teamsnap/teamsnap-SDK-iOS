@@ -153,7 +153,7 @@
 -(void)getMemberEmailAddressesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberEmailAddressArrayCompletionBlock)completion;
 -(void)getStatisticDataWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKStatisticDatumArrayCompletionBlock)completion;
 -(void)getForumSubscriptionsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKForumSubscriptionArrayCompletionBlock)completion;
--(void)getLeagueCustomDataWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomDataWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKCustomLeagueDatumArrayCompletionBlock)completion;
 -(void)getContactPhoneNumbersWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKContactPhoneNumberArrayCompletionBlock)completion;
 -(void)getContactEmailAddressesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKContactEmailAddressArrayCompletionBlock)completion;
 -(void)getTeamMediaWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
@@ -170,7 +170,7 @@
 -(void)getForumPostsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKForumPostArrayCompletionBlock)completion;
 -(void)getBroadcastAlertsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKBroadcastAlertArrayCompletionBlock)completion;
 -(void)getMemberPaymentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPaymentArrayCompletionBlock)completion;
--(void)getLeagueCustomFieldsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
+-(void)getLeagueCustomFieldsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKLeagueCustomFieldArrayCompletionBlock)completion;
 -(void)getLeagueRegistrantDocumentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
 -(void)getContactsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKContactArrayCompletionBlock)completion;
 -(void)getMemberFilesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;

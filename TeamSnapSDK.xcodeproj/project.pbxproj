@@ -81,6 +81,10 @@
 		9681092F1D8488C600D94C53 /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 9681092C1D8488C600D94C53 /* TSDKCollectionCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		968109301D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */; };
 		968109311D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */; };
+		9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 9678A35C1D86EC4E0078631C /* TSDKLeagueCustomDatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9678A3611D86EC4E0078631C /* TSDKLeagueCustomDatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678A35D1D86EC4E0078631C /* TSDKLeagueCustomDatum.m */; };
+		9678A3621D86EC4E0078631C /* TSDKLeagueCustomField.h in Headers */ = {isa = PBXBuildFile; fileRef = 9678A35E1D86EC4E0078631C /* TSDKLeagueCustomField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678A35F1D86EC4E0078631C /* TSDKLeagueCustomField.m */; };
 		968457581CCE4AE000B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968457591CCE4AE600B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */; };
@@ -389,6 +393,10 @@
 		965B7D441C18CB2F009AF13E /* TSDKContactPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKContactPhoneNumber.m; path = Members/TSDKContactPhoneNumber.m; sourceTree = "<group>"; };
 		9681092C1D8488C600D94C53 /* TSDKCollectionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKCollectionCommand.h; sourceTree = "<group>"; };
 		9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionCommand.m; sourceTree = "<group>"; };
+		9678A35C1D86EC4E0078631C /* TSDKLeagueCustomDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKLeagueCustomDatum.h; path = Leagues/TSDKLeagueCustomDatum.h; sourceTree = "<group>"; };
+		9678A35D1D86EC4E0078631C /* TSDKLeagueCustomDatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKLeagueCustomDatum.m; path = Leagues/TSDKLeagueCustomDatum.m; sourceTree = "<group>"; };
+		9678A35E1D86EC4E0078631C /* TSDKLeagueCustomField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKLeagueCustomField.h; path = Leagues/TSDKLeagueCustomField.h; sourceTree = "<group>"; };
+		9678A35F1D86EC4E0078631C /* TSDKLeagueCustomField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKLeagueCustomField.m; path = Leagues/TSDKLeagueCustomField.m; sourceTree = "<group>"; };
 		968457571CCE4AE000B9946B /* TimeZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TimeZones.json; path = SDK/Resources/TimeZones.json; sourceTree = "<group>"; };
 		968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObjectTests.m; sourceTree = "<group>"; };
 		969366BF1CC9545300721504 /* root.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = root.json; path = SDK/Resources/root.json; sourceTree = "<group>"; };
@@ -580,6 +588,10 @@
 			children = (
 				9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */,
 				9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */,
+				9678A35C1D86EC4E0078631C /* TSDKLeagueCustomDatum.h */,
+				9678A35D1D86EC4E0078631C /* TSDKLeagueCustomDatum.m */,
+				9678A35E1D86EC4E0078631C /* TSDKLeagueCustomField.h */,
+				9678A35F1D86EC4E0078631C /* TSDKLeagueCustomField.m */,
 			);
 			name = Leagues;
 			sourceTree = "<group>";
@@ -980,6 +992,7 @@
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
 				960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */,
 				969E80F71BAAE7AB00CA518F /* TSDKTrackedItemStatus.h in Headers */,
+				9678A3621D86EC4E0078631C /* TSDKLeagueCustomField.h in Headers */,
 				969E805E1BAAE79500CA518F /* TSDKTeamSnap.h in Headers */,
 				96F4FC3F1BBDA389000D04B9 /* TSDKTeamResults.h in Headers */,
 				969E80B71BAAE7AB00CA518F /* TSDKCollectionObject.h in Headers */,
@@ -997,6 +1010,7 @@
 				5699E27A1C90A6EE0061EC1D /* TSDKMessage.h in Headers */,
 				5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */,
 				9681092E1D8488C600D94C53 /* TSDKCollectionCommand.h in Headers */,
+				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */,
@@ -1267,6 +1281,7 @@
 				5688F54E1C91E2D80005C330 /* TSDKMessageDatum.m in Sources */,
 				969366D71CCA503800721504 /* TSDKCountry.m in Sources */,
 				56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */,
+				9678A3611D86EC4E0078631C /* TSDKLeagueCustomDatum.m in Sources */,
 				963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
 				965B7D2F1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
@@ -1314,6 +1329,7 @@
 				969B7EE11C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */,
 				965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
+				9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
 				969E80B41BAAE7AB00CA518F /* TSDKCollectionQuery.m in Sources */,
 				969366DD1CCA539700721504 /* TSDKTimeZone.m in Sources */,
