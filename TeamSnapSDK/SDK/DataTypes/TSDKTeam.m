@@ -61,6 +61,39 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
++ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSInteger)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
+    TSDKCollectionCommand *command = [TSDKMember commandForKey:@"import_from_team"];
+    command.data[@"destination_team_id"] = [NSString stringWithFormat:@"%ld", (long)destinationTeamId];
+    
+    NSMutableArray *arrayOfMemberIds = [[NSMutableArray alloc] initWithCapacity:members.count];
+    for(TSDKMember *member in members) {
+        [arrayOfMemberIds addObject:[NSString stringWithFormat:@"%ld", (long)member.objectIdentifier]];
+    }
+    
+    command.data[@"source_member_ids"] = [arrayOfMemberIds componentsJoinedByString:@","];;
+    if(sendInvites) {
+        command.data[@"send_invites"] = @"true";
+    } else {
+        command.data[@"send_invites"] = @"false";
+    }
+    
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        NSArray *result = nil;
+        if (success) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+        }
+        if (completion) {
+            completion(success, complete, result, error);
+        }
+    }];
+}
+
+- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
+    [TSDKTeam actionImportMembers:members destinationTeamId:self.objectIdentifier sendInvites:sendInvites completion:completion];
+}
+
 + (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSInteger)teamId asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
     command.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
