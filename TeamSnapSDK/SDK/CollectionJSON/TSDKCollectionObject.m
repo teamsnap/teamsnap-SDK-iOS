@@ -77,7 +77,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 +(TSDKCollectionCommand *)commandForKey:(NSString *)commandName {
-    return [[self commands] objectForKey:commandName];
+    return [[[self commands] objectForKey:commandName] copy];
 }
 
 +(NSMutableDictionary *)commandsForClass:(NSString *)className {
