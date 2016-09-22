@@ -308,9 +308,8 @@
     [coder encodeObject:_links forKey:@"links"];
     [coder encodeObject:_data forKey:@"data"];
     [coder encodeObject:_collection forKey:@"collection"];
-#warning need to enable encodeWithCode for TSDKCollectionCommands
-    //[coder encodeObject:_commands forKey:@"commands"];
-    //[coder encodeObject:_queries forKey:@"queries"];
+    [coder encodeObject:_commands forKey:@"commands"];
+    [coder encodeObject:_queries forKey:@"queries"];
 }
 
 @end

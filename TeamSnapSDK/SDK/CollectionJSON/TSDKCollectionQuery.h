@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCompletionBlockTypes.h"
 
-@interface TSDKCollectionQuery : NSObject <NSCopying>
+@interface TSDKCollectionQuery : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, strong) NSMutableDictionary *data;
 @property (nonatomic, strong) NSString *href;

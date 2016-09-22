@@ -39,6 +39,17 @@
     return self;
 }
 
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [self init];
+    if (self) {
+        _data = [aDecoder decodeObjectForKey:@"data"];
+        _href = [aDecoder decodeObjectForKey:@"href"];
+        _rel = [aDecoder decodeObjectForKey:@"rel"];
+        _prompt = [aDecoder decodeObjectForKey:@"prompt"];
+    }
+    return self;
+}
+
 -(void)executeWithCompletion:(TSDKCompletionBlock)completion {
     NSURL *destinationURL = [NSURL URLWithString:self.href];
     
@@ -54,6 +65,13 @@
         copy.data = [self.data mutableCopy];
     }
     return copy;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:_data forKey:@"data"];
+    [coder encodeObject:_href forKey:@"href"];
+    [coder encodeObject:_rel forKey:@"rel"];
+    [coder encodeObject:_prompt forKey:@"prompt"];
 }
 
 @end
