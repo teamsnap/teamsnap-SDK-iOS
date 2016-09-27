@@ -17,6 +17,7 @@
 #import <TeamSnapSDK/TSDKTeamSnap.h>
 #import <TeamSnapSDK/TSDKRequestConfiguration.h>
 #import <TeamSnapSDK/TSDKRequestConfiguration.h>
+#import <teamSnapSDK/TSDKCollectionQuery.h>
 #import <teamSnapSDK/TSDKCollectionCommand.h>
 #import <teamSnapSDK/TSDKCollectionJSON.h>
 #import <teamSnapSDK/TSDKCollectionObject.h>

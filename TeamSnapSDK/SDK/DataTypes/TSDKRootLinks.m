@@ -8,6 +8,7 @@
 
 #import "TSDKRootLinks.h"
 #import "TSDKDataRequest.h"
+#import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 #import "TSPCache.h"
 #import "TSDKTeamSnap.h"
@@ -63,6 +64,14 @@
                         [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
                     }
                 }
+                if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"]) {
+                    NSArray *queries = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"];
+                    for (NSDictionary *queryDictionary in queries) {
+                        TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];
+                        [[TSDKCollectionObject queriesForClass:type] setValue:query forKey:query.rel];
+                    }
+                }
+                
             }
         }
     }
@@ -178,6 +187,46 @@
             }
         } else {
             completion(NO, nil);
+        }
+    }];
+}
+
++(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
+            if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+                queryCommand.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+                queryCommand.data[@"version"] = version;
+                [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                    NSString *firebaseToken = nil;
+                    
+                    if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                        TSDKCollectionJSON *tokenCollectonObject = [(NSArray *)[objects collection] firstObject];
+                        firebaseToken = [[tokenCollectonObject data] objectForKey:@"token"];
+                    }
+                    if (completion) {
+                        completion(success, firebaseToken, error);
+                    }
+                }];
+            } else {
+                if (completion) {
+                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                    if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
+                        userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+                    } else {
+                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
+                        userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+                    }
+                    NSInteger errorCode = 1;
+                    
+                    NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    completion(NO, nil, error);
+                }
+            }
+        } else {
+            completion(NO, nil,  nil);
         }
     }];
 }

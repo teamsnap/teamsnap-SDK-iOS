@@ -81,5 +81,7 @@ typedef void (^TSDKEventArrayCompletionBlock)(BOOL success, BOOL complete, NSArr
 typedef void (^TSDKImageCompletionBlock)(UIImage * _Nullable image);
 typedef void (^TSDKContactArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContact *> * _Nullable contacts, NSError * _Nullable error);
 typedef void (^TSDKMemberPhotoArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberPhoto *> *_Nullable memberPhotos, NSError *_Nullable error);
+typedef void (^TSDKFirebaseTokenCompletionBlock)(BOOL success, NSString *_Nullable firbaseToken, NSError *_Nullable error);
+
 
 #endif /* TSDKCompletionBlockTypes_h */
