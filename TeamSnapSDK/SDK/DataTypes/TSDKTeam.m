@@ -224,10 +224,12 @@
         lProcessed = YES;
     }
     if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
-        NSInteger memberId = [[bulkObject.collection.data objectForKey:@"member_id"] integerValue];
-        TSDKMember *member = [self memberWithID:memberId];
-        if (member) {
-            lProcessed = [member processBulkLoadedObject:(TSDKCollectionObject *)bulkObject];
+        NSInteger memberId = [bulkObject getInteger:@"member_id"];
+        if (memberId != NSNotFound) {
+            TSDKMember *member = [self memberWithID:memberId];
+            if (member) {
+                lProcessed = [member processBulkLoadedObject:(TSDKCollectionObject *)bulkObject];
+            }
         }
     }
     return lProcessed;
