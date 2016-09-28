@@ -141,7 +141,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
             success = YES;
             JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         }
-        completionBlock(success, NO, JSON, error);
+        if (completionBlock) {
+            completionBlock(success, NO, JSON, error);
+        }
     } else {
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
         if (request == nil) {
@@ -232,10 +234,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
                     }
                 }
                 
-                for(TSDKJSONCompletionBlock completionBlock in [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request].allObjects) {
+                NSSet *completionBlocks =  [[[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request] copy];
+                
+                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
+                
+                for(TSDKJSONCompletionBlock completionBlock in completionBlocks.allObjects) {
                     completionBlock(success, requestCompleted, JSON, error);
                 }
-                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
             }];
             remoteTask.priority = configuration.priority;
             [remoteTask resume];
