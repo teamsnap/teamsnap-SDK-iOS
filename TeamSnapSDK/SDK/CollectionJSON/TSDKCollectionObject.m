@@ -745,8 +745,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
-                    for (TSDKCollectionObject *object in result) {
+                for (TSDKCollectionObject *object in result) {
+                    [TSDKNotifications postRefreshedObject:object];
+                    if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
                         [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
                     }
                 }
