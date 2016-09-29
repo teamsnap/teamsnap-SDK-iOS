@@ -12,6 +12,7 @@
 #import "TSDKTeamResults.h"
 #import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "TSDKNotifications.h"
 
 @interface TSDKUser()
 
@@ -63,8 +64,15 @@
     
     if (existingMember != NSNotFound) {
         [self.myMembersOnTeams removeObjectAtIndex:existingMember];
+        
     }
     [self.myMembersOnTeams addObject:newMember];
+    
+    if(existingMember == NSNotFound) {
+        [TSDKNotifications postNewObject:newMember];
+    } else {
+        [TSDKNotifications postRefreshedObject:newMember];
+    }
 }
 
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {

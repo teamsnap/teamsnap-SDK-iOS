@@ -18,7 +18,7 @@
 #import "TSDKCustomField.h"
 #import "TSDKCustomDatum.h"
 #import "TSDKUser.h"
-
+#import "TSDKNotifications.h"
 #import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 
@@ -211,15 +211,19 @@
     } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
         if (self.teamPreferences) {
             [self.teamPreferences setCollection:bulkObject.collection];
+            [TSDKNotifications postRefreshedObject:bulkObject];
         } else {
             self.teamPreferences = (TSDKTeamPreferences *)bulkObject;
+            [TSDKNotifications postNewObject:bulkObject];
         }
         lProcessed = YES;
     } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
         if (self.teamResults) {
             [self.teamResults setCollection:bulkObject.collection];
+            [TSDKNotifications postRefreshedObject:bulkObject];
         } else {
             self.teamResults = (TSDKTeamResults *)bulkObject;
+            [TSDKNotifications postNewObject:bulkObject];
         }
         lProcessed = YES;
     }
@@ -236,13 +240,34 @@
 }
 
 - (void)addEvent:(TSDKEvent *)event {
+    BOOL isNewEvent = NO;
+    if ([self.events objectForIntegerKey:event.objectIdentifier] == nil) {
+        isNewEvent = YES;
+    }
+    
     [self.events refreshCollectionObject:event];
     [self dirtySortedEventLists];
+    
+    if(isNewEvent) {
+        [TSDKNotifications postNewObject:event];
+    } else {
+        [TSDKNotifications postRefreshedObject:event];
+    }
 }
 
 - (void)addMember:(TSDKMember *)member {
+    BOOL isNewMember = NO;
+    if([self.members objectForIntegerKey:member.objectIdentifier] == nil) {
+        isNewMember = YES;
+    }
     [self.members refreshCollectionObject:member];
     [self dirtySortedMemberLists];
+    
+    if(isNewMember) {
+        [TSDKNotifications postNewObject:member];
+    } else {
+        [TSDKNotifications postRefreshedObject:member];
+    }
 }
 
 - (TSDKMember *)memberWithID:(NSInteger)memberId {
