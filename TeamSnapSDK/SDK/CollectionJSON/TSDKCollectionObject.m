@@ -28,6 +28,7 @@
 
 static NSMutableDictionary *_templates;
 static NSMutableDictionary *_commandDictionary;
+static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
@@ -95,6 +96,38 @@ static NSMutableDictionary *_classURLs;
 
 +(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName {
     return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
+}
+
++(NSDictionary *)queryDictionary {
+    if (!_queryDictionary) {
+        _queryDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return _queryDictionary;
+}
+
++(NSMutableDictionary *)queries {
+    return [self queriesForClass:[self SDKType]];
+}
+
++(TSDKCollectionQuery *)queryForKey:(NSString *)queryName {
+    return [[self queries] objectForKey:queryName];
+}
+
++(NSMutableDictionary *)queriesForClass:(NSString *)className {
+    if (className) {
+        NSMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
+        if (!queries) {
+            queries = [[NSMutableDictionary alloc] init];
+            [[self queryDictionary] setValue:queries forKey:className];
+        }
+        return queries;
+    } else {
+        return nil;
+    }
+}
+
++(TSDKCollectionQuery *)queryForClass:(NSString *)className forKey:(NSString *)queryName {
+    return [[[self queryDictionary] objectForKey:className] objectForKey:queryName];
 }
 
 +(NSURL *)classURLForClass:(NSString *)class {

@@ -110,6 +110,7 @@
 +(void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion; //Send any pending invitations for a specified email address
 +(void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion;
 
++(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion;
 
 @end
 
