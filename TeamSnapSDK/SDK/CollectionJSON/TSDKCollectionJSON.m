@@ -7,11 +7,12 @@
 //
 
 #import "TSDKCollectionJSON.h"
-#import "TSDKCompletionBlockTypes.h"
+#import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
 #import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 #import "NSString+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
+#import "TSDKLogging.h"
 
 @implementation TSDKCollectionJSON
 

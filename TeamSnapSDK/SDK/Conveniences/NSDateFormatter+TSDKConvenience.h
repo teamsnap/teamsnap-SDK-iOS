@@ -6,6 +6,7 @@
 //  Copyright © 2016 teamsnap. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 
 
 @interface NSDateFormatter (TSDKConvenience)
