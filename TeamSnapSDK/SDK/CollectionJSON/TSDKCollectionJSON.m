@@ -142,7 +142,7 @@
         
         TSDKCollectionJSON* collectionJSON = [_collection firstObject];
         if (collectionJSON && [collectionJSON isKindOfClass:[TSDKCollectionJSON class]] && [collectionJSON type] && ![TSDKCollectionObject templateForClass:[collectionJSON type]]) {
-            [TSDKCollectionObject setTemplate:template.data forClass:[[_collection objectAtIndex:0] type]];
+            [TSDKCollectionObject setTemplate:template.data forClass:[collectionJSON type]];
         }
     }
     
