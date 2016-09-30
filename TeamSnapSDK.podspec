@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.author       = { "Mark Gallegos" => "mark.gallegos@teamsnap.com", "Jason Rahaim" => "jason@teamsnap.com", "Skylar Seamans" => "skylar.seamans@teamsnap.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :branch => "podspec-experiment" }
-  s.source_files = 'TeamSnapSDK/*.{h,m}'  
   s.subspec 'Profiler' do |sp|
     sp.source_files = 'TeamSnapSDK/Profiler/*.{h,m}'
   end
@@ -32,8 +31,6 @@ Pod::Spec.new do |s|
 	end  
 	
     sp.subspec 'DataTypes' do |spSDK|
-    
-      spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/*.{h,m}'
     
       spSDK.subspec 'Assignments' do |spTypes|
         spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Assignments/*.{h,m}'
@@ -67,6 +64,8 @@ Pod::Spec.new do |s|
         spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Statistics/*.{h,m}'
       end
       
+      spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/*.{h,m}'
+    
 	end  
 	
     sp.subspec 'Protocols' do |spSDK|
@@ -74,4 +73,5 @@ Pod::Spec.new do |s|
 	end  
 	
   end
+  s.source_files = 'TeamSnapSDK/*.{h,m}'  
 end
