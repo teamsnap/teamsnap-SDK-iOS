@@ -139,7 +139,9 @@
         TSDKCollectionJSON *template = [[TSDKCollectionJSON alloc] init];
         [template parseJSON:[collection objectForKey:@"template"]];
         template.href = self.href;
-        if (_collection && [[_collection objectAtIndex:0] isKindOfClass:[TSDKCollectionJSON class]] && [[_collection objectAtIndex:0] type] && ![TSDKCollectionObject templateForClass:[[_collection objectAtIndex:0] type]]) {
+        
+        TSDKCollectionJSON* collectionJSON = [_collection firstObject];
+        if (collectionJSON && [collectionJSON isKindOfClass:[TSDKCollectionJSON class]] && [collectionJSON type] && ![TSDKCollectionObject templateForClass:[collectionJSON type]]) {
             [TSDKCollectionObject setTemplate:template.data forClass:[[_collection objectAtIndex:0] type]];
         }
     }
