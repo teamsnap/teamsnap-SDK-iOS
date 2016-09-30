@@ -8,5 +8,5 @@ Pod::Spec.new do |s|
   s.author       = { "Mark Gallegos" => "mark.gallegos@teamsnap.com", "Jason Rahaim" => "jason@teamsnap.com", "Skylar Seamans" => "skylar.seamans@teamsnap.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :branch => "podspec-experiment" }
-  sp.source_files = 'TeamSnapSDK/**/*.{h,m}'  
+  s.source_files = 'TeamSnapSDK/**/*.{h,m}'  
 end
