@@ -8,10 +8,15 @@ Pod::Spec.new do |s|
   s.author       = { "Jason Rahaim" => "jason@teamsnap.com", "Skylar Seamans" => "skylar.seamans@teamsnap.com", "Mark Gallegos" => "mark.gallegos@teamsnap.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :branch => "podspec-experiment" }
+  
+  s.source_files = 'TeamSnapSDK/*.{h,m}'  
+
   s.subspec 'Profiler' do |sp|
     sp.source_files = 'TeamSnapSDK/Profiler/*.{h,m}'
   end
+  
   s.subspec 'SDK' do |sp|
+  
     sp.source_files = 'TeamSnapSDK/SDK/*.{h,m}'
     
 	sp.subspec 'Cache' do |spSDK|
@@ -73,5 +78,5 @@ Pod::Spec.new do |s|
 	end  
 	
   end
-  s.source_files = 'TeamSnapSDK/*.{h,m}'  
+  
 end
