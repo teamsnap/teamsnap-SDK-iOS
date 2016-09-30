@@ -32,7 +32,41 @@ Pod::Spec.new do |s|
 	end  
 	
     sp.subspec 'DataTypes' do |spSDK|
-      spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/**/*.{h,m}'
+    
+      spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/*.{h,m}'
+    
+      spSDK.subspec 'Assignments' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Assignments/*.{h,m}'
+      end
+    
+      spSDK.subspec 'Leagues' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Leagues/*.{h,m}'
+      end
+      
+      spSDK.subspec 'Media' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Media/*.{h,m}'
+      end
+      
+      spSDK.subspec 'Members' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Members/*.{h,m}'
+      end
+      
+      spSDK.subspec 'Messages' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Messages/*.{h,m}'
+      end
+      
+      spSDK.subspec 'Payments' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Payments/*.{h,m}'
+      end
+      
+      spSDK.subspec 'PhotoObjects' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/PhotoObjects/*.{h,m}'
+      end
+      
+      spSDK.subspec 'Statistics' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Statistics/*.{h,m}'
+      end
+      
 	end  
 	
     sp.subspec 'Protocols' do |spSDK|
