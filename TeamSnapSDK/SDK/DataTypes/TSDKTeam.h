@@ -140,6 +140,10 @@
 
 - (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion;
 
++ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSInteger)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion;
+
+- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion;
+
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
 
 
