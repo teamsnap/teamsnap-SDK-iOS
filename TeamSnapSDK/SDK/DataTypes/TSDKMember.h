@@ -75,6 +75,7 @@
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: <null>
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
+@property (nonatomic, assign) NSInteger sourceMemberId;
 @property (nullable, nonatomic, weak) NSURL *linkBroadcastEmails;
 @property (nullable, nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
 @property (nullable, nonatomic, weak) NSURL *linkMemberLinks;
