@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */; };
 		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		563E3EF71CD012DD00B0F1FF /* TSDKDivisionMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EF51CD012DD00B0F1FF /* TSDKDivisionMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -997,6 +998,7 @@
 				969E80E51BAAE7AB00CA518F /* TSDKLocation.h in Headers */,
 				969E80F51BAAE7AB00CA518F /* TSDKTrackedItem.h in Headers */,
 				969E80ED1BAAE7AB00CA518F /* TSDKSport.h in Headers */,
+				4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */,
 				969E80D91BAAE7AB00CA518F /* TSDKBroadcastAlert.h in Headers */,
 				96F4E7D81C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */,
 				96E1336B1D88627C0027E382 /* TSDKMemberAssignment.h in Headers */,
@@ -1612,7 +1614,9 @@
 		969E80581BAAE62E00CA518F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKTests;
@@ -1624,6 +1628,8 @@
 		969E80591BAAE62E00CA518F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKTests;
