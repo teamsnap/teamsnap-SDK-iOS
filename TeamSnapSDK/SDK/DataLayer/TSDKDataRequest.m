@@ -272,7 +272,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         for (NSString *key in searchParamaters) {
             id value = [searchParamaters objectForKey:key];
             if([value isKindOfClass:[NSArray class]]) {
-                NSString *commaSeparatedString = [value componentsSeparatedByString:@","];
+                NSString *commaSeparatedString = [value componentsJoinedByString:@","];
                 [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
             } else  {
                 [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
