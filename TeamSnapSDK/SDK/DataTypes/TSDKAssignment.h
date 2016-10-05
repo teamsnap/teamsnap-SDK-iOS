@@ -9,6 +9,7 @@
 
 @property (nonatomic, weak) NSString *_Nullable updatedAt; //Example: **NULL**
 @property (nonatomic, assign) BOOL isEditable; //Example: 1
+@property (nonatomic, assign) NSInteger position; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable createdAt; //Example: **NULL**
 @property (nonatomic, assign) NSInteger memberId; //Example: 1282395
 @property (nonatomic, assign) BOOL managerCreated; //Example: 1
