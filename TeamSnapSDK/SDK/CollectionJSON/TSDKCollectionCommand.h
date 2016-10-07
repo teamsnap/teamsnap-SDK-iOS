@@ -8,6 +8,6 @@
 
 #import "TSDKCollectionQuery.h"
 
-@interface TSDKCollectionCommand : TSDKCollectionQuery
+@interface TSDKCollectionCommand : TSDKCollectionQuery <NSCopying, NSCoding>
 
 @end

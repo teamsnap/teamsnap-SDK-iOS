@@ -140,7 +140,7 @@
     }
 }
 
-- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent {
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent preferShortLabel:(BOOL)preferShortLabel {
     if (self.isGame && opponent) {
         if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
             if ((self.label) && (![self.label isEqualToString:@""])) {
@@ -156,6 +156,10 @@
             }
         }
     } else {
+        if(preferShortLabel && self.label.length) {
+            return self.label;
+        }
+        
         if (!self.name || (self.name.length == 0)) {
             return NSLocalizedString(@"Event", nil);
         } else {
