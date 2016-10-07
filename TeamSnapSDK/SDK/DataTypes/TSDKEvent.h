@@ -70,7 +70,7 @@
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock)completion;
 - (NSComparisonResult)compareStartDate:(TSDKEvent *)compareEvent;
-- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent;
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent preferShortLabel:(BOOL)preferShortLabel;
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion;
 
 @end
