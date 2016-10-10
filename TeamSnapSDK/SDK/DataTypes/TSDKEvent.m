@@ -20,15 +20,6 @@
     return @"event";
 }
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        _availabilitiesByRoster = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
-
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *)event completion:(TSDKCompletionBlock)completion {
     if (event) {
         TSDKCollectionCommand *command = [self commandForKey:@"update_final_score"];

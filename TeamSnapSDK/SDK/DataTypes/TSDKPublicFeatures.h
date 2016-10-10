@@ -10,9 +10,9 @@
 
 @interface TSDKPublicFeatures : NSObject
 
-@property (strong, nonatomic) NSMutableDictionary *features;
+@property (strong, nonatomic) NSMutableDictionary *_Nullable features;
 
-- (instancetype)initWithCollection:(NSDictionary *)objects;
+- (instancetype _Nullable)initWithCollection:(NSDictionary *_Nonnull)objects;
 - (BOOL)apiSupportsTicketSubmission;
 - (NSInteger)daysBetweenPushPermissionPrompt;
 

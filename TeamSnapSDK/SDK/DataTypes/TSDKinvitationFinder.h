@@ -13,6 +13,6 @@
 
 @property (nonatomic, assign) BOOL isExistingUser; //Example: 1
 @property (nonatomic, assign) BOOL isInvitationPending; //Example: 0
-@property (nonatomic, weak) NSString *emailAddress;
+@property (nonatomic, weak) NSString *_Nullable emailAddress;
 
 @end

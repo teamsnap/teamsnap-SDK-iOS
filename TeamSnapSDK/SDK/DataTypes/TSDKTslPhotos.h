@@ -12,8 +12,8 @@
 
 @interface TSDKTslPhotos : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *hostPrefix; //Example: https://7e7a37e9d371cdca79a5-2957068c55022fed6f3542268dd966e4.ssl.cf1.rackcdn.com
-@property (nonatomic, weak) NSURL *linkRoot;
-@property (nonatomic, weak) NSURL *linkSelf;
+@property (nonatomic, weak) NSString *_Nullable hostPrefix; //Example: https://7e7a37e9d371cdca79a5-2957068c55022fed6f3542268dd966e4.ssl.cf1.rackcdn.com
+@property (nonatomic, weak) NSURL *_Nullable linkRoot;
+@property (nonatomic, weak) NSURL *_Nullable linkSelf;
 
 @end
