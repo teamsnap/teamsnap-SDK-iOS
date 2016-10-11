@@ -180,18 +180,19 @@
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
         
         XCTestExpectation *userExpectation = [self expectationWithDescription:@"Return from /random"];
-        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
         [user arrayFromLink:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
             if (success || complete) {
                 XCTAssert(@"Returned Success on nil link");
             }
-            XCTAssertNil(objects, @"Objects returned on nil array");
+            XCTAssertTrue(objects.count==0, @"Objects returned on nil array");
             [userExpectation fulfill];
         }];
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
-    
+#pragma clang diagnostic pop
     [self waitForExpectationsWithTimeout:5 handler:nil];
     
 }
