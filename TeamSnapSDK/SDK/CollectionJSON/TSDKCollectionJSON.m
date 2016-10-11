@@ -233,7 +233,7 @@
             completionBlockName = @"TSDKArrayCompletionBlock";
         }
         
-        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(%@ _Nullable)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
+        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(%@ _Nonnull)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
     }
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];
