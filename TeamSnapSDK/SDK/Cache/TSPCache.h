@@ -12,22 +12,22 @@
 @interface TSPCache : NSObject
 
 
-+(void)setCacheRootPath:(NSURL *)rootPath;
-+(NSURL *)cacheRootPath;
++(void)setCacheRootPath:(NSURL *_Nonnull)rootPath;
++(NSURL *_Nullable)cacheRootPath;
 
 +(void)setCacheMaxAgeInMinutes:(NSUInteger)maxAge;
 +(NSUInteger)cacheMaxAgeInMinutes;
 
 +(void)invalidateAll;
-+(void)invaidateObjectsOfClass:(Class)objectClass;
-+(void)invaidateObjectOfClass:(Class)objectClass withId:(NSUInteger)objectId;
++(void)invaidateObjectsOfClass:(Class _Nonnull)objectClass;
++(void)invaidateObjectOfClass:(Class _Nonnull)objectClass withId:(NSUInteger)objectId;
 
-+(void)saveObject:(TSDKCollectionObject *)collectionObject;
-+(TSDKCollectionObject *)objectOfClass:(Class)objectClass withId:(NSUInteger)objectId;
-+ (void)saveDictionaryOfObjects:(NSDictionary *)dictionaryOfObjects ofType:(Class)objectClass;
-+ (NSDictionary *)loadDictionaryOfObjectsOfType:(Class)objectClass;
++(void)saveObject:(TSDKCollectionObject *_Nonnull)collectionObject;
++(TSDKCollectionObject *_Nullable)objectOfClass:(Class _Nonnull)objectClass withId:(NSUInteger)objectId;
++ (void)saveDictionaryOfObjects:(NSDictionary *_Nonnull)dictionaryOfObjects ofType:(Class _Nonnull)objectClass;
++ (NSDictionary *_Nullable)loadDictionaryOfObjectsOfType:(Class _Nonnull)objectClass;
 
-+ (BOOL)saveSchemas:(NSArray *)schemaArray WithVersion:(NSString *)schemaVersion;
-+ (NSArray *)loadSchemasIfCachedVersion:(NSString *)schemaVersion;
++ (BOOL)saveSchemas:(NSArray *_Nonnull)schemaArray WithVersion:(NSString *_Nonnull)schemaVersion;
++ (NSArray *_Nullable)loadSchemasIfCachedVersion:(NSString *_Nonnull)schemaVersion;
 
 @end

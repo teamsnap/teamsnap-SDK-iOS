@@ -16,16 +16,16 @@
 
 @interface TSDKObjectsRequest : NSObject
 
-+ (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
-+ (void)bulkLoadTeamData:(TSDKTeam *)team types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
-+ (void)bulkLoadTeamDataForTeamIds:(NSArray *)teamIds types:(NSArray *)objectDataTypes completion:(TSDKArrayCompletionBlock)completion;
-+ (void)listEventsForTeam:(TSDKTeam *)team startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion;
-+ (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock;
-+ (TSDKUser *)processLoginCollectionJSON:(TSDKCollectionJSON *)containerCollection;
-+ (NSArray *)SDKObjectsFromCollection:(TSDKCollectionJSON *)containerCollection;
-+ (NSString *)typeForRel:(NSString *)rel;
-+ (NSString *)relForType:(NSString *)type;
-+ (NSArray *)knownCompletionTypes;
++ (void)listTeams:(NSArray *_Nonnull)teamIds WithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
++ (void)bulkLoadTeamData:(TSDKTeam *_Nonnull)team types:(NSArray *_Nonnull)objectDataTypes completion:(TSDKArrayCompletionBlock _Nullable)completion;
++ (void)bulkLoadTeamDataForTeamIds:(NSArray *_Nonnull)teamIds types:(NSArray *_Nonnull)objectDataTypes completion:(TSDKArrayCompletionBlock _Nullable)completion;
++ (void)listEventsForTeam:(TSDKTeam *_Nonnull)team startDate:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate completion:(TSDKArrayCompletionBlock _Nullable)completion;
++ (void)invitationStatusForEmailAddress:(NSString *_Nonnull)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock _Nullable)completionBlock;
++ (TSDKUser *_Nullable)processLoginCollectionJSON:(TSDKCollectionJSON *_Nonnull)containerCollection;
++ (NSArray *_Nullable)SDKObjectsFromCollection:(TSDKCollectionJSON *_Nonnull)containerCollection;
++ (NSString *_Nullable)typeForRel:(NSString *_Nonnull)rel;
++ (NSString *_Nullable)relForType:(NSString *_Nonnull)type;
++ (NSArray *_Nonnull)knownCompletionTypes;
 + (void)dumpCompletionTypes;
 
 @end

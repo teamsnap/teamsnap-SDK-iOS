@@ -10,6 +10,6 @@
 
 @protocol TSDKProcessBulkObjectProtocol <NSObject>
 
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject;
+- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *_Nonnull)bulkObject;
 
 @end
