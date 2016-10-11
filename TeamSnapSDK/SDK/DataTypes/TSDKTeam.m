@@ -328,7 +328,7 @@
         }];
     } else {
         if (completion) {
-            completion(NO, NO, nil, nil);
+            completion(NO, NO, [NSArray array], nil);
         }
     }
 }

@@ -733,6 +733,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
             }
         }
+        if (result == nil) {
+            result = [[NSArray alloc] init];
+        }
         if (completion) {
             completion(success, complete, result, error);
         }
@@ -752,6 +755,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                     }
                 }
             }
+        }
+        if (result == nil) {
+            result = [[NSArray alloc] init];
         }
         if (completion) {
             completion(success, complete, result, error);
