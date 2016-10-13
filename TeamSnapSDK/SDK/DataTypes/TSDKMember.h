@@ -42,7 +42,7 @@
 
 @end
 
-@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
+@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nullable, nonatomic, weak) NSString *lastName; //Example: Invite
@@ -128,12 +128,6 @@
 -(nullable TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL  progress:(nullable TSDKUploadProgressBlock)progressBlock;
 
 #endif
-
--(nullable TSDKTeam *)team;
-@property (nullable, strong, nonatomic) NSMutableDictionary *contacts;
-@property (nullable, strong, nonatomic) NSMutableDictionary *emailAddresses;
-@property (nullable, strong, nonatomic) NSMutableDictionary *phoneNumbers;
-
 
 - (BOOL)isAtLeastManager;
 - (BOOL)isAtLeastOwner;
