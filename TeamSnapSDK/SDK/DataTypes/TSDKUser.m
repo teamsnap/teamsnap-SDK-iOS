@@ -106,10 +106,6 @@
     }];
 }
 
-- (NSArray *)myMembersAcrossAllTeams {
-    return _myMembersOnTeams;
-}
-
 - (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
     NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
         return (member.teamId == teamId);
