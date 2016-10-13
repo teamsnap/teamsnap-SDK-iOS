@@ -47,9 +47,9 @@
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes forTeamIds:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)addTeam:(TSDKTeam *_Nullable)team;
+//- (void)addTeam:(TSDKTeam *_Nullable)team;
 
-@property (strong, nonatomic) NSMutableDictionary *_Nullable teams;
+//@property (strong, nonatomic) NSMutableDictionary *_Nullable teams;
 
 @end
 
