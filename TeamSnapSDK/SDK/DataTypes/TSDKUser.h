@@ -8,10 +8,9 @@
 #import "TSDKCompletionBlockTypes.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
 
-@interface TSDKUser : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
+@interface TSDKUser : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger teamsCount;
 @property (nonatomic, assign) NSInteger facebookId;

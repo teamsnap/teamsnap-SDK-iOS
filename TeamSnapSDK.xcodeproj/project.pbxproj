@@ -39,8 +39,6 @@
 		9612CD8F1C9B51AB00816460 /* TSDKNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9612CD901C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
 		9612CD911C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
-		9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */; };
 		963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
@@ -372,7 +370,6 @@
 		961257D71D241AEB005B991D /* TSDKNetworkActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNetworkActivityIndicator.m; sourceTree = "<group>"; };
 		9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKNotifications.h; sourceTree = "<group>"; };
 		9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNotifications.m; sourceTree = "<group>"; };
-		9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProcessBulkObjectProtocol.h; sourceTree = "<group>"; };
 		9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCustomDatumTests.m; path = DataType/TSDKCustomDatumTests.m; sourceTree = "<group>"; };
 		963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKAvailabilityGroups.h; sourceTree = "<group>"; };
 		963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
@@ -759,7 +756,6 @@
 				969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */,
 				969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */,
 				969E806A1BAAE7AB00CA518F /* TSDKCollectionObject.m */,
-				9627ECAF1C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h */,
 			);
 			path = CollectionJSON;
 			sourceTree = "<group>";
@@ -971,7 +967,6 @@
 				969E80CF1BAAE7AB00CA518F /* TSDKStatisticGroup.h in Headers */,
 				963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */,
 				969E80F11BAAE7AB00CA518F /* TSDKTeamFee.h in Headers */,
-				9627ECB01C1EFDC100D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */,
 				969B7EA21C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
 				969E80CB1BAAE7AB00CA518F /* TSDKStatistic.h in Headers */,
 				961257D81D241AEB005B991D /* TSDKNetworkActivityIndicator.h in Headers */,
@@ -1067,7 +1062,6 @@
 				965B7D2E1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
 				96B47F431BADB4410035F2CC /* TSDKTrackedItem.h in Headers */,
 				96B47F671BADB4850035F2CC /* TSDKCollectionObject.h in Headers */,
-				9627ECB31C1F0B4E00D669E7 /* TSDKProcessBulkObjectProtocol.h in Headers */,
 				96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */,
 				96B47F211BADB4410035F2CC /* TSDKAssignment.h in Headers */,
 				96B47F3F1BADB4410035F2CC /* TSDKTeamFee.h in Headers */,

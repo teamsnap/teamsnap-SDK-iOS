@@ -8,7 +8,6 @@
 #import "TSDKRequestConfiguration.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
 #import "TSDKMember.h"
 

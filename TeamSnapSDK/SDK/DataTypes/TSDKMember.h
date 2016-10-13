@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"

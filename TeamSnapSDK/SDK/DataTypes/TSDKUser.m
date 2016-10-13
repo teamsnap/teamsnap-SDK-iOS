@@ -178,7 +178,6 @@
 }
 
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    __typeof__(self) __weak weakSelf = self;
     
     [self teamIdsForAllMyTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *teamIds, NSError *error) {
         [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
@@ -203,16 +202,6 @@
             completion(success, complete, teams, error);
         }
     }];
-}
-
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
-    BOOL lProcessed = NO;
-    if ([bulkObject isKindOfClass:[TSDKMember class]]) {
-        lProcessed = YES;
-        [self addMember:(TSDKMember *)bulkObject];
-    }
-    
-    return lProcessed;
 }
 
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
