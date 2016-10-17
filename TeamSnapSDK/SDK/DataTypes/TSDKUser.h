@@ -8,10 +8,9 @@
 #import "TSDKCompletionBlockTypes.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKDataRequest.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
 
-@interface TSDKUser : TSDKCollectionObject <TSDKProcessBulkObjectProtocol>
+@interface TSDKUser : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger teamsCount;
 @property (nonatomic, assign) NSInteger facebookId;
@@ -41,15 +40,14 @@
 
 - (void)TeamsWithIDs:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (NSArray *_Nonnull)myMembersAcrossAllTeams;
 - (void)myMembersOnTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (NSArray *_Nullable)myMembersOnTeamId:(NSInteger)teamId;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes forTeamIds:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)addTeam:(TSDKTeam *_Nullable)team;
+//- (void)addTeam:(TSDKTeam *_Nullable)team;
 
-@property (strong, nonatomic) NSMutableDictionary *_Nullable teams;
+//@property (strong, nonatomic) NSMutableDictionary *_Nullable teams;
 
 @end
 

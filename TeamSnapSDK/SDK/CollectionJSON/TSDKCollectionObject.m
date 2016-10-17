@@ -15,7 +15,6 @@
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKNotifications.h"
 
 @interface TSDKCollectionObject()
@@ -750,9 +749,6 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                 for (TSDKCollectionObject *object in result) {
                     [TSDKNotifications postRefreshedObject:object];
-                    if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
-                        [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
-                    }
                 }
             }
         }

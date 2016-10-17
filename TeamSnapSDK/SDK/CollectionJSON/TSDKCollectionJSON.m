@@ -199,6 +199,8 @@
             id value = [self.data objectForKey:key];
             if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
+            } else if ([key rangeOfString:@"_at"].location == key.length-3) {
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSDate *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSArray class]]) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSArray *_Nullable %@;\n",camelCaseKey]];
             } else if ([value isKindOfClass:[NSNumber class]]) {
