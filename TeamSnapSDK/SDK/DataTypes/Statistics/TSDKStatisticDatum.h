@@ -17,10 +17,10 @@
 @property (nonatomic, assign) NSInteger memberId; //Example: 3652826
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger eventId; //Example: 2357548
-@property (nonatomic, weak) NSURL *linkMember;
-@property (nonatomic, weak) NSURL *linkStatistic;
-@property (nonatomic, weak) NSURL *linkEvent;
-@property (nonatomic, weak) NSURL *linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkMember;
+@property (nonatomic, weak) NSURL *_Nullable linkStatistic;
+@property (nonatomic, weak) NSURL *_Nullable linkEvent;
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
 //+(void)actionBulkDeleteStatisticDataWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionBulkUpdateStatisticDataWithCompletion:(TSDKCompletionBlock)completion; //(null)
@@ -29,10 +29,10 @@
 
 @interface TSDKStatisticDatum (ForwardedMethods)
 
--(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
--(void)getStatisticWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKStatisticArrayCompletionBlock)completion;
--(void)getEventWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
+-(void)getStatisticWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticArrayCompletionBlock _Nullable)completion;
+-(void)getEventWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
 
 @end

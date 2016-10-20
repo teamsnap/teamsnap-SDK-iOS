@@ -36,30 +36,30 @@ extern const NSInteger TSPSportNonSportGroup;
 
 @property (nonatomic, assign) BOOL hasShootouts; //Example: 0
 @property (nonatomic, assign) BOOL hasStatisticTemplate; //Example: 1
-@property (nonatomic, weak) NSString *shootoutLabel; //Example: **NULL**
-@property (nonatomic, weak) NSString *overtimeLabel; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable shootoutLabel; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable overtimeLabel; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasCustomizedLanguage; //Example: 1
 @property (nonatomic, assign) BOOL isNonSport; //Example: 0
-@property (nonatomic, weak) NSString *overtimeAbbrev; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable overtimeAbbrev; //Example: **NULL**
 @property (nonatomic, assign) BOOL tracksPoints; //Example: 1
 @property (nonatomic, assign) BOOL hasOvertime; //Example: 0
 @property (nonatomic, assign) BOOL lowScoreWins; //Example: 0
-@property (nonatomic, weak) NSString *shootoutAbbrev; //Example: **NULL**
-@property (nonatomic, weak) NSString *name; //Example: Baseball
+@property (nonatomic, weak) NSString *_Nullable shootoutAbbrev; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable name; //Example: Baseball
 @property (nonatomic, assign) BOOL tracksOvertimeLosses; //Example: 0
-@property (nonatomic, weak) NSURL *linkSportLogo;
+@property (nonatomic, weak) NSURL *_Nullable linkSportLogo;
 
--(NSString *)memberDescription;
--(NSString *)membersDescription;
--(NSString *)nonMemberDescription;
--(NSString *)nonMembersDescription;
+-(NSString *_Nullable)memberDescription;
+-(NSString *_Nullable)membersDescription;
+-(NSString *_Nullable)nonMemberDescription;
+-(NSString *_Nullable)nonMembersDescription;
 
 @end
 
 @interface TSDKSport (ForwardedMethods)
 
 #if TARGET_OS_IPHONE
--(void)getSportLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
+-(void)getSportLogoWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKImageCompletionBlock _Nullable)completion;
 #endif
 
 @end

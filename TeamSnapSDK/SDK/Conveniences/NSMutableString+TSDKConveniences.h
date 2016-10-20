@@ -10,6 +10,6 @@
 
 @interface NSMutableString (TSDKConveniences)
 
-- (void)appendStringWithComma:(NSString *)string;
+- (void)appendStringWithComma:(NSString *_Nonnull)string;
 
 @end

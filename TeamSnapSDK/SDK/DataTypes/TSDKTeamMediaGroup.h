@@ -13,14 +13,14 @@
 @property (nonatomic, assign) NSInteger position; //Example: 2
 @property (nonatomic, assign) NSInteger lastTeamMediumPosition; //Example: 2
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
-@property (nonatomic, weak) NSString *mediaFormat; //Example: image
+@property (nonatomic, weak) NSString *_Nullable mediaFormat; //Example: image
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger countTeamMedia; //Example: 15
-@property (nonatomic, weak) NSString *name; //Example: Mobile Uploads
-@property (nonatomic, weak) NSURL *linkTeamMedia;
-@property (nonatomic, weak) NSURL *linkPreviewMedium;
-@property (nonatomic, weak) NSURL *linkTeam;
-@property (nonatomic, weak) NSURL *linkPreviewMediumThumbnail;
+@property (nonatomic, weak) NSString *_Nullable name; //Example: Mobile Uploads
+@property (nonatomic, weak) NSURL *_Nullable linkTeamMedia;
+@property (nonatomic, weak) NSURL *_Nullable linkPreviewMedium;
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkPreviewMediumThumbnail;
 
 //+(void)actionFacebookShareTeamMediaGroupWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionReorderTeamMediaGroupsWithCompletion:(TSDKCompletionBlock)completion; //(null)
@@ -29,9 +29,9 @@
 
 @interface TSDKTeamMediaGroup (ForwardedMethods)
 
--(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getPreviewMediumWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
--(void)getPreviewMediumThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getPreviewMediumWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+-(void)getPreviewMediumThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 @end

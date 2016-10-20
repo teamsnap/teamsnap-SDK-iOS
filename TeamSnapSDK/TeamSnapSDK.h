@@ -57,7 +57,6 @@
 #import <TeamSnapSDK/TSDKTeamResults.h>
 #import <TeamSnapSDK/TSDKInvitationFinder.h>
 #import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
-#import <TeamSnapSDK/TSDKProcessBulkObjectProtocol.h>
 #import <TeamSnapSDK/TSDKConstants.h>
 #import <TeamSnapSDK/TSDKTeamMediaGroup.h>
 #import <TeamSnapSDK/TSDKMemberPreferences.h>

@@ -11,17 +11,17 @@
 @property (nonatomic, assign) NSInteger memberId; //Example: 102
 @property (nonatomic, assign) NSInteger userId; //Example: 7
 @property (nonatomic, assign) NSInteger teamId; //Example: 7
-@property (nonatomic, weak) NSString *contactId; //Example: **NULL**
-@property (nonatomic, weak) NSURL *linkTeam;
-@property (nonatomic, weak) NSURL *linkUser;
-@property (nonatomic, weak) NSURL *linkMember;
+@property (nonatomic, assign) NSInteger contactId; //Example: **NULL**
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkUser;
+@property (nonatomic, weak) NSURL *_Nullable linkMember;
 
 @end
 
 @interface TSDKMessageDatum (ForwardedMethods)
 
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
--(void)getUserWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKUserArrayCompletionBlock)completion;
--(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+-(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nullable)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
 
 @end

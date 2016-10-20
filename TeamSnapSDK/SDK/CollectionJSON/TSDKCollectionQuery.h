@@ -11,12 +11,12 @@
 
 @interface TSDKCollectionQuery : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic, strong) NSMutableDictionary *data;
-@property (nonatomic, strong) NSString *href;
-@property (nonatomic, strong) NSString *rel;
-@property (nonatomic, strong) NSString *prompt;
+@property (nonatomic, strong) NSMutableDictionary *_Nullable data;
+@property (nonatomic, strong) NSString *_Nullable href;
+@property (nonatomic, strong) NSString *_Nullable rel;
+@property (nonatomic, strong) NSString *_Nullable prompt;
 
-- (instancetype)initWithJSONDict:(NSDictionary *)jsonDict;
--(void)executeWithCompletion:(TSDKCompletionBlock)completion;
+- (instancetype _Nullable)initWithJSONDict:(NSDictionary *_Nonnull)jsonDict;
+-(void)executeWithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 @end

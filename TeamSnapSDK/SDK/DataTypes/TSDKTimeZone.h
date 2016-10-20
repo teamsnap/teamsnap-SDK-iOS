@@ -11,9 +11,9 @@
 
 @interface TSDKTimeZone : TSDKCollectionObject <TSDKCollectionObjectBundledDataProtocol>
 
-@property (nonatomic, weak) NSString *ianaName; //Example: Pacific/Pago_Pago
-@property (nonatomic, weak) NSString *offset; //Example: -11:00
-@property (nonatomic, weak) NSString *timeZoneDescription; //Example: American Samoa
+@property (nonatomic, weak) NSString *_Nullable ianaName; //Example: Pacific/Pago_Pago
+@property (nonatomic, weak) NSString *_Nullable offset; //Example: -11:00
+@property (nonatomic, weak) NSString *_Nullable timeZoneDescription; //Example: American Samoa
 
 
 @end

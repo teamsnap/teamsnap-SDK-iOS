@@ -20,55 +20,55 @@
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 1
 @property (nonatomic, assign) BOOL isManager; //Example: 1
-@property (nonatomic, weak) NSDate *createdAt; //Example: 2016-01-05T22:59:33Z
-@property (nonatomic, weak) NSString *addressCity; //Example: **NULL**
-@property (nonatomic, weak) NSString *addressState; //Example: **NULL**
-@property (nonatomic, weak) NSString *addressZip; //Example: **NULL**
+@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2016-01-05T22:59:33Z
+@property (nonatomic, weak) NSString *_Nullable addressCity; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable addressState; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable addressZip; //Example: **NULL**
 @property (nonatomic, assign) BOOL isLeagueOwner; //Example: 1
-@property (nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable addressStreet2; //Example: **NULL**
 @property (nonatomic, assign) NSInteger userId; //Example: 2971597
-@property (nonatomic, weak) NSString *firstName; //Example: Skyler
-@property (nonatomic, weak) NSString *addressStreet1; //Example: **NULL**
-@property (nonatomic, weak) NSString *birthday; //Example:
-@property (nonatomic, weak) NSDate *updatedAt; //Example: 2016-04-26T20:59:16Z
-@property (nonatomic, weak) NSString *lastName; //Example: Seamans
-@property (nonatomic, weak) NSURL *linkDivisionContacts;
-@property (nonatomic, weak) NSURL *linkContactEmailAddresses;
-@property (nonatomic, weak) NSURL *linkMessageData;
-@property (nonatomic, weak) NSURL *linkForumPosts;
-@property (nonatomic, weak) NSURL *linkDivisionMemberPreferences;
-@property (nonatomic, weak) NSURL *linkMessages;
-@property (nonatomic, weak) NSURL *linkMemberPreferences;
-@property (nonatomic, weak) NSURL *linkContactPhoneNumbers;
-@property (nonatomic, weak) NSURL *linkDivisionContactEmailAddresses;
-@property (nonatomic, weak) NSURL *linkContacts;
-@property (nonatomic, weak) NSURL *linkDivisionMemberEmailAddresses;
-@property (nonatomic, weak) NSURL *linkMemberEmailAddresses;
-@property (nonatomic, weak) NSURL *linkDivisionMemberPhoneNumbers;
-@property (nonatomic, weak) NSURL *linkDivisionContactPhoneNumbers;
-@property (nonatomic, weak) NSURL *linkMemberPhoneNumbers;
-@property (nonatomic, weak) NSURL *linkUser;
+@property (nonatomic, weak) NSString *_Nullable firstName; //Example: Skyler
+@property (nonatomic, weak) NSString *_Nullable addressStreet1; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable birthday; //Example:
+@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-04-26T20:59:16Z
+@property (nonatomic, weak) NSString *_Nullable lastName; //Example: Seamans
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionContacts;
+@property (nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
+@property (nonatomic, weak) NSURL *_Nullable linkMessageData;
+@property (nonatomic, weak) NSURL *_Nullable linkForumPosts;
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionMemberPreferences;
+@property (nonatomic, weak) NSURL *_Nullable linkMessages;
+@property (nonatomic, weak) NSURL *_Nullable linkMemberPreferences;
+@property (nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;
+@property (nonatomic, weak) NSURL *_Nullable linkContacts;
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionMemberEmailAddresses;
+@property (nonatomic, weak) NSURL *_Nullable linkMemberEmailAddresses;
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionMemberPhoneNumbers;
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionContactPhoneNumbers;
+@property (nonatomic, weak) NSURL *_Nullable linkMemberPhoneNumbers;
+@property (nonatomic, weak) NSURL *_Nullable linkUser;
 
 @end
 
 @interface TSDKDivisionMember (ForwardedMethods)
 
--(void)getDivisionContactsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock)completion;
--(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumPostArrayCompletionBlock)completion;
--(void)getDivisionMemberPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMessagesArrayCompletionBlock)completion;
--(void)getMemberPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPreferencesArrayCompletionBlock)completion;
--(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock)completion;
--(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getContactsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactArrayCompletionBlock)completion;
--(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock)completion;
--(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getDivisionContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock)completion;
--(void)getUserWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKUserArrayCompletionBlock)completion;
+-(void)getDivisionContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock _Nullable)completion;
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumPostArrayCompletionBlock _Nullable)completion;
+-(void)getDivisionMemberPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
+-(void)getMemberPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPreferencesArrayCompletionBlock _Nullable)completion;
+-(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock _Nullable)completion;
+-(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nullable)completion;
+-(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock _Nullable)completion;
+-(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getDivisionContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock _Nullable)completion;
+-(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nullable)completion;
 
 
 @end

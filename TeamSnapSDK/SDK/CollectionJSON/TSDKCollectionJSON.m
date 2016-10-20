@@ -199,16 +199,18 @@
             id value = [self.data objectForKey:key];
             if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
+            } else if ([key rangeOfString:@"_at"].location == key.length-3) {
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSDate *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSArray class]]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSArray *%@;\n",camelCaseKey]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSArray *_Nullable %@;\n",camelCaseKey]];
             } else if ([value isKindOfClass:[NSNumber class]]) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) NSInteger %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSNull class]]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *%@; //Example: %@ \n", camelCaseKey, @"**NULL**"]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *_Nullable %@; //Example: %@ \n", camelCaseKey, @"**NULL**"]];
             } else if ([(NSString *)value dateFromRCF3339DateTimeString]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSDate *%@; //Example: %@ \n", camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSDate *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
             } else {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *%@; //Example: %@ \n", camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
             }
         }
     }
@@ -221,7 +223,7 @@
         NSString *getKey = [NSString stringWithFormat:@"get_%@",key];
         
         [dynamicProperties addObject:camelCaseKey];
-        [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSURL *%@;\n", camelCaseKey]];
+        [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSURL *_Nullable %@;\n", camelCaseKey]];
         
         NSString *typeString = [TSDKObjectsRequest typeForRel:key];
         if (!typeString) {
@@ -233,7 +235,7 @@
             completionBlockName = @"TSDKArrayCompletionBlock";
         }
         
-        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(%@)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
+        [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(%@ _Nonnull)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
     }
     
     NSMutableString *actionsString = [[NSMutableString alloc] init];
@@ -245,9 +247,9 @@
         NSMutableString *paramaters = [[NSMutableString alloc] init];
         for (NSString *key in commandDictionary.data) {
             if (paramaters.length == 0) {
-                [paramaters appendFormat:@"%@:(NSString *)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
+                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
             } else {
-                [paramaters appendFormat:@"%@:(NSString *)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
+                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
             }
         }
         
@@ -255,7 +257,7 @@
             [actionsString appendFormat:@"//%@\n", commandDictionary.prompt];
         }
         
-        [actionsString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock)completion;\n\n", camelCaseKey, paramaters];
+        [actionsString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock _Nullable)completion;\n\n", camelCaseKey, paramaters];
     }
 
     NSMutableString *queryString = [[NSMutableString alloc] init];
@@ -267,9 +269,9 @@
         NSMutableString *paramaters = [[NSMutableString alloc] init];
         for (NSString *key in queryDictionary.data) {
             if (paramaters.length == 0) {
-                [paramaters appendFormat:@"%@:(NSString *)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
+                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
             } else {
-                [paramaters appendFormat:@"%@:(NSString *)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
+                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
             }
         }
         
@@ -277,7 +279,7 @@
             [queryString appendFormat:@"//%@\n", queryDictionary.prompt];
         }
         
-        [queryString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock)completion;\n\n", camelCaseKey, paramaters];
+        [queryString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock _Nullable)completion;\n\n", camelCaseKey, paramaters];
     }
 
     

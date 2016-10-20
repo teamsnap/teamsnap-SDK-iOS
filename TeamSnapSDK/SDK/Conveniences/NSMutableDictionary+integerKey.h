@@ -10,9 +10,9 @@
 
 @interface NSMutableDictionary (integerKey)
 
-- (id)valueForIntegerKey:(NSInteger)integerKey;
-- (void)setValue:(id)value forIntegerKey:(NSInteger)integerKey;
-- (id)objectForIntegerKey:(NSInteger)integerKey;
-- (void)setObject:(id)anObject forIntegerKey:(NSInteger)integerKey;
+- (id _Nullable)valueForIntegerKey:(NSInteger)integerKey;
+- (void)setValue:(id _Nonnull)value forIntegerKey:(NSInteger)integerKey;
+- (id _Nullable)objectForIntegerKey:(NSInteger)integerKey;
+- (void)setObject:(id _Nonnull)anObject forIntegerKey:(NSInteger)integerKey;
 
 @end
