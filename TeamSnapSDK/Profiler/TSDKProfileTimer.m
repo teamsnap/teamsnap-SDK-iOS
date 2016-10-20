@@ -7,6 +7,7 @@
 //
 
 #import "TSDKProfileTimer.h"
+#import "TSDKLogging.h"
 
 @interface TSDKProfileTimer()
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
 #import "TSPCache.h"
+#import "TSDKLogging.h"
 
 NSURL static *_rootPath = nil;
 NSURL static *_basePath = nil;

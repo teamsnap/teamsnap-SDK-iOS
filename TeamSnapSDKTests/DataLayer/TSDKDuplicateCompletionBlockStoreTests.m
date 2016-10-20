@@ -26,8 +26,10 @@
 }
 
 - (void)testExistingRequestExistsMatchingRequest {
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     BOOL existing = [[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:nil];
+#pragma clang diagnostic pop
     
     XCTAssertFalse(existing, @"existing request found for nil");
     
@@ -53,15 +55,21 @@
 
 - (void)testAddCompletionBlock {
     // these tests only cover passing nil completeion blocks, and requests.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:nil forRequest:nil];
     
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
         XCTAssert(@"Shouldn't be called");
     } forRequest:nil];
+#pragma clang diagnostic pop
 }
 
 - (void)testRemoveAllCompletionBlocksForRequest {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:nil];
+#pragma clang diagnostic pop
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://google.com/"]];
     
@@ -80,7 +88,10 @@
 }
 
 - (void)testCompletionBlocksForRequest {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     NSSet *set = [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:nil];
+#pragma clang diagnostic pop
     
     XCTAssertNotNil(set, @"Nil set returned for nil request");
     

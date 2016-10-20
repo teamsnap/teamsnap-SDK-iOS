@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TSDKDataRequest.h"
+#import "TSDKLogging.h"
 
 #if TARGET_OS_IPHONE
 #import <SafariServices/SafariServices.h>
@@ -37,7 +38,7 @@
 - (void)invitationStatusForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInviteStatusCompletionBlock)completionBlock;
 - (void)sendPendingInvitesForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock;
 - (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion;
-- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion;
+- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPlanArrayCompletionBlock)completion;
 - (void)addPlan:(TSDKPlan *)plan;
 - (TSDKPlan *)planWithId:(NSInteger)planId;
 - (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion;

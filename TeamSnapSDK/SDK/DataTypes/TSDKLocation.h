@@ -11,21 +11,21 @@
 
 @interface TSDKLocation : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *phone; //Example:
-@property (nonatomic, weak) NSString *address; //Example: 611 main st, cary, NC
-@property (nonatomic, weak) NSString *notes; //Example: Note about this location. It's a long note.
+@property (nonatomic, weak) NSString *_Nullable phone; //Example:
+@property (nonatomic, weak) NSString *_Nullable address; //Example: 611 main st, cary, NC
+@property (nonatomic, weak) NSString *_Nullable notes; //Example: Note about this location. It's a long note.
 @property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, weak) NSString *name; //Example: Falcon Park
-@property (nonatomic, weak) NSString *url; //Example: http://www.google.com
-@property (nonatomic, weak) NSURL *linkTeam;
-@property (nonatomic, weak) NSURL *linkEvents;
+@property (nonatomic, weak) NSString *_Nullable name; //Example: Falcon Park
+@property (nonatomic, weak) NSString *_Nullable url; //Example: http://www.google.com
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkEvents;
 
 @end
 
 @interface TSDKLocation (ForwardedMethods)
 
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
--(void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+-(void)getEventsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 
 
 @end

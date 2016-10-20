@@ -14,7 +14,7 @@
 @property (nonatomic, assign) NSInteger average; //Example: 0
 @property (nonatomic, assign) NSInteger total; //Example: 0
 @property (nonatomic, assign) NSInteger statisticId; //Example: 3093146
-@property (nonatomic, weak) NSURL *linkTeam;
-@property (nonatomic, weak) NSURL *linkStatistic;
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkStatistic;
 
 @end
