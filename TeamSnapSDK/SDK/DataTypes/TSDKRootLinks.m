@@ -112,7 +112,7 @@
                 }
             } else {
                 if (completion) {
-                    completion(success, success, nil, error);
+                    completion(success, success, [NSArray array], error);
                 }
             }
         }];

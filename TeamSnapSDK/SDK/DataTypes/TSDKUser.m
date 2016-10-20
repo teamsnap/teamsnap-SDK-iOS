@@ -37,7 +37,7 @@
         }
     }];
 }
-
+/*
 - (NSMutableDictionary *)teams {
     if (!_teams) {
         _teams = [[NSMutableDictionary alloc] init];
@@ -48,6 +48,7 @@
 - (void)addTeam:(TSDKTeam *)team {
     [self.teams refreshCollectionObject:team];
 }
+ */
 
 - (NSMutableArray *)myMembersOnTeams {
     if (!_myMembersOnTeams) {
@@ -105,10 +106,6 @@
     }];
 }
 
-- (NSArray *)myMembersAcrossAllTeams {
-    return _myMembersOnTeams;
-}
-
 - (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
     NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
         return (member.teamId == teamId);
@@ -119,28 +116,25 @@
 
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     [TSDKDataRequest requestObjectsForPath:self.linkTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        [self processGetTeamsResult:objects];
         if (completion) {
-            completion(success, complete, self.teams.allValues, error);
+            NSArray *teams = [self processGetTeamsResult:objects];
+            completion(success, complete, teams, error);
         }
     }];
 }
 
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     [TSDKDataRequest requestObjectsForPath:self.linkActiveTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        [self processGetTeamsResult:objects];
         if (completion) {
-            completion(success, complete, self.teams.allValues, error);
+            NSArray *teams = [self processGetTeamsResult:objects];
+            completion(success, complete, teams, error);
         }
     }];
 }
 
-- (void)processGetTeamsResult:(TSDKCollectionJSON *)objects {
+- (NSArray *)processGetTeamsResult:(TSDKCollectionJSON *)objects {
     NSArray *newTeams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-    
-    for (TSDKTeam *team in newTeams) {
-        [self.teams refreshCollectionObject:team];
-    }
+    return newTeams;
 }
 
 - (void)TeamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
@@ -180,17 +174,9 @@
 }
 
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    __typeof__(self) __weak weakSelf = self;
     
     [self teamIdsForAllMyTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *teamIds, NSError *error) {
         [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if(success) {
-                for (TSDKCollectionObject *object in objects) {
-                    if ([object isKindOfClass:[TSDKTeam class]]) {
-                        [weakSelf addTeam:(TSDKTeam *)object];
-                    }
-                }
-            }
             if (completion) {
                 completion(success, complete, objects, error);
             }
@@ -212,16 +198,6 @@
             completion(success, complete, teams, error);
         }
     }];
-}
-
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
-    BOOL lProcessed = NO;
-    if ([bulkObject isKindOfClass:[TSDKMember class]]) {
-        lProcessed = YES;
-        [self addMember:(TSDKMember *)bulkObject];
-    }
-    
-    return lProcessed;
 }
 
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {

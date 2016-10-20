@@ -7,19 +7,19 @@
 
 @interface NSString (TSDKConveniences)
 
-- (NSDate *)dateFromRCF3339DateTimeString;
-- (NSDate *)dateFromJustDate;
-- (NSString *)addClassNameToDescriptor:(NSString *)className;
-- (NSString *)stripClassNameFromDescriptor:(NSString *)className;
+- (NSDate *_Nullable)dateFromRCF3339DateTimeString;
+- (NSDate *_Nullable)dateFromJustDate;
+- (NSString *_Nonnull)addClassNameToDescriptor:(NSString *_Nonnull)className;
+- (NSString *_Nonnull)stripClassNameFromDescriptor:(NSString *_Nonnull)className;
 
-- (NSString *)camelCaseToUnderscores;
-- (NSString *)underscoresToMixedCase;
-- (NSString *)underscoresToCamelCase;
+- (NSString *_Nonnull)camelCaseToUnderscores;
+- (NSString *_Nonnull)underscoresToMixedCase;
+- (NSString *_Nonnull)underscoresToCamelCase;
 - (BOOL)isSetter;
 
-- (NSString *)linkForGetProperty;
-- (NSString *)typeFromRel;
+- (NSString *_Nullable)linkForGetProperty;
+- (NSString *_Nullable)typeFromRel;
 
-+(NSString *)GUID;
++(NSString *_Nonnull)GUID;
 
 @end

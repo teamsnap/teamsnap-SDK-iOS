@@ -23,14 +23,6 @@
 #import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKTeam()
-@property (nonatomic, strong) NSMutableDictionary *members;
-@property (nonatomic, strong) NSMutableDictionary *events;
-
-@property (nonatomic, strong) NSMutableArray *sortedEvents;
-@property (nonatomic, strong) NSMutableArray *sortedMembers;
-
-@property (strong, nonatomic) TSDKTeamPreferences *teamPreferences;
-@property (strong, nonatomic) TSDKTeamResults *teamResults;
 
 @end
 
@@ -128,26 +120,6 @@
     [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
 }
 
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        _members = [[NSMutableDictionary alloc] init];
-        _events = [[NSMutableDictionary alloc] init];
-        _membersUpdated = nil;
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        _members = [aDecoder decodeObjectForKey:@"membersArray"];
-        _events = [aDecoder decodeObjectForKey:@"eventsArray"];
-    }
-    return self;
-}
-
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion{
     BOOL isNewTeam = self.isNewObject;
     
@@ -199,126 +171,6 @@
     return [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
 }
 
-- (TSDKPlan *)plan {
-    return [[TSDKTeamSnap sharedInstance] planWithId:self.planId];
-}
-
-- (void)setPlan:(TSDKPlan *)plan {
-    self.planId = plan.objectIdentifier;
-}
-
-- (void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.teamPreferences) {
-        if (completion) {
-            completion(YES, YES, @[self.teamPreferences], nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkTeamPreferences withConfiguration:configuration completion:completion];
-    }
-}
-
-- (void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamResultsArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.teamResults) {
-        if (completion) {
-            completion(YES, YES, @[self.teamResults], nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkTeamResults withConfiguration:configuration completion:completion];
-    }
-}
-
-#pragma mark -
-#pragma mark TSDKProcessBulkObjectProtocol
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
-    BOOL lProcessed = NO;
-    
-    DLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
-    if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
-        [self addEvent:(TSDKEvent *)bulkObject];
-        self.eventsUpdated = [NSDate date];
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKMember class]]) {
-        [self addMember:(TSDKMember *)bulkObject];
-        self.membersUpdated = [NSDate date];
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
-        if (self.teamPreferences) {
-            [self.teamPreferences setCollection:bulkObject.collection];
-        } else {
-            self.teamPreferences = (TSDKTeamPreferences *)bulkObject;
-        }
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
-        if (self.teamResults) {
-            [self.teamResults setCollection:bulkObject.collection];
-        } else {
-            self.teamResults = (TSDKTeamResults *)bulkObject;
-        }
-        lProcessed = YES;
-    }
-    if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
-        NSInteger memberId = [bulkObject getInteger:@"member_id"];
-        if (memberId != NSNotFound) {
-            TSDKMember *member = [self memberWithID:memberId];
-            if (member) {
-                lProcessed = [member processBulkLoadedObject:(TSDKCollectionObject *)bulkObject];
-            }
-        }
-    }
-    return lProcessed;
-}
-
-- (void)addEvent:(TSDKEvent *)event {
-    [self.events refreshCollectionObject:event];
-    [self dirtySortedEventLists];
-}
-
-- (void)addMember:(TSDKMember *)member {
-    [self.members refreshCollectionObject:member];
-    [self dirtySortedMemberLists];
-}
-
-- (TSDKMember *)memberWithID:(NSInteger)memberId {
-    return [self.members objectForIntegerKey:memberId];
-}
-
-- (NSArray *)membersWithUserId:(NSInteger)userId {
-    NSArray *arrayOfMembers = [self.members allValues];
-    
-    NSIndexSet *indexSet = [arrayOfMembers indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.userId == userId);
-    }];
-    return [arrayOfMembers objectsAtIndexes:indexSet];
-}
-
-- (void)dirtySortedEventLists {
-    self.sortedEvents = nil;
-}
-
-- (void)dirtySortedMemberLists {
-    self.sortedMembers = nil;
-}
-
-- (NSArray *)sortedMembers {
-    if (!_sortedMembers) {
-        _sortedMembers = [NSMutableArray arrayWithArray:[_members allValues]];
-        [_sortedMembers sortUsingComparator:^NSComparisonResult(TSDKMember *member1, TSDKMember *member2) {
-            return [member1.fullName compare:member2.fullName];
-        }];
-    }
-    return _sortedMembers;
-}
-
-- (NSArray *)eventsSorted {
-    if (!self.sortedEvents) {
-        self.sortedEvents = [NSMutableArray arrayWithArray:[self.events allValues]];
-        [self.sortedEvents sortUsingComparator:^NSComparisonResult(TSDKEvent *event1, TSDKEvent *event2) {
-            return [event1.startDate compare:event2.startDate];
-        }];
-    }
-    return self.sortedEvents;
-}
-
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     if (dataTypes.count>0) {
         [TSDKObjectsRequest bulkLoadTeamData:self types:dataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
@@ -328,36 +180,8 @@
         }];
     } else {
         if (completion) {
-            completion(NO, NO, nil, nil);
+            completion(NO, NO, [NSArray array], nil);
         }
-    }
-}
-
-- (void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.membersUpdated && self.sortedMembers) {
-        if (completion) {
-            completion(YES, YES, self.sortedMembers, nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkMembers withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if (completion) {
-                completion(success, complete, self.sortedMembers, error);
-            }
-        }];
-    }
-}
-
-- (void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.eventsUpdated) {
-        if (completion) {
-            completion(YES, YES, self.eventsSorted, nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkEvents withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if (completion) {
-                completion(success, complete, objects, error);
-            }
-        }];
     }
 }
 
