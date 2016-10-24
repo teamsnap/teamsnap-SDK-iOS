@@ -30,3 +30,11 @@ Reveal.framework/Versions/Current
 
 # AppCoder
 .idea/*
+
+# Sample App Config
+SDKSampleCode/sampleConfig.plist
+
+# Pods for Sample App
+SDKSampleCode/Pods/*
+
+
