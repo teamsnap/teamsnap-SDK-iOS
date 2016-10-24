@@ -1,0 +1,7 @@
+project '../TeamSnapSDK.xcodeproj'
+
+target "SDKsampleCode" do
+    platform :ios, '9.0'
+    pod 'TeamSnapSDK', :git => 'git@github.com:teamsnap/teamsnap-SDK-iOS'
+    use_frameworks!
+end

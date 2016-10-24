@@ -1,0 +1,53 @@
+PODS:
+  - TeamSnapSDK (1.0):
+    - TeamSnapSDK/Profiler (= 1.0)
+    - TeamSnapSDK/SDK (= 1.0)
+  - TeamSnapSDK/Profiler (1.0)
+  - TeamSnapSDK/SDK (1.0):
+    - TeamSnapSDK/SDK/Cache (= 1.0)
+    - TeamSnapSDK/SDK/CollectionJSON (= 1.0)
+    - TeamSnapSDK/SDK/Conveniences (= 1.0)
+    - TeamSnapSDK/SDK/DataLayer (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes (= 1.0)
+  - TeamSnapSDK/SDK/Cache (1.0)
+  - TeamSnapSDK/SDK/CollectionJSON (1.0)
+  - TeamSnapSDK/SDK/Conveniences (1.0)
+  - TeamSnapSDK/SDK/DataLayer (1.0)
+  - TeamSnapSDK/SDK/DataTypes (1.0):
+    - TeamSnapSDK/SDK/DataTypes/Assignments (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Leagues (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Media (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Members (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Messages (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Payments (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/PhotoObjects (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Protocols (= 1.0)
+    - TeamSnapSDK/SDK/DataTypes/Statistics (= 1.0)
+  - TeamSnapSDK/SDK/DataTypes/Assignments (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Leagues (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Media (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Members (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Messages (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Payments (1.0)
+  - TeamSnapSDK/SDK/DataTypes/PhotoObjects (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Protocols (1.0)
+  - TeamSnapSDK/SDK/DataTypes/Statistics (1.0)
+
+DEPENDENCIES:
+  - TeamSnapSDK (from `git@github.com:teamsnap/teamsnap-SDK-iOS`)
+
+EXTERNAL SOURCES:
+  TeamSnapSDK:
+    :git: git@github.com:teamsnap/teamsnap-SDK-iOS
+
+CHECKOUT OPTIONS:
+  TeamSnapSDK:
+    :commit: b9223dd3e29749db8c6693be1413cd8bdf5aa880
+    :git: git@github.com:teamsnap/teamsnap-SDK-iOS
+
+SPEC CHECKSUMS:
+  TeamSnapSDK: 84078462ec85f13e13f9919e3e2abb5d2e02070f
+
+PODFILE CHECKSUM: 970c1be72081986a2bd20ba297aec151df620c77
+
+COCOAPODS: 1.0.1
