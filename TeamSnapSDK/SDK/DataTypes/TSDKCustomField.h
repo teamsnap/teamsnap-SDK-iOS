@@ -30,7 +30,7 @@ typedef enum {
 
 @property (nonatomic, assign) CustomDataFieldType dataType;
 
-+ (CustomDataFieldType)fieldTypeForString:kind;
++ (CustomDataFieldType)fieldTypeForString:(NSString *_Nullable)kind;
 + (NSString *_Nullable)fieldTypeStringForFieldType:(CustomDataFieldType)fieldType;
 
 @end

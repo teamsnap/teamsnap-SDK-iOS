@@ -8,6 +8,16 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+
+extern NSString * _Nonnull const TSDKTeamMediaGroupImageFormatString;
+extern NSString * _Nonnull const TSDKTeamMediaGroupFileFormatString;
+
+typedef enum {
+    TSDKTeamMediaGroupUnknownFormat = 0,
+    TSDKTeamMediaGroupImageFormat = 1,
+    TSDKTeamMediaGroupFileFormat = 2
+} TeamMediaGroupFormatType;
+
 @interface TSDKTeamMediaGroup : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger position; //Example: 2
@@ -24,6 +34,12 @@
 
 //+(void)actionFacebookShareTeamMediaGroupWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionReorderTeamMediaGroupsWithCompletion:(TSDKCompletionBlock)completion; //(null)
+
++ (TeamMediaGroupFormatType)mediaFormatForString:(NSString *_Nullable)mediaFormat;
++ (NSString *_Nullable)mediaFormatStringForMediaFormat:(TeamMediaGroupFormatType)fieldType;
+
+- (TeamMediaGroupFormatType)mediaType;
+- (void)setMediaType:(TeamMediaGroupFormatType)mediaType;
 
 @end
 
