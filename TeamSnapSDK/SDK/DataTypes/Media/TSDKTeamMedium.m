@@ -16,7 +16,7 @@
     return @"team_medium";
 }
 
-+ (NSString *)SDKRel {
++ (NSString *)SDKREL {
     return @"team_media";
 }
 
