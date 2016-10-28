@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "NSString+TSDKConveniences.h"
 
 @interface StirngConvenienceTests : XCTestCase
 
@@ -24,16 +25,50 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testClassNameToUnderscoredName {
+    NSString *classString1 = @"TSDKTeam";
+    
+    NSString *result1 = [classString1 classNameToUnderscoredName];
+    XCTAssertNotNil(result1);
+    XCTAssertEqualObjects(result1, @"team");
+    
+    NSString *classString2 = @"TSDKTeamMedium";
+    NSString *result2 = [classString2 classNameToUnderscoredName];
+    
+    XCTAssertNotNil(result2);
+    XCTAssertEqualObjects(result2, @"team_medium");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testAddClassNameToDescriptor {
+    NSString *classString1 = @"TSDKTeam";
+    NSString *methodString1 = @"description";
+    NSString *result1 = [methodString1 addClassNameToDescriptor:classString1];
+    
+    XCTAssertNotNil(result1);
+    XCTAssertEqualObjects(result1, @"team_description");
+    
+    NSString *classString2 = @"TSDKTeamMedium";
+    NSString *methodString2 = @"description";
+    NSString *result2 = [methodString2 addClassNameToDescriptor:classString2];
+    
+    XCTAssertNotNil(result2);
+    XCTAssertEqualObjects(result2, @"team_medium_description");
+}
+
+- (void)testStripClassNameFromDescriptor {
+    NSString *classString1 = @"TSDKTeam";
+    NSString *methodString1 = @"team_description";
+    NSString *result1 = [methodString1 stripClassNameFromDescriptor:classString1];
+    
+    XCTAssertNotNil(result1);
+    XCTAssertEqualObjects(result1, @"description");
+    
+    NSString *classString2 = @"TSDKTeamMedium";
+    NSString *methodString2 = @"team_medium_description";
+    NSString *result2 = [methodString2 stripClassNameFromDescriptor:classString2];
+    
+    XCTAssertNotNil(result2);
+    XCTAssertEqualObjects(result2, @"description");
 }
 
 @end
