@@ -309,6 +309,7 @@
 		96B47F6C1BADB4AA0035F2CC /* TSDKProfileTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */; };
 		96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805B1BAAE79500CA518F /* TSDKTeamSnap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F6E1BADB4BC0035F2CC /* TSDKTeamSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */; };
+		96B4E2791DC3C08A003CC830 /* StirngConvenienceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B4E2781DC3C08A003CC830 /* StirngConvenienceTests.m */; };
 		96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */; };
 		96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */; };
@@ -517,6 +518,7 @@
 		96B47F191BADB33E0035F2CC /* TeamSnapSDKTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeamSnapSDKTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B47F1B1BADB33E0035F2CC /* TeamSnapSDKTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamSnapSDKTV.h; sourceTree = "<group>"; };
 		96B47F1D1BADB33E0035F2CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96B4E2781DC3C08A003CC830 /* StirngConvenienceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StirngConvenienceTests.m; path = Conveniences/StirngConvenienceTests.m; sourceTree = "<group>"; };
 		96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKBackgroundUploadProgressMonitorDelegate.h; sourceTree = "<group>"; };
 		96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKBackgroundUploadProgressMonitorDelegate.m; sourceTree = "<group>"; };
 		96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDataRequestTests.m; path = DataLayer/TSDKDataRequestTests.m; sourceTree = "<group>"; };
@@ -709,6 +711,7 @@
 		969E804E1BAAE62E00CA518F /* TeamSnapSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				96B4E2771DC3BFEE003CC830 /* Conveniences */,
 				9631B5E61CECA6E200215647 /* DataType */,
 				96DA6AA31CD8E2F200368D80 /* DataLater */,
 				96121EBB1C64E42700E32902 /* CollectionJSON */,
@@ -912,6 +915,14 @@
 				96B47F1D1BADB33E0035F2CC /* Info.plist */,
 			);
 			path = TeamSnapSDKTV;
+			sourceTree = "<group>";
+		};
+		96B4E2771DC3BFEE003CC830 /* Conveniences */ = {
+			isa = PBXGroup;
+			children = (
+				96B4E2781DC3C08A003CC830 /* StirngConvenienceTests.m */,
+			);
+			name = Conveniences;
 			sourceTree = "<group>";
 		};
 		96DA6AA31CD8E2F200368D80 /* DataLater */ = {
@@ -1378,6 +1389,7 @@
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
+				96B4E2791DC3C08A003CC830 /* StirngConvenienceTests.m in Sources */,
 				96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
