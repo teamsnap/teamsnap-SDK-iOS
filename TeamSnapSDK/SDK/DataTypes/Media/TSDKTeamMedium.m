@@ -29,7 +29,7 @@
         return [[[self linkTeamMediumPhotoFile] URLByAppendingQueryParameter:[NSString stringWithFormat:@"height=%ld",(long)height]] URLByAppendingQueryParameter:@"crop=proportional"] ;
 }
 
-- (NSURL *)linkForImageWithWidth:(NSInteger)height width:(NSInteger)width {
+- (NSURL *)linkForImageWithWidth:(NSInteger)width {
     return [[[self linkTeamMediumPhotoFile] URLByAppendingQueryParameter:[NSString stringWithFormat:@"width=%ld",(long)width]] URLByAppendingQueryParameter:@"crop=proportional"] ;
 }
 

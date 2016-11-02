@@ -38,7 +38,9 @@
 
 - (TeamMediaGroupFormatType)mediaType;
 - (void)setMediaType:(TeamMediaGroupFormatType)mediaType;
-
+- (NSURL *_Nullable)linkForImageWithHeight:(NSInteger)height width:(NSInteger)width;
+- (NSURL *_Nullable)linkForImageWithHeight:(NSInteger)height;
+- (NSURL *_Nullable)linkForImageWithWidth:(NSInteger)width;
 //Deletes the specified team_medium_ids
 //+(void)actionBulkDeleteTeamMediaTeammediumids:(NSString *_Nonnull)teamMediumIds WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
