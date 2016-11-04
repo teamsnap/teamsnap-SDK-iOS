@@ -159,9 +159,11 @@
 + (void)actionSendLoginLinkToEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL completion:(TSDKSimpleCompletionBlock)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
-            TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"authorization"];
-            collectionCommand.href = [collectionCommand.href stringByAppendingString:@"magic_links"];
-            collectionCommand.rel = @"magic_links";
+            TSDKCollectionCommand *collectionCommand = [[TSDKCollectionCommand alloc] init];
+            NSURL *magicLinkURL = [rootLinks linkAuthorization];
+            [magicLinkURL URLByAppendingPathComponent:@"magic_links"];
+            collectionCommand.href = magicLinkURL.absoluteString;
+            collectionCommand.rel = magicLinkURL.path;
             
             if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
                 collectionCommand.data[@"client_id"] = [[TSDKTeamSnap sharedInstance] clientId];
