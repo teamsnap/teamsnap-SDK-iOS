@@ -160,12 +160,11 @@
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [[TSDKCollectionCommand alloc] init];
-            NSURL *magicLinkURL = [rootLinks linkAuthorization];
-            [magicLinkURL URLByAppendingPathComponent:@"magic_links"];
+            NSURL *magicLinkURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"magic_links"];
             collectionCommand.href = magicLinkURL.absoluteString;
             collectionCommand.rel = magicLinkURL.path;
             
-            if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+            if (magicLinkURL && collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
                 collectionCommand.data[@"client_id"] = [[TSDKTeamSnap sharedInstance] clientId];
                 collectionCommand.data[@"email"] = emailAddress;
                 collectionCommand.data[@"redirect_uri"] = [callbackURL absoluteString];
