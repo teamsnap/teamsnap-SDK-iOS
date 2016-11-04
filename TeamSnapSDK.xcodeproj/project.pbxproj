@@ -50,7 +50,7 @@
 		964CDDEA1BB4514B00909D11 /* TSDKTslPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDE61BB4514B00909D11 /* TSDKTslPhotos.m */; };
 		964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDEB1BB4519400909D11 /* TSDKPublicFeatures.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDEE1BB4519400909D11 /* TSDKPublicFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDEC1BB4519400909D11 /* TSDKPublicFeatures.m */; };
-		964E1AD01DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 964E1ACE1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h */; };
+		964E1AD01DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 964E1ACE1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964E1AD11DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E1ACF1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m */; };
 		964E1AD31DCA5324002B9A73 /* NSURLConvenenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E1AD21DCA5324002B9A73 /* NSURLConvenenceTests.m */; };
 		9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
