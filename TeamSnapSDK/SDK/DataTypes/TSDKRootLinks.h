@@ -111,7 +111,7 @@
 +(void)actionWelcomeEmailAddress:(NSString *_Nonnull)emailAddress withCallbackURL:(NSURL *_Nonnull)callbackURL withCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 +(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *_Nonnull)version WithCompletion:(TSDKFirebaseTokenCompletionBlock _Nullable)completion;
-+ (void)actionSendLoginLinkToEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL completion:(TSDKSimpleCompletionBlock)completion;
++ (void)actionSendLoginLinkToEmailAddress:(NSString * _Nonnull)emailAddress withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 @end
 
