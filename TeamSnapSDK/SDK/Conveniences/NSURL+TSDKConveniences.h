@@ -10,6 +10,6 @@
 
 @interface NSURL (TSDKConveniences)
 
-- (NSURL *)URLByAppendingQueryParameter:(NSString *)queryString;
+- (NSURL *_Nonnull)URLByAppendingQueryParameter:(NSString *_Nonnull)queryString;
 
 @end
