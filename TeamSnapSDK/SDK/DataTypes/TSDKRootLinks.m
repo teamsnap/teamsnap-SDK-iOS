@@ -233,8 +233,6 @@
     }];
 }
 
-//+ (void)requestLoginLinkEmail
-
 +(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
