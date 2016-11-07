@@ -66,7 +66,7 @@ typedef void (^TSDKBroadcastEmailArrayCompletionBlock)(BOOL success, BOOL comple
 typedef void (^TSDKForumSubscriptionArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKForumSubscription *> *_Nonnull forumSubscriptions, NSError *_Nullable error);
 typedef void (^TSDKBroadcastAlertArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKBroadcastAlert *> *_Nonnull broadcastAlerts, NSError *_Nullable error);
 typedef void (^TSDKAvailabilityGroupCompletionBlock)(BOOL success, BOOL complete, TSDKAvailabilityGroups *_Nullable availabilities, NSError *_Nullable error);
-
+typedef void (^TSDKMemberEmailInvitationCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberEmailAddress *> *_Nonnull memberEmailAddresses, NSError *_Nullable error);
 typedef void (^TSDKSimpleCompletionBlock)(BOOL success, NSError *_Nullable error);
 typedef void (^TSDKMessagesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMessage *> *_Nullable messages, NSError *_Nullable error);
 typedef void (^TSDKMessagesDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMessageDatum *> *_Nullable messageDatums, NSError *_Nullable error);
