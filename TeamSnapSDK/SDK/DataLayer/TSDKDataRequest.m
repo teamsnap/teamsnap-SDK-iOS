@@ -478,25 +478,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 #endif
 
-+ (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
-     NSString *scopes = @"read write";
-    
-    NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, clientId, clientSecret, scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
-    
-    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSString *OAuthToken = nil;
-        if ([objects isKindOfClass:[NSDictionary class]]) {
-            if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
-                OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
-                [TSDKDataRequest setOAuthToken:OAuthToken];
-            }
-        }
-        if (completion) {
-            completion(success, OAuthToken, error);
-        }
-    }];
-}
-
 + (void)setClientId:(NSString *)theClientId {
     clientId = theClientId;
 }

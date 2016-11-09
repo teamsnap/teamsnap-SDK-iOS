@@ -243,4 +243,33 @@
     }
 }
 
++ (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
+    
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            NSURL *oauthURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"oauth/token"];
+            NSString *scopes = @"read write";
+            
+            NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, [[TSDKTeamSnap sharedInstance] clientId], [[TSDKTeamSnap sharedInstance] clientSecret], scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
+            [TSDKDataRequest requestJSONObjectsForPath:oauthURL sendDataDictionary:envelope method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                NSString *OAuthToken = nil;
+                if ([objects isKindOfClass:[NSDictionary class]]) {
+                    if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
+                        OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
+                        [TSDKDataRequest setOAuthToken:OAuthToken];
+                    }
+                }
+                if (completion) {
+                    completion(success, OAuthToken, error);
+                }
+            }];
+        } else {
+            if(completion) {
+                completion(NO, nil, nil);
+            }
+        }
+    }];
+    
+}
+
 @end
