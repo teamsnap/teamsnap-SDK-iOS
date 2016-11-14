@@ -66,9 +66,12 @@
 //+(void)actionSetMediumAsMemberPhotoMemberid:(NSString *_Nonnull)memberId teamMediumId:(NSString *_Nonnull)teamMediumId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 //Upload a team media file. This must be a multi-part POST.
-//+(void)actionUploadTeamMediumTeammediagroupid:(NSString *_Nonnull)teamMediaGroupId position:(NSString *_Nonnull)position file:(NSString *_Nonnull)file mediaFormat:(NSString *_Nonnull)mediaFormat memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId description:(NSString *_Nonnull)description WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+#if TARGET_OS_IPHONE
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSInteger)teamMediaGroupId position:(NSInteger)position memberId:(NSInteger)memberId teamId:(NSInteger)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
 
+-(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSString *_Nonnull)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
 
+#endif
 
 //+(void)querySearchId:(NSString *_Nonnull)id memberId:(NSString *_Nonnull)memberId teamMediaGroupId:(NSString *_Nonnull)teamMediaGroupId pageNumber:(NSString *_Nonnull)pageNumber teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
