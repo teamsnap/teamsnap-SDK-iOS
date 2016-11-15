@@ -68,7 +68,7 @@
     return backgroundUploadDelegate;
 }
 
--(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSString *_Nonnull)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock {
+-(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSInteger)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock {
     return [TSDKTeamMedium uploadPhotoFileURL:photoFileURL groupid:self.teamMediaGroupId position:0 memberId:self.memberId teamId:self.teamId description:self.teamMediumDescription progress:progressBlock];
 }
 

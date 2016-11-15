@@ -69,7 +69,7 @@
 #if TARGET_OS_IPHONE
 +(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSInteger)teamMediaGroupId position:(NSInteger)position memberId:(NSInteger)memberId teamId:(NSInteger)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
 
--(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSString *_Nonnull)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
+-(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSInteger)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
 
 #endif
 
