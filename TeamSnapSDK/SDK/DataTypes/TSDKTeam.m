@@ -233,4 +233,14 @@
     }];
 }
 
+- (id)copyWithZone:(nullable NSZone *)zone {
+    id copy = [[[self class] allocWithZone:zone] init];
+    
+    if (copy) {
+        [copy setCollection:[[self collection] copy]];
+    }
+    
+    return copy;
+}
+
 @end
