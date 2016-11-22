@@ -11,11 +11,12 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKUser.h"
 #import "TSDKEvent.h"
+#import "TSDKMemberPayment.h"
 #import "NSDictionary+dump.h"
+#import "TSDKJSONFileResource.h"
 
 @interface TSDKCollectionObjectTests : XCTestCase
 @property (nonatomic, strong) TSDKCollectionJSON *userCollectionJSON;
-
 @end
 
 @implementation TSDKCollectionObjectTests
@@ -195,6 +196,29 @@
 #pragma clang diagnostic pop
     [self waitForExpectationsWithTimeout:5 handler:nil];
     
+}
+
+- (void)testCGFloatParsing {
+    
+    TSDKCollectionJSON *memberPaymentsCollection = [TSDKJSONFileResource collectionFromJSONFileNamed:@"MemberPayments"];
+    NSArray *memberPayments = memberPaymentsCollection.collection;
+    
+    TSDKMemberPayment *paymentNoPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.firstObject];
+    XCTAssertTrue(paymentNoPayment.amountPaid == 0.0, @"Expected zero float values for amountPaid");
+    XCTAssertTrue(paymentNoPayment.amountDue == 0.0, @"Expected zero float values for amountDue");
+    
+    TSDKMemberPayment *paymentUpToDate = [[TSDKMemberPayment alloc] initWithCollection:memberPayments[1]];
+    XCTAssertTrue(paymentUpToDate.amountPaid == 450.0, @"Expected 450 for amountPaid");
+    XCTAssertTrue(paymentUpToDate.amountDue == 0.0, @"Expected zero for amountDue");
+    
+    TSDKMemberPayment *paymentPartial = [[TSDKMemberPayment alloc] initWithCollection:memberPayments[4]];
+    XCTAssertTrue(paymentPartial.amountPaid == 200.0, @"Expected 200 for amountPaid");
+    XCTAssertTrue(paymentPartial.amountDue == 250.0, @"Expected 250 for amountDue");
+    
+    paymentPartial.amountPaid = 450.0;
+    paymentPartial.amountDue = 0.0;
+    XCTAssertTrue(paymentPartial.amountPaid == 450.0, @"Expected 450 for amountPaid");
+    XCTAssertTrue(paymentPartial.amountDue == 0.0, @"Expected zero for amountDue");
 }
 
 @end
