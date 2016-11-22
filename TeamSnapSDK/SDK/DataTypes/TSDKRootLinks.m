@@ -191,7 +191,9 @@
                 }
             }
         } else {
-            completion(NO, nil);
+            if(completion) {
+                completion(NO, nil);
+            }
         }
     }];
 }
@@ -237,7 +239,9 @@
                 }
             }
         } else {
-            completion(NO, nil, nil);
+            if(completion) {
+                completion(NO, nil, nil);
+            }
         }
         
     }];
