@@ -219,6 +219,13 @@
     paymentPartial.amountDue = 0.0;
     XCTAssertTrue(paymentPartial.amountPaid == 450.0, @"Expected 450 for amountPaid");
     XCTAssertTrue(paymentPartial.amountDue == 0.0, @"Expected zero for amountDue");
+    
+    TSDKMemberPayment *payment = [[TSDKMemberPayment alloc] init];
+    NSString *key = @"amount_paid";
+    [payment setCGFloat:2.0 forKey:key];
+    CGFloat paid = [payment getCGFloat:key];
+    XCTAssertTrue(paid == 2.0, @"Expected CGFloat value to be 2.0");
+    XCTAssertTrue(payment.amountPaid == 2.0, @"Expected amountPaid to be 2.0");
 }
 
 @end
