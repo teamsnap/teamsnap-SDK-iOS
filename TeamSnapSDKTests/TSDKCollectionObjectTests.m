@@ -215,6 +215,11 @@
     XCTAssertTrue(paymentPartial.amountPaid == 200.0, @"Expected 200 for amountPaid");
     XCTAssertTrue(paymentPartial.amountDue == 250.0, @"Expected 250 for amountDue");
     
+    // last payment in the array is hard-coded to have null values for amount_paid and amount_due
+    TSDKMemberPayment *lastPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.lastObject];
+    XCTAssertTrue(lastPayment.amountDue == 0.0, @"Expected 0.0 when server provides a null value");
+    XCTAssertTrue(lastPayment.amountPaid == 0.0, @"Expected 0.0 when server provides a null value");
+    
     paymentPartial.amountPaid = 450.0;
     paymentPartial.amountDue = 0.0;
     XCTAssertTrue(paymentPartial.amountPaid == 450.0, @"Expected 450 for amountPaid");
