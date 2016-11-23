@@ -28,12 +28,15 @@ Now run ```pod install```
 # Usage
 
 To use:
+
+Objective C
 ```objective-c
 #import <TeamSnapSDK/TeamSnapSDK.h>
 ```
-or
-```objective-c
-#import <TeamSnapSDKTV/TeamSnapSDKTV.h>
+
+Swift
+```swift
+import TeamSnapSDK
 ```
 
 # Sample Code:
