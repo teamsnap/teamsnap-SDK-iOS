@@ -238,7 +238,10 @@
     NSURLQueryItem *heightQueryItem = [NSURLQueryItem queryItemWithName:@"height" value:[NSString stringWithFormat:@"%ld", (long)height]];
     NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"fill"];
     NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkTeamLogoPhotoFile resolvingAgainstBaseURL:NO];
-    fullySpecifiedURL.queryItems = @[widthQueryItem, heightQueryItem, cropQueryItem];
+    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
+    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    [queryItems addObjectsFromArray:@[widthQueryItem, heightQueryItem, cropQueryItem]];
+    fullySpecifiedURL.queryItems = queryItems;
     return fullySpecifiedURL.URL;
 }
 
