@@ -25,7 +25,13 @@
 
 // accespts 'TSDK'+ClassName and returns class_name
 - (NSString *)classNameToUnderscoredName {
-     NSString *baseClassName = [[[self substringFromIndex:4] camelCaseToUnderscores] substringFromIndex:1];
+    NSString *baseClassName;
+    
+    if ([self hasPrefix:@"TSDK"]) {
+        baseClassName = [[[self substringFromIndex:4] camelCaseToUnderscores] substringFromIndex:1];
+    } else {
+        baseClassName = [[self camelCaseToUnderscores] substringFromIndex:1];
+    }
     
     return baseClassName;
 }
