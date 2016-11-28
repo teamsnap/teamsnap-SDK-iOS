@@ -5,7 +5,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-@interface TSDKApnDevices : TSDKCollectionObject
+@interface TSDKApnDevice : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable token;
 @property (nonatomic, weak) NSString *_Nullable appVersion;
@@ -15,7 +15,7 @@
 
 @end
 
-@interface TSDKApnDevices (ForwardedMethods)
+@interface TSDKApnDevice (ForwardedMethods)
 
 -(void)getSelfWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nonnull)completion;
