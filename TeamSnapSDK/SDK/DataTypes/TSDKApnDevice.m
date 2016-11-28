@@ -6,7 +6,7 @@
 //  Copyright © 2016 teamsnap. All rights reserved.
 //
 
-#import "TSDKAPNDevice.h"
+#import "TSDKApnDevice.h"
 
 @implementation TSDKApnDevice
 
@@ -14,10 +14,6 @@
 
 + (NSString *)SDKType {
     return @"apn_device";
-}
-
-+ (NSString *)SDKREL {
-    return @"apn_devices";
 }
 
 @end
