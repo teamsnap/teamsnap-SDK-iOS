@@ -13,6 +13,8 @@
 @interface TSDKUser : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger teamsCount;
+@property (nonatomic, assign) NSInteger activeTeamsCount;
+@property (nonatomic, assign) NSInteger managedDivisionsCount;
 @property (nonatomic, assign) NSInteger facebookId;
 @property (nonatomic, assign) BOOL receivesNewsletter;
 @property (nonatomic, weak) NSDate *_Nullable createdAt;

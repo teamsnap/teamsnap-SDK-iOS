@@ -13,7 +13,7 @@
 
 @class TSDKEvent, TSDKMember, TSDKPlan, TSDKTeamPreferences, TSDKTeamResults;
 
-@interface TSDKTeam : TSDKCollectionObject
+@interface TSDKTeam : TSDKCollectionObject <NSCopying>
 
 @property (nonatomic, assign) NSInteger sportId; //Example: 52
 @property (nonatomic, weak) NSString *_Nullable leagueUrl; //Example:
