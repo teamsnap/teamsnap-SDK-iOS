@@ -10,12 +10,17 @@
 
 @implementation NSURL (TSDKConveniences)
 
-- (NSURL *)URLByAppendingQueryParameter:(NSString *)queryString {
-    NSString *componentSeparator = @"?";
-    if ([self.absoluteString containsString:@"?"]) {
-        componentSeparator=@"&";
+- (NSURL *_Nonnull)URLByAppendingQuery:(NSString *_Nonnull)queryItemName value:(NSString *_Nullable)queryItemValue {
+    NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:NO];
+    
+    NSURLQueryItem *item = [[NSURLQueryItem alloc] initWithName:queryItemName value:queryItemValue];
+    if (components.queryItems) {
+        components.queryItems = [components.queryItems arrayByAddingObject:item];
+    } else {
+        components.queryItems = [NSArray arrayWithObject:item];
     }
-    return [NSURL URLWithString:[[self absoluteString] stringByAppendingString:[NSString stringWithFormat:@"%@%@", componentSeparator,queryString]]];
+
+    return components.URL;
 }
 
 @end

@@ -24,15 +24,27 @@
 }
 
 - (NSURL *)linkForImageWithHeight:(NSInteger)height width:(NSInteger)width {
-    return [[[[self linkTeamMediumPhotoFile] URLByAppendingQueryParameter:[NSString stringWithFormat:@"height=%ld",(long)height]] URLByAppendingQueryParameter:[NSString stringWithFormat:@"width=%ld",(long)width]] URLByAppendingQueryParameter:@"crop=fill"] ;
+    NSURL *url = [[self linkTeamMediumPhotoFile] URLByAppendingQuery:@"height" value:[NSString stringWithFormat:@"%ld",(long)height]];
+    
+    url = [url URLByAppendingQuery:@"width" value:[NSString stringWithFormat:@"%ld",(long)width]];
+    
+    url = [url URLByAppendingQuery:@"crop" value:@"fill"];
+    return url;
 }
 
 - (NSURL *)linkForImageWithHeight:(NSInteger)height {
-        return [[[self linkTeamMediumPhotoFile] URLByAppendingQueryParameter:[NSString stringWithFormat:@"height=%ld",(long)height]] URLByAppendingQueryParameter:@"crop=proportional"] ;
+    
+    NSURL *url = [[self linkTeamMediumPhotoFile] URLByAppendingQuery:@"height" value:[NSString stringWithFormat:@"%ld",(long)height]];
+    
+    url = [url URLByAppendingQuery:@"crop" value:@"proportional"];
+    return url;
 }
 
 - (NSURL *)linkForImageWithWidth:(NSInteger)width {
-    return [[[self linkTeamMediumPhotoFile] URLByAppendingQueryParameter:[NSString stringWithFormat:@"width=%ld",(long)width]] URLByAppendingQueryParameter:@"crop=proportional"] ;
+    NSURL *url = [[self linkTeamMediumPhotoFile] URLByAppendingQuery:@"width" value:[NSString stringWithFormat:@"%ld",(long)width]];
+    
+    url = [url URLByAppendingQuery:@"crop" value:@"proportional"];
+    return url;
 }
 
 
