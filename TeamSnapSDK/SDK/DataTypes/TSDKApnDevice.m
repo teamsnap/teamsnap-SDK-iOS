@@ -6,14 +6,14 @@
 //  Copyright © 2016 teamsnap. All rights reserved.
 //
 
-#import "TSDKAPNDevices.h"
+#import "TSDKAPNDevice.h"
 
-@implementation TSDKApnDevices
+@implementation TSDKApnDevice
 
 @dynamic token, appVersion, linkSelf, linkUser, linkRoot;
 
 + (NSString *)SDKType {
-    return @"apn_devices";
+    return @"apn_device";
 }
 
 + (NSString *)SDKREL {
