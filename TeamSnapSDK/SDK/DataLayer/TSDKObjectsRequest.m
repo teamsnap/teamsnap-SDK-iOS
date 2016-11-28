@@ -63,6 +63,7 @@
 #import "TSDKLeagueCustomDatum.h"
 #import "TSDKLeagueCustomField.h"
 #import "TSDKMemberAssignment.h"
+#import "TSDKAPNDevices.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

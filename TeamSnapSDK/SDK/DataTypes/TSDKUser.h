@@ -27,6 +27,7 @@
 @property (nonatomic, weak) NSString *_Nullable email;
 @property (nonatomic, weak) NSString *_Nullable addressCountry;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
+@property (nonatomic, weak) NSURL *_Nullable linkApnDevices;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamsPreferences;
 @property (nonatomic, weak) NSURL *_Nullable linkPersonas;
 @property (nonatomic, weak) NSURL *_Nullable linkMessages;
@@ -55,6 +56,7 @@
 
 @interface TSDKUser (ForwardedMethods)
 
+-(void)getApnDevicesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKApnDevicesArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamsPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock _Nullable)completion;
 -(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
 -(void)getFacebookPagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
