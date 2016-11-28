@@ -28,11 +28,11 @@
 - (void)testURLByAppendingQueryParameter {
     NSString *baseURLString = @"https://google.com/foo";
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
-    NSURL *search1URL = [baseURL URLByAppendingQueryParameter:@"fubar"];
+    NSURL *search1URL = [baseURL URLByAppendingQuery:@"fubar" value:nil];
     
     XCTAssertEqualObjects([search1URL absoluteString], @"https://google.com/foo?fubar");
     
-    NSURL *search2URL = [search1URL URLByAppendingQueryParameter:@"query=2"];
+    NSURL *search2URL = [search1URL URLByAppendingQuery:@"query" value:@"2"];
     XCTAssertEqualObjects([search2URL absoluteString], @"https://google.com/foo?fubar&query=2");
 
     
