@@ -109,6 +109,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPublicSite;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberPhotos;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPhotos;
+@property (nonatomic, weak) NSURL *_Nullable linkTeamLogoPhotoFile;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
@@ -138,6 +139,8 @@
 - (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *_Nonnull)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
+
+- (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
 
 @end
 
@@ -213,5 +216,6 @@
 -(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
 -(void)getTeamPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getTeamLogoPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
