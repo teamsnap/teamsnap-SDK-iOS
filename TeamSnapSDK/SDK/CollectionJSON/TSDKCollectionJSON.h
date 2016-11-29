@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TSDKCollectionJSON : NSObject <NSCoding>
+@interface TSDKCollectionJSON : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSURL *_Nullable href;
 @property (nonatomic, strong) NSString *_Nullable version;
@@ -21,9 +21,9 @@
 @property (nonatomic, strong) NSMutableDictionary *_Nullable data;
 @property (nonatomic, strong) NSMutableDictionary *_Nullable commands;
 @property (nonatomic, strong) NSMutableDictionary *_Nullable queries;
-@property (nonatomic, strong) id _Nullable collection;
+@property (nonatomic, strong) NSMutableArray <TSDKCollectionJSON *> *_Nullable collection;
 
-+(NSDictionary *_Nullable)dictionaryToCollectionJSON:(NSDictionary *_Nonnull)dictionary;
++ (NSDictionary *_Nullable)dictionaryToCollectionJSON:(NSDictionary *_Nonnull)dictionary;
 - (instancetype _Nullable)initWithCoder:(NSCoder *_Nonnull)aDecoder;
 - (instancetype _Nullable)initWithJSON:(NSDictionary *_Nonnull)JSON;
 + (instancetype _Nullable)collectionJSONForEncodedData:(NSData *_Nonnull)objectData;

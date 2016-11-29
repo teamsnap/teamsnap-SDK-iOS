@@ -35,6 +35,7 @@
     if (self) {
         self.href = nil;
         self.version = nil;
+        self.rel = nil;
         self.links = [[NSMutableDictionary alloc] init];
         self.data = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableDictionary alloc] init];
@@ -49,6 +50,7 @@
     self = [self init];
     if (self) {
         _href = [aDecoder decodeObjectForKey:@"href"];
+        _rel = [aDecoder decodeObjectForKey:@"rel"];
         _type = [aDecoder decodeObjectForKey:@"type"];
         _version = [aDecoder decodeObjectForKey:@"version"];
         _links = [aDecoder decodeObjectForKey:@"links"];
@@ -59,6 +61,25 @@
     }
     return self;
 }
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    TSDKCollectionJSON *copy = [[[self class] allocWithZone:zone] init];
+    
+    if (copy) {
+        copy.href = [self.href copy];
+        copy.rel = [self.rel copy];
+        copy.type = [self.type copy];
+        copy.version = [self.version copy];
+        copy.links = [self.links copy];
+        copy.data = [self.data copy];
+        copy.collection = [self.collection copy];
+        copy.commands = [self.commands copy];
+        copy.queries = [self.queries copy];
+    }
+    
+    return copy;
+}
+
 
 -(instancetype)initWithJSON:(NSDictionary *)JSON {
     self = [self init];
@@ -308,6 +329,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:_href forKey:@"href"];
+    [coder encodeObject:_rel forKey:@"rel"];
     [coder encodeObject:_type forKey:@"type"];
     [coder encodeObject:_version forKey:@"version"];
     [coder encodeObject:_links forKey:@"links"];
