@@ -58,7 +58,6 @@
 
 #if TARGET_OS_IPHONE
 +(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSInteger)teamMediaGroupId position:(NSInteger)position memberId:(NSInteger)memberId teamId:(NSInteger)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock {
-    // +(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)UploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSString *_Nonnull)teamMediaGroupId position:(NSString *_Nonnull)position file:(NSString *_Nonnull)file mediaFormat:(NSString *_Nonnull)mediaFormat memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId description:(NSString *_Nonnull)description WithCompletion:(TSDKCompletionBlock _Nullable)completion {
     
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
