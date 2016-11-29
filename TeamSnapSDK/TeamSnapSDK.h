@@ -84,3 +84,4 @@
 #import <TeamsnapSDK/TSDKLeagueCustomField.h>
 #import <TeamsnapSDK/TSDKMemberAssignment.h>
 #import <TeamSnapSDK/NSURL+TSDKConveniences.h>
+#import <TeamsnapSDK/TSDKApnDevice.h>
