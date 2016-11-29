@@ -21,8 +21,7 @@
 
 @implementation TSDKRootLinks
 
-@dynamic linkDivisionContactPhoneNumbers, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkLocations, linkTeamMediumComments, linkTeamsPreferences, linkMemberLinks, linkForumTopics, linkTeamMedia, linkEvents, linkStatistics, linkSweet, linkTrackedItemStatuses, linkTslPhotos, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamPublicSites, linkAssignments, linkDivisionMemberPhoneNumbers, linkDude, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkPublicFeatures, linkTslChats, linkRandom, linkPlansAll, linkMemberStatistics, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkReferrals, linkLeagueCustomData, linkSports, linkAvailabilities, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkMembersPreferences, linkTslMetadata, linkDivisionsPreferences, linkOpponents, linkApiv2Root, linkMemberEmailAddresses, linkStatisticData, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkXyzzy, linkPaymentNotes, linkForumPosts, linkContacts, linkCountries, linkApnDevices;
-;
+@dynamic linkDivisionContactPhoneNumbers, linkPaymentNotes, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkMemberRegistrationSignups, linkTeamMediumComments, linkMemberLinks, linkLocations, linkTeamsPreferences, linkForumTopics, linkMessages, linkTeamMedia, linkEvents, linkStatistics, linkContactPhoneNumbers, linkTrackedItemStatuses, linkTslPhotos, linkDivisionMemberPhoneNumbers, linkContactEmailAddresses, linkMemberAssignments, linkTeamPublicSites, linkAssignments, linkDude, linkGcmDevices, linkSweet, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkDivisionEventsImports, linkPublicFeatures, linkTslChats, linkRegistrationForms, linkPlansAll, linkRandom, linkMemberStatistics, linkTeamPhotos, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkLeagueCustomData, linkAuthorizationRoot, linkSports, linkAvailabilities, linkAuthorizationUsers, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkAuthorizationMagicLinks, linkMembersPreferences, linkApiv2Root, linkDivisionsPreferences, linkOpponents, linkStatisticData, linkRegistrationSignupStatuses, linkMemberEmailAddresses, linkTslMetadata, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkMemberPhotos, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkAuthorizationUserRegistrations, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkMessageData, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkAuthorizationPasswordResets, linkXyzzy, linkApnDevices, linkAuthorizationTokens, linkForumPosts, linkContacts, linkCountries;
 
 + (NSString *)SDKType {
     return nil;
@@ -332,6 +331,29 @@
     } else {
         return [rel substringToIndex:rel.length-1];
     }
+}
+
++ (void)resetPasswordForEmailAddress:(NSString * _Nonnull)emailAddress completion:(TSDKSimpleCompletionBlock)completionBlock {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            NSURL *url = rootLinks.linkAuthorizationPasswordResets;
+            if(url) {
+                NSDictionary *userObject = @{@"email" : emailAddress};
+                NSDictionary *postData = @{@"client_id" : [[TSDKTeamSnap sharedInstance] clientId], @"user" : userObject};
+                
+                [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:postData method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                    if(completionBlock) {
+                        completionBlock(success, error);
+                    }
+                }];
+                
+            }
+        } else {
+            if(completionBlock) {
+                completionBlock(NO, nil);
+            }
+        }
+    }];
 }
 
 + (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {

@@ -63,8 +63,8 @@
 - (void)setDate:(NSDate *_Nullable)value forKey:(NSString *_Nonnull)aKey;
 - (BOOL)getBool:(NSString *_Nonnull)key;
 - (void)setBool:(BOOL)value forKey:(NSString *_Nonnull)aKey;
-- (CGFloat)getFloat:(NSString *_Nonnull)key;
-- (void)setFloat:(CGFloat)value forKey:(NSString *_Nonnull)aKey;
+- (CGFloat)getCGFloat:(NSString *_Nonnull)key;
+- (void)setCGFloat:(CGFloat)value forKey:(NSString *_Nonnull)aKey;
 
 - (void)setArray:(NSArray <NSString *> *_Nullable)value forKey:(NSString *_Nonnull)aKey;
 - (NSArray <NSString *> *_Nullable)getArrayForKey:(NSString *_Nonnull)key;

@@ -16,4 +16,12 @@
     return @"team_fee";
 }
 
+- (NSString *)teamFeeDescription {
+    return [self getString:@"description"];
+}
+
+- (void)setTeamFeeDescription:(NSString *)teamFeeDescription {
+    [self setString:teamFeeDescription forKey:@"description"];
+}
+
 @end

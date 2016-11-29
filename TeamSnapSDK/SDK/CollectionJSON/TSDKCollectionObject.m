@@ -211,7 +211,7 @@ static NSMutableDictionary *_classURLs;
             [[newCollection data] removeObjectForKey:key];
         }
     }
-
+    
     __typeof__(originalObject) newObject = [[[originalObject class] alloc] initWithCollection:newCollection];
     
     return newObject;
@@ -265,6 +265,11 @@ static BOOL boolPropertyIMP(id self, SEL _cmd) {
 static long integerPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
     return [self getInteger:command];
+}
+
+static long floatPropertyIMP(id self, SEL _cmd) {
+    NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
+    return [self getCGFloat:command];
 }
 
 // generic setter
@@ -330,6 +335,17 @@ static void setIntegerPropertyIMP(id self, SEL _cmd, NSInteger value) {
     [self setInteger:value forKey:[key camelCaseToUnderscores]];
 }
 
+static void setCGFloatPropertyIMP(id self, SEL _cmd, CGFloat value) {
+    NSMutableString *key = [NSStringFromSelector(_cmd) mutableCopy];
+    
+    // delete "set" and ":" and lowercase first letter
+    [key deleteCharactersInRange:NSMakeRange(0, 3)];
+    [key deleteCharactersInRange:NSMakeRange([key length] - 1, 1)];
+    NSString *firstChar = [key substringToIndex:1];
+    [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
+    [self setCGFloat:value forKey:[key camelCaseToUnderscores]];
+}
+
 static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock completion) {
     NSString *property = NSStringFromSelector(_cmd);
     NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
@@ -340,7 +356,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     
     NSURL *link = [self getLink:linkPropertyName];
     DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
-
+    
     [self arrayFromLink:link withConfiguration:[TSDKRequestConfiguration new] completion:completion];
 }
 
@@ -359,21 +375,21 @@ static void getArrayFromLinkWithConfigurationIMP(id self, SEL _cmd, TSDKRequestC
 }
 
 /*
-Not tested:
-static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
-    NSString *property = NSStringFromSelector(_cmd);
-    NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
-    
-    if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
-        linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
-    }
-    
-    NSURL *link = [self getLink:linkPropertyName];
-    DLog(@"%@ - %@", linkPropertyName, link);
-    
-    [self objectFromLink:link WithCompletion:completion];
-}
-*/
+ Not tested:
+ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
+ NSString *property = NSStringFromSelector(_cmd);
+ NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
+ 
+ if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
+ linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
+ }
+ 
+ NSURL *link = [self getLink:linkPropertyName];
+ DLog(@"%@ - %@", linkPropertyName, link);
+ 
+ [self objectFromLink:link WithCompletion:completion];
+ }
+ */
 
 static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     const char * attrs = property_getAttributes( property );
@@ -415,7 +431,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
     //NSString *command = [NSStringFromSelector(aSEL) camelCaseToUnderscores];
-
+    
     NSMutableString *property = [NSMutableString stringWithString:NSStringFromSelector(aSEL)];
     if ([property isSetter]) {
         [property deleteCharactersInRange:NSMakeRange(0, 3)];
@@ -443,6 +459,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
             } else if ([propertyType hasPrefix:@"Ti,"] || [propertyType hasPrefix:@"Ti,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:i");
+            } else if ([propertyType hasPrefix:@"Td,"] || [propertyType hasPrefix:@"Td,"]) {
+                class_addMethod([self class], aSEL, (IMP)setCGFloatPropertyIMP, "v@:d");
             } else {
                 class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
             }
@@ -464,6 +482,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
         } else if ([propertyType hasPrefix:@"Ti,"]) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "i@:");
+        } else if ([propertyType hasPrefix:@"Td,"]) {
+            class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "d@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
@@ -620,14 +640,14 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     [self setObject:@(value) forKey:aKey];
 }
 
-- (CGFloat)getFloat:(NSString *)aKey {
+- (CGFloat)getCGFloat:(NSString *)aKey {
     if ([_collection.data[aKey] isEqual:[NSNull null]]) {
         return 0.0f;
     }
     return [_collection.data[aKey] floatValue];
 }
 
-- (void)setFloat:(CGFloat)value forKey:(NSString *)aKey {
+- (void)setCGFloat:(CGFloat)value forKey:(NSString *)aKey {
     [self setObject:@(value) forKey:aKey];
 }
 
