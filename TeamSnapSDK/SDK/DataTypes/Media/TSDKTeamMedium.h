@@ -8,12 +8,14 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKTeamMediaGroup.h"
 
 @interface TSDKTeamMedium : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable teamMediumDescription; //Example: Ball
+@property (nonatomic, assign) NSInteger originalFileSize; //Example: 5176834
 @property (nonatomic, assign) NSInteger position; //Example: 1
-@property (nonatomic, weak) NSURL *_Nullable mediumUrl; //Example:
+@property (nonatomic, weak) NSURL *_Nullable mediumUrl; //Example: https://35b7f1d7d0790b02114c-1b8897185d70b198c119e1d2b7efd8a2.ssl.cf1.rackcdn.com/user_files/3263711/original/upload_133315715520120601-24224-1knpgia-0.jpg
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-03-31T01:27:34Z
 @property (nonatomic, assign) NSInteger teamMediaGroupId; //Example: 56194
 @property (nonatomic, weak) NSString *_Nullable mediaFormat; //Example: image
@@ -24,36 +26,70 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkMedium;
 @property (nonatomic, weak) NSURL *_Nullable linkMediumThumbnail;
+@property (nonatomic, weak) NSURL *_Nullable linkTeamMediumPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediumComments;
+@property (nonatomic, weak) NSURL *_Nullable linkImageUrl;
 @property (nonatomic, weak) NSURL *_Nullable linkMediumMidsizeThumbnail;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkMediumSmallThumbnail;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroup;
 @property (nonatomic, weak) NSURL *_Nullable linkMediumMidsize;
 
-//+(void)actionBulkDeleteTeamMediaWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionSetMediumAsTeamPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionCreateTeamVideoLinkWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionFacebookShareTeamMediumWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionAssignMediaToGroupWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionReorderTeamMediaWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionRotateTeamMediumImageWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionSetMediumAsMemberPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionUploadTeamMediumWithCompletion:(TSDKCompletionBlock)completion; //(null)
+
+- (TeamMediaGroupFormatType)mediaType;
+- (void)setMediaType:(TeamMediaGroupFormatType)mediaType;
+- (NSURL *_Nullable)linkForImageWithHeight:(NSInteger)height width:(NSInteger)width;
+- (NSURL *_Nullable)linkForImageWithHeight:(NSInteger)height;
+- (NSURL *_Nullable)linkForImageWithWidth:(NSInteger)width;
+//Deletes the specified team_medium_ids
+//+(void)actionBulkDeleteTeamMediaTeammediumids:(NSString *_Nonnull)teamMediumIds WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Set the specified team medium image as the team photo
+//+(void)actionSetMediumAsTeamPhotoTeammediumid:(NSString *_Nonnull)teamMediumId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Add a link to a YouTube or Vimeo video.
+//+(void)actionCreateTeamVideoLinkVideourl:(NSString *_Nonnull)videoUrl memberId:(NSString *_Nonnull)memberId teamMediaGroupId:(NSString *_Nonnull)teamMediaGroupId description:(NSString *_Nonnull)description teamId:(NSString *_Nonnull)teamId position:(NSString *_Nonnull)position WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Share a specified image or video type medium on facebook.
+//+(void)actionFacebookShareTeamMediumTeammediumid:(NSString *_Nonnull)teamMediumId caption:(NSString *_Nonnull)caption facebookPageId:(NSString *_Nonnull)facebookPageId isSuppressedFromFeed:(NSString *_Nonnull)isSuppressedFromFeed WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Assign the specified team_medium_ids to the team_media_group_id
+//+(void)actionAssignMediaToGroupTeammediumids:(NSString *_Nonnull)teamMediumIds teamMediaGroupId:(NSString *_Nonnull)teamMediaGroupId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Reorder the team media based on the sorted_ids provided.
+//+(void)actionReorderTeamMediaTeamid:(NSString *_Nonnull)teamId sortedIds:(NSString *_Nonnull)sortedIds WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Rotate an image with specified team_medium_id in the specified rotate_direction
+//+(void)actionRotateTeamMediumImageRotatedirection:(NSString *_Nonnull)rotateDirection teamMediumId:(NSString *_Nonnull)teamMediumId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Set the specified team medium image as the specified member_id's  photo
+//+(void)actionSetMediumAsMemberPhotoMemberid:(NSString *_Nonnull)memberId teamMediumId:(NSString *_Nonnull)teamMediumId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Upload a team media file. This must be a multi-part POST.
+#if TARGET_OS_IPHONE
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSInteger)teamMediaGroupId position:(NSInteger)position memberId:(NSInteger)memberId teamId:(NSInteger)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
+
+-(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSInteger)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
+
+#endif
+
+//+(void)querySearchId:(NSString *_Nonnull)id memberId:(NSString *_Nonnull)memberId teamMediaGroupId:(NSString *_Nonnull)teamMediaGroupId pageNumber:(NSString *_Nonnull)pageNumber teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 @end
 
 @interface TSDKTeamMedium (ForwardedMethods)
 
--(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
--(void)getMediumWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMediumThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumCommentArrayCompletionBlock _Nullable)completion;
--(void)getMediumMidsizeThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
--(void)getMediumSmallThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTeamMediaGroupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediaGroupArrayCompletionBlock _Nullable)completion;
--(void)getMediumMidsizeWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nonnull)completion;
+-(void)getMediumWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMediumThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediumPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumCommentArrayCompletionBlock _Nonnull)completion;
+-(void)getImageUrlWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMediumMidsizeThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
+-(void)getMediumSmallThumbnailWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediaGroupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediaGroupArrayCompletionBlock _Nonnull)completion;
+-(void)getMediumMidsizeWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 
 @end

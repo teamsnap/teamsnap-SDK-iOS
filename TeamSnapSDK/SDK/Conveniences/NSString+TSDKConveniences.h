@@ -12,9 +12,11 @@
 - (NSString *_Nonnull)addClassNameToDescriptor:(NSString *_Nonnull)className;
 - (NSString *_Nonnull)stripClassNameFromDescriptor:(NSString *_Nonnull)className;
 
+- (NSString *_Nonnull)classNameToUnderscoredName;
 - (NSString *_Nonnull)camelCaseToUnderscores;
 - (NSString *_Nonnull)underscoresToMixedCase;
 - (NSString *_Nonnull)underscoresToCamelCase;
+
 - (BOOL)isSetter;
 
 - (NSString *_Nullable)linkForGetProperty;
