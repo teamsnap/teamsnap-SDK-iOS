@@ -11,11 +11,12 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKUser.h"
 #import "TSDKEvent.h"
+#import "TSDKMemberPayment.h"
 #import "NSDictionary+dump.h"
+#import "TSDKJSONFileResource.h"
 
 @interface TSDKCollectionObjectTests : XCTestCase
 @property (nonatomic, strong) TSDKCollectionJSON *userCollectionJSON;
-
 @end
 
 @implementation TSDKCollectionObjectTests
@@ -195,6 +196,41 @@
 #pragma clang diagnostic pop
     [self waitForExpectationsWithTimeout:5 handler:nil];
     
+}
+
+- (void)testCGFloatParsing {
+    
+    TSDKCollectionJSON *memberPaymentsCollection = [TSDKJSONFileResource collectionFromJSONFileNamed:@"MemberPayments"];
+    NSArray *memberPayments = memberPaymentsCollection.collection;
+    
+    TSDKMemberPayment *paymentNoPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.firstObject];
+    XCTAssertTrue(paymentNoPayment.amountPaid == 0.0, @"Expected zero float values for amountPaid");
+    XCTAssertTrue(paymentNoPayment.amountDue == 0.0, @"Expected zero float values for amountDue");
+    
+    TSDKMemberPayment *paymentUpToDate = [[TSDKMemberPayment alloc] initWithCollection:memberPayments[1]];
+    XCTAssertTrue(paymentUpToDate.amountPaid == 450.0, @"Expected 450 for amountPaid");
+    XCTAssertTrue(paymentUpToDate.amountDue == 0.0, @"Expected zero for amountDue");
+    
+    TSDKMemberPayment *paymentPartial = [[TSDKMemberPayment alloc] initWithCollection:memberPayments[4]];
+    XCTAssertTrue(paymentPartial.amountPaid == 200.0, @"Expected 200 for amountPaid");
+    XCTAssertTrue(paymentPartial.amountDue == 250.0, @"Expected 250 for amountDue");
+    
+    // last payment in the array is hard-coded to have null values for amount_paid and amount_due
+    TSDKMemberPayment *lastPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.lastObject];
+    XCTAssertTrue(lastPayment.amountDue == 0.0, @"Expected 0.0 when server provides a null value");
+    XCTAssertTrue(lastPayment.amountPaid == 0.0, @"Expected 0.0 when server provides a null value");
+    
+    paymentPartial.amountPaid = 450.0;
+    paymentPartial.amountDue = 0.0;
+    XCTAssertTrue(paymentPartial.amountPaid == 450.0, @"Expected 450 for amountPaid");
+    XCTAssertTrue(paymentPartial.amountDue == 0.0, @"Expected zero for amountDue");
+    
+    TSDKMemberPayment *payment = [[TSDKMemberPayment alloc] init];
+    NSString *key = @"amount_paid";
+    [payment setCGFloat:2.0 forKey:key];
+    CGFloat paid = [payment getCGFloat:key];
+    XCTAssertTrue(paid == 2.0, @"Expected CGFloat value to be 2.0");
+    XCTAssertTrue(payment.amountPaid == 2.0, @"Expected amountPaid to be 2.0");
 }
 
 @end

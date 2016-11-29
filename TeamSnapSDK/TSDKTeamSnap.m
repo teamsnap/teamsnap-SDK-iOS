@@ -84,7 +84,6 @@
 - (void)logout {
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
-    self.rootLinks = nil;
 }
 
 #if TARGET_OS_IPHONE
@@ -191,7 +190,6 @@
 
 - (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion {
     TSDKTeamSnap __weak *weakSelf = self;
-    self.rootLinks = nil;
     
     [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
