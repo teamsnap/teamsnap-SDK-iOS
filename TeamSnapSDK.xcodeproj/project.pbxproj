@@ -26,6 +26,8 @@
 		5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5699E2791C90A6EE0061EC1D /* TSDKMessage.m */; };
 		569CFAC01D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h in Headers */ = {isa = PBXBuildFile; fileRef = 569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */; };
 		569CFAC11D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */; };
+		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; };
+		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -370,6 +372,8 @@
 		5699E2791C90A6EE0061EC1D /* TSDKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMessage.m; path = Messages/TSDKMessage.m; sourceTree = "<group>"; };
 		569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TSDKConvenience.h"; sourceTree = "<group>"; };
 		569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+TSDKConvenience.m"; sourceTree = "<group>"; };
+		56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKSmsGateway.h; sourceTree = "<group>"; };
+		56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSmsGateway.m; sourceTree = "<group>"; };
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
@@ -906,6 +910,8 @@
 				969366DA1CCA539700721504 /* TSDKTimeZone.m */,
 				561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */,
 				561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */,
+				56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */,
+				56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1057,6 +1063,7 @@
 				5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */,
 				96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */,
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
+				56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */,
 				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				563E3EF71CD012DD00B0F1FF /* TSDKDivisionMember.h in Headers */,
 				969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
@@ -1337,6 +1344,7 @@
 				969366D71CCA503800721504 /* TSDKCountry.m in Sources */,
 				56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */,
 				9678A3611D86EC4E0078631C /* TSDKLeagueCustomDatum.m in Sources */,
+				56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */,
 				963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
 				965B7D2F1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
