@@ -16,4 +16,6 @@
 @property (nonatomic, weak) NSURL *_Nullable linkRoot;
 @property (nonatomic, weak) NSURL *_Nullable linkSelf;
 
++(void)uploadTSLImageURL:(nonnull NSURL *)photoFileURL fileName:(nullable NSString *)fileName size:(NSNumber *)size team:(TSDKTeam *)team event:(nullable TSDKEvent *)event progress:(nullable TSDKUploadProgressBlock)progressBlock;
+
 @end

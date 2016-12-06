@@ -52,6 +52,8 @@
 
 //@property (strong, nonatomic) NSMutableDictionary *_Nullable teams;
 
+- (NSString *_Nonnull)fullName;
+
 @end
 
 @interface TSDKUser (ForwardedMethods)

@@ -85,3 +85,5 @@
 #import <TeamsnapSDK/TSDKMemberAssignment.h>
 #import <TeamSnapSDK/NSURL+TSDKConveniences.h>
 #import <TeamsnapSDK/TSDKApnDevice.h>
+#import <TeamSnapSDK/TSDKTslChat.h>
+#import <TeamSnapSDK/TSDKTslScore.h>
