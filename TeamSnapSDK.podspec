@@ -75,6 +75,10 @@ Pod::Spec.new do |s|
         spTypes.source_files = 'TeamSnapSDK/SDK/Protocols/*.{h,m}'
       end
       
+      spSDK.subspec 'TSL' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/TSL/*.{h,m}'
+      end
+      
       spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/*.{h,m}'
     
 	end  	
