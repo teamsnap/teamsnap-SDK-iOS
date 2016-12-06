@@ -28,6 +28,7 @@
 - (instancetype _Nullable)initWithJSON:(NSDictionary *_Nonnull)JSON;
 + (instancetype _Nullable)collectionJSONForEncodedData:(NSData *_Nonnull)objectData;
 - (NSString *_Nullable)getObjectiveCHeaderSkeleton;
++ (NSString *_Nonnull)getObjectiveCHeaderForCommandsForTypeName:(NSString *_Nonnull)typeName;
 - (NSData *_Nonnull)dataEncodedForSave;
 
 @end
