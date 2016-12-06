@@ -506,7 +506,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     
     NSObject *identifierObject = [self.collection.data objectForKey:@"id"];
     if([identifierObject isKindOfClass:[NSNumber class]]) {
-        return [NSString stringWithFormat:@"%ld",(long) ((NSNumber *)identifierObject).integerValue];
+        if(((NSNumber *)identifierObject).integerValue == 0) {
+            return @"";
+        } else {
+            return [NSString stringWithFormat:@"%ld",(long) ((NSNumber *)identifierObject).integerValue];
+        }
     } else if([identifierObject isKindOfClass:[NSString class]]) {
         return ((NSString *)identifierObject);
     } else {
@@ -685,7 +689,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)isNewObject {
-    return ([_collection.data[@"id"] integerValue] <=0);
+    return ([[self objectIdentifier] isEqualToString:@""] || [[self objectIdentifier] integerValue] == 0);
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
