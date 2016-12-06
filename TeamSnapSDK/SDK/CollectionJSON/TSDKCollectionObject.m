@@ -499,8 +499,19 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
-- (NSInteger)objectIdentifier {
-    return [self getInteger:@"id"];
+- (NSString *)objectIdentifier {
+    if ((!_collection.data[@"id"]) || ([_collection.data[@"id"] isEqual:[NSNull null]])) {
+        return nil;
+    }
+    
+    NSObject *identifierObject = [self.collection.data objectForKey:@"id"];
+    if([identifierObject isKindOfClass:[NSNumber class]]) {
+        return [NSString stringWithFormat:@"%ld",(long) ((NSNumber *)identifierObject).integerValue];
+    } else if([identifierObject isKindOfClass:[NSString class]]) {
+        return ((NSString *)identifierObject);
+    } else {
+        return identifierObject.description;
+    }
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
@@ -821,14 +832,13 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 #pragma mark - NSObject
-
 - (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *)collectionObject {
     if (!collectionObject) {
         return NO;
     }
-    
-    return self.objectIdentifier == collectionObject.objectIdentifier;
+    return [self.objectIdentifier isEqualToString:collectionObject.objectIdentifier];
 }
+
 
 - (BOOL)isEqual:(id)object {
     if (self == object) {
@@ -843,7 +853,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSUInteger)hash {
-    return self.objectIdentifier;
+    return self.objectIdentifier.hash;
 }
 
 @end

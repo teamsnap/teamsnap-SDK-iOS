@@ -20,10 +20,10 @@
 
 +(void)invalidateAll;
 +(void)invaidateObjectsOfClass:(Class _Nonnull)objectClass;
-+(void)invaidateObjectOfClass:(Class _Nonnull)objectClass withId:(NSUInteger)objectId;
++(void)invaidateObjectOfClass:(Class _Nonnull)objectClass withId:(NSString * _Nonnull)objectId;
 
 +(void)saveObject:(TSDKCollectionObject *_Nonnull)collectionObject;
-+(TSDKCollectionObject *_Nullable)objectOfClass:(Class _Nonnull)objectClass withId:(NSUInteger)objectId;
++(TSDKCollectionObject *_Nullable)objectOfClass:(Class _Nonnull)objectClass withId:(NSString * _Nonnull)objectId;
 + (void)saveDictionaryOfObjects:(NSDictionary *_Nonnull)dictionaryOfObjects ofType:(Class _Nonnull)objectClass;
 + (NSDictionary *_Nullable)loadDictionaryOfObjectsOfType:(Class _Nonnull)objectClass;
 

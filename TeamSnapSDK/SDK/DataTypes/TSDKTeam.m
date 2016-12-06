@@ -38,7 +38,7 @@
 
 +(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
+    command.data[@"team_id"] = [NSNumber numberWithInteger:[team.objectIdentifier integerValue]];
     command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
     command.data[@"time_zone"] = timeZone.name;
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -83,7 +83,7 @@
 }
 
 - (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
-    [TSDKTeam actionImportMembers:members destinationTeamId:self.objectIdentifier sendInvites:sendInvites completion:completion];
+    [TSDKTeam actionImportMembers:members destinationTeamId:[self.objectIdentifier integerValue] sendInvites:sendInvites completion:completion];
 }
 
 + (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSInteger)teamId asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
@@ -95,9 +95,9 @@
     
     for(TSDKCollectionObject<TSDKMemberOrContactProtocol> *memberOrContact in membersOrContacts) {
         if([memberOrContact isKindOfClass:[TSDKMember class]]) {
-            [arrayOfMemberIds addObject:[NSNumber numberWithInteger:memberOrContact.objectIdentifier]];
+            [arrayOfMemberIds addObject:[NSNumber numberWithInteger:[memberOrContact.objectIdentifier integerValue]]];
         } else if([memberOrContact isKindOfClass:[TSDKContact class]]) {
-            [arrayOfContactIds addObject:[NSNumber numberWithInteger:memberOrContact.objectIdentifier]];
+            [arrayOfContactIds addObject:[NSNumber numberWithInteger:[memberOrContact.objectIdentifier integerValue]]];
         }
     }
     if(arrayOfMemberIds.count) {
@@ -117,7 +117,7 @@
 
 
 - (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
-    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
+    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:[self.objectIdentifier integerValue] asMemberId:asMemberId completion:completion];
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion{

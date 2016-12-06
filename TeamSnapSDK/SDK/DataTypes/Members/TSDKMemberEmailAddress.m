@@ -24,7 +24,7 @@
         
         NSMutableArray *emailAddressIds = [[NSMutableArray alloc] init];
         for (TSDKMemberEmailAddress *emailAddress in emailAddresses) {
-            [emailAddressIds addObject:[NSNumber numberWithInteger:emailAddress.objectIdentifier]];
+            [emailAddressIds addObject:[NSNumber numberWithInteger:[emailAddress.objectIdentifier integerValue]]];
         }
         NSString *emailIds = [emailAddressIds componentsJoinedByString:@","];
         

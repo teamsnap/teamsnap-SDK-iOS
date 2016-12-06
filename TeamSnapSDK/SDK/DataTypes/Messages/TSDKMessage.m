@@ -35,7 +35,7 @@
 
 + (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [[TSDKMessage commands] objectForKey:@"mark_message_as_read"];
-    command.data[@"id"] = [NSNumber numberWithInteger:message.objectIdentifier];
+    command.data[@"id"] = [NSNumber numberWithInteger:[message.objectIdentifier integerValue]];
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {

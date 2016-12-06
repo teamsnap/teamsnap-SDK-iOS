@@ -219,7 +219,7 @@
                 plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                 NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
                 for (TSDKPlan *plan in plans) {
-                    [tempPlanDictionary setObject:plan forIntegerKey:plan.objectIdentifier];
+                    [tempPlanDictionary setObject:plan forKey:plan.objectIdentifier];
                 }
                 _plans = tempPlanDictionary;
                 [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
@@ -271,7 +271,7 @@
 }
 
 - (void)addPlan:(TSDKPlan *)plan {
-    [self.plans setObject:plan forIntegerKey:plan.objectIdentifier];
+    [self.plans setObject:plan forKey:plan.objectIdentifier];
 }
 
 - (TSDKPlan *)planWithId:(NSInteger)planId {

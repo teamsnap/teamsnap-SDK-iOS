@@ -173,9 +173,9 @@ static NSArray *knownCompletionTypes;
     return [NSArray arrayWithArray:stringDataTypes];
 }
 
-+ (TSDKTeam *)teamWithId:(NSInteger)teamId inTeamsArray:(NSArray *)teams {
++ (TSDKTeam *)teamWithId:(NSString *)teamId inTeamsArray:(NSArray *)teams {
     NSUInteger teamIndex = [teams indexOfObjectPassingTest:^BOOL(TSDKTeam *team, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (team.objectIdentifier == teamId);
+        return ([team.objectIdentifier isEqualToString:teamId]);
     }];
     if (teamIndex != NSNotFound) {
         return [teams objectAtIndex:teamIndex];
