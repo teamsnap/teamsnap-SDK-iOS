@@ -14,4 +14,13 @@
 + (NSString *)SDKType {
     return @"payment_note";
 }
+
+- (NSString *)paymentNoteDescription {
+    return [self getString:@"description"];
+}
+
+- (void)setPaymentNoteDescription:(NSString *)paymentNoteDescription {
+    [self setString:paymentNoteDescription forKey:@"description"];
+}
+
 @end
