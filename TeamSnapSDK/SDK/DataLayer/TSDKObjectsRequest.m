@@ -120,7 +120,7 @@ static NSArray *knownCompletionTypes;
     
     NSArray *stringDataTypes = [self objectTypeStringsFromClasses:objectDataTypes];
     
-    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
+    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
     
     [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;

@@ -17,19 +17,19 @@
     return @"broadcast_email";
 }
 
-- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSInteger)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(id<TSDKMessageSender>)sender isDraft:(BOOL)isDraft {
+- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSString *_Nonnull)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(id<TSDKMessageSender>)sender isDraft:(BOOL)isDraft {
     self = [super init];
     if(self) {
         [super setString:body forKey:@"body"];
         [super setString:subject forKey:@"subject"];
-        [super setInteger:teamId forKey:@"team_id"];
-        [super setInteger:[sender memberId] forKey:@"member_id"];
+        [super setString:teamId forKey:@"team_id"];
+        [super setString:[sender memberId] forKey:@"member_id"];
         if([sender respondsToSelector:@selector(contactId)]) {
-            [super setInteger:[sender contactId] forKey:@"contact_id"];
+            [super setInteger:[[sender contactId] integerValue] forKey:@"contact_id"];
         }
         NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
         for(TSDKMember *recipient in recipients) {
-            [recipientIDs addObject:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
+            [recipientIDs addObject:recipient.objectIdentifier];
         }
         [super setBool:isDraft forKey:@"is_draft"];
         

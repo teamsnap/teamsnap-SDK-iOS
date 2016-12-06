@@ -35,7 +35,7 @@
 
 + (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [[TSDKMessage commands] objectForKey:@"mark_message_as_read"];
-    command.data[@"id"] = [NSNumber numberWithInteger:[message.objectIdentifier integerValue]];
+    command.data[@"id"] = message.objectIdentifier;
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {
@@ -50,9 +50,9 @@
     NSMutableString *commaSeparatedIds = [[NSMutableString alloc] init];
     for(TSDKMessage *message in messages) {
         if(message == [messages lastObject]) {
-            [commaSeparatedIds appendString:[NSString stringWithFormat:@"%ld", (long)message.objectIdentifier]];
+            [commaSeparatedIds appendString:message.objectIdentifier];
         } else {
-            [commaSeparatedIds appendString:[NSString stringWithFormat:@"%ld, ", (long)message.objectIdentifier]];
+            [commaSeparatedIds appendString:message.objectIdentifier];
         }
     }
     

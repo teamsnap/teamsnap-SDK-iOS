@@ -62,7 +62,7 @@
 - (void)setNotifyTeamAsMember:(TSDKMember *)member {
     if (member) {
         [self setBool:YES forKey:@"notify_team"];
-        [self setInteger:member.objectIdentifier forKey:@"notify_team_as_member_id"];
+        [self setInteger:[member.objectIdentifier integerValue] forKey:@"notify_team_as_member_id"];
     } else {
         [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];

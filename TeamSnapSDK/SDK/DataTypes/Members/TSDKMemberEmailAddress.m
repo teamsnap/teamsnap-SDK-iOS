@@ -16,7 +16,7 @@
     return @"member_email_address";
 }
 
-+(void)actionInvite:(NSArray *)emailAddresses asSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
++(void)actionInvite:(NSArray *)emailAddresses asSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     if (emailAddresses && emailAddresses.count>0) {
         TSDKMemberEmailAddress *firstMemberEmailAddress = [emailAddresses objectAtIndex:0];
 
@@ -28,10 +28,10 @@
         }
         NSString *emailIds = [emailAddressIds componentsJoinedByString:@","];
         
-        command.data[@"team_id"] = [NSNumber numberWithInteger:firstMemberEmailAddress.teamId];
-        command.data[@"member_id"] = [NSNumber numberWithInteger:firstMemberEmailAddress.memberId];
+        command.data[@"team_id"] = [NSNumber numberWithInteger:[firstMemberEmailAddress.teamId integerValue]];
+        command.data[@"member_id"] = [NSNumber numberWithInteger:[firstMemberEmailAddress.memberId integerValue]];
         command.data[@"member_email_address_ids"] = emailIds;
-        command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:senderMemberId];
+        command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:[senderMemberId integerValue]];
         
         [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (completion) {
@@ -43,7 +43,7 @@
     }
 }
 
--(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
+-(void)inviteAsSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     [TSDKMemberEmailAddress actionInvite:@[self] asSenderMemberId:senderMemberId withConfiguration:configuration completion:completion];
 }
 

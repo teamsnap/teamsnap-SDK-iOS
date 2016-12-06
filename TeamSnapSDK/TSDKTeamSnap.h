@@ -40,8 +40,8 @@
 - (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(nullable void (^)(TSDKTslPhotos * _Nullable TSDKTslPhotos))completion;
 - (void)getPlansWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPlanArrayCompletionBlock _Nullable)completion;
 - (void)addPlan:(TSDKPlan * _Nonnull)plan;
-- (TSDKPlan * _Nullable)planWithId:(NSInteger)planId;
-- (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(nullable void (^)(TSDKPlan * _Nullable plan))completion;
+- (TSDKPlan * _Nullable)planWithId:(NSString *_Nonnull)planId;
+- (void)planForPlanId:(NSString *_Nonnull)planId withConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(nullable void (^)(TSDKPlan * _Nullable plan))completion;
 - (void)setCachePathURL:(NSURL * _Nonnull)cachePath;
 - (void)setCacheTimeoutMinutes:(NSUInteger)timeoutMinutes;
 - (void)clearCache;

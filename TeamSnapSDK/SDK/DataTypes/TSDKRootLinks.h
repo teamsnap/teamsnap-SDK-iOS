@@ -125,7 +125,7 @@
 +(void)actionSendInvitationsToEmailaddress:(NSString *_Nonnull)emailAddress WithCompletion:(TSDKCompletionBlock _Nullable)completion; //Send any pending invitations for a specified email address
 +(void)actionWelcomeEmailAddress:(NSString *_Nonnull)emailAddress withCallbackURL:(NSURL *_Nonnull)callbackURL withCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
-+(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *_Nonnull)version WithCompletion:(TSDKFirebaseTokenCompletionBlock _Nullable)completion;
++(void)queryGenerateFirebaseTokenTeamid:(NSString *_Nonnull)teamId version:(NSString *_Nonnull)version WithCompletion:(TSDKFirebaseTokenCompletionBlock _Nullable)completion;
 
 // User Auth
 + (void)loginWithUser:(NSString * _Nonnull)aUsername password:(NSString * _Nonnull)aPassword onCompletion:(TSDKLoginCompletionBlock _Nullable)completion;

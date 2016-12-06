@@ -274,14 +274,14 @@
     [self.plans setObject:plan forKey:plan.objectIdentifier];
 }
 
-- (TSDKPlan *)planWithId:(NSInteger)planId {
-    return [_plans objectForIntegerKey:planId];
+- (TSDKPlan *)planWithId:(NSString *)planId {
+    return [_plans objectForKey:planId];
 }
 
-- (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
-    if (_plans && [_plans objectForIntegerKey:planId]) {
+- (void)planForPlanId:(NSString *)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
+    if (_plans && [_plans objectForKey:planId]) {
         if (completion) {
-            completion([_plans objectForIntegerKey:planId]);
+            completion([_plans objectForKey:planId]);
         }
     } else {
         [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -290,7 +290,7 @@
                 [self addPlan:plan];
             }
             if (completion) {
-                completion([_plans objectForIntegerKey:planId]);
+                completion([_plans objectForKey:planId]);
             }
         }];
     }

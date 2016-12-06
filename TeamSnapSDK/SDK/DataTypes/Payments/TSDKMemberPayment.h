@@ -14,10 +14,10 @@
 @property (nonatomic, assign) BOOL isApplicable; //Example: 1
 @property (nonatomic, assign) CGFloat amountDue; //Example: 15.00
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2015-02-27T14:58:37.000+00:00
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
-@property (nonatomic, assign) NSInteger teamFeeId; //Example: 398368
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable teamFeeId; //Example: 398368
 @property (nonatomic, assign) CGFloat amountPaid; //Example: 0.00
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2015-02-27T14:58:37.000+00:00
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;

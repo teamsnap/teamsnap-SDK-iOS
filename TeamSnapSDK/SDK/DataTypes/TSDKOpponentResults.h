@@ -12,7 +12,7 @@
 @interface TSDKOpponentResults : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger losses; //Example: 1
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable opponentRecord; //Example: 0-1
 @property (nonatomic, assign) NSInteger overtimeLosses; //Example: 0
 @property (nonatomic, assign) NSInteger wins; //Example: 0

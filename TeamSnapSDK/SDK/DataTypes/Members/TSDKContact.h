@@ -20,8 +20,8 @@
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable addressZip; //Example:
 @property (nonatomic, weak) NSString *_Nullable invitationCode; //Example: **NULL**
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
-@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable userId; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable addressState; //Example:
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2015-10-30T17:50:41Z
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
@@ -35,7 +35,7 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-07-12T03:06:00Z
 @property (nonatomic, weak) NSString *_Nullable addressStreet2; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable firstName; //Example: Jack
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;

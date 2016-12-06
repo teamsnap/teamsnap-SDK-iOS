@@ -12,7 +12,7 @@
 
 @interface TSDKLeagueCustomDatum : TSDKCollectionObject <TSDKCustomDataProtocol>
 
-@property (nonatomic, assign) NSInteger leagueCustomFieldId; //Example: 35598
+@property (nonatomic, weak) NSString *_Nullable leagueCustomFieldId; //Example: 35598
 @property (nonatomic, assign) BOOL teamCanRead; //Example: 1
 @property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
 @property (nonatomic, weak) NSURL *_Nullable linkMember;

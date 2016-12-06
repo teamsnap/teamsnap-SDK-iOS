@@ -23,7 +23,7 @@
 @property (nonatomic, assign) NSInteger remindersSendDaysBeforeGame; //Example: 2
 
 @property (nonatomic, assign) BOOL publicSiteShowThumbnail; //Example: 0
-@property (nonatomic, assign) NSInteger memberId; //Example: 10689385
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 10689385
 @property (nonatomic, assign) BOOL facebookPostScores; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable scheduleShowFor; //Example: Games and Events
 @property (nonatomic, assign) BOOL publicSiteShowLastName; //Example: 0
@@ -43,7 +43,7 @@
 
 
 
-@property (nonatomic, assign) NSInteger teamId; //Example: 859069
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 859069
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @end

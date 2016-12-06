@@ -47,7 +47,7 @@
 
 - (void)addMember:(TSDKMember *)newMember {
     NSUInteger existingMember = [self.myMembersOnTeams indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.objectIdentifier == newMember.objectIdentifier);
+        return [member.objectIdentifier isEqualToString:newMember.objectIdentifier];
     }];
     
     if (existingMember != NSNotFound) {
@@ -78,12 +78,12 @@
     }];
 }
 
-- (void)myMembersOnTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+- (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSArray *resultMembers = nil;
         if (success) {
             NSIndexSet *memberIndexes = [objects indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-                return (member.teamId == teamId);
+                return [member.teamId isEqualToString:teamId];
             }];
             resultMembers = [objects objectsAtIndexes:memberIndexes];
 
@@ -94,9 +94,9 @@
     }];
 }
 
-- (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
+- (NSArray *)myMembersOnTeamId:(NSString *)teamId {
     NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.teamId == teamId);
+        return [member.teamId isEqualToString:teamId];
     }];
     NSArray *resultMembers = [_myMembersOnTeams objectsAtIndexes:memberIndexes];
     return resultMembers;

@@ -14,7 +14,7 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2015-02-25T16:52:38Z
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2015-02-25T16:52:38Z
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Birth Certificate
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkTrackedItemStatuses;
 
