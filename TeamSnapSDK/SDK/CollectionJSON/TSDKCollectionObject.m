@@ -499,9 +499,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
-- (NSString *)objectIdentifier {
+- (NSString * _Nonnull)objectIdentifier {
     if ((!_collection.data[@"id"]) || ([_collection.data[@"id"] isEqual:[NSNull null]])) {
-        return nil;
+        return @"";
     }
     
     NSObject *identifierObject = [self.collection.data objectForKey:@"id"];
