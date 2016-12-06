@@ -1,0 +1,443 @@
+{
+  "collection": {
+    "version": "3.384.0",
+    "href": "https://api.teamsnap.com/v3/payment_notes",
+    "rel": "payment_notes",
+    "template": {
+      "data": [
+        {
+          "name": "member_payment_id",
+          "value": null
+        },
+        {
+          "name": "note",
+          "value": null
+        },
+        {
+          "name": "type",
+          "value": "payment_note"
+        }
+      ]
+    },
+    "links": [
+      {
+        "rel": "team",
+        "href": "https://api.teamsnap.com/v3/teams"
+      },
+      {
+        "rel": "member",
+        "href": "https://api.teamsnap.com/v3/members"
+      },
+      {
+        "rel": "member_payment",
+        "href": "https://api.teamsnap.com/v3/member_payments"
+      },
+      {
+        "rel": "root",
+        "href": "https://api.teamsnap.com/v3/"
+      },
+      {
+        "rel": "self",
+        "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069785"
+      }
+    ],
+    "queries": [
+      {
+        "rel": "search",
+        "href": "https://api.teamsnap.com/v3/payment_notes/search",
+        "data": [
+          {
+            "name": "id",
+            "value": null
+          },
+          {
+            "name": "member_payment_id",
+            "value": null
+          },
+          {
+            "name": "team_id",
+            "value": null
+          },
+          {
+            "name": "page_size",
+            "value": null,
+            "prompt": "The number of items to return for each page. Sending this parameter with the query will enable paging for the returned collection."
+          },
+          {
+            "name": "page_number",
+            "value": null,
+            "prompt": "The number of the page to be returned. This requires that paging be turned on by also providing the page_size parameter."
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "href": "https://api.teamsnap.com/v3/payment_notes/10042684",
+        "data": [
+          {
+            "name": "id",
+            "value": 10042684
+          },
+          {
+            "name": "type",
+            "value": "payment_note"
+          },
+          {
+            "name": "description",
+            "value": "$450.00 USD payment attempted via batch payment to Paypal."
+          },
+          {
+            "name": "member_id",
+            "value": 11814185
+          },
+          {
+            "name": "note",
+            "value": null
+          },
+          {
+            "name": "note_author",
+            "value": "Miriam  Geller"
+          },
+          {
+            "name": "member_payment_id",
+            "value": 19069785
+          },
+          {
+            "name": "team_id",
+            "value": 949008
+          },
+          {
+            "name": "team_fee_description",
+            "value": "2016 Spring Fee ($450.00)"
+          },
+          {
+            "name": "created_at",
+            "value": "2015-09-19T13:33:12Z",
+            "type": "DateTime"
+          }
+        ],
+        "links": [
+          {
+            "rel": "member",
+            "href": "https://api.teamsnap.com/v3/members/11814185"
+          },
+          {
+            "rel": "member_payment",
+            "href": "https://api.teamsnap.com/v3/member_payments/19069785"
+          },
+          {
+            "rel": "team",
+            "href": "https://api.teamsnap.com/v3/teams/949008"
+          }
+        ],
+        "rel": "payment_note-10042684"
+      },
+      {
+        "href": "https://api.teamsnap.com/v3/payment_notes/10042687",
+        "data": [
+          {
+            "name": "id",
+            "value": 10042687
+          },
+          {
+            "name": "type",
+            "value": "payment_note"
+          },
+          {
+            "name": "description",
+            "value": "$450.00 payment completed via batch payment to Paypal."
+          },
+          {
+            "name": "member_id",
+            "value": 11814185
+          },
+          {
+            "name": "note",
+            "value": "Abigail Westerlund (MRC 4/5th  Grade Blue Team)"
+          },
+          {
+            "name": "note_author",
+            "value": "Miriam  Geller"
+          },
+          {
+            "name": "member_payment_id",
+            "value": 19069785
+          },
+          {
+            "name": "team_id",
+            "value": 949008
+          },
+          {
+            "name": "team_fee_description",
+            "value": "2016 Spring Fee ($450.00)"
+          },
+          {
+            "name": "created_at",
+            "value": "2015-09-19T13:33:38Z",
+            "type": "DateTime"
+          }
+        ],
+        "links": [
+          {
+            "rel": "member",
+            "href": "https://api.teamsnap.com/v3/members/11814185"
+          },
+          {
+            "rel": "member_payment",
+            "href": "https://api.teamsnap.com/v3/member_payments/19069785"
+          },
+          {
+            "rel": "team",
+            "href": "https://api.teamsnap.com/v3/teams/949008"
+          }
+        ],
+        "rel": "payment_note-10042687"
+      },
+      {
+        "href": "https://api.teamsnap.com/v3/payment_notes/13236868",
+        "data": [
+          {
+            "name": "id",
+            "value": 13236868
+          },
+          {
+            "name": "type",
+            "value": "payment_note"
+          },
+          {
+            "name": "description",
+            "value": null
+          },
+          {
+            "name": "member_id",
+            "value": 11814185
+          },
+          {
+            "name": "note",
+            "value": ""
+          },
+          {
+            "name": "note_author",
+            "value": "Chibuzo Emeka"
+          },
+          {
+            "name": "member_payment_id",
+            "value": 19069785
+          },
+          {
+            "name": "team_id",
+            "value": 949008
+          },
+          {
+            "name": "team_fee_description",
+            "value": "2016 Spring Fee ($450.00)"
+          },
+          {
+            "name": "created_at",
+            "value": "2016-03-18T23:48:23Z",
+            "type": "DateTime"
+          }
+        ],
+        "links": [
+          {
+            "rel": "member",
+            "href": "https://api.teamsnap.com/v3/members/11814185"
+          },
+          {
+            "rel": "member_payment",
+            "href": "https://api.teamsnap.com/v3/member_payments/19069785"
+          },
+          {
+            "rel": "team",
+            "href": "https://api.teamsnap.com/v3/teams/949008"
+          }
+        ],
+        "rel": "payment_note-13236868"
+      },
+      {
+        "href": "https://api.teamsnap.com/v3/payment_notes/13237128",
+        "data": [
+          {
+            "name": "id",
+            "value": 13237128
+          },
+          {
+            "name": "type",
+            "value": "payment_note"
+          },
+          {
+            "name": "description",
+            "value": "Originally owed $0.00, but adjusted the amount owed to $450.00"
+          },
+          {
+            "name": "member_id",
+            "value": 11814185
+          },
+          {
+            "name": "note",
+            "value": ""
+          },
+          {
+            "name": "note_author",
+            "value": "Chibuzo Emeka"
+          },
+          {
+            "name": "member_payment_id",
+            "value": 19069785
+          },
+          {
+            "name": "team_id",
+            "value": 949008
+          },
+          {
+            "name": "team_fee_description",
+            "value": "2016 Spring Fee ($450.00)"
+          },
+          {
+            "name": "created_at",
+            "value": "2016-03-18T23:59:17Z",
+            "type": "DateTime"
+          }
+        ],
+        "links": [
+          {
+            "rel": "member",
+            "href": "https://api.teamsnap.com/v3/members/11814185"
+          },
+          {
+            "rel": "member_payment",
+            "href": "https://api.teamsnap.com/v3/member_payments/19069785"
+          },
+          {
+            "rel": "team",
+            "href": "https://api.teamsnap.com/v3/teams/949008"
+          }
+        ],
+        "rel": "payment_note-13237128"
+      },
+      {
+        "href": "https://api.teamsnap.com/v3/payment_notes/13594884",
+        "data": [
+          {
+            "name": "id",
+            "value": 13594884
+          },
+          {
+            "name": "type",
+            "value": "payment_note"
+          },
+          {
+            "name": "description",
+            "value": "Applied payment of $450.00 resulting in a balance of $0.00"
+          },
+          {
+            "name": "member_id",
+            "value": 11814185
+          },
+          {
+            "name": "note",
+            "value": ""
+          },
+          {
+            "name": "note_author",
+            "value": "Chibuzo Emeka"
+          },
+          {
+            "name": "member_payment_id",
+            "value": 19069785
+          },
+          {
+            "name": "team_id",
+            "value": 949008
+          },
+          {
+            "name": "team_fee_description",
+            "value": "2016 Spring Fee ($450.00)"
+          },
+          {
+            "name": "created_at",
+            "value": "2016-04-07T06:25:43Z",
+            "type": "DateTime"
+          }
+        ],
+        "links": [
+          {
+            "rel": "member",
+            "href": "https://api.teamsnap.com/v3/members/11814185"
+          },
+          {
+            "rel": "member_payment",
+            "href": "https://api.teamsnap.com/v3/member_payments/19069785"
+          },
+          {
+            "rel": "team",
+            "href": "https://api.teamsnap.com/v3/teams/949008"
+          }
+        ],
+        "rel": "payment_note-13594884"
+      },
+      {
+        "href": "https://api.teamsnap.com/v3/payment_notes/18513889",
+        "data": [
+          {
+            "name": "id",
+            "value": 18513889
+          },
+          {
+            "name": "type",
+            "value": "payment_note"
+          },
+          {
+            "name": "description",
+            "value": "Entered Note"
+          },
+          {
+            "name": "member_id",
+            "value": 11814185
+          },
+          {
+            "name": "note",
+            "value": "Hello"
+          },
+          {
+            "name": "note_author",
+            "value": "Mark Gallegos"
+          },
+          {
+            "name": "member_payment_id",
+            "value": 19069785
+          },
+          {
+            "name": "team_id",
+            "value": 949008
+          },
+          {
+            "name": "team_fee_description",
+            "value": "2016 Spring Fee ($450.00)"
+          },
+          {
+            "name": "created_at",
+            "value": "2016-12-02T18:33:48Z",
+            "type": "DateTime"
+          }
+        ],
+        "links": [
+          {
+            "rel": "member",
+            "href": "https://api.teamsnap.com/v3/members/11814185"
+          },
+          {
+            "rel": "member_payment",
+            "href": "https://api.teamsnap.com/v3/member_payments/19069785"
+          },
+          {
+            "rel": "team",
+            "href": "https://api.teamsnap.com/v3/teams/949008"
+          }
+        ],
+        "rel": "payment_note-18513889"
+      }
+    ]
+  }
+}
