@@ -236,7 +236,7 @@
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height {
     NSURLQueryItem *widthQueryItem = [NSURLQueryItem queryItemWithName:@"width" value:[NSString stringWithFormat:@"%ld", (long)width]];
     NSURLQueryItem *heightQueryItem = [NSURLQueryItem queryItemWithName:@"height" value:[NSString stringWithFormat:@"%ld", (long)height]];
-    NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"fill"];
+    NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"proportional"];
     NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkTeamLogoPhotoFile resolvingAgainstBaseURL:NO];
     NSMutableArray *queryItems = [[NSMutableArray alloc] init];
     [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
