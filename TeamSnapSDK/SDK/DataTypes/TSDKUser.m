@@ -148,7 +148,7 @@
             teamIds = [[NSMutableArray alloc] init];
             for (TSDKMember *member in objects) {
                 NSString *teamId = member.teamId;
-                if ([teamId integerValue] != 0 && teamId.length) {
+                if ([teamId isEqualToString:@"0"] == NO && teamId.length) {
                     if (![teamIds containsObject:teamId]) {
                         [teamIds addObject:teamId];
                     }
