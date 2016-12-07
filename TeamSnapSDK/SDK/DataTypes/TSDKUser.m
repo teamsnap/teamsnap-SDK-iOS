@@ -147,10 +147,10 @@
         if (success) {
             teamIds = [[NSMutableArray alloc] init];
             for (TSDKMember *member in objects) {
-                NSString *teamId = [NSString stringWithFormat:@"%ld", (long)member.teamId];
-                if (teamId != 0) {
+                NSString *teamId = member.teamId;
+                if ([teamId integerValue] != 0 && teamId.length) {
                     if (![teamIds containsObject:teamId]) {
-                        [teamIds addObject:[NSString stringWithFormat:@"%ld", (long)[teamId integerValue]]];
+                        [teamIds addObject:teamId];
                     }
                 }
             }
