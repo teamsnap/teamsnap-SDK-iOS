@@ -9,6 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef void (^ TSLImageUploadDetailsCompletionBlock)(BOOL success,NSURL *_Nullable imageURL, NSError *_Nullable error);
 
 @interface TSDKTslPhotos : TSDKCollectionObject
 
@@ -16,6 +17,6 @@
 @property (nonatomic, weak) NSURL *_Nullable linkRoot;
 @property (nonatomic, weak) NSURL *_Nullable linkSelf;
 
-+(void)uploadTSLImageURL:(nonnull NSURL *)photoFileURL fileName:(nullable NSString *)fileName size:(NSNumber *)size team:(TSDKTeam *)team event:(nullable TSDKEvent *)event progress:(nullable TSDKUploadProgressBlock)progressBlock;
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadTSLImageURL:(nonnull NSURL *)photoFileURL team:(nonnull TSDKTeam *)team event:(nullable TSDKEvent *)event uploadDetailsCallback:(nullable TSLImageUploadDetailsCompletionBlock)uploadDetailsCallback progress:(nullable TSDKUploadProgressBlock)progressBloc;
 
 @end
