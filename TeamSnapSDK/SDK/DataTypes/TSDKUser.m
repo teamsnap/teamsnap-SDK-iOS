@@ -30,11 +30,11 @@
 }
 
 - (NSString *)fullName {
-    if ((self.firstName && self.firstName.length>0) && (self.lastName && self.lastName.length>0)) {
+    if ((self.firstName.length>0) && (self.lastName.length>0)) {
         return [[NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    } else if (self.firstName && self.firstName.length>0) {
+    } else if (self.firstName.length>0) {
         return self.firstName;
-    } else if (self.lastName && self.lastName.length>0) {
+    } else if (self.lastName.length>0) {
         return  self.lastName;
     } else {
         return @"";
