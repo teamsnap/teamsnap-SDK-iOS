@@ -26,7 +26,7 @@
 +(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadTSLImageURL:(nonnull NSURL *)photoFileURL team:(nonnull TSDKTeam *)team event:(nullable TSDKEvent *)event uploadDetailsCallback:(nullable TSLImageUploadDetailsCompletionBlock)uploadDetailsCallback progress:(nullable TSDKUploadProgressBlock)progressBlock {
     NSURL *url = [[[TSDKTeamSnap sharedInstance] rootLinks] linkTslPhotos];
     
-    TSDKBackgroundUploadProgressMonitorDelegate __block *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
+    TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:nil method:@"GET" configuration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
         TSDKCollectionJSON *collection = [[TSDKCollectionJSON alloc] initWithJSON:objects];
