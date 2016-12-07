@@ -50,6 +50,10 @@
 		963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
 		963A1B601C80E4BB006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		963A1B611C80E4C0006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
+		9641AC211DF1BC7D008E4716 /* TSDKTslChat.h in Headers */ = {isa = PBXBuildFile; fileRef = 9641AC1F1DF1BC7D008E4716 /* TSDKTslChat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9641AC221DF1BC7D008E4716 /* TSDKTslChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9641AC201DF1BC7D008E4716 /* TSDKTslChat.m */; };
+		9641AC251DF1BCC3008E4716 /* TSDKTslScore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9641AC231DF1BCC3008E4716 /* TSDKTslScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9641AC261DF1BCC3008E4716 /* TSDKTslScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9641AC241DF1BCC3008E4716 /* TSDKTslScore.m */; };
 		964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */; };
 		964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = 964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -390,6 +394,10 @@
 		9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCustomDatumTests.m; path = DataType/TSDKCustomDatumTests.m; sourceTree = "<group>"; };
 		963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKAvailabilityGroups.h; sourceTree = "<group>"; };
 		963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
+		9641AC1F1DF1BC7D008E4716 /* TSDKTslChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKTslChat.h; path = TSL/TSDKTslChat.h; sourceTree = "<group>"; };
+		9641AC201DF1BC7D008E4716 /* TSDKTslChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKTslChat.m; path = TSL/TSDKTslChat.m; sourceTree = "<group>"; };
+		9641AC231DF1BCC3008E4716 /* TSDKTslScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKTslScore.h; path = TSL/TSDKTslScore.h; sourceTree = "<group>"; };
+		9641AC241DF1BCC3008E4716 /* TSDKTslScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKTslScore.m; path = TSL/TSDKTslScore.m; sourceTree = "<group>"; };
 		964CDDE31BB4514B00909D11 /* TSDKRootLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKRootLinks.h; sourceTree = "<group>"; };
 		964CDDE41BB4514B00909D11 /* TSDKRootLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKRootLinks.m; sourceTree = "<group>"; };
 		964CDDE51BB4514B00909D11 /* TSDKTslPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTslPhotos.h; sourceTree = "<group>"; };
@@ -614,6 +622,17 @@
 				960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */,
 			);
 			name = DataType;
+			sourceTree = "<group>";
+		};
+		9641AC1E1DF1BC49008E4716 /* TSL */ = {
+			isa = PBXGroup;
+			children = (
+				9641AC1F1DF1BC7D008E4716 /* TSDKTslChat.h */,
+				9641AC201DF1BC7D008E4716 /* TSDKTslChat.m */,
+				9641AC231DF1BCC3008E4716 /* TSDKTslScore.h */,
+				9641AC241DF1BCC3008E4716 /* TSDKTslScore.m */,
+			);
+			name = TSL;
 			sourceTree = "<group>";
 		};
 		9652304A1CAC65DD0087FC23 /* Leagues */ = {
@@ -842,6 +861,7 @@
 		969E807D1BAAE7AB00CA518F /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				9641AC1E1DF1BC49008E4716 /* TSL */,
 				96E133681D88626E0027E382 /* Assignments */,
 				96F7C5221D1049900022FA4C /* PhotoObjects */,
 				9652304A1CAC65DD0087FC23 /* Leagues */,
@@ -1051,6 +1071,7 @@
 				969B7EB71C7CA9F800FD3EA0 /* TSDKTeamMediumComment.h in Headers */,
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
 				960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */,
+				9641AC211DF1BC7D008E4716 /* TSDKTslChat.h in Headers */,
 				969E80F71BAAE7AB00CA518F /* TSDKTrackedItemStatus.h in Headers */,
 				9678A3621D86EC4E0078631C /* TSDKLeagueCustomField.h in Headers */,
 				969E805E1BAAE79500CA518F /* TSDKTeamSnap.h in Headers */,
@@ -1080,6 +1101,7 @@
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
 				969E80BB1BAAE7AB00CA518F /* NSMutableDictionary+integerKey.h in Headers */,
 				96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */,
+				9641AC251DF1BCC3008E4716 /* TSDKTslScore.h in Headers */,
 				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
 				969E80B31BAAE7AB00CA518F /* TSDKCollectionQuery.h in Headers */,
 				969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */,
@@ -1336,6 +1358,7 @@
 			files = (
 				969E80E61BAAE7AB00CA518F /* TSDKLocation.m in Sources */,
 				969E80F41BAAE7AB00CA518F /* TSDKTeamPreferences.m in Sources */,
+				9641AC221DF1BC7D008E4716 /* TSDKTslChat.m in Sources */,
 				563E3EF81CD012DD00B0F1FF /* TSDKDivisionMember.m in Sources */,
 				969E80B21BAAE7AB00CA518F /* TSPCache.m in Sources */,
 				969B7F041C7DE58C00FD3EA0 /* TSDKEventStatistic.m in Sources */,
@@ -1347,6 +1370,7 @@
 				963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
 				965B7D2F1C18C5BE009AF13E /* TSDKMemberPhoneNumber.m in Sources */,
+				9641AC261DF1BCC3008E4716 /* TSDKTslScore.m in Sources */,
 				969E80CA1BAAE7AB00CA518F /* TSDKMemberStatistic.m in Sources */,
 				9612CD901C9B51AB00816460 /* TSDKNotifications.m in Sources */,
 				969E80D01BAAE7AB00CA518F /* TSDKStatisticGroup.m in Sources */,
