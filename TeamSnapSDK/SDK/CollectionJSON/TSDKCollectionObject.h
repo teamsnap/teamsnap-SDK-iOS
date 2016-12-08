@@ -74,6 +74,7 @@
 - (BOOL)isNewObject;
 - (void)undoChanges;
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
+- (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * _Nonnull)queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;

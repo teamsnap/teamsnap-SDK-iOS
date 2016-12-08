@@ -677,19 +677,42 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     return ([_collection.data[@"id"] integerValue] <=0);
 }
 
-- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
-    NSDictionary *dataToSave = [self dataToSave];
+- (NSURL *)urlForSave {
+    NSURL *URL;
     if ([self isNewObject]) {
-        NSDictionary *postObject = @{@"template": dataToSave};
-        NSURL *URL;
         if ([[self class] classURL]) {
             URL = [[self class] classURL];
         } else {
             URL = [NSURL URLWithString:[[[[[TSDKTeamSnap sharedInstance] rootLinks] collection] links] objectForKey:[[self class] SDKREL]]];
         }
+        
+    } else {
+        URL = self.collection.href;
+    }
+
+    return URL;
+}
+
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
+    [self saveWithURL:[self urlForSave] completion:completion];
+}
+
+- (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> *)queryItems completion:(TSDKSaveCompletionBlock)completion {
+    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:[self urlForSave] resolvingAgainstBaseURL:NO];
+    NSMutableArray *allQueryItems = [[NSMutableArray alloc] init];
+    [allQueryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    [allQueryItems addObjectsFromArray:queryItems];
+    fullySpecifiedURL.queryItems = queryItems;
+    [self saveWithURL:fullySpecifiedURL.URL completion:completion];
+}
+
+- (void)saveWithURL:(NSURL *)url completion:(TSDKSaveCompletionBlock)completion {
+    NSDictionary *dataToSave = [self dataToSave];
+    if ([self isNewObject]) {
+        NSDictionary *postObject = @{@"template": dataToSave};
         __typeof__(self) __weak weakSelf = self;
         
-        [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                 [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
             }
@@ -705,7 +728,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (self.changedValues.count>0) {
             NSDictionary *postObject = @{@"template": dataToSave};
             __typeof__(self) __weak weakSelf = self;
-            [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                 if (success) {
                     if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
                         [weakSelf setCollection:[objects.collection firstObject]];
