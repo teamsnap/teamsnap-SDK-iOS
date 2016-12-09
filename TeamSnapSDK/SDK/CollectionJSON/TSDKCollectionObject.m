@@ -468,7 +468,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 class_addMethod([self class], aSEL, (IMP)setDatePropertyIMP, "v@:@");
             } else if ([propertyType containsString:@"NSURL"]) {
                 class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
-            } else if ([[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
+            } else if ((property.length>=2) && [[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
                 class_addMethod([self class], aSEL, (IMP)setObjectIdentifierIMP, "@@:");
             } else if ([propertyType hasPrefix:@"TB,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
@@ -493,7 +493,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
             }
-        } else if ([[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
+        } else if ((property.length>=2) && [[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
             class_addMethod([self class], aSEL,(IMP)objectIdentifierIMP, "@@:");
         } else if ([propertyType hasPrefix:@"TB,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
