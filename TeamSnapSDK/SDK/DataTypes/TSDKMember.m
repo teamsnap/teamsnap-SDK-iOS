@@ -86,7 +86,7 @@
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
-    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:[memberId integerValue]];
+    uploadCommand.data[@"member_id"] = memberId;
     uploadCommand.data[@"file_name"] = @"photo.jpg";
     NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
     

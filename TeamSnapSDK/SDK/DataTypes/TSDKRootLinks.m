@@ -286,7 +286,7 @@
         if (rootLinks) {
             TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
             if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
-                queryCommand.data[@"team_id"] = [NSNumber numberWithInteger:[teamId integerValue]];
+                queryCommand.data[@"team_id"] = teamId;
                 queryCommand.data[@"version"] = version;
                 [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                     NSString *firebaseToken = nil;

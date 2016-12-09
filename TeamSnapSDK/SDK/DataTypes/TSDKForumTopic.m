@@ -30,7 +30,7 @@
         [data setObject:@"false" forKey:@"is_announcement"];
     }
     
-    [data setObject:[NSNumber numberWithInteger:[teamId integerValue]] forKey:@"team_id"];
+    [data setObject:teamId forKey:@"team_id"];
     NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:data];
 
     [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumTopics] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
