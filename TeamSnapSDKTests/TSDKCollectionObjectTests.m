@@ -42,9 +42,35 @@
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
         XCTAssertEqualObjects(user.firstName, @"Tester");
         XCTAssertNil(user.addressCountry);
+        XCTAssertEqualObjects(user.objectIdentifier, @"2");
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
+}
+
+- (void)testObjectIdentifiers {
+    TSDKCollectionJSON *memberPaymentsCollection = [TSDKJSONFileResource collectionFromJSONFileNamed:@"MemberPayments"];
+    NSArray *memberPayments = memberPaymentsCollection.collection;
+    TSDKMemberPayment *paymentNoPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.firstObject];
+    XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
+    paymentNoPayment.teamId = nil;
+    XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"949008");
+    XCTAssertNil(paymentNoPayment.teamId);
+    XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
+    
+    [paymentNoPayment undoChanges];
+    XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
+
+    [paymentNoPayment.collection.data removeObjectForKey:@"team_id"];
+    XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
+    XCTAssertNil(paymentNoPayment.teamId);
+    
+    XCTAssertEqualObjects(paymentNoPayment.objectIdentifier, @"19069782");
+    XCTAssertFalse(paymentNoPayment.isNewObject);
+    
+    TSDKMemberPayment *newPayment = [[TSDKMemberPayment alloc] init];
+    XCTAssertTrue(newPayment.isNewObject);
+    XCTAssertEqualObjects(newPayment.objectIdentifier, @"");
 }
 
 - (void)testObjectFromObject {
