@@ -10,7 +10,7 @@
 		4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FC9AE791DE4CE5500B0C582 /* MemberPayments.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */; };
 		4FC9AE7C1DE4D10000B0C582 /* TSDKJSONFileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */; };
-		560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */; };
+		560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		560578DF1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 560578DD1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m */; };
 		561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */; };
 		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
