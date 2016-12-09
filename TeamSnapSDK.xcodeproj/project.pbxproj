@@ -26,6 +26,7 @@
 		5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5699E2791C90A6EE0061EC1D /* TSDKMessage.m */; };
 		569CFAC01D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h in Headers */ = {isa = PBXBuildFile; fileRef = 569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */; };
 		569CFAC11D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */; };
+		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -370,6 +371,8 @@
 		5699E2791C90A6EE0061EC1D /* TSDKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMessage.m; path = Messages/TSDKMessage.m; sourceTree = "<group>"; };
 		569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TSDKConvenience.h"; sourceTree = "<group>"; };
 		569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+TSDKConvenience.m"; sourceTree = "<group>"; };
+		56E7BA301DFB175500FB1BD6 /* TSDKShortPropertyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKShortPropertyTest.h; path = ../TeamSnapSDK/TSDKShortPropertyTest.h; sourceTree = "<group>"; };
+		56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKShortPropertyTest.m; path = ../TeamSnapSDK/TSDKShortPropertyTest.m; sourceTree = "<group>"; };
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 		9631B5E61CECA6E200215647 /* DataType */ = {
 			isa = PBXGroup;
 			children = (
+				56E7BA301DFB175500FB1BD6 /* TSDKShortPropertyTest.h */,
+				56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */,
 				9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */,
 				960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */,
 			);
@@ -1427,6 +1432,7 @@
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
+				56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */,
 				96B4E2791DC3C08A003CC830 /* StirngConvenienceTests.m in Sources */,
 				96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */,
 			);

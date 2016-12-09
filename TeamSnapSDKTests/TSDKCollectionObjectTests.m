@@ -14,6 +14,7 @@
 #import "TSDKMemberPayment.h"
 #import "NSDictionary+dump.h"
 #import "TSDKJSONFileResource.h"
+#import "TSDKShortPropertyTest.h"
 
 @interface TSDKCollectionObjectTests : XCTestCase
 @property (nonatomic, strong) TSDKCollectionJSON *userCollectionJSON;
@@ -71,6 +72,11 @@
     TSDKMemberPayment *newPayment = [[TSDKMemberPayment alloc] init];
     XCTAssertTrue(newPayment.isNewObject);
     XCTAssertEqualObjects(newPayment.objectIdentifier, @"");
+    
+    TSDKShortPropertyTest *shortProperty = [[TSDKShortPropertyTest alloc] init];
+    shortProperty.a = @"a"; // test setter
+    NSString *a = shortProperty.a;  // test getter
+    XCTAssertEqual(shortProperty.a, a);
 }
 
 - (void)testObjectFromObject {
