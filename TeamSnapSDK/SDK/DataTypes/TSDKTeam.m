@@ -38,7 +38,7 @@
 
 +(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:[team.objectIdentifier integerValue]];
+    command.data[@"team_id"] = team.objectIdentifier;
     command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
     command.data[@"time_zone"] = timeZone.name;
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -88,16 +88,16 @@
 
 + (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:[teamId integerValue]];
+    command.data[@"team_id"] = teamId;
     
     NSMutableArray *arrayOfMemberIds = [[NSMutableArray alloc] initWithCapacity:membersOrContacts.count];
     NSMutableArray *arrayOfContactIds = [[NSMutableArray alloc] initWithCapacity:membersOrContacts.count];
     
     for(TSDKCollectionObject<TSDKMemberOrContactProtocol> *memberOrContact in membersOrContacts) {
         if([memberOrContact isKindOfClass:[TSDKMember class]]) {
-            [arrayOfMemberIds addObject:[NSNumber numberWithInteger:[memberOrContact.objectIdentifier integerValue]]];
+            [arrayOfMemberIds addObject:memberOrContact.objectIdentifier];
         } else if([memberOrContact isKindOfClass:[TSDKContact class]]) {
-            [arrayOfContactIds addObject:[NSNumber numberWithInteger:[memberOrContact.objectIdentifier integerValue]]];
+            [arrayOfContactIds addObject:memberOrContact.objectIdentifier];
         }
     }
     if(arrayOfMemberIds.count) {
@@ -106,7 +106,7 @@
     if(arrayOfContactIds.count) {
         command.data[@"contact_id"] = arrayOfContactIds;
     }
-    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:[asMemberId integerValue]];
+    command.data[@"notify_as_member_id"] = asMemberId;
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
@@ -195,7 +195,7 @@
 }
 
 - (void)getEventWithId:(NSString *_Nonnull)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    NSDictionary *searchParams = @{@"id": [NSNumber numberWithInteger:[eventId integerValue]]};
+    NSDictionary *searchParams = @{@"id": eventId};
     
     [self arrayFromLink:self.linkEvents searchParams:searchParams withConfiguration:configuration completion:completion];
 }

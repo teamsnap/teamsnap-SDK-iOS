@@ -62,9 +62,9 @@
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_team_medium"];
-    uploadCommand.data[@"team_id"] = [NSNumber numberWithInteger:[teamId integerValue]];
-    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:[memberId integerValue]];
-    uploadCommand.data[@"team_media_group_id"] = [NSNumber numberWithInteger:[teamMediaGroupId integerValue]];
+    uploadCommand.data[@"team_id"] = teamId;
+    uploadCommand.data[@"member_id"] = memberId;
+    uploadCommand.data[@"team_media_group_id"] = teamMediaGroupId;
     uploadCommand.data[@"media_format"] = TSDKTeamMediaGroupImageFormatString;
     uploadCommand.data[@"description"] = description;
     

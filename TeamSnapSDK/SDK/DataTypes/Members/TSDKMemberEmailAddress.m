@@ -24,14 +24,14 @@
         
         NSMutableArray *emailAddressIds = [[NSMutableArray alloc] init];
         for (TSDKMemberEmailAddress *emailAddress in emailAddresses) {
-            [emailAddressIds addObject:[NSNumber numberWithInteger:[emailAddress.objectIdentifier integerValue]]];
+            [emailAddressIds addObject:emailAddress.objectIdentifier];
         }
         NSString *emailIds = [emailAddressIds componentsJoinedByString:@","];
         
-        command.data[@"team_id"] = [NSNumber numberWithInteger:[firstMemberEmailAddress.teamId integerValue]];
-        command.data[@"member_id"] = [NSNumber numberWithInteger:[firstMemberEmailAddress.memberId integerValue]];
+        command.data[@"team_id"] = firstMemberEmailAddress.teamId;
+        command.data[@"member_id"] = firstMemberEmailAddress.memberId;
         command.data[@"member_email_address_ids"] = emailIds;
-        command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:[senderMemberId integerValue]];
+        command.data[@"notify_as_member_id"] = senderMemberId;
         
         [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (completion) {
