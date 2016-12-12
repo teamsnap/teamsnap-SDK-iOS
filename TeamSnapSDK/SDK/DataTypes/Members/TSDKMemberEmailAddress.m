@@ -16,7 +16,7 @@
     return @"member_email_address";
 }
 
-+(void)actionInvite:(NSArray *)emailAddresses asSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
++(void)actionInvite:(NSArray *)emailAddresses asSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberEmailInvitationCompletionBlock)completion {
     if (emailAddresses && emailAddresses.count>0) {
         TSDKMemberEmailAddress *firstMemberEmailAddress = [emailAddresses objectAtIndex:0];
 
@@ -34,16 +34,24 @@
         command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:senderMemberId];
         
         [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *results = @[];
             if (completion) {
-                completion(success, complete, objects, error);
+                if(success) {
+                    if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                        results = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                    }
+                }
+                completion(success, complete, results, error);
             }
         }];
     } else {
-        completion(NO, NO, nil, nil);
+        if(completion) {
+            completion(NO, NO, @[], nil);
+        }
     }
 }
 
--(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
+-(void)inviteAsSenderMemberId:(NSInteger)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberEmailInvitationCompletionBlock)completion {
     [TSDKMemberEmailAddress actionInvite:@[self] asSenderMemberId:senderMemberId withConfiguration:configuration completion:completion];
 }
 
