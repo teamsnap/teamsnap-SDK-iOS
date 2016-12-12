@@ -267,7 +267,7 @@ static long integerPropertyIMP(id self, SEL _cmd) {
     return [self getInteger:command];
 }
 
-static long floatPropertyIMP(id self, SEL _cmd) {
+static CGFloat floatPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
     return [self getCGFloat:command];
 }
@@ -457,10 +457,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:c");
             } else if ([propertyType hasPrefix:@"Tq,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
-            } else if ([propertyType hasPrefix:@"Ti,"] || [propertyType hasPrefix:@"Ti,"]) {
+            } else if ([propertyType hasPrefix:@"Ti,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:i");
-            } else if ([propertyType hasPrefix:@"Td,"] || [propertyType hasPrefix:@"Td,"]) {
+            } else if ([propertyType hasPrefix:@"Td,"]) {
                 class_addMethod([self class], aSEL, (IMP)setCGFloatPropertyIMP, "v@:d");
+            } else if ([propertyType hasPrefix:@"Tf,"]) {
+                class_addMethod([self class], aSEL, (IMP)setCGFloatPropertyIMP, "v@:f");
             } else {
                 class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
             }
@@ -484,6 +486,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "i@:");
         } else if ([propertyType hasPrefix:@"Td,"]) {
             class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "d@:");
+        } else if ([propertyType hasPrefix:@"Tf,"]) {
+            class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "f@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
