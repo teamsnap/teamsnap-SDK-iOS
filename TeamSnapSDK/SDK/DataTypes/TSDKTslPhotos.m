@@ -40,9 +40,9 @@
         NSString *fileName = [NSString stringWithFormat:@"%ld_%ld_%@.png", (long)team.objectIdentifier, (long)event.objectIdentifier, [[NSUUID UUID] UUIDString]];
         
         if (collectionCommand && collectionCommand.href && collectionCommand.href.length>0 && user) {
-            [collectionCommand.data setObject:@(team.objectIdentifier) forKey:@"team_id"];
-            [collectionCommand.data setObject:@(event.objectIdentifier) forKey:@"event_id"];
-            [collectionCommand.data setObject:@(user.objectIdentifier) forKey:@"user_id"];
+            [collectionCommand.data setObject:team.objectIdentifier forKey:@"team_id"];
+            [collectionCommand.data setObject:event.objectIdentifier forKey:@"event_id"];
+            [collectionCommand.data setObject:user.objectIdentifier forKey:@"user_id"];
             [collectionCommand.data setObject:imageData forKey:@"file1"];
             [collectionCommand.data setObject:fileName forKey:@"supressed_file_name"];
         }
