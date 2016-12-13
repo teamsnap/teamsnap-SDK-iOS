@@ -11,7 +11,6 @@
 #import "TSDKMemberEmailAddress.h"
 #import "TSDKMemberPhoneNumber.h"
 #import "TSDKContact.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"

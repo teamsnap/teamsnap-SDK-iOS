@@ -10,7 +10,6 @@
 #import "TSDKTeam.h"
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKUser()
