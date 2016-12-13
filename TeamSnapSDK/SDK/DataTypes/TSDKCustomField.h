@@ -21,7 +21,7 @@ typedef enum {
 @interface TSDKCustomField : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Size
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable kind; //Example: Menu
 @property (nonatomic, weak) NSArray *_Nullable options;
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
@@ -30,7 +30,7 @@ typedef enum {
 
 @property (nonatomic, assign) CustomDataFieldType dataType;
 
-+ (CustomDataFieldType)fieldTypeForString:kind;
++ (CustomDataFieldType)fieldTypeForString:(NSString *_Nullable)kind;
 + (NSString *_Nullable)fieldTypeStringForFieldType:(CustomDataFieldType)fieldType;
 
 @end

@@ -6,19 +6,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKMemberEmailAddress.h"
 
 @interface TSDKContactEmailAddress : TSDKMemberEmailAddress
 
-@property (nonatomic, assign) NSInteger contactId; //Example: 150647
-@property (nonatomic, weak) NSURL *linkContact;
+@property (nonatomic, weak) NSString *_Nullable contactId; //Example: 150647
+@property (nonatomic, weak) NSURL *_Nullable linkContact;
 
 @end
 
 @interface TSDKContactEmailAddress (ForwardedMethods)
 
--(void)getContactWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactArrayCompletionBlock)completion;
+-(void)getContactWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nullable)completion;
 
 @end

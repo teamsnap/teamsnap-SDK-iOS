@@ -20,15 +20,6 @@
     return @"event";
 }
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        _availabilitiesByRoster = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
-
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *)event completion:(TSDKCompletionBlock)completion {
     if (event) {
         TSDKCollectionCommand *command = [self commandForKey:@"update_final_score"];
@@ -71,7 +62,7 @@
 - (void)setNotifyTeamAsMember:(TSDKMember *)member {
     if (member) {
         [self setBool:YES forKey:@"notify_team"];
-        [self setInteger:member.objectIdentifier forKey:@"notify_team_as_member_id"];
+        [self setString:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
         [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];
@@ -140,7 +131,7 @@
     }
 }
 
-- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent {
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent preferShortLabel:(BOOL)preferShortLabel {
     if (self.isGame && opponent) {
         if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
             if ((self.label) && (![self.label isEqualToString:@""])) {
@@ -156,6 +147,10 @@
             }
         }
     } else {
+        if(preferShortLabel && self.label.length) {
+            return self.label;
+        }
+        
         if (!self.name || (self.name.length == 0)) {
             return NSLocalizedString(@"Event", nil);
         } else {

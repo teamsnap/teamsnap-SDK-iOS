@@ -16,7 +16,7 @@
  *
  *  @return An initialized request configuration
  */
-+ (instancetype)defaultRequestConfiguration;
++ (instancetype _Nonnull)defaultRequestConfiguration;
 
 /**
  *  Initializes a request configuration with priority of 0.5
@@ -25,7 +25,7 @@
  *
  *  @return An initialized request configuration
  */
-+ (instancetype)requestConfigurationWithForceReload:(BOOL)forceReload;
++ (instancetype _Nonnull)requestConfigurationWithForceReload:(BOOL)forceReload;
 
 /**
  *  Initializes a standard request configuration
@@ -35,7 +35,7 @@
  *
  *  @return An initialized request configuration
  */
-+ (instancetype)requestConfigurationWithForceReload:(BOOL)forceReload withPriority:(CGFloat)priority;
++ (instancetype _Nonnull)requestConfigurationWithForceReload:(BOOL)forceReload withPriority:(CGFloat)priority;
 
 /**
  *  Specifies if cache will be used if available

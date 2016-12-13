@@ -47,11 +47,11 @@
     return [[[[NSArray arrayWithArray:self.availabile] arrayByAddingObjectsFromArray:self.maybeAvailabile] arrayByAddingObjectsFromArray:self.notAvailabile] arrayByAddingObjectsFromArray:self.unknwownAvailability];
 }
 
-- (TSDKAvailability *)availabilityForMemberId:(NSInteger)memberId {
+- (TSDKAvailability *)availabilityForMemberId:(NSString *)memberId {
     NSArray *allAvailabilities =  [self allAvailabilities];
     
     NSInteger availanilityIndex = [allAvailabilities indexOfObjectPassingTest:^BOOL(TSDKAvailability *  _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (availability.memberId == memberId);
+        return ([availability.memberId isEqualToString:memberId]);
     }];
     
     if (availanilityIndex !=NSNotFound) {

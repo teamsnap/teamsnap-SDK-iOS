@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
 #import "TSPCache.h"
+#import "TSDKLogging.h"
 
 NSURL static *_rootPath = nil;
 NSURL static *_basePath = nil;
@@ -69,8 +70,8 @@ NSFileManager static *_fileManager = nil;
     return [self pathForObjectClassName:className];
 }
 
-+(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSUInteger)objectId {
-    return  [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:[NSString stringWithFormat:@"%ld", (long)objectId]];
++(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSString *)objectId {
+    return  [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:objectId];
 }
 
 + (NSURL *)pathForObjectCollectionOfClass:(Class)objectClass {
@@ -101,7 +102,7 @@ NSFileManager static *_fileManager = nil;
     [self.fileManager removeItemAtURL:classCachePath error:&error];
 }
 
-+(void)invaidateObjectOfClass:(Class)objectClass withId:(NSUInteger)objectId {
++(void)invaidateObjectOfClass:(Class)objectClass withId:(NSString *)objectId {
     NSError *error = nil;
     NSURL *classCachePath = [self pathForObjectClass:objectClass withId:objectId];
     [self.fileManager removeItemAtURL:classCachePath error:&error];
@@ -115,7 +116,7 @@ NSFileManager static *_fileManager = nil;
     }
 }
 
-+(TSDKCollectionObject *)objectOfClass:(Class)objectClass withId:(NSUInteger)objectId {
++(TSDKCollectionObject *)objectOfClass:(Class)objectClass withId:(NSString *)objectId {
     NSURL *cacheFileURL =[self pathForObjectClass:objectClass withId:objectId];
     if ([self isValidCacheFile:cacheFileURL]) {
         TSDKCollectionObject *resultObject = [objectClass collectionObjectFromDataInFileURL:cacheFileURL];
@@ -145,7 +146,7 @@ NSFileManager static *_fileManager = nil;
         NSMutableDictionary *resultDictionary = [[NSMutableDictionary alloc] init];
         
         for (NSString *key in keys) {
-            TSDKCollectionObject *object = [self objectOfClass:objectClass withId:[key integerValue]];
+            TSDKCollectionObject *object = [self objectOfClass:objectClass withId:key];
             if (object) {
                 [resultDictionary setObject:object forKey:key];
             } else {

@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
@@ -23,7 +22,7 @@
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
 @property (nullable, nonatomic, weak) NSString *addressZip; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *invitationCode; //Example: d3e4bd58170967126b089212
-@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable userId; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *addressState; //Example:
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
 @property (nullable, nonatomic, weak) NSString *lastName; //Example: Rahaim
@@ -34,7 +33,7 @@
 @property (nullable, nonatomic, weak) NSString *firstName; //Example: Jack
 @property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 
 - (nonnull NSString *)fullName;
 - (nullable NSString *)fancyAddressString;
@@ -42,12 +41,12 @@
 
 @end
 
-@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
+@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nullable, nonatomic, weak) NSString *lastName; //Example: Invite
 @property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) BOOL isOwnershipPending; //Example: <null>
 @property (nullable, nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *addressState; //Example: **NULL**
@@ -69,12 +68,13 @@
 @property (nullable, nonatomic, weak) NSString *firstName; //Example: 2nd
 @property (nonatomic, assign) BOOL isManager; //Example: 0
 @property (nullable, nonatomic, weak) NSString *jerseyNumber; //Example: **NULL**
-@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable userId; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *gender; //Example: Male
 @property (nonatomic, assign) BOOL isOwner; //Example: 0
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: <null>
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
+@property (nonatomic, weak) NSString *_Nullable sourceMemberId;
 @property (nullable, nonatomic, weak) NSURL *linkBroadcastEmails;
 @property (nullable, nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
 @property (nullable, nonatomic, weak) NSURL *linkMemberLinks;
@@ -119,7 +119,7 @@
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPhotoArrayCompletionBlock)completion;
 
 #if TARGET_OS_IPHONE
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(nullable TSDKUploadProgressBlock)progressBlock;
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(nullable TSDKUploadProgressBlock)progressBlock;
 -(void)getMemberPhotoWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKImageCompletionBlock)completion;
 -(void)getMemberThumbnailWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKImageCompletionBlock)completion;
 
@@ -127,12 +127,6 @@
 -(nullable TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL  progress:(nullable TSDKUploadProgressBlock)progressBlock;
 
 #endif
-
--(nullable TSDKTeam *)team;
-@property (nullable, strong, nonatomic) NSMutableDictionary *contacts;
-@property (nullable, strong, nonatomic) NSMutableDictionary *emailAddresses;
-@property (nullable, strong, nonatomic) NSMutableDictionary *phoneNumbers;
-
 
 - (BOOL)isAtLeastManager;
 - (BOOL)isAtLeastOwner;

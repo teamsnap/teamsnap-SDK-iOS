@@ -19,8 +19,8 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 @interface TSDKMessage : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString * _Nullable status; //Example: received
-@property (nonatomic, assign) NSInteger memberId; //Example: 230
-@property (nonatomic, assign) NSInteger userId; //Example: 11
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 230
+@property (nonatomic, weak) NSString *_Nullable userId; //Example: 11
 @property (nonatomic, weak) NSDate * _Nullable updatedAt; //Example: 2016-03-15T21:53:00Z
 @property (nonatomic, weak) NSString * _Nullable subject; //Example: **NULL**
 @property (nonatomic, weak) NSString * _Nullable senderType; //Example: Member
@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 @property (nonatomic, weak) NSString * _Nullable body; //Example: Test
 @property (nonatomic, assign) NSInteger pushed; //Example: 0
 @property (nonatomic, weak) NSString * _Nullable contactId; //Example: **NULL**
-@property (nonatomic, assign) NSInteger messageId; //Example: 4
+@property (nonatomic, weak) NSString *_Nullable messageId; //Example: 4
 @property (nonatomic, assign) NSInteger emailed; //Example: 1
 @property (nonatomic, weak) NSDate * _Nullable readAt; //Example: 2016-03-15T21:53:00Z
 @property (nonatomic, weak) NSString * _Nullable senderName; //Example: Manny Manager
@@ -37,8 +37,8 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 @property (nonatomic, weak) NSDate * _Nullable createdAt; //Example: 2016-03-15T18:40:09Z
 @property (nonatomic, assign) NSInteger smsed; //Example: 0
 @property (nonatomic, weak) NSString * _Nullable divisionId; //Example: **NULL**
-@property (nonatomic, assign) NSInteger senderId; //Example: 166
-@property (nonatomic, assign) NSInteger teamId; //Example: 11
+@property (nonatomic, weak) NSString *_Nullable senderId; //Example: 166
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 11
 @property (nonatomic, weak) NSURL * _Nullable linkMember;
 @property (nonatomic, weak) NSURL * _Nullable linkSender;
 @property (nonatomic, weak) NSURL * _Nullable linkDivision;

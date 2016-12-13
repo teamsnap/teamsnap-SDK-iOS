@@ -141,7 +141,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
             success = YES;
             JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         }
-        completionBlock(success, NO, JSON, error);
+        if (completionBlock) {
+            completionBlock(success, NO, JSON, error);
+        }
     } else {
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
         if (request == nil) {
@@ -232,10 +234,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
                     }
                 }
                 
-                for(TSDKJSONCompletionBlock completionBlock in [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request].allObjects) {
+                NSSet *completionBlocks =  [[[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request] copy];
+                
+                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
+                
+                for(TSDKJSONCompletionBlock completionBlock in completionBlocks.allObjects) {
                     completionBlock(success, requestCompleted, JSON, error);
                 }
-                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
             }];
             remoteTask.priority = configuration.priority;
             [remoteTask resume];
@@ -265,7 +270,14 @@ static NSRecursiveLock *accessDetailsLock = nil;
     if (searchParamaters) {
         NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
         for (NSString *key in searchParamaters) {
-            [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@",key, [searchParamaters objectForKey:key]]];
+            id value = [searchParamaters objectForKey:key];
+            if([value isKindOfClass:[NSArray class]]) {
+                NSString *commaSeparatedString = [value componentsJoinedByString:@","];
+                [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
+            } else  {
+                [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
+            }
+            
         }
         NSString *separator = @"&";
         if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
@@ -465,25 +477,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
     [remoteTask resume];
 }
 #endif
-
-+ (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
-     NSString *scopes = @"read write";
-    
-    NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, clientId, clientSecret, scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
-    
-    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSString *OAuthToken = nil;
-        if ([objects isKindOfClass:[NSDictionary class]]) {
-            if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
-                OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
-                [TSDKDataRequest setOAuthToken:OAuthToken];
-            }
-        }
-        if (completion) {
-            completion(success, OAuthToken, error);
-        }
-    }];
-}
 
 + (void)setClientId:(NSString *)theClientId {
     clientId = theClientId;

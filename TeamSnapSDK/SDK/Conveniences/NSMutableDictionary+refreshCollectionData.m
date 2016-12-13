@@ -12,10 +12,10 @@
 @implementation NSMutableDictionary (refreshCollectionData)
 
 - (void)refreshCollectionObject:(TSDKCollectionObject *)object {
-    if ([self objectForIntegerKey:object.objectIdentifier]) {
-        [[self objectForIntegerKey:object.objectIdentifier] setCollection:object.collection];
+    if ([self objectForKey:object.objectIdentifier]) {
+        [[self objectForKey:object.objectIdentifier] setCollection:object.collection];
     } else {
-        [self setObject:object forIntegerKey:object.objectIdentifier];
+        [self setObject:object forKey:object.objectIdentifier];
     }
 }
 

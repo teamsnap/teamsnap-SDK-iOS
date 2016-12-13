@@ -18,6 +18,7 @@
 #import "TSDKPublicFeatures.h"
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
+#import "TSDKCompletionBlockTypes.h"
 #if TARGET_OS_IPHONE
 #import <SafariServices/SafariServices.h>
 #endif
@@ -83,7 +84,6 @@
 - (void)logout {
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
-    self.rootLinks = nil;
 }
 
 #if TARGET_OS_IPHONE
@@ -190,7 +190,6 @@
 
 - (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion {
     TSDKTeamSnap __weak *weakSelf = self;
-    self.rootLinks = nil;
     
     [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -209,44 +208,30 @@
                 completion(success, error.description);
             }
         }];
-        
-        [self getPlansWithConfiguration:configuration completion:^(BOOL success, NSString *message) {
-            
-        }];
     }];
 }
 
-- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSString *message))completion {
-    if (_plans) {
-        if (completion) {
-            completion(YES, nil);
-        }
-    } else {
-        NSDictionary *cachedPlans = [TSPCache loadDictionaryOfObjectsOfType:[TSDKPlan class]];
-        if (cachedPlans) {
-            _plans = [NSMutableDictionary dictionaryWithDictionary:cachedPlans];
-            if (completion) {
-                completion(YES, nil);
+- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPlanArrayCompletionBlock)completion {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
+        [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *plans = nil;
+            if (success) {
+                plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
+                for (TSDKPlan *plan in plans) {
+                    [tempPlanDictionary setObject:plan forKey:plan.objectIdentifier];
+                }
+                _plans = tempPlanDictionary;
+                [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
             }
-        } else {
-            [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
-                [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-                    if (success) {
-                        NSArray *plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                        NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
-                        for (TSDKPlan *plan in plans) {
-                            [tempPlanDictionary setObject:plan forIntegerKey:plan.objectIdentifier];
-                        }
-                        _plans = tempPlanDictionary;
-                        [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
-                    }
-                    if (completion) {
-                        completion(success, error.localizedDescription);
-                    }
-                }];
-            }];
-        }
-    }
+            if (plans == nil) {
+                plans = [[NSArray alloc] init];
+            }
+            if (completion) {
+                completion(success, complete, plans, error);
+            }
+        }];
+    }];
 }
 
 - (void)invitationStatusForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInviteStatusCompletionBlock)completionBlock {
@@ -286,17 +271,17 @@
 }
 
 - (void)addPlan:(TSDKPlan *)plan {
-    [self.plans setObject:plan forIntegerKey:plan.objectIdentifier];
+    [self.plans setObject:plan forKey:plan.objectIdentifier];
 }
 
-- (TSDKPlan *)planWithId:(NSInteger)planId {
-    return [_plans objectForIntegerKey:planId];
+- (TSDKPlan *)planWithId:(NSString *)planId {
+    return [_plans objectForKey:planId];
 }
 
-- (void)planForPlanId:(NSInteger)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
-    if (_plans && [_plans objectForIntegerKey:planId]) {
+- (void)planForPlanId:(NSString *)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
+    if (_plans && [_plans objectForKey:planId]) {
         if (completion) {
-            completion([_plans objectForIntegerKey:planId]);
+            completion([_plans objectForKey:planId]);
         }
     } else {
         [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -305,7 +290,7 @@
                 [self addPlan:plan];
             }
             if (completion) {
-                completion([_plans objectForIntegerKey:planId]);
+                completion([_plans objectForKey:planId]);
             }
         }];
     }

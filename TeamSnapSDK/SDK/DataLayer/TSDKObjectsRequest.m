@@ -63,6 +63,7 @@
 #import "TSDKLeagueCustomDatum.h"
 #import "TSDKLeagueCustomField.h"
 #import "TSDKMemberAssignment.h"
+#import "TSDKApnDevice.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
@@ -119,17 +120,15 @@ static NSArray *knownCompletionTypes;
     
     NSArray *stringDataTypes = [self objectTypeStringsFromClasses:objectDataTypes];
     
-    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
+    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
     
     [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
-            [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
             parsedObjects = [self SDKObjectsFromCollection:objects];
-            for (TSDKCollectionObject *sdkObject in parsedObjects) {
-                [team processBulkLoadedObject:sdkObject];
-            }
-            [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
+        }
+        if (parsedObjects == nil) {
+            parsedObjects = [[NSArray alloc] init];
         }
         if (completion) {
             completion(success, complete, parsedObjects, error);
@@ -150,27 +149,13 @@ static NSArray *knownCompletionTypes;
     [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
         if (success) {
-            [[TSDKProfileTimer sharedInstance] startTimeWithId:@"BULK Parse"];
             parsedObjects = [self SDKObjectsFromCollection:objects];
-            for (TSDKCollectionObject *sdkObject in parsedObjects) {
-                if ([sdkObject isKindOfClass:[TSDKTeam class]]) {
-                    [[[TSDKTeamSnap sharedInstance] teamSnapUser] addTeam:(TSDKTeam *)sdkObject];
-                } else if ([sdkObject isKindOfClass:[TSDKPlan class]]) {
-                    [[TSDKTeamSnap sharedInstance] addPlan:(TSDKPlan *)sdkObject];
-                } else {
-                    if ([[sdkObject.collection data] objectForKey:@"team_id"]) {
-                        TSDKTeam *team =[[[[TSDKTeamSnap sharedInstance] teamSnapUser] teams] objectForIntegerKey:[[[sdkObject.collection data] objectForKey:@"team_id"] integerValue]];
-                        if (team) {
-                            [team processBulkLoadedObject:sdkObject];
-                        }
-                    } else {
-                        DLog(@"Unknown parent Object from bulk load: %@", [sdkObject class]);
-                    }
-                }
-            }
-            
-            [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"BULK Parse" logResult:YES];
         }
+        
+        if (parsedObjects == nil) {
+            parsedObjects = [[NSArray alloc] init];
+        }
+        
         if (completion) {
             completion(success, complete, parsedObjects, error);
         }
@@ -188,9 +173,9 @@ static NSArray *knownCompletionTypes;
     return [NSArray arrayWithArray:stringDataTypes];
 }
 
-+ (TSDKTeam *)teamWithId:(NSInteger)teamId inTeamsArray:(NSArray *)teams {
++ (TSDKTeam *)teamWithId:(NSString *)teamId inTeamsArray:(NSArray *)teams {
     NSUInteger teamIndex = [teams indexOfObjectPassingTest:^BOOL(TSDKTeam *team, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (team.objectIdentifier == teamId);
+        return ([team.objectIdentifier isEqualToString:teamId]);
     }];
     if (teamIndex != NSNotFound) {
         return [teams objectAtIndex:teamIndex];

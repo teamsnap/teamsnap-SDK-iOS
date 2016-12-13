@@ -11,14 +11,14 @@
 
 @interface TSDKMemberPhoto : TSDKCollectionObject
 
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
 @property (nonatomic, assign) NSInteger originalFileSize; //Example: 1901963
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, weak) NSDate *updatedAt; //Example: 2014-09-19T23:32:39.000+00:00
-@property (nonatomic, weak) NSURL *linkMember;
-@property (nonatomic, weak) NSURL *linkImageUrl;
-@property (nonatomic, weak) NSURL *linkTeam;
-@property (nonatomic, weak) NSURL *linkUser;
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2014-09-19T23:32:39.000+00:00
+@property (nonatomic, weak) NSURL *_Nullable linkMember;
+@property (nonatomic, weak) NSURL *_Nullable linkImageUrl;
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkUser;
 
 
 
@@ -27,10 +27,10 @@
 
 @interface TSDKMemberPhoto (ForwardedMethods)
 
--(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
--(void)getImageUrlWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
--(void)getUserWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKUserArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
+-(void)getImageUrlWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+-(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nullable)completion;
 
 
 @end
