@@ -14,7 +14,7 @@
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Public Field
 @property (nonatomic, weak) NSString *_Nullable validationType; //Example: **NULL**
-@property (nonatomic, assign) NSInteger divisionId; //Example: 2040
+@property (nonatomic, weak) NSString *_Nullable divisionId; //Example: 2040
 @property (nonatomic, assign) NSInteger teamCanEdit; //Example: 1
 @property (nonatomic, assign) NSInteger teamCanRead; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable kind; //Example: Text

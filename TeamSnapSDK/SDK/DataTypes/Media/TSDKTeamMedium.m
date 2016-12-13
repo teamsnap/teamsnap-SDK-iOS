@@ -57,14 +57,14 @@
 }
 
 #if TARGET_OS_IPHONE
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSInteger)teamMediaGroupId position:(NSInteger)position memberId:(NSInteger)memberId teamId:(NSInteger)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock {
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSString *_Nonnull)teamMediaGroupId position:(NSInteger)position memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock {
     
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_team_medium"];
-    uploadCommand.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
-    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
-    uploadCommand.data[@"team_media_group_id"] = [NSNumber numberWithInteger:teamMediaGroupId];
+    uploadCommand.data[@"team_id"] = teamId;
+    uploadCommand.data[@"member_id"] = memberId;
+    uploadCommand.data[@"team_media_group_id"] = teamMediaGroupId;
     uploadCommand.data[@"media_format"] = TSDKTeamMediaGroupImageFormatString;
     uploadCommand.data[@"description"] = description;
     

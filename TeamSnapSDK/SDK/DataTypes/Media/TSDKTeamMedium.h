@@ -17,12 +17,12 @@
 @property (nonatomic, assign) NSInteger position; //Example: 1
 @property (nonatomic, weak) NSURL *_Nullable mediumUrl; //Example: https://35b7f1d7d0790b02114c-1b8897185d70b198c119e1d2b7efd8a2.ssl.cf1.rackcdn.com/user_files/3263711/original/upload_133315715520120601-24224-1knpgia-0.jpg
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-03-31T01:27:34Z
-@property (nonatomic, assign) NSInteger teamMediaGroupId; //Example: 56194
+@property (nonatomic, weak) NSString *_Nullable teamMediaGroupId; //Example: 56194
 @property (nonatomic, weak) NSString *_Nullable mediaFormat; //Example: image
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2012-06-01T09:09:20Z
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkMedium;
 @property (nonatomic, weak) NSURL *_Nullable linkMediumThumbnail;
@@ -67,7 +67,7 @@
 
 //Upload a team media file. This must be a multi-part POST.
 #if TARGET_OS_IPHONE
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSInteger)teamMediaGroupId position:(NSInteger)position memberId:(NSInteger)memberId teamId:(NSInteger)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL  groupid:(NSString *_Nonnull)teamMediaGroupId position:(NSInteger)position memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId description:(NSString *_Nonnull)description progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
 
 -(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadPhotoFileURL:(nonnull NSURL *)photoFileURL position:(NSInteger)position progress:(TSDKUploadProgressBlock _Nullable)progressBlock;
 

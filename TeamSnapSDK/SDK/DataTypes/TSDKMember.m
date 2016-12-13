@@ -81,12 +81,12 @@
     }];
 }
 
-+(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock {
++(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(TSDKUploadProgressBlock)progressBlock {
     
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
-    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
+    uploadCommand.data[@"member_id"] = memberId;
     uploadCommand.data[@"file_name"] = @"photo.jpg";
     NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
     
@@ -102,7 +102,7 @@
     return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadProgressMonitorDelegate * _Nullable uploadStatus, NSError * _Nullable error) {
         if (uploadStatus.complete && uploadStatus.success) {
             TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
-            [poisonPill setInteger:self.objectIdentifier forKey:@"id"];
+            [poisonPill setString:self.objectIdentifier forKey:@"id"];
             poisonPill.memberId = self.objectIdentifier;
             poisonPill.teamId = self.teamId;
             [TSDKNotifications postInvalidateAssociatedObjects:poisonPill];
@@ -145,7 +145,7 @@
     return YES;
 }
 
-- (NSInteger)memberId {
+- (NSString *_Nullable)memberId {
     return self.objectIdentifier;
 }
 

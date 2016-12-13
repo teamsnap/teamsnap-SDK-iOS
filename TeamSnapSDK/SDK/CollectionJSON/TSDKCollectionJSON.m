@@ -218,7 +218,9 @@
             [dynamicProperties addObject:camelCaseKey];
             
             id value = [self.data objectForKey:key];
-            if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
+            if ([key rangeOfString:@"_id"].location == key.length-3) {
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
+            } else if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([key rangeOfString:@"_at"].location == key.length-3) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSDate *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];

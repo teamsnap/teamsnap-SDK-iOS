@@ -11,7 +11,7 @@
 
 @interface TSDKContactEmailAddress : TSDKMemberEmailAddress
 
-@property (nonatomic, assign) NSInteger contactId; //Example: 150647
+@property (nonatomic, weak) NSString *_Nullable contactId; //Example: 150647
 @property (nonatomic, weak) NSURL *_Nullable linkContact;
 
 @end

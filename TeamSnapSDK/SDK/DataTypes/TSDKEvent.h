@@ -9,10 +9,10 @@
 @interface TSDKEvent : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable uniform; //Example:
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable iconColor; //Example: yellow
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-04-18T02:05:58Z
-@property (nonatomic, assign) NSInteger opponentId; //Example: 2208702
+@property (nonatomic, weak) NSString *_Nullable opponentId; //Example: 2208702
 @property (nonatomic, assign) BOOL isGame; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable label; //Example:
 @property (nonatomic, weak) NSString *_Nullable gameType; //Example: Home
@@ -22,7 +22,7 @@
 @property (nonatomic, assign) BOOL tracksAvailability; //Example: 1
 @property (nonatomic, assign) BOOL isCanceled; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable sourceTimeZoneIanaName; //Example: America/New_York
-@property (nonatomic, assign) NSInteger divisionLocationId; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable divisionLocationId; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable additionalLocationDetails; //Example: **NULL**
 @property (nonatomic, weak) NSDate *_Nullable endDate; //Example: 2012-05-19T06:00:00Z
 @property (nonatomic, assign) BOOL isTbd; //Example: 0
@@ -32,7 +32,7 @@
 @property (nonatomic, weak) NSString *_Nullable repeatingType; //Example: **NULL**
 @property (nonatomic, assign) BOOL isShootout; //Example: 0
 @property (nonatomic, assign) NSInteger pointsForTeam; //Example: **NULL**
-@property (nonatomic, assign) NSInteger locationId; //Example: 714660
+@property (nonatomic, weak) NSString *_Nullable locationId; //Example: 714660
 @property (nonatomic, assign) NSInteger minutesToArriveEarly; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable formattedResults; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable repeatingTypeCode; //Example: **NULL**

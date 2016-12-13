@@ -11,9 +11,9 @@
 
 @interface TSDKMemberBalance : TSDKCollectionObject
 
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
 @property (nonatomic, weak) NSString *_Nullable balance; //Example: 112.17
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 

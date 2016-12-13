@@ -18,6 +18,6 @@
 @property (nonatomic, strong) NSDate *_Nullable lastUpdate;
 
 - (instancetype _Nonnull)initWithAvailabilityArray:(NSArray <TSDKAvailability *> *_Nullable)availabilities;
-- (TSDKAvailability *_Nullable)availabilityForMemberId:(NSInteger)memberId;
+- (TSDKAvailability *_Nullable)availabilityForMemberId:(NSString *_Nonnull)memberId;
 
 @end

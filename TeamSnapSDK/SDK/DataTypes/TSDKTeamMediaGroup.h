@@ -24,7 +24,7 @@ typedef enum {
 @property (nonatomic, assign) NSInteger lastTeamMediumPosition; //Example: 2
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable mediaFormat; //Example: image
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger countTeamMedia; //Example: 15
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Mobile Uploads
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMedia;

@@ -16,7 +16,7 @@
 @property (nonatomic, weak) NSString *_Nullable notes; //Example: This is a long opponent note. This is a long opponent note. This is a long opponent note. This is a long opponent note. This is a long opponent note. This is a long opponent note. and done.
 @property (nonatomic, weak) NSString *_Nullable contactsName; //Example: Wool E. Bull
 @property (nonatomic, weak) NSString *_Nullable contactsEmail; //Example: woolebull@durhambulls.com
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Bulls
 @property (nonatomic, weak) NSURL *_Nullable linkOpponentResults;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;

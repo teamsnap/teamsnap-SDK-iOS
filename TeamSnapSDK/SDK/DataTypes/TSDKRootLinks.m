@@ -281,12 +281,12 @@
     }];
 }
 
-+(void)queryGenerateFirebaseTokenTeamid:(NSInteger)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
++(void)queryGenerateFirebaseTokenTeamid:(NSString *_Nonnull)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
             TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
             if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
-                queryCommand.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+                queryCommand.data[@"team_id"] = teamId;
                 queryCommand.data[@"version"] = version;
                 [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                     NSString *firebaseToken = nil;

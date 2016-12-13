@@ -243,6 +243,11 @@ static id datePropertyIMP(id self, SEL _cmd) {
     return [self getDate:command];
 }
 
+static id objectIdentifierIMP(id self, SEL _cmd) {
+    NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
+    return [self objectIdentifierForKey:command];
+}
+
 static id urlPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
     return [NSURL URLWithString:[self getString:command]];
@@ -297,6 +302,18 @@ static void setDatePropertyIMP(id self, SEL _cmd, id aValue) {
     [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
     
     [self setDate:value forKey:[key camelCaseToUnderscores]];
+}
+
+static void setObjectIdentifierIMP(id self, SEL _cmd, id aValue) {
+    id value = [aValue copy];
+    NSMutableString *key = [NSStringFromSelector(_cmd) mutableCopy];
+    
+    // delete "set" and ":" and lowercase first letter
+    [key deleteCharactersInRange:NSMakeRange(0, 3)];
+    [key deleteCharactersInRange:NSMakeRange([key length] - 1, 1)];
+    NSString *firstChar = [key substringToIndex:1];
+    [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
+    [self setObjectIdentifierForKey:[key camelCaseToUnderscores] value:[value description]];
 }
 
 static void setURLPropertyIMP(id self, SEL _cmd, id aValue) {
@@ -451,6 +468,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 class_addMethod([self class], aSEL, (IMP)setDatePropertyIMP, "v@:@");
             } else if ([propertyType containsString:@"NSURL"]) {
                 class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
+            } else if ((property.length>=2) && [[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
+                class_addMethod([self class], aSEL, (IMP)setObjectIdentifierIMP, "@@:");
             } else if ([propertyType hasPrefix:@"TB,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
             } else if ([propertyType hasPrefix:@"Tc,"]) {
@@ -476,6 +495,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
             }
+        } else if ((property.length>=2) && [[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
+            class_addMethod([self class], aSEL,(IMP)objectIdentifierIMP, "@@:");
         } else if ([propertyType hasPrefix:@"TB,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
         } else if ([propertyType hasPrefix:@"Tc,"]) {
@@ -503,8 +524,24 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
-- (NSInteger)objectIdentifier {
-    return [self getInteger:@"id"];
+- (NSString * _Nonnull)objectIdentifier {
+    if ((!self.collection.data[@"id"]) || ([self.collection.data[@"id"] isEqual:[NSNull null]])) {
+        return @"";
+    }
+    return [self objectIdentifierForKey:@"id"];
+}
+
+- (NSString * _Nonnull)objectIdentifierForKey:(NSString *)key {
+
+    NSObject *identifierObject = self.collection.data[key];
+    if ([identifierObject isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return identifierObject.description;
+}
+
+- (void)setObjectIdentifierForKey:(NSString *_Nonnull)key value:(NSString *_Nullable)value {
+    [self setObject:value forKey:key];
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
@@ -678,7 +715,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)isNewObject {
-    return ([_collection.data[@"id"] integerValue] <=0);
+    return ([[self objectIdentifier] isEqualToString:@""] || [[self objectIdentifier] integerValue] == 0);
 }
 
 - (NSURL *)urlForSave {
@@ -848,14 +885,13 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 #pragma mark - NSObject
-
 - (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *)collectionObject {
     if (!collectionObject) {
         return NO;
     }
-    
-    return self.objectIdentifier == collectionObject.objectIdentifier;
+    return [self.objectIdentifier isEqualToString:collectionObject.objectIdentifier];
 }
+
 
 - (BOOL)isEqual:(id)object {
     if (self == object) {
@@ -870,7 +906,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSUInteger)hash {
-    return self.objectIdentifier;
+    return self.objectIdentifier.hash;
 }
 
 @end

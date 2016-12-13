@@ -8,10 +8,10 @@
 @interface TSDKMessageDatum : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger unreadCount; //Example: 0
-@property (nonatomic, assign) NSInteger memberId; //Example: 102
-@property (nonatomic, assign) NSInteger userId; //Example: 7
-@property (nonatomic, assign) NSInteger teamId; //Example: 7
-@property (nonatomic, assign) NSInteger contactId; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 102
+@property (nonatomic, weak) NSString *_Nullable userId; //Example: 7
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 7
+@property (nonatomic, weak) NSString *_Nullable contactId; //Example: **NULL**
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkUser;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;

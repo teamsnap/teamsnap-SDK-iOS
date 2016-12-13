@@ -53,7 +53,9 @@
 + (NSString *_Nullable)completionBlockTypeName;
 + (NSString *_Nullable)completionBlockArrayDescription;
 
-- (NSInteger)objectIdentifier;
+- (NSString *_Nonnull)objectIdentifier;
+- (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *_Nonnull)collectionObject;
+
 - (NSDictionary *_Nullable)dataToSave;
 - (NSString *_Nullable)getString:(NSString *_Nonnull)key;
 - (void)setString:(NSString *_Nullable)value forKey:(NSString *_Nonnull)aKey;
