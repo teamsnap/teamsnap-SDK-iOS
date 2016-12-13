@@ -5,7 +5,6 @@
 
 #import "TSDKTeamSnap.h"
 #import "NSObject+TSDKIntegerOtNotFound.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "TSDKUser.h"
 #import "TSDKDataRequest.h"
 #import "TSDKObjectsRequest.h"

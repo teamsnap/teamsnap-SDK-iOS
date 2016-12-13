@@ -7,7 +7,6 @@
 //
 
 #import "NSMutableDictionary+refreshCollectionData.h"
-#import "NSMutableDictionary+integerKey.h"
 
 @implementation NSMutableDictionary (refreshCollectionData)
 

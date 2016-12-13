@@ -19,7 +19,6 @@
 #import "TSDKCustomDatum.h"
 #import "TSDKUser.h"
 
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKTeam()

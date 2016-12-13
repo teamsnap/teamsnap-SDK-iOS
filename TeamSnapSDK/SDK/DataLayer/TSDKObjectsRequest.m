@@ -7,7 +7,6 @@
 //
 
 #import "TSDKObjectsRequest.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 #import "NSString+TSDKConveniences.h"
 #import <objc/runtime.h>
