@@ -39,6 +39,8 @@
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionMembers;
 @property (nonatomic, weak) NSURL *_Nullable linkTslMetadatum;
 
+- (NSURL * _Nonnull)linkDivisions; // This will eventually be a real CollectionJSON Link property. For now, it's hardcoded.
+
 // Non Auto-generated
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
@@ -49,6 +51,7 @@
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes forTeamIds:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+- (void)getDivisionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
 
 - (NSString *_Nonnull)fullName;
 

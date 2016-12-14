@@ -11,6 +11,8 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
 
 @interface TSDKUser()
 
@@ -170,6 +172,23 @@
             completion(success, complete, [NSArray arrayWithArray:teamIds], error);
         }
     }];
+}
+
+- (NSURL * _Nonnull)linkDivisions {
+//    TeamSnap.API_ROOT + "divisions/search?user_id=" + getUserId();
+    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:[[[TSDKTeamSnap sharedInstance] rootLinks] linkRoot] resolvingAgainstBaseURL:NO];
+    fullySpecifiedURL.path = @"divisions/search";
+    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
+    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    
+    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"userId" value:self.objectIdentifier];
+    [queryItems addObjectsFromArray:@[versionQuery]];
+    fullySpecifiedURL.queryItems = queryItems;
+    return fullySpecifiedURL.URL;
+}
+
+- (void)getDivisionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+    [self arrayFromLink:[self linkDivisions] withConfiguration:configuration completion:completion];
 }
 
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
