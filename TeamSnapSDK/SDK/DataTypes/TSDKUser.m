@@ -176,12 +176,12 @@
 
 - (NSURL * _Nonnull)linkDivisions {
 //    TeamSnap.API_ROOT + "divisions/search?user_id=" + getUserId();
-    NSString *urlString = [NSString stringWithFormat:@"%@/divisions/search", [[[TSDKTeamSnap sharedInstance] rootLinks] linkRoot].absoluteString];
+    NSString *urlString = [NSString stringWithFormat:@"%@divisions/search", [[[TSDKTeamSnap sharedInstance] rootLinks] linkRoot].absoluteString];
     NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:[NSURL URLWithString:urlString] resolvingAgainstBaseURL:NO];
     NSMutableArray *queryItems = [[NSMutableArray alloc] init];
     [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
     
-    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"userId" value:self.objectIdentifier];
+    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"user_id" value:self.objectIdentifier];
     [queryItems addObjectsFromArray:@[versionQuery]];
     fullySpecifiedURL.queryItems = queryItems;
     return fullySpecifiedURL.URL;
