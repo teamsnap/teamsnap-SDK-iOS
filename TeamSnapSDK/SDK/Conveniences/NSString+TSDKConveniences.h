@@ -24,6 +24,6 @@
 
 +(NSString *_Nonnull)GUID;
 
-- (NSComparisonResult)compareId:(NSString * _Nullable)compareId;
+- (NSComparisonResult)compareTSDKObjectId:(NSString * _Nullable)compareId;
 
 @end

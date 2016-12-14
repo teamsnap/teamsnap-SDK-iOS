@@ -305,7 +305,7 @@
 		96B47F5E1BADB4810035F2CC /* NSMutableURLRequest+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80711BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.m */; };
 		96B47F5F1BADB4810035F2CC /* NSObject+TSDKIntegerOtNotFound.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80721BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h */; };
 		96B47F601BADB4810035F2CC /* NSObject+TSDKIntegerOtNotFound.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80731BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m */; };
-		96B47F611BADB4810035F2CC /* NSString+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80741BAAE7AB00CA518F /* NSString+TSDKConveniences.h */; };
+		96B47F611BADB4810035F2CC /* NSString+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80741BAAE7AB00CA518F /* NSString+TSDKConveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F621BADB4810035F2CC /* NSString+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80751BAAE7AB00CA518F /* NSString+TSDKConveniences.m */; };
 		96B47F631BADB4850035F2CC /* TSDKCollectionQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F641BADB4850035F2CC /* TSDKCollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80661BAAE7AB00CA518F /* TSDKCollectionQuery.m */; };
