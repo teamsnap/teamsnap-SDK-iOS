@@ -88,3 +88,4 @@
 #import <TeamsnapSDK/TSDKApnDevice.h>
 #import <TeamSnapSDK/TSDKTslChat.h>
 #import <TeamSnapSDK/TSDKTslScore.h>
+#import <TeamSnapSDK/NSString+TSDKPublicConveniences.h>

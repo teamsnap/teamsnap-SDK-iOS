@@ -149,19 +149,4 @@
     return  result;
 }
 
-- (NSComparisonResult)compareTSDKObjectId:(NSString *)compareId {
-    if ((compareId == nil) || ([compareId respondsToSelector:@selector(integerValue)] == NO)) {
-        return NSOrderedDescending;
-    }
-    NSInteger value = [self integerValue];
-    NSInteger comparisonValue = [compareId integerValue];
-    if (value < comparisonValue) {
-        return NSOrderedAscending;
-    } else if (value > comparisonValue) {
-        return NSOrderedDescending;
-    } else {
-        return [self compare:compareId];
-    }
-}
-
 @end
