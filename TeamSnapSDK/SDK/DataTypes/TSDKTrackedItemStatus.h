@@ -9,6 +9,13 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSInteger, TSDKTrackedItemStatusCode) {
+    TSDKTrackedItemStatusCodeNotFound = -1,
+    TSDKTrackedItemStatusCodeNo = 0,
+    TSDKTrackedItemStatusCodeYes = 1,
+    TSDKTrackedItemStatusCodeNotApplicable = 2
+};
+
 @interface TSDKTrackedItemStatus : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable status; //Example: Complete
