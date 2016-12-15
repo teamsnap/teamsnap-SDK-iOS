@@ -22,7 +22,7 @@
 		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		568251DC1E01EEE900B6FE5E /* TSDKDivision.h in Headers */ = {isa = PBXBuildFile; fileRef = 568251DA1E01EEE900B6FE5E /* TSDKDivision.h */; };
+		568251DC1E01EEE900B6FE5E /* TSDKDivision.h in Headers */ = {isa = PBXBuildFile; fileRef = 568251DA1E01EEE900B6FE5E /* TSDKDivision.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 568251DB1E01EEE900B6FE5E /* TSDKDivision.m */; };
 		5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 5688F54B1C91E2D80005C330 /* TSDKMessageDatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5688F54E1C91E2D80005C330 /* TSDKMessageDatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 5688F54C1C91E2D80005C330 /* TSDKMessageDatum.m */; };
