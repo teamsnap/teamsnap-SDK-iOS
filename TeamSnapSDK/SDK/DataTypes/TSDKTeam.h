@@ -142,6 +142,10 @@
 
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
 
++ (void)queryDivisionSearchPagesize:(NSString *_Nonnull)pageSize pageNumber:(NSString *_Nonnull)pageNumber userId:(NSString *_Nonnull)userId divisionId:(NSString *_Nonnull)divisionId isActive:(NSString *_Nonnull)isActive isCommissioner:(NSString *_Nonnull)isCommissioner WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
++ (void)querySearchPagenumber:(NSString *_Nonnull)pageNumber divisionId:(NSString *_Nonnull)divisionId id:(NSString *_Nonnull)id sortName:(NSString *_Nonnull)sortName userId:(NSString *_Nonnull)userId teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
 @end
 
 @interface TSDKTeam (ForwardedMethods)
