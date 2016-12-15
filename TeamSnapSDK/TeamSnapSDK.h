@@ -89,3 +89,4 @@
 #import <TeamSnapSDK/TSDKTslChat.h>
 #import <TeamSnapSDK/TSDKTslScore.h>
 #import <TeamSnapSDK/TSDKDivision.h>
+#import <TeamSnapSDK/TSDKDivisionPreferences.h>
