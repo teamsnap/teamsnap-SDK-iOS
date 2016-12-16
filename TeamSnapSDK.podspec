@@ -9,7 +9,6 @@ Pod::Spec.new do |s|
   s.author       = { "Jason Rahaim" => "jason@teamsnap.com", "Skyler Seamans" => "skyler.seamans@teamsnap.com", "Mark Gallegos" => "mark.gallegos@teamsnap.com" }
   s.platform     = :ios, "8.0"
   s.resources    = ['TeamSnapSDK/SDK/Resources/*']
-  s.xcconfig     = { 'USER_HEADER_SEARCH_PATHS' => '"${PROJECT_DIR}/.."/**' }  
   s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :tag => "Pod-#{s.version}" }
   
   s.source_files = 'TeamSnapSDK/*.{h,m}'  
