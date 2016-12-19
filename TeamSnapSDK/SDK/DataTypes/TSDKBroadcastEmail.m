@@ -8,6 +8,7 @@
 
 #import "TSDKBroadcastEmail.h"
 #import "TSDKMember.h"
+#import "TSDKTeam.h"
 
 @implementation TSDKBroadcastEmail
 
@@ -15,6 +16,37 @@
 
 + (NSString *)SDKType {
     return @"broadcast_email";
+}
+
+- (instancetype)initWithDivisionID:(NSString *)divisionId teams:(NSArray <TSDKTeam *> *)teams managersOnly:(BOOL)managersOnly includeUnassignedPlayers:(BOOL)includeUnassignedPlayers includeCommissioners:(BOOL)includeCommissioners sender:(id<TSDKMessageSender>)sender sendCopyToSelf:(BOOL)sendCopyToSelf body:(NSString *)body subject:(NSString *)subject {
+    self = [super init];
+    if(self) {
+        [super setString:divisionId forKey:@"division_id"]; // This is required. This it the top level division you want to scope everything to. You also must have permission at this division level
+        [super setBool:YES forKey:@"is_league"];    // This is required. Must be true in order to send an email at a commissioner level.
+        [super setBool:includeCommissioners forKey:@"recipient_all_commissioners"]; // true/false - this will send an email to all commissioners in the division and subdivisions
+        [super setBool:includeUnassignedPlayers forKey:@"recipient_unnassigned"];   // true/false - this will send an email to all unnassigned players in that division and subdivisions
+        
+        NSMutableArray *teamIds = [[NSMutableArray alloc] initWithCapacity:teams.count];
+        for(TSDKTeam *team in teams) {
+            [teamIds addObject:[team objectIdentifier]];
+        }
+        if(managersOnly) {
+            [super setArray:teamIds forKey:@"recipient_manager_team_ids"];  // this is a list of teams, and it will send an email to all the managers on that team.
+        } else {
+            [super setArray:teamIds forKey:@"recipient_team_ids"];  // this is a list of teams you want to send an email to. It will send it to everyone on that team.
+        }
+        
+        // Currently unused property:
+        // "recipient_division_ids" = "<null>"; this is a list of divisions that you want to send an email to. This will email everyone in the division
+        
+        [super setString:body forKey:@"body"];
+        [super setString:subject forKey:@"subject"];
+        [super setString:[sender memberId] forKey:@"member_id"];
+        if(sendCopyToSelf) {
+            [super setArray:@[[sender memberId]] forKey:@"recipient_ids"];
+        }
+    }
+    return self;
 }
 
 - (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSString *_Nonnull)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(id<TSDKMessageSender>)sender isDraft:(BOOL)isDraft {
@@ -37,5 +69,29 @@
     }
     return self;
 }
+
+//NSMutableArray *teamIds = [[NSMutableArray alloc] initWithCapacity:[teamList count]];
+//for (TSDKTeam *team in teamList) {
+//    [teamIds addObject:[NSString stringWithFormat:@"%@", team.objectIdentifier]];
+//}
+//
+//if (teamIds) {
+//    [messageDictionary setObject:teamIds forKey:@"team_recipient_ids"];
+//}
+//
+//NSMutableArray *managerTeamIds = [[NSMutableArray alloc] initWithCapacity:[managerList count]];
+//for (TSDKTeam *team in managerList) {
+//    [managerTeamIds addObject:[NSString stringWithFormat:@"%@", team.objectIdentifier]];
+//}
+//
+//if (managerList){
+//    [messageDictionary setObject:managerTeamIds forKey:@"manager_recipient_ids"];
+//}
+//
+//[messageDictionary setObject:[NSString stringWithFormat:@"%ld", (long)includeCommissioners] forKey:@"mail_all_commissioners"];
+//[messageDictionary setObject:[NSString stringWithFormat:@"%ld", (long)includeUnassignedPlayers] forKey:@"mail_unassigned_players"];
+//[messageDictionary setObject:[NSString stringWithFormat:@"%ld", (long)includeSelf] forKey:@"mail_copy_to_self"];
+//
+//NSDictionary *envelope = [NSDictionary dictionaryWithObject:messageDictionary forKey:@"division_email_message"];
 
 @end
