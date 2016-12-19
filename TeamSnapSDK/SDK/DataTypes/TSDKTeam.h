@@ -142,7 +142,7 @@
 
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
 
-+ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber userId:(NSString *_Nonnull)userId divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKCompletionBlock _Nullable)completion;
++ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
 @end
 

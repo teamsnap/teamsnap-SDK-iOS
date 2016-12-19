@@ -4,6 +4,7 @@
 //
 
 #import "TSDKTeam.h"
+#import "TSDKConstants.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKProfileTimer.h"
 #import "TSDKEvent.h"
@@ -254,21 +255,23 @@
     return copy;
 }
 
-+ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber userId:(NSString *_Nonnull)userId divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKCompletionBlock _Nullable)completion {
++ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
     
-    TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:[TSDKTeam SDKType] forKey:@""];
+    TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:[TSDKTeam SDKType] forKey:@"division_search"];
     if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
-        queryCommand.data[@"team_id"] = teamId;
-        queryCommand.data[@"version"] = version;
+        queryCommand.data[@"division_id"] = divisionId;
+        queryCommand.data[@"is_active"] = @(isActive);
+        queryCommand.data[@"is_commissioner"] = @(isCommissioner);
+        queryCommand.data[@"page_number"] = @(pageNumber);
+        queryCommand.data[@"page_size"] = @(pageSize);
+        
         [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSString *firebaseToken = nil;
-            
+            NSArray *teams;
             if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
-                TSDKCollectionJSON *tokenCollectonObject = [(NSArray *)[objects collection] firstObject];
-                firebaseToken = [[tokenCollectonObject data] objectForKey:@"token"];
+                teams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
             }
             if (completion) {
-                completion(success, firebaseToken, error);
+                completion(success, YES, teams, error);
             }
         }];
     } else {
@@ -284,7 +287,7 @@
             NSInteger errorCode = 1;
             
             NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
-            completion(NO, nil, error);
+            completion(NO, NO, nil, error);
         }
     }
 }
