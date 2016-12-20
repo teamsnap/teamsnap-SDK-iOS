@@ -287,7 +287,7 @@
             NSInteger errorCode = 1;
             
             NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
-            completion(NO, NO, nil, error);
+            completion(NO, NO, [NSArray array], error);
         }
     }
 }
