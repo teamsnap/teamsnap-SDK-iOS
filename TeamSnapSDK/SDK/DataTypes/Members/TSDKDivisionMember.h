@@ -27,6 +27,7 @@
 @property (nonatomic, assign) BOOL isLeagueOwner; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable addressStreet2; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable userId; //Example: 2971597
+@property (nonatomic, weak) NSString *_Nullable divisionId;
 @property (nonatomic, weak) NSString *_Nullable firstName; //Example: Skyler
 @property (nonatomic, weak) NSString *_Nullable addressStreet1; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable birthday; //Example:

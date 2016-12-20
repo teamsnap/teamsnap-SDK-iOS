@@ -11,7 +11,7 @@
 
 @implementation TSDKDivisionMember
 
-@dynamic isOwner, isCommissioner, isManager, createdAt, addressCity, addressState, addressZip, isLeagueOwner, addressStreet2, userId, firstName, addressStreet1, birthday, updatedAt, lastName, linkDivisionContacts, linkContactEmailAddresses, linkMessageData, linkForumPosts, linkDivisionMemberPreferences, linkMessages, linkMemberPreferences, linkContactPhoneNumbers, linkDivisionContactEmailAddresses, linkContacts, linkDivisionMemberEmailAddresses, linkMemberEmailAddresses, linkDivisionMemberPhoneNumbers, linkDivisionContactPhoneNumbers, linkMemberPhoneNumbers, linkUser;
+@dynamic isOwner, isCommissioner, isManager, createdAt, addressCity, addressState, addressZip, isLeagueOwner, addressStreet2, userId, divisionId, firstName, addressStreet1, birthday, updatedAt, lastName, linkDivisionContacts, linkContactEmailAddresses, linkMessageData, linkForumPosts, linkDivisionMemberPreferences, linkMessages, linkMemberPreferences, linkContactPhoneNumbers, linkDivisionContactEmailAddresses, linkContacts, linkDivisionMemberEmailAddresses, linkMemberEmailAddresses, linkDivisionMemberPhoneNumbers, linkDivisionContactPhoneNumbers, linkMemberPhoneNumbers, linkUser;
 
 + (NSString *)SDKType {
     return @"division_member";
