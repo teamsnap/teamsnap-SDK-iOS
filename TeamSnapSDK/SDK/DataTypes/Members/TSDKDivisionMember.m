@@ -48,4 +48,8 @@
     }
 }
 
+- (BOOL)isAtLeastManager {
+    return (self.isManager || self.isOwner);
+}
+
 @end

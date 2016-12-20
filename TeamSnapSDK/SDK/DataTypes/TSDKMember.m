@@ -43,10 +43,6 @@
     return (self.isManager || self.isOwner);
 }
 
-- (BOOL)isAtLeastOwner {
-    return (self.isOwner);
-}
-
 - (BOOL)isCommissioner {
     return NO;
 }

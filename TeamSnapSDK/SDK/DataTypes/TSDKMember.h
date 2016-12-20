@@ -47,6 +47,7 @@
 @property (nonatomic, assign) BOOL isOwner;
 @property (nonatomic, assign) BOOL isCommissioner;
 @property (nullable, nonatomic, weak) NSString *objectIdentifier;
+- (BOOL)isAtLeastManager;
 - (nonnull NSString *)fullName;
 
 
@@ -141,8 +142,6 @@
 
 @property (nonatomic, assign) BOOL isCommissioner;
 - (BOOL)isAtLeastManager;
-- (BOOL)isAtLeastOwner;
-
 
 - (NSInteger)age;
 
