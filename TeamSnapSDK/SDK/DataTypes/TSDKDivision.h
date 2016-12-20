@@ -32,6 +32,10 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2016-01-05T22:59:32Z
 @property (nonatomic, weak) NSString *_Nullable parentDivisionName; //Example:
 @property (nonatomic, weak) NSString *_Nullable billingAddress; //Example:
+@property (nonatomic, assign) NSInteger allTeamsCount; //Example: 17
+@property (nonatomic, assign) NSInteger activeTeamsCount; //Example: 17
+@property (nonatomic, assign) NSInteger allChildrenCount; //Example: 2
+@property (nonatomic, assign) NSInteger activeChildrenCount; //Example: 2
 @property (nonatomic, weak) NSURL *_Nullable linkParent;
 @property (nonatomic, weak) NSURL *_Nullable linkChildren;
 @property (nonatomic, weak) NSURL *_Nullable linkAncestors;
