@@ -14,8 +14,9 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
+#import "TSDKMember.h"
 
-@interface TSDKDivisionMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender>
+@interface TSDKDivisionMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKActiveMemberProtocol>
 
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 1

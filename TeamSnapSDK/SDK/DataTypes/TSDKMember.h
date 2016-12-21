@@ -41,7 +41,19 @@
 
 @end
 
-@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
+@protocol TSDKActiveMemberProtocol <NSObject>
+
+@property (nonatomic, assign) BOOL isManager;
+@property (nonatomic, assign) BOOL isOwner;
+@property (nonatomic, assign) BOOL isCommissioner;
+@property (nullable, nonatomic, weak) NSString *objectIdentifier;
+- (BOOL)isAtLeastManager;
+- (nonnull NSString *)fullName;
+
+
+@end
+
+@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol, TSDKActiveMemberProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nullable, nonatomic, weak) NSString *lastName; //Example: Invite
@@ -128,8 +140,8 @@
 
 #endif
 
+@property (nonatomic, assign) BOOL isCommissioner;
 - (BOOL)isAtLeastManager;
-- (BOOL)isAtLeastOwner;
 
 - (NSInteger)age;
 
