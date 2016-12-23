@@ -70,28 +70,4 @@
     return self;
 }
 
-//NSMutableArray *teamIds = [[NSMutableArray alloc] initWithCapacity:[teamList count]];
-//for (TSDKTeam *team in teamList) {
-//    [teamIds addObject:[NSString stringWithFormat:@"%@", team.objectIdentifier]];
-//}
-//
-//if (teamIds) {
-//    [messageDictionary setObject:teamIds forKey:@"team_recipient_ids"];
-//}
-//
-//NSMutableArray *managerTeamIds = [[NSMutableArray alloc] initWithCapacity:[managerList count]];
-//for (TSDKTeam *team in managerList) {
-//    [managerTeamIds addObject:[NSString stringWithFormat:@"%@", team.objectIdentifier]];
-//}
-//
-//if (managerList){
-//    [messageDictionary setObject:managerTeamIds forKey:@"manager_recipient_ids"];
-//}
-//
-//[messageDictionary setObject:[NSString stringWithFormat:@"%ld", (long)includeCommissioners] forKey:@"mail_all_commissioners"];
-//[messageDictionary setObject:[NSString stringWithFormat:@"%ld", (long)includeUnassignedPlayers] forKey:@"mail_unassigned_players"];
-//[messageDictionary setObject:[NSString stringWithFormat:@"%ld", (long)includeSelf] forKey:@"mail_copy_to_self"];
-//
-//NSDictionary *envelope = [NSDictionary dictionaryWithObject:messageDictionary forKey:@"division_email_message"];
-
 @end
