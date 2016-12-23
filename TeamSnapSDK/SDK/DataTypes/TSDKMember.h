@@ -169,7 +169,7 @@
 
 
 
-//+(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSString *_Nonnull)pageNumber userId:(NSString *_Nonnull)userId teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
++(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nonnull)userId teamId:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 //Given a user ID, returns members directly associated with the user as well as members associated with the user via a shared access contact.
 //+(void)queryPersonasUserid:(NSString *_Nonnull)userId WithCompletion:(TSDKCompletionBlock _Nullable)completion;

@@ -216,6 +216,42 @@
     return [NSString stringWithString:result];
 }
 
++(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nonnull)userId teamId:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion {
+    TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"search"];
+    if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+        queryCommand.data[@"division_id"] = divisionId;
+        queryCommand.data[@"team_id"] = teamId;
+        queryCommand.data[@"user_id"] = userId;
+        queryCommand.data[@"page_size"] = @(pageSize);
+        queryCommand.data[@"page_number"] = @(pageNumber);
+        
+        [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *members;
+            if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                members = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+            if (completion) {
+                completion(success, YES, members, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
+                userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+            } else {
+                userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
+                userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+            }
+            NSInteger errorCode = 1;
+            
+            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            completion(NO, NO, [NSArray array], error);
+        }
+    }
+}
+
 + (void)queryCommissionersTeamid:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKArrayCompletionBlock _Nullable)completion {
     TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"commissioners"];
     if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
