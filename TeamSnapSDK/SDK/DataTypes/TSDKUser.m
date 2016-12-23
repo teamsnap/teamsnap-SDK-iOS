@@ -24,7 +24,7 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkTslMetadatum;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum;
 
 + (NSString *)SDKType {
     return @"user";
@@ -172,23 +172,6 @@
             completion(success, complete, [NSArray arrayWithArray:teamIds], error);
         }
     }];
-}
-
-- (NSURL * _Nonnull)linkDivisions {
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@divisions/search", [[[TSDKTeamSnap sharedInstance] rootLinks] linkRoot].absoluteString];
-    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:[NSURL URLWithString:urlString] resolvingAgainstBaseURL:NO];
-    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
-    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
-    
-    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"user_id" value:self.objectIdentifier];
-    [queryItems addObjectsFromArray:@[versionQuery]];
-    fullySpecifiedURL.queryItems = queryItems;
-    return fullySpecifiedURL.URL;
-}
-
-- (void)getDivisionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    [self arrayFromLink:[self linkDivisions] withConfiguration:configuration completion:completion];
 }
 
 - (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
