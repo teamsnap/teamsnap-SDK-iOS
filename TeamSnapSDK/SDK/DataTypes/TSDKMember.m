@@ -216,7 +216,7 @@
     return [NSString stringWithString:result];
 }
 
-+(void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion {
++(void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {
     TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"search"];
     if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
         queryCommand.data[@"division_id"] = divisionId;
