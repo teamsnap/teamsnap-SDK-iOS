@@ -11,6 +11,8 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
 
 @interface TSDKUser()
 
@@ -22,7 +24,7 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkTslMetadatum;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum;
 
 + (NSString *)SDKType {
     return @"user";
