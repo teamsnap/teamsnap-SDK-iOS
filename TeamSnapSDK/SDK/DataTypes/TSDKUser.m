@@ -10,7 +10,6 @@
 #import "TSDKTeam.h"
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKUser()
@@ -23,10 +22,22 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkTslMetadatum;
 
 + (NSString *)SDKType {
     return @"user";
+}
+
+- (NSString *)fullName {
+    if ((self.firstName.length>0) && (self.lastName.length>0)) {
+        return [[NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    } else if (self.firstName.length>0) {
+        return self.firstName;
+    } else if (self.lastName.length>0) {
+        return  self.lastName;
+    } else {
+        return @"";
+    }
 }
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock)completion {
@@ -47,7 +58,7 @@
 
 - (void)addMember:(TSDKMember *)newMember {
     NSUInteger existingMember = [self.myMembersOnTeams indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.objectIdentifier == newMember.objectIdentifier);
+        return [member.objectIdentifier isEqualToString:newMember.objectIdentifier];
     }];
     
     if (existingMember != NSNotFound) {
@@ -78,12 +89,12 @@
     }];
 }
 
-- (void)myMembersOnTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+- (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSArray *resultMembers = nil;
         if (success) {
             NSIndexSet *memberIndexes = [objects indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-                return (member.teamId == teamId);
+                return [member.teamId isEqualToString:teamId];
             }];
             resultMembers = [objects objectsAtIndexes:memberIndexes];
 
@@ -94,9 +105,9 @@
     }];
 }
 
-- (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
+- (NSArray *)myMembersOnTeamId:(NSString *)teamId {
     NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.teamId == teamId);
+        return [member.teamId isEqualToString:teamId];
     }];
     NSArray *resultMembers = [_myMembersOnTeams objectsAtIndexes:memberIndexes];
     return resultMembers;
@@ -147,10 +158,10 @@
         if (success) {
             teamIds = [[NSMutableArray alloc] init];
             for (TSDKMember *member in objects) {
-                NSString *teamId = [NSString stringWithFormat:@"%ld", (long)member.teamId];
-                if (teamId != 0) {
+                NSString *teamId = member.teamId;
+                if ([teamId isEqualToString:@"0"] == NO && teamId.length) {
                     if (![teamIds containsObject:teamId]) {
-                        [teamIds addObject:[NSString stringWithFormat:@"%ld", (long)[teamId integerValue]]];
+                        [teamIds addObject:teamId];
                     }
                 }
             }
@@ -200,4 +211,15 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
+- (void)getTslMetadatumWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkTslMetadatum resolvingAgainstBaseURL:NO];
+    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
+    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    
+    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"version" value:@"1.1"];
+    [queryItems addObjectsFromArray:@[versionQuery]];
+    fullySpecifiedURL.queryItems = queryItems;
+    
+    [self arrayFromLink:fullySpecifiedURL.URL withConfiguration:configuration completion:completion];
+}
 @end

@@ -19,9 +19,9 @@
 @property (nonatomic, weak) NSString *_Nullable smsEmailAddress; //Example: 9192475214@txt.att.net
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-11-09T18:39:40.000+00:00
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2012-11-09T18:39:40.000+00:00
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable smsGatewayId; //Example: at&t
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkSmsGateway;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;

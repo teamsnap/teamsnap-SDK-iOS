@@ -7,7 +7,6 @@
 //
 
 #import "TSDKObjectsRequest.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 #import "NSString+TSDKConveniences.h"
 #import <objc/runtime.h>
@@ -120,7 +119,7 @@ static NSArray *knownCompletionTypes;
     
     NSArray *stringDataTypes = [self objectTypeStringsFromClasses:objectDataTypes];
     
-    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%ld&types=%@", (long)team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
+    NSURL *bulkTeamURL = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"bulk_load?team_id=%@&types=%@", team.objectIdentifier, [stringDataTypes componentsJoinedByString:@","]]];
     
     [TSDKDataRequest requestObjectsForPath:bulkTeamURL withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         NSArray *parsedObjects;
@@ -173,9 +172,9 @@ static NSArray *knownCompletionTypes;
     return [NSArray arrayWithArray:stringDataTypes];
 }
 
-+ (TSDKTeam *)teamWithId:(NSInteger)teamId inTeamsArray:(NSArray *)teams {
++ (TSDKTeam *)teamWithId:(NSString *)teamId inTeamsArray:(NSArray *)teams {
     NSUInteger teamIndex = [teams indexOfObjectPassingTest:^BOOL(TSDKTeam *team, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (team.objectIdentifier == teamId);
+        return ([team.objectIdentifier isEqualToString:teamId]);
     }];
     if (teamIndex != NSNotFound) {
         return [teams objectAtIndex:teamIndex];

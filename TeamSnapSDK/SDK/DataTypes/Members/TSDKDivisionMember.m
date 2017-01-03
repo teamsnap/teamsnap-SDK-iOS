@@ -32,7 +32,7 @@
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
-- (NSInteger)memberId {
+- (NSString *_Nullable)memberId {
     return self.objectIdentifier;
 }
 

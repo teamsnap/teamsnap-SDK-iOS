@@ -53,7 +53,10 @@
 + (NSString *_Nullable)completionBlockTypeName;
 + (NSString *_Nullable)completionBlockArrayDescription;
 
-- (NSInteger)objectIdentifier;
+- (NSString *_Nonnull)objectIdentifier;
+- (NSString * _Nonnull)objectIdentifierForKey:(NSString *_Nonnull)key;
+- (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *_Nonnull)collectionObject;
+
 - (NSDictionary *_Nullable)dataToSave;
 - (NSString *_Nullable)getString:(NSString *_Nonnull)key;
 - (void)setString:(NSString *_Nullable)value forKey:(NSString *_Nonnull)aKey;
@@ -74,6 +77,7 @@
 - (BOOL)isNewObject;
 - (void)undoChanges;
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
+- (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * _Nonnull)queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;

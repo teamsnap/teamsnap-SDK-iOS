@@ -19,7 +19,6 @@
 #import "TSDKCustomDatum.h"
 #import "TSDKUser.h"
 
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKTeam()
@@ -38,7 +37,7 @@
 
 +(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
+    command.data[@"team_id"] = team.objectIdentifier;
     command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
     command.data[@"time_zone"] = timeZone.name;
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -53,13 +52,13 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
-+ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSInteger)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
++ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKMember commandForKey:@"import_from_team"];
-    command.data[@"destination_team_id"] = [NSString stringWithFormat:@"%ld", (long)destinationTeamId];
+    command.data[@"destination_team_id"] = destinationTeamId;
     
     NSMutableArray *arrayOfMemberIds = [[NSMutableArray alloc] initWithCapacity:members.count];
     for(TSDKMember *member in members) {
-        [arrayOfMemberIds addObject:[NSString stringWithFormat:@"%ld", (long)member.objectIdentifier]];
+        [arrayOfMemberIds addObject:member.objectIdentifier];
     }
     
     command.data[@"source_member_ids"] = [arrayOfMemberIds componentsJoinedByString:@","];;
@@ -86,18 +85,18 @@
     [TSDKTeam actionImportMembers:members destinationTeamId:self.objectIdentifier sendInvites:sendInvites completion:completion];
 }
 
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSInteger)teamId asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+    command.data[@"team_id"] = teamId;
     
     NSMutableArray *arrayOfMemberIds = [[NSMutableArray alloc] initWithCapacity:membersOrContacts.count];
     NSMutableArray *arrayOfContactIds = [[NSMutableArray alloc] initWithCapacity:membersOrContacts.count];
     
     for(TSDKCollectionObject<TSDKMemberOrContactProtocol> *memberOrContact in membersOrContacts) {
         if([memberOrContact isKindOfClass:[TSDKMember class]]) {
-            [arrayOfMemberIds addObject:[NSNumber numberWithInteger:memberOrContact.objectIdentifier]];
+            [arrayOfMemberIds addObject:memberOrContact.objectIdentifier];
         } else if([memberOrContact isKindOfClass:[TSDKContact class]]) {
-            [arrayOfContactIds addObject:[NSNumber numberWithInteger:memberOrContact.objectIdentifier]];
+            [arrayOfContactIds addObject:memberOrContact.objectIdentifier];
         }
     }
     if(arrayOfMemberIds.count) {
@@ -106,7 +105,7 @@
     if(arrayOfContactIds.count) {
         command.data[@"contact_id"] = arrayOfContactIds;
     }
-    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMemberId];
+    command.data[@"notify_as_member_id"] = asMemberId;
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
@@ -116,7 +115,7 @@
 }
 
 
-- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
 }
 
@@ -144,7 +143,7 @@
     }];
 }
 
-- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId {
     self = [self init];
     if (self) {
         [super setString:name forKey:@"name"];
@@ -152,7 +151,7 @@
         [super setString:locationPostalCode forKey:@"location_postal_code"];
         [super setString:ianaTimeZoneName forKey:@"time_zone_iana_name"];
         [super setString:ianaTimeZoneName forKey:@"time_zone"];
-        [super setInteger:sportId forKey:@"sport_id"];
+        [super setString:sportId forKey:@"sport_id"];
     }
     return self;
 }
@@ -194,8 +193,8 @@
     }];
 }
 
-- (void)getEventWithId:(NSInteger)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    NSDictionary *searchParams = @{@"id": [NSNumber numberWithInteger:eventId]};
+- (void)getEventWithId:(NSString *_Nonnull)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
+    NSDictionary *searchParams = @{@"id": eventId};
     
     [self arrayFromLink:self.linkEvents searchParams:searchParams withConfiguration:configuration completion:completion];
 }
@@ -236,7 +235,7 @@
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height {
     NSURLQueryItem *widthQueryItem = [NSURLQueryItem queryItemWithName:@"width" value:[NSString stringWithFormat:@"%ld", (long)width]];
     NSURLQueryItem *heightQueryItem = [NSURLQueryItem queryItemWithName:@"height" value:[NSString stringWithFormat:@"%ld", (long)height]];
-    NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"fill"];
+    NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"proportional"];
     NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkTeamLogoPhotoFile resolvingAgainstBaseURL:NO];
     NSMutableArray *queryItems = [[NSMutableArray alloc] init];
     [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];

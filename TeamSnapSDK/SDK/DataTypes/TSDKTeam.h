@@ -15,7 +15,7 @@
 
 @interface TSDKTeam : TSDKCollectionObject <NSCopying>
 
-@property (nonatomic, assign) NSInteger sportId; //Example: 52
+@property (nonatomic, weak) NSString *_Nullable sportId; //Example: 52
 @property (nonatomic, weak) NSString *_Nullable leagueUrl; //Example:
 @property (nonatomic, assign) BOOL isInLeague; //Example: 0
 @property (nonatomic, assign) BOOL hasReachedRosterLimit; //Example: 0
@@ -29,7 +29,7 @@
 @property (nonatomic, weak) NSString *_Nullable locationPostalCode; //Example: 80302
 @property (nonatomic, weak) NSString *_Nullable name; //Example: TeamSnap
 @property (nonatomic, weak) NSString *_Nullable locationLongitude; //Example: -105.349559
-@property (nonatomic, assign) NSInteger planId; //Example: 26
+@property (nonatomic, weak) NSString *_Nullable planId; //Example: 26
 @property (nonatomic, weak) NSString *_Nullable leagueName; //Example:
 @property (nonatomic, weak) NSString *_Nullable timeZoneDescription; //Example: Mountain Time (US & Canada)
 @property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
@@ -121,20 +121,20 @@
 @property (nonatomic, weak) NSURL *_Nullable linkCalendarWebcalGamesOnly;
 @property (nonatomic, weak) NSURL *_Nullable linkMembersCsvExport;
 
-- (instancetype _Nullable)initWithName:(NSString *_Nonnull)name locationCountry:(NSString *_Nonnull)locationCountry locationPostalCode:(NSString *_Nullable)locationPostalCode ianaTimeZoneName:(NSString *_Nonnull)ianaTimeZoneName sportId:(NSInteger)sportId;
+- (instancetype _Nullable)initWithName:(NSString *_Nonnull)name locationCountry:(NSString *_Nonnull)locationCountry locationPostalCode:(NSString *_Nullable)locationPostalCode ianaTimeZoneName:(NSString *_Nonnull)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId;
 - (void)bulkLoadDataWithTypes:(NSArray *_Nonnull)dataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (void)getEventsInDateRange:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
-- (void)getEventWithId:(NSInteger)eventId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
+- (void)getEventWithId:(NSString *_Nonnull)eventId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 
 - (void)updateTimeZone:(NSTimeZone *_Nonnull)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
 
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nonnull)membersOrContacts teamId:(NSInteger)teamId asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nonnull)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
-- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nullable)membersOrContacts asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nullable)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
-+ (void)actionImportMembers:(NSArray <TSDKMember *> *_Nonnull)members destinationTeamId:(NSInteger)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock _Nullable)completion;
++ (void)actionImportMembers:(NSArray <TSDKMember *> *_Nonnull)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *_Nonnull)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock _Nullable)completion;
 

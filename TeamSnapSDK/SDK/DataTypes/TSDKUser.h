@@ -37,20 +37,20 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMembers;
 @property (nonatomic, weak) NSURL *_Nullable linkActiveTeams;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionMembers;
+@property (nonatomic, weak) NSURL *_Nullable linkTslMetadatum;
 
 // Non Auto-generated
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)TeamsWithIDs:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)myMembersOnTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (NSArray *_Nullable)myMembersOnTeamId:(NSInteger)teamId;
+- (void)myMembersOnTeamId:(NSString *_Nonnull)teamId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+- (NSArray *_Nullable)myMembersOnTeamId:(NSString *_Nonnull)teamId;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes forTeamIds:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
-//- (void)addTeam:(TSDKTeam *_Nullable)team;
 
-//@property (strong, nonatomic) NSMutableDictionary *_Nullable teams;
+- (NSString *_Nonnull)fullName;
 
 @end
 
@@ -66,4 +66,6 @@
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
 -(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKDivisionMembersArrayCompletionBlock _Nullable)completion;
+-(void)getTslMetadatumWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+
 @end

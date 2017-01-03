@@ -11,7 +11,7 @@
 
 @interface TSDKContactPhoneNumber : TSDKMemberPhoneNumber
 
-@property (nonatomic, assign) NSInteger contactId; //Example: 127451
+@property (nonatomic, weak) NSString *_Nullable contactId; //Example: 127451
 @property (nonatomic, weak) NSURL *_Nullable linkContact;
 
 @end

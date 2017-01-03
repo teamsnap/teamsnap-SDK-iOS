@@ -1,15 +1,15 @@
 Pod::Spec.new do |s|
+
   s.name         = "TeamSnapSDK"
-  s.version      = "1.0"
+  s.version      = "2.0"
   s.summary      = "TeamSnap SDK for API v3"
   s.description  = "A library to access TeamSnap API v3"
   s.homepage     = "https://github.com/teamsnap/teamsnap-SDK-iOS"
   s.license      = { :type => 'TeamSnap Internal', :text => 'TEAMSNAP CONFIDENTIAL & INTERNAL ONLY' }
   s.author       = { "Jason Rahaim" => "jason@teamsnap.com", "Skyler Seamans" => "skyler.seamans@teamsnap.com", "Mark Gallegos" => "mark.gallegos@teamsnap.com" }
   s.platform     = :ios, "8.0"
-  s.resources = ['TeamSnapSDK/SDK/Resources/*']
-
-  s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :branch => "podspec-experiment" }
+  s.resources    = ['TeamSnapSDK/SDK/Resources/*']
+  s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :tag => "Pod-#{s.version}" }
   
   s.source_files = 'TeamSnapSDK/*.{h,m}'  
 
@@ -73,6 +73,10 @@ Pod::Spec.new do |s|
       
       spSDK.subspec 'Protocols' do |spTypes|
         spTypes.source_files = 'TeamSnapSDK/SDK/Protocols/*.{h,m}'
+      end
+      
+      spSDK.subspec 'TSL' do |spTypes|
+        spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/TSL/*.{h,m}'
       end
       
       spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/*.{h,m}'

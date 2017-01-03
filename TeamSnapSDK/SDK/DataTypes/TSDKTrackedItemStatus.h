@@ -9,15 +9,22 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSInteger, TSDKTrackedItemStatusCode) {
+    TSDKTrackedItemStatusCodeNotFound = -1,
+    TSDKTrackedItemStatusCodeNo = 0,
+    TSDKTrackedItemStatusCodeYes = 1,
+    TSDKTrackedItemStatusCodeNotApplicable = 2
+};
+
 @interface TSDKTrackedItemStatus : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable status; //Example: Complete
 @property (nonatomic, assign) NSInteger statusCode; //Example: 1
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2015-02-25T16:52:48Z
-@property (nonatomic, assign) NSInteger memberId; //Example: 10757149
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 10757149
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2015-02-25T16:52:48Z
-@property (nonatomic, assign) NSInteger trackedItemId; //Example: 286943
+@property (nonatomic, weak) NSString *_Nullable trackedItemId; //Example: 286943
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkTrackedItem;

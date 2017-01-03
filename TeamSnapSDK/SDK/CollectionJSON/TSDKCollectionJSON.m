@@ -218,7 +218,9 @@
             [dynamicProperties addObject:camelCaseKey];
             
             id value = [self.data objectForKey:key];
-            if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
+            if ([key rangeOfString:@"_id"].location == key.length-3) {
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSString *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
+            } else if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([key rangeOfString:@"_at"].location == key.length-3) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak) NSDate *_Nullable %@; //Example: %@ \n", camelCaseKey, value]];
@@ -259,27 +261,7 @@
         [linkGettersString appendFormat:@"-(void)%@WithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(%@ _Nonnull)completion;\n", [getKey underscoresToCamelCase], completionBlockName];
     }
     
-    NSMutableString *actionsString = [[NSMutableString alloc] init];
-    for (NSString *key in [TSDKCollectionObject commandsForClass:self.type]) {
-        NSString *commandKey = [NSString stringWithFormat:@"action_%@", key];
-        NSString *camelCaseKey = [commandKey underscoresToCamelCase];
-        TSDKCollectionCommand *commandDictionary = [TSDKCollectionObject commandForClass:self.type forKey:key];
-        
-        NSMutableString *paramaters = [[NSMutableString alloc] init];
-        for (NSString *key in commandDictionary.data) {
-            if (paramaters.length == 0) {
-                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
-            } else {
-                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
-            }
-        }
-        
-        if (commandDictionary.prompt.length>0) {
-            [actionsString appendFormat:@"//%@\n", commandDictionary.prompt];
-        }
-        
-        [actionsString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock _Nullable)completion;\n\n", camelCaseKey, paramaters];
-    }
+    NSString *actionsString = [TSDKCollectionJSON getObjectiveCHeaderForCommandsForTypeName:self.type];
 
     NSMutableString *queryString = [[NSMutableString alloc] init];
     for (NSString *key in [TSDKCollectionObject queriesForClass:self.type]) {
@@ -325,6 +307,31 @@
     [mutableResult appendFormat:@"\n\n/*\n%@\n\n%@\n*/", dynamicString, SDKName];
     
     return [NSString stringWithString:mutableResult];
+}
+
++ (NSString *_Nonnull)getObjectiveCHeaderForCommandsForTypeName:(NSString *_Nonnull)typeName {
+    NSMutableString *actionsString = [[NSMutableString alloc] init];
+    for (NSString *key in [TSDKCollectionObject commandsForClass:typeName]) {
+        NSString *commandKey = [NSString stringWithFormat:@"action_%@", key];
+        NSString *camelCaseKey = [commandKey underscoresToCamelCase];
+        TSDKCollectionCommand *commandDictionary = [TSDKCollectionObject commandForClass:typeName forKey:key];
+        
+        NSMutableString *paramaters = [[NSMutableString alloc] init];
+        for (NSString *key in commandDictionary.data) {
+            if (paramaters.length == 0) {
+                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [[key underscoresToCamelCase] capitalizedString], [key underscoresToCamelCase]];
+            } else {
+                [paramaters appendFormat:@"%@:(NSString *_Nonnull)%@ ", [key underscoresToCamelCase], [key underscoresToCamelCase]];
+            }
+        }
+        
+        if (commandDictionary.prompt.length>0) {
+            [actionsString appendFormat:@"//%@\n", commandDictionary.prompt];
+        }
+        
+        [actionsString appendFormat:@"//+(void)%@%@WithCompletion:(TSDKCompletionBlock _Nullable)completion;\n\n", camelCaseKey, paramaters];
+    }
+    return [NSString stringWithString:actionsString];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {

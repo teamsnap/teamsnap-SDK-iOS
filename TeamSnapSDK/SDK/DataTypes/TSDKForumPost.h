@@ -15,10 +15,10 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-25T18:19:51Z
 @property (nonatomic, weak) NSString *_Nullable posterName; //Example: Jason R
 @property (nonatomic, weak) NSString *_Nullable message; //Example: <p>This is a test post!</p>
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, assign) NSInteger forumTopicId; //Example: 611875
-@property (nonatomic, assign) NSInteger divisionMemberId; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable forumTopicId; //Example: 611875
+@property (nonatomic, weak) NSString *_Nullable divisionMemberId; //Example: **NULL**
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2013-02-08T18:22:04Z
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkForumTopic;

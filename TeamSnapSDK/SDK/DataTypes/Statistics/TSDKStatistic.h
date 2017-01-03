@@ -12,7 +12,7 @@
 @interface TSDKStatistic : TSDKCollectionObject
 
 @property (nonatomic, assign) BOOL isTeamStatistic; //Example: 0
-@property (nonatomic, assign) NSInteger statisticGroupId; //Example: 64018
+@property (nonatomic, weak) NSString *_Nullable statisticGroupId; //Example: 64018
 @property (nonatomic, assign) NSInteger position; //Example: 1
 @property (nonatomic, assign) BOOL isInDescendingOrder; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable prettyFormula; //Example: **NULL**
@@ -23,7 +23,7 @@
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable displayZeroTotals; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable precision; //Example: **NULL**
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable name; //Example: At Bats
 @property (nonatomic, assign) NSInteger alwaysDisplayDecimals; //Example: 0
 @property (nonatomic, weak) NSURL *_Nullable linkStatisticGroup;

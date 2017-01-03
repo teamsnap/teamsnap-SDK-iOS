@@ -17,18 +17,18 @@
     return @"broadcast_alert";
 }
 
-- (instancetype)initWithBody:(NSString *)body teamId:(NSInteger)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(id<TSDKMessageSender>)sender {
+- (instancetype)initWithBody:(NSString *)body teamId:(NSString *_Nonnull)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(id<TSDKMessageSender>)sender {
     self = [super init];
     if(self) {
         [super setString:body forKey:@"body"];
-        [super setInteger:teamId forKey:@"team_id"];
-        [super setInteger:[sender memberId] forKey:@"member_id"];
+        [super setString:teamId forKey:@"team_id"];
+        [super setString:[sender memberId] forKey:@"member_id"];
         if([sender respondsToSelector:@selector(contactId)]) {
-            [super setInteger:[sender contactId] forKey:@"contact_id"];
+            [super setString:[sender contactId] forKey:@"contact_id"];
         }
         NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
         for(TSDKMember *recipient in recipients) {
-            [recipientIDs addObject:[NSString stringWithFormat:@"%ld", (long)recipient.objectIdentifier]];
+            [recipientIDs addObject:recipient.objectIdentifier];
         }
         
         [super setArray:recipientIDs forKey:@"recipient_ids"];
