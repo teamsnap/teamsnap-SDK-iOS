@@ -75,7 +75,6 @@
 #import <TeamSnapSDK/TSDKDivisionLocation.h>
 #import <TeamSnapSDK/TSDKCountry.h>
 #import <TeamSnapSDK/TSDKTimeZone.h>
-#import <TeamSnapSDK/TSDKDivisionMember.h>
 #import <TeamSnapSDK/TSDKMessageRecipient.h>
 #import <TeamSnapSDK/TSDKMessageSender.h>
 #import <TeamSnapSDK/TSDKMemberPhoto.h>
