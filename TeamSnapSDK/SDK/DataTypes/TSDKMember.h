@@ -42,19 +42,7 @@
 
 @end
 
-@protocol TSDKActiveMemberProtocol <NSObject>
-
-@property (nonatomic, assign) BOOL isManager;
-@property (nonatomic, assign) BOOL isOwner;
-@property (nonatomic, assign) BOOL isCommissioner;
-@property (nullable, nonatomic, weak) NSString *objectIdentifier;
-- (BOOL)isAtLeastManager;
-- (nonnull NSString *)fullName;
-
-
-@end
-
-@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol, TSDKActiveMemberProtocol>
+@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, weak) NSString *_Nullable lastName; //Example: Seamans
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2016-11-17T20:29:40Z
@@ -167,9 +155,9 @@
 //Move one or many members to a new division and/or team.
 //+(void)actionMoveMemberMemberid:(NSString *_Nonnull)memberId divisionId:(NSString *_Nonnull)divisionId teamId:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
-
-
 +(void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
+
++ (void)queryCommissionersTeamid:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 //Given a user ID, returns members directly associated with the user as well as members associated with the user via a shared access contact.
 //+(void)queryPersonasUserid:(NSString *_Nonnull)userId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
@@ -186,9 +174,6 @@
 //+(void)queryDivisionSearchPagenumber:(NSString *_Nonnull)pageNumber divisionId:(NSString *_Nonnull)divisionId isCommissioner:(NSString *_Nonnull)isCommissioner isActivated:(NSString *_Nonnull)isActivated isUnassigned:(NSString *_Nonnull)isUnassigned isOwnershipPending:(NSString *_Nonnull)isOwnershipPending pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 //+(void)queryManagersTeamid:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//BETA: (this query is subject to change or suddenly disappear) Given a a team_id or division_id, returns all members that are commissioners of the divisions that the team is in.
-+ (void)queryCommissionersTeamid:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 @end
 
