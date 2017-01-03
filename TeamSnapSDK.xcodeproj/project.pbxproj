@@ -941,6 +941,10 @@
 				560578DD1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m */,
 				561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */,
 				561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */,
+				568251DA1E01EEE900B6FE5E /* TSDKDivision.h */,
+				568251DB1E01EEE900B6FE5E /* TSDKDivision.m */,
+				56879C301E0340EA00FBA9F6 /* TSDKDivisionPreferences.h */,
+				56879C311E0340EA00FBA9F6 /* TSDKDivisionPreferences.m */,
 				56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */,
 				56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */,
 			);
@@ -1378,6 +1382,7 @@
 				969366D71CCA503800721504 /* TSDKCountry.m in Sources */,
 				56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */,
 				9678A3611D86EC4E0078631C /* TSDKLeagueCustomDatum.m in Sources */,
+				56879C331E0340EA00FBA9F6 /* TSDKDivisionPreferences.m in Sources */,
 				56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */,
 				963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */,
 				969E80C61BAAE7AB00CA518F /* TSDKDataRequest.m in Sources */,
