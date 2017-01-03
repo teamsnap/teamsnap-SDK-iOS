@@ -86,4 +86,7 @@
 #import <TeamSnapSDK/NSURL+TSDKConveniences.h>
 #import <TeamSnapSDK/TSDKTslMetadatum.h>
 #import <TeamsnapSDK/TSDKApnDevice.h>
+#import <TeamSnapSDK/TSDKTslChat.h>
+#import <TeamSnapSDK/TSDKTslScore.h>
+#import <TeamSnapSDK/NSString+TSDKPublicConveniences.h>
 #import <TeamsnapSDK/TSDKSmsGateway.h>
