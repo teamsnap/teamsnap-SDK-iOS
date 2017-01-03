@@ -75,7 +75,6 @@
 #import <TeamSnapSDK/TSDKDivisionLocation.h>
 #import <TeamSnapSDK/TSDKCountry.h>
 #import <TeamSnapSDK/TSDKTimeZone.h>
-#import <TeamSnapSDK/TSDKDivisionMember.h>
 #import <TeamSnapSDK/TSDKMessageRecipient.h>
 #import <TeamSnapSDK/TSDKMessageSender.h>
 #import <TeamSnapSDK/TSDKMemberPhoto.h>
@@ -88,4 +87,6 @@
 #import <TeamsnapSDK/TSDKApnDevice.h>
 #import <TeamSnapSDK/TSDKTslChat.h>
 #import <TeamSnapSDK/TSDKTslScore.h>
+#import <TeamSnapSDK/TSDKDivision.h>
+#import <TeamSnapSDK/TSDKDivisionPreferences.h>
 #import <TeamSnapSDK/NSString+TSDKPublicConveniences.h>

@@ -4,6 +4,7 @@
 //
 
 #import "TSDKTeam.h"
+#import "TSDKConstants.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKProfileTimer.h"
 #import "TSDKEvent.h"
@@ -29,7 +30,7 @@
     
 }
 
-@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, humanizedMediaStorageUsed, createdAt, billedAt, isArchivedSeason, isRetired, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMessageData, linkMemberFiles, linkMemberPayments, linkDivisionMemberPhoneNumbers, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkStatisticData, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts, linkMemberPhotos, linkTeamPhotos, linkTeamLogoPhotoFile;
+@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, divisionId, humanizedMediaStorageUsed, createdAt, billedAt, isArchivedSeason, isRetired, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMessageData, linkMemberFiles, linkMemberPayments, linkDivisionMemberPhoneNumbers, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkStatisticData, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts, linkMemberPhotos, linkTeamPhotos, linkTeamLogoPhotoFile;
 
 + (NSString *)SDKType {
     return @"team";
@@ -253,5 +254,44 @@
     
     return copy;
 }
+
++ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
+    
+    TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:[TSDKTeam SDKType] forKey:@"division_search"];
+    if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+        queryCommand.data[@"division_id"] = divisionId;
+        queryCommand.data[@"is_active"] = @(isActive);
+        queryCommand.data[@"is_commissioner"] = @(isCommissioner);
+        queryCommand.data[@"page_number"] = @(pageNumber);
+        queryCommand.data[@"page_size"] = @(pageSize);
+        
+        [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *teams;
+            if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                teams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+            if (completion) {
+                completion(success, YES, teams, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
+                userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+            } else {
+                userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
+                userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+            }
+            NSInteger errorCode = 1;
+            
+            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            completion(NO, NO, [NSArray array], error);
+        }
+    }
+}
+
+
 
 @end

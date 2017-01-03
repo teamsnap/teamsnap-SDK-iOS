@@ -37,6 +37,7 @@
 @property (nonatomic, weak) NSString *_Nullable locationCountry; //Example: United States
 @property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 130056353
 @property (nonatomic, weak) NSString *_Nullable divisionName; //Example:
+@property (nonatomic, weak) NSString *_Nullable divisionId; //Example: 60366
 @property (nonatomic, weak) NSString *_Nullable humanizedMediaStorageUsed; //Example: 124.03 MB
 @property (nonatomic, weak) NSDate *_Nullable billedAt; //Example: 2013-09-20T00:00:00.000+00:00
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-27T03:32:51Z
@@ -141,6 +142,8 @@
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
 
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
+
++ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
 @end
 
