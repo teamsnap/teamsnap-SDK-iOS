@@ -13,11 +13,7 @@
 @dynamic domain, name;
 
 + (NSString *)SDKType {
-    return @"SmsGateway";
-}
-
-+ (NSString *)SDKREL {
-    return @"sms_gateways";
+    return @"sms_gateway";
 }
 
 @end
