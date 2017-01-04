@@ -90,3 +90,4 @@
 #import <TeamSnapSDK/TSDKDivision.h>
 #import <TeamSnapSDK/TSDKDivisionPreferences.h>
 #import <TeamSnapSDK/NSString+TSDKPublicConveniences.h>
+#import <TeamsnapSDK/TSDKSmsGateway.h>
