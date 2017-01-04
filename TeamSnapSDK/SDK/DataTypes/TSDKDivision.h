@@ -43,6 +43,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkRegistrationForms;
 @property (nonatomic, weak) NSURL *_Nullable linkPlan;
 @property (nonatomic, weak) NSURL *_Nullable linkTeams;
+@property (nonatomic, weak) NSURL *_Nullable linkActiveTeams;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionEvents;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionPreferences;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionLogoPhotoFile;
