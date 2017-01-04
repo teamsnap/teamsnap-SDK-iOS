@@ -11,15 +11,22 @@
 @implementation NSURL (TSDKConveniences)
 
 - (NSURL *_Nonnull)URLByAppendingQuery:(NSString *_Nonnull)queryItemName value:(NSString *_Nullable)queryItemValue {
+    NSURLQueryItem *item = [[NSURLQueryItem alloc] initWithName:queryItemName value:queryItemValue];
+    return [self URLByAppendingQueryItem:item];
+}
+
+- (NSURL *_Nonnull)URLByAppendingQueryItem:(NSURLQueryItem *)queryItem {
+    if (!queryItem) {
+        return self;
+    }
     NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:NO];
     
-    NSURLQueryItem *item = [[NSURLQueryItem alloc] initWithName:queryItemName value:queryItemValue];
     if (components.queryItems) {
-        components.queryItems = [components.queryItems arrayByAddingObject:item];
+        components.queryItems = [components.queryItems arrayByAddingObject:queryItem];
     } else {
-        components.queryItems = [NSArray arrayWithObject:item];
+        components.queryItems = [NSArray arrayWithObject:queryItem];
     }
-
+    
     return components.URL;
 }
 
