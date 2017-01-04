@@ -19,13 +19,17 @@
     if (!queryItem) {
         return self;
     }
+    return [self URLByAppendingArrayOfQueryItems:@[queryItem]];
+}
+
+- (NSURL *_Nonnull)URLByAppendingArrayOfQueryItems:(NSArray <NSURLQueryItem *> *_Nonnull)queryItems {
     NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:NO];
     
-    if (components.queryItems) {
-        components.queryItems = [components.queryItems arrayByAddingObject:queryItem];
-    } else {
-        components.queryItems = [NSArray arrayWithObject:queryItem];
-    }
+    NSMutableArray *combinedQueryItemArray = [[NSMutableArray alloc] init];
+    [combinedQueryItemArray addObjectsFromArray:components.queryItems];
+    [combinedQueryItemArray addObjectsFromArray:queryItems];
+
+    components.queryItems = [NSArray arrayWithArray:combinedQueryItemArray];
     
     return components.URL;
 }

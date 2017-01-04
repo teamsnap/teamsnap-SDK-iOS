@@ -12,5 +12,5 @@
 
 - (NSURL *_Nonnull)URLByAppendingQuery:(NSString *_Nonnull)queryItemName value:(NSString *_Nullable)queryItemValue;
 - (NSURL *_Nonnull)URLByAppendingQueryItem:(NSURLQueryItem *_Nullable)queryItem;
-
+- (NSURL *_Nonnull)URLByAppendingArrayOfQueryItems:(NSArray <NSURLQueryItem *> *_Nonnull)queryItems;
 @end
