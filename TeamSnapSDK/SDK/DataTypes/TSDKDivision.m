@@ -7,6 +7,7 @@
 //
 
 #import "TSDKDivision.h"
+#import "NSURL+TSDKConveniences.h"
 
 @implementation TSDKDivision
 
@@ -20,12 +21,7 @@
     NSURLQueryItem *widthQueryItem = [NSURLQueryItem queryItemWithName:@"width" value:[NSString stringWithFormat:@"%ld", (long)width]];
     NSURLQueryItem *heightQueryItem = [NSURLQueryItem queryItemWithName:@"height" value:[NSString stringWithFormat:@"%ld", (long)height]];
     NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"proportional"];
-    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkDivisionLogoPhotoFile resolvingAgainstBaseURL:NO];
-    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
-    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
-    [queryItems addObjectsFromArray:@[widthQueryItem, heightQueryItem, cropQueryItem]];
-    fullySpecifiedURL.queryItems = queryItems;
-    return fullySpecifiedURL.URL;
+    return [self.linkDivisionLogoPhotoFile URLByAppendingArrayOfQueryItems:@[widthQueryItem, heightQueryItem, cropQueryItem]];
 }
 
 @end
