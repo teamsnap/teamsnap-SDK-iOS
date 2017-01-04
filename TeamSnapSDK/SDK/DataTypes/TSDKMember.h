@@ -155,9 +155,9 @@
 //Move one or many members to a new division and/or team.
 //+(void)actionMoveMemberMemberid:(NSString *_Nonnull)memberId divisionId:(NSString *_Nonnull)divisionId teamId:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
-+(void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
++ (void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
 
-+ (void)queryCommissionersTeamid:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
++ (void)queryCommissionersTeamid:(NSString *_Nullable)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
 
 //Given a user ID, returns members directly associated with the user as well as members associated with the user via a shared access contact.
 //+(void)queryPersonasUserid:(NSString *_Nonnull)userId WithCompletion:(TSDKCompletionBlock _Nullable)completion;

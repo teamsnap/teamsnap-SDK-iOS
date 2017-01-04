@@ -248,7 +248,7 @@
     }
 }
 
-+ (void)queryCommissionersTeamid:(NSString *_Nonnull)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {
++ (void)queryCommissionersTeamid:(NSString *_Nullable)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {
     TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"commissioners"];
     if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
         queryCommand.data[@"division_id"] = divisionId;
