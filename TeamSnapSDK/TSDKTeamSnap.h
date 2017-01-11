@@ -25,12 +25,12 @@
 + (NSURL * _Nonnull)baseURL;
 + (void)setBaseURL:(NSURL * _Nonnull)url;
 
-- (void)loginWithOAuthToken:(NSString * _Nonnull)OAuthToken completion:(nullable void (^)(BOOL success, NSString *  _Nullable message))completion;
+- (void)loginWithOAuthToken:(NSString * _Nonnull)OAuthToken completion:(nullable void (^)(BOOL success, NSError  *  _Nullable error))completion;
 - (void)logout;
 
 #if TARGET_OS_IPHONE
 - (SFSafariViewController * _Nonnull)presentLoginInViewController:(UIViewController * _Nonnull)viewController animated:(BOOL)animated clientId:(NSString * _Nonnull)clientId scope:(NSString * _Nonnull)scope redirectURL:(NSString * _Nonnull)redirectURL completion:(nullable void (^)(void))completion;
-- (BOOL)processLoginCallback:(NSURL * _Nonnull)url completion:(nullable void (^)(BOOL success, NSString *  _Nullable message))completion;
+- (BOOL)processLoginCallback:(NSURL * _Nonnull)url completion:(nullable void (^)(BOOL success, NSError *  _Nullable error))completion;
 #endif
 
 - (void)publicFeaturesWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(nullable void (^)(TSDKPublicFeatures * _Nullable publicFeatures))completion;
