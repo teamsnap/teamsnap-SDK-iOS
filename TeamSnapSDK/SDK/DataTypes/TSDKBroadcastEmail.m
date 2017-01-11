@@ -42,6 +42,7 @@
         [super setString:body forKey:@"body"];
         [super setString:subject forKey:@"subject"];
         [super setString:[sender memberId] forKey:@"member_id"];
+        [super setBool:NO forKey:@"is_draft"];
         if(sendCopyToSelf) {
             [super setArray:@[[sender memberId]] forKey:@"recipient_ids"];
         }
