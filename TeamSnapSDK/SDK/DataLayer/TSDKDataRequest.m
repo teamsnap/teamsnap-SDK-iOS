@@ -260,44 +260,49 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    
-    if (!URL) {
-        if (completionBlock) {
-            completionBlock(NO, NO, nil, nil);
-        }
-        return;
-    }
-    
-    NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
-
-    if (searchParamaters) {
-        NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
-        for (NSString *key in searchParamaters) {
-            id value = [searchParamaters objectForKey:key];
-            if([value isKindOfClass:[NSArray class]]) {
-                NSString *commaSeparatedString = [value componentsJoinedByString:@","];
-                [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
-            } else  {
-                [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        if (!URL) {
+            if (completionBlock) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(NO, NO, nil, nil);
+                });
             }
-            
+            return;
         }
-        NSString *separator = @"&";
-        if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
-            separator = @"?";
+        
+        NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
+        
+        if (searchParamaters) {
+            NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
+            for (NSString *key in searchParamaters) {
+                id value = [searchParamaters objectForKey:key];
+                if([value isKindOfClass:[NSArray class]]) {
+                    NSString *commaSeparatedString = [value componentsJoinedByString:@","];
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
+                } else  {
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
+                }
+                
+            }
+            NSString *separator = @"&";
+            if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
+                separator = @"?";
+            }
+            [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
         }
-        [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
-    }
-    
-    [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-        TSDKCollectionJSON *containerCollection = nil;
-        if ([objects isKindOfClass:[NSDictionary class]]) {
-            containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
-        }
-        if (completionBlock) {
-            completionBlock(success, complete, containerCollection, error);
-        }
-    }];
+        
+        [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+            TSDKCollectionJSON *containerCollection = nil;
+            if ([objects isKindOfClass:[NSDictionary class]]) {
+                containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
+            }
+            if (completionBlock) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(success, complete, containerCollection, error);
+                });
+            }
+        }];
+    });
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {

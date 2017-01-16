@@ -827,21 +827,25 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        NSArray *result = nil;
-        if (success) {
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                for (TSDKCollectionObject *object in result) {
-                    [TSDKNotifications postRefreshedObject:object];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            NSArray *result = nil;
+            if (success) {
+                if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                    result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                    for (TSDKCollectionObject *object in result) {
+                        [TSDKNotifications postRefreshedObject:object];
+                    }
                 }
             }
-        }
-        if (result == nil) {
-            result = [[NSArray alloc] init];
-        }
-        if (completion) {
-            completion(success, complete, result, error);
-        }
+            if (result == nil) {
+                result = [[NSArray alloc] init];
+            }
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(success, complete, result, error);
+                });
+            }
+        });
     }];
     
     
