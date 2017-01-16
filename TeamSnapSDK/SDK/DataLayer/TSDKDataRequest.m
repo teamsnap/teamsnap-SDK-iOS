@@ -292,15 +292,17 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-            TSDKCollectionJSON *containerCollection = nil;
-            if ([objects isKindOfClass:[NSDictionary class]]) {
-                containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
-            }
-            if (completionBlock) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completionBlock(success, complete, containerCollection, error);
-                });
-            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                TSDKCollectionJSON *containerCollection = nil;
+                if ([objects isKindOfClass:[NSDictionary class]]) {
+                    containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
+                }
+                if (completionBlock) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionBlock(success, complete, containerCollection, error);
+                    });
+                }
+            });
         }];
     });
 }
