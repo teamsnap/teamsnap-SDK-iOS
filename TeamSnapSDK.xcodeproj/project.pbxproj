@@ -32,6 +32,7 @@
 		569CFAC11D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */; };
 		56B1656F1E2D769400A9F45D /* TSDKMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 56B1656D1E2D769400A9F45D /* TSDKMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56B165701E2D769400A9F45D /* TSDKMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B1656E1E2D769400A9F45D /* TSDKMutableDictionary.m */; };
+		56B165721E2D7F8A00A9F45D /* TSDKMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 56B1656D1E2D769400A9F45D /* TSDKMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
@@ -1162,6 +1163,7 @@
 				96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */,
 				96B47F211BADB4410035F2CC /* TSDKAssignment.h in Headers */,
 				96B47F3F1BADB4410035F2CC /* TSDKTeamFee.h in Headers */,
+				56B165721E2D7F8A00A9F45D /* TSDKMutableDictionary.h in Headers */,
 				96B47F6B1BADB4AA0035F2CC /* TSDKProfileTimer.h in Headers */,
 				96B47F691BADB4A10035F2CC /* TSPCache.h in Headers */,
 				969B7EA31C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
