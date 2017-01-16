@@ -72,6 +72,12 @@
     return self;
 }
 
+- (void)addEntriesFromDictionary:(NSDictionary *)otherDictionary {
+    dispatch_barrier_async(self.isolationQueue, ^{
+        [super addEntriesFromDictionary:otherDictionary];
+    });
+}
+
 - (NSUInteger)count {
     __block NSUInteger count;
     dispatch_sync(self.isolationQueue, ^{
