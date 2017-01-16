@@ -7,10 +7,11 @@
 //
 
 #import "TSDKDuplicateCompletionBlockStore.h"
+#import "TSDKMutableDictionary.h"
 
 @interface TSDKDuplicateCompletionBlockStore()
 
-@property (strong, nonatomic) NSMutableDictionary* completionBlocksKeyedByRequest;
+@property (strong, nonatomic) TSDKMutableDictionary* completionBlocksKeyedByRequest;
 
 @end
 
@@ -27,9 +28,9 @@
     return sharedInstance;
 }
 
-- (NSMutableDictionary *)completionBlocksKeyedByRequest {
+- (TSDKMutableDictionary *)completionBlocksKeyedByRequest {
     if(!_completionBlocksKeyedByRequest) {
-        _completionBlocksKeyedByRequest = [[NSMutableDictionary alloc] init];
+        _completionBlocksKeyedByRequest = [[TSDKMutableDictionary alloc] init];
     }
     return _completionBlocksKeyedByRequest;
 }

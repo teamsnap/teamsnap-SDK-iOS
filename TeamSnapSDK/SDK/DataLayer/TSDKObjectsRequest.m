@@ -196,7 +196,7 @@ static NSArray *knownCompletionTypes;
             [dateParamaters setValue:[endDate RCF3339DateTimeString] forKey:@"started_before"];
         }
         
-        [TSDKDataRequest requestObjectsForPath:team.linkEvents searchParamaters:dateParamaters sendDataDictionary:nil method:nil withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:team.linkEvents searchParamaters:[dateParamaters copy] sendDataDictionary:nil method:nil withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *events;
             if (success) {
                 events = [self SDKObjectsFromCollection:objects collectionType:[TSDKEvent SDKType]];

@@ -8,11 +8,12 @@
 
 #import "TSDKProfileTimer.h"
 #import "TSDKLogging.h"
+#import "TSDKMutableDictionary.h"
 
 @interface TSDKProfileTimer()
 
-@property (strong, nonatomic) NSMutableDictionary *timers;
-@property (strong, nonatomic) NSMutableDictionary *totalTimes;
+@property (strong, nonatomic) TSDKMutableDictionary *timers;
+@property (strong, nonatomic) TSDKMutableDictionary *totalTimes;
 
 @end
 
@@ -35,8 +36,8 @@
 -(instancetype) init {
     self = [super init];
     if (self) {
-        _timers = [[NSMutableDictionary alloc] init];
-        _totalTimes = [[NSMutableDictionary alloc] init];
+        _timers = [[TSDKMutableDictionary alloc] init];
+        _totalTimes = [[TSDKMutableDictionary alloc] init];
     }
     return self;
 }

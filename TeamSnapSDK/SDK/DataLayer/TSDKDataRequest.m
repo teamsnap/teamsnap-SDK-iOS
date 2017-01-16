@@ -30,7 +30,7 @@ static NSString *clientId;
 static NSString *clientSecret;
 static NSString *_device;
 
-static NSMutableDictionary *_requestHeaders = nil;
+static NSDictionary *_requestHeaders = nil;
 static NSString *OAuthToken = nil;
 
 static NSRecursiveLock *accessDetailsLock = nil;
@@ -60,7 +60,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key {
-    [self.requestHeaders setObject:value forKey:key];
+    NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] initWithDictionary:self.requestHeaders];
+    [mutableRequestHeaders setObject:value forKey:key];
+    _requestHeaders = [mutableRequestHeaders copy];
 }
 
 #if TARGET_OS_IPHONE
@@ -100,12 +102,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 #endif
 
-+ (NSMutableDictionary *)requestHeaders {
++ (NSDictionary *)requestHeaders {
     if (!_requestHeaders) {
-        _requestHeaders = [[NSMutableDictionary alloc] init];
-        [_requestHeaders setObject:@"application/json" forKey:@"Accept"];
-        [_requestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
-        [_requestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
+        NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] init];
+        [mutableRequestHeaders setObject:@"application/json" forKey:@"Accept"];
+        [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
+        [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
         //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
         
         NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
@@ -114,12 +116,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
             *stop = q <= 0.5f;
         }];
-        [_requestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
+        [mutableRequestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
         
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         if (version) {
-            [_requestHeaders setObject:version forKey:@"X-Client-Version"];
+            [mutableRequestHeaders setObject:version forKey:@"X-Client-Version"];
         }
+        _requestHeaders = [mutableRequestHeaders copy];
     }
     return _requestHeaders;
 }
@@ -230,7 +233,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
                             userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
                         }
                         
-                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:[userInfo copy]];
                     }
                 }
                 

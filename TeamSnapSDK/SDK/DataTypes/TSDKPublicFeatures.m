@@ -8,6 +8,7 @@
 
 #import "TSDKPublicFeatures.h"
 #import "TSDKCollectionJSON.h"
+#import "TSDKMutableDictionary.h"
 
 NSString * const TSDKUserSupportVersion = @"ios_support_ticket_v1";
 NSString * const TSDKaysBetweenPushNoteRemindersKey = @"ios_days_between_push_note_reminders";
@@ -18,7 +19,7 @@ NSString * const TSDKaysBetweenPushNoteRemindersKey = @"ios_days_between_push_no
 - (instancetype) init {
     self = [super init];
     if (self) {
-        _features = [[NSMutableDictionary alloc] init];
+        _features = [[NSDictionary alloc] init];
     }
     return self;
 }
@@ -30,18 +31,20 @@ NSString * const TSDKaysBetweenPushNoteRemindersKey = @"ios_days_between_push_no
     
     //NSArray *arrayOfJSONObjects = [[[objects allValues] objectAtIndex:0] objectForKey:@"items"];
     
-    
+    TSDKMutableDictionary *tempFeatures = [[TSDKMutableDictionary alloc] init];
     for (TSDKCollectionJSON *settingData in arrayOfJSONObjects) {
         NSString *feature = [settingData.data valueForKey:@"feature"];
         BOOL isEnabled = ([[settingData.data valueForKey:@"is_enabled"] integerValue] == 1);
         NSString *value = [settingData.data valueForKey:@"value"];
         
         if (feature && value) {
-            [_features setValue:value forKey:feature];
+            [tempFeatures setValue:value forKey:feature];
         } else if (feature) {
-            [_features setValue:[NSNumber numberWithBool:isEnabled] forKey:feature];
+            [tempFeatures setValue:[NSNumber numberWithBool:isEnabled] forKey:feature];
         }
     }
+    
+    self.features = [tempFeatures copy];
     return self;
 }
 

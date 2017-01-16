@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSDKMutableDictionary.h"
 
 @interface TSDKCollectionJSON : NSObject <NSCoding, NSCopying>
 
@@ -17,10 +18,10 @@
 @property (nonatomic, strong) NSString *_Nullable errorTitle;
 @property (nonatomic, strong) NSString *_Nullable errorMessage;
 @property (nonatomic, assign) NSInteger errorCode;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable links;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable data;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable commands;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable queries;
+@property (nonatomic, strong) NSDictionary *_Nullable links;
+@property (nonatomic, strong) TSDKMutableDictionary *_Nullable data;
+@property (nonatomic, strong) NSDictionary *_Nullable commands;
+@property (nonatomic, strong) NSDictionary *_Nullable queries;
 @property (nonatomic, strong) NSMutableArray <TSDKCollectionJSON *> *_Nullable collection;
 
 + (NSDictionary *_Nullable)dictionaryToCollectionJSON:(NSDictionary *_Nonnull)dictionary;

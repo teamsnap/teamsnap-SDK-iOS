@@ -31,7 +31,7 @@
     }
     
     [data setObject:teamId forKey:@"team_id"];
-    NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:data];
+    NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:[data copy]];
 
     [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumTopics] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {

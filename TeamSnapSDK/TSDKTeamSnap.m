@@ -21,11 +21,12 @@
 #if TARGET_OS_IPHONE
 #import <SafariServices/SafariServices.h>
 #endif
+#import "TSDKMutableDictionary.h"
 
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
-@property (nonatomic, strong) NSMutableDictionary *plans;
+@property (nonatomic, strong) NSDictionary *plans;
 @property (nonatomic, strong) SFSafariViewController *loginView;
 
 @end
@@ -103,21 +104,21 @@
     return self.loginView;
 }
 
-- (NSMutableDictionary *)queryDictionaryForReturnURL:(NSURL *)URL {
+- (NSDictionary *)queryDictionaryForReturnURL:(NSURL *)URL {
     NSString *query = URL.fragment;
     NSArray *queryComponents = [query componentsSeparatedByString:@"&"];
-    NSMutableDictionary *queryDictionary = [[NSMutableDictionary alloc] init];
+    TSDKMutableDictionary *queryDictionary = [[TSDKMutableDictionary alloc] init];
     for (NSString *part in queryComponents) {
         NSArray *param = [part componentsSeparatedByString:@"="];
         if (param.count == 2) {
             [queryDictionary setObject:param[1] forKey:param[0]];
         }
     }
-    return queryDictionary;
+    return [queryDictionary copy];
 }
 
 - (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(BOOL success, NSError *error))completion {
-    NSMutableDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
+    NSDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
     if ([queryDictionary objectForKey:@"access_token"]) {
         if (self.loginView) {
             [self.loginView dismissViewControllerAnimated:NO completion:nil];
@@ -214,11 +215,11 @@
             NSArray *plans = nil;
             if (success) {
                 plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
+                TSDKMutableDictionary *tempPlanDictionary = [[TSDKMutableDictionary alloc] init];
                 for (TSDKPlan *plan in plans) {
                     [tempPlanDictionary setObject:plan forKey:plan.objectIdentifier];
                 }
-                _plans = tempPlanDictionary;
+                self.plans = [tempPlanDictionary copy];
                 [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
             }
             if (plans == nil) {
@@ -260,17 +261,6 @@
     }];
 }
 
-- (NSMutableDictionary *)plans {
-    if (!_plans) {
-        _plans = [[NSMutableDictionary alloc] init];
-    }
-    return _plans;
-}
-
-- (void)addPlan:(TSDKPlan *)plan {
-    [self.plans setObject:plan forKey:plan.objectIdentifier];
-}
-
 - (TSDKPlan *)planWithId:(NSString *)planId {
     return [_plans objectForKey:planId];
 }
@@ -283,9 +273,11 @@
     } else {
         [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *planObjcts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            TSDKMutableDictionary *tempPlans = [[TSDKMutableDictionary alloc] init];
             for (TSDKPlan *plan in planObjcts) {
-                [self addPlan:plan];
+                [tempPlans setObject:plan forKey:plan.objectIdentifier];
             }
+            self.plans = [tempPlans copy];
             if (completion) {
                 completion([_plans objectForKey:planId]);
             }

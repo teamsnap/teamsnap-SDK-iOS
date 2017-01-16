@@ -272,13 +272,12 @@
         }];
     } else {
         if (completion) {
-            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+            NSDictionary *userInfo;
+            
             if (![[TSDKTeamSnap sharedInstance] clientId]) {
-                userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
-                userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
             } else {
-                userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
-                userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
             }
             NSInteger errorCode = 1;
             

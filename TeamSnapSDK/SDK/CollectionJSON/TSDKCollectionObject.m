@@ -19,24 +19,24 @@
 
 @interface TSDKCollectionObject()
 
-@property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
+@property (nonatomic, strong) TSDKMutableDictionary *cachedDatesLookup;
 
 @end
 
 @implementation TSDKCollectionObject
 
-static NSMutableDictionary *_templates;
-static NSMutableDictionary *_commandDictionary;
-static NSMutableDictionary *_queryDictionary;
-static NSMutableDictionary *_classURLs;
+static TSDKMutableDictionary *_templates;
+static TSDKMutableDictionary *_commandDictionary;
+static TSDKMutableDictionary *_queryDictionary;
+static TSDKMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
     return [_templates objectForKey:className];
 }
 
-- (NSMutableDictionary *)cachedDatesLookup {
+- (TSDKMutableDictionary *)cachedDatesLookup {
     if (!_cachedDatesLookup) {
-        _cachedDatesLookup = [[NSMutableDictionary alloc] init];
+        _cachedDatesLookup = [[TSDKMutableDictionary alloc] init];
     }
     return _cachedDatesLookup;
 }
@@ -57,22 +57,22 @@ static NSMutableDictionary *_classURLs;
     }
 }
 
-+(NSMutableDictionary *)templates {
++(TSDKMutableDictionary *)templates {
     if (!_templates) {
-        _templates = [[NSMutableDictionary alloc] init];
+        _templates = [[TSDKMutableDictionary alloc] init];
     }
     return _templates;
 }
 
 
-+(NSDictionary *)commandDictionary {
++(TSDKMutableDictionary *)commandDictionary {
     if (!_commandDictionary) {
-        _commandDictionary = [[NSMutableDictionary alloc] init];
+        _commandDictionary = [[TSDKMutableDictionary alloc] init];
     }
     return _commandDictionary;
 }
 
-+(NSMutableDictionary *)commands {
++(TSDKMutableDictionary *)commands {
     return [self commandsForClass:[self SDKType]];
 }
 
@@ -80,11 +80,11 @@ static NSMutableDictionary *_classURLs;
     return [[[self commands] objectForKey:commandName] copy];
 }
 
-+(NSMutableDictionary *)commandsForClass:(NSString *)className {
++(TSDKMutableDictionary *)commandsForClass:(NSString *)className {
     if (className) {
-        NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
+        TSDKMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
         if (!commands) {
-            commands = [[NSMutableDictionary alloc] init];
+            commands = [[TSDKMutableDictionary alloc] init];
             [[self commandDictionary] setValue:commands forKey:className];
         }
         return commands;
@@ -97,14 +97,14 @@ static NSMutableDictionary *_classURLs;
     return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
 }
 
-+(NSDictionary *)queryDictionary {
++(TSDKMutableDictionary *)queryDictionary {
     if (!_queryDictionary) {
-        _queryDictionary = [[NSMutableDictionary alloc] init];
+        _queryDictionary = [[TSDKMutableDictionary alloc] init];
     }
     return _queryDictionary;
 }
 
-+(NSMutableDictionary *)queries {
++(TSDKMutableDictionary *)queries {
     return [self queriesForClass:[self SDKType]];
 }
 
@@ -112,11 +112,11 @@ static NSMutableDictionary *_classURLs;
     return [[self queries] objectForKey:queryName];
 }
 
-+(NSMutableDictionary *)queriesForClass:(NSString *)className {
++(TSDKMutableDictionary *)queriesForClass:(NSString *)className {
     if (className) {
-        NSMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
+        TSDKMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
         if (!queries) {
-            queries = [[NSMutableDictionary alloc] init];
+            queries = [[TSDKMutableDictionary alloc] init];
             [[self queryDictionary] setValue:queries forKey:className];
         }
         return queries;
@@ -146,9 +146,9 @@ static NSMutableDictionary *_classURLs;
     [self setClassURL:URL forClass:[self SDKType]];
 }
 
-+(NSMutableDictionary *)classURLs {
++(TSDKMutableDictionary *)classURLs {
     if (!_classURLs) {
-        _classURLs = [[NSMutableDictionary alloc] init];
+        _classURLs = [[TSDKMutableDictionary alloc] init];
     }
     return _classURLs;
 }
@@ -176,7 +176,7 @@ static NSMutableDictionary *_classURLs;
     self = [super init];
     if (self) {
         _collection = [[TSDKCollectionJSON alloc] init];
-        _changedValues = [[NSMutableDictionary alloc] init];
+        _changedValues = [[TSDKMutableDictionary alloc] init];
         _logHeader = NO;
         _lastUpdate = nil;
     }
@@ -194,7 +194,7 @@ static NSMutableDictionary *_classURLs;
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
     
     TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
-    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+    newCollection.data = [TSDKMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
     newCollection.type = originalObject.collection.type;
     
     NSArray *allKeys = [[newCollection data] allKeys];

@@ -15,7 +15,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.data = [[NSMutableDictionary alloc] init];
+        self.data = [[TSDKMutableDictionary alloc] init];
     }
     return self;
 }

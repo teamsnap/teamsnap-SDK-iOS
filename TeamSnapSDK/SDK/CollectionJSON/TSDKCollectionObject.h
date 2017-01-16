@@ -12,6 +12,7 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
+#import "TSDKMutableDictionary.h"
 
 @class TSDKCollectionJSON;
 
@@ -24,7 +25,7 @@
 @interface TSDKCollectionObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
+@property (nonatomic, strong) TSDKMutableDictionary *_Nullable changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong) NSDate *_Nullable lastUpdate;
 
@@ -35,14 +36,14 @@
 +(NSDictionary *_Nullable)templateForClass:(NSString *_Nonnull)className;
 +(void)setTemplate:(NSDictionary *_Nullable)template;
 +(void)setTemplate:(NSDictionary *_Nullable)template forClass:(NSString *_Nullable)className;
-+(NSMutableDictionary *_Nullable)commands;
++(TSDKMutableDictionary *_Nullable)commands;
 +(TSDKCollectionCommand *_Nullable)commandForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
++(TSDKMutableDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
 +(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)commandName;
 
-+(NSMutableDictionary *_Nullable)queries;
++ (TSDKMutableDictionary *_Nullable)queries;
 +(TSDKCollectionQuery *_Nullable)queryForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
++(TSDKMutableDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
 +(TSDKCollectionQuery *_Nullable)queryForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)queryName;
 
 +(NSURL *_Nullable)classURL;
