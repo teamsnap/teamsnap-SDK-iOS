@@ -115,4 +115,10 @@
     });
 }
 
+- (void)removeAllObjects {
+    dispatch_barrier_async(self.isolationQueue, ^{
+        [self.backingStorage removeAllObjects];
+    });
+}
+
 @end
