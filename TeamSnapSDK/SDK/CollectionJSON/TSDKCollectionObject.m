@@ -839,6 +839,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             }
             if (result == nil) {
                 result = [[NSArray alloc] init];
+            } else {
+                [TSDKNotifications postRefreshedObjectCollection:result];
             }
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
