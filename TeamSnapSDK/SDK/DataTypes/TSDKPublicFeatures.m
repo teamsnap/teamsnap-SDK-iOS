@@ -8,7 +8,6 @@
 
 #import "TSDKPublicFeatures.h"
 #import "TSDKCollectionJSON.h"
-#import "TSDKMutableDictionary.h"
 
 NSString * const TSDKUserSupportVersion = @"ios_support_ticket_v1";
 NSString * const TSDKaysBetweenPushNoteRemindersKey = @"ios_days_between_push_note_reminders";
@@ -31,7 +30,7 @@ NSString * const TSDKaysBetweenPushNoteRemindersKey = @"ios_days_between_push_no
     
     //NSArray *arrayOfJSONObjects = [[[objects allValues] objectAtIndex:0] objectForKey:@"items"];
     
-    TSDKMutableDictionary *tempFeatures = [[TSDKMutableDictionary alloc] init];
+    NSMutableDictionary *tempFeatures = [[NSMutableDictionary alloc] init];
     for (TSDKCollectionJSON *settingData in arrayOfJSONObjects) {
         NSString *feature = [settingData.data valueForKey:@"feature"];
         BOOL isEnabled = ([[settingData.data valueForKey:@"is_enabled"] integerValue] == 1);

@@ -19,24 +19,24 @@
 
 @interface TSDKCollectionObject()
 
-@property (nonatomic, strong) TSDKMutableDictionary *cachedDatesLookup;
+@property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
 
 @end
 
 @implementation TSDKCollectionObject
 
-static TSDKMutableDictionary *_templates;
-static TSDKMutableDictionary *_commandDictionary;
-static TSDKMutableDictionary *_queryDictionary;
-static TSDKMutableDictionary *_classURLs;
+static NSMutableDictionary *_templates;
+static NSMutableDictionary *_commandDictionary;
+static NSMutableDictionary *_queryDictionary;
+static NSMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
     return [_templates objectForKey:className];
 }
 
-- (TSDKMutableDictionary *)cachedDatesLookup {
+- (NSMutableDictionary *)cachedDatesLookup {
     if (!_cachedDatesLookup) {
-        _cachedDatesLookup = [[TSDKMutableDictionary alloc] init];
+        _cachedDatesLookup = [[NSMutableDictionary alloc] init];
     }
     return _cachedDatesLookup;
 }
@@ -57,22 +57,22 @@ static TSDKMutableDictionary *_classURLs;
     }
 }
 
-+(TSDKMutableDictionary *)templates {
++(NSMutableDictionary *)templates {
     if (!_templates) {
-        _templates = [[TSDKMutableDictionary alloc] init];
+        _templates = [[NSMutableDictionary alloc] init];
     }
     return _templates;
 }
 
 
-+(TSDKMutableDictionary *)commandDictionary {
++(NSMutableDictionary *)commandDictionary {
     if (!_commandDictionary) {
-        _commandDictionary = [[TSDKMutableDictionary alloc] init];
+        _commandDictionary = [[NSMutableDictionary alloc] init];
     }
     return _commandDictionary;
 }
 
-+(TSDKMutableDictionary *)commands {
++(NSMutableDictionary *)commands {
     return [self commandsForClass:[self SDKType]];
 }
 
@@ -80,11 +80,11 @@ static TSDKMutableDictionary *_classURLs;
     return [[[self commands] objectForKey:commandName] copy];
 }
 
-+(TSDKMutableDictionary *)commandsForClass:(NSString *)className {
++(NSMutableDictionary *)commandsForClass:(NSString *)className {
     if (className) {
-        TSDKMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
+        NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
         if (!commands) {
-            commands = [[TSDKMutableDictionary alloc] init];
+            commands = [[NSMutableDictionary alloc] init];
             [[self commandDictionary] setValue:commands forKey:className];
         }
         return commands;
@@ -97,14 +97,14 @@ static TSDKMutableDictionary *_classURLs;
     return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
 }
 
-+(TSDKMutableDictionary *)queryDictionary {
++(NSMutableDictionary *)queryDictionary {
     if (!_queryDictionary) {
-        _queryDictionary = [[TSDKMutableDictionary alloc] init];
+        _queryDictionary = [[NSMutableDictionary alloc] init];
     }
     return _queryDictionary;
 }
 
-+(TSDKMutableDictionary *)queries {
++(NSMutableDictionary *)queries {
     return [self queriesForClass:[self SDKType]];
 }
 
@@ -112,11 +112,11 @@ static TSDKMutableDictionary *_classURLs;
     return [[self queries] objectForKey:queryName];
 }
 
-+(TSDKMutableDictionary *)queriesForClass:(NSString *)className {
++(NSMutableDictionary *)queriesForClass:(NSString *)className {
     if (className) {
-        TSDKMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
+        NSMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
         if (!queries) {
-            queries = [[TSDKMutableDictionary alloc] init];
+            queries = [[NSMutableDictionary alloc] init];
             [[self queryDictionary] setValue:queries forKey:className];
         }
         return queries;
@@ -146,9 +146,9 @@ static TSDKMutableDictionary *_classURLs;
     [self setClassURL:URL forClass:[self SDKType]];
 }
 
-+(TSDKMutableDictionary *)classURLs {
++(NSMutableDictionary *)classURLs {
     if (!_classURLs) {
-        _classURLs = [[TSDKMutableDictionary alloc] init];
+        _classURLs = [[NSMutableDictionary alloc] init];
     }
     return _classURLs;
 }
@@ -176,7 +176,7 @@ static TSDKMutableDictionary *_classURLs;
     self = [super init];
     if (self) {
         _collection = [[TSDKCollectionJSON alloc] init];
-        _changedValues = [[TSDKMutableDictionary alloc] init];
+        _changedValues = [[NSMutableDictionary alloc] init];
         _logHeader = NO;
         _lastUpdate = nil;
     }
@@ -194,7 +194,7 @@ static TSDKMutableDictionary *_classURLs;
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
     
     TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
-    newCollection.data = [TSDKMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
     newCollection.type = originalObject.collection.type;
     
     NSArray *allKeys = [[newCollection data] allKeys];
@@ -827,7 +827,6 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             NSArray *result = nil;
             if (success) {
                 if ([[objects collection] isKindOfClass:[NSArray class]]) {
@@ -843,11 +842,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 [TSDKNotifications postRefreshedObjectCollection:result];
             }
             if (completion) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(success, complete, result, error);
-                });
+                completion(success, complete, result, error);
             }
-        });
     }];
     
     

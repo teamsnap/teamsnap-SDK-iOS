@@ -21,7 +21,6 @@
 #if TARGET_OS_IPHONE
 #import <SafariServices/SafariServices.h>
 #endif
-#import "TSDKMutableDictionary.h"
 
 @interface TSDKTeamSnap()
 
@@ -107,7 +106,7 @@
 - (NSDictionary *)queryDictionaryForReturnURL:(NSURL *)URL {
     NSString *query = URL.fragment;
     NSArray *queryComponents = [query componentsSeparatedByString:@"&"];
-    TSDKMutableDictionary *queryDictionary = [[TSDKMutableDictionary alloc] init];
+    NSMutableDictionary *queryDictionary = [[NSMutableDictionary alloc] init];
     for (NSString *part in queryComponents) {
         NSArray *param = [part componentsSeparatedByString:@"="];
         if (param.count == 2) {
@@ -215,7 +214,7 @@
             NSArray *plans = nil;
             if (success) {
                 plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                TSDKMutableDictionary *tempPlanDictionary = [[TSDKMutableDictionary alloc] init];
+                NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
                 for (TSDKPlan *plan in plans) {
                     [tempPlanDictionary setObject:plan forKey:plan.objectIdentifier];
                 }
@@ -273,7 +272,7 @@
     } else {
         [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             NSArray *planObjcts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-            TSDKMutableDictionary *tempPlans = [[TSDKMutableDictionary alloc] init];
+            NSMutableDictionary *tempPlans = [[NSMutableDictionary alloc] init];
             for (TSDKPlan *plan in planObjcts) {
                 [tempPlans setObject:plan forKey:plan.objectIdentifier];
             }

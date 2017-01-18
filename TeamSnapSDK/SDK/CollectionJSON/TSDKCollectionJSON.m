@@ -13,7 +13,6 @@
 #import "NSString+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
 #import "TSDKLogging.h"
-#import "TSDKMutableDictionary.h"
 
 @interface TSDKCollectionJSON()
 
@@ -42,7 +41,7 @@
         self.version = nil;
         self.rel = nil;
         self.links = [[NSDictionary alloc] init];
-        self.data = [[TSDKMutableDictionary alloc] init];
+        self.data = [[NSMutableDictionary alloc] init];
         self.commands = [[NSDictionary alloc] init];
         self.queries = [[NSDictionary alloc] init];
         _collection = nil;
@@ -131,7 +130,7 @@
     }
     
     NSArray *links = [NSArray arrayWithArray:[collection objectForKey:@"links"]];
-    TSDKMutableDictionary *tempLinks = [[TSDKMutableDictionary alloc] init];
+    NSMutableDictionary *tempLinks = [[NSMutableDictionary alloc] init];
     
     for (NSDictionary *link in links) {
         if (![link objectForKey:@"href"] || ![link objectForKey:@"rel"]) {
@@ -174,7 +173,7 @@
             [TSDKCollectionObject setTemplate:template.data forClass:[collectionJSON type]];
         }
     }
-    TSDKMutableDictionary *commandsTempDictionary = [[TSDKMutableDictionary alloc] init];
+    NSMutableDictionary *commandsTempDictionary = [[NSMutableDictionary alloc] init];
     if ([collection objectForKey:@"commands"]) {
         for (NSDictionary *commandDictionary in [collection objectForKey:@"commands"]) {
             TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
@@ -183,7 +182,7 @@
     }
     self.commands = [commandsTempDictionary copy];
     
-    TSDKMutableDictionary *queriesTempDictionary = [[TSDKMutableDictionary alloc] init];
+    NSMutableDictionary *queriesTempDictionary = [[NSMutableDictionary alloc] init];
     if ([collection objectForKey:@"queries"]) {
         for (NSDictionary *queryDictionary in [collection objectForKey:@"queries"]) {
             TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];

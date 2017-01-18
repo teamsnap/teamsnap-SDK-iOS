@@ -30,9 +30,6 @@
 		5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5699E2791C90A6EE0061EC1D /* TSDKMessage.m */; };
 		569CFAC01D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h in Headers */ = {isa = PBXBuildFile; fileRef = 569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */; };
 		569CFAC11D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */; };
-		56B1656F1E2D769400A9F45D /* TSDKMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 56B1656D1E2D769400A9F45D /* TSDKMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56B165701E2D769400A9F45D /* TSDKMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B1656E1E2D769400A9F45D /* TSDKMutableDictionary.m */; };
-		56B165721E2D7F8A00A9F45D /* TSDKMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 56B1656D1E2D769400A9F45D /* TSDKMutableDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
@@ -386,8 +383,6 @@
 		5699E2791C90A6EE0061EC1D /* TSDKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMessage.m; path = Messages/TSDKMessage.m; sourceTree = "<group>"; };
 		569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TSDKConvenience.h"; sourceTree = "<group>"; };
 		569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+TSDKConvenience.m"; sourceTree = "<group>"; };
-		56B1656D1E2D769400A9F45D /* TSDKMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKMutableDictionary.h; sourceTree = "<group>"; };
-		56B1656E1E2D769400A9F45D /* TSDKMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKMutableDictionary.m; sourceTree = "<group>"; };
 		56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKSmsGateway.h; sourceTree = "<group>"; };
 		56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSmsGateway.m; sourceTree = "<group>"; };
 		56E7BA301DFB175500FB1BD6 /* TSDKShortPropertyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKShortPropertyTest.h; path = ../TeamSnapSDK/TSDKShortPropertyTest.h; sourceTree = "<group>"; };
@@ -847,8 +842,6 @@
 				964E1ACF1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m */,
 				96AF8E741E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h */,
 				96AF8E751E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m */,
-				56B1656D1E2D769400A9F45D /* TSDKMutableDictionary.h */,
-				56B1656E1E2D769400A9F45D /* TSDKMutableDictionary.m */,
 			);
 			path = Conveniences;
 			sourceTree = "<group>";
@@ -1132,7 +1125,6 @@
 				964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */,
 				969E80C31BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.h in Headers */,
 				969E80BD1BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.h in Headers */,
-				56B1656F1E2D769400A9F45D /* TSDKMutableDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,7 +1155,6 @@
 				96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */,
 				96B47F211BADB4410035F2CC /* TSDKAssignment.h in Headers */,
 				96B47F3F1BADB4410035F2CC /* TSDKTeamFee.h in Headers */,
-				56B165721E2D7F8A00A9F45D /* TSDKMutableDictionary.h in Headers */,
 				96B47F6B1BADB4AA0035F2CC /* TSDKProfileTimer.h in Headers */,
 				96B47F691BADB4A10035F2CC /* TSPCache.h in Headers */,
 				969B7EA31C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
@@ -1413,7 +1404,6 @@
 				969E80CE1BAAE7AB00CA518F /* TSDKStatisticDatum.m in Sources */,
 				969B7EB91C7CA9F800FD3EA0 /* TSDKTeamMediumComment.m in Sources */,
 				969E80C01BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
-				56B165701E2D769400A9F45D /* TSDKMutableDictionary.m in Sources */,
 				969B7EA41C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */,
 				96AF8E771E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m in Sources */,
 				969E80D21BAAE7AB00CA518F /* TSDKTeamStatistic.m in Sources */,

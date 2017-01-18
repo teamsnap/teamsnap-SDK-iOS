@@ -13,7 +13,6 @@
 #import "TSPCache.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
-#import "TSDKMutableDictionary.h"
 
 @interface TSDKRootLinks()
 @property (nonatomic, assign) BOOL schemas;
@@ -40,7 +39,7 @@
             NSString *type = nil;
             if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"template"]) {
                 NSArray *templateArray = [[[schemaDictionary objectForKey:@"collection"] objectForKey:@"template"] objectForKey:@"data"];
-                TSDKMutableDictionary *template = [[TSDKMutableDictionary alloc] init];
+                NSMutableDictionary *template = [[NSMutableDictionary alloc] init];
                 for (NSDictionary *templateDictionary in templateArray) {
                     if ([templateDictionary[@"name"] isEqualToString:@"type"]) {
                         type = templateDictionary[@"value"];
