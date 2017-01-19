@@ -37,13 +37,13 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.href = nil;
-        self.version = nil;
-        self.rel = nil;
-        self.links = [[NSDictionary alloc] init];
-        self.data = [[NSMutableDictionary alloc] init];
-        self.commands = [[NSDictionary alloc] init];
-        self.queries = [[NSDictionary alloc] init];
+        _href = nil;
+        _version = nil;
+        _rel = nil;
+        _links = [[NSDictionary alloc] init];
+        _data = [[NSMutableDictionary alloc] init];
+        _commands = [[NSDictionary alloc] init];
+        _queries = [[NSDictionary alloc] init];
         _collection = nil;
         _errorCode = NSNotFound;
     }

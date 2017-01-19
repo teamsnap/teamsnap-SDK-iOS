@@ -814,10 +814,15 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                for (TSDKCollectionObject *object in result) {
+                    [TSDKNotifications postRefreshedObject:object];
+                }
             }
         }
         if (result == nil) {
             result = [[NSArray alloc] init];
+        } else {
+            [TSDKNotifications postRefreshedObjectCollection:result];
         }
         if (completion) {
             completion(success, complete, result, error);

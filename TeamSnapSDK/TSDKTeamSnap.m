@@ -25,7 +25,6 @@
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
-@property (nonatomic, strong) NSDictionary *plans;
 @property (nonatomic, strong) SFSafariViewController *loginView;
 
 @end
@@ -206,29 +205,6 @@
     }];
 }
 
-- (void)getPlansWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPlanArrayCompletionBlock)completion {
-    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
-        [TSDKDataRequest requestObjectsForPath:rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *plans = nil;
-            if (success) {
-                plans = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                NSMutableDictionary *tempPlanDictionary = [[NSMutableDictionary alloc] init];
-                for (TSDKPlan *plan in plans) {
-                    [tempPlanDictionary setObject:plan forKey:plan.objectIdentifier];
-                }
-                self.plans = [tempPlanDictionary copy];
-                [TSPCache saveDictionaryOfObjects:_plans ofType:[TSDKPlan class]];
-            }
-            if (plans == nil) {
-                plans = [[NSArray alloc] init];
-            }
-            if (completion) {
-                completion(success, complete, plans, error);
-            }
-        }];
-    }];
-}
-
 - (void)invitationStatusForEmailAddress:(NSString *)emailAddress withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInviteStatusCompletionBlock)completionBlock {
     [TSDKObjectsRequest invitationStatusForEmailAddress:emailAddress withCompletion:completionBlock];
 }
@@ -256,30 +232,6 @@
             }
         }];
     }];
-}
-
-- (TSDKPlan *)planWithId:(NSString *)planId {
-    return [_plans objectForKey:planId];
-}
-
-- (void)planForPlanId:(NSString *)planId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKPlan *plan))completion {
-    if (_plans && [_plans objectForKey:planId]) {
-        if (completion) {
-            completion([_plans objectForKey:planId]);
-        }
-    } else {
-        [TSDKDataRequest requestObjectsForPath:self.rootLinks.linkPlansAll withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *planObjcts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-            NSMutableDictionary *tempPlans = [[NSMutableDictionary alloc] init];
-            for (TSDKPlan *plan in planObjcts) {
-                [tempPlans setObject:plan forKey:plan.objectIdentifier];
-            }
-            self.plans = [tempPlans copy];
-            if (completion) {
-                completion([_plans objectForKey:planId]);
-            }
-        }];
-    }
 }
 
 #pragma mark - Cache

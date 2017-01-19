@@ -38,9 +38,6 @@
 - (void)invitationStatusForEmailAddress:(NSString * _Nonnull)emailAddress withConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKInviteStatusCompletionBlock _Nullable)completionBlock;
 - (void)sendPendingInvitesForEmailAddress:(NSString * _Nonnull)emailAddress withConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 - (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(nullable void (^)(TSDKTslPhotos * _Nullable TSDKTslPhotos))completion;
-- (void)getPlansWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPlanArrayCompletionBlock _Nullable)completion;
-- (TSDKPlan * _Nullable)planWithId:(NSString *_Nonnull)planId;
-- (void)planForPlanId:(NSString *_Nonnull)planId withConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(nullable void (^)(TSDKPlan * _Nullable plan))completion;
 - (void)setCachePathURL:(NSURL * _Nonnull)cachePath;
 - (void)setCacheTimeoutMinutes:(NSUInteger)timeoutMinutes;
 - (void)clearCache;
