@@ -40,7 +40,7 @@
 +(NSMutableDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
 +(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)commandName;
 
-+(NSMutableDictionary *_Nullable)queries;
++ (NSMutableDictionary *_Nullable)queries;
 +(TSDKCollectionQuery *_Nullable)queryForKey:(NSString *_Nonnull)commandName;
 +(NSMutableDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
 +(TSDKCollectionQuery *_Nullable)queryForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)queryName;

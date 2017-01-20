@@ -10,7 +10,7 @@
 
 @interface TSDKPublicFeatures : NSObject
 
-@property (strong, nonatomic) NSMutableDictionary *_Nullable features;
+@property (strong, nonatomic) NSDictionary *_Nullable features;
 
 - (instancetype _Nullable)initWithCollection:(NSDictionary *_Nonnull)objects;
 - (BOOL)apiSupportsTicketSubmission;

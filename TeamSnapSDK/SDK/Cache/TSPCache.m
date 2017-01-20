@@ -154,7 +154,7 @@ NSFileManager static *_fileManager = nil;
             }
         }
         if (resultDictionary.count >0 ) {
-            return resultDictionary;
+            return [resultDictionary copy];
         } else {
             return nil;
         }

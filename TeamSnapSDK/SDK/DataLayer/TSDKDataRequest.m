@@ -30,7 +30,7 @@ static NSString *clientId;
 static NSString *clientSecret;
 static NSString *_device;
 
-static NSMutableDictionary *_requestHeaders = nil;
+static NSDictionary *_requestHeaders = nil;
 static NSString *OAuthToken = nil;
 
 static NSRecursiveLock *accessDetailsLock = nil;
@@ -60,7 +60,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key {
-    [self.requestHeaders setObject:value forKey:key];
+    NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] initWithDictionary:self.requestHeaders];
+    [mutableRequestHeaders setObject:value forKey:key];
+    _requestHeaders = [mutableRequestHeaders copy];
 }
 
 #if TARGET_OS_IPHONE
@@ -100,12 +102,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 #endif
 
-+ (NSMutableDictionary *)requestHeaders {
++ (NSDictionary *)requestHeaders {
     if (!_requestHeaders) {
-        _requestHeaders = [[NSMutableDictionary alloc] init];
-        [_requestHeaders setObject:@"application/json" forKey:@"Accept"];
-        [_requestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
-        [_requestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
+        NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] init];
+        [mutableRequestHeaders setObject:@"application/json" forKey:@"Accept"];
+        [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
+        [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
         //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
         
         NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
@@ -114,12 +116,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
             *stop = q <= 0.5f;
         }];
-        [_requestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
+        [mutableRequestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
         
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         if (version) {
-            [_requestHeaders setObject:version forKey:@"X-Client-Version"];
+            [mutableRequestHeaders setObject:version forKey:@"X-Client-Version"];
         }
+        _requestHeaders = [mutableRequestHeaders copy];
     }
     return _requestHeaders;
 }
@@ -230,7 +233,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
                             userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
                         }
                         
-                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:[userInfo copy]];
                     }
                 }
                 
@@ -257,44 +260,43 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    
-    if (!URL) {
-        if (completionBlock) {
-            completionBlock(NO, NO, nil, nil);
-        }
-        return;
-    }
-    
-    NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
-
-    if (searchParamaters) {
-        NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
-        for (NSString *key in searchParamaters) {
-            id value = [searchParamaters objectForKey:key];
-            if([value isKindOfClass:[NSArray class]]) {
-                NSString *commaSeparatedString = [value componentsJoinedByString:@","];
-                [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
-            } else  {
-                [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
+        if (!URL) {
+            if (completionBlock) {
+                completionBlock(NO, NO, nil, nil);
             }
-            
+            return;
         }
-        NSString *separator = @"&";
-        if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
-            separator = @"?";
+        
+        NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
+        
+        if (searchParamaters) {
+            NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
+            for (NSString *key in searchParamaters) {
+                id value = [searchParamaters objectForKey:key];
+                if([value isKindOfClass:[NSArray class]]) {
+                    NSString *commaSeparatedString = [value componentsJoinedByString:@","];
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
+                } else  {
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
+                }
+                
+            }
+            NSString *separator = @"&";
+            if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
+                separator = @"?";
+            }
+            [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
         }
-        [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
-    }
-    
-    [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-        TSDKCollectionJSON *containerCollection = nil;
-        if ([objects isKindOfClass:[NSDictionary class]]) {
-            containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
-        }
-        if (completionBlock) {
-            completionBlock(success, complete, containerCollection, error);
-        }
-    }];
+        
+        [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+                TSDKCollectionJSON *containerCollection = nil;
+                if ([objects isKindOfClass:[NSDictionary class]]) {
+                    containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
+                }
+                if (completionBlock) {
+                        completionBlock(success, complete, containerCollection, error);
+                }
+        }];
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {

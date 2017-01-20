@@ -65,7 +65,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 
-+(NSDictionary *)commandDictionary {
++(NSMutableDictionary *)commandDictionary {
     if (!_commandDictionary) {
         _commandDictionary = [[NSMutableDictionary alloc] init];
     }
@@ -97,7 +97,7 @@ static NSMutableDictionary *_classURLs;
     return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
 }
 
-+(NSDictionary *)queryDictionary {
++(NSMutableDictionary *)queryDictionary {
     if (!_queryDictionary) {
         _queryDictionary = [[NSMutableDictionary alloc] init];
     }
@@ -814,10 +814,15 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                for (TSDKCollectionObject *object in result) {
+                    [TSDKNotifications postRefreshedObject:object];
+                }
             }
         }
         if (result == nil) {
             result = [[NSArray alloc] init];
+        } else {
+            [TSDKNotifications postRefreshedObjectCollection:result];
         }
         if (completion) {
             completion(success, complete, result, error);
@@ -827,21 +832,23 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        NSArray *result = nil;
-        if (success) {
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                for (TSDKCollectionObject *object in result) {
-                    [TSDKNotifications postRefreshedObject:object];
+            NSArray *result = nil;
+            if (success) {
+                if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                    result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                    for (TSDKCollectionObject *object in result) {
+                        [TSDKNotifications postRefreshedObject:object];
+                    }
                 }
             }
-        }
-        if (result == nil) {
-            result = [[NSArray alloc] init];
-        }
-        if (completion) {
-            completion(success, complete, result, error);
-        }
+            if (result == nil) {
+                result = [[NSArray alloc] init];
+            } else {
+                [TSDKNotifications postRefreshedObjectCollection:result];
+            }
+            if (completion) {
+                completion(success, complete, result, error);
+            }
     }];
     
     

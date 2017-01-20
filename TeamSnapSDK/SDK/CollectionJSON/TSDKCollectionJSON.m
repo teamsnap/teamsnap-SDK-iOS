@@ -14,6 +14,10 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKLogging.h"
 
+@interface TSDKCollectionJSON()
+
+@end
+
 @implementation TSDKCollectionJSON
 
 +(NSDictionary *)dictionaryToCollectionJSON:(NSDictionary *)dictionary {
@@ -33,13 +37,13 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.href = nil;
-        self.version = nil;
-        self.rel = nil;
-        self.links = [[NSMutableDictionary alloc] init];
-        self.data = [[NSMutableDictionary alloc] init];
-        self.commands = [[NSMutableDictionary alloc] init];
-        self.queries = [[NSMutableDictionary alloc] init];
+        _href = nil;
+        _version = nil;
+        _rel = nil;
+        _links = [[NSDictionary alloc] init];
+        _data = [[NSMutableDictionary alloc] init];
+        _commands = [[NSDictionary alloc] init];
+        _queries = [[NSDictionary alloc] init];
         _collection = nil;
         _errorCode = NSNotFound;
     }
@@ -126,12 +130,15 @@
     }
     
     NSArray *links = [NSArray arrayWithArray:[collection objectForKey:@"links"]];
+    NSMutableDictionary *tempLinks = [[NSMutableDictionary alloc] init];
+    
     for (NSDictionary *link in links) {
         if (![link objectForKey:@"href"] || ![link objectForKey:@"rel"]) {
             DLog(@"No Value");
         }
-        [self.links setObject:[link objectForKey:@"href"] forKey:[link objectForKey:@"rel"]];
+        [tempLinks setObject:[link objectForKey:@"href"] forKey:[link objectForKey:@"rel"]];
     }
+    self.links = [tempLinks copy];
     
     if ([self.data objectForKey:@"type"]) {
         self.type = [self.data objectForKey:@"type"];
@@ -166,19 +173,24 @@
             [TSDKCollectionObject setTemplate:template.data forClass:[collectionJSON type]];
         }
     }
-    
+    NSMutableDictionary *commandsTempDictionary = [[NSMutableDictionary alloc] init];
     if ([collection objectForKey:@"commands"]) {
         for (NSDictionary *commandDictionary in [collection objectForKey:@"commands"]) {
             TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
-            [_commands setObject:command forKey:command.rel];
+            [commandsTempDictionary setObject:command forKey:command.rel];
         }
     }
+    self.commands = [commandsTempDictionary copy];
+    
+    NSMutableDictionary *queriesTempDictionary = [[NSMutableDictionary alloc] init];
     if ([collection objectForKey:@"queries"]) {
         for (NSDictionary *queryDictionary in [collection objectForKey:@"queries"]) {
             TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];
-            [_queries setObject:query forKey:query.rel];
+            [queriesTempDictionary setObject:query forKey:query.rel];
         }
     }
+    self.queries = [queriesTempDictionary copy];
+    
     if ([collection objectForKey:@"error"] && [[collection objectForKey:@"error"] isKindOfClass:[NSDictionary class]]) {
         NSDictionary *errorDictionary = [collection objectForKey:@"error"];
         if ([errorDictionary objectForKey:@"title"] && [[errorDictionary objectForKey:@"title"] isKindOfClass:[NSString class]]) {
