@@ -39,6 +39,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionMembers;
 @property (nonatomic, weak) NSURL *_Nullable linkTslMetadatum;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisions;
+@property (nonatomic, weak) NSURL *_Nullable linkActiveDivisions;
 
 // Non Auto-generated
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
@@ -69,5 +70,6 @@
 - (void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKDivisionMembersArrayCompletionBlock _Nullable)completion;
 -(void)getTslMetadatumWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 - (void)getDivisionsWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getActiveDivisionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end

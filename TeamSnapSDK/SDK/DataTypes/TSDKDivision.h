@@ -38,6 +38,7 @@
 @property (nonatomic, assign) NSInteger activeChildrenCount; //Example: 2
 @property (nonatomic, weak) NSURL *_Nullable linkParent;
 @property (nonatomic, weak) NSURL *_Nullable linkChildren;
+@property (nonatomic, weak) NSURL *_Nullable linkActiveChildren;
 @property (nonatomic, weak) NSURL *_Nullable linkAncestors;
 @property (nonatomic, weak) NSURL *_Nullable linkDescendants;
 @property (nonatomic, weak) NSURL *_Nullable linkRegistrationForms;
@@ -87,5 +88,6 @@
 -(void)getDivisionEventsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getDivisionPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getDivisionLogoPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getActiveChildrenWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
