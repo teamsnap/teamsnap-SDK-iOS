@@ -32,8 +32,43 @@
     NSDictionary *dictionary1 = @{@"name1":@"test1",@"int1":@1};
     NSDictionary *result1 = [TSDKCollectionJSON dictionaryToCollectionJSON:dictionary1];
     
-    NSDictionary *expectedResult = @{@"template":@{@"data":@[@{@"name":@"name1",@"value":@"test1"},@{@"name":@"int1",@"value":@1}]}};
-    XCTAssertEqualObjects(result1, expectedResult);
+    XCTAssertTrue(result1.count==1, "Unexpected top level dictionary size.");
+    
+    XCTAssertTrue([result1[@"template"] isKindOfClass:[NSDictionary class]], "Template should be a dictionary");
+    
+    XCTAssertTrue([result1[@"template"][@"data"] isKindOfClass:[NSArray class]], "Template should be a dictionary");
+    
+    NSArray *data = result1[@"template"][@"data"];
+    
+    XCTAssertTrue(data.count==2, "Data should contain 2 name/value pairs");
+    
+    BOOL lFound = NO;
+    
+    NSString *expectedName = @"name1";
+    NSString *expectedValue = @"test1";
+    for (NSDictionary *nameValuePair in data) {
+        if (([nameValuePair[@"name"] isEqualToString:expectedName]) &&
+            ([nameValuePair[@"value"] isEqualToString:expectedValue])) {
+            lFound = YES;
+            break;
+        }
+    }
+    
+    XCTAssertTrue(lFound, "Name 1 not found or value incorrect in dictionary");
+    
+    lFound = NO;
+    
+    expectedName = @"int1";
+    NSNumber *expectedIntValue = @1;
+    for (NSDictionary *nameValuePair in data) {
+        if (([nameValuePair[@"name"] isEqualToString:expectedName]) &&
+            ([nameValuePair[@"value"] isEqualToValue:expectedIntValue])) {
+            lFound = YES;
+            break;
+        }
+    }
+    
+    XCTAssertTrue(lFound, "1 not found or value incorrect in dictionary");
 }
 
 - (void)testInitWithJSON{
