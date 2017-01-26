@@ -11,7 +11,7 @@
 
 @implementation TSDKDivision
 
-@dynamic sportId, leagueUrl, isArchived, postalCode, timeZoneOffset, country, updatedAt, leftBoundary, rightBoundary, parentId, isDeletable, rootId, timeZoneIanaName, isDisabled, name, planId, leagueName, timeZoneDescription, seasonName, locationCountry, timeZone, isAncestorArchived, createdAt, parentDivisionName, billingAddress, allTeamsCount, activeTeamsCount, allChildrenCount, activeChildrenCount, linkParent, linkChildren, linkAncestors, linkDescendants, linkRegistrationForms, linkPlan, linkTeams, linkDivisionEvents, linkDivisionPreferences, linkDivisionLogoPhotoFile, linkActiveTeams, linkActiveChildren;
+@dynamic sportId, leagueUrl, isArchived, postalCode, timeZoneOffset, country, updatedAt, leftBoundary, rightBoundary, parentId, isDeletable, rootId, timeZoneIanaName, isDisabled, name, planId, leagueName, timeZoneDescription, seasonName, locationCountry, timeZone, isAncestorArchived, createdAt, parentDivisionName, billingAddress, allTeamsCount, activeTeamsCount, allChildrenCount, activeChildrenCount, linkParent, linkChildren, linkAncestors, linkDescendants, linkRegistrationForms, linkPlan, linkTeams, linkDivisionEvents, linkDivisionPreferences, linkDivisionLogoPhotoFile, linkActiveTeams, linkActiveChildren, activeDescendantsCount;
 
 + (NSString *)SDKType {
     return @"division";

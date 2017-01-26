@@ -36,6 +36,7 @@
 @property (nonatomic, assign) NSInteger activeTeamsCount; //Example: 17
 @property (nonatomic, assign) NSInteger allChildrenCount; //Example: 2
 @property (nonatomic, assign) NSInteger activeChildrenCount; //Example: 2
+@property (nonatomic, assign) NSInteger activeDescendantsCount; //Example: 0 
 @property (nonatomic, weak) NSURL *_Nullable linkParent;
 @property (nonatomic, weak) NSURL *_Nullable linkChildren;
 @property (nonatomic, weak) NSURL *_Nullable linkActiveChildren;
