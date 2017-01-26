@@ -1214,7 +1214,6 @@
 				969E803C1BAAE62D00CA518F /* Frameworks */,
 				969E803D1BAAE62D00CA518F /* Headers */,
 				969E803E1BAAE62D00CA518F /* Resources */,
-				969E81001BAAE8DA00CA518F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1338,19 +1337,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		969E81001BAAE8DA00CA518F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/${PROJECT_DIR}/TeamSnapSDK/ios-build-framework-script.sh";
-		};
 		96BB7B9F1BAEDCA4007CCF1A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
