@@ -114,6 +114,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkForumPosts;
 @property (nonatomic, weak) NSURL *_Nullable linkContacts;
 @property (nonatomic, weak) NSURL *_Nullable linkCountries;
+@property (nonatomic, weak) NSURL *_Nullable linkAuthorizationUserRegistrationInitializations;
 
 //+(void)actionWelcomeClientid:(NSString *)clientId redirectUri:(NSString *)redirectUri emailAddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock _Nullable)completion; //Send a welcome email to an unregistered user to start the registration process
 //+(void)actionInitiateRegistrationClientid:(NSString *)clientId redirectUri:(NSString *)redirectUri emailAddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock _Nullable)completion; //Send a signup email to an unregistered user to start the registration process
