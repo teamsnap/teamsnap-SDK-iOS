@@ -36,9 +36,12 @@
         
         NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
         TSDKUser * user = [[TSDKTeamSnap sharedInstance] teamSnapUser];
+        NSString *fileName = [NSString stringWithFormat:@"%@_0_%@.png", team.objectIdentifier, [[NSUUID UUID] UUIDString]];
         
-        NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@.png", team.objectIdentifier, event.objectIdentifier, [[NSUUID UUID] UUIDString]];
-        
+        if (event) {
+            fileName = [NSString stringWithFormat:@"%@_%@_%@.png", team.objectIdentifier, event.objectIdentifier, [[NSUUID UUID] UUIDString]];
+        }
+
         if (collectionCommand && collectionCommand.href && collectionCommand.href.length>0 && user) {
             [collectionCommand.data setObject:team.objectIdentifier forKey:@"team_id"];
             if (event) {
