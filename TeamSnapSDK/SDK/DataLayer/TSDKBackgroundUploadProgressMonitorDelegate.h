@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSNumber *_Nullable totalBytesExpectedToSend;
 @property (nonatomic, assign) BOOL complete;
 @property (nonatomic, assign) BOOL success;
+@property (nonatomic, strong) NSURL *_Nullable uploadURL;
 
 -(NSData *_Nullable)responseData;
 -(NSString *_Nullable)responseString;

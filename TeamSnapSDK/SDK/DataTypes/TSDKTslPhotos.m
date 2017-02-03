@@ -23,7 +23,7 @@
     return @"tsl_photo";
 }
 
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadTSLImageURL:(nonnull NSURL *)photoFileURL team:(nonnull TSDKTeam *)team event:(nullable TSDKEvent *)event uploadDetailsCallback:(nullable TSLImageUploadDetailsCompletionBlock)uploadDetailsCallback progress:(nullable TSDKUploadProgressBlock)progressBlock {
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadTSLImageURL:(nonnull NSURL *)photoFileURL team:(nonnull TSDKTeam *)team event:(nullable TSDKEvent *)event progress:(nullable TSDKUploadProgressBlock)progressBlock {
     NSURL *url = [[[TSDKTeamSnap sharedInstance] rootLinks] linkTslPhotos];
     
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
@@ -55,9 +55,8 @@
         NSURL *photoPostURL = [NSURL URLWithString:collectionCommand.href];
         
         NSURL *destinatonFileURL = [NSURL URLWithString:fileName relativeToURL:[NSURL URLWithString:hostPrefix]];
-        if (uploadDetailsCallback) {
-            uploadDetailsCallback(success, destinatonFileURL, error);
-        }
+        
+        backgroundUploadDelegate.uploadURL = destinatonFileURL;
         
         [TSDKDataRequest postDictionary:collectionCommand.data toURL:photoPostURL delegate:backgroundUploadDelegate];
     }];
