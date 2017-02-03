@@ -17,6 +17,6 @@ typedef void (^ TSLImageUploadDetailsCompletionBlock)(BOOL success,NSURL *_Nulla
 @property (nonatomic, weak) NSURL *_Nullable linkRoot;
 @property (nonatomic, weak) NSURL *_Nullable linkSelf;
 
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadTSLImageURL:(nonnull NSURL *)photoFileURL team:(nonnull TSDKTeam *)team event:(nullable TSDKEvent *)event uploadDetailsCallback:(nullable TSLImageUploadDetailsCompletionBlock)uploadDetailsCallback progress:(nullable TSDKUploadProgressBlock)progressBloc;
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)uploadTSLImageURL:(nonnull NSURL *)photoFileURL team:(nonnull TSDKTeam *)team event:(nullable TSDKEvent *)event progress:(nullable TSDKUploadProgressBlock)progressBloc;
 
 @end
