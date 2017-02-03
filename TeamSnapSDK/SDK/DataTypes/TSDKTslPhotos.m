@@ -29,6 +29,7 @@
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:nil method:@"GET" configuration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+        if(success) {
         TSDKCollectionJSON *collection = [[TSDKCollectionJSON alloc] initWithJSON:objects];
         
         NSString *hostPrefix = [collection.data objectForKey:@"host_prefix"];
@@ -55,10 +56,15 @@
         NSURL *photoPostURL = [NSURL URLWithString:collectionCommand.href];
         
         NSURL *destinatonFileURL = [NSURL URLWithString:fileName relativeToURL:[NSURL URLWithString:hostPrefix]];
-        
-        backgroundUploadDelegate.uploadURL = destinatonFileURL;
-        
-        [TSDKDataRequest postDictionary:collectionCommand.data toURL:photoPostURL delegate:backgroundUploadDelegate];
+            
+            backgroundUploadDelegate.uploadURL = destinatonFileURL;
+            
+            [TSDKDataRequest postDictionary:collectionCommand.data toURL:photoPostURL delegate:backgroundUploadDelegate];
+        } else {
+            if(progressBlock) {
+                progressBlock(nil, error);
+            }
+        }
     }];
     
     return backgroundUploadDelegate;
