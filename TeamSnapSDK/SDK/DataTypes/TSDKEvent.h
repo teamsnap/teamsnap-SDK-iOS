@@ -6,6 +6,20 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef enum TSDKRepeatingEventTypeCode : NSInteger  {
+    TSDKEventDoesNotRepeat = 0,
+    TSDKEventRepeatsDaily = 1,
+    TSDKEventRepeatsWeekly = 2
+} SDKRepeatingEventTypeCode;
+
+typedef enum TSDKRepeatingEventIncludeEvents : NSInteger {
+    TSDKExcludeOtherEvents = 0,
+    TSDKIncludeAllEvents = 1,
+    TSDKIncludeAllFutureEvents =2
+} TSDKRepeatingEventIncludeEvents;
+
+
+
 @interface TSDKEvent : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable uniform; //Example:
