@@ -39,11 +39,13 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 @property (nonatomic, weak) NSString * _Nullable divisionId; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable senderId; //Example: 166
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 11
+@property (nonatomic, assign) NSInteger threadUnreadCount;
 @property (nonatomic, weak) NSURL * _Nullable linkMember;
 @property (nonatomic, weak) NSURL * _Nullable linkSender;
 @property (nonatomic, weak) NSURL * _Nullable linkDivision;
 @property (nonatomic, weak) NSURL * _Nullable linkTeam;
 @property (nonatomic, weak) NSURL * _Nullable linkUser;
+@property (nonatomic, weak) NSURL *_Nullable linkMessageReplies;
 
 // not auto generated
 + (void)actionMarkMessagesAsRead:(NSArray <TSDKMessage *> * _Nonnull)messages completion:(TSDKCompletionBlock _Nullable)completion;
@@ -59,6 +61,6 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
 - (void)getSenderWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)getTeamWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 - (void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nullable)completion;
-
+-(void)getMessageRepliesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end

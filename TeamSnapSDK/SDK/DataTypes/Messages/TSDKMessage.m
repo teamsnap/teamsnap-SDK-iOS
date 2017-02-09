@@ -17,7 +17,7 @@
 
 @implementation TSDKMessage
 
-@dynamic status, memberId, userId, updatedAt, subject, senderType, recipientNames, flags, body, pushed, contactId, messageId, emailed, readAt, senderName, recipients, createdAt, messageType, smsed, divisionId, senderId, teamId, linkMember, linkSender, linkDivision, linkTeam, linkUser;
+@dynamic status, memberId, userId, updatedAt, subject, senderType, recipientNames, flags, body, pushed, contactId, messageId, emailed, readAt, senderName, recipients, createdAt, messageType, smsed, divisionId, senderId, teamId, threadUnreadCount, linkMember, linkSender, linkDivision, linkTeam, linkUser, linkMessageReplies;
 
 + (NSString *)SDKType {
     return @"message";
