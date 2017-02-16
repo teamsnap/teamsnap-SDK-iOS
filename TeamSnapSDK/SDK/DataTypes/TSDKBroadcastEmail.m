@@ -50,7 +50,7 @@
     return self;
 }
 
-- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSString *_Nonnull)teamId recipients:(NSArray <TSDKMember *>*)recipients sender:(id<TSDKMessageSender>)sender isDraft:(BOOL)isDraft {
+- (instancetype)initWithBody:(NSString *)body subject:(NSString *)subject teamId:(NSString *_Nonnull)teamId recipientIDs:(NSArray <NSString *>*)recipientIDs sender:(id<TSDKMessageSender>)sender isDraft:(BOOL)isDraft replyTo:(NSString *)sourceMessageId {
     self = [super init];
     if(self) {
         [super setString:body forKey:@"body"];
@@ -60,13 +60,14 @@
         if([sender respondsToSelector:@selector(contactId)]) {
             [super setString:[sender contactId] forKey:@"contact_id"];
         }
-        NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
-        for(TSDKMember *recipient in recipients) {
-            [recipientIDs addObject:recipient.objectIdentifier];
-        }
+        
         [super setBool:isDraft forKey:@"is_draft"];
         
         [super setArray:recipientIDs forKey:@"recipient_ids"];
+        
+        if(sourceMessageId.length) {
+            [super setString:sourceMessageId forKey:@"reply_to_message_source_id"];
+        }
     }
     return self;
 }
