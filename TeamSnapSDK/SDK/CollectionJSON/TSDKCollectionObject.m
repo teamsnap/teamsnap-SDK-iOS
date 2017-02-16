@@ -754,12 +754,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         __typeof__(self) __weak weakSelf = self;
         
         [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
-                [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
-            }
             if (success) {
                 [weakSelf.changedValues removeAllObjects];
-                [TSDKNotifications postNewObject:self];
+                if ([objects.collection isKindOfClass:[NSArray class]]) {
+                    NSArray *returnedCollections = (NSArray *)objects.collection;
+                    if ([returnedCollections count]==1) {
+                        [weakSelf setCollection:[returnedCollections objectAtIndex:0]];
+                        [TSDKNotifications postNewObject:self];
+                    } else {
+                        NSArray *returnedObjects = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                        for (TSDKCollectionObject *object in returnedObjects) {
+                            [TSDKNotifications postNewObject:object];
+                        }
+                    }
+                }
             }
             if (completion) {
                 completion(success, weakSelf, error);
