@@ -64,6 +64,7 @@
 #import "TSDKMemberAssignment.h"
 #import "TSDKApnDevice.h"
 #import "TSDKSmsGateway.h"
+#import "TSDKRootLinks.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
@@ -206,6 +207,70 @@ static NSArray *knownCompletionTypes;
             }
         }];
     }
+}
+
++ (NSDictionary *)eventsParametersWithTeams:(NSArray *)teams pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate {
+
+    NSString *teamIds = [self teamIdsParameterForTeams:teams];
+    NSMutableDictionary *paramaters = [[NSMutableDictionary alloc] init];
+    [paramaters setValue:teamIds forKey:@"team_id"];
+    if (pageNumber) {
+        [paramaters setValue:[pageNumber stringValue] forKey:@"page_number"];
+    }
+    if (pageSize) {
+        [paramaters setValue:[pageSize stringValue] forKey:@"page_size"];
+    }
+    if (startDate) {
+        [paramaters setValue:[startDate RCF3339DateTimeString] forKey:@"started_after"];
+    }
+    if (endDate) {
+        [paramaters setValue:[endDate RCF3339DateTimeString] forKey:@"started_before"];
+    }
+    
+    return [paramaters copy];
+}
+
+
++ (NSString *)teamIdsParameterForTeams:(NSArray *)teams {
+    
+    NSMutableArray *teamIds = [NSMutableArray array];
+    for (TSDKTeam *team in teams) {
+        [teamIds addObject:team.objectIdentifier];
+    }
+    return [teamIds componentsJoinedByString:@","];
+}
+
++ (void)listEventsForTeams:(NSArray *)teams pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate rootLinks:(TSDKRootLinks *)rootLinks completion:(TSDKArrayCompletionBlock)completion {
+
+    NSString *eventsBaseURL = rootLinks.linkEvents.absoluteString;
+    NSURL *eventsURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/search", eventsBaseURL]];
+    NSDictionary *parameters = [self eventsParametersWithTeams:teams pageNumber:pageNumber pageSize:pageSize startDate:startDate endDate:endDate];
+    
+    [TSDKDataRequest requestObjectsForPath:eventsURL searchParamaters:parameters sendDataDictionary:nil method:nil withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSArray *parsedObjects;
+        if (success) {
+            parsedObjects = [self SDKObjectsFromCollection:objects];
+        }
+        
+        if (parsedObjects == nil) {
+            parsedObjects = [[NSArray alloc] init];
+        }
+        
+        if (completion) {
+            completion(success, complete, parsedObjects, error);
+        }
+    }];
+}
+
++ (void)listEventsForTeams:(NSArray *)teamIds pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKArrayCompletionBlock)completion {
+    
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+        if (rootLinks) {
+            [self listEventsForTeams:teamIds pageNumber:pageNumber pageSize:pageSize startDate:startDate endDate:endDate rootLinks:rootLinks completion:completion];
+        } else if (completion) {
+            completion(NO, NO, nil, nil);
+        }
+    }];
 }
 
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {
