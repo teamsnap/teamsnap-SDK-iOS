@@ -210,7 +210,7 @@ static NSArray *knownCompletionTypes;
 }
 
 + (NSDictionary *)eventsParametersWithTeams:(NSArray *)teams pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate {
-
+    
     NSString *teamIds = [self teamIdsParameterForTeams:teams];
     NSMutableDictionary *paramaters = [[NSMutableDictionary alloc] init];
     [paramaters setValue:teamIds forKey:@"team_id"];
@@ -263,6 +263,11 @@ static NSArray *knownCompletionTypes;
 }
 
 + (void)listEventsForTeams:(NSArray<TSDKTeam*>*)teamIds pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKEventArrayCompletionBlock)completion {
+    
+    // these values are checked before using but we should assert their expected value right away
+    NSParameterAssert(pageNumber);
+    NSParameterAssert(pageSize);
+    NSParameterAssert(startDate);
     
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
