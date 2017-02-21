@@ -13,6 +13,7 @@
 #import "NSMutableDictionary+refreshCollectionData.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
+#import "NSURL+TSDKConveniences.h"
 
 @interface TSDKUser()
 
@@ -24,7 +25,7 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions, linkContacts;
 
 + (NSString *)SDKType {
     return @"user";
@@ -199,6 +200,36 @@
             completion(success, complete, teams, error);
         }
     }];
+}
+
+- (NSURL *)linkMessageDataWithType:(TSDKMessageTypeFilter)type {
+    NSURLQueryItem *messageType;
+    switch (type) {
+        case TSDKMessageTypeFilterAll:
+            messageType = [NSURLQueryItem queryItemWithName:@"message_type" value:@"alert,email"];
+            break;
+        case TSDKMessageTypeFilterAlert:
+            messageType = [NSURLQueryItem queryItemWithName:@"message_type" value:@"alert"];
+            break;
+        case TSDKMessageTypeFilterEmail:
+            messageType = [NSURLQueryItem queryItemWithName:@"message_type" value:@"email"];
+            break;
+        default:
+            break;
+    }
+    return [self.linkMessageData URLByAppendingArrayOfQueryItems:@[messageType]];
+}
+
+- (void)getMessageDatumWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
+    
+    NSDictionary *searchParams;
+    if(type == TSDKMessageTypeAlert) {
+        searchParams = @{@"message_type": @"alert"};
+    } else if(type == TSDKMessageTypeEmail) {
+        searchParams = @{@"message_type": @"email"};
+    }
+    
+    [self arrayFromLink:self.linkMessageData searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {

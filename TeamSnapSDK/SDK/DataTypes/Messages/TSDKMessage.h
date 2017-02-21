@@ -16,6 +16,12 @@ typedef NS_ENUM(NSUInteger, TSDKMessageType) {
     TSDKMessageTypeUnknown
 };
 
+typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
+    TSDKMessageTypeFilterAll,
+    TSDKMessageTypeFilterEmail,
+    TSDKMessageTypeFilterAlert,
+};
+
 @interface TSDKMessage : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger flags; //Example: 128
