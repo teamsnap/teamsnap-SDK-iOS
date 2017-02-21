@@ -209,16 +209,16 @@ static NSArray *knownCompletionTypes;
     }
 }
 
-+ (NSDictionary *)eventsParametersWithTeams:(NSArray *)teams pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate {
++ (NSDictionary *)eventsParametersWithTeams:(NSArray *)teams pageNumber:(NSInteger)pageNumber pageSize:(NSInteger)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate {
     
     NSString *teamIds = [self teamIdsParameterForTeams:teams];
     NSMutableDictionary *paramaters = [[NSMutableDictionary alloc] init];
     [paramaters setValue:teamIds forKey:@"team_id"];
     if (pageNumber) {
-        [paramaters setValue:[pageNumber stringValue] forKey:@"page_number"];
+        [paramaters setValue:[@(pageNumber) stringValue] forKey:@"page_number"];
     }
     if (pageSize) {
-        [paramaters setValue:[pageSize stringValue] forKey:@"page_size"];
+        [paramaters setValue:[@(pageSize) stringValue] forKey:@"page_size"];
     }
     if (startDate) {
         [paramaters setValue:[startDate RCF3339DateTimeString] forKey:@"started_after"];
@@ -240,7 +240,7 @@ static NSArray *knownCompletionTypes;
     return [teamIds componentsJoinedByString:@","];
 }
 
-+ (void)listEventsForTeams:(NSArray *)teams pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate rootLinks:(TSDKRootLinks *)rootLinks completion:(TSDKArrayCompletionBlock)completion {
++ (void)listEventsForTeams:(NSArray *)teams pageNumber:(NSInteger)pageNumber pageSize:(NSInteger)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate rootLinks:(TSDKRootLinks *)rootLinks completion:(TSDKArrayCompletionBlock)completion {
 
     NSString *eventsBaseURL = rootLinks.linkEvents.absoluteString;
     NSURL *eventsURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/search", eventsBaseURL]];
@@ -262,11 +262,9 @@ static NSArray *knownCompletionTypes;
     }];
 }
 
-+ (void)listEventsForTeams:(NSArray<TSDKTeam*>*)teamIds pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKEventArrayCompletionBlock)completion {
++ (void)listEventsForTeams:(NSArray<TSDKTeam*>*)teamIds pageNumber:(NSInteger)pageNumber pageSize:(NSInteger)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKEventArrayCompletionBlock)completion {
     
     // these values are checked before using but we should assert their expected value right away
-    NSParameterAssert(pageNumber);
-    NSParameterAssert(pageSize);
     NSParameterAssert(startDate);
     
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
