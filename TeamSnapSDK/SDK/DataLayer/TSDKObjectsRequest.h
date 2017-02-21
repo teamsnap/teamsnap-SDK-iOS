@@ -28,6 +28,6 @@
 + (NSArray *_Nonnull)knownCompletionTypes;
 + (void)dumpCompletionTypes;
 
-+ (void)listEventsForTeams:(NSArray * _Nonnull)teams pageNumber:(NSNumber *_Nullable)pageNumber pageSize:(NSNumber *_Nullable)pageSize startDate:(NSDate*_Nullable)startDate endDate:(NSDate*_Nullable)endDate completion:(TSDKArrayCompletionBlock _Nullable)completion;
++ (void)listEventsForTeams:(NSArray<TSDKTeam*>* _Nonnull)teams pageNumber:(NSNumber *_Nullable)pageNumber pageSize:(NSNumber *_Nullable)pageSize startDate:(NSDate*_Nullable)startDate endDate:(NSDate*_Nullable)endDate completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 
 @end

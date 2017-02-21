@@ -262,7 +262,7 @@ static NSArray *knownCompletionTypes;
     }];
 }
 
-+ (void)listEventsForTeams:(NSArray *)teamIds pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKArrayCompletionBlock)completion {
++ (void)listEventsForTeams:(NSArray<TSDKTeam*>*)teamIds pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKEventArrayCompletionBlock)completion {
     
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
         if (rootLinks) {
