@@ -214,12 +214,8 @@ static NSArray *knownCompletionTypes;
     NSString *teamIds = [self teamIdsParameterForTeams:teams];
     NSMutableDictionary *paramaters = [[NSMutableDictionary alloc] init];
     [paramaters setValue:teamIds forKey:@"team_id"];
-    if (pageNumber) {
-        [paramaters setValue:[@(pageNumber) stringValue] forKey:@"page_number"];
-    }
-    if (pageSize) {
-        [paramaters setValue:[@(pageSize) stringValue] forKey:@"page_size"];
-    }
+    [paramaters setValue:[@(pageNumber) stringValue] forKey:@"page_number"];
+    [paramaters setValue:[@(pageSize) stringValue] forKey:@"page_size"];
     if (startDate) {
         [paramaters setValue:[startDate RCF3339DateTimeString] forKey:@"started_after"];
     }
@@ -229,7 +225,6 @@ static NSArray *knownCompletionTypes;
     
     return [paramaters copy];
 }
-
 
 + (NSString *)teamIdsParameterForTeams:(NSArray *)teams {
     
