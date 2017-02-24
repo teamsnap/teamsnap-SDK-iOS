@@ -6,6 +6,20 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSInteger, TSDKRepeatingEventTypeCode) {
+    TSDKEventDoesNotRepeat = 0,
+    TSDKEventRepeatsDaily = 1,
+    TSDKEventRepeatsWeekly = 2
+};
+
+typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
+    TSDKExcludeOtherEvents = 0,
+    TSDKIncludeAllEvents = 1,
+    TSDKIncludeAllFutureEvents = 2
+};
+
+
+
 @interface TSDKEvent : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable uniform; //Example:
@@ -29,13 +43,12 @@
 @property (nonatomic, weak) NSString *_Nullable resultsUrl; //Example: **NULL**
 @property (nonatomic, assign) BOOL isLeagueControlled; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable name; //Example:
-@property (nonatomic, weak) NSString *_Nullable repeatingType; //Example: **NULL**
 @property (nonatomic, assign) BOOL isShootout; //Example: 0
 @property (nonatomic, assign) NSInteger pointsForTeam; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable locationId; //Example: 714660
 @property (nonatomic, assign) NSInteger minutesToArriveEarly; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable formattedResults; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable repeatingTypeCode; //Example: **NULL**
+@property (nonatomic, assign) NSInteger repeatingTypeCode; //Example: **NULL**
 @property (nonatomic, weak) NSDate *_Nullable startDate; //Example: 2012-05-19T04:00:00Z
 @property (nonatomic, assign) BOOL doesntCountTowardsRecord; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable timeZone; //Example: Eastern Time (US & Canada)
