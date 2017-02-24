@@ -6,17 +6,17 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef enum TSDKRepeatingEventTypeCode : NSInteger  {
+typedef NS_ENUM(NSInteger, TSDKRepeatingEventTypeCode) {
     TSDKEventDoesNotRepeat = 0,
     TSDKEventRepeatsDaily = 1,
     TSDKEventRepeatsWeekly = 2
-} SDKRepeatingEventTypeCode;
+};
 
-typedef enum TSDKRepeatingEventIncludeEvents : NSInteger {
+typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
     TSDKExcludeOtherEvents = 0,
     TSDKIncludeAllEvents = 1,
-    TSDKIncludeAllFutureEvents =2
-} TSDKRepeatingEventIncludeEvents;
+    TSDKIncludeAllFutureEvents = 2
+};
 
 
 
