@@ -107,6 +107,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] init];
         [mutableRequestHeaders setObject:@"application/json" forKey:@"Accept"];
         [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
+        [mutableRequestHeaders setObject:@"3" forKey:@"X_TEAMSNAP_API_VERSION"];
         [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
         //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
         
