@@ -33,6 +33,14 @@
     }
 }
 
+- (NSInteger)threadTotalCount {
+    if ((!self.collection.data[@"thread_unread_count"]) || ([self.collection.data[@"thread_unread_count"] isEqual:[NSNull null]])) {
+        return 0;
+    }
+    NSNumber *value = self.collection.data[@"thread_unread_count"];
+    return value.integerValue;
+}
+
 + (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [[TSDKMessage commands] objectForKey:@"mark_message_as_read"];
     command.data[@"id"] = message.objectIdentifier;

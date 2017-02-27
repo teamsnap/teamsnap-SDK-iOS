@@ -126,12 +126,11 @@
 }
 
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
-    
     NSDictionary *searchParams;
     if(type == TSDKMessageTypeAlert) {
         searchParams = @{@"message_type": @"alert"};
     } else if(type == TSDKMessageTypeEmail) {
-        searchParams = @{@"message_type": @"email"};
+        searchParams = @{@"message_type": @"email", @"parent_id": @""};
     }
     
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
