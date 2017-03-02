@@ -25,44 +25,49 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 @interface TSDKMessage : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger flags; //Example: 128
-@property (nonatomic, weak) NSString *_Nullable messageSourceId; //Example: 2
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2017-02-09T16:34:16Z
-@property (nonatomic, weak) NSString *_Nullable lastReplySenderName; //Example: foo bar
+@property (nonatomic, weak) NSString *_Nullable messageSourceId; //Example: 72
+@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2017-02-27T17:52:28Z
 @property (nonatomic, weak) NSString *_Nullable senderName; //Example: Manny Manager
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable body; //Example: Short message.
-@property (nonatomic, weak) NSString *_Nullable senderId; //Example: 67
-@property (nonatomic, weak) NSString *_Nullable subject; //Example: Short Message
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 5
+@property (nonatomic, weak) NSString *_Nullable lastReplySenderName; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable body; //Example: This is the 2nd message in the thread. It's a reply. This should be grouped.
+@property (nonatomic, weak) NSString *_Nullable senderId; //Example: 131
+@property (nonatomic, weak) NSString *_Nullable subject; //Example: The top-level message's subject
 @property (nonatomic, assign) BOOL isDraft; //Example: 0
 @property (nonatomic, weak) NSArray *_Nullable recipients;
 @property (nonatomic, weak) NSString *_Nullable attachmentNames; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable recipientNames; //Example: Ownie Owner,  , Plato Player, Player Labeled, Uninvited 0 Player, Uninvited 1 Player, Uninvited 2 Player, Invited 0 Player, Invited 1 Player, Invited 2 Player, FB User Scoreposter, FB User Wins ONLY Scoreposter, FB User NOT Scoreposter, Non Player
+@property (nonatomic, weak) NSString *_Nullable recipientNames; //Example: Ownie Owner,  , Plato Player, Player Labeled, Uninvited 0 Player, Uninvited 1 Player, Uninvited 2 Player, Invited 0 Player, Invited 1 Player, Invited 2 Player, FB User Scoreposter, FB User Wins ONLY Scoreposter, FB User NOT Scoreposter, Non Player, Test Player
 @property (nonatomic, weak) NSString *_Nullable divisionId; //Example: <null>
+@property (nonatomic, weak) NSString *_Nullable lastReplyRecipients; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable lastReplyRecipientNames; //Example: **NULL**
 @property (nonatomic, assign) NSInteger pushed; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable lastReplySenderImageUrl; //Example: thumbor link maybe
-@property (nonatomic, weak) NSString *_Nullable attachmentCount; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable messageId; //Example: 2
-@property (nonatomic, assign) NSInteger threadUnreadCount; //Example: 0
-@property (nonatomic, weak) NSDate *_Nullable lastReplyCreatedAt; //Example: 2017-02-09T16:34:16.000+00:00
+@property (nonatomic, assign) NSInteger attachmentCount; //Example: **NULL**
+@property (nonatomic, weak) NSString *_Nullable messageId; //Example: 72
+@property (nonatomic, assign) NSInteger threadUnreadCount; //Example: **NULL**
+@property (nonatomic, assign) BOOL isReplyable; //Example: 0
+@property (nonatomic, weak) NSDate *_Nullable lastReplyCreatedAt; //Example: <null>
 @property (nonatomic, weak) NSString *_Nullable status; //Example: sent
-@property (nonatomic, weak) NSString *_Nullable lastReplySenderId; //Example: 67
+@property (nonatomic, weak) NSString *_Nullable lastReplySenderId; //Example: <null>
 @property (nonatomic, weak) NSString *_Nullable userId; //Example: 7
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2017-02-09T16:34:16Z
+@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2017-02-27T17:52:28Z
+@property (nonatomic, assign) NSInteger threadTotalCount; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable contactId; //Example: <null>
-@property (nonatomic, weak) NSString *_Nullable lastReplyBody; //Example: Short message.
-@property (nonatomic, assign) NSInteger emailed; //Example: 0
+@property (nonatomic, weak) NSString *_Nullable lastReplyBody; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable senderType; //Example: Member
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 67
+@property (nonatomic, assign) NSInteger emailed; //Example: 0
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 131
 @property (nonatomic, assign) NSInteger smsed; //Example: 0
-@property (nonatomic, weak) NSDate *_Nullable readAt; //Example: 2017-02-09T16:34:16Z
-@property (nonatomic, assign) NSInteger threadTotalCount;
+@property (nonatomic, weak) NSDate *_Nullable readAt; //Example: 2017-02-27T17:52:28Z
+@property (nonatomic, weak) NSString *_Nullable threadId; //Example: 71 
+@property (nonatomic, weak) NSURL *_Nullable linkAttachments;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkSender;
 @property (nonatomic, weak) NSURL *_Nullable linkDivision;
-@property (nonatomic, weak) NSURL *_Nullable linkMessageReplies;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkAttachments;
 @property (nonatomic, weak) NSURL *_Nullable linkUser;
+@property (nonatomic, weak) NSURL *_Nullable linkSenderPhotoFile;
+@property (nonatomic, weak) NSURL *_Nullable linkLastReplySenderPhotoFile;
+
 
 //Delete several messages with a single command.
 //+(void)actionBulkDeleteId:(NSString *_Nonnull)id WithCompletion:(TSDKCompletionBlock _Nullable)completion;
