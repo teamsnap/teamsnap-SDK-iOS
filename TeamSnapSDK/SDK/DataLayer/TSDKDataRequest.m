@@ -162,7 +162,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         if (OAuthToken) {
-            [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+            [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
         }
         
         if (method) {
@@ -415,7 +415,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
     }
     
     NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -444,7 +444,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:@"GET"];
