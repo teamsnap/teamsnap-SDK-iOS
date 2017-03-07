@@ -58,16 +58,17 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 @property (nonatomic, weak) NSString *_Nullable memberId; //Example: 131
 @property (nonatomic, assign) NSInteger smsed; //Example: 0
 @property (nonatomic, weak) NSDate *_Nullable readAt; //Example: 2017-02-27T17:52:28Z
-@property (nonatomic, weak) NSString *_Nullable threadId; //Example: 71 
-@property (nonatomic, weak) NSURL *_Nullable linkAttachments;
+@property (nonatomic, weak) NSString *_Nullable threadId; //Example: 71
+@property (nonatomic, assign) BOOL isDirectlyReplyable;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkSender;
 @property (nonatomic, weak) NSURL *_Nullable linkDivision;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkUser;
 @property (nonatomic, weak) NSURL *_Nullable linkSenderPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkLastReplySenderPhotoFile;
-
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkAttachments;
+@property (nonatomic, weak) NSURL *_Nullable linkMessageReplies;
+@property (nonatomic, weak) NSURL *_Nullable linkUser;
 
 //Delete several messages with a single command.
 //+(void)actionBulkDeleteId:(NSString *_Nonnull)id WithCompletion:(TSDKCompletionBlock _Nullable)completion;
@@ -87,9 +88,11 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 
 -(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nonnull)completion;
 -(void)getSenderWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
--(void)getMessageRepliesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagesArrayCompletionBlock _Nonnull)completion;
+-(void)getSenderPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getLastReplySenderPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
 -(void)getAttachmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMessageRepliesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagesArrayCompletionBlock _Nonnull)completion;
 -(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nonnull)completion;
 
 @end

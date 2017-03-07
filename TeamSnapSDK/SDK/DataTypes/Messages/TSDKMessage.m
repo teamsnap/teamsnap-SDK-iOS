@@ -17,7 +17,8 @@
 
 @implementation TSDKMessage
 
-@dynamic flags, messageSourceId, createdAt, messageType, senderName, teamId, lastReplySenderName, body, senderId, subject, isDraft, recipients, attachmentNames, recipientNames, divisionId, lastReplyRecipients, lastReplyRecipientNames, pushed, attachmentCount, messageId, threadUnreadCount, isReplyable, lastReplyCreatedAt, status, lastReplySenderId, userId, updatedAt, threadTotalCount, contactId, lastReplyBody, senderType, emailed, memberId, smsed, readAt, threadId, linkAttachments, linkMember, linkSender, linkDivision, linkTeam, linkUser;
+@dynamic flags, messageSourceId, createdAt, messageType, senderName, teamId, lastReplySenderName, body, senderId, subject, isDraft, recipients, attachmentNames, recipientNames, divisionId, lastReplyRecipients, lastReplyRecipientNames, pushed, attachmentCount, messageId, threadUnreadCount, isReplyable, lastReplyCreatedAt, status, lastReplySenderId, userId, updatedAt, threadTotalCount, contactId, lastReplyBody, senderType, emailed, memberId, smsed, readAt, threadId, isDirectlyReplyable, linkAttachments, linkMember, linkSender, linkDivision, linkTeam, linkUser, linkMessageReplies, linkSenderPhotoFile, linkLastReplySenderPhotoFile;
+
 + (NSString *)SDKType {
     return @"message";
 }
