@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
 
 @interface TSDKEvent : TSDKCollectionObject
 
+@property (nonatomic, weak, readonly) NSString *_Nullable locationName; //Example:
+@property (nonatomic, weak, readonly) NSString *_Nullable opponentName; //Example:
 @property (nonatomic, weak) NSString *_Nullable uniform; //Example:
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable iconColor; //Example: yellow

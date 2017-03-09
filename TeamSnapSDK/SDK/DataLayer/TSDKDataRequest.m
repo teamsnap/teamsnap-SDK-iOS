@@ -107,6 +107,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] init];
         [mutableRequestHeaders setObject:@"application/json" forKey:@"Accept"];
         [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
+        [mutableRequestHeaders setObject:@"3" forKey:@"X_TEAMSNAP_API_VERSION"];
         [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
         //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
         
@@ -161,7 +162,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         if (OAuthToken) {
-            [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+            [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
         }
         
         if (method) {
@@ -414,7 +415,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
     }
     
     NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -443,7 +444,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:@"GET"];
