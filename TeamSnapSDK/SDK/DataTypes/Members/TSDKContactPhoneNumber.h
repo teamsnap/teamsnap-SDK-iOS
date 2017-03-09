@@ -11,14 +11,14 @@
 
 @interface TSDKContactPhoneNumber : TSDKMemberPhoneNumber
 
-@property (nonatomic, assign) NSInteger contactId; //Example: 127451
-@property (nonatomic, weak) NSURL *linkContact;
+@property (nonatomic, weak) NSString *_Nullable contactId; //Example: 127451
+@property (nonatomic, weak) NSURL *_Nullable linkContact;
 
 @end
 
 @interface TSDKContactPhoneNumber (ForwardedMethods)
 
--(void)getContactWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKContactArrayCompletionBlock)completion;
+-(void)getContactWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nullable)completion;
 
 @end
 

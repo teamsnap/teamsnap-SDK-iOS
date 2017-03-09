@@ -15,7 +15,6 @@
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKNotifications.h"
 
 @interface TSDKCollectionObject()
@@ -28,6 +27,7 @@
 
 static NSMutableDictionary *_templates;
 static NSMutableDictionary *_commandDictionary;
+static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
@@ -65,7 +65,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 
-+(NSDictionary *)commandDictionary {
++(NSMutableDictionary *)commandDictionary {
     if (!_commandDictionary) {
         _commandDictionary = [[NSMutableDictionary alloc] init];
     }
@@ -77,7 +77,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 +(TSDKCollectionCommand *)commandForKey:(NSString *)commandName {
-    return [[self commands] objectForKey:commandName];
+    return [[[self commands] objectForKey:commandName] copy];
 }
 
 +(NSMutableDictionary *)commandsForClass:(NSString *)className {
@@ -95,6 +95,38 @@ static NSMutableDictionary *_classURLs;
 
 +(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName {
     return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
+}
+
++(NSMutableDictionary *)queryDictionary {
+    if (!_queryDictionary) {
+        _queryDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return _queryDictionary;
+}
+
++(NSMutableDictionary *)queries {
+    return [self queriesForClass:[self SDKType]];
+}
+
++(TSDKCollectionQuery *)queryForKey:(NSString *)queryName {
+    return [[self queries] objectForKey:queryName];
+}
+
++(NSMutableDictionary *)queriesForClass:(NSString *)className {
+    if (className) {
+        NSMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
+        if (!queries) {
+            queries = [[NSMutableDictionary alloc] init];
+            [[self queryDictionary] setValue:queries forKey:className];
+        }
+        return queries;
+    } else {
+        return nil;
+    }
+}
+
++(TSDKCollectionQuery *)queryForClass:(NSString *)className forKey:(NSString *)queryName {
+    return [[[self queryDictionary] objectForKey:className] objectForKey:queryName];
 }
 
 +(NSURL *)classURLForClass:(NSString *)class {
@@ -179,7 +211,7 @@ static NSMutableDictionary *_classURLs;
             [[newCollection data] removeObjectForKey:key];
         }
     }
-
+    
     __typeof__(originalObject) newObject = [[[originalObject class] alloc] initWithCollection:newCollection];
     
     return newObject;
@@ -211,6 +243,11 @@ static id datePropertyIMP(id self, SEL _cmd) {
     return [self getDate:command];
 }
 
+static id objectIdentifierIMP(id self, SEL _cmd) {
+    NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
+    return [self objectIdentifierForKey:command];
+}
+
 static id urlPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
     return [NSURL URLWithString:[self getString:command]];
@@ -233,6 +270,11 @@ static BOOL boolPropertyIMP(id self, SEL _cmd) {
 static long integerPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
     return [self getInteger:command];
+}
+
+static CGFloat floatPropertyIMP(id self, SEL _cmd) {
+    NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
+    return [self getCGFloat:command];
 }
 
 // generic setter
@@ -260,6 +302,18 @@ static void setDatePropertyIMP(id self, SEL _cmd, id aValue) {
     [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
     
     [self setDate:value forKey:[key camelCaseToUnderscores]];
+}
+
+static void setObjectIdentifierIMP(id self, SEL _cmd, id aValue) {
+    id value = [aValue copy];
+    NSMutableString *key = [NSStringFromSelector(_cmd) mutableCopy];
+    
+    // delete "set" and ":" and lowercase first letter
+    [key deleteCharactersInRange:NSMakeRange(0, 3)];
+    [key deleteCharactersInRange:NSMakeRange([key length] - 1, 1)];
+    NSString *firstChar = [key substringToIndex:1];
+    [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
+    [self setObjectIdentifierForKey:[key camelCaseToUnderscores] value:[value description]];
 }
 
 static void setURLPropertyIMP(id self, SEL _cmd, id aValue) {
@@ -298,6 +352,17 @@ static void setIntegerPropertyIMP(id self, SEL _cmd, NSInteger value) {
     [self setInteger:value forKey:[key camelCaseToUnderscores]];
 }
 
+static void setCGFloatPropertyIMP(id self, SEL _cmd, CGFloat value) {
+    NSMutableString *key = [NSStringFromSelector(_cmd) mutableCopy];
+    
+    // delete "set" and ":" and lowercase first letter
+    [key deleteCharactersInRange:NSMakeRange(0, 3)];
+    [key deleteCharactersInRange:NSMakeRange([key length] - 1, 1)];
+    NSString *firstChar = [key substringToIndex:1];
+    [key replaceCharactersInRange:NSMakeRange(0, 1) withString:[firstChar lowercaseString]];
+    [self setCGFloat:value forKey:[key camelCaseToUnderscores]];
+}
+
 static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock completion) {
     NSString *property = NSStringFromSelector(_cmd);
     NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
@@ -308,7 +373,7 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     
     NSURL *link = [self getLink:linkPropertyName];
     DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
-
+    
     [self arrayFromLink:link withConfiguration:[TSDKRequestConfiguration new] completion:completion];
 }
 
@@ -327,21 +392,21 @@ static void getArrayFromLinkWithConfigurationIMP(id self, SEL _cmd, TSDKRequestC
 }
 
 /*
-Not tested:
-static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
-    NSString *property = NSStringFromSelector(_cmd);
-    NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
-    
-    if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
-        linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
-    }
-    
-    NSURL *link = [self getLink:linkPropertyName];
-    DLog(@"%@ - %@", linkPropertyName, link);
-    
-    [self objectFromLink:link WithCompletion:completion];
-}
-*/
+ Not tested:
+ static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
+ NSString *property = NSStringFromSelector(_cmd);
+ NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
+ 
+ if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
+ linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
+ }
+ 
+ NSURL *link = [self getLink:linkPropertyName];
+ DLog(@"%@ - %@", linkPropertyName, link);
+ 
+ [self objectFromLink:link WithCompletion:completion];
+ }
+ */
 
 static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     const char * attrs = property_getAttributes( property );
@@ -383,7 +448,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL {
     //NSString *command = [NSStringFromSelector(aSEL) camelCaseToUnderscores];
-
+    
     NSMutableString *property = [NSMutableString stringWithString:NSStringFromSelector(aSEL)];
     if ([property isSetter]) {
         [property deleteCharactersInRange:NSMakeRange(0, 3)];
@@ -403,14 +468,20 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 class_addMethod([self class], aSEL, (IMP)setDatePropertyIMP, "v@:@");
             } else if ([propertyType containsString:@"NSURL"]) {
                 class_addMethod([self class], aSEL, (IMP)setURLPropertyIMP, "v@:@");
+            } else if ((property.length>=2) && [[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
+                class_addMethod([self class], aSEL, (IMP)setObjectIdentifierIMP, "@@:");
             } else if ([propertyType hasPrefix:@"TB,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:B");
             } else if ([propertyType hasPrefix:@"Tc,"]) {
                 class_addMethod([self class], aSEL, (IMP)setBoolPropertyIMP, "v@:c");
             } else if ([propertyType hasPrefix:@"Tq,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:q");
-            } else if ([propertyType hasPrefix:@"Ti,"] || [propertyType hasPrefix:@"Ti,"]) {
+            } else if ([propertyType hasPrefix:@"Ti,"]) {
                 class_addMethod([self class], aSEL, (IMP)setIntegerPropertyIMP, "v@:i");
+            } else if ([propertyType hasPrefix:@"Td,"]) {
+                class_addMethod([self class], aSEL, (IMP)setCGFloatPropertyIMP, "v@:d");
+            } else if ([propertyType hasPrefix:@"Tf,"]) {
+                class_addMethod([self class], aSEL, (IMP)setCGFloatPropertyIMP, "v@:f");
             } else {
                 class_addMethod([self class], aSEL, (IMP)setPropertyIMP, "v@:@");
             }
@@ -424,6 +495,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             } else {
                 class_addMethod([self class], aSEL, (IMP)urlPropertyIMP, "@@:");
             }
+        } else if ((property.length>=2) && [[property substringFromIndex:property.length-2] isEqualToString:@"Id"]) {
+            class_addMethod([self class], aSEL,(IMP)objectIdentifierIMP, "@@:");
         } else if ([propertyType hasPrefix:@"TB,"]) {
             class_addMethod([self class], aSEL,(IMP)boolPropertyIMP, "B@:");
         } else if ([propertyType hasPrefix:@"Tc,"]) {
@@ -432,6 +505,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "q@:");
         } else if ([propertyType hasPrefix:@"Ti,"]) {
             class_addMethod([self class], aSEL,(IMP)integerPropertyIMP, "i@:");
+        } else if ([propertyType hasPrefix:@"Td,"]) {
+            class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "d@:");
+        } else if ([propertyType hasPrefix:@"Tf,"]) {
+            class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "f@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
@@ -447,8 +524,24 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
 }
 
-- (NSInteger)objectIdentifier {
-    return [self getInteger:@"id"];
+- (NSString * _Nonnull)objectIdentifier {
+    if ((!self.collection.data[@"id"]) || ([self.collection.data[@"id"] isEqual:[NSNull null]])) {
+        return @"";
+    }
+    return [self objectIdentifierForKey:@"id"];
+}
+
+- (NSString * _Nonnull)objectIdentifierForKey:(NSString *)key {
+
+    NSObject *identifierObject = self.collection.data[key];
+    if ([identifierObject isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return identifierObject.description;
+}
+
+- (void)setObjectIdentifierForKey:(NSString *_Nonnull)key value:(NSString *_Nullable)value {
+    [self setObject:value forKey:key];
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
@@ -588,14 +681,14 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     [self setObject:@(value) forKey:aKey];
 }
 
-- (CGFloat)getFloat:(NSString *)aKey {
+- (CGFloat)getCGFloat:(NSString *)aKey {
     if ([_collection.data[aKey] isEqual:[NSNull null]]) {
         return 0.0f;
     }
     return [_collection.data[aKey] floatValue];
 }
 
-- (void)setFloat:(CGFloat)value forKey:(NSString *)aKey {
+- (void)setCGFloat:(CGFloat)value forKey:(NSString *)aKey {
     [self setObject:@(value) forKey:aKey];
 }
 
@@ -622,28 +715,59 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)isNewObject {
-    return ([_collection.data[@"id"] integerValue] <=0);
+    return ([[self objectIdentifier] isEqualToString:@""] || [[self objectIdentifier] integerValue] == 0);
 }
 
-- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
-    NSDictionary *dataToSave = [self dataToSave];
+- (NSURL *)urlForSave {
+    NSURL *URL;
     if ([self isNewObject]) {
-        NSDictionary *postObject = @{@"template": dataToSave};
-        NSURL *URL;
         if ([[self class] classURL]) {
             URL = [[self class] classURL];
         } else {
             URL = [NSURL URLWithString:[[[[[TSDKTeamSnap sharedInstance] rootLinks] collection] links] objectForKey:[[self class] SDKREL]]];
         }
+        
+    } else {
+        URL = self.collection.href;
+    }
+
+    return URL;
+}
+
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
+    [self saveWithURL:[self urlForSave] completion:completion];
+}
+
+- (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> *)queryItems completion:(TSDKSaveCompletionBlock)completion {
+    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:[self urlForSave] resolvingAgainstBaseURL:NO];
+    NSMutableArray *allQueryItems = [[NSMutableArray alloc] init];
+    [allQueryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    [allQueryItems addObjectsFromArray:queryItems];
+    fullySpecifiedURL.queryItems = queryItems;
+    [self saveWithURL:fullySpecifiedURL.URL completion:completion];
+}
+
+- (void)saveWithURL:(NSURL *)url completion:(TSDKSaveCompletionBlock)completion {
+    NSDictionary *dataToSave = [self dataToSave];
+    if ([self isNewObject]) {
+        NSDictionary *postObject = @{@"template": dataToSave};
         __typeof__(self) __weak weakSelf = self;
         
-        [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            if (success && [objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
-                [weakSelf setCollection:[(NSArray *)objects.collection objectAtIndex:0]];
-            }
+        [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [weakSelf.changedValues removeAllObjects];
-                [TSDKNotifications postNewObject:self];
+                if ([objects.collection isKindOfClass:[NSArray class]]) {
+                    NSArray *returnedCollections = (NSArray *)objects.collection;
+                    if ([returnedCollections count]==1) {
+                        [weakSelf setCollection:[returnedCollections objectAtIndex:0]];
+                        [TSDKNotifications postNewObject:self];
+                    } else {
+                        NSArray *returnedObjects = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                        for (TSDKCollectionObject *object in returnedObjects) {
+                            [TSDKNotifications postNewObject:object];
+                        }
+                    }
+                }
             }
             if (completion) {
                 completion(success, weakSelf, error);
@@ -653,13 +777,21 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (self.changedValues.count>0) {
             NSDictionary *postObject = @{@"template": dataToSave};
             __typeof__(self) __weak weakSelf = self;
-            [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                 if (success) {
-                    if ([objects.collection isKindOfClass:[NSArray class]] && ([(NSArray *)objects.collection count] == 1)) {
-                        [weakSelf setCollection:[objects.collection firstObject]];
-                    }
                     [weakSelf.changedValues removeAllObjects];
-                    [TSDKNotifications postSavedObject:self];
+                    if ([objects.collection isKindOfClass:[NSArray class]]) {
+                        NSArray *returnedCollections = (NSArray *)objects.collection;
+                        if ([returnedCollections count]==1) {
+                            [weakSelf setCollection:[returnedCollections firstObject]];
+                            [TSDKNotifications postSavedObject:self];
+                        } else {
+                            NSArray *returnedObjects = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                            for (TSDKCollectionObject *object in returnedObjects) {
+                                [TSDKNotifications postSavedObject:object];
+                            }
+                        }
+                    }
                 }
                 if (completion) {
                     completion(success, weakSelf, error);
@@ -698,7 +830,15 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
                 result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                for (TSDKCollectionObject *object in result) {
+                    [TSDKNotifications postRefreshedObject:object];
+                }
             }
+        }
+        if (result == nil) {
+            result = [[NSArray alloc] init];
+        } else {
+            [TSDKNotifications postRefreshedObjectCollection:result];
         }
         if (completion) {
             completion(success, complete, result, error);
@@ -708,20 +848,23 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:searchParams sendDataDictionary:nil method:@"GET" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        NSArray *result = nil;
-        if (success) {
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                if ([self conformsToProtocol:@protocol(TSDKProcessBulkObjectProtocol)]) {
+            NSArray *result = nil;
+            if (success) {
+                if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                    result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                     for (TSDKCollectionObject *object in result) {
-                        [(id<TSDKProcessBulkObjectProtocol>)self processBulkLoadedObject:object];
+                        [TSDKNotifications postRefreshedObject:object];
                     }
                 }
             }
-        }
-        if (completion) {
-            completion(success, complete, result, error);
-        }
+            if (result == nil) {
+                result = [[NSArray alloc] init];
+            } else {
+                [TSDKNotifications postRefreshedObjectCollection:result];
+            }
+            if (completion) {
+                completion(success, complete, result, error);
+            }
     }];
     
     
@@ -765,14 +908,13 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 #pragma mark - NSObject
-
 - (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *)collectionObject {
     if (!collectionObject) {
         return NO;
     }
-    
-    return self.objectIdentifier == collectionObject.objectIdentifier;
+    return [self.objectIdentifier isEqualToString:collectionObject.objectIdentifier];
 }
+
 
 - (BOOL)isEqual:(id)object {
     if (self == object) {
@@ -787,7 +929,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSUInteger)hash {
-    return self.objectIdentifier;
+    return self.objectIdentifier.hash;
 }
 
 @end

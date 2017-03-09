@@ -11,15 +11,16 @@
 
 @interface TSDKBackgroundUploadProgressMonitorDelegate : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
-@property (nonatomic, strong) NSNumber *totalBytesSent;
-@property (nonatomic, strong) NSNumber *totalBytesExpectedToSend;
+@property (nonatomic, strong) NSNumber *_Nullable totalBytesSent;
+@property (nonatomic, strong) NSNumber *_Nullable totalBytesExpectedToSend;
 @property (nonatomic, assign) BOOL complete;
 @property (nonatomic, assign) BOOL success;
+@property (nonatomic, strong) NSURL *_Nullable uploadURL;
 
--(NSData *)responseData;
--(NSString *)responseString;
--(id)responseJSON;
+-(NSData *_Nullable)responseData;
+-(NSString *_Nullable)responseString;
+-(id _Nullable)responseJSON;
 
--(instancetype)initWithProgressBlock:(TSDKUploadProgressBlock)progressBlock;
+-(instancetype _Nonnull)initWithProgressBlock:(TSDKUploadProgressBlock _Nullable)progressBlock;
 
 @end

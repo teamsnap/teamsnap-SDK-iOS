@@ -4,6 +4,7 @@
 //
 
 #import "TSDKTeam.h"
+#import "TSDKConstants.h"
 #import "TSDKObjectsRequest.h"
 #import "TSDKProfileTimer.h"
 #import "TSDKEvent.h"
@@ -18,19 +19,10 @@
 #import "TSDKCustomField.h"
 #import "TSDKCustomDatum.h"
 #import "TSDKUser.h"
-
-#import "NSMutableDictionary+integerKey.h"
+#import "NSURL+TSDKConveniences.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 
 @interface TSDKTeam()
-@property (nonatomic, strong) NSMutableDictionary *members;
-@property (nonatomic, strong) NSMutableDictionary *events;
-
-@property (nonatomic, strong) NSMutableArray *sortedEvents;
-@property (nonatomic, strong) NSMutableArray *sortedMembers;
-
-@property (strong, nonatomic) TSDKTeamPreferences *teamPreferences;
-@property (strong, nonatomic) TSDKTeamResults *teamResults;
 
 @end
 
@@ -38,7 +30,7 @@
     
 }
 
-@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, humanizedMediaStorageUsed, createdAt, billedAt, isArchivedSeason, isRetired, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMessageData, linkMemberFiles, linkMemberPayments, linkDivisionMemberPhoneNumbers, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkStatisticData, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts, linkMemberPhotos, linkTeamPhotos;
+@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, divisionId, humanizedMediaStorageUsed, createdAt, billedAt, isArchivedSeason, isRetired, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMessageData, linkMemberFiles, linkMemberPayments, linkDivisionMemberPhoneNumbers, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkStatisticData, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts, linkMemberPhotos, linkTeamPhotos, linkTeamLogoPhotoFile;
 
 + (NSString *)SDKType {
     return @"team";
@@ -46,7 +38,7 @@
 
 +(void)actionUpdateTimeZone:(NSTimeZone *)timeZone offsetEventTimes:(BOOL)offsetEventTimes forTeam:(TSDKTeam *)team withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"update_time_zone"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:team.objectIdentifier];
+    command.data[@"team_id"] = team.objectIdentifier;
     command.data[@"offset_team_times"] = [NSNumber numberWithBool:offsetEventTimes];
     command.data[@"time_zone"] = timeZone.name;
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -61,18 +53,51 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSInteger)teamId asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
++ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
+    TSDKCollectionCommand *command = [TSDKMember commandForKey:@"import_from_team"];
+    command.data[@"destination_team_id"] = destinationTeamId;
+    
+    NSMutableArray *arrayOfMemberIds = [[NSMutableArray alloc] initWithCapacity:members.count];
+    for(TSDKMember *member in members) {
+        [arrayOfMemberIds addObject:member.objectIdentifier];
+    }
+    
+    command.data[@"source_member_ids"] = [arrayOfMemberIds componentsJoinedByString:@","];;
+    if(sendInvites) {
+        command.data[@"send_invites"] = @"true";
+    } else {
+        command.data[@"send_invites"] = @"false";
+    }
+    
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        NSArray *result = nil;
+        if (success) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+        }
+        if (completion) {
+            completion(success, complete, result, error);
+        }
+    }];
+}
+
+- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
+    [TSDKTeam actionImportMembers:members destinationTeamId:self.objectIdentifier sendInvites:sendInvites completion:completion];
+}
+
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
-    command.data[@"team_id"] = [NSNumber numberWithInteger:teamId];
+    command.data[@"team_id"] = teamId;
     
     NSMutableArray *arrayOfMemberIds = [[NSMutableArray alloc] initWithCapacity:membersOrContacts.count];
     NSMutableArray *arrayOfContactIds = [[NSMutableArray alloc] initWithCapacity:membersOrContacts.count];
     
     for(TSDKCollectionObject<TSDKMemberOrContactProtocol> *memberOrContact in membersOrContacts) {
         if([memberOrContact isKindOfClass:[TSDKMember class]]) {
-            [arrayOfMemberIds addObject:[NSNumber numberWithInteger:memberOrContact.objectIdentifier]];
+            [arrayOfMemberIds addObject:memberOrContact.objectIdentifier];
         } else if([memberOrContact isKindOfClass:[TSDKContact class]]) {
-            [arrayOfContactIds addObject:[NSNumber numberWithInteger:memberOrContact.objectIdentifier]];
+            [arrayOfContactIds addObject:memberOrContact.objectIdentifier];
         }
     }
     if(arrayOfMemberIds.count) {
@@ -81,7 +106,7 @@
     if(arrayOfContactIds.count) {
         command.data[@"contact_id"] = arrayOfContactIds;
     }
-    command.data[@"notify_as_member_id"] = [NSNumber numberWithInteger:asMemberId];
+    command.data[@"notify_as_member_id"] = asMemberId;
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
@@ -91,28 +116,8 @@
 }
 
 
-- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSInteger)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
-}
-
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        _members = [[NSMutableDictionary alloc] init];
-        _events = [[NSMutableDictionary alloc] init];
-        _membersUpdated = nil;
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        _members = [aDecoder decodeObjectForKey:@"membersArray"];
-        _events = [aDecoder decodeObjectForKey:@"eventsArray"];
-    }
-    return self;
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion{
@@ -139,7 +144,7 @@
     }];
 }
 
-- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSInteger)sportId {
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId {
     self = [self init];
     if (self) {
         [super setString:name forKey:@"name"];
@@ -147,7 +152,7 @@
         [super setString:locationPostalCode forKey:@"location_postal_code"];
         [super setString:ianaTimeZoneName forKey:@"time_zone_iana_name"];
         [super setString:ianaTimeZoneName forKey:@"time_zone"];
-        [super setInteger:sportId forKey:@"sport_id"];
+        [super setString:sportId forKey:@"sport_id"];
     }
     return self;
 }
@@ -166,126 +171,6 @@
     return [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
 }
 
-- (TSDKPlan *)plan {
-    return [[TSDKTeamSnap sharedInstance] planWithId:self.planId];
-}
-
-- (void)setPlan:(TSDKPlan *)plan {
-    self.planId = plan.objectIdentifier;
-}
-
-- (void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.teamPreferences) {
-        if (completion) {
-            completion(YES, YES, @[self.teamPreferences], nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkTeamPreferences withConfiguration:configuration completion:completion];
-    }
-}
-
-- (void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamResultsArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.teamResults) {
-        if (completion) {
-            completion(YES, YES, @[self.teamResults], nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkTeamResults withConfiguration:configuration completion:completion];
-    }
-}
-
-#pragma mark -
-#pragma mark TSDKProcessBulkObjectProtocol
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
-    BOOL lProcessed = NO;
-    
-    DLog(@"\nProcess Team: %@ (%ld) - %@ (%ld)", self.name, (long)self.objectIdentifier, [bulkObject class], (long)bulkObject.objectIdentifier);
-    if ([bulkObject isKindOfClass:[TSDKEvent class]]) {
-        [self addEvent:(TSDKEvent *)bulkObject];
-        self.eventsUpdated = [NSDate date];
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKMember class]]) {
-        [self addMember:(TSDKMember *)bulkObject];
-        self.membersUpdated = [NSDate date];
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKTeamPreferences class]]) {
-        if (self.teamPreferences) {
-            [self.teamPreferences setCollection:bulkObject.collection];
-        } else {
-            self.teamPreferences = (TSDKTeamPreferences *)bulkObject;
-        }
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKTeamResults class]]) {
-        if (self.teamResults) {
-            [self.teamResults setCollection:bulkObject.collection];
-        } else {
-            self.teamResults = (TSDKTeamResults *)bulkObject;
-        }
-        lProcessed = YES;
-    }
-    if (!lProcessed && [bulkObject.collection.data objectForKey:@"member_id"]) {
-        NSInteger memberId = [bulkObject getInteger:@"member_id"];
-        if (memberId != NSNotFound) {
-            TSDKMember *member = [self memberWithID:memberId];
-            if (member) {
-                lProcessed = [member processBulkLoadedObject:(TSDKCollectionObject *)bulkObject];
-            }
-        }
-    }
-    return lProcessed;
-}
-
-- (void)addEvent:(TSDKEvent *)event {
-    [self.events refreshCollectionObject:event];
-    [self dirtySortedEventLists];
-}
-
-- (void)addMember:(TSDKMember *)member {
-    [self.members refreshCollectionObject:member];
-    [self dirtySortedMemberLists];
-}
-
-- (TSDKMember *)memberWithID:(NSInteger)memberId {
-    return [self.members objectForIntegerKey:memberId];
-}
-
-- (NSArray *)membersWithUserId:(NSInteger)userId {
-    NSArray *arrayOfMembers = [self.members allValues];
-    
-    NSIndexSet *indexSet = [arrayOfMembers indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.userId == userId);
-    }];
-    return [arrayOfMembers objectsAtIndexes:indexSet];
-}
-
-- (void)dirtySortedEventLists {
-    self.sortedEvents = nil;
-}
-
-- (void)dirtySortedMemberLists {
-    self.sortedMembers = nil;
-}
-
-- (NSArray *)sortedMembers {
-    if (!_sortedMembers) {
-        _sortedMembers = [NSMutableArray arrayWithArray:[_members allValues]];
-        [_sortedMembers sortUsingComparator:^NSComparisonResult(TSDKMember *member1, TSDKMember *member2) {
-            return [member1.fullName compare:member2.fullName];
-        }];
-    }
-    return _sortedMembers;
-}
-
-- (NSArray *)eventsSorted {
-    if (!self.sortedEvents) {
-        self.sortedEvents = [NSMutableArray arrayWithArray:[self.events allValues]];
-        [self.sortedEvents sortUsingComparator:^NSComparisonResult(TSDKEvent *event1, TSDKEvent *event2) {
-            return [event1.startDate compare:event2.startDate];
-        }];
-    }
-    return self.sortedEvents;
-}
-
 - (void)bulkLoadDataWithTypes:(NSArray *)dataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     if (dataTypes.count>0) {
         [TSDKObjectsRequest bulkLoadTeamData:self types:dataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
@@ -295,36 +180,8 @@
         }];
     } else {
         if (completion) {
-            completion(NO, NO, nil, nil);
+            completion(NO, NO, [NSArray array], nil);
         }
-    }
-}
-
-- (void)getMembersWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.membersUpdated && self.sortedMembers) {
-        if (completion) {
-            completion(YES, YES, self.sortedMembers, nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkMembers withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if (completion) {
-                completion(success, complete, self.sortedMembers, error);
-            }
-        }];
-    }
-}
-
-- (void)getEventsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    if (!configuration.forceReload && self.eventsUpdated) {
-        if (completion) {
-            completion(YES, YES, self.eventsSorted, nil);
-        }
-    } else {
-        [self arrayFromLink:self.linkEvents withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if (completion) {
-                completion(success, complete, objects, error);
-            }
-        }];
     }
 }
 
@@ -337,8 +194,8 @@
     }];
 }
 
-- (void)getEventWithId:(NSInteger)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    NSDictionary *searchParams = @{@"id": [NSNumber numberWithInteger:eventId]};
+- (void)getEventWithId:(NSString *_Nonnull)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
+    NSDictionary *searchParams = @{@"id": eventId};
     
     [self arrayFromLink:self.linkEvents searchParams:searchParams withConfiguration:configuration completion:completion];
 }
@@ -375,5 +232,61 @@
         }
     }];
 }
+
+- (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height {
+    NSURLQueryItem *widthQueryItem = [NSURLQueryItem queryItemWithName:@"width" value:[NSString stringWithFormat:@"%ld", (long)width]];
+    NSURLQueryItem *heightQueryItem = [NSURLQueryItem queryItemWithName:@"height" value:[NSString stringWithFormat:@"%ld", (long)height]];
+    NSURLQueryItem *cropQueryItem = [NSURLQueryItem queryItemWithName:@"crop" value:@"proportional"];
+    
+    return [self.linkTeamLogoPhotoFile URLByAppendingArrayOfQueryItems:@[widthQueryItem, heightQueryItem, cropQueryItem]];
+}
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    id copy = [[[self class] allocWithZone:zone] init];
+    
+    if (copy) {
+        [copy setCollection:[[self collection] copy]];
+    }
+    
+    return copy;
+}
+
++ (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
+    
+    TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:[TSDKTeam SDKType] forKey:@"division_search"];
+    if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+        queryCommand.data[@"division_id"] = divisionId;
+        queryCommand.data[@"is_active"] = @(isActive);
+        queryCommand.data[@"is_commissioner"] = @(isCommissioner);
+        queryCommand.data[@"page_number"] = @(pageNumber);
+        queryCommand.data[@"page_size"] = @(pageSize);
+        
+        [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *teams;
+            if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                teams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+            if (completion) {
+                completion(success, YES, teams, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            NSDictionary *userInfo;
+            
+            if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
+            } else {
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
+            }
+            NSInteger errorCode = 1;
+            
+            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            completion(NO, NO, [NSArray array], error);
+        }
+    }
+}
+
+
 
 @end

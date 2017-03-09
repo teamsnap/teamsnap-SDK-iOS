@@ -11,11 +11,11 @@
 
 @protocol TSDKMessageRecipient <NSObject>
 
-@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, weak) NSString *_Nullable userId;
 
-- (NSInteger)objectIdentifier;
+- (NSString * _Nonnull)objectIdentifier;
 
-- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
+- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
 - (BOOL)canMarkAsRead;
 
 @end

@@ -11,8 +11,8 @@
 
 @interface TSDKCountry : TSDKCollectionObject <TSDKCollectionObjectBundledDataProtocol>
 
-@property (nonatomic, weak) NSString *name; //Example: Andorra
-@property (nonatomic, weak) NSString *isoAlpha2Code; //Example: AD
+@property (nonatomic, weak) NSString *_Nullable name; //Example: Andorra
+@property (nonatomic, weak) NSString *_Nullable isoAlpha2Code; //Example: AD
 
 @end
 

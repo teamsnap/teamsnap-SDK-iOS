@@ -11,6 +11,6 @@
 
 @interface NSMutableDictionary (refreshCollectionData)
 
-- (void)refreshCollectionObject:(TSDKCollectionObject *)object;
+- (void)refreshCollectionObject:(TSDKCollectionObject *_Nonnull)object;
 
 @end

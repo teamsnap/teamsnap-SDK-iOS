@@ -1,0 +1,1998 @@
+{
+    "collection": {
+        "version": "3.381.0",
+        "href": "https://api.teamsnap.com/v3/member_payments",
+        "rel": "member_payments",
+        "template": {
+            "data": [
+                     {
+                     "name": "amount_paid",
+                     "value": null
+                     },
+                     {
+                     "name": "amount_due",
+                     "value": null
+                     },
+                     {
+                     "name": "is_applicable",
+                     "value": null
+                     },
+                     {
+                     "name": "member_id",
+                     "value": null
+                     },
+                     {
+                     "name": "note",
+                     "value": null
+                     },
+                     {
+                     "name": "team_fee_id",
+                     "value": null
+                     },
+                     {
+                     "name": "type",
+                     "value": "member_payment"
+                     }
+                     ]
+        },
+        "links": [
+                  {
+                  "rel": "member",
+                  "href": "https://api.teamsnap.com/v3/members"
+                  },
+                  {
+                  "rel": "payment_notes",
+                  "href": "https://api.teamsnap.com/v3/payment_notes"
+                  },
+                  {
+                  "rel": "team",
+                  "href": "https://api.teamsnap.com/v3/teams"
+                  },
+                  {
+                  "rel": "team_fee",
+                  "href": "https://api.teamsnap.com/v3/team_fees"
+                  },
+                  {
+                  "rel": "root",
+                  "href": "https://api.teamsnap.com/v3/"
+                  },
+                  {
+                  "rel": "self",
+                  "href": "https://api.teamsnap.com/v3/member_payments/search?team_id=949008"
+                  }
+                  ],
+        "queries": [
+                    {
+                    "rel": "search",
+                    "href": "https://api.teamsnap.com/v3/member_payments/search",
+                    "data": [
+                             {
+                             "name": "id",
+                             "value": null
+                             },
+                             {
+                             "name": "member_id",
+                             "value": null
+                             },
+                             {
+                             "name": "team_fee_id",
+                             "value": null
+                             },
+                             {
+                             "name": "team_id",
+                             "value": null
+                             },
+                             {
+                             "name": "page_size",
+                             "value": null,
+                             "prompt": "The number of items to return for each page. Sending this parameter with the query will enable paging for the returned collection."
+                             },
+                             {
+                             "name": "page_number",
+                             "value": null,
+                             "prompt": "The number of the page to be returned. This requires that paging be turned on by also providing the page_size parameter."
+                             }
+                             ]
+                    }
+                    ],
+        "commands": [
+                     {
+                     "rel": "transaction",
+                     "href": "https://api.teamsnap.com/v3/member_payments/transaction",
+                     "prompt": "Add or subtract money from the amount paid on a Member Payment.",
+                     "data": [
+                              {
+                              "name": "member_payment_id",
+                              "value": null
+                              },
+                              {
+                              "name": "amount",
+                              "value": null
+                              },
+                              {
+                              "name": "note",
+                              "value": null
+                              }
+                              ]
+                     }
+                     ],
+        "items": [
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069782",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069782
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11813457
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2015-09-16T06:26:50.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11813457"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069782"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069782"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069785",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069785
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11814185
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-04-07T06:25:43.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11814185"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069785"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069785"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069791",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069791
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11814873
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-04-01T03:46:34.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11814873"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069791"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069791"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069794",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069794
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11815021
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:14:44.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11815021"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069794"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069794"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069797",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069797
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "200.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "250.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11815494
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-04-07T06:25:54.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11815494"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069797"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069797"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069800",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069800
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11815935
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-04-07T06:26:10.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11815935"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069800"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069800"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069803",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069803
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11816156
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-05-02T20:16:42.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11816156"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069803"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069803"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069806",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069806
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11816552
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-04-01T03:44:41.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11816552"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069806"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069806"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069809",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069809
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 13333913
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2015-09-16T06:29:16.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/13333913"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069809"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069809"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/19069821",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 19069821
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 17070231
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2015-09-16T06:25:47.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2015-09-16T06:27:11.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/17070231"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=19069821"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-19069821"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/22248289",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 22248289
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 19836849
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-01-12T23:04:51.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-04-07T06:26:13.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/19836849"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=22248289"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-22248289"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/24613795",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 24613795
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 19853345
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-03-26T01:03:50.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-23T03:05:00.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/19853345"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=24613795"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-24613795"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30616104",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30616104
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 29434470
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-02T19:11:56.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:14:54.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/29434470"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30616104"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-30616104"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30616107",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30616107
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 29435326
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 569205
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-02T19:11:56.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:15:00.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/29435326"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30616107"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/569205"
+                            }
+                            ],
+                  "rel": "member_payment-30616107"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824514",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824514
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11813457
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:17:30.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11813457"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824514"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824514"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824517",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824517
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11814185
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-13T23:04:54.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11814185"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824517"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824517"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824520",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824520
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11814873
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-13T23:05:11.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11814873"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824520"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824520"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824523",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824523
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11815021
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-27T17:27:12.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11815021"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824523"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824523"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824526",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824526
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11815494
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11815494"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824526"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824526"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824529",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824529
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11815935
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-23T15:54:31.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11815935"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824529"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824529"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824532",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824532
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11816156
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-13T23:05:06.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11816156"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824532"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824532"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824535",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824535
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 11816552
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-13T23:05:17.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/11816552"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824535"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824535"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824538",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824538
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 13333913
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:18.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:17:17.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/13333913"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824538"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824538"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824541",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824541
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": false,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 17070231
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:19.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:17:24.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/17070231"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824541"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824541"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824544",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824544
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 19836849
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:19.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-22T18:55:11.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/19836849"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824544"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824544"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824547",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824547
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 19853345
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:19.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-08T00:15:19.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/19853345"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824547"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824547"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824550",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824550
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": "450.00"
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": "0.00"
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 29434470
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:19.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-13T23:05:01.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/29434470"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824550"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824550"
+                  },
+                  {
+                  "href": "https://api.teamsnap.com/v3/member_payments/30824553",
+                  "data": [
+                           {
+                           "name": "id",
+                           "value": 30824553
+                           },
+                           {
+                           "name": "type",
+                           "value": "member_payment"
+                           },
+                           {
+                           "name": "amount_paid",
+                           "value": null
+                           },
+                           {
+                           "name": "amount_due",
+                           "value": null
+                           },
+                           {
+                           "name": "is_applicable",
+                           "value": true,
+                           "type": "Boolean"
+                           },
+                           {
+                           "name": "member_id",
+                           "value": 29435326
+                           },
+                           {
+                           "name": "team_fee_id",
+                           "value": 908715
+                           },
+                           {
+                           "name": "team_id",
+                           "value": 949008
+                           },
+                           {
+                           "name": "created_at",
+                           "value": "2016-09-08T00:15:19.000+00:00",
+                           "type": "DateTime"
+                           },
+                           {
+                           "name": "updated_at",
+                           "value": "2016-09-13T23:11:52.000+00:00",
+                           "type": "DateTime"
+                           }
+                           ],
+                  "links": [
+                            {
+                            "rel": "member",
+                            "href": "https://api.teamsnap.com/v3/members/29435326"
+                            },
+                            {
+                            "rel": "payment_notes",
+                            "href": "https://api.teamsnap.com/v3/payment_notes/search?member_payment_id=30824553"
+                            },
+                            {
+                            "rel": "team",
+                            "href": "https://api.teamsnap.com/v3/teams/949008"
+                            },
+                            {
+                            "rel": "team_fee",
+                            "href": "https://api.teamsnap.com/v3/team_fees/908715"
+                            }
+                            ],
+                  "rel": "member_payment-30824553"
+                  }
+                  ]
+    }
+}
