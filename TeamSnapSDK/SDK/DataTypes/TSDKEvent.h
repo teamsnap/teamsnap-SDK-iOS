@@ -50,7 +50,6 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
 @property (nonatomic, weak) NSString *_Nullable locationId; //Example: 714660
 @property (nonatomic, assign) NSInteger minutesToArriveEarly; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable formattedResults; //Example: **NULL**
-@property (nonatomic, assign) NSInteger repeatingTypeCode; //Example: **NULL**
 @property (nonatomic, weak) NSDate *_Nullable startDate; //Example: 2012-05-19T04:00:00Z
 @property (nonatomic, assign) BOOL doesntCountTowardsRecord; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable timeZone; //Example: Eastern Time (US & Canada)
@@ -79,6 +78,8 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *_Nonnull)event completion:(TSDKCompletionBlock _Nullable)completion; //(null)
 //+(void)actionBulkCreateWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionSendAvailabilityRemindersWithCompletion:(TSDKCompletionBlock)completion; //(null)
+
+@property (nonatomic, assign) TSDKRepeatingEventTypeCode repeatingTypeCode;
 
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
