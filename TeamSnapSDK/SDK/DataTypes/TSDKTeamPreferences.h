@@ -9,6 +9,13 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSInteger, TSDKTeamPreferenceAssignmentsEnabledFor) {
+    TSDKTeamPreferenceAssignmentsEnabledForAll = 0,
+    TSDKTeamPreferenceAssignmentsEnabledForGames = 1,
+    TSDKTeamPreferenceAssignmentsEnabledForEvents = 2,
+};
+
+
 typedef enum : NSUInteger {
     TSDKTeamPreferenceAvailabilitiesSortOrderName,
     TSDKTeamPreferenceAvailabilitiesSortOrderJerseyNumber,
@@ -28,6 +35,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable globalUniformHome; //Example: White shirt, grey pants
 @property (nonatomic, assign) BOOL tslEnabled; //Example: 1
+@property (nonatomic, assign) TSDKTeamPreferenceAssignmentsEnabledFor assignmentsEnableForCode; //Example: 2
 @property (nonatomic, assign) BOOL paymentsIgnoreNonPlayers; //Example: 0
 @property (nonatomic, assign) BOOL remindersSendGame; //Example: 0
 @property (nonatomic, assign) BOOL globalUseInternationalDate; //Example: 0
@@ -62,7 +70,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL marketplaceShowTab; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger shareAvailabilityNotes; //Example: 0
-@property (nonatomic, assign) NSInteger assignmentsEnableForCode; //Example: 2
 @property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
 @property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable gender; //Example: **NULL**
