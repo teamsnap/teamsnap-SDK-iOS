@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FC1263E1E782D47001E80D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC1263D1E782D47001E80D0 /* main.m */; };
+		4FC126411E782D47001E80D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC126401E782D47001E80D0 /* AppDelegate.m */; };
+		4FC126441E782D47001E80D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC126431E782D47001E80D0 /* ViewController.m */; };
+		4FC126491E782D47001E80D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC126481E782D47001E80D0 /* Assets.xcassets */; };
 		4FC9AE791DE4CE5500B0C582 /* MemberPayments.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */; };
 		4FC9AE7C1DE4D10000B0C582 /* TSDKJSONFileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */; };
 		560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +37,7 @@
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
+		6CAF4C31DE083AAB6E1A4A22 /* Pods_TeamSnapSDKExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813CABD1EDB6055655BBDEFD /* Pods_TeamSnapSDKExample.framework */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -359,6 +364,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29DFC70EE2A7BA5B0FE38B4D /* Pods-TeamSnapSDKExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnapSDKExample.debug.xcconfig"; path = "TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.debug.xcconfig"; sourceTree = "<group>"; };
+		4A6EED665398D1C748686396 /* Pods-TeamSnapSDKExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnapSDKExample.release.xcconfig"; path = "TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.release.xcconfig"; sourceTree = "<group>"; };
+		4FC1263A1E782D47001E80D0 /* TeamSnapSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamSnapSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC1263D1E782D47001E80D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4FC1263F1E782D47001E80D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4FC126401E782D47001E80D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4FC126421E782D47001E80D0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4FC126431E782D47001E80D0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4FC126481E782D47001E80D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4FC1264D1E782D47001E80D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MemberPayments.json; sourceTree = "<group>"; };
 		4FC9AE7A1DE4D10000B0C582 /* TSDKJSONFileResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKJSONFileResource.h; path = DataLayer/TSDKJSONFileResource.h; sourceTree = "<group>"; };
 		4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKJSONFileResource.m; path = DataLayer/TSDKJSONFileResource.m; sourceTree = "<group>"; };
@@ -387,6 +402,7 @@
 		56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSmsGateway.m; sourceTree = "<group>"; };
 		56E7BA301DFB175500FB1BD6 /* TSDKShortPropertyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKShortPropertyTest.h; path = ../TeamSnapSDK/TSDKShortPropertyTest.h; sourceTree = "<group>"; };
 		56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKShortPropertyTest.m; path = ../TeamSnapSDK/TSDKShortPropertyTest.m; sourceTree = "<group>"; };
+		813CABD1EDB6055655BBDEFD /* Pods_TeamSnapSDKExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamSnapSDKExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
 		960556D01BE15F87003AB59D /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKinvitationFinder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		960556D11BE15F87003AB59D /* TSDKinvitationFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKinvitationFinder.m; sourceTree = "<group>"; };
@@ -570,6 +586,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4FC126371E782D47001E80D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CAF4C31DE083AAB6E1A4A22 /* Pods_TeamSnapSDKExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		969E803C1BAAE62D00CA518F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -596,6 +620,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15BDB26D5A07AAF611807D55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				813CABD1EDB6055655BBDEFD /* Pods_TeamSnapSDKExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FC1263B1E782D47001E80D0 /* TeamSnapSDKExample */ = {
+			isa = PBXGroup;
+			children = (
+				4FC1263F1E782D47001E80D0 /* AppDelegate.h */,
+				4FC126401E782D47001E80D0 /* AppDelegate.m */,
+				4FC126421E782D47001E80D0 /* ViewController.h */,
+				4FC126431E782D47001E80D0 /* ViewController.m */,
+				4FC126481E782D47001E80D0 /* Assets.xcassets */,
+				4FC1264D1E782D47001E80D0 /* Info.plist */,
+				4FC1263C1E782D47001E80D0 /* Supporting Files */,
+			);
+			path = TeamSnapSDKExample;
+			sourceTree = "<group>";
+		};
+		4FC1263C1E782D47001E80D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FC1263D1E782D47001E80D0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		4FC9AE771DE4CE2600B0C582 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,7 +788,10 @@
 				969E80421BAAE62D00CA518F /* TeamSnapSDK */,
 				969E804E1BAAE62E00CA518F /* TeamSnapSDKTests */,
 				96B47F1A1BADB33E0035F2CC /* TeamSnapSDKTV */,
+				4FC1263B1E782D47001E80D0 /* TeamSnapSDKExample */,
 				969E80411BAAE62D00CA518F /* Products */,
+				A7B91E44F3C14FF1F10243D0 /* Pods */,
+				15BDB26D5A07AAF611807D55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -744,6 +801,7 @@
 				969E80401BAAE62D00CA518F /* TeamSnapSDK.framework */,
 				969E804A1BAAE62E00CA518F /* TeamSnapSDKTests.xctest */,
 				96B47F191BADB33E0035F2CC /* TeamSnapSDKTV.framework */,
+				4FC1263A1E782D47001E80D0 /* TeamSnapSDKExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1026,6 +1084,15 @@
 			name = PhotoObjects;
 			sourceTree = "<group>";
 		};
+		A7B91E44F3C14FF1F10243D0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29DFC70EE2A7BA5B0FE38B4D /* Pods-TeamSnapSDKExample.debug.xcconfig */,
+				4A6EED665398D1C748686396 /* Pods-TeamSnapSDKExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1206,6 +1273,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4FC126391E782D47001E80D0 /* TeamSnapSDKExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FC126501E782D47001E80D0 /* Build configuration list for PBXNativeTarget "TeamSnapSDKExample" */;
+			buildPhases = (
+				5F4884517F988154D89EE454 /* [CP] Check Pods Manifest.lock */,
+				4FC126361E782D47001E80D0 /* Sources */,
+				4FC126371E782D47001E80D0 /* Frameworks */,
+				4FC126381E782D47001E80D0 /* Resources */,
+				FA98433E71F15F38EDCF7766 /* [CP] Embed Pods Frameworks */,
+				F99B959941864780C9DBAD5B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeamSnapSDKExample;
+			productName = TeamSnapSDKExample;
+			productReference = 4FC1263A1E782D47001E80D0 /* TeamSnapSDKExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		969E803F1BAAE62D00CA518F /* TeamSnapSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 969E80541BAAE62E00CA518F /* Build configuration list for PBXNativeTarget "TeamSnapSDK" */;
@@ -1271,6 +1358,11 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = teamsnap;
 				TargetAttributes = {
+					4FC126391E782D47001E80D0 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = YN466NRGZP;
+						ProvisioningStyle = Automatic;
+					};
 					969E803F1BAAE62D00CA518F = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -1288,6 +1380,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 969E80361BAAE62D00CA518F;
 			productRefGroup = 969E80411BAAE62D00CA518F /* Products */;
@@ -1297,11 +1390,20 @@
 				969E803F1BAAE62D00CA518F /* TeamSnapSDK */,
 				96B47F181BADB33E0035F2CC /* TeamSnapSDKTV */,
 				969E80491BAAE62E00CA518F /* TeamSnapSDKTests */,
+				4FC126391E782D47001E80D0 /* TeamSnapSDKExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4FC126381E782D47001E80D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC126491E782D47001E80D0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		969E803E1BAAE62D00CA518F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1337,6 +1439,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5F4884517F988154D89EE454 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		96BB7B9F1BAEDCA4007CCF1A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1351,9 +1468,49 @@
 			shellScript = "/${PROJECT_DIR}/TeamSnapSDKTV/AppleTV-binary-build.sh";
 			showEnvVarsInLog = 0;
 		};
+		F99B959941864780C9DBAD5B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA98433E71F15F38EDCF7766 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4FC126361E782D47001E80D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC126441E782D47001E80D0 /* ViewController.m in Sources */,
+				4FC126411E782D47001E80D0 /* AppDelegate.m in Sources */,
+				4FC1263E1E782D47001E80D0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		969E803B1BAAE62D00CA518F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1552,6 +1709,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		4FC1264E1E782D47001E80D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29DFC70EE2A7BA5B0FE38B4D /* Pods-TeamSnapSDKExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = TeamSnapSDKExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4FC1264F1E782D47001E80D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A6EED665398D1C748686396 /* Pods-TeamSnapSDKExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = TeamSnapSDKExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		969E80521BAAE62E00CA518F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1581,8 +1770,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TeamSnapSDK/TeamSnapSDK_PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1593,7 +1781,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1630,15 +1818,14 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TeamSnapSDK/TeamSnapSDK_PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1773,6 +1960,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4FC126501E782D47001E80D0 /* Build configuration list for PBXNativeTarget "TeamSnapSDKExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FC1264E1E782D47001E80D0 /* Debug */,
+				4FC1264F1E782D47001E80D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		969E803A1BAAE62D00CA518F /* Build configuration list for PBXProject "TeamSnapSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
