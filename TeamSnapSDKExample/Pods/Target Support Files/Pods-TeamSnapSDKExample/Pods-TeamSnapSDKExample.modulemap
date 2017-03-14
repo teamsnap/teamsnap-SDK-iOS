@@ -1,0 +1,6 @@
+framework module Pods_TeamSnapSDKExample {
+  umbrella header "Pods-TeamSnapSDKExample-umbrella.h"
+
+  export *
+  module * { export * }
+}

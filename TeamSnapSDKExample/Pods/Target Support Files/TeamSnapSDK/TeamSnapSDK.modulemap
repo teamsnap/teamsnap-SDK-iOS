@@ -1,0 +1,6 @@
+framework module TeamSnapSDK {
+  umbrella header "TeamSnapSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

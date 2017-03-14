@@ -1,0 +1,50 @@
+PODS:
+  - TeamSnapSDK (2.0):
+    - TeamSnapSDK/Profiler (= 2.0)
+    - TeamSnapSDK/SDK (= 2.0)
+  - TeamSnapSDK/Profiler (2.0)
+  - TeamSnapSDK/SDK (2.0):
+    - TeamSnapSDK/SDK/Cache (= 2.0)
+    - TeamSnapSDK/SDK/CollectionJSON (= 2.0)
+    - TeamSnapSDK/SDK/Conveniences (= 2.0)
+    - TeamSnapSDK/SDK/DataLayer (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes (= 2.0)
+  - TeamSnapSDK/SDK/Cache (2.0)
+  - TeamSnapSDK/SDK/CollectionJSON (2.0)
+  - TeamSnapSDK/SDK/Conveniences (2.0)
+  - TeamSnapSDK/SDK/DataLayer (2.0)
+  - TeamSnapSDK/SDK/DataTypes (2.0):
+    - TeamSnapSDK/SDK/DataTypes/Assignments (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Leagues (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Media (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Members (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Messages (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Payments (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/PhotoObjects (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Protocols (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/Statistics (= 2.0)
+    - TeamSnapSDK/SDK/DataTypes/TSL (= 2.0)
+  - TeamSnapSDK/SDK/DataTypes/Assignments (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Leagues (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Media (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Members (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Messages (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Payments (2.0)
+  - TeamSnapSDK/SDK/DataTypes/PhotoObjects (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Protocols (2.0)
+  - TeamSnapSDK/SDK/DataTypes/Statistics (2.0)
+  - TeamSnapSDK/SDK/DataTypes/TSL (2.0)
+
+DEPENDENCIES:
+  - TeamSnapSDK (from `../`)
+
+EXTERNAL SOURCES:
+  TeamSnapSDK:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TeamSnapSDK: fb0b1bd580fbf2e0984f1a599bdc2e67b99bb2e0
+
+PODFILE CHECKSUM: 181473af4b757060bc6b4a56946b4f026a50dca5
+
+COCOAPODS: 1.1.1

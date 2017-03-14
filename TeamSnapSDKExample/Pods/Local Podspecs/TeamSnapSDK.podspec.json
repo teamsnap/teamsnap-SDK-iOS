@@ -1,0 +1,101 @@
+{
+  "name": "TeamSnapSDK",
+  "version": "2.0",
+  "summary": "TeamSnap SDK for API v3",
+  "description": "A library to access TeamSnap API v3",
+  "homepage": "https://github.com/teamsnap/teamsnap-SDK-iOS",
+  "license": {
+    "type": "TeamSnap Internal",
+    "text": "TEAMSNAP CONFIDENTIAL & INTERNAL ONLY"
+  },
+  "authors": {
+    "Jason Rahaim": "jason@teamsnap.com",
+    "Skyler Seamans": "skyler.seamans@teamsnap.com",
+    "Mark Gallegos": "mark.gallegos@teamsnap.com"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "resources": [
+    "TeamSnapSDK/SDK/Resources/*"
+  ],
+  "source": {
+    "git": "git@github.com:teamsnap/teamsnap-SDK-iOS.git",
+    "tag": "Pod-2.0"
+  },
+  "source_files": "TeamSnapSDK/*.{h,m}",
+  "subspecs": [
+    {
+      "name": "Profiler",
+      "source_files": "TeamSnapSDK/Profiler/*.{h,m}"
+    },
+    {
+      "name": "SDK",
+      "source_files": "TeamSnapSDK/SDK/*.{h,m}",
+      "subspecs": [
+        {
+          "name": "Cache",
+          "source_files": "TeamSnapSDK/SDK/Cache/*.{h,m}"
+        },
+        {
+          "name": "CollectionJSON",
+          "source_files": "TeamSnapSDK/SDK/CollectionJSON/*.{h,m}"
+        },
+        {
+          "name": "Conveniences",
+          "source_files": "TeamSnapSDK/SDK/Conveniences/*.{h,m}"
+        },
+        {
+          "name": "DataLayer",
+          "source_files": "TeamSnapSDK/SDK/DataLayer/*.{h,m}"
+        },
+        {
+          "name": "DataTypes",
+          "source_files": "TeamSnapSDK/SDK/DataTypes/*.{h,m}",
+          "subspecs": [
+            {
+              "name": "Assignments",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Assignments/*.{h,m}"
+            },
+            {
+              "name": "Leagues",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Leagues/*.{h,m}"
+            },
+            {
+              "name": "Media",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Media/*.{h,m}"
+            },
+            {
+              "name": "Members",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Members/*.{h,m}"
+            },
+            {
+              "name": "Messages",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Messages/*.{h,m}"
+            },
+            {
+              "name": "Payments",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Payments/*.{h,m}"
+            },
+            {
+              "name": "PhotoObjects",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/PhotoObjects/*.{h,m}"
+            },
+            {
+              "name": "Statistics",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/Statistics/*.{h,m}"
+            },
+            {
+              "name": "Protocols",
+              "source_files": "TeamSnapSDK/SDK/Protocols/*.{h,m}"
+            },
+            {
+              "name": "TSL",
+              "source_files": "TeamSnapSDK/SDK/DataTypes/TSL/*.{h,m}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+project '../TeamSnapSDK.xcodeproj'
+use_frameworks!
+
+target 'TeamSnapSDKExample' do
+  pod 'TeamSnapSDK', :path => '../'
+end
