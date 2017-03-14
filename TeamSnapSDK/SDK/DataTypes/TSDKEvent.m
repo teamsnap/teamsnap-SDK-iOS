@@ -9,6 +9,8 @@
 #import "TSDKMember.h"
 #import "TSDKOpponent.h"
 
+NSString * const kRepeatingTypeCode = @"repeating_type_code";
+
 @implementation TSDKEvent {
 
 }
@@ -159,15 +161,19 @@
 }
 
 - (TSDKRepeatingEventTypeCode)repeatingTypeCode {
-    if ([[self.collection data] objectForKey:@"repeating_event_type_code"]) {
-        return [self getInteger:@"repeating_event_type_code"];
+    if ([[self.collection data] objectForKey:kRepeatingTypeCode]) {
+        return [self getInteger:kRepeatingTypeCode];
     } else {
         return TSDKEventDoesNotRepeat;
     }
 }
 
 - (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
-    [self setInteger:repeatingTypeCode forKey:@"repeating_event_type_code"];
+    if (repeatingTypeCode == 0) {
+        [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
+    } else {
+        [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
+    }
 }
 
 @end
