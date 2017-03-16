@@ -219,12 +219,12 @@
 		0501620AE9B80646D4152CC35F27606C /* TSDKMessageDatum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKMessageDatum.h; sourceTree = "<group>"; };
 		0585B09782A390B748053687C40453BF /* TSDKMemberEmailAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKMemberEmailAddress.m; sourceTree = "<group>"; };
 		0720A09BB7DC7ABBFA56F5DE88853361 /* TSDKCollectionCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionCommand.m; sourceTree = "<group>"; };
-		08913B8D125BAD1CA226071DE2637FCA /* TimeZones.json */ = {isa = PBXFileReference; includeInIndex = 1; path = TimeZones.json; sourceTree = "<group>"; };
+		08913B8D125BAD1CA226071DE2637FCA /* TimeZones.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = TimeZones.json; sourceTree = "<group>"; };
 		094BA2C4978A5F3F547025099577B640 /* TSDKObjectsRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKObjectsRequest.h; sourceTree = "<group>"; };
 		0C463144D276CFA60455402FD185F79C /* TSDKSport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKSport.h; sourceTree = "<group>"; };
 		119B99BE2D7AA1FA2A0544A646B181C9 /* TSDKDivision.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKDivision.m; sourceTree = "<group>"; };
-		1211E8915FA6DE9F03D04EE60FD3E5ED /* TeamSnapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TeamSnapSDK.framework; path = TeamSnapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		129A2829CFBCBC8CA27F399A0594DDBB /* sports.json */ = {isa = PBXFileReference; includeInIndex = 1; path = sports.json; sourceTree = "<group>"; };
+		1211E8915FA6DE9F03D04EE60FD3E5ED /* TeamSnapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeamSnapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		129A2829CFBCBC8CA27F399A0594DDBB /* sports.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = sports.json; sourceTree = "<group>"; };
 		12A98795F6F1273AB6F7E1B19876506D /* NSDateFormatter+TSDKConvenience.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TSDKConvenience.h"; sourceTree = "<group>"; };
 		148219FB690CB53C720568BBF054C441 /* TSDKContactPhoneNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKContactPhoneNumber.m; sourceTree = "<group>"; };
 		16BD0D2DDFD5646EDEB92A51F5AC762A /* TSDKTeamMedium.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKTeamMedium.h; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 		3F844680B568E15E5880713AE7312EE0 /* TSDKContactEmailAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKContactEmailAddress.h; sourceTree = "<group>"; };
 		416D4B026380A877103F98A467231C62 /* TSDKEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKEvent.h; sourceTree = "<group>"; };
 		41E8CD0D1A84B2AFF99BD7987F1E795D /* TSDKContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKContact.h; sourceTree = "<group>"; };
-		420DE92ACFD567CB409B286740518AE5 /* TeamSnapSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TeamSnapSDK.modulemap; sourceTree = "<group>"; };
+		420DE92ACFD567CB409B286740518AE5 /* TeamSnapSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TeamSnapSDK.modulemap; sourceTree = "<group>"; };
 		44CED1321F5713B1F662BEF581B1E198 /* TSDKStatisticGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKStatisticGroup.m; sourceTree = "<group>"; };
 		47480D02316F14541E8BACA6060C7C32 /* NSMutableURLRequest+TSDKConveniences.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+TSDKConveniences.m"; sourceTree = "<group>"; };
 		48E48A8B3FEFEAABB659AB6D1FD19474 /* TSDKCollectionJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionJSON.m; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 		6868FFFF6140299D2FA3A7DAB2E6CD63 /* Pods-TeamSnapSDKExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TeamSnapSDKExample.release.xcconfig"; sourceTree = "<group>"; };
 		6D46404D73CD50CD7FEAEB7D1A3B3387 /* TSDKTeamPreferences.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamPreferences.m; sourceTree = "<group>"; };
 		6D8D98530248273DBA892CCBB44A728E /* TSDKStatisticDatum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKStatisticDatum.h; sourceTree = "<group>"; };
-		6E023CB501EF5B0A7A688914D7612E63 /* root.json */ = {isa = PBXFileReference; includeInIndex = 1; path = root.json; sourceTree = "<group>"; };
+		6E023CB501EF5B0A7A688914D7612E63 /* root.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = root.json; sourceTree = "<group>"; };
 		6F460A987CA074B66690A4B101EF5691 /* TSDKApnDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKApnDevice.m; sourceTree = "<group>"; };
 		6F5D7D72FDC3DB5AC58E9E2DF7C698FC /* TSDKUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKUser.m; sourceTree = "<group>"; };
 		6F5DFA54D4AEF9D5F5BCAB4992B76176 /* TSDKTrackedItemStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKTrackedItemStatus.m; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		7DEF15988761FBC46E82368FACED973A /* TSDKCollectionQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionQuery.m; sourceTree = "<group>"; };
 		7E1B1DDA205ACE61B14BDD2F260B3954 /* TSDKRootLinks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKRootLinks.h; sourceTree = "<group>"; };
 		80CF8DF895172D67872A2748CB01A2EF /* TeamSnapSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TeamSnapSDK-umbrella.h"; sourceTree = "<group>"; };
-		8269BA27617FCDD740B074C7600346EF /* Pods_TeamSnapSDKExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TeamSnapSDKExample.framework; path = "Pods-TeamSnapSDKExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8269BA27617FCDD740B074C7600346EF /* Pods_TeamSnapSDKExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamSnapSDKExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83595F2B000ADA43A7AA7ACDDADDEC2B /* TSDKCollectionObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObject.m; sourceTree = "<group>"; };
 		856497B2EDA1E8D10B6524A1A9F3EA07 /* TSDKEventStatistic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKEventStatistic.h; sourceTree = "<group>"; };
 		85C07EA4EF1D8C433EF30CDAFAE9353A /* NSString+TSDKConveniences.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+TSDKConveniences.m"; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 		8F3AC84C83879CAD520E2876AE2858C5 /* TSDKCountry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKCountry.m; sourceTree = "<group>"; };
 		8F7CAEF03A21F44CB58C632417C150C7 /* TSDKMemberPreferences.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKMemberPreferences.m; sourceTree = "<group>"; };
 		9350B55F87A52A3B1DD8C2690ECD37C1 /* TSDKMemberStatistic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKMemberStatistic.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94D5C69567627A5123BF341286DEA26A /* TSDKSport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKSport.m; sourceTree = "<group>"; };
 		95AE3E58901335B417653B6B10DCE271 /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
 		963849C76F650B4B2422F2D0EEA825FB /* TSDKTeamSnap.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamSnap.m; sourceTree = "<group>"; };
@@ -345,7 +345,7 @@
 		B50B924EF2501E5B7C4E6A83C8670D2C /* NSURL+TSDKConveniences.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSURL+TSDKConveniences.m"; sourceTree = "<group>"; };
 		B71E1710284330F4F5045BBD767750A8 /* TSDKOpponentResults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKOpponentResults.h; sourceTree = "<group>"; };
 		B9A427F2E23801D7DD862C1205FA5F57 /* Pods-TeamSnapSDKExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TeamSnapSDKExample.debug.xcconfig"; sourceTree = "<group>"; };
-		B9EFDE36C6139FE34DB277CD778787FD /* countries.json */ = {isa = PBXFileReference; includeInIndex = 1; path = countries.json; sourceTree = "<group>"; };
+		B9EFDE36C6139FE34DB277CD778787FD /* countries.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		B9FC52C8AC94C0388F9FD2C762E2D83E /* TSDKOpponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKOpponent.h; sourceTree = "<group>"; };
 		BB04DE5E159713257B139489E693F6F5 /* TSDKMemberPhoto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKMemberPhoto.h; sourceTree = "<group>"; };
 		BCB4476ED49D85EFB4CDD63EF47B7EA6 /* TSDKMemberBalance.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKMemberBalance.h; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 		CE35379E174B2EF9954CDB2893725134 /* NSMutableString+TSDKConveniences.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+TSDKConveniences.m"; sourceTree = "<group>"; };
 		D0613AAA7CBD23DA6614F0ADDF2A26DD /* TSDKMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKMessage.m; sourceTree = "<group>"; };
 		D0A3985CF1C6146111A11D781F62B9BB /* TSDKinvitationFinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKinvitationFinder.h; sourceTree = "<group>"; };
-		D278F7BCDD2B19DD6C1B26164F6FA064 /* schemas.json */ = {isa = PBXFileReference; includeInIndex = 1; path = schemas.json; sourceTree = "<group>"; };
+		D278F7BCDD2B19DD6C1B26164F6FA064 /* schemas.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = schemas.json; sourceTree = "<group>"; };
 		D2E52038A3B6529EE8535E97F5BCB0FA /* TSDKTeamFee.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKTeamFee.h; sourceTree = "<group>"; };
 		D35925C4021BFE0F4208139DDE815DFF /* NSMutableDictionary+refreshCollectionData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+refreshCollectionData.m"; sourceTree = "<group>"; };
 		D448A6D137447239DEEF617C642B5929 /* TSDKPublicFeatures.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKPublicFeatures.m; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 		FC0E8D3EA6319FE91D6B911D345D976A /* NSDateFormatter+TSDKConvenience.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+TSDKConvenience.m"; sourceTree = "<group>"; };
 		FD13FCC7EF9025395C966579B4ECCF3F /* TSDKStatistic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKStatistic.h; sourceTree = "<group>"; };
 		FDC5E77DA86B2E216BB3BB0835CD5236 /* TSDKRequestConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TSDKRequestConfiguration.h; sourceTree = "<group>"; };
-		FDD679DFEC4FFB3E1559F68BA1B10F55 /* Pods-TeamSnapSDKExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TeamSnapSDKExample.modulemap"; sourceTree = "<group>"; };
+		FDD679DFEC4FFB3E1559F68BA1B10F55 /* Pods-TeamSnapSDKExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TeamSnapSDKExample.modulemap"; sourceTree = "<group>"; };
 		FDE99030BCE4F0443BEAC8B0D6933242 /* TSDKLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TSDKLocation.m; sourceTree = "<group>"; };
 		FDF744EC4D190567A765132B90E089A7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -445,7 +445,6 @@
 			children = (
 				C063F7A88D44C7864C2BBB72E3B64B76 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -479,7 +478,6 @@
 				011AB91B5838FAFBDBAF821E6A8AAD0C /* TSDKTeamStatistic.h */,
 				332D585887A57A4209C6321B8432E0F5 /* TSDKTeamStatistic.m */,
 			);
-			name = Statistics;
 			path = Statistics;
 			sourceTree = "<group>";
 		};
@@ -508,7 +506,6 @@
 				875AF917D467552C6C371101831D7724 /* TSDKCollectionQuery.h */,
 				7DEF15988761FBC46E82368FACED973A /* TSDKCollectionQuery.m */,
 			);
-			name = CollectionJSON;
 			path = CollectionJSON;
 			sourceTree = "<group>";
 		};
@@ -517,7 +514,6 @@
 			children = (
 				BE94E780FC59CCAF38078F69ACF97D23 /* Messages */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -526,7 +522,6 @@
 			children = (
 				6B06C9E6C7F730186BC09C0BBE5952F9 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -535,7 +530,6 @@
 			children = (
 				D9606C0099E0DE49F6053D3EB209A7DE /* Assignments */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -544,7 +538,6 @@
 			children = (
 				C12C999A5CC0353CE4D8E3E08178B168 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -553,7 +546,6 @@
 			children = (
 				28F50FE74F371DEB3A34CFF70E33C4BA /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -567,7 +559,6 @@
 				FA4BD0F2C13D90ECAF2B121FF16C9197 /* TSDKLeagueCustomField.h */,
 				54262CCF8A74654A930DD7C0032FA1A4 /* TSDKLeagueCustomField.m */,
 			);
-			name = Leagues;
 			path = Leagues;
 			sourceTree = "<group>";
 		};
@@ -576,7 +567,6 @@
 			children = (
 				6C33F15D690B78DDB269295908C09E3A /* Members */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -585,7 +575,6 @@
 			children = (
 				456EB152B17C633776D2D94F177795C1 /* Cache */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -610,7 +599,6 @@
 			children = (
 				FD2A02C2FDBD9C76CB5BCEBE69321CEF /* DataLayer */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -621,7 +609,6 @@
 				E22A04C8D4AFD21F14326E4F9992A66A /* TSDKNotifications.h */,
 				8A23E9C288B36D3C7AFF22BFABA9432C /* TSDKNotifications.m */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -630,7 +617,6 @@
 			children = (
 				B352FF29738C489557D3DAA552E18469 /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -639,7 +625,6 @@
 			children = (
 				F520712CF62782D48492BDBE07A41B2B /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -648,7 +633,6 @@
 			children = (
 				0DE4CFD94EA251AAFA513ADCC5F2A83C /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -658,7 +642,6 @@
 				5A44BC6F3437838A3175576DD8EC8294 /* TSPCache.h */,
 				D7553A0E43883A6A0F18A92639227B01 /* TSPCache.m */,
 			);
-			name = Cache;
 			path = Cache;
 			sourceTree = "<group>";
 		};
@@ -667,7 +650,6 @@
 			children = (
 				E06CF29B622E3F19893BFC7FB7FAF660 /* Payments */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -676,7 +658,6 @@
 			children = (
 				0C06C6F743B748258D74B58A4888E0D3 /* CollectionJSON */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -685,7 +666,6 @@
 			children = (
 				5F8DAB8FF35927C95A511590F198EC1D /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -694,7 +674,6 @@
 			children = (
 				834DA1A664D38DBFA577BB3E09D58FD8 /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -711,7 +690,6 @@
 			children = (
 				91DF2C1E7A89DB4AA86890D334C257E5 /* Conveniences */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -720,7 +698,6 @@
 			children = (
 				1BDAF6A9A814E56D5FFF9B5B839C6CE2 /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -729,7 +706,6 @@
 			children = (
 				F644FD5F7FE35127FF01377A35E2E7B1 /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -738,7 +714,6 @@
 			children = (
 				45F97A01F4A95EC80839BE8DA1051DF2 /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -758,7 +733,6 @@
 				3728A74D9CFB016668412930F622D18A /* TSDKMemberPreferences.h */,
 				8F7CAEF03A21F44CB58C632417C150C7 /* TSDKMemberPreferences.m */,
 			);
-			name = Members;
 			path = Members;
 			sourceTree = "<group>";
 		};
@@ -768,7 +742,6 @@
 				5B79E412CF62122583536DC53B234BBB /* TSDKMessageRecipient.h */,
 				9B01D4EECB1ABF9B10518B3703303CB2 /* TSDKMessageSender.h */,
 			);
-			name = Protocols;
 			path = Protocols;
 			sourceTree = "<group>";
 		};
@@ -777,7 +750,6 @@
 			children = (
 				3C6B905335C167ABFA4E545DDB4D04FF /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -786,7 +758,6 @@
 			children = (
 				DD593E3BE5D5D58B71CA9A5EAFA301BC /* PhotoObjects */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -815,7 +786,6 @@
 				129A2829CFBCBC8CA27F399A0594DDBB /* sports.json */,
 				08913B8D125BAD1CA226071DE2637FCA /* TimeZones.json */,
 			);
-			name = Resources;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -824,7 +794,6 @@
 			children = (
 				4781AC04E3597755953F115D846FE075 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -836,7 +805,6 @@
 				679989D1EC0D165144E7505C86D8DA64 /* TSDKTslScore.h */,
 				B0AB0BAA173BC831A8C1B1E31FD075A6 /* TSDKTslScore.m */,
 			);
-			name = TSL;
 			path = TSL;
 			sourceTree = "<group>";
 		};
@@ -845,7 +813,6 @@
 			children = (
 				6C6D2E884190A206E7FB35DC1952B5E8 /* Protocols */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -881,7 +848,6 @@
 			children = (
 				D88CFDFC637C39984E01399934062846 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -893,7 +859,6 @@
 				ADC09C9A4CB364F7357B25DBF2D2E03A /* TSDKTeamMediumComment.h */,
 				1B89BB63ACBDCD66597F7D3F4A8B00D4 /* TSDKTeamMediumComment.m */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -902,7 +867,6 @@
 			children = (
 				2E725FED29316511CFB5160B05316AE0 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -924,7 +888,6 @@
 			children = (
 				7A0BC1982424EFBE79F830C3BD9EF36D /* TSL */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -941,7 +904,6 @@
 			children = (
 				4413B0BD31F76C2FB27A753918F791BB /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -957,7 +919,6 @@
 				009F53D865E1DEA32DB6FD07A7ED369E /* TSDKTeamSnap.h */,
 				963849C76F650B4B2422F2D0EEA825FB /* TSDKTeamSnap.m */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -983,7 +944,6 @@
 				C008192D64830A11D5D88CF489EF3031 /* NSURL+TSDKConveniences.h */,
 				B50B924EF2501E5B7C4E6A83C8670D2C /* NSURL+TSDKConveniences.m */,
 			);
-			name = Conveniences;
 			path = Conveniences;
 			sourceTree = "<group>";
 		};
@@ -1008,7 +968,6 @@
 			children = (
 				FC59730B9058A7FFD92C80A01316768B /* Profiler */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1025,7 +984,6 @@
 			children = (
 				54EF2B7BEDA7C1A7744FA138B4876671 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1076,7 +1034,6 @@
 			children = (
 				3AC7A4020CF5ACF2D23F31129FD0F54C /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1085,7 +1042,6 @@
 			children = (
 				80E226C27F4E7896BAA422B92C339C7C /* Media */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -1094,7 +1050,6 @@
 			children = (
 				044E4701E6F6F15C42F27C2337219BB7 /* Statistics */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -1116,7 +1071,6 @@
 				0501620AE9B80646D4152CC35F27606C /* TSDKMessageDatum.h */,
 				A2F2CCBFF6D5890F8DA3B93468FFFE92 /* TSDKMessageDatum.m */,
 			);
-			name = Messages;
 			path = Messages;
 			sourceTree = "<group>";
 		};
@@ -1125,7 +1079,6 @@
 			children = (
 				6E8E35E7CD5F4900E5217865C8A5F0EB /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -1134,7 +1087,6 @@
 			children = (
 				7573E8B8A42CCC0811C7341FBA2DC31B /* Resources */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -1151,7 +1103,6 @@
 			children = (
 				22B34207AF64F9EB80567527B4BAE730 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1160,7 +1111,6 @@
 			children = (
 				3B81402457FAC067B1D11E1445DC65EE /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1177,7 +1127,6 @@
 			children = (
 				6257F79CE61D2C2E73594A6903686C3A /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1186,7 +1135,6 @@
 			children = (
 				B7DEBE110943E241F527E25BE023FAF0 /* DataTypes */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
@@ -1196,7 +1144,6 @@
 				A70DCC9A7A06EAD44D06B1BA08EB86EF /* TSDKMemberAssignment.h */,
 				A8EAC0DACA97C830CA863C159CD4EB47 /* TSDKMemberAssignment.m */,
 			);
-			name = Assignments;
 			path = Assignments;
 			sourceTree = "<group>";
 		};
@@ -1206,7 +1153,6 @@
 				BB04DE5E159713257B139489E693F6F5 /* TSDKMemberPhoto.h */,
 				A1FA9C7C008E63AB5A20CD152FDB1BF6 /* TSDKMemberPhoto.m */,
 			);
-			name = PhotoObjects;
 			path = PhotoObjects;
 			sourceTree = "<group>";
 		};
@@ -1220,7 +1166,6 @@
 				C6426F5170D1645FCA5F9F87090246E3 /* TSDKPaymentNote.h */,
 				EAA548CA60E4F6B06F77E05560F0A2A7 /* TSDKPaymentNote.m */,
 			);
-			name = Payments;
 			path = Payments;
 			sourceTree = "<group>";
 		};
@@ -1229,7 +1174,6 @@
 			children = (
 				3F315C3D85C9EEF4258CD07B97947681 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1264,7 +1208,6 @@
 			children = (
 				7B671F790D919785607795DA59FDACB7 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1367,7 +1310,6 @@
 				EC0BFC2CB437311E20AF058BB6691582 /* TSDKUser.h */,
 				6F5D7D72FDC3DB5AC58E9E2DF7C698FC /* TSDKUser.m */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -1376,7 +1318,6 @@
 			children = (
 				24BEC77D9A7324C175DD7433AC1BD073 /* Leagues */,
 			);
-			name = DataTypes;
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
@@ -1385,7 +1326,6 @@
 			children = (
 				622FCA5B68B8CBE21BFB9105CF6B9FD4 /* SDK */,
 			);
-			name = TeamSnapSDK;
 			path = TeamSnapSDK;
 			sourceTree = "<group>";
 		};
@@ -1395,7 +1335,6 @@
 				C12EEFFF93414420CFB5850887D142B2 /* TSDKProfileTimer.h */,
 				02A1BB84C9FAD06D0C8D6C1856179B73 /* TSDKProfileTimer.m */,
 			);
-			name = Profiler;
 			path = Profiler;
 			sourceTree = "<group>";
 		};
@@ -1417,7 +1356,6 @@
 				FDC5E77DA86B2E216BB3BB0835CD5236 /* TSDKRequestConfiguration.h */,
 				3296FFC5F83F10492F4498D20ADCCFDA /* TSDKRequestConfiguration.m */,
 			);
-			name = DataLayer;
 			path = DataLayer;
 			sourceTree = "<group>";
 		};
@@ -1731,144 +1669,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		673254EEAF0B5BF4596080C749645884 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		7972AD5CE1B7974B8F45FC0D1F72A6D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9A427F2E23801D7DD862C1205FA5F57 /* Pods-TeamSnapSDKExample.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TeamSnapSDKExample/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TeamSnapSDKExample;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A95A17D996C8095EB8ABC132BBF57C16 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB1E4F448E9F294D2801BC9D3B20C222 /* TeamSnapSDK.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TeamSnapSDK/TeamSnapSDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TeamSnapSDK/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TeamSnapSDK/TeamSnapSDK.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = TeamSnapSDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B779C80F7136354363D67BC5CB81C8D0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB1E4F448E9F294D2801BC9D3B20C222 /* TeamSnapSDK.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TeamSnapSDK/TeamSnapSDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TeamSnapSDK/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TeamSnapSDK/TeamSnapSDK.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = TeamSnapSDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
+		13E96A645A77DAD1FD4F541F18F5DDBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1904,7 +1705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1912,7 +1713,146 @@
 			};
 			name = Debug;
 		};
-		FB8CC2A56919D6C78E0E47A8221FC124 /* Release */ = {
+		35D7F5D2AF3AD76655B9BB7ABCE0F69E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB1E4F448E9F294D2801BC9D3B20C222 /* TeamSnapSDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TeamSnapSDK/TeamSnapSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TeamSnapSDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TeamSnapSDK/TeamSnapSDK.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TeamSnapSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3B0779CA2EE06CC45D176AF66B159FD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB1E4F448E9F294D2801BC9D3B20C222 /* TeamSnapSDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TeamSnapSDK/TeamSnapSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TeamSnapSDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TeamSnapSDK/TeamSnapSDK.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TeamSnapSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7F5BBA6B0E8B9914A99231745ED49271 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9A427F2E23801D7DD862C1205FA5F57 /* Pods-TeamSnapSDKExample.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TeamSnapSDKExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TeamSnapSDKExample;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		862AF3139CD84E18D34FAF2F43CD0DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E3F5A1E10581E2F3CF0E750FB7519F7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6868FFFF6140299D2FA3A7DAB2E6CD63 /* Pods-TeamSnapSDKExample.release.xcconfig */;
 			buildSettings = {
@@ -1929,7 +1869,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-TeamSnapSDKExample/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.modulemap";
@@ -1953,8 +1893,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
-				673254EEAF0B5BF4596080C749645884 /* Release */,
+				13E96A645A77DAD1FD4F541F18F5DDBF /* Debug */,
+				862AF3139CD84E18D34FAF2F43CD0DA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1962,8 +1902,8 @@
 		7E5912DF9BB0245DFC90CF04DC247264 /* Build configuration list for PBXNativeTarget "Pods-TeamSnapSDKExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7972AD5CE1B7974B8F45FC0D1F72A6D7 /* Debug */,
-				FB8CC2A56919D6C78E0E47A8221FC124 /* Release */,
+				7F5BBA6B0E8B9914A99231745ED49271 /* Debug */,
+				E3F5A1E10581E2F3CF0E750FB7519F7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1971,8 +1911,8 @@
 		97CC7DAEA4F384161B6A732494ABA9EE /* Build configuration list for PBXNativeTarget "TeamSnapSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B779C80F7136354363D67BC5CB81C8D0 /* Debug */,
-				A95A17D996C8095EB8ABC132BBF57C16 /* Release */,
+				3B0779CA2EE06CC45D176AF66B159FD1 /* Debug */,
+				35D7F5D2AF3AD76655B9BB7ABCE0F69E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

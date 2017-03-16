@@ -10,7 +10,7 @@
 #import <TeamSnapSDK/TeamSnapSDK.h>
 #import "ViewController.h"
 
-static NSString *apiv3clientId = @"your-client-id";
+static NSString *apiv3clientId = @"99e4c2942cdafa8e93c6bddf1f2912c026157088f972d0cf3f236e6d88042f96";
 static NSString *apiv3scope = @"read";
 static NSString *apiv3redirectURL = @"teamsnapsdk://oauth-callback/teamsnap";
 

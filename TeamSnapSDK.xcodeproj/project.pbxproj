@@ -400,6 +400,7 @@
 		4FCF30661E79C69800302EE7 /* TeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamsViewController.m; sourceTree = "<group>"; };
 		4FCF30671E79C69800302EE7 /* TeamsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamsViewController.xib; sourceTree = "<group>"; };
 		4FCF306A1E79CF6B00302EE7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4FCF306C1E7A0DFB00302EE7 /* TeamSnapSDKExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeamSnapSDKExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKLogging.h; sourceTree = "<group>"; };
 		560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTslMetadatum.h; sourceTree = "<group>"; };
 		560578DD1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTslMetadatum.m; sourceTree = "<group>"; };
@@ -666,6 +667,7 @@
 				4FCF30661E79C69800302EE7 /* TeamsViewController.m */,
 				4FCF30671E79C69800302EE7 /* TeamsViewController.xib */,
 				4FCF306A1E79CF6B00302EE7 /* Launch Screen.storyboard */,
+				4FCF306C1E7A0DFB00302EE7 /* TeamSnapSDKExample-Bridging-Header.h */,
 			);
 			path = TeamSnapSDKExample;
 			sourceTree = "<group>";
@@ -1390,6 +1392,7 @@
 					4FC126391E782D47001E80D0 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = YN466NRGZP;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					969E803F1BAAE62D00CA518F = {
@@ -1746,7 +1749,9 @@
 			baseConfigurationReference = 29DFC70EE2A7BA5B0FE38B4D /* Pods-TeamSnapSDKExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = YN466NRGZP;
 				INFOPLIST_FILE = TeamSnapSDKExample/Info.plist;
@@ -1754,6 +1759,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TeamSnapSDKExample/TeamSnapSDKExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1762,7 +1770,9 @@
 			baseConfigurationReference = 4A6EED665398D1C748686396 /* Pods-TeamSnapSDKExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = YN466NRGZP;
 				INFOPLIST_FILE = TeamSnapSDKExample/Info.plist;
@@ -1770,6 +1780,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TeamSnapSDKExample/TeamSnapSDKExample-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -6,7 +6,7 @@
 //  Copyright © 2016 teamsnap. All rights reserved.
 //
 
-#import <TeamSnapSDK/TeamSnapSDK.h>
+#import "TeamSnapSDK.h"
 
 @interface TSDKTslChat : TSDKCollectionObject
 
