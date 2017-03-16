@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "TeamsViewController.h"
+#import <TeamSnapSDK/TeamSnapSDK.h>
 
 @interface AppDelegate ()
 
@@ -53,5 +55,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    if ([[TSDKTeamSnap sharedInstance] processLoginCallback:url completion:^(bool success, NSError *error) {
+        if (success) {
+            // quick & dirty setting the rootViewController
+            TSDKUser *user =[[TSDKTeamSnap sharedInstance] teamSnapUser];
+            TeamsViewController *teamsViewContrroller = [[TeamsViewController alloc] initWithUser:user];
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:teamsViewContrroller];
+            self.window.rootViewController = navController;
+        } else {
+            NSLog(@"Login Failed");
+        }
+    }]) {
+        return YES;
+    } else {
+        NSLog(@"Not Processed");
+        return NO;
+    }
+}
 @end

@@ -6,10 +6,17 @@
 //  Copyright © 2017 teamsnap. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
+#import <TeamSnapSDK/TeamSnapSDK.h>
 #import "ViewController.h"
 
+static NSString *apiv3clientId = @"your-client-id";
+static NSString *apiv3scope = @"read";
+static NSString *apiv3redirectURL = @"teamsnapsdk://oauth-callback/teamsnap";
+
 @interface ViewController ()
+
+@property (nonatomic, assign) BOOL loggedIn;
 
 @end
 
@@ -17,18 +24,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:@"XXXXXXXXXXXXXXXXXX" scope:@"read+write" redirectURL:@"customURL://" completion:^{
-        NSLog(@"VC Presented");
-    }];
-    
+    self.loggedIn = NO;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!self.loggedIn) {
+        [[TSDKTeamSnap sharedInstance] presentLoginInViewController:self animated:YES clientId:apiv3clientId scope:apiv3scope redirectURL:apiv3redirectURL completion:^{
+            self.loggedIn = YES;
+            NSLog(@"VC Presented");
+        }];
+    }    
 }
-
 
 @end
