@@ -21,8 +21,8 @@
 @property (nonatomic, assign) BOOL isPercentage; //Example: <null>
 @property (nonatomic, assign) BOOL isTopStatistic; //Example: 0
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable displayZeroTotals; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable precision; //Example: **NULL**
+@property (nonatomic, assign) BOOL displayZeroTotals; //Example: **NULL**
+@property (nonatomic, assign) NSInteger precision; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable name; //Example: At Bats
 @property (nonatomic, assign) NSInteger alwaysDisplayDecimals; //Example: 0
@@ -31,5 +31,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberStatistics;
 @property (nonatomic, weak) NSURL *_Nullable linkStatisticData;
+
+- (NSString *_Nonnull)displayStringForStatisticValue:(NSNumber *_Nonnull)statValue;
 
 @end
