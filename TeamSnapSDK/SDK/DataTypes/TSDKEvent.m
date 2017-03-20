@@ -9,12 +9,13 @@
 #import "TSDKMember.h"
 #import "TSDKOpponent.h"
 
+NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 @implementation TSDKEvent {
 
 }
 
-@dynamic uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, repeatingType, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, repeatingTypeCode, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAvailabilities, linkLocation, linkEventStatistics, linkDivisionLocation, linkAssignments, linkMemberAssignments, linkOpponent, linkTeam, linkStatisticData, linkCalendarSingleEvent;
+@dynamic opponentName, locationName, uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAvailabilities, linkLocation, linkEventStatistics, linkDivisionLocation, linkAssignments, linkMemberAssignments, linkOpponent, linkTeam, linkStatisticData, linkCalendarSingleEvent;
 
 + (NSString *)SDKType {
     return @"event";
@@ -159,5 +160,20 @@
     }
 }
 
+- (TSDKRepeatingEventTypeCode)repeatingTypeCode {
+    if ([[self.collection data] objectForKey:kRepeatingTypeCode]) {
+        return [self getInteger:kRepeatingTypeCode];
+    } else {
+        return TSDKEventDoesNotRepeat;
+    }
+}
+
+- (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
+    if (repeatingTypeCode == 0) {
+        [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
+    } else {
+        [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
+    }
+}
 
 @end
