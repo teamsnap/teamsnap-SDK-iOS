@@ -43,6 +43,7 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-27T03:32:51Z
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
+@property (nonatomic, assign) BOOL isHidden;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;
