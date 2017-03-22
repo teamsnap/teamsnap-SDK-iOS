@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+@protocol TSDKMessageRecipient;
 
 typedef NS_ENUM(NSUInteger, TSDKMessageType) {
     TSDKMessageTypeAlert,
@@ -81,6 +82,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 + (void)actionMarkMessageAsRead:(TSDKMessage * _Nonnull)message completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion;
 - (TSDKMessageType)messageTypeValue;
+- (void)getMessageRepliesWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration messageRecipient:(id<TSDKMessageRecipient> _Nonnull)messageRecipient completion:(TSDKMessagesArrayCompletionBlock _Nonnull)completion;
 
 @end
 
@@ -92,7 +94,6 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 -(void)getLastReplySenderPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
 -(void)getAttachmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
--(void)getMessageRepliesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagesArrayCompletionBlock _Nonnull)completion;
 -(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nonnull)completion;
 
 @end

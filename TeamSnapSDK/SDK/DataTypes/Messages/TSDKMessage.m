@@ -8,6 +8,7 @@
 
 #import "TSDKMessage.h"
 #import "TSDKMember.h"
+#import "TSDKContact.h"
 
 @interface TSDKMessage()
 
@@ -65,9 +66,21 @@
     }];
 }
 
-
 - (void)markMessageAsReadWithCompletion:(TSDKCompletionBlock _Nullable)completion {
     [TSDKMessage actionMarkMessageAsRead:self completion:completion];
 }
+
+- (void)getMessageRepliesWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration messageRecipient:(id<TSDKMessageRecipient> _Nonnull)messageRecipient completion:(TSDKMessagesArrayCompletionBlock _Nonnull)completion {
+    NSDictionary *searchParams;
+    
+    if([messageRecipient isKindOfClass:[TSDKMember class]]) {
+        searchParams = @{@"member_id": messageRecipient.objectIdentifier};
+    } else if([messageRecipient isKindOfClass:[TSDKContact class]]) {
+        searchParams = @{@"contact_id": messageRecipient.objectIdentifier};
+    }
+    
+    [self arrayFromLink:self.linkMessageReplies searchParams:searchParams withConfiguration:configuration completion:completion];
+}
+
 
 @end
