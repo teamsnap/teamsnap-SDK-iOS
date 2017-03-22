@@ -195,7 +195,7 @@
                 
                 [[[TSDKTeamSnap sharedInstance] teamSnapUser] myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
                     if (completion) {
-                        completion(success, nil);
+                        completion(success, error);
                     }
                 }];
             } else {
