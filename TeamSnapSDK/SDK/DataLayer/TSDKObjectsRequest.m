@@ -262,7 +262,7 @@ static NSArray *knownCompletionTypes;
     // these values are checked before using but we should assert their expected value right away
     NSParameterAssert(startDate);
     
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             [self listEventsForTeams:teamIds pageNumber:pageNumber pageSize:pageSize startDate:startDate endDate:endDate rootLinks:rootLinks completion:completion];
         } else if (completion) {
