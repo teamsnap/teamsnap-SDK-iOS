@@ -43,7 +43,7 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-27T03:32:51Z
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
-@property (nonatomic, assign) BOOL isHidden;
+@property (nonatomic, assign) BOOL isHiddenOnDashboard;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;
@@ -145,6 +145,10 @@
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
 
 + (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+
+//Toggles the visibility of teams on the list of active teams, per user. Requires a single id or a comma separated list of 'team_id's
++ (void)actionToggleTeamVisibilityOnDashboardTeamIds:(NSArray <NSString *> *_Nonnull)teamIds completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+- (void)actionToggleTeamVisibilityOnDashboardWithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
 @end
 

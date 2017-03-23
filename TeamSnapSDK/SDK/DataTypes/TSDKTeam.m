@@ -21,6 +21,7 @@
 #import "TSDKUser.h"
 #import "NSURL+TSDKConveniences.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "TSDKNotifications.h"
 
 @interface TSDKTeam()
 
@@ -30,7 +31,7 @@
     
 }
 
-@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, divisionId, humanizedMediaStorageUsed, createdAt, billedAt, isArchivedSeason, isRetired, isHidden, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMessageData, linkMemberFiles, linkMemberPayments, linkDivisionMemberPhoneNumbers, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkStatisticData, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts, linkMemberPhotos, linkTeamPhotos, linkTeamLogoPhotoFile;
+@dynamic sportId, leagueUrl, isInLeague, hasReachedRosterLimit, canExportMedia, timeZoneOffset, locationLatitude, updatedAt, hasExportableMedia, lastAccessedAt, timeZoneIanaName, locationPostalCode, name, locationLongitude, planId, leagueName, timeZoneDescription, rosterLimit, seasonName, locationCountry, mediaStorageUsed, divisionName, divisionId, humanizedMediaStorageUsed, createdAt, billedAt, isArchivedSeason, isRetired, isHiddenOnDashboard, linkTeamMediaGroups, linkContactEmailAddresses, linkDivisionContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkOwner, linkDivisionMembersPreferences, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkDivisionContacts, linkManagers, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkDivisionLocations, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkDivisionContactPhoneNumbers, linkTeamPreferences, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkDivisionMembers, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMembers, linkStatistics, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkLeagueCustomData, linkContactPhoneNumbers, linkMessageData, linkMemberFiles, linkMemberPayments, linkDivisionMemberPhoneNumbers, linkDivisionMemberEmailAddresses, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkStatisticData, linkBroadcastEmails, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkTeamPublicSite, linkBroadcastAlerts, linkMemberPhotos, linkTeamPhotos, linkTeamLogoPhotoFile;
 
 + (NSString *)SDKType {
     return @"team";
@@ -118,6 +119,27 @@
 
 - (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
     [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
+}
+
++ (void)actionToggleTeamVisibilityOnDashboardTeamIds:(NSArray <NSString *> *_Nonnull)teamIds completion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"toggle_team_visibility"];
+    command.data[@"team_ids"] = [teamIds componentsJoinedByString:@","];
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        NSArray *result = nil;
+        if (success) {
+            if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+        }
+        if (completion) {
+            completion(success, complete, result, error);
+        }
+    }];
+
+}
+
+- (void)actionToggleTeamVisibilityOnDashboardWithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
+    [TSDKTeam actionToggleTeamVisibilityOnDashboardTeamIds:@[self.objectIdentifier] completion:completion];
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion{
