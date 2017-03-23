@@ -122,7 +122,7 @@
 }
 
 + (void)actionToggleTeamVisibilityOnDashboardTeamIds:(NSArray <NSString *> *_Nonnull)teamIds completion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
-    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"toggle_team_visibility"];
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"toggle_team_visibility_on_dashboard"];
     command.data[@"team_ids"] = [teamIds componentsJoinedByString:@","];
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         NSArray *result = nil;
