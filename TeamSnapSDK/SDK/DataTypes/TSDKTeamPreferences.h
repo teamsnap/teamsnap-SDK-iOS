@@ -15,11 +15,15 @@ typedef enum : NSUInteger {
     TSDKTeamPreferenceAvailabilitiesSortOrderDateSet,
 } TSDKTeamPreferenceAvailabilitiesSortOrder;
 
+typedef enum : NSUInteger {
+    TSDKTeamPreferenceMemberSortOrderFirstName,
+    TSDKTeamPreferenceMemberSortOrderLastName,
+} TSDKTeamPreferenceMemberSortOrder;
+
 @interface TSDKTeamPreferences : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger tslScorePushEnabled; //Example: 1
 @property (nonatomic, assign) BOOL trackedItemsIsPrivate; //Example: **NULL**
-@property (nonatomic, weak) NSString *memberSortOrder; //Example: last
 @property (nonatomic, weak) NSString *teamMessage; //Example: <p>Test</p>
 @property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
 @property (nonatomic, weak) NSString *globalUniformHome; //Example: White shirt, grey pants
@@ -77,6 +81,10 @@ typedef enum : NSUInteger {
 -(void)getTeamPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 -(void)getTeamLogoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion;
 #endif
+
+- (TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference;
+- (void)setMemberSortOrderPreference:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference;
+- (NSString *)rawValueForMemberSortOrder:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference;
 
 - (TSDKTeamPreferenceAvailabilitiesSortOrder)availabilitiesSortOrderPreference;
 - (void)setAvailabilitySortOrderPreference:(TSDKTeamPreferenceAvailabilitiesSortOrder)sortOrderPreference;

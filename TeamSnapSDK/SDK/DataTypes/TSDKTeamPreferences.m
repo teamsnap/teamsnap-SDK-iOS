@@ -12,6 +12,7 @@
 @interface TSDKTeamPreferences()
 
 @property (nonatomic, weak) NSString *availabilitiesSortOrder; //Example: date
+@property (nonatomic, weak) NSString *memberSortOrder; //Example: last
 
 @end
 
@@ -52,6 +53,32 @@
     }
 }
 #endif
+
+- (TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    if([[self.memberSortOrder lowercaseString] isEqualToString:[[self rawValueForMemberSortOrder:TSDKTeamPreferenceMemberSortOrderLastName] lowercaseString]]) {
+        return TSDKTeamPreferenceMemberSortOrderLastName;
+    } else {
+        return TSDKTeamPreferenceMemberSortOrderFirstName;
+    }
+}
+
+- (void)setMemberSortOrderPreference:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    self.memberSortOrder = [self rawValueForMemberSortOrder:memberSortOrderPreference];
+}
+
+- (NSString *)rawValueForMemberSortOrder:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    switch (memberSortOrderPreference) {
+        case TSDKTeamPreferenceMemberSortOrderLastName:
+            return @"last";
+            break;
+        case TSDKTeamPreferenceMemberSortOrderFirstName:
+            return @"first";
+            break;
+        default:
+            return @"first";
+            break;
+    }
+}
 
 - (TSDKTeamPreferenceAvailabilitiesSortOrder)availabilitiesSortOrderPreference {
     if([[self.availabilitiesSortOrder lowercaseString] isEqualToString:[@"name" lowercaseString]]) {
