@@ -7,6 +7,7 @@
 //
 
 #import "TSDKStatistic.h"
+#import "NSNumber+TSDKConveniences.h"
 
 @implementation TSDKStatistic
 
@@ -14,6 +15,16 @@
 
 + (NSString *)SDKType {
     return @"statistic";
+}
+
+- (NSString *)displayStringForStatisticValue:(NSNumber *)statValue {
+    if ((self.precision == 0) || ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber])) {
+        return [NSString stringWithFormat:@"%ld", (long)[statValue integerValue]];
+    } else {
+        NSString *formatString = [NSString stringWithFormat:@"%%.%ldf", (long)self.precision];
+        
+        return [NSString stringWithFormat:formatString, [statValue floatValue]];
+    }
 }
 
 @end

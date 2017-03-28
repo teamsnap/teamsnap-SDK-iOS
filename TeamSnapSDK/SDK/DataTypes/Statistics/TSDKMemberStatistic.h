@@ -13,13 +13,13 @@
 
 @property (nonatomic, weak) NSString *_Nullable averageRankingForQuery; //Example: **NULL**
 @property (nonatomic, assign) NSInteger countGamesPlayed; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable average; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable averageRanking; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable totalRankingForQuery; //Example: **NULL**
+@property (nonatomic, weak) NSNumber *_Nullable average; //Example: **NULL**
+@property (nonatomic, weak) NSNumber *_Nullable averageRanking; //Example: **NULL**
+@property (nonatomic, weak) NSNumber *_Nullable totalRankingForQuery; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable statisticId; //Example: 776832
-@property (nonatomic, weak) NSString *_Nullable total; //Example: **NULL**
+@property (nonatomic, weak) NSNumber *_Nullable total; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 153832
-@property (nonatomic, weak) NSString *_Nullable totalRanking; //Example: **NULL**
+@property (nonatomic, weak) NSNumber *_Nullable totalRanking; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable memberId; //Example: 1942977
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkStatistic;
