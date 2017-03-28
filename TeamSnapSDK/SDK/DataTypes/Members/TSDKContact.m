@@ -11,7 +11,7 @@
 
 @implementation TSDKContact
 
-@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, isEditable, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
+@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
 
 + (NSString *)SDKType {
     return @"contact";
