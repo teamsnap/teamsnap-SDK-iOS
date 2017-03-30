@@ -17,6 +17,15 @@
     return @"contact";
 }
 
+- (BOOL)isEditable {
+    if ([self.collection.data objectForKey:@"is_editable"]) {
+        NSNumber *value = [self.collection.data objectForKey:@"is_editable"];
+        return [value boolValue];
+    } else {
+        return YES;
+    }
+}
+
 - (BOOL)canMarkAsRead {
     return YES;
 }

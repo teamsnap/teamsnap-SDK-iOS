@@ -12,7 +12,7 @@
 
 typedef void (^TSDKJSONCompletionBlock)(BOOL success, BOOL complete, id _Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKSimpleCompletionBlock)(BOOL success, NSError *_Nullable error);
-typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks *_Nullable rootLinks);
+typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks *_Nullable rootLinks, NSError * _Nullable error);
 typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJSON *_Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKSaveCompletionBlock)(BOOL success, TSDKCollectionObject *_Nullable object, NSError *_Nullable error);
 typedef void (^TSDKInviteStatusCompletionBlock)(BOOL success, BOOL complete, TSDKinvitationFinder *_Nullable objects, NSError *_Nullable error);
@@ -75,7 +75,7 @@ typedef void (^TSDKDivisionMembersArrayCompletionBlock)(BOOL success, BOOL compl
 typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJSON *_Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray *_Nonnull objects, NSError *_Nullable error);
 typedef void (^TSDKMemberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMember *> *_Nullable members, NSError * _Nullable error);
-typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks * _Nullable rootLinks);
+typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks * _Nullable rootLinks, NSError * _Nullable error);
 typedef void (^TSDKTeamPreferencesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamPreferences *> *_Nullable teamsPreferences, NSError * _Nullable error);
 typedef void (^TSDKTeamResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamResults *> *_Nullable teamsResults, NSError * _Nullable error);
 typedef void (^TSDKEventArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKEvent *> *_Nullable events, NSError * _Nullable error);
