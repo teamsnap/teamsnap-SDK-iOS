@@ -25,7 +25,7 @@
 @property (nonatomic, assign) NSInteger precision; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable name; //Example: At Bats
-@property (nonatomic, assign) NSInteger alwaysDisplayDecimals; //Example: 0
+@property (nonatomic, assign) BOOL alwaysDisplayDecimals; //Example: 0
 @property (nonatomic, weak) NSURL *_Nullable linkStatisticGroup;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamStatistics;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
