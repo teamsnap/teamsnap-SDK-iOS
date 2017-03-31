@@ -34,6 +34,24 @@
     }
 }
 
+- (TSDKMessageReplyStatus)replyStatus {
+    NSNumber *value = [[self.collection data] objectForKey:@"reply_status"];
+    switch (value.integerValue) {
+        case 0:
+            return TSDKMessageReplyStatusReplyable;
+            break;
+        case 1:
+            return TSDKMessageReplyStatusNotReplyableLimitReached;
+            break;
+        case 2:
+            return TSDKMessageReplyStatusNotReplyableCommissionerSent;
+            break;
+        default:
+            return TSDKMessageReplyStatusReplyable;
+            break;
+    }
+}
+
 + (void)actionMarkMessageAsRead:(TSDKMessage *)message completion:(TSDKCompletionBlock)completion {
     TSDKCollectionCommand *command = [[TSDKMessage commands] objectForKey:@"mark_message_as_read"];
     command.data[@"id"] = message.objectIdentifier;

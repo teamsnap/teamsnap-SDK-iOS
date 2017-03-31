@@ -23,6 +23,12 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
     TSDKMessageTypeFilterAlert,
 };
 
+typedef NS_ENUM(NSUInteger, TSDKMessageReplyStatus) {
+    TSDKMessageReplyStatusReplyable,
+    TSDKMessageReplyStatusNotReplyableLimitReached,
+    TSDKMessageReplyStatusNotReplyableCommissionerSent
+};
+
 @interface TSDKMessage : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger flags; //Example: 128
@@ -45,7 +51,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 @property (nonatomic, assign) NSInteger attachmentCount; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable messageId; //Example: 72
 @property (nonatomic, assign) NSInteger threadUnreadCount; //Example: **NULL**
-@property (nonatomic, assign) NSInteger replyStatus; //Example: 0
+@property (nonatomic, assign) TSDKMessageReplyStatus replyStatus; //Example: 0
 @property (nonatomic, weak) NSDate *_Nullable lastReplyCreatedAt; //Example: <null>
 @property (nonatomic, weak) NSString *_Nullable status; //Example: sent
 @property (nonatomic, weak) NSString *_Nullable lastReplySenderId; //Example: <null>
