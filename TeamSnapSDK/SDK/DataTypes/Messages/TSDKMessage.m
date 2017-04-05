@@ -18,7 +18,7 @@
 
 @implementation TSDKMessage
 
-@dynamic flags, messageSourceId, createdAt, messageType, senderName, teamId, lastReplySenderName, body, senderId, subject, isDraft, recipients, attachmentNames, recipientNames, divisionId, lastReplyRecipients, lastReplyRecipientNames, pushed, attachmentCount, messageId, threadUnreadCount, replyStatus, lastReplyCreatedAt, status, lastReplySenderId, userId, updatedAt, threadTotalCount, contactId, lastReplyBody, senderType, emailed, memberId, smsed, readAt, threadId, isDirectlyReplyable, linkAttachments, linkMember, linkSender, linkDivision, linkTeam, linkUser, linkMessageReplies, linkSenderPhotoFile, linkLastReplySenderPhotoFile;
+@dynamic flags, messageSourceId, createdAt, messageType, senderName, teamId, lastReplySenderName, body, senderId, subject, isDraft, recipients, attachmentNames, recipientNames, divisionId, lastReplyRecipients, lastReplyRecipientNames, pushed, attachmentCount, messageId, threadUnreadCount, replyStatus, lastReplyCreatedAt, status, lastReplySenderId, userId, updatedAt, threadTotalCount, contactId, lastReplyBody, senderType, emailed, directReplyStatus, memberId, smsed, readAt, threadId, linkAttachments, linkMember, linkSender, linkDivision, linkTeam, linkUser, linkMessageReplies, linkSenderPhotoFile, linkLastReplySenderPhotoFile;
 
 + (NSString *)SDKType {
     return @"message";
@@ -46,6 +46,28 @@
         case 2:
             return TSDKMessageReplyStatusNotReplyableCommissionerSent;
             break;
+        case  3:
+            return TSDKMessageReplyStatusNotReplyableSenderNotEmailable;
+        default:
+            return TSDKMessageReplyStatusReplyable;
+            break;
+    }
+}
+
+- (TSDKMessageReplyStatus)directReplyStatus {
+    NSNumber *value = [[self.collection data] objectForKey:@"direct_Reply_Status"];
+    switch (value.integerValue) {
+        case 0:
+            return TSDKMessageReplyStatusReplyable;
+            break;
+        case 1:
+            return TSDKMessageReplyStatusNotReplyableLimitReached;
+            break;
+        case 2:
+            return TSDKMessageReplyStatusNotReplyableCommissionerSent;
+            break;
+        case  3:
+            return TSDKMessageReplyStatusNotReplyableSenderNotEmailable;
         default:
             return TSDKMessageReplyStatusReplyable;
             break;

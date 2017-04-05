@@ -26,8 +26,10 @@ typedef NS_ENUM(NSUInteger, TSDKMessageTypeFilter) {
 typedef NS_ENUM(NSUInteger, TSDKMessageReplyStatus) {
     TSDKMessageReplyStatusReplyable,
     TSDKMessageReplyStatusNotReplyableLimitReached,
-    TSDKMessageReplyStatusNotReplyableCommissionerSent
+    TSDKMessageReplyStatusNotReplyableCommissionerSent,
+    TSDKMessageReplyStatusNotReplyableSenderNotEmailable
 };
+
 
 @interface TSDKMessage : TSDKCollectionObject
 
@@ -52,6 +54,7 @@ typedef NS_ENUM(NSUInteger, TSDKMessageReplyStatus) {
 @property (nonatomic, weak) NSString *_Nullable messageId; //Example: 72
 @property (nonatomic, assign) NSInteger threadUnreadCount; //Example: **NULL**
 @property (nonatomic, assign) TSDKMessageReplyStatus replyStatus; //Example: 0
+@property (nonatomic, assign) TSDKMessageReplyStatus directReplyStatus; //Example: 0
 @property (nonatomic, weak) NSDate *_Nullable lastReplyCreatedAt; //Example: <null>
 @property (nonatomic, weak) NSString *_Nullable status; //Example: sent
 @property (nonatomic, weak) NSString *_Nullable lastReplySenderId; //Example: <null>
@@ -66,7 +69,6 @@ typedef NS_ENUM(NSUInteger, TSDKMessageReplyStatus) {
 @property (nonatomic, assign) NSInteger smsed; //Example: 0
 @property (nonatomic, weak) NSDate *_Nullable readAt; //Example: 2017-02-27T17:52:28Z
 @property (nonatomic, weak) NSString *_Nullable threadId; //Example: 71
-@property (nonatomic, assign) BOOL isDirectlyReplyable;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkSender;
 @property (nonatomic, weak) NSURL *_Nullable linkDivision;
