@@ -20,7 +20,6 @@
 #import "TSDKCustomDatum.h"
 #import "TSDKUser.h"
 #import "NSURL+TSDKConveniences.h"
-#import "NSMutableDictionary+refreshCollectionData.h"
 #import "TSDKNotifications.h"
 
 @interface TSDKTeam()

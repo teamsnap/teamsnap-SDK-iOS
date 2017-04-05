@@ -338,10 +338,6 @@
 		96E94B5B1E7C2FC7006D7494 /* TSDKStatisticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E94B5A1E7C2FC7006D7494 /* TSDKStatisticTests.m */; };
 		96E94B5E1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E94B5C1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h */; };
 		96E94B5F1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E94B5D1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m */; };
-		96F4E7D81C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */; };
-		96F4E7D91C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */; };
-		96F4E7DA1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */; };
-		96F4E7DB1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */; };
 		96F4FC3F1BBDA389000D04B9 /* TSDKTeamResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96F4FC401BBDA389000D04B9 /* TSDKTeamResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */; };
 		96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */; };
@@ -567,8 +563,6 @@
 		96E94B5A1E7C2FC7006D7494 /* TSDKStatisticTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKStatisticTests.m; path = DataType/TSDKStatisticTests.m; sourceTree = "<group>"; };
 		96E94B5C1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+TSDKConveniences.h"; sourceTree = "<group>"; };
 		96E94B5D1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+TSDKConveniences.m"; sourceTree = "<group>"; };
-		96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+refreshCollectionData.h"; sourceTree = "<group>"; };
-		96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+refreshCollectionData.m"; sourceTree = "<group>"; };
 		96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamResults.h; sourceTree = "<group>"; };
 		96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamResults.m; sourceTree = "<group>"; };
 		96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMemberPhoto.h; path = PhotoObjects/TSDKMemberPhoto.h; sourceTree = "<group>"; };
@@ -835,8 +829,6 @@
 				969E806D1BAAE7AB00CA518F /* NSDate+TSDKConveniences.m */,
 				569CFABE1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.h */,
 				569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */,
-				96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */,
-				96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */,
 				969E80701BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.h */,
 				969E80711BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.m */,
 				969E80721BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h */,
@@ -1091,7 +1083,6 @@
 				969E80ED1BAAE7AB00CA518F /* TSDKSport.h in Headers */,
 				4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */,
 				969E80D91BAAE7AB00CA518F /* TSDKBroadcastAlert.h in Headers */,
-				96F4E7D81C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */,
 				96E1336B1D88627C0027E382 /* TSDKMemberAssignment.h in Headers */,
 				965B7D3F1C18CAE1009AF13E /* TSDKContactEmailAddress.h in Headers */,
 				965B7D331C18C7EE009AF13E /* TSDKMemberEmailAddress.h in Headers */,
@@ -1179,7 +1170,6 @@
 				96F7C52B1D1052A40022FA4C /* TeamSnapSDK.h in Headers */,
 				969B7EAD1C7CA33500FD3EA0 /* TSDKMemberPreferences.h in Headers */,
 				96B47F331BADB4410035F2CC /* TSDKLocation.h in Headers */,
-				96F4E7D91C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */,
 				96B47F291BADB4410035F2CC /* TSDKCustomDatum.h in Headers */,
 				96F4FC401BBDA389000D04B9 /* TSDKTeamResults.h in Headers */,
 				96B47F4B1BADB4640035F2CC /* TSDKStatistic.h in Headers */,
@@ -1403,7 +1393,6 @@
 				969B7EA41C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */,
 				96AF8E771E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m in Sources */,
 				969E80D21BAAE7AB00CA518F /* TSDKTeamStatistic.m in Sources */,
-				96F4E7DA1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */,
 				960556D41BE15F87003AB59D /* TSDKinvitationFinder.m in Sources */,
 				965B7D411C18CAE1009AF13E /* TSDKContactEmailAddress.m in Sources */,
 				969E80F01BAAE7AB00CA518F /* TSDKTeam.m in Sources */,
@@ -1491,7 +1480,6 @@
 				965B7D421C18CAE1009AF13E /* TSDKContactEmailAddress.m in Sources */,
 				96B47F3C1BADB4410035F2CC /* TSDKSport.m in Sources */,
 				96B47F361BADB4410035F2CC /* TSDKMember.m in Sources */,
-				96F4E7DB1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */,
 				96B47F601BADB4810035F2CC /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
 				96B47F341BADB4410035F2CC /* TSDKLocation.m in Sources */,
 				96B47F681BADB4850035F2CC /* TSDKCollectionObject.m in Sources */,
