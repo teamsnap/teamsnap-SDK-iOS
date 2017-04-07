@@ -58,6 +58,7 @@
 - (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *_Nonnull)collectionObject;
 
 - (NSDictionary *_Nullable)dataToSave;
+- (void)removeObjectForKey:(NSString *_Nonnull)key;
 - (NSString *_Nullable)getString:(NSString *_Nonnull)key;
 - (void)setString:(NSString *_Nullable)value forKey:(NSString *_Nonnull)aKey;
 - (NSInteger)getInteger:(NSString *_Nonnull)key;

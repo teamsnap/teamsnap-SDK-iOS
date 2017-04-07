@@ -65,7 +65,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         [self setBool:YES forKey:@"notify_team"];
         [self setString:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
-        [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
+        [self removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];
     }
 }
@@ -170,7 +170,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 - (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
     if (repeatingTypeCode == 0) {
-        [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
+        [self removeObjectForKey:kRepeatingTypeCode];
     } else {
         [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
     }

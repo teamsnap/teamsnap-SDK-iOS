@@ -194,10 +194,11 @@ static NSMutableDictionary *_classURLs;
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
     
     TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
-    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+    NSMutableDictionary *tempData = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+
     newCollection.type = originalObject.collection.type;
     
-    NSArray *allKeys = [[newCollection data] allKeys];
+    NSArray *allKeys = [tempData allKeys];
     for (NSString *key in allKeys) {
         BOOL deleteKey = NO;
         NSRange idFound = [key rangeOfString:@"_id"];
@@ -208,9 +209,10 @@ static NSMutableDictionary *_classURLs;
         }
         
         if (deleteKey) {
-            [[newCollection data] removeObjectForKey:key];
+            [tempData removeObjectForKey:key];
         }
     }
+    [newCollection setData:[NSDictionary dictionaryWithDictionary:tempData]];
     
     __typeof__(originalObject) newObject = [[[originalObject class] alloc] initWithCollection:newCollection];
     
@@ -561,17 +563,28 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             [_changedValues setObject:[NSNull null] forKey:aKey];
         }
     }
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:self.collection.data];
+    
     if (value) {
-        _collection.data[aKey] = value;
+        tempDictionary[aKey] = value;
     } else {
-        _collection.data[aKey] = [NSNull null];
+        tempDictionary[aKey] = [NSNull null];
     }
+    [self.collection setData:[NSDictionary dictionaryWithDictionary:tempDictionary]];
+}
+
+- (void)removeObjectForKey:(NSString *)key {
+     NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:self.collection.data];
+    [tempDictionary removeObjectForKey:key];
+    [self.collection setData:[NSDictionary dictionaryWithDictionary:tempDictionary]];
 }
 
 - (void)undoChanges {
+    NSMutableDictionary *tempDictonary = [NSMutableDictionary dictionaryWithDictionary:self.collection.data];
     for (NSString *key in _changedValues) {
-        self.collection.data[key] = _changedValues[key];
+        tempDictonary[key] = _changedValues[key];
     }
+    [self.collection setData:[NSDictionary dictionaryWithDictionary:tempDictonary]];
     [_changedValues removeAllObjects];
 }
 

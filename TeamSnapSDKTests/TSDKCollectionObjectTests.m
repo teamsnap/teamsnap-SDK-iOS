@@ -61,8 +61,8 @@
     
     [paymentNoPayment undoChanges];
     XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
-
-    [paymentNoPayment.collection.data removeObjectForKey:@"team_id"];
+    
+    [paymentNoPayment removeObjectForKey:@"team_id"];
     XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
     XCTAssertNil(paymentNoPayment.teamId);
     
@@ -198,11 +198,11 @@
         TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
         
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
-        [user.collection.data setObject:@"" forKey:@"created_at"];
+        [user setString:@"" forKey:@"created_at"];
         XCTAssertNoThrow(user.createdAt);
     }
     
-    [[event.collection data] setObject:@"8-13" forKey:@"start_date"];
+    [event setString:@"8-13" forKey:@"start_date"];
     XCTAssertNoThrow(event.startDate);
 }
 

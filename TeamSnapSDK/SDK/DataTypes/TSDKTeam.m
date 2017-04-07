@@ -184,7 +184,7 @@
 
 - (void)setTimeZoneIanaName:(NSString *)timeZoneIanaName {
     [self setString:timeZoneIanaName forKey:@"time_zone_iana_name"];
-    self.collection.data[@"time_zone"] = timeZoneIanaName;
+    [self setString:timeZoneIanaName forKey:@"time_zone"];
     [self.changedValues setObject:[NSNull null] forKey:@"time_zone"];
 }
 

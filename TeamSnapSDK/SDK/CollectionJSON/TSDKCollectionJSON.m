@@ -116,18 +116,21 @@
     } else {
         DLog(@"Data is %@", [[collection objectForKey:@"data"] class]);
     }
+    NSMutableDictionary *tempData = [[NSMutableDictionary alloc] init];
+    
     for (NSDictionary *data in datum) {
         NSString *dataType = [data objectForKey:@"type"];
         if ([data objectForKey:@"array"]) {
-            [self.data setObject:[data objectForKey:@"array"] forKey:[data objectForKey:@"name"]];
+            [tempData setObject:[data objectForKey:@"array"] forKey:[data objectForKey:@"name"]];
         } else if ([data objectForKey:@"value"]) {
             if (dataType && [dataType isEqualToString:@"DateTime"]) {
             } else if (dataType) {
                 DLog(@"DataType: %@", dataType);
             }
-            [self.data setObject:[data objectForKey:@"value"] forKey:[data objectForKey:@"name"]];
+            [tempData setObject:[data objectForKey:@"value"] forKey:[data objectForKey:@"name"]];
         }
     }
+    [self setData:[NSDictionary dictionaryWithDictionary:tempData]];
     
     NSArray *links = [NSArray arrayWithArray:[collection objectForKey:@"links"]];
     NSMutableDictionary *tempLinks = [[NSMutableDictionary alloc] init];
@@ -152,14 +155,16 @@
     if (!items) {
 
     } else if ([items isKindOfClass:[NSArray class]]) {
-        _collection = [[NSMutableArray alloc] init];
+        NSMutableArray *tempCollection = [[NSMutableArray alloc] init];
         for (id item in items) {
             if ([item isKindOfClass:[NSDictionary class]]) {
                 TSDKCollectionJSON *subCollection = [[TSDKCollectionJSON alloc] init];
                 [subCollection parseJSON: (NSDictionary *)item];
-                [_collection addObject:subCollection];
+                [tempCollection addObject:subCollection];
             }
         }
+        
+        _collection = [NSArray arrayWithArray:tempCollection];
     } else if ([items isKindOfClass:[NSDictionary class]]) {
         DLog(@"Dictionary of %lu Items", (unsigned long)[(NSDictionary *)items count]);
     }
