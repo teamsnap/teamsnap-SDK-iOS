@@ -176,7 +176,7 @@ static NSMutableDictionary *_classURLs;
     self = [super init];
     if (self) {
         _collection = [[TSDKCollectionJSON alloc] init];
-        _changedValues = [[NSMutableDictionary alloc] init];
+        _changedValues = [[NSDictionary alloc] init];
         _logHeader = NO;
         _lastUpdate = nil;
     }
@@ -557,11 +557,13 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         }
     }
     if (![_changedValues objectForKey:aKey]) {
+        NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:_changedValues];
         if (_collection.data[aKey]) {
-            [_changedValues setObject:_collection.data[aKey] forKey:aKey];
+            [tempDictionary setObject:_collection.data[aKey] forKey:aKey];
         } else {
-            [_changedValues setObject:[NSNull null] forKey:aKey];
+            [tempDictionary setObject:[NSNull null] forKey:aKey];
         }
+        _changedValues = tempDictionary;
     }
     NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:self.collection.data];
     
@@ -585,7 +587,22 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         tempDictonary[key] = _changedValues[key];
     }
     [self.collection setData:[NSDictionary dictionaryWithDictionary:tempDictonary]];
-    [_changedValues removeAllObjects];
+    
+    [self removeChangedValues];
+}
+
+- (void)removeChangedValues {
+    _changedValues = [[NSDictionary alloc] init];
+}
+
+- (void)markValueChangedForKey:(NSString *)key {
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:_changedValues];
+    if ([self.collection.data objectForKey:key]) {
+        [tempDictionary setObject:[self.collection.data objectForKey:key] forKey:key];
+    } else {
+        [tempDictionary setObject:[NSNull null] forKey:key];
+    }
+    self.changedValues = [NSDictionary dictionaryWithDictionary:tempDictionary];
 }
 
 - (NSDictionary *)dataToSave {
@@ -768,7 +785,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         
         [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
-                [weakSelf.changedValues removeAllObjects];
+                [weakSelf removeChangedValues];
                 if ([objects.collection isKindOfClass:[NSArray class]]) {
                     NSArray *returnedCollections = (NSArray *)objects.collection;
                     if ([returnedCollections count]==1) {
@@ -792,7 +809,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             __typeof__(self) __weak weakSelf = self;
             [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                 if (success) {
-                    [weakSelf.changedValues removeAllObjects];
+                    [weakSelf removeChangedValues];
                     if ([objects.collection isKindOfClass:[NSArray class]]) {
                         NSArray *returnedCollections = (NSArray *)objects.collection;
                         if ([returnedCollections count]==1) {

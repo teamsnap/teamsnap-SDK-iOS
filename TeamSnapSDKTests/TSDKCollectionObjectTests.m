@@ -141,7 +141,7 @@
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);
     XCTAssertEqual([event.changedValues objectForKey:@"name"], [NSNull null]);
-    [event.changedValues removeAllObjects];
+    [event removeChangedValues];
     
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);

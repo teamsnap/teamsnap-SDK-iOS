@@ -24,7 +24,7 @@
 @interface TSDKCollectionObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
+@property (nonatomic, strong) NSDictionary *_Nullable changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong) NSDate *_Nullable lastUpdate;
 
@@ -85,6 +85,9 @@
 + (void)arrayFromFileLink:(NSURL *_Nonnull)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)arrayFromLink:(NSURL *_Nonnull)link searchParams:(NSDictionary *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
 - (void)arrayFromLink:(NSURL *_Nonnull)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+
+- (void)removeChangedValues;
+- (void)markValueChangedForKey:(NSString *_Nonnull)key;
 
 - (BOOL)writeToFileURL:(NSURL *_Nonnull)fileURL;
 + (instancetype _Nullable)collectionObjectFromDataInFileURL:(NSURL *_Nonnull)fileURL;

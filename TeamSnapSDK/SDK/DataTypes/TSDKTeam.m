@@ -182,10 +182,10 @@
     [self setTimeZoneIanaName:timeZone.name];
 }
 
+#warning need to test Setting team timeZone
 - (void)setTimeZoneIanaName:(NSString *)timeZoneIanaName {
     [self setString:timeZoneIanaName forKey:@"time_zone_iana_name"];
     [self setString:timeZoneIanaName forKey:@"time_zone"];
-    [self.changedValues setObject:[NSNull null] forKey:@"time_zone"];
 }
 
 - (NSTimeZone *)timeZone {
