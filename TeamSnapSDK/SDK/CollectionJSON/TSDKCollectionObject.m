@@ -548,18 +548,18 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
     if (value) {
-        if ([value isEqual:_collection.data[aKey]]) {
+        if ([value isEqual:self.collection.data[aKey]]) {
             return;
         }
     } else {
-        if (!_collection.data[aKey] || [_collection.data[aKey] isEqual:[NSNull null]]) {
+        if (!self.collection.data[aKey] || [self.collection.data[aKey] isEqual:[NSNull null]]) {
             return;
         }
     }
     if (![_changedValues objectForKey:aKey]) {
         NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:_changedValues];
-        if (_collection.data[aKey]) {
-            [tempDictionary setObject:_collection.data[aKey] forKey:aKey];
+        if (self.collection.data[aKey]) {
+            [tempDictionary setObject:self.collection.data[aKey] forKey:aKey];
         } else {
             [tempDictionary setObject:[NSNull null] forKey:aKey];
         }
@@ -609,26 +609,26 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     NSMutableArray *tempDataToSave = [[NSMutableArray alloc] init];
     
     if ([self isNewObject]) {
-        NSArray *allKeys = [_collection.data allKeys];
+        NSArray *allKeys = [self.collection.data allKeys];
         if ([[self class] template]) {
             for (NSString *key in [[self class] template]) {
-                if(![key isEqualToString:@"type"] && _collection.data[key]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                if(![key isEqualToString:@"type"] && self.collection.data[key]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : self.collection.data[key]};
                     [tempDataToSave addObject:itemDictionary];
                 }
             }
         } else {
             for (NSString *key in allKeys) {
-                if (_collection.data[key] && ![key isEqualToString:@"id"]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                if (self.collection.data[key] && ![key isEqualToString:@"id"]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : self.collection.data[key]};
                     [tempDataToSave addObject:itemDictionary];
                 }
             }
         }
     } else {
         for (NSString *key in _changedValues) {
-            if (_collection.data[key]) {
-                NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+            if (self.collection.data[key]) {
+                NSDictionary *itemDictionary = @{@"name" : key, @"value" : self.collection.data[key]};
                 [tempDataToSave addObject:itemDictionary];
             }
         }
@@ -638,10 +638,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSString *)getString:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
+    if ([self.collection.data[key] isEqual:[NSNull null]]) {
         return @"";
     }
-    return _collection.data[key];
+    return self.collection.data[key];
 }
 
 - (void)setString:(NSString *)value forKey:(NSString *)aKey {
@@ -649,10 +649,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSInteger)getInteger:(NSString *)key {
-    if ((!_collection.data[key]) || ([_collection.data[key] isEqual:[NSNull null]])) {
+    if ((!self.collection.data[key]) || ([self.collection.data[key] isEqual:[NSNull null]])) {
         return NSNotFound;
     }
-    NSNumber *value = _collection.data[key];
+    NSNumber *value = self.collection.data[key];
     return value.integerValue;
 }
 
@@ -666,7 +666,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSDate *)getDate:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
+    if ([self.collection.data[key] isEqual:[NSNull null]]) {
         return nil;
     }
     NSString *dateString = self.collection.data[key];
@@ -701,10 +701,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)getBool:(NSString *)aKey {
-    if ([_collection.data[aKey] isEqual:[NSNull null]]) {
+    if ([self.collection.data[aKey] isEqual:[NSNull null]]) {
         return NO;
     }
-    return [(NSNumber *) _collection.data[aKey] boolValue];
+    return [(NSNumber *) self.collection.data[aKey] boolValue];
 }
 
 - (void)setBool:(BOOL)value forKey:(NSString *)aKey {
@@ -712,10 +712,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (CGFloat)getCGFloat:(NSString *)aKey {
-    if ([_collection.data[aKey] isEqual:[NSNull null]]) {
+    if ([self.collection.data[aKey] isEqual:[NSNull null]]) {
         return 0.0f;
     }
-    return [_collection.data[aKey] floatValue];
+    return [self.collection.data[aKey] floatValue];
 }
 
 - (void)setCGFloat:(CGFloat)value forKey:(NSString *)aKey {
@@ -727,21 +727,21 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSArray <NSString *> *)getArrayForKey:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]] || [_collection.data[key] isKindOfClass:[NSArray class]] == NO) {
+    if ([self.collection.data[key] isEqual:[NSNull null]] || [self.collection.data[key] isKindOfClass:[NSArray class]] == NO) {
         return nil;
     }
-    return _collection.data[key];
+    return self.collection.data[key];
 }
 
 - (NSURL *)getLink:(NSString *)aKey {
-    if ([_collection.links[aKey] isEqual:[NSNull null]]) {
+    if ([self.collection.links[aKey] isEqual:[NSNull null]]) {
         return nil;
     }
-    return [NSURL URLWithString:_collection.links[aKey]];
+    return [NSURL URLWithString:self.collection.links[aKey]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:_collection forKey:@"collection"];
+    [coder encodeObject:self.collection forKey:@"collection"];
 }
 
 - (BOOL)isNewObject {
