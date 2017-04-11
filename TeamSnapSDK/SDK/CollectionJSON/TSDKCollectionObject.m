@@ -26,7 +26,7 @@
 @implementation TSDKCollectionObject
 
 static NSMutableDictionary *_templates;
-static NSMutableDictionary *_commandDictionary;
+static NSDictionary *_commandDictionary;
 static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
@@ -65,14 +65,14 @@ static NSMutableDictionary *_classURLs;
 }
 
 
-+(NSMutableDictionary *)commandDictionary {
++(NSDictionary *)commandDictionary {
     if (!_commandDictionary) {
-        _commandDictionary = [[NSMutableDictionary alloc] init];
+        _commandDictionary = [[NSDictionary alloc] init];
     }
     return _commandDictionary;
 }
 
-+(NSMutableDictionary *)commands {
++(NSDictionary *)commands {
     return [self commandsForClass:[self SDKType]];
 }
 
@@ -80,17 +80,33 @@ static NSMutableDictionary *_classURLs;
     return [[[self commands] objectForKey:commandName] copy];
 }
 
-+(NSMutableDictionary *)commandsForClass:(NSString *)className {
++(NSDictionary *)commandsForClass:(NSString *)className {
     if (className) {
-        NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
+        NSDictionary *commands = [[self commandDictionary] objectForKey:className];
         if (!commands) {
-            commands = [[NSMutableDictionary alloc] init];
-            [[self commandDictionary] setValue:commands forKey:className];
+            commands = [[NSDictionary alloc] init];
+            NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:[self commandDictionary]];
+            [tempDictionary setValue:commands forKey:className];
+            _commandDictionary = [NSDictionary dictionaryWithDictionary:tempDictionary];
         }
-        return commands;
+        return  commands;
     } else {
         return nil;
     }
+}
+
++(void)setCommands:(NSDictionary *)commands forClass:(NSString *)className {
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:[self commandDictionary]];
+    [tempDictionary setValue:commands forKey:className];
+    _commandDictionary = [NSDictionary dictionaryWithDictionary:tempDictionary];
+}
+
++(void)addCommand:(TSDKCollectionCommand *)command forClass:(NSString *)className {
+    NSMutableDictionary *classCommandDictionary = [NSMutableDictionary dictionaryWithDictionary:[TSDKCollectionObject commandsForClass:className]];
+    [classCommandDictionary setValue:command forKey:command.rel];
+    
+    [self setCommands:[NSDictionary dictionaryWithDictionary:classCommandDictionary] forClass:className];
+    
 }
 
 +(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName {

@@ -35,9 +35,11 @@
 +(NSDictionary *_Nullable)templateForClass:(NSString *_Nonnull)className;
 +(void)setTemplate:(NSDictionary *_Nullable)template;
 +(void)setTemplate:(NSDictionary *_Nullable)template forClass:(NSString *_Nullable)className;
-+(NSMutableDictionary *_Nullable)commands;
+
++(NSDictionary *_Nullable)commands;
 +(TSDKCollectionCommand *_Nullable)commandForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
++(NSDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
++(void)addCommand:(TSDKCollectionCommand *_Nonnull)command forClass:(NSString *_Nonnull)className;
 +(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)commandName;
 
 + (NSMutableDictionary *_Nullable)queries;

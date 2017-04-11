@@ -60,7 +60,7 @@
                     NSArray *commands = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"commands"];
                     for (NSDictionary *commandDictionary in commands) {
                         TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] initWithJSONDict:commandDictionary];
-                        [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
+                        [TSDKCollectionObject addCommand:command forClass:type];
                     }
                 }
                 if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"]) {
