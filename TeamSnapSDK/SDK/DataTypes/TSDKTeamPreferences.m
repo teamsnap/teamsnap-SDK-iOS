@@ -12,12 +12,13 @@
 @interface TSDKTeamPreferences()
 
 @property (nonatomic, weak) NSString *availabilitiesSortOrder; //Example: date
+@property (nonatomic, weak) NSString *memberSortOrder; //Example: last
 
 @end
 
 @implementation TSDKTeamPreferences
 
-@dynamic tslScorePushEnabled, trackedItemsIsPrivate, memberSortOrder, teamMessage, availabilitiesShowTab, globalUniformHome, tslEnabled, paymentsIgnoreNonPlayers, remindersSendGame, globalUseInternationalDate, availabilityGameCutoff, isTrackedItemsPrivate, assignmentsEnableFor, trackedItemsIgnoreNonPlayers, isYouth, isTslPushEnabled, tracksPoints, availabilityEventCutoff, isCoed, paymentsShowTab, remindersSendEvent, alternateSportName, colorSchemeCd, announcementAboveHomePhoto, updatedAt, isPaymentsPrivate, teamMediaShowTab, skillLevel, trackedItemsShowTab, teamHeadline, globalUniformAway, globalUseInternationalTime, assignmentsShowTab, leagueControlledSettings, createdAt, tslPushEnabled, statisticsShowTab, isTslScorePushEnabled, marketplaceShowTab, teamId, shareAvailabilityNotes, assignmentsEnableForCode, isTslEnabled, managerDefaultAvailability, gender, filesShowTab, showDivisionStandings, ageGroup, availabilitiesSortOrder, currencySymbol, hideHeader, linkTeam, linkTeamPhoto, linkTeamLogo;
+@dynamic canTeamAddMembers, canTeamDeleteMembers, tslScorePushEnabled, trackedItemsIsPrivate, memberSortOrder, teamMessage, availabilitiesShowTab, globalUniformHome, tslEnabled, paymentsIgnoreNonPlayers, remindersSendGame, globalUseInternationalDate, availabilityGameCutoff, isTrackedItemsPrivate, assignmentsEnableFor, trackedItemsIgnoreNonPlayers, isYouth, isTslPushEnabled, tracksPoints, availabilityEventCutoff, isCoed, paymentsShowTab, remindersSendEvent, alternateSportName, colorSchemeCd, announcementAboveHomePhoto, updatedAt, isPaymentsPrivate, teamMediaShowTab, skillLevel, trackedItemsShowTab, teamHeadline, globalUniformAway, globalUseInternationalTime, assignmentsShowTab, leagueControlledSettings, createdAt, tslPushEnabled, statisticsShowTab, isTslScorePushEnabled, marketplaceShowTab, teamId, shareAvailabilityNotes, assignmentsEnableForCode, isTslEnabled, managerDefaultAvailability, gender, filesShowTab, showDivisionStandings, ageGroup, availabilitiesSortOrder, currencySymbol, hideHeader, linkTeam, linkTeamPhoto, linkTeamLogo;
 ;
 
 + (NSString *)SDKType {
@@ -52,6 +53,32 @@
     }
 }
 #endif
+
+- (TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    if([[self.memberSortOrder lowercaseString] isEqualToString:[[self rawValueForMemberSortOrder:TSDKTeamPreferenceMemberSortOrderLastName] lowercaseString]]) {
+        return TSDKTeamPreferenceMemberSortOrderLastName;
+    } else {
+        return TSDKTeamPreferenceMemberSortOrderFirstName;
+    }
+}
+
+- (void)setMemberSortOrderPreference:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    self.memberSortOrder = [self rawValueForMemberSortOrder:memberSortOrderPreference];
+}
+
+- (NSString *)rawValueForMemberSortOrder:(TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
+    switch (memberSortOrderPreference) {
+        case TSDKTeamPreferenceMemberSortOrderLastName:
+            return @"last";
+            break;
+        case TSDKTeamPreferenceMemberSortOrderFirstName:
+            return @"first";
+            break;
+        default:
+            return @"first";
+            break;
+    }
+}
 
 - (TSDKTeamPreferenceAvailabilitiesSortOrder)availabilitiesSortOrderPreference {
     if([[self.availabilitiesSortOrder lowercaseString] isEqualToString:[@"name" lowercaseString]]) {

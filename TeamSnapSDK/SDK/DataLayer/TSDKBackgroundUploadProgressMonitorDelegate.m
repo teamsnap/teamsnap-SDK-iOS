@@ -66,7 +66,6 @@
 }
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
-    
     self.totalBytesSent = @(totalBytesSent);
     self.totalBytesExpectedToSend = @(totalBytesExpectedToSend);
     if (self.progressBlock) {

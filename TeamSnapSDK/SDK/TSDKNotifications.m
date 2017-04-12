@@ -17,6 +17,7 @@ NSString * const TSDKObjectAdded = @"TSDKNotificationAdded";
 NSString * const TSDKObjectRefreshed = @"TSDKNotificationRefreshed";
 NSString * const TSDKObjectDeleted = @"TSDKNotificationDeleted";
 NSString * const TSDKInvalidateAssociatedObjects = @"TSDKInvalidateAssociatedObjects";
+NSString * const TSDKObjectCollectionRefreshed = @"TSDKNotificationCollectionRefreshed";
 
 @implementation TSDKNotifications 
 
@@ -45,6 +46,11 @@ NSString * const TSDKInvalidateAssociatedObjects = @"TSDKInvalidateAssociatedObj
     [self postObject:notificationObject type:TSDKObjectRefreshed];
 }
 
++ (void)postRefreshedObjectCollection:(NSArray <TSDKCollectionObject *> * _Nonnull)objectCollection {
+    NSDictionary *userInfo = @{@"type": TSDKObjectCollectionRefreshed, @"object":objectCollection};
+    [[NSNotificationCenter defaultCenter] postNotificationName:TSDKObjectCollectionRefreshed object:[[[objectCollection firstObject] class] SDKType] userInfo:userInfo];
+}
+
 + (void)postInvalidateAssociatedObjects:(TSDKCollectionObject *)notificationObject {
     [self postObject:notificationObject type:TSDKInvalidateAssociatedObjects];
 }
@@ -59,9 +65,14 @@ NSString * const TSDKInvalidateAssociatedObjects = @"TSDKInvalidateAssociatedObj
     [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObject object:nil];
 }
 
-+ (void)listenToChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
++ (void)listenToAllChangesToObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
     [self removeListenerForClass:class forObserver:observer];
     [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKNotificationsForObjectClass object:[class SDKType]];
+}
+
++ (void)listenToCollectionRefreshForObjectClass:(Class _Nonnull)class withObserver:(id _Nonnull)observer selector:(SEL _Nonnull)selector {
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:TSDKObjectCollectionRefreshed object:[class SDKType]];
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:TSDKObjectCollectionRefreshed object:[class SDKType]];
 }
 
 + (void)removeListenerForObject:(TSDKCollectionObject * _Nonnull)object forObserver:(id _Nonnull)observer {

@@ -10,9 +10,9 @@
 
 @protocol TSDKMessageSender <NSObject>
 
-- (NSInteger)memberId;
+- (NSString *_Nullable)memberId;
 
 @optional
-- (NSInteger)contactId;
+- (NSString *_Nullable)contactId;
 
 @end

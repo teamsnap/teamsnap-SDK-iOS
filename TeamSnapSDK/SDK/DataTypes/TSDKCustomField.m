@@ -20,7 +20,7 @@ NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
     return @"custom_field";
 }
 
-+ (CustomDataFieldType)fieldTypeForString:kind {
++ (CustomDataFieldType)fieldTypeForString:(NSString *)kind {
     if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeDateString uppercaseString]]) {
         return TSDKCustomDataTypeDate;
     } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeMenuString uppercaseString]]) {

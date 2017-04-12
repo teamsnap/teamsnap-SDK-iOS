@@ -16,4 +16,21 @@
     return @"member_balance";
 }
 
+- (NSString * _Nonnull)objectIdentifier {
+    
+    NSString *combinedId = [super objectIdentifier];
+    NSString *memberId = self.memberId;
+    NSString *teamId = self.teamId;
+    
+    if (memberId && teamId) {
+        combinedId = [NSString stringWithFormat:@"%@:%@", memberId, teamId];
+    } else if (memberId && !teamId) {
+        combinedId = memberId;
+    } else if (teamId && !memberId) {
+        combinedId = teamId;
+    }
+    
+    return combinedId;
+}
+
 @end

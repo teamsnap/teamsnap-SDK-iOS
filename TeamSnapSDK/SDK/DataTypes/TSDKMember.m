@@ -11,46 +11,20 @@
 #import "TSDKMemberEmailAddress.h"
 #import "TSDKMemberPhoneNumber.h"
 #import "TSDKContact.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"
 #import "TSDKBackgroundUploadProgressMonitorDelegate.h"
 #import "TSDKMemberPhoto.h"
 #import "TSDKNotifications.h"
-
+#import "TSDKConstants.h"
 
 @implementation TSDKMember
 
-@dynamic lastName, createdAt, teamId, isOwnershipPending, addressStreet2, addressState, hasFacebookPostScoresEnabled, invitationDeclined, isInvitable, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isInvited, isActivated, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, gender, isOwner, isAddressHidden, updatedAt, isAlertable, linkBroadcastEmails, linkBroadcastEmailAttachments, linkMemberLinks, linkMemberPreferences, linkTeam, linkMemberPhoneNumbers, linkMessages, linkMemberEmailAddresses, linkStatisticData, linkForumSubscriptions, linkLeagueCustomData, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamMedia, linkTrackedItemStatuses, linkForumTopics, linkTeamMediumComments, linkCustomFields, linkAssignments, linkCustomData, linkMemberStatistics, linkAvailabilities, linkMemberBalances, linkForumPosts, linkBroadcastAlerts, linkMemberPayments, linkLeagueCustomFields, linkLeagueRegistrantDocuments, linkContacts, linkMemberFiles, isPushable, linkMemberPhoto, linkMemberThumbnail, linkMemberPhotos;
+ @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, gender, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto;
 
 + (NSString *)SDKType {
     return @"member";
-}
-
--(TSDKTeam *)team {
-    return [[[[TSDKTeamSnap sharedInstance] teamSnapUser] teams] objectForIntegerKey:self.teamId];
-}
-
-- (NSMutableDictionary *)contacts {
-    if (!_contacts) {
-        _contacts = [[NSMutableDictionary alloc] init];
-    }
-    return _contacts;
-}
-
-- (NSMutableDictionary *)emailAddresses {
-    if (!_emailAddresses) {
-        _emailAddresses = [[NSMutableDictionary alloc] init];
-    }
-    return _emailAddresses;
-}
-
-- (NSMutableDictionary *)phoneNumbers {
-    if (!_phoneNumbers) {
-        _phoneNumbers = [[NSMutableDictionary alloc] init];
-    }
-    return _phoneNumbers;
 }
 
 - (NSString *)fullName {
@@ -69,9 +43,6 @@
     return (self.isManager || self.isOwner);
 }
 
-- (BOOL)isAtLeastOwner {
-    return (self.isOwner);
-}
 #if TARGET_OS_IPHONE
 
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
@@ -91,7 +62,7 @@
 }
 
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-    [TSDKDataRequest requestImageForPath:self.linkMemberPhoto configuration:configuration withCompletion:^(UIImage *image) {
+    [TSDKDataRequest requestImageForPath:self.linkMemberPhotos configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
         }
@@ -106,12 +77,12 @@
     }];
 }
 
-+(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(TSDKUploadProgressBlock)progressBlock {
++(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(TSDKUploadProgressBlock)progressBlock {
     
     TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
     
     TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
-    uploadCommand.data[@"member_id"] = [NSNumber numberWithInteger:memberId];
+    uploadCommand.data[@"member_id"] = memberId;
     uploadCommand.data[@"file_name"] = @"photo.jpg";
     NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
     
@@ -127,7 +98,7 @@
     return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadProgressMonitorDelegate * _Nullable uploadStatus, NSError * _Nullable error) {
         if (uploadStatus.complete && uploadStatus.success) {
             TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
-            [poisonPill setInteger:self.objectIdentifier forKey:@"id"];
+            [poisonPill setString:self.objectIdentifier forKey:@"id"];
             poisonPill.memberId = self.objectIdentifier;
             poisonPill.teamId = self.teamId;
             [TSDKNotifications postInvalidateAssociatedObjects:poisonPill];
@@ -154,34 +125,6 @@
     }
 }
 
-- (void)addPhoneNumber:(TSDKMemberPhoneNumber *)phoneNumber {
-    [self.phoneNumbers setObject:phoneNumber forIntegerKey:phoneNumber.objectIdentifier];
-}
-
-- (void)addEmailAddress:(TSDKMemberEmailAddress *)emailAddress {
-    [self.emailAddresses setObject:emailAddress forIntegerKey:emailAddress.objectIdentifier];
-}
-
-- (void)addContact:(TSDKContact *)contact {
-    [self.contacts setObject:contact forIntegerKey:contact.objectIdentifier];
-}
-
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
-    BOOL lProcessed = NO;
-    
-    if ([bulkObject isKindOfClass:[TSDKMemberEmailAddress class]]) {
-        [self addEmailAddress:(TSDKMemberEmailAddress *)bulkObject];
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKMemberPhoneNumber class]]) {
-        [self addPhoneNumber:(TSDKMemberPhoneNumber *)bulkObject];
-        lProcessed = YES;
-    } else if ([bulkObject isKindOfClass:[TSDKContact class]]) {
-        [self addContact:(TSDKContact *)bulkObject];
-        lProcessed = YES;
-    }
-    return lProcessed;
-}
-
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
     
     NSDictionary *searchParams;
@@ -198,7 +141,7 @@
     return YES;
 }
 
-- (NSInteger)memberId {
+- (NSString *_Nullable)memberId {
     return self.objectIdentifier;
 }
 
@@ -267,6 +210,73 @@
         [result appendFormat:@" %@", self.addressZip];
     }
     return [NSString stringWithString:result];
+}
+
++(void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {
+    TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"search"];
+    if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+        queryCommand.data[@"division_id"] = divisionId;
+        queryCommand.data[@"team_id"] = teamId;
+        queryCommand.data[@"user_id"] = userId;
+        queryCommand.data[@"page_size"] = @(pageSize);
+        queryCommand.data[@"page_number"] = @(pageNumber);
+        
+        [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *members;
+            if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                members = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+            if (completion) {
+                completion(success, YES, members, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            NSDictionary *userInfo;
+            
+            if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
+            } else {
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
+            }
+            NSInteger errorCode = 1;
+            
+            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            completion(NO, NO, [NSArray array], error);
+        }
+    }
+}
+
++ (void)queryCommissionersTeamid:(NSString *_Nullable)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {
+    TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"commissioners"];
+    if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+        queryCommand.data[@"division_id"] = divisionId;
+        queryCommand.data[@"team_id"] = teamId;
+        
+        [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            NSArray *members;
+            if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                members = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            }
+            if (completion) {
+                completion(success, YES, members, error);
+            }
+        }];
+    } else {
+        if (completion) {
+            NSDictionary *userInfo;
+            
+            if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
+            } else {
+                userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
+            }
+            NSInteger errorCode = 1;
+            
+            NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+            completion(NO, NO, [NSArray array], error);
+        }
+    }
 }
 
 @end

@@ -9,25 +9,17 @@
 #import "TSDKMember.h"
 #import "TSDKOpponent.h"
 
+NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 @implementation TSDKEvent {
 
 }
 
-@dynamic uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, repeatingType, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, repeatingTypeCode, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAvailabilities, linkLocation, linkEventStatistics, linkDivisionLocation, linkAssignments, linkMemberAssignments, linkOpponent, linkTeam, linkStatisticData, linkCalendarSingleEvent;
+@dynamic opponentName, locationName, uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAvailabilities, linkLocation, linkEventStatistics, linkDivisionLocation, linkAssignments, linkMemberAssignments, linkOpponent, linkTeam, linkStatisticData, linkCalendarSingleEvent;
 
 + (NSString *)SDKType {
     return @"event";
 }
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        _availabilitiesByRoster = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
 
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *)event completion:(TSDKCompletionBlock)completion {
     if (event) {
@@ -71,9 +63,9 @@
 - (void)setNotifyTeamAsMember:(TSDKMember *)member {
     if (member) {
         [self setBool:YES forKey:@"notify_team"];
-        [self setInteger:member.objectIdentifier forKey:@"notify_team_as_member_id"];
+        [self setString:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
-        [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
+        [self removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];
     }
 }
@@ -88,7 +80,7 @@
     
     // Until we have better support for Repeating events make sure repeating_include is set to "none"
     if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
-        [self.changedValues setObject:self.repeatingUuid forKey:@"repeating_uuid"];
+        [self markValueChangedForKey:@"repeating_uuid"];
         [self setString:@"none" forKey:@"repeating_include"];
     }
     [super saveWithCompletion:completion];
@@ -101,7 +93,7 @@
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
     [self setNotifyTeamAsMember:member];
     if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
-        [self.changedValues setObject:self.repeatingUuid forKey:@"repeating_uuid"];
+        [self markValueChangedForKey:@"repeating_uuid"];
         [self setString:@"none" forKey:@"repeating_include"];
     }
     [super deleteWithCompletion:completion];
@@ -140,7 +132,7 @@
     }
 }
 
-- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent {
+- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent preferShortLabel:(BOOL)preferShortLabel {
     if (self.isGame && opponent) {
         if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
             if ((self.label) && (![self.label isEqualToString:@""])) {
@@ -156,6 +148,10 @@
             }
         }
     } else {
+        if(preferShortLabel && self.label.length) {
+            return self.label;
+        }
+        
         if (!self.name || (self.name.length == 0)) {
             return NSLocalizedString(@"Event", nil);
         } else {
@@ -164,5 +160,20 @@
     }
 }
 
+- (TSDKRepeatingEventTypeCode)repeatingTypeCode {
+    if ([[self.collection data] objectForKey:kRepeatingTypeCode]) {
+        return [self getInteger:kRepeatingTypeCode];
+    } else {
+        return TSDKEventDoesNotRepeat;
+    }
+}
+
+- (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
+    if (repeatingTypeCode == 0) {
+        [self removeObjectForKey:kRepeatingTypeCode];
+    } else {
+        [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
+    }
+}
 
 @end

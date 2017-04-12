@@ -8,25 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TSDKCollectionJSON : NSObject <NSCoding>
+@interface TSDKCollectionJSON : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSURL *href;
-@property (nonatomic, strong) NSString *version;
-@property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSString *rel;
-@property (nonatomic, strong) NSString *errorTitle;
-@property (nonatomic, strong) NSString *errorMessage;
+@property (nonatomic, strong) NSURL *_Nullable href;
+@property (nonatomic, strong) NSString *_Nullable version;
+@property (nonatomic, strong) NSString *_Nullable type;
+@property (nonatomic, strong) NSString *_Nullable rel;
+@property (nonatomic, strong) NSString *_Nullable errorTitle;
+@property (nonatomic, strong) NSString *_Nullable errorMessage;
 @property (nonatomic, assign) NSInteger errorCode;
-@property (nonatomic, strong) NSMutableDictionary *links;
-@property (nonatomic, strong) NSMutableDictionary *data;
-@property (nonatomic, strong) NSMutableDictionary *commands;
-@property (nonatomic, strong) id collection;
+@property (nonatomic, strong) NSDictionary *_Nullable links;
+@property (nonatomic, strong) NSDictionary *_Nullable data;
+@property (nonatomic, strong) NSDictionary *_Nullable commands;
+@property (nonatomic, strong) NSDictionary *_Nullable queries;
+@property (nonatomic, strong) NSArray <TSDKCollectionJSON *> *_Nullable collection;
 
-+(NSDictionary *)dictionaryToCollectionJSON:(NSDictionary *)dictionary;
-- (instancetype)initWithCoder:(NSCoder *)aDecoder;
-- (instancetype)initWithJSON:(NSDictionary *)JSON;
-+ (instancetype)collectionJSONForEncodedData:(NSData *)objectData;
-- (NSString *)getObjectiveCHeaderSkeleton;
-- (NSData *)dataEncodedForSave;
++ (NSDictionary *_Nullable)dictionaryToCollectionJSON:(NSDictionary *_Nonnull)dictionary;
+- (instancetype _Nullable)initWithCoder:(NSCoder *_Nonnull)aDecoder;
+- (instancetype _Nullable)initWithJSON:(NSDictionary *_Nonnull)JSON;
++ (instancetype _Nullable)collectionJSONForEncodedData:(NSData *_Nonnull)objectData;
+- (NSString *_Nullable)getObjectiveCHeaderSkeleton;
++ (NSString *_Nonnull)getObjectiveCHeaderForCommandsForTypeName:(NSString *_Nonnull)typeName;
+- (NSData *_Nonnull)dataEncodedForSave;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface TSDKNetworkActivityIndicator : NSObject
 
-+ (instancetype)sharedInstance;
++ (instancetype _Nonnull)sharedInstance;
 - (void)startActivity;
 - (void)stopActivity;
 
