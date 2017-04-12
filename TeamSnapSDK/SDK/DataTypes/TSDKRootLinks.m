@@ -67,7 +67,7 @@
                     NSArray *queries = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"];
                     for (NSDictionary *queryDictionary in queries) {
                         TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];
-                        [[TSDKCollectionObject queriesForClass:type] setValue:query forKey:query.rel];
+                        [TSDKCollectionObject addQuery:query forClass:type];
                     }
                 }
                 

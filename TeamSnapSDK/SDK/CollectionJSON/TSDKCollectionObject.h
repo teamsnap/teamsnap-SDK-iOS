@@ -42,10 +42,11 @@
 +(void)addCommand:(TSDKCollectionCommand *_Nonnull)command forClass:(NSString *_Nonnull)className;
 +(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)commandName;
 
-+ (NSMutableDictionary *_Nullable)queries;
++(NSDictionary *_Nullable)queries;
 +(TSDKCollectionQuery *_Nullable)queryForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
++(NSDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
 +(TSDKCollectionQuery *_Nullable)queryForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)queryName;
++(void)addQuery:(TSDKCollectionQuery *_Nonnull)query forClass:(NSString *_Nonnull)className;
 
 +(NSURL *_Nullable)classURL;
 +(void)setClassURL:(NSURL *_Nullable)URL;

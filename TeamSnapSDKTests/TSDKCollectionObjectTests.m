@@ -283,7 +283,8 @@
 - (void)testSchemaLoading {
     NSURL *rootURL = [self bundleForRoot];
     
-    XCTestExpectation *schemaExpectation = [self expectationWithDescription:@"Commands Loaded"];
+    XCTestExpectation *schemaCommandExpectation = [self expectationWithDescription:@"Commands Loaded"];
+    XCTestExpectation *schemaQueryExpectation = [self expectationWithDescription:@"Queryies Loaded"];
     
     [TSDKDataRequest requestJSONObjectsForPath:rootURL sendDataDictionary:nil method:@"GET" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
         TSDKRootLinks __block *rootLinks;
@@ -294,10 +295,17 @@
             
             [rootLinks processSchemasArray:objects];
             if ([[TSDKAvailability commands] objectForKey:@"bulk_mark_unset_availabilities"]) {
-                [schemaExpectation fulfill];
+                [schemaCommandExpectation fulfill];
             } else {
                 XCTAssert(@"Commands not set");
             }
+            
+            if ([[TSDKEvent queries] objectForKey:@"search_games"]) {
+                [schemaQueryExpectation fulfill];
+            } else {
+                XCTAssert(@"Queries not set");
+            }
+            
         }];
     }];
     
