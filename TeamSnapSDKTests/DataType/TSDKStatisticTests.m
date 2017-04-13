@@ -67,6 +67,14 @@
     displayString = [statistic displayStringForStatisticValue:total];
     XCTAssertEqualObjects(displayString, @"1.0");
 
+    total = [NSNumber numberWithFloat:1.0501f];
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"1.1");
+    
+    statistic.precision = 0;
+    total = [NSNumber numberWithFloat:7.7768];
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"8");
 }
 
 - (void)testExample {
