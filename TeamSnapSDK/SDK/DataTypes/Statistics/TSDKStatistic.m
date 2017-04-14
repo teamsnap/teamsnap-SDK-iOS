@@ -17,13 +17,22 @@
     return @"statistic";
 }
 
+- (CGFloat)round:(NSNumber *)value To:(NSInteger)decimalPlaces {
+    NSInteger power = pow(10, decimalPlaces);
+    return  [[NSNumber numberWithFloat:(round([value floatValue] * power) / power)] floatValue];
+}
+
 - (NSString *)displayStringForStatisticValue:(NSNumber *)statValue {
-    if ((self.precision == 0) || ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber])) {
+    if ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber]) {
         return [NSString stringWithFormat:@"%ld", (long)[statValue integerValue]];
     } else {
         NSString *formatString = [NSString stringWithFormat:@"%%.%ldf", (long)self.precision];
+        if ([self isPercentage]) {
+            formatString = [formatString stringByAppendingString:@"%%"];
+        }
+        CGFloat roundedValue = [self round:statValue To:self.precision];
         
-        return [NSString stringWithFormat:formatString, [statValue floatValue]];
+        return [NSString stringWithFormat:formatString, roundedValue];
     }
 }
 

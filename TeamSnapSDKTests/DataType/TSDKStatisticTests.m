@@ -67,6 +67,39 @@
     displayString = [statistic displayStringForStatisticValue:total];
     XCTAssertEqualObjects(displayString, @"1.0");
 
+    total = [NSNumber numberWithFloat:1.0501f];
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"1.1");
+    
+    statistic.precision = 0;
+    total = [NSNumber numberWithFloat:7.7768];
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"8");
+    
+    statistic = [[TSDKStatistic alloc] init];
+    statistic.position = 1;
+    statistic.alwaysDisplayDecimals = NO;
+    statistic.isPercentage = YES;
+    statistic.precision = 2;
+    statistic.acronym = @"H";
+    statistic.formula = @"1B+2B+3B+HR";
+    statistic.prettyFormula = @"Singles+Doubles+Triples+Home Runs";
+    statistic.isTopStatistic = YES;
+    statistic.displayZeroTotals = NO;
+    
+    total = [NSNumber numberWithFloat:1.0f];
+    statistic.alwaysDisplayDecimals = YES;
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"1.00%");
+
+    total = [NSNumber numberWithFloat:1.009f];
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"1.01%");
+    
+    total = [NSNumber numberWithFloat:0.679f];
+    displayString = [statistic displayStringForStatisticValue:total];
+    XCTAssertEqualObjects(displayString, @"0.68%");
+    
 }
 
 - (void)testExample {
