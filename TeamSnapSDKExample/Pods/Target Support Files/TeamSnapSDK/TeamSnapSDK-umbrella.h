@@ -28,6 +28,7 @@
 #import "NSMutableDictionary+refreshCollectionData.h"
 #import "NSMutableString+TSDKConveniences.h"
 #import "NSMutableURLRequest+TSDKConveniences.h"
+#import "NSNumber+TSDKConveniences.h"
 #import "NSObject+TSDKIntegerOtNotFound.h"
 #import "NSString+TSDKConveniences.h"
 #import "NSString+TSDKPublicConveniences.h"
