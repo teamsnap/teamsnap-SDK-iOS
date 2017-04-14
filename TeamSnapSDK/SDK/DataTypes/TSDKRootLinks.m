@@ -138,7 +138,7 @@
 
 
 + (void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [rootLinks.collection.commands objectForKey:@"send_invitations"];
             if (collectionCommand) {
@@ -146,17 +146,17 @@
                 [collectionCommand executeWithCompletion:completion];
             } else {
                 if (completion) {
-                    completion(NO, NO, nil, nil);
+                    completion(NO, NO, nil, error);
                 }
             }
         } else {
-            completion(NO, NO, nil, nil);
+            completion(NO, NO, nil, error);
         }
      }];
 }
 
 + (void)actionSendLoginLinkToEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL completion:(TSDKSimpleCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [[TSDKCollectionCommand alloc] init];
             NSURL *magicLinkURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"magic_links"];
@@ -190,14 +190,14 @@
             }
         } else {
             if(completion) {
-                completion(NO, nil);
+                completion(NO, error);
             }
         }
     }];
 }
 
 + (void)actionRequestAuthTokenWithCode:(NSString * _Nonnull)code withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKLoginCompletionBlock _Nullable)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             NSURL *tokenURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"/oauth/token"];
             
@@ -236,7 +236,7 @@
             }
         } else {
             if(completion) {
-                completion(NO, nil, nil);
+                completion(NO, nil, error);
             }
         }
         
@@ -244,7 +244,7 @@
 }
 
 + (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             NSURL *url = rootLinks.linkAuthorizationUserRegistrationInitializations;
             if(url && [[TSDKTeamSnap sharedInstance] clientId]) {
@@ -271,13 +271,13 @@
                 }
             }
         } else {
-            completion(NO, nil);
+            completion(NO, error);
         }
     }];
 }
 
 +(void)queryGenerateFirebaseTokenTeamid:(NSString *_Nonnull)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
             if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
@@ -310,7 +310,7 @@
                 }
             }
         } else {
-            completion(NO, nil,  nil);
+            completion(NO, nil, error);
         }
     }];
 }
@@ -328,7 +328,7 @@
 }
 
 + (void)resetPasswordForEmailAddress:(NSString * _Nonnull)emailAddress completion:(TSDKSimpleCompletionBlock)completionBlock {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             NSURL *url = rootLinks.linkAuthorizationPasswordResets;
             if(url) {
@@ -344,14 +344,14 @@
             }
         } else {
             if(completionBlock) {
-                completionBlock(NO, nil);
+                completionBlock(NO, error);
             }
         }
     }];
 }
 
 + (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             NSURL *oauthURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"oauth/token"];
             NSString *scopes = @"read write";
@@ -382,7 +382,7 @@
             }];
         } else {
             if(completion) {
-                completion(NO, nil, nil);
+                completion(NO, nil, error);
             }
         }
     }];

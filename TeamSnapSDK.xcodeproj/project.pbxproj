@@ -345,6 +345,9 @@
 		96E1336C1D88627C0027E382 /* TSDKMemberAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E1336A1D88627C0027E382 /* TSDKMemberAssignment.m */; };
 		96E1336D1D8862930027E382 /* TSDKMemberAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E133691D88627C0027E382 /* TSDKMemberAssignment.h */; };
 		96E1336E1D8862970027E382 /* TSDKMemberAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E1336A1D88627C0027E382 /* TSDKMemberAssignment.m */; };
+		96E94B5B1E7C2FC7006D7494 /* TSDKStatisticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E94B5A1E7C2FC7006D7494 /* TSDKStatisticTests.m */; };
+		96E94B5E1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E94B5C1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h */; };
+		96E94B5F1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E94B5D1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m */; };
 		96F4E7D81C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */; };
 		96F4E7D91C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */; };
 		96F4E7DA1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */; };
@@ -539,7 +542,7 @@
 		969E807C1BAAE7AB00CA518F /* TSDKObjectsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKObjectsRequest.m; sourceTree = "<group>"; };
 		969E807F1BAAE7AB00CA518F /* TSDKMemberStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKMemberStatistic.h; sourceTree = "<group>"; };
 		969E80801BAAE7AB00CA518F /* TSDKMemberStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKMemberStatistic.m; sourceTree = "<group>"; };
-		969E80811BAAE7AB00CA518F /* TSDKStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatistic.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		969E80811BAAE7AB00CA518F /* TSDKStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatistic.h; sourceTree = "<group>"; };
 		969E80821BAAE7AB00CA518F /* TSDKStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKStatistic.m; sourceTree = "<group>"; };
 		969E80831BAAE7AB00CA518F /* TSDKStatisticDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKStatisticDatum.h; sourceTree = "<group>"; };
 		969E80841BAAE7AB00CA518F /* TSDKStatisticDatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKStatisticDatum.m; sourceTree = "<group>"; };
@@ -601,6 +604,9 @@
 		96E052161D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDuplicateCompletionBlockStoreTests.m; path = DataLayer/TSDKDuplicateCompletionBlockStoreTests.m; sourceTree = "<group>"; };
 		96E133691D88627C0027E382 /* TSDKMemberAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMemberAssignment.h; path = Assignments/TSDKMemberAssignment.h; sourceTree = "<group>"; };
 		96E1336A1D88627C0027E382 /* TSDKMemberAssignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberAssignment.m; path = Assignments/TSDKMemberAssignment.m; sourceTree = "<group>"; };
+		96E94B5A1E7C2FC7006D7494 /* TSDKStatisticTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKStatisticTests.m; path = DataType/TSDKStatisticTests.m; sourceTree = "<group>"; };
+		96E94B5C1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+TSDKConveniences.h"; sourceTree = "<group>"; };
+		96E94B5D1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+TSDKConveniences.m"; sourceTree = "<group>"; };
 		96F4E7D61C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+refreshCollectionData.h"; sourceTree = "<group>"; };
 		96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+refreshCollectionData.m"; sourceTree = "<group>"; };
 		96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamResults.h; sourceTree = "<group>"; };
@@ -715,6 +721,7 @@
 				56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */,
 				9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */,
 				960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */,
+				96E94B5A1E7C2FC7006D7494 /* TSDKStatisticTests.m */,
 			);
 			name = DataType;
 			sourceTree = "<group>";
@@ -930,6 +937,8 @@
 				964E1ACF1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m */,
 				96AF8E741E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h */,
 				96AF8E751E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m */,
+				96E94B5C1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h */,
+				96E94B5D1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m */,
 			);
 			path = Conveniences;
 			sourceTree = "<group>";
@@ -1131,6 +1140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */,
+				96E94B5E1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h in Headers */,
 				969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */,
 				56879C321E0340EA00FBA9F6 /* TSDKDivisionPreferences.h in Headers */,
 				969E80E31BAAE7AB00CA518F /* TSDKForumTopic.h in Headers */,
@@ -1615,6 +1625,7 @@
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
 				9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */,
 				568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */,
+				96E94B5F1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
 				969E80B41BAAE7AB00CA518F /* TSDKCollectionQuery.m in Sources */,
 				969366DD1CCA539700721504 /* TSDKTimeZone.m in Sources */,
@@ -1653,6 +1664,7 @@
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
 				96E052181D775F43005155C3 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
+				96E94B5B1E7C2FC7006D7494 /* TSDKStatisticTests.m in Sources */,
 				960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */,
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
 				56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */,

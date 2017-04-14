@@ -14,7 +14,7 @@
 @property (nonatomic, assign) NSInteger totalRankingForQuery; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable eventId; //Example: 2357548
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, assign) NSInteger total; //Example: 5
+@property (nonatomic, weak) NSNumber *_Nullable total; //Example: 5
 @property (nonatomic, weak) NSString *_Nullable statisticId; //Example: 769991
 @property (nonatomic, weak) NSURL *_Nullable linkEvent;
 @property (nonatomic, weak) NSURL *_Nullable linkStatistic;

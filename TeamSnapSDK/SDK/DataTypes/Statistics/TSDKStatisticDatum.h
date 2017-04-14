@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) NSInteger ranking; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable statisticId; //Example: 769991
-@property (nonatomic, assign) NSInteger value; //Example: 5
+@property (nonatomic, weak) NSNumber *_Nullable value; //Example: 5
 @property (nonatomic, weak) NSString *_Nullable memberId; //Example: 3652826
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSString *_Nullable eventId; //Example: 2357548

@@ -154,10 +154,10 @@
     TSDKSimpleCompletionBlock schemaCompletionBlock  = ^(BOOL success, NSError *error) {
         if (success) {
             if (completion) {
-                completion(self.rootLinks);
+                completion(self.rootLinks, error);
             }
         } else {
-            completion(nil);
+            completion(nil, error);
         }
     };
     
@@ -177,7 +177,7 @@
                 [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {
                 if (completion) {
-                    completion(weakSelf.rootLinks);
+                    completion(weakSelf.rootLinks, error);
                 }
             }
         }];
@@ -187,7 +187,7 @@
 - (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSError *error))completion {
     TSDKTeamSnap __weak *weakSelf = self;
     
-    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
@@ -195,7 +195,7 @@
                 
                 [[[TSDKTeamSnap sharedInstance] teamSnapUser] myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
                     if (completion) {
-                        completion(success, nil);
+                        completion(success, error);
                     }
                 }];
             } else {
@@ -214,14 +214,14 @@
 }
 
 - (void)sendNewUserWelcomeToEmail:(NSString *)email callbackURL:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         
     }];
 }
 
 
 - (void)tslPhotoUploadURLWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(TSDKTslPhotos *TSDKTslPhotos))completion {
-    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks) {
+    [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkTslPhotos withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             TSDKTslPhotos *tslPhoto = nil;
             if (success) {
