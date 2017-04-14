@@ -12,7 +12,7 @@
 @interface TSDKMemberStatistic : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable averageRankingForQuery; //Example: **NULL**
-@property (nonatomic, assign) NSInteger countGamesPlayed; //Example: 0
+@property (nonatomic, weak) NSNumber *_Nullable countGamesPlayed; //Example: 0
 @property (nonatomic, weak) NSNumber *_Nullable average; //Example: **NULL**
 @property (nonatomic, weak) NSNumber *_Nullable averageRanking; //Example: **NULL**
 @property (nonatomic, weak) NSNumber *_Nullable totalRankingForQuery; //Example: **NULL**
