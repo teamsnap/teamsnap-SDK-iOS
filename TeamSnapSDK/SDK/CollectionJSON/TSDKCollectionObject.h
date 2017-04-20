@@ -12,8 +12,9 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
-
+#import "TSDKPersistenceFilePath.h"
 @class TSDKCollectionJSON;
+
 
 @protocol TSDKCollectionObjectBundledDataProtocol <NSObject>
 
@@ -21,7 +22,7 @@
 
 @end
 
-@interface TSDKCollectionObject : NSObject <NSCoding>
+@interface TSDKCollectionObject : NSObject <NSCoding, TSDKPersistenceFilePath>
 
 @property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
 @property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
