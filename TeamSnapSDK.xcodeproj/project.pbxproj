@@ -12,7 +12,7 @@
 		4FC9AE7C1DE4D10000B0C582 /* TSDKJSONFileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */; };
 		560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		560578DF1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 560578DD1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m */; };
-		5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */ = {isa = PBXBuildFile; fileRef = 560995981EA7F64B0072DB2B /* TSDKPersistenceFilePath.h */; };
+		5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */ = {isa = PBXBuildFile; fileRef = 560995981EA7F64B0072DB2B /* TSDKPersistenceFilePath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */; };
 		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		561BC2791DE4C32D006BCCA1 /* TSDKApnDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1120,11 +1120,11 @@
 				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
 				563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */,
-				5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */,
 				5699E27A1C90A6EE0061EC1D /* TSDKMessage.h in Headers */,
 				5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */,
 				561BC2791DE4C32D006BCCA1 /* TSDKApnDevice.h in Headers */,
 				9681092E1D8488C600D94C53 /* TSDKCollectionCommand.h in Headers */,
+				5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */,
 				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,

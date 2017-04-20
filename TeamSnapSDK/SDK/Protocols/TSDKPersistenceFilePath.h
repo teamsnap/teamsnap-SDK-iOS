@@ -10,6 +10,6 @@
 
 @protocol TSDKPersistenceFilePath <NSObject>
 
-- (NSString *)persistenceFilePathWithParentIdentifier:(NSString *)parentIdentifier;
++ (NSString *)persistenceFilePathWithParentIdentifier:(NSString *)parentIdentifier;
 
 @end
