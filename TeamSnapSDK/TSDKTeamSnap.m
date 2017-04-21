@@ -251,4 +251,8 @@
     [TSPCache invalidateAll];
 }
 
+- (NSURL *_Nonnull)cachePath {
+    return [TSPCache cacheRootPath];
+}
+
 @end

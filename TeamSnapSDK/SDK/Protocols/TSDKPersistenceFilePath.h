@@ -10,6 +10,21 @@
 
 @protocol TSDKPersistenceFilePath <NSObject>
 
-+ (NSString *)persistenceFilePathWithParentIdentifier:(NSString *)parentIdentifier;
+
+/**
+ The document directory file path where objects conforming to NSCoding will be encoded and stored.
+
+ @param parentIdentifier The identifier of the parent of the data to be stored. Team is the parent of Events, for example.
+ @return A fully specified URL where objects can be encoded for persistence. Documents directory is recommended.
+ */
++ (NSURL * _Nullable)persistenceFilePathWithParentIdentifier:(NSString * _Nonnull)parentIdentifier;
+
+
+/**
+ The base path where objects will be persisted.
+
+ @return  The base URL that will contain subdirectories for objects to be stored. persistenceFilePathWithParentIdentifier should build off this path. A good default is /teamsnap
+ */
++ (NSURL * _Nullable)persistenceBaseFilePath;
 
 @end

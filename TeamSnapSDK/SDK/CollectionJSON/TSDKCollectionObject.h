@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong) NSDate *_Nullable lastUpdate;
+@property (nonatomic, strong) NSURL * _Nonnull persistenceBaseFilePath;
 
 - (instancetype _Nonnull)initWithCollection:(TSDKCollectionJSON *_Nonnull)collection;
 + (id _Nullable)objectWithObject:(TSDKCollectionObject *_Nonnull)originalObject;

@@ -934,13 +934,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 #pragma mark - TSDKPersistenceFilePath
 
-+ (NSString *)persistenceFilePathWithParentIdentifier:(NSString *)parentIdentifier {
-    NSURL *documentDirectoryURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
-    if(documentDirectoryURL) {
-        return [[documentDirectoryURL URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:parentIdentifier].path;
-    }
-    
-    return nil;
++ (NSURL *)persistenceFilePathWithParentIdentifier:(NSString *)parentIdentifier {
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:parentIdentifier];
+}
+
++ (NSURL * _Nullable)persistenceBaseFilePath {
+    return [[TSDKTeamSnap sharedInstance] cachePath];
 }
 
 @end

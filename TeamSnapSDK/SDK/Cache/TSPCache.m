@@ -23,7 +23,7 @@ NSFileManager static *_fileManager = nil;
 +(NSURL *)cacheRootPath {
     if (!_rootPath) {
         NSString *directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-        _rootPath = [NSURL fileURLWithPath:directory isDirectory:YES];
+        _rootPath = [[NSURL fileURLWithPath:directory isDirectory:YES] URLByAppendingPathComponent:@"teamsnap"];
     }
     if (![[self fileManager] fileExistsAtPath:[_rootPath path]]) {
         [[self fileManager] createDirectoryAtPath:[_rootPath path] withIntermediateDirectories:YES attributes:nil error:nil];
