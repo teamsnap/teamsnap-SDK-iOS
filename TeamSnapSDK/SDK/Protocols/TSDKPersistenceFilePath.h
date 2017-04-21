@@ -14,10 +14,10 @@
 /**
  The document directory file path where objects conforming to NSCoding will be encoded and stored.
 
- @param parentIdentifier The identifier of the parent of the data to be stored. Team is the parent of Events, for example.
+ @param parentObject The parent of the data to be stored. Team is the parent of Events, for example.
  @return A fully specified URL where objects can be encoded for persistence. Documents directory is recommended.
  */
-+ (NSURL * _Nullable)persistenceFilePathWithParentIdentifier:(NSString * _Nonnull)parentIdentifier;
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject;
 
 
 /**

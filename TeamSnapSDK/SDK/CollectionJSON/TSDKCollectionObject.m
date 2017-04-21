@@ -936,8 +936,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 #pragma mark - TSDKPersistenceFilePath
 
-+ (NSURL *)persistenceFilePathWithParentIdentifier:(NSString *)parentIdentifier {
-    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:parentIdentifier];
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
+    NSString *parentObjectPathComponent = [NSString stringWithFormat:@"%@-%@", [parentObject.class SDKType], [parentObject objectIdentifier]];
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:parentObjectPathComponent];
 }
 
 + (NSURL * _Nullable)persistenceBaseFilePath {
