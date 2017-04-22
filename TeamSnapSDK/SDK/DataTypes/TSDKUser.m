@@ -188,4 +188,9 @@
     
     [self arrayFromLink:fullySpecifiedURL.URL withConfiguration:configuration completion:completion];
 }
+
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:@"current"];
+}
+
 @end
