@@ -58,7 +58,7 @@ NSFileManager static *_fileManager = nil;
 }
 
 +(NSURL *)pathForObjectClassName:(NSString *)className {
-    NSURL *destination = [self.cacheBasePath URLByAppendingPathComponent:className];
+    NSURL *destination = [[self cacheRootPath] URLByAppendingPathComponent:className];
     if (destination && ![[self fileManager] fileExistsAtPath:[destination path]]) {
         [[self fileManager] createDirectoryAtPath:[destination path] withIntermediateDirectories:YES attributes:nil error:nil];
     }
@@ -71,6 +71,9 @@ NSFileManager static *_fileManager = nil;
 }
 
 +(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSString *)objectId {
+    if(objectId.length == 0) {
+        objectId = @"Base";
+    }
     return  [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:objectId];
 }
 
@@ -109,7 +112,7 @@ NSFileManager static *_fileManager = nil;
 }
 
 +(void)saveObject:(TSDKCollectionObject *)collectionObject {
-    if (_basePath) {
+    if ([self pathForObjectClass:[collectionObject class] withId:collectionObject.objectIdentifier]) {
         if (collectionObject) {
             [collectionObject writeToFileURL:[self pathForObjectClass:[collectionObject class] withId:collectionObject.objectIdentifier]];
         }

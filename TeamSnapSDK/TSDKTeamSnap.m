@@ -66,9 +66,11 @@
 
 - (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSError *error))completion {
     if (self.teamSnapUser) {
-        if (completion) {
-            completion(YES, nil);
-        }
+        [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+            if (completion) {
+                completion(rootLinks != nil, error);
+            }
+        }];
     } else {
         [self processInitialConnectionWithConfiguration:nil completion:completion];
     }
@@ -150,6 +152,15 @@
     }
 }
 
+- (TSDKRootLinks *)rootLinks {
+    if(!_rootLinks) {
+        if([[TSPCache objectOfClass:[TSDKRootLinks class] withId:nil] isKindOfClass:[TSDKRootLinks class]]) {
+             _rootLinks = (TSDKRootLinks *)[TSPCache objectOfClass:[TSDKRootLinks class] withId:nil];
+        }
+    }
+    return _rootLinks;
+}
+
 - (void)rootLinksWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKRootLinkCompletionBlock)completion {
     TSDKSimpleCompletionBlock schemaCompletionBlock  = ^(BOOL success, NSError *error) {
         if (success) {
@@ -169,10 +180,7 @@
         [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
-            
-                if (self.OAuthToken) {
-                    [TSPCache saveObject:weakSelf.rootLinks];
-                }
+                [TSPCache saveObject:weakSelf.rootLinks];
             
                 [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {

@@ -23,8 +23,8 @@
 +(void)invaidateObjectOfClass:(Class _Nonnull)objectClass withId:(NSString * _Nonnull)objectId;
 
 +(void)saveObject:(TSDKCollectionObject *_Nonnull)collectionObject;
-+(TSDKCollectionObject *_Nullable)objectOfClass:(Class _Nonnull)objectClass withId:(NSString * _Nonnull)objectId;
-+ (void)saveDictionaryOfObjects:(NSDictionary *_Nonnull)dictionaryOfObjects ofType:(Class _Nonnull)objectClass;
++(TSDKCollectionObject *_Nullable)objectOfClass:(Class _Nonnull)objectClass withId:(NSString * _Nullable)objectId;
++ (void)saveDictionaryOfObjects:(NSDictionary *_Nonnull)dictionaryOfObjects ofType:(Class _Nullable)objectClass;
 + (NSDictionary *_Nullable)loadDictionaryOfObjectsOfType:(Class _Nonnull)objectClass;
 
 + (BOOL)saveSchemas:(NSArray *_Nonnull)schemaArray WithVersion:(NSString *_Nonnull)schemaVersion;
