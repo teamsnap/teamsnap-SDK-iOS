@@ -57,6 +57,7 @@
         [super setString:subject forKey:@"subject"];
         [super setString:teamId forKey:@"team_id"];
         [super setString:[sender memberId] forKey:@"member_id"];
+        [super setBool:YES forKey:@"deliver_to_sending_member_contacts"];   // this should always be true unless business rules change in the future
         if([sender respondsToSelector:@selector(contactId)]) {
             [super setString:[sender contactId] forKey:@"contact_id"];
         }
