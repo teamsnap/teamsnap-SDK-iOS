@@ -53,6 +53,7 @@
 - (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (NSString *_Nonnull)fullName;
+- (NSInteger)age;
 
 @end
 

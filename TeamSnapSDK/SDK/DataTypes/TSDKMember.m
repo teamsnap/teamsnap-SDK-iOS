@@ -18,6 +18,7 @@
 #import "TSDKMemberPhoto.h"
 #import "TSDKNotifications.h"
 #import "TSDKConstants.h"
+#import "NSDate+Conveniences.h"
 
 @implementation TSDKMember
 
@@ -112,14 +113,7 @@
 #endif
 -(NSInteger)age {
     if (self.birthday && (![self.birthday isEqual:[NSNull null]])) {
-        NSDate* now = [NSDate date];
-        NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
-                                           components:NSCalendarUnitYear
-                                           fromDate:self.birthday
-                                           toDate:now
-                                           options:0];
-        NSInteger age = [ageComponents year];
-        return age;
+        return [self.birthday age];
     } else {
         return 0;
     }
