@@ -18,7 +18,7 @@
 #import "TSDKMemberPhoto.h"
 #import "TSDKNotifications.h"
 #import "TSDKConstants.h"
-#import "NSDate+Conveniences.h"
+#import "NSDate+TSDKConveniences.h"
 
 @implementation TSDKMember
 
