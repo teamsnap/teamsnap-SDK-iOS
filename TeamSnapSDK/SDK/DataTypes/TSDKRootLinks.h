@@ -115,6 +115,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkContacts;
 @property (nonatomic, weak) NSURL *_Nullable linkCountries;
 @property (nonatomic, weak) NSURL *_Nullable linkAuthorizationUserRegistrationInitializations;
+@property (nonatomic, weak) NSURL *_Nullable linkApplePaidFeatures;
 
 //+(void)actionWelcomeClientid:(NSString *)clientId redirectUri:(NSString *)redirectUri emailAddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock _Nullable)completion; //Send a welcome email to an unregistered user to start the registration process
 //+(void)actionInitiateRegistrationClientid:(NSString *)clientId redirectUri:(NSString *)redirectUri emailAddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock _Nullable)completion; //Send a signup email to an unregistered user to start the registration process
@@ -235,5 +236,6 @@
 -(void)getAuthorizationTokensWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumPostArrayCompletionBlock _Nonnull)completion;
 -(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nonnull)completion;
+-(void)getApplePaidFeaturesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
