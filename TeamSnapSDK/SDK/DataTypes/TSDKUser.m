@@ -25,7 +25,7 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, displayAdsOnTeamList, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions;
 
 + (NSString *)SDKType {
     return @"user";
