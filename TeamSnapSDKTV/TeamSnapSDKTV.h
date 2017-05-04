@@ -31,7 +31,7 @@ FOUNDATION_EXPORT const unsigned char TeamSnapSDKTVVersionString[];
 #import <TeamSnapSDKTV/TSDKForumPost.h>
 #import <TeamSnapSDKTV/TSDKForumTopic.h>
 #import <TeamSnapSDKTV/TSDKLocation.h>
-#import <TeamSnapSDKTV/TSDKmemberStatistic.h>
+#import <TeamSnapSDKTV/TSDKMemberStatistic.h>
 #import <TeamSnapSDKTV/TSDKOpponent.h>
 #import <TeamSnapSDKTV/TSDKPlan.h>
 #import <TeamSnapSDKTV/TSDKSport.h>

@@ -54,7 +54,7 @@
 #import "TSDKEvent.h"
 #import "TSDKForumPost.h"
 #import "TSDKForumTopic.h"
-#import "TSDKinvitationFinder.h"
+#import "TSDKInvitationFinder.h"
 #import "TSDKLocation.h"
 #import "TSDKMember.h"
 #import "TSDKOpponent.h"

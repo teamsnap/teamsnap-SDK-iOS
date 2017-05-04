@@ -40,7 +40,7 @@
 #import "TSDKForumPost.h"
 #import "TSDKForumTopic.h"
 #import "TSDKLocation.h"
-#import "TSDKmemberStatistic.h"
+#import "TSDKMemberStatistic.h"
 #import "TSDKOpponent.h"
 #import "TSDKPlan.h"
 #import "TSDKSport.h"

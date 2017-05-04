@@ -44,7 +44,7 @@
 #import "TSDKPlan.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKTeamResults.h"
-#import "TSDKinvitationFinder.h"
+#import "TSDKInvitationFinder.h"
 #import "TSDKTeamMediaGroup.h"
 #import "TSDKMemberPreferences.h"
 #import "TSDKForumSubscription.h"
@@ -275,10 +275,10 @@ static NSArray *knownCompletionTypes;
     NSURL *invitationFinderPath = [TSDKDataRequest appendPathToBaseURL:[NSString stringWithFormat:@"invitation_finder?email_address=%@", [emailAddress stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]]]];
     
     [TSDKDataRequest requestObjectsForPath:invitationFinderPath withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        TSDKinvitationFinder *inviteStatus = nil;
+        TSDKInvitationFinder *inviteStatus = nil;
         if (success) {
             if ([objects.collection count] > 0) {
-                inviteStatus = [[TSDKinvitationFinder alloc] initWithCollection:[objects.collection objectAtIndex:0]];
+                inviteStatus = [[TSDKInvitationFinder alloc] initWithCollection:[objects.collection objectAtIndex:0]];
             }
         }
         if (completionBlock) {
