@@ -7,29 +7,26 @@
 //
 
 #import "TeamsViewController.h"
-#import <TeamSnapSDK/TeamSnapSDK.h>
+#import "TeamSnapSDKExample-Swift.h"
 
 @interface TeamsViewController ()
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-
-@property (nonatomic, strong) TSDKUser *user;
 @property (nonatomic, strong) NSArray<TSDKTeam*> *teams;
 
 @end
 
 @implementation TeamsViewController
 
-- (instancetype)initWithUser:(TSDKUser *)user {
-    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
-    if (self) {
-        self->_user = user;
-    }
-    return self;
-}
+- (void)loadTeamsWithUser:(TSDKUser *)user {
+    NSParameterAssert(user);
 
-- (void)loadTeams {
-    [self.user getTeamsWithConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, NSArray<TSDKTeam *> * _Nonnull teams, NSError * _Nullable error) {
+    [user getTeamsWithConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, NSArray<TSDKTeam *> * _Nonnull teams, NSError * _Nullable error) {
+        if (!success || error != nil) {
+            // I don't see much detail as to what caused the alert with what I could simulate.  I don't want to display locallized messages from the NSError object until I know its contents, so this generic error will have to suffice. -- James
+            [self showAlert:@"An Error has occured, please try again later" title:nil];
+            return;
+        }
+
         self.teams = teams;
         [self.tableView reloadData];
     }];
@@ -37,10 +34,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TeamCell"];
     self.navigationItem.title = NSLocalizedString(@"Teams", nil);
-    [self loadTeams];
+}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self loadTeamsWithUser:self.authenticatedUser];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowTeamMembersSegue"]) {
+        NSParameterAssert([segue.destinationViewController isKindOfClass:TeamMembersViewController.class]);
+        NSParameterAssert([sender isKindOfClass:UITableViewCell.class]);
+
+        TeamMembersViewController *membersVC = segue.destinationViewController;
+        UITableViewCell *cell = sender;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        TSDKTeam *team = [self teamAtIndexPath:indexPath];
+        membersVC.team = team;
+    }
+}
+
+-(TSDKTeam*)teamAtIndexPath:(NSIndexPath*)indexPath {
+    return self.teams[indexPath.row];
 }
 
 #pragma mark - UITableViewDataSource

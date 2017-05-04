@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AuthenticationViewController.h
 //  TeamSnapSDKExample
 //
 //  Created by Marquez Gallegos on 3/14/17.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface AuthenticationViewController : UIViewController
 
 
 @end

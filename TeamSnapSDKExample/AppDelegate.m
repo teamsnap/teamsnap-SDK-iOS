@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "AuthenticationViewController.h"
 #import "TeamsViewController.h"
 #import <TeamSnapSDK/TeamSnapSDK.h>
 
@@ -20,10 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    ViewController *viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    AuthenticationViewController *viewController = [[AuthenticationViewController alloc] initWithNibName:nil bundle:nil];
     self.window.rootViewController = viewController;
-    [self.window makeKeyAndVisible];
     
     return YES;
 }
@@ -58,11 +56,9 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
     if ([[TSDKTeamSnap sharedInstance] processLoginCallback:url completion:^(bool success, NSError *error) {
         if (success) {
-            // quick & dirty setting the rootViewController
-            TSDKUser *user =[[TSDKTeamSnap sharedInstance] teamSnapUser];
-            TeamsViewController *teamsViewContrroller = [[TeamsViewController alloc] initWithUser:user];
-            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:teamsViewContrroller];
-            self.window.rootViewController = navController;
+            UINavigationController *navVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+            
+            self.window.rootViewController = navVC;
         } else {
             NSLog(@"Login Failed");
         }

@@ -10,7 +10,7 @@
 #import "TSDKRequestConfiguration.h"
 #import "TSDKCompletionBlockTypes.h"
 
-@class TSDKCollectionJSON, TSDKinvitationFinder;
+@class TSDKCollectionJSON, TSDKInvitationFinder;
 
 @interface TSDKDataRequest : NSObject
 
