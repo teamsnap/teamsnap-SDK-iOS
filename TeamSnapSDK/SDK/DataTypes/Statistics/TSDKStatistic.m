@@ -23,12 +23,14 @@
 }
 
 - (NSString *)displayStringForStatisticValue:(NSNumber *)statValue {
+
     if ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber]) {
         return [NSString stringWithFormat:@"%ld", (long)[statValue integerValue]];
     } else {
         NSString *formatString = [NSString stringWithFormat:@"%%.%ldf", (long)self.precision];
         if ([self isPercentage]) {
             formatString = [formatString stringByAppendingString:@"%%"];
+            statValue = @(statValue.floatValue * 100);
         }
         CGFloat roundedValue = [self round:statValue To:self.precision];
         
