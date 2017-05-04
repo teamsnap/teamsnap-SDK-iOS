@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1AA1F7F21EBB7E360080A3D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1F7F11EBB7E360080A3D9 /* Main.storyboard */; };
-		1AA1F81C1EBB912E0080A3D9 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1F81B1EBB912E0080A3D9 /* Authentication.swift */; };
+		1AA1F81C1EBB912E0080A3D9 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1F81B1EBB912E0080A3D9 /* ViewControllerExtensions.swift */; };
+		1AA1F81E1EBBA29A0080A3D9 /* TeamMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1F81D1EBBA29A0080A3D9 /* TeamMembersViewController.swift */; };
+		1AA1F8211EBBCC080080A3D9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1F8201EBBCC080080A3D9 /* StringExtensions.swift */; };
+		1AA1F8241EBBCC3E0080A3D9 /* TeamMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1F8231EBBCC3E0080A3D9 /* TeamMemberTableViewCell.swift */; };
 		4F2D79651E7847A200AEDB05 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9696ACC01C1715E000FA7F64 /* SafariServices.framework */; };
 		4F2D79661E7847A200AEDB05 /* SafariServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9696ACC01C1715E000FA7F64 /* SafariServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -388,7 +391,10 @@
 
 /* Begin PBXFileReference section */
 		1AA1F7F11EBB7E360080A3D9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		1AA1F81B1EBB912E0080A3D9 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		1AA1F81B1EBB912E0080A3D9 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		1AA1F81D1EBBA29A0080A3D9 /* TeamMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersViewController.swift; sourceTree = "<group>"; };
+		1AA1F8201EBBCC080080A3D9 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		1AA1F8231EBBCC3E0080A3D9 /* TeamMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberTableViewCell.swift; sourceTree = "<group>"; };
 		29DFC70EE2A7BA5B0FE38B4D /* Pods-TeamSnapSDKExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnapSDKExample.debug.xcconfig"; path = "TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6EED665398D1C748686396 /* Pods-TeamSnapSDKExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnapSDKExample.release.xcconfig"; path = "TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.release.xcconfig"; sourceTree = "<group>"; };
 		4FC1263A1E782D47001E80D0 /* TeamSnapSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamSnapSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -668,6 +674,7 @@
 				4FC126431E782D47001E80D0 /* AuthenticationViewController.m */,
 				4FCF30651E79C69800302EE7 /* TeamsViewController.h */,
 				4FCF30661E79C69800302EE7 /* TeamsViewController.m */,
+				1AA1F81D1EBBA29A0080A3D9 /* TeamMembersViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -675,14 +682,24 @@
 		1AA1F8171EBB90CE0080A3D9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1AA1F81B1EBB912E0080A3D9 /* Authentication.swift */,
+				1AA1F81B1EBB912E0080A3D9 /* ViewControllerExtensions.swift */,
+				1AA1F8201EBBCC080080A3D9 /* StringExtensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		1AA1F8221EBBCC1F0080A3D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1AA1F8231EBBCC3E0080A3D9 /* TeamMemberTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		4FC1263B1E782D47001E80D0 /* TeamSnapSDKExample */ = {
 			isa = PBXGroup;
 			children = (
+				1AA1F8221EBBCC1F0080A3D9 /* Views */,
 				1AA1F8171EBB90CE0080A3D9 /* Extensions */,
 				4FC1263F1E782D47001E80D0 /* AppDelegate.h */,
 				4FC126401E782D47001E80D0 /* AppDelegate.m */,
@@ -1415,7 +1432,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = teamsnap;
 				TargetAttributes = {
 					4FC126391E782D47001E80D0 = {
@@ -1570,9 +1587,12 @@
 			files = (
 				4FC126441E782D47001E80D0 /* AuthenticationViewController.m in Sources */,
 				4FCF30681E79C69800302EE7 /* TeamsViewController.m in Sources */,
+				1AA1F8241EBBCC3E0080A3D9 /* TeamMemberTableViewCell.swift in Sources */,
 				4FC126411E782D47001E80D0 /* AppDelegate.m in Sources */,
+				1AA1F8211EBBCC080080A3D9 /* StringExtensions.swift in Sources */,
+				1AA1F81E1EBBA29A0080A3D9 /* TeamMembersViewController.swift in Sources */,
 				4FC1263E1E782D47001E80D0 /* main.m in Sources */,
-				1AA1F81C1EBB912E0080A3D9 /* Authentication.swift in Sources */,
+				1AA1F81C1EBB912E0080A3D9 /* ViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1788,7 +1808,7 @@
 				DEVELOPMENT_TEAM = YN466NRGZP;
 				INFOPLIST_FILE = TeamSnapSDKExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TeamSnapSDKExample/TeamSnapSDKExample-Bridging-Header.h";
@@ -1809,7 +1829,7 @@
 				DEVELOPMENT_TEAM = YN466NRGZP;
 				INFOPLIST_FILE = TeamSnapSDKExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamsnap.TeamSnapSDKExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TeamSnapSDKExample/TeamSnapSDKExample-Bridging-Header.h";
@@ -1905,6 +1925,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
