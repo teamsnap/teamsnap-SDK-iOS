@@ -9,27 +9,20 @@
 #import "TeamsViewController.h"
 #import <TeamSnapSDK/TeamSnapSDK.h>
 
+#import "TeamSnapSDKExample-Swift.h"
+
 @interface TeamsViewController ()
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-
-@property (nonatomic, strong) TSDKUser *user;
 @property (nonatomic, strong) NSArray<TSDKTeam*> *teams;
 
 @end
 
 @implementation TeamsViewController
 
-- (instancetype)initWithUser:(TSDKUser *)user {
-    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
-    if (self) {
-        self->_user = user;
-    }
-    return self;
-}
+- (void)loadTeamsWithUser:(TSDKUser *)user {
+    NSParameterAssert(user);
 
-- (void)loadTeams {
-    [self.user getTeamsWithConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, NSArray<TSDKTeam *> * _Nonnull teams, NSError * _Nullable error) {
+    [user getTeamsWithConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, NSArray<TSDKTeam *> * _Nonnull teams, NSError * _Nullable error) {
         self.teams = teams;
         [self.tableView reloadData];
     }];
@@ -37,10 +30,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TeamCell"];
     self.navigationItem.title = NSLocalizedString(@"Teams", nil);
-    [self loadTeams];
+}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self loadTeamsWithUser:self.authenticatedUser];
 }
 
 #pragma mark - UITableViewDataSource

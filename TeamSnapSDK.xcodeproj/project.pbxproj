@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AA1F7F21EBB7E360080A3D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AA1F7F11EBB7E360080A3D9 /* Main.storyboard */; };
+		1AA1F81C1EBB912E0080A3D9 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1F81B1EBB912E0080A3D9 /* Authentication.swift */; };
 		4F2D79651E7847A200AEDB05 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9696ACC01C1715E000FA7F64 /* SafariServices.framework */; };
 		4F2D79661E7847A200AEDB05 /* SafariServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9696ACC01C1715E000FA7F64 /* SafariServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FC1263E1E782D47001E80D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC1263D1E782D47001E80D0 /* main.m */; };
 		4FC126411E782D47001E80D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC126401E782D47001E80D0 /* AppDelegate.m */; };
-		4FC126441E782D47001E80D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC126431E782D47001E80D0 /* ViewController.m */; };
+		4FC126441E782D47001E80D0 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC126431E782D47001E80D0 /* AuthenticationViewController.m */; };
 		4FC126491E782D47001E80D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FC126481E782D47001E80D0 /* Assets.xcassets */; };
 		4FC9AE791DE4CE5500B0C582 /* MemberPayments.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */; };
 		4FC9AE7C1DE4D10000B0C582 /* TSDKJSONFileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */; };
 		4FCF30681E79C69800302EE7 /* TeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF30661E79C69800302EE7 /* TeamsViewController.m */; };
-		4FCF30691E79C69800302EE7 /* TeamsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF30671E79C69800302EE7 /* TeamsViewController.xib */; };
 		4FCF306B1E79CF6B00302EE7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF306A1E79CF6B00302EE7 /* Launch Screen.storyboard */; };
 		560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		560578DF1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 560578DD1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m */; };
@@ -386,14 +387,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1AA1F7F11EBB7E360080A3D9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1AA1F81B1EBB912E0080A3D9 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		29DFC70EE2A7BA5B0FE38B4D /* Pods-TeamSnapSDKExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnapSDKExample.debug.xcconfig"; path = "TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6EED665398D1C748686396 /* Pods-TeamSnapSDKExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSnapSDKExample.release.xcconfig"; path = "TeamSnapSDKExample/Pods/Target Support Files/Pods-TeamSnapSDKExample/Pods-TeamSnapSDKExample.release.xcconfig"; sourceTree = "<group>"; };
 		4FC1263A1E782D47001E80D0 /* TeamSnapSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamSnapSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC1263D1E782D47001E80D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FC1263F1E782D47001E80D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FC126401E782D47001E80D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4FC126421E782D47001E80D0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4FC126431E782D47001E80D0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4FC126421E782D47001E80D0 /* AuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
+		4FC126431E782D47001E80D0 /* AuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 		4FC126481E782D47001E80D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FC1264D1E782D47001E80D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MemberPayments.json; sourceTree = "<group>"; };
@@ -401,7 +404,6 @@
 		4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKJSONFileResource.m; path = DataLayer/TSDKJSONFileResource.m; sourceTree = "<group>"; };
 		4FCF30651E79C69800302EE7 /* TeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamsViewController.h; sourceTree = "<group>"; };
 		4FCF30661E79C69800302EE7 /* TeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamsViewController.m; sourceTree = "<group>"; };
-		4FCF30671E79C69800302EE7 /* TeamsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamsViewController.xib; sourceTree = "<group>"; };
 		4FCF306A1E79CF6B00302EE7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4FCF306C1E7A0DFB00302EE7 /* TeamSnapSDKExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeamSnapSDKExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKLogging.h; sourceTree = "<group>"; };
@@ -659,19 +661,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1AA1F7F31EBB7E420080A3D9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FC126421E782D47001E80D0 /* AuthenticationViewController.h */,
+				4FC126431E782D47001E80D0 /* AuthenticationViewController.m */,
+				4FCF30651E79C69800302EE7 /* TeamsViewController.h */,
+				4FCF30661E79C69800302EE7 /* TeamsViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1AA1F8171EBB90CE0080A3D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1AA1F81B1EBB912E0080A3D9 /* Authentication.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		4FC1263B1E782D47001E80D0 /* TeamSnapSDKExample */ = {
 			isa = PBXGroup;
 			children = (
+				1AA1F8171EBB90CE0080A3D9 /* Extensions */,
 				4FC1263F1E782D47001E80D0 /* AppDelegate.h */,
 				4FC126401E782D47001E80D0 /* AppDelegate.m */,
-				4FC126421E782D47001E80D0 /* ViewController.h */,
-				4FC126431E782D47001E80D0 /* ViewController.m */,
+				1AA1F7F31EBB7E420080A3D9 /* View Controllers */,
 				4FC126481E782D47001E80D0 /* Assets.xcassets */,
 				4FC1264D1E782D47001E80D0 /* Info.plist */,
 				4FC1263C1E782D47001E80D0 /* Supporting Files */,
-				4FCF30651E79C69800302EE7 /* TeamsViewController.h */,
-				4FCF30661E79C69800302EE7 /* TeamsViewController.m */,
-				4FCF30671E79C69800302EE7 /* TeamsViewController.xib */,
+				1AA1F7F11EBB7E360080A3D9 /* Main.storyboard */,
 				4FCF306A1E79CF6B00302EE7 /* Launch Screen.storyboard */,
 				4FCF306C1E7A0DFB00302EE7 /* TeamSnapSDKExample-Bridging-Header.h */,
 			);
@@ -1444,7 +1463,7 @@
 			files = (
 				4FCF306B1E79CF6B00302EE7 /* Launch Screen.storyboard in Resources */,
 				4FC126491E782D47001E80D0 /* Assets.xcassets in Resources */,
-				4FCF30691E79C69800302EE7 /* TeamsViewController.xib in Resources */,
+				1AA1F7F21EBB7E360080A3D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1549,10 +1568,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC126441E782D47001E80D0 /* ViewController.m in Sources */,
+				4FC126441E782D47001E80D0 /* AuthenticationViewController.m in Sources */,
 				4FCF30681E79C69800302EE7 /* TeamsViewController.m in Sources */,
 				4FC126411E782D47001E80D0 /* AppDelegate.m in Sources */,
 				4FC1263E1E782D47001E80D0 /* main.m in Sources */,
+				1AA1F81C1EBB912E0080A3D9 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

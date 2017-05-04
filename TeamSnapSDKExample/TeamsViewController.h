@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TSDKUser;
 
-@interface TeamsViewController : UIViewController <UITableViewDataSource>
-
-- (instancetype)initWithUser:(TSDKUser *)user;
+@interface TeamsViewController : UITableViewController
 
 @end
