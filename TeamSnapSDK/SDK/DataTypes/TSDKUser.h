@@ -26,6 +26,7 @@
 @property (nonatomic, weak) NSString *_Nullable lastName;
 @property (nonatomic, weak) NSString *_Nullable email;
 @property (nonatomic, weak) NSString *_Nullable addressCountry;
+@property (nonatomic, assign) BOOL displayAdsOnTeamList;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
 @property (nonatomic, weak) NSURL *_Nullable linkApnDevices;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamsPreferences;
@@ -53,6 +54,7 @@
 - (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (NSString *_Nonnull)fullName;
+- (NSInteger)age;
 
 @end
 
