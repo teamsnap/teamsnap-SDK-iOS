@@ -190,6 +190,13 @@
     [self arrayFromLink:fullySpecifiedURL.URL withConfiguration:configuration completion:completion];
 }
 
+- (NSInteger)age {
+    if (self.birthday && (![self.birthday isEqual:[NSNull null]])) {
+        return [self.birthday age];
+    } else {
+        return 0;
+    }
+    
 + (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
     return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:@"current"];
 }
