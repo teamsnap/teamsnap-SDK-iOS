@@ -109,7 +109,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
         [mutableRequestHeaders setObject:@"3" forKey:@"X_TEAMSNAP_API_VERSION"];
         [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
-        //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
+        if([[TSDKTeamSnap sharedInstance] combinedContactFeatureIsActive]) {
+            [mutableRequestHeaders setObject:@"ghost_contact" forKey:@"X-Teamsnap-Api-Features"];
+        }
         
         NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
         [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

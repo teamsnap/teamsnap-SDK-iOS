@@ -26,8 +26,25 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
 
-+(void)actionInvite:(NSArray *_Nonnull)memberEmailAddresses asSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
--(void)inviteAsSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
+/**
+ Deprecated in a future version. Use contact_email_address/invite instead.
+
+ @param memberEmailAddresses The member email address to invite
+ @param senderMemberId The sender of the invite
+ @param configuration The request configuration, if nil, a standard configuration is used.
+ @param completion Completion to be called when action finishes
+ */
++(void)actionInvite:(NSArray *_Nonnull)memberEmailAddresses asSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion __attribute__((deprecated));
+
+
+/**
+ Deprecated in a future version. Use contact_email_address/invite instead.
+
+ @param senderMemberId The sender of the invite
+ @param configuration The request configuration, if nil, a standard configuration is used.
+ @param completion Completion to be called when action finishes
+ */
+-(void)inviteAsSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion __attribute__((deprecated));
 
 @end
 

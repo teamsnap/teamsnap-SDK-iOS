@@ -98,7 +98,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMemberAssignments;
 @property (nonatomic, weak) NSURL *_Nullable linkUser;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediumComments;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberPhoneNumbers;
+@property (nonatomic, weak) NSURL *_Nullable linkMemberPhoneNumbers __attribute__((deprecated));
 @property (nonatomic, weak) NSURL *_Nullable linkContacts;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberBalances;
 @property (nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
@@ -111,7 +111,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMemberLinks;
 @property (nonatomic, weak) NSURL *_Nullable linkAvailabilities;
 @property (nonatomic, weak) NSURL *_Nullable linkBroadcastEmailAttachments;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberEmailAddresses;
+@property (nonatomic, weak) NSURL *_Nullable linkMemberEmailAddresses __attribute__((deprecated));
 @property (nonatomic, weak) NSURL *_Nullable linkStatisticData;
 @property (nonatomic, weak) NSURL *_Nullable linkForumTopics;
 @property (nonatomic, weak) NSURL *_Nullable linkDivision;
@@ -210,7 +210,7 @@
 -(void)getMemberLinksWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAvailabilityArrayCompletionBlock _Nonnull)completion;
 -(void)getBroadcastEmailAttachmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
--(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock _Nonnull)completion __attribute__((deprecated)); 
 -(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticDatumArrayCompletionBlock _Nonnull)completion;
 -(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumTopicArrayCompletionBlock _Nonnull)completion;
 -(void)getDivisionWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;

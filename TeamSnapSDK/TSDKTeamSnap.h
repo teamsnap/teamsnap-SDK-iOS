@@ -28,6 +28,13 @@
 - (void)loginWithOAuthToken:(NSString * _Nonnull)OAuthToken completion:(nullable void (^)(BOOL success, NSError  *  _Nullable error))completion;
 - (void)logout;
 
+
+/**
+ Combined Contacts is a version breaking feature that will be used in a future version of the SDK. It deprecates member_email_address (except for POST in the 1st version), and makes TSDKContact the primary way a user is associated to a Team.
+ */
+- (void)configureForCombinedContactFeature;
+- (BOOL)combinedContactFeatureIsActive;
+
 #if TARGET_OS_IPHONE
 - (SFSafariViewController * _Nonnull)presentLoginInViewController:(UIViewController * _Nonnull)viewController animated:(BOOL)animated clientId:(NSString * _Nonnull)clientId scope:(NSString * _Nonnull)scope redirectURL:(NSString * _Nonnull)redirectURL completion:(nullable void (^)(void))completion;
 - (BOOL)processLoginCallback:(NSURL * _Nonnull)url completion:(nullable void (^)(BOOL success, NSError *  _Nullable error))completion;

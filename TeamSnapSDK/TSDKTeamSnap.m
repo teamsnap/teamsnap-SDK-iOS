@@ -26,6 +26,7 @@
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
 @property (nonatomic, strong) SFSafariViewController *loginView;
+@property (nonatomic, assign) BOOL useCombinedContactCard;
 
 @end
 
@@ -82,6 +83,14 @@
 - (void)logout {
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
+}
+
+- (void)configureForCombinedContactFeature {
+    self.useCombinedContactCard = YES;
+}
+
+- (BOOL)combinedContactFeatureIsActive {
+    return self.useCombinedContactCard;
 }
 
 #if TARGET_OS_IPHONE
