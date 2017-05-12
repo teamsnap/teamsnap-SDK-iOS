@@ -15,4 +15,6 @@
 
 - (BOOL)isSameDayAs:(NSDate *_Nullable)dateToCompare;
 
+- (NSInteger)age;
+
 @end
