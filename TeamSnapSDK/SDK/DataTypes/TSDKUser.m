@@ -196,7 +196,8 @@
     } else {
         return 0;
     }
-    
+}
+
 + (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
     return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:@"current"];
 }
