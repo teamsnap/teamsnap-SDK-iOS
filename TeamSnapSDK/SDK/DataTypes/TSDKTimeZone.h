@@ -15,5 +15,6 @@
 @property (nonatomic, weak) NSString *_Nullable offset; //Example: -11:00
 @property (nonatomic, weak) NSString *_Nullable timeZoneDescription; //Example: American Samoa
 
+- (NSTimeZone *_Nullable)nsTimeZone;
 
 @end
