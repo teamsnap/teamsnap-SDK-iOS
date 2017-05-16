@@ -25,6 +25,9 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
+- (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion __attribute__((deprecated));
+- (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion __attribute__((deprecated));
+
 
 /**
  Deprecated in a future version. Use contact_email_address/invite instead.

@@ -10,7 +10,7 @@
 
 @implementation TSDKContactEmailAddress
 
-@dynamic contactId, linkContact;
+@dynamic label, isHidden, createdAt, invitationState, receivesTeamEmails, contactId, updatedAt, invitationCode, teamId, email, memberId, linkContact, linkMember, linkTeam;
 
 + (NSString *)SDKType {
     return @"contact_email_address";
