@@ -26,6 +26,10 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
++ (void)actionInvite:(NSArray *_Nonnull)memberEmailAddresses asSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion __attribute__((deprecated));
+- (void)inviteAsSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion __attribute__((deprecated));
+
+
 @end
 
 @interface TSDKContactEmailAddress (ForwardedMethods)
