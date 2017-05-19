@@ -35,10 +35,20 @@
 @property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, assign) BOOL isManager; //Example: 1
+@property (nonatomic, assign) BOOL isOwner; //Example: 1
+@property (nonatomic, assign) BOOL isCommissioner; //Example: 0
 
 - (nonnull NSString *)fullName;
 - (nullable NSString *)fancyAddressString;
 - (nullable NSString *)addressString;
+
+/**
+ Manager is the lowest level of permission set. Above it is Owner and Commissioner. This convenience method checks isManager OR isOwner OR isCommissioner as that's what most permissions are based on.
+
+ @return true is the member/contact is the manager, or owner, or commissioner.
+ */
+- (BOOL)isAtLeastManager;
 
 @end
 
@@ -132,8 +142,6 @@
 -(nullable TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL  progress:(nullable TSDKUploadProgressBlock)progressBlock;
 
 #endif
-
-- (BOOL)isAtLeastManager;
 
 - (NSInteger)age;
 
