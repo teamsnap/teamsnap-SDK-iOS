@@ -41,7 +41,7 @@
 }
 
 - (BOOL)isAtLeastManager {
-    return (self.isManager || self.isOwner);
+    return (self.isManager || self.isOwner || self.isCommissioner);
 }
 
 #if TARGET_OS_IPHONE

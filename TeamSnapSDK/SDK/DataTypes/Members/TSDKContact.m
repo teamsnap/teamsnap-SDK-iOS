@@ -17,6 +17,10 @@
     return @"contact";
 }
 
+- (BOOL)isAtLeastManager {
+    return (self.isManager || self.isOwner || self.isCommissioner);
+}
+
 - (BOOL)isEditable {
     if ([self.collection.data objectForKey:@"is_editable"]) {
         NSNumber *value = [self.collection.data objectForKey:@"is_editable"];
