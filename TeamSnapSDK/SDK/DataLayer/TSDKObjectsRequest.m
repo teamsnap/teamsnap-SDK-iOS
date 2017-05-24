@@ -65,6 +65,7 @@
 #import "TSDKApnDevice.h"
 #import "TSDKSmsGateway.h"
 #import "TSDKRootLinks.h"
+#import "TSDKApplePaidFeature.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
