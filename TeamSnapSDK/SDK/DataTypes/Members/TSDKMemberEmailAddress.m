@@ -30,7 +30,7 @@
         
         command.data[@"team_id"] = firstMemberEmailAddress.teamId;
         command.data[@"member_id"] = firstMemberEmailAddress.memberId;
-        command.data[@"member_email_address_ids"] = emailIds;
+        command.data[@"contact_email_address_ids"] = emailIds;
         command.data[@"notify_as_member_id"] = senderMemberId;
         
         [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
