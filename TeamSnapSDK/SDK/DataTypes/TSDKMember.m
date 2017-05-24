@@ -41,7 +41,7 @@
 }
 
 - (BOOL)isAtLeastManager {
-    return (self.isManager || self.isOwner || self.isCommissioner);
+    return (self.isManager || self.isOwner || self.isCommissioner || self.isLeagueOwner);
 }
 
 #if TARGET_OS_IPHONE
