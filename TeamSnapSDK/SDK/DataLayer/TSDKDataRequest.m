@@ -59,6 +59,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
     return session;
 }
 
++ (dispatch_queue_t)processingQueue {
+    return dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+}
+
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key {
     NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] initWithDictionary:self.requestHeaders];
     [mutableRequestHeaders setObject:value forKey:key];
@@ -197,54 +201,64 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #endif
                 [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
                 
-                BOOL success = NO;
-                BOOL requestCompleted = NO;
-                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                    success = [httpResponse wasSuccess];
-                }
-                id JSON = nil;
-                
-                requestCompleted = success;
-                
-                if (success) {
-                    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
-                    if (data) {
-                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                    }
-                    [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
-                } else {
-                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                dispatch_async([self processingQueue], ^{
                     
-                    if (data) {
-                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                        TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
-                        if (errorJSON.errorTitle) {
-                            userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
-                        }
-                        if (errorJSON.errorMessage) {
-                            userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
-                        }
-                        NSInteger errorCode = 0;
-                        if (errorJSON.errorCode != NSNotFound) {
-                            errorCode = [userInfo[@"errorCode"] integerValue];
-                        }
-                        
-                        if([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                            userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
-                        }
-                        
-                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:[userInfo copy]];
+                    BOOL success = NO;
+                    BOOL requestCompleted = NO;
+                    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                        success = [httpResponse wasSuccess];
                     }
-                }
-                
-                NSSet *completionBlocks =  [[[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request] copy];
-                
-                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
-                
-                for(TSDKJSONCompletionBlock completionBlock in completionBlocks.allObjects) {
-                    completionBlock(success, requestCompleted, JSON, error);
-                }
+                    id JSON = nil;
+                    NSError *responseError = error;
+                    
+                    requestCompleted = success;
+                    
+                    NSError *jsonError = nil;
+                    if (success) {
+                        [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
+                        if (data) {
+                            JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                        }
+                        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
+                    } else if (data) {
+                        NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                        
+                        if (jsonError != nil ) {
+                            responseError = jsonError;
+                        } else {
+                            TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
+                            if (errorJSON.errorTitle) {
+                                userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
+                            }
+                            if (errorJSON.errorMessage) {
+                                userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
+                            }
+                            NSInteger errorCode = 0;
+                            if (errorJSON.errorCode != NSNotFound) {
+                                errorCode = [userInfo[@"errorCode"] integerValue];
+                            }
+                            
+                            if([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                                userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
+                            }
+                            
+                            responseError = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:[userInfo copy]];
+                        }
+                    }
+                    
+                    NSSet *completionBlocks =  [[[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request] copy];
+                    
+                    [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
+                    
+                    for(TSDKJSONCompletionBlock completionBlock in completionBlocks.allObjects) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completionBlock(success, requestCompleted, JSON, responseError);
+                        });
+                    }
+                    
+                });
             }];
             remoteTask.priority = configuration.priority;
             [remoteTask resume];
@@ -253,14 +267,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completionBlock) {
-            completionBlock(success, complete, objects, error);
-        }
-    }];
+    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withConfiguration:configuration completion:completionBlock];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
++ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
         if (!URL) {
             if (completionBlock) {
                 completionBlock(NO, NO, nil, nil);
@@ -290,13 +300,17 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+            dispatch_async([self processingQueue], ^{
                 TSDKCollectionJSON *containerCollection = nil;
                 if ([objects isKindOfClass:[NSDictionary class]]) {
                     containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
                 }
                 if (completionBlock) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
                         completionBlock(success, complete, containerCollection, error);
+                    });
                 }
+            });
         }];
 }
 
@@ -462,19 +476,24 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #endif
         [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
         
-        BOOL success = NO;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            success = [httpResponse wasSuccess];
-        }
-        UIImage *image = nil;
-        if (success) {
-            image = [UIImage imageWithData:data];
-        }
-        
-        if (completionBlock) {
-            completionBlock(image);
-        }
+        dispatch_async([self processingQueue], ^{
+            
+            BOOL success = NO;
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                success = [httpResponse wasSuccess];
+            }
+            UIImage *image = nil;
+            if (success) {
+                image = [UIImage imageWithData:data scale:[UIScreen mainScreen].scale];
+            }
+            
+            if (completionBlock) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(image);
+                });
+            }
+        });
     }];
     remoteTask.priority = configuration.priority;
     [remoteTask resume];
