@@ -22,12 +22,13 @@
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 859069
 @property (nonatomic, weak) NSString *_Nullable email; //Example: contact-7252155-email-address-32403360@example.com
 @property (nonatomic, weak) NSString *_Nullable memberId; //Example: 22861914
+@property (nonatomic, assign) BOOL isAccepted;
 @property (nonatomic, weak) NSURL *_Nullable linkContact;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
-+ (void)actionInvite:(NSArray *_Nonnull)memberEmailAddresses asSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
-- (void)inviteAsSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
++ (void)actionInvite:(NSArray <TSDKContactEmailAddress *> *_Nonnull)contactEmailAddresses withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
+- (void)inviteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
 
 
 @end
