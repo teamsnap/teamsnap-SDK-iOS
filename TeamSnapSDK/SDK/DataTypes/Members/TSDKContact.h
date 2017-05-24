@@ -40,6 +40,7 @@
 @property (nonatomic, assign) BOOL isManager; //Example: 1
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 0
+@property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;

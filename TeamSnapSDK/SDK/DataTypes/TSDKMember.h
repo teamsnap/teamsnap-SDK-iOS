@@ -38,6 +38,7 @@
 @property (nonatomic, assign) BOOL isManager; //Example: 1
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 0
+@property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
 
 - (nonnull NSString *)fullName;
 - (nullable NSString *)fancyAddressString;
