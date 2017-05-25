@@ -201,12 +201,9 @@
             if (success) {
                 weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
                 success = (BOOL)weakSelf.teamSnapUser;
-                
-                [[[TSDKTeamSnap sharedInstance] teamSnapUser] myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-                    if (completion) {
-                        completion(success, error);
-                    }
-                }];
+                if (completion) {
+                    completion(success, error);
+                }
             } else {
                 completion(success, error);
             }
