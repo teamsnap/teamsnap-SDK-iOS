@@ -21,6 +21,9 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberPayments;
 
+@property (nonatomic, readonly) CGFloat amountValue;
+@property (nonatomic, readonly) CGFloat balanceValue;
+
 @end
 
 @interface TSDKTeamFee (ForwardedMethods)
