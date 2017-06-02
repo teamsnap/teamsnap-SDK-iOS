@@ -24,7 +24,7 @@
 @interface TSDKCollectionObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
+@property (nonatomic, strong) NSDictionary *_Nullable changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong) NSDate *_Nullable lastUpdate;
 
@@ -35,15 +35,18 @@
 +(NSDictionary *_Nullable)templateForClass:(NSString *_Nonnull)className;
 +(void)setTemplate:(NSDictionary *_Nullable)template;
 +(void)setTemplate:(NSDictionary *_Nullable)template forClass:(NSString *_Nullable)className;
-+(NSMutableDictionary *_Nullable)commands;
+
++(NSDictionary *_Nullable)commands;
 +(TSDKCollectionCommand *_Nullable)commandForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
++(NSDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
++(void)addCommand:(TSDKCollectionCommand *_Nonnull)command forClass:(NSString *_Nonnull)className;
 +(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)commandName;
 
-+ (NSMutableDictionary *_Nullable)queries;
++(NSDictionary *_Nullable)queries;
 +(TSDKCollectionQuery *_Nullable)queryForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
++(NSDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
 +(TSDKCollectionQuery *_Nullable)queryForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)queryName;
++(void)addQuery:(TSDKCollectionQuery *_Nonnull)query forClass:(NSString *_Nonnull)className;
 
 +(NSURL *_Nullable)classURL;
 +(void)setClassURL:(NSURL *_Nullable)URL;
@@ -58,6 +61,7 @@
 - (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *_Nonnull)collectionObject;
 
 - (NSDictionary *_Nullable)dataToSave;
+- (void)removeObjectForKey:(NSString *_Nonnull)key;
 - (NSString *_Nullable)getString:(NSString *_Nonnull)key;
 - (void)setString:(NSString *_Nullable)value forKey:(NSString *_Nonnull)aKey;
 - (NSInteger)getInteger:(NSString *_Nonnull)key;
@@ -84,6 +88,9 @@
 + (void)arrayFromFileLink:(NSURL *_Nonnull)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)arrayFromLink:(NSURL *_Nonnull)link searchParams:(NSDictionary *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
 - (void)arrayFromLink:(NSURL *_Nonnull)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+
+- (void)removeChangedValues;
+- (void)markValueChangedForKey:(NSString *_Nonnull)key;
 
 - (BOOL)writeToFileURL:(NSURL *_Nonnull)fileURL;
 + (instancetype _Nullable)collectionObjectFromDataInFileURL:(NSURL *_Nonnull)fileURL;

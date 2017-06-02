@@ -11,6 +11,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKCollectionJSON.h"
 #import "NSString+TSDKConveniences.h"
+#import "NSDictionary+TSDKConveniences.h"
 #import "NSDate+TSDKConveniences.h"
 #import "TSDKDataRequest.h"
 #import "TSDKTeamSnap.h"
@@ -19,24 +20,24 @@
 
 @interface TSDKCollectionObject()
 
-@property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
+@property (nonatomic, strong) NSDictionary *cachedDatesLookup;
 
 @end
 
 @implementation TSDKCollectionObject
 
-static NSMutableDictionary *_templates;
-static NSMutableDictionary *_commandDictionary;
-static NSMutableDictionary *_queryDictionary;
-static NSMutableDictionary *_classURLs;
+static NSDictionary *_templates;
+static NSDictionary *_commandDictionary;
+static NSDictionary *_queryDictionary;
+static NSDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
     return [_templates objectForKey:className];
 }
 
-- (NSMutableDictionary *)cachedDatesLookup {
+- (NSDictionary *)cachedDatesLookup {
     if (!_cachedDatesLookup) {
-        _cachedDatesLookup = [[NSMutableDictionary alloc] init];
+        _cachedDatesLookup = [[NSDictionary alloc] init];
     }
     return _cachedDatesLookup;
 }
@@ -51,28 +52,28 @@ static NSMutableDictionary *_classURLs;
 
 +(void)setTemplate:(NSDictionary *)template forClass:(NSString *)className {
     if (template) {
-        [self.templates setObject:template forKey:className];
+        _templates = [_templates dictionaryWithValue:template forKey:className];
     } else {
-        [_templates removeObjectForKey:className];
+        _templates = [NSDictionary dictionaryWithDictionary:_templates removeObjectForKey:className];
     }
 }
 
-+(NSMutableDictionary *)templates {
++(NSDictionary *)templates {
     if (!_templates) {
-        _templates = [[NSMutableDictionary alloc] init];
+        _templates = [[NSDictionary alloc] init];
     }
     return _templates;
 }
 
 
-+(NSMutableDictionary *)commandDictionary {
++(NSDictionary *)commandDictionary {
     if (!_commandDictionary) {
-        _commandDictionary = [[NSMutableDictionary alloc] init];
+        _commandDictionary = [[NSDictionary alloc] init];
     }
     return _commandDictionary;
 }
 
-+(NSMutableDictionary *)commands {
++(NSDictionary *)commands {
     return [self commandsForClass:[self SDKType]];
 }
 
@@ -80,31 +81,42 @@ static NSMutableDictionary *_classURLs;
     return [[[self commands] objectForKey:commandName] copy];
 }
 
-+(NSMutableDictionary *)commandsForClass:(NSString *)className {
++(NSDictionary *)commandsForClass:(NSString *)className {
     if (className) {
-        NSMutableDictionary *commands = [[self commandDictionary] objectForKey:className];
+        NSDictionary *commands = [[self commandDictionary] objectForKey:className];
         if (!commands) {
-            commands = [[NSMutableDictionary alloc] init];
-            [[self commandDictionary] setValue:commands forKey:className];
+            commands = [[NSDictionary alloc] init];
+            _commandDictionary = [_commandDictionary dictionaryWithValue:commands forKey:className];
         }
-        return commands;
+        return  commands;
     } else {
         return nil;
     }
+}
+
++(void)setCommands:(NSDictionary *)commands forClass:(NSString *)className {
+    _commandDictionary = [[self commandDictionary] dictionaryWithValue:commands forKey:className];
+}
+
++(void)addCommand:(TSDKCollectionCommand *)command forClass:(NSString *)className {
+    NSDictionary *classCommandDictionary = [[TSDKCollectionObject commandsForClass:className] dictionaryWithValue:command forKey:command.rel];
+    
+    [self setCommands:classCommandDictionary forClass:className];
+    
 }
 
 +(TSDKCollectionCommand *)commandForClass:(NSString *)className forKey:(NSString *)commandName {
     return [[[self commandDictionary] objectForKey:className] objectForKey:commandName];
 }
 
-+(NSMutableDictionary *)queryDictionary {
++(NSDictionary *)queryDictionary {
     if (!_queryDictionary) {
-        _queryDictionary = [[NSMutableDictionary alloc] init];
+        _queryDictionary = [[NSDictionary alloc] init];
     }
     return _queryDictionary;
 }
 
-+(NSMutableDictionary *)queries {
++(NSDictionary *)queries {
     return [self queriesForClass:[self SDKType]];
 }
 
@@ -112,12 +124,12 @@ static NSMutableDictionary *_classURLs;
     return [[self queries] objectForKey:queryName];
 }
 
-+(NSMutableDictionary *)queriesForClass:(NSString *)className {
++(NSDictionary *)queriesForClass:(NSString *)className {
     if (className) {
-        NSMutableDictionary *queries = [[self queryDictionary] objectForKey:className];
+        NSDictionary *queries = [[self queryDictionary] objectForKey:className];
         if (!queries) {
-            queries = [[NSMutableDictionary alloc] init];
-            [[self queryDictionary] setValue:queries forKey:className];
+            queries = [[NSDictionary alloc] init];
+            _queryDictionary = [self.queryDictionary dictionaryWithValue:queries forKey:className];
         }
         return queries;
     } else {
@@ -129,6 +141,12 @@ static NSMutableDictionary *_classURLs;
     return [[[self queryDictionary] objectForKey:className] objectForKey:queryName];
 }
 
++(void)addQuery:(TSDKCollectionQuery *)query forClass:(NSString *)className {
+    NSDictionary *classQueryDictionary = [[TSDKCollectionObject queriesForClass:className] dictionaryWithValue:query forKey:query.rel];
+    
+    _queryDictionary = [self.queryDictionary dictionaryWithValue:classQueryDictionary forKey:className];
+}
+
 +(NSURL *)classURLForClass:(NSString *)class {
     return [[self classURLs] objectForKey:class];
 }
@@ -138,7 +156,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 +(void)setClassURL:(NSURL *)URL forClass:(NSString *)class {
-    [[self classURLs] setObject:URL forKey:class];
+    _classURLs = [self.classURLs dictionaryWithValue:URL forKey:class];
 }
 
 
@@ -146,9 +164,9 @@ static NSMutableDictionary *_classURLs;
     [self setClassURL:URL forClass:[self SDKType]];
 }
 
-+(NSMutableDictionary *)classURLs {
++(NSDictionary *)classURLs {
     if (!_classURLs) {
-        _classURLs = [[NSMutableDictionary alloc] init];
+        _classURLs = [[NSDictionary alloc] init];
     }
     return _classURLs;
 }
@@ -176,7 +194,7 @@ static NSMutableDictionary *_classURLs;
     self = [super init];
     if (self) {
         _collection = [[TSDKCollectionJSON alloc] init];
-        _changedValues = [[NSMutableDictionary alloc] init];
+        _changedValues = [[NSDictionary alloc] init];
         _logHeader = NO;
         _lastUpdate = nil;
     }
@@ -194,10 +212,11 @@ static NSMutableDictionary *_classURLs;
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
     
     TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
-    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+    NSMutableDictionary *tempData = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
+
     newCollection.type = originalObject.collection.type;
     
-    NSArray *allKeys = [[newCollection data] allKeys];
+    NSArray *allKeys = [tempData allKeys];
     for (NSString *key in allKeys) {
         BOOL deleteKey = NO;
         NSRange idFound = [key rangeOfString:@"_id"];
@@ -208,9 +227,10 @@ static NSMutableDictionary *_classURLs;
         }
         
         if (deleteKey) {
-            [[newCollection data] removeObjectForKey:key];
+            [tempData removeObjectForKey:key];
         }
     }
+    [newCollection setData:[NSDictionary dictionaryWithDictionary:tempData]];
     
     __typeof__(originalObject) newObject = [[[originalObject class] alloc] initWithCollection:newCollection];
     
@@ -546,59 +566,85 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
     if (value) {
-        if ([value isEqual:_collection.data[aKey]]) {
+        if ([value isEqual:self.collection.data[aKey]]) {
             return;
         }
     } else {
-        if (!_collection.data[aKey] || [_collection.data[aKey] isEqual:[NSNull null]]) {
+        if (!self.collection.data[aKey] || [self.collection.data[aKey] isEqual:[NSNull null]]) {
             return;
         }
     }
     if (![_changedValues objectForKey:aKey]) {
-        if (_collection.data[aKey]) {
-            [_changedValues setObject:_collection.data[aKey] forKey:aKey];
+        NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:_changedValues];
+        if (self.collection.data[aKey]) {
+            [tempDictionary setObject:self.collection.data[aKey] forKey:aKey];
         } else {
-            [_changedValues setObject:[NSNull null] forKey:aKey];
+            [tempDictionary setObject:[NSNull null] forKey:aKey];
         }
+        _changedValues = tempDictionary;
     }
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:self.collection.data];
+    
     if (value) {
-        _collection.data[aKey] = value;
+        tempDictionary[aKey] = value;
     } else {
-        _collection.data[aKey] = [NSNull null];
+        tempDictionary[aKey] = [NSNull null];
     }
+    [self.collection setData:[NSDictionary dictionaryWithDictionary:tempDictionary]];
+}
+
+- (void)removeObjectForKey:(NSString *)key {
+    [self.collection setData:[NSDictionary dictionaryWithDictionary:self.collection.data removeObjectForKey:key]];
 }
 
 - (void)undoChanges {
+    NSMutableDictionary *tempDictonary = [NSMutableDictionary dictionaryWithDictionary:self.collection.data];
     for (NSString *key in _changedValues) {
-        self.collection.data[key] = _changedValues[key];
+        tempDictonary[key] = _changedValues[key];
     }
-    [_changedValues removeAllObjects];
+    [self.collection setData:[NSDictionary dictionaryWithDictionary:tempDictonary]];
+    
+    [self removeChangedValues];
+}
+
+- (void)removeChangedValues {
+    _changedValues = [[NSDictionary alloc] init];
+}
+
+- (void)markValueChangedForKey:(NSString *)key {
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithDictionary:_changedValues];
+    if ([self.collection.data objectForKey:key]) {
+        [tempDictionary setObject:[self.collection.data objectForKey:key] forKey:key];
+    } else {
+        [tempDictionary setObject:[NSNull null] forKey:key];
+    }
+    self.changedValues = [NSDictionary dictionaryWithDictionary:tempDictionary];
 }
 
 - (NSDictionary *)dataToSave {
     NSMutableArray *tempDataToSave = [[NSMutableArray alloc] init];
     
     if ([self isNewObject]) {
-        NSArray *allKeys = [_collection.data allKeys];
+        NSArray *allKeys = [self.collection.data allKeys];
         if ([[self class] template]) {
             for (NSString *key in [[self class] template]) {
-                if(![key isEqualToString:@"type"] && _collection.data[key]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                if(![key isEqualToString:@"type"] && self.collection.data[key]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : self.collection.data[key]};
                     [tempDataToSave addObject:itemDictionary];
                 }
             }
         } else {
             for (NSString *key in allKeys) {
-                if (_collection.data[key] && ![key isEqualToString:@"id"]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                if (self.collection.data[key] && ![key isEqualToString:@"id"]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : self.collection.data[key]};
                     [tempDataToSave addObject:itemDictionary];
                 }
             }
         }
     } else {
         for (NSString *key in _changedValues) {
-            if (_collection.data[key]) {
-                NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+            if (self.collection.data[key]) {
+                NSDictionary *itemDictionary = @{@"name" : key, @"value" : self.collection.data[key]};
                 [tempDataToSave addObject:itemDictionary];
             }
         }
@@ -608,10 +654,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSString *)getString:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
+    if ([self.collection.data[key] isEqual:[NSNull null]]) {
         return @"";
     }
-    return _collection.data[key];
+    return self.collection.data[key];
 }
 
 - (void)setString:(NSString *)value forKey:(NSString *)aKey {
@@ -619,10 +665,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSInteger)getInteger:(NSString *)key {
-    if ((!_collection.data[key]) || ([_collection.data[key] isEqual:[NSNull null]])) {
+    if ((!self.collection.data[key]) || ([self.collection.data[key] isEqual:[NSNull null]])) {
         return NSNotFound;
     }
-    NSNumber *value = _collection.data[key];
+    NSNumber *value = self.collection.data[key];
     return value.integerValue;
 }
 
@@ -636,7 +682,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSDate *)getDate:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
+    if ([self.collection.data[key] isEqual:[NSNull null]]) {
         return nil;
     }
     NSString *dateString = self.collection.data[key];
@@ -652,7 +698,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             date = [dateString dateFromJustDate];
         }
         if (date) {
-            [self.cachedDatesLookup setObject:date forKey:dateString];
+            [self setCachedDatesLookup:[self.cachedDatesLookup dictionaryWithValue:date forKey:dateString]];
         } else {
             return nil;
         }
@@ -665,16 +711,16 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         NSString *dateString = [value RCF3339DateTimeString];
         [self setString:dateString forKey:aKey];
         if ([dateString length]) {
-            [self.cachedDatesLookup setObject:value forKey:dateString];
+            [self setCachedDatesLookup:[self.cachedDatesLookup dictionaryWithValue:value forKey:dateString]];
         }
     }
 }
 
 - (BOOL)getBool:(NSString *)aKey {
-    if ([_collection.data[aKey] isEqual:[NSNull null]]) {
+    if ([self.collection.data[aKey] isEqual:[NSNull null]]) {
         return NO;
     }
-    return [(NSNumber *) _collection.data[aKey] boolValue];
+    return [(NSNumber *) self.collection.data[aKey] boolValue];
 }
 
 - (void)setBool:(BOOL)value forKey:(NSString *)aKey {
@@ -682,10 +728,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (CGFloat)getCGFloat:(NSString *)aKey {
-    if ([_collection.data[aKey] isEqual:[NSNull null]]) {
+    if ([self.collection.data[aKey] isEqual:[NSNull null]]) {
         return 0.0f;
     }
-    return [_collection.data[aKey] floatValue];
+    return [self.collection.data[aKey] floatValue];
 }
 
 - (void)setCGFloat:(CGFloat)value forKey:(NSString *)aKey {
@@ -697,21 +743,21 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSArray <NSString *> *)getArrayForKey:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]] || [_collection.data[key] isKindOfClass:[NSArray class]] == NO) {
+    if ([self.collection.data[key] isEqual:[NSNull null]] || [self.collection.data[key] isKindOfClass:[NSArray class]] == NO) {
         return nil;
     }
-    return _collection.data[key];
+    return self.collection.data[key];
 }
 
 - (NSURL *)getLink:(NSString *)aKey {
-    if ([_collection.links[aKey] isEqual:[NSNull null]]) {
+    if ([self.collection.links[aKey] isEqual:[NSNull null]]) {
         return nil;
     }
-    return [NSURL URLWithString:_collection.links[aKey]];
+    return [NSURL URLWithString:self.collection.links[aKey]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:_collection forKey:@"collection"];
+    [coder encodeObject:self.collection forKey:@"collection"];
 }
 
 - (BOOL)isNewObject {
@@ -755,7 +801,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         
         [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
-                [weakSelf.changedValues removeAllObjects];
+                [weakSelf removeChangedValues];
                 if ([objects.collection isKindOfClass:[NSArray class]]) {
                     NSArray *returnedCollections = (NSArray *)objects.collection;
                     if ([returnedCollections count]==1) {
@@ -779,7 +825,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             __typeof__(self) __weak weakSelf = self;
             [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                 if (success) {
-                    [weakSelf.changedValues removeAllObjects];
+                    [weakSelf removeChangedValues];
                     if ([objects.collection isKindOfClass:[NSArray class]]) {
                         NSArray *returnedCollections = (NSArray *)objects.collection;
                         if ([returnedCollections count]==1) {

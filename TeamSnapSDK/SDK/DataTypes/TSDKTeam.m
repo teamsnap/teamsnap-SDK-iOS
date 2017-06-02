@@ -20,7 +20,6 @@
 #import "TSDKCustomDatum.h"
 #import "TSDKUser.h"
 #import "NSURL+TSDKConveniences.h"
-#import "NSMutableDictionary+refreshCollectionData.h"
 #import "TSDKNotifications.h"
 
 @interface TSDKTeam()
@@ -183,10 +182,10 @@
     [self setTimeZoneIanaName:timeZone.name];
 }
 
+#warning need to test Setting team timeZone
 - (void)setTimeZoneIanaName:(NSString *)timeZoneIanaName {
     [self setString:timeZoneIanaName forKey:@"time_zone_iana_name"];
-    self.collection.data[@"time_zone"] = timeZoneIanaName;
-    [self.changedValues setObject:[NSNull null] forKey:@"time_zone"];
+    [self setString:timeZoneIanaName forKey:@"time_zone"];
 }
 
 - (NSTimeZone *)timeZone {

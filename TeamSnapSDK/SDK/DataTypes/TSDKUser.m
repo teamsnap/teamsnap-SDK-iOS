@@ -10,14 +10,13 @@
 #import "TSDKTeam.h"
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
-#import "NSMutableDictionary+refreshCollectionData.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
 #import "NSDate+TSDKConveniences.h"
 
 @interface TSDKUser()
 
-@property (strong, nonatomic) NSMutableArray *myMembersOnTeams;
+@property (strong, nonatomic) NSArray *myMembersOnTeams;
 
 @end
 
@@ -52,22 +51,25 @@
     }];
 }
 
-- (NSMutableArray *)myMembersOnTeams {
+- (NSArray *)myMembersOnTeams {
     if (!_myMembersOnTeams) {
-        _myMembersOnTeams = [[NSMutableArray alloc] init];
+        _myMembersOnTeams = [[NSArray alloc] init];
     }
     return _myMembersOnTeams;
 }
 
 - (void)addMember:(TSDKMember *)newMember {
-    NSUInteger existingMember = [self.myMembersOnTeams indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.myMembersOnTeams];
+
+    NSUInteger existingMember = [tempArray  indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
         return [member.objectIdentifier isEqualToString:newMember.objectIdentifier];
     }];
     
     if (existingMember != NSNotFound) {
-        [self.myMembersOnTeams removeObjectAtIndex:existingMember];
+        [tempArray  removeObjectAtIndex:existingMember];
     }
-    [self.myMembersOnTeams addObject:newMember];
+    [tempArray addObject:newMember];
+    self.myMembersOnTeams  = [NSArray arrayWithArray:tempArray];
 }
 
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {

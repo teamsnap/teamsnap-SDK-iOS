@@ -18,10 +18,10 @@
 @property (nonatomic, strong) NSString *_Nullable errorMessage;
 @property (nonatomic, assign) NSInteger errorCode;
 @property (nonatomic, strong) NSDictionary *_Nullable links;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable data;
+@property (nonatomic, strong) NSDictionary *_Nullable data;
 @property (nonatomic, strong) NSDictionary *_Nullable commands;
 @property (nonatomic, strong) NSDictionary *_Nullable queries;
-@property (nonatomic, strong) NSMutableArray <TSDKCollectionJSON *> *_Nullable collection;
+@property (nonatomic, strong) NSArray <TSDKCollectionJSON *> *_Nullable collection;
 
 + (NSDictionary *_Nullable)dictionaryToCollectionJSON:(NSDictionary *_Nonnull)dictionary;
 - (instancetype _Nullable)initWithCoder:(NSCoder *_Nonnull)aDecoder;

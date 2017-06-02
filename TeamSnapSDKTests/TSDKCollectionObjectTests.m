@@ -16,14 +16,29 @@
 #import "TSDKJSONFileResource.h"
 #import "TSDKShortPropertyTest.h"
 
+@interface TSDKRootLinks (Testing)
+// Expose processSchemasArray to assist in local testing
+- (void)processSchemasArray:(NSArray *)schemasArray;
+
+@end
+
 @interface TSDKCollectionObjectTests : XCTestCase
 @property (nonatomic, strong) TSDKCollectionJSON *userCollectionJSON;
 @end
 
 @implementation TSDKCollectionObjectTests
 
+- (NSURL *)bundleURLForSchemas {
+     return [[NSBundle bundleForClass:[TSDKRootLinks class]] URLForResource:@"schemas" withExtension:@"json"];
+}
+
+- (NSURL *)bundleForRoot {
+    return [[NSBundle bundleForClass:[TSDKRootLinks class]] URLForResource:@"root" withExtension:@"json"];
+}
+
 - (void)setUp {
     [super setUp];
+    
     NSString *jsonString = @"{\"collection\":{\"version\":\"3.177.2\",\"href\":\"https://api.teamsnap.com/v3/users\",\"rel\":\"users\",\"template\":{\"data\":[{\"name\":\"first_name\",\"value\":null},{\"name\":\"last_name\",\"value\":null},{\"name\":\"password\",\"value\":null},{\"name\":\"birthday\",\"value\":null},{\"name\":\"email\",\"value\":null},{\"name\":\"facebook_id\",\"value\":null},{\"name\":\"facebook_access_token\",\"value\":null},{\"name\":\"type\",\"value\":\"user\"}]},\"links\":[{\"rel\":\"members\",\"href\":\"https://api.teamsnap.com/v3/members\"},{\"rel\":\"teams\",\"href\":\"https://api.teamsnap.com/v3/teams\"},{\"rel\":\"teams_preferences\",\"href\":\"https://api.teamsnap.com/v3/teams_preferences\"},{\"rel\":\"root\",\"href\":\"https://api.teamsnap.com/v3/\"},{\"rel\":\"self\",\"href\":\"https://api.teamsnap.com/v3/me\"}],\"queries\":[{\"rel\":\"search\",\"href\":\"https://api.teamsnap.com/v3/users/search\",\"data\":[{\"name\":\"id\",\"value\":null}]}],\"items\":[{\"href\":\"https://api.teamsnap.com/v3/users/2\",\"data\":[{\"name\":\"id\",\"value\":2},{\"name\":\"type\",\"value\":\"user\"},{\"name\":\"address_country\",\"value\":null},{\"name\":\"address_state\",\"value\":null},{\"name\":\"birthday\",\"value\":\"1970-05-01\"},{\"name\":\"email\",\"value\":\"manager@example.com\"},{\"name\":\"facebook_access_token\",\"value\":null},{\"name\":\"facebook_id\",\"value\":null},{\"name\":\"first_name\",\"value\":\"Tester\"},{\"name\":\"is_eligible_for_free_trial\",\"value\":false},{\"name\":\"last_name\",\"value\":\"Joe\"},{\"name\":\"receives_newsletter\",\"value\":false},{\"name\":\"teams_count\",\"value\":2},{\"name\":\"created_at\",\"value\":\"2015-08-12T22:17:13Z\",\"type\":\"DateTime\"},{\"name\":\"updated_at\",\"value\":\"2016-01-20T19:15:28Z\",\"type\":\"DateTime\"}],\"links\":[{\"rel\":\"active_teams\",\"href\":\"https://api.teamsnap.com/v3/teams/active?user_id=2\"},{\"rel\":\"members\",\"href\":\"https://api.teamsnap.com/v3/members/search?user_id=2\"},{\"rel\":\"teams\",\"href\":\"https://api.teamsnap.com/v3/teams/search?user_id=2\"},{\"rel\":\"personas\",\"href\":\"https://api.teamsnap.com/v3/members/personas?user_id=2\"},{\"rel\":\"teams_preferences\",\"href\":\"https://api.teamsnap.com/v3/teams_preferences/search?user_id=2\"},{\"rel\":\"facebook_pages\",\"href\":\"https://api.teamsnap.com/v3/facebook_pages/search\"}],\"rel\":\"user-2\"}]}}";
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error;
@@ -61,8 +76,8 @@
     
     [paymentNoPayment undoChanges];
     XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
-
-    [paymentNoPayment.collection.data removeObjectForKey:@"team_id"];
+    
+    [paymentNoPayment removeObjectForKey:@"team_id"];
     XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
     XCTAssertNil(paymentNoPayment.teamId);
     
@@ -141,7 +156,7 @@
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);
     XCTAssertEqual([event.changedValues objectForKey:@"name"], [NSNull null]);
-    [event.changedValues removeAllObjects];
+    [event removeChangedValues];
     
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);
@@ -198,11 +213,11 @@
         TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
         
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
-        [user.collection.data setObject:@"" forKey:@"created_at"];
+        [user setString:@"" forKey:@"created_at"];
         XCTAssertNoThrow(user.createdAt);
     }
     
-    [[event.collection data] setObject:@"8-13" forKey:@"start_date"];
+    [event setString:@"8-13" forKey:@"start_date"];
     XCTAssertNoThrow(event.startDate);
 }
 
@@ -263,6 +278,38 @@
     CGFloat paid = [payment getCGFloat:key];
     XCTAssertTrue(paid == 2.0, @"Expected CGFloat value to be 2.0");
     XCTAssertTrue(payment.amountPaid == 2.0, @"Expected amountPaid to be 2.0");
+}
+
+- (void)testSchemaLoading {
+    NSURL *rootURL = [self bundleForRoot];
+    
+    XCTestExpectation *schemaCommandExpectation = [self expectationWithDescription:@"Commands Loaded"];
+    XCTestExpectation *schemaQueryExpectation = [self expectationWithDescription:@"Queryies Loaded"];
+    
+    [TSDKDataRequest requestJSONObjectsForPath:rootURL sendDataDictionary:nil method:@"GET" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+        TSDKRootLinks __block *rootLinks;
+        rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
+        
+        NSURL *schemaURL = [self bundleURLForSchemas];
+        [TSDKDataRequest requestJSONObjectsForPath:schemaURL sendDataDictionary:nil method:@"GET" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+            
+            [rootLinks processSchemasArray:objects];
+            if ([[TSDKAvailability commands] objectForKey:@"bulk_mark_unset_availabilities"]) {
+                [schemaCommandExpectation fulfill];
+            } else {
+                XCTAssert(@"Commands not set");
+            }
+            
+            if ([[TSDKEvent queries] objectForKey:@"search_games"]) {
+                [schemaQueryExpectation fulfill];
+            } else {
+                XCTAssert(@"Queries not set");
+            }
+            
+        }];
+    }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
 }
 
 @end

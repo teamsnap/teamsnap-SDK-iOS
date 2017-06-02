@@ -65,7 +65,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         [self setBool:YES forKey:@"notify_team"];
         [self setString:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
-        [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
+        [self removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];
     }
 }
@@ -80,7 +80,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     
     // Until we have better support for Repeating events make sure repeating_include is set to "none"
     if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
-        [self.changedValues setObject:self.repeatingUuid forKey:@"repeating_uuid"];
+        [self markValueChangedForKey:@"repeating_uuid"];
         [self setString:@"none" forKey:@"repeating_include"];
     }
     [super saveWithCompletion:completion];
@@ -93,7 +93,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
     [self setNotifyTeamAsMember:member];
     if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
-        [self.changedValues setObject:self.repeatingUuid forKey:@"repeating_uuid"];
+        [self markValueChangedForKey:@"repeating_uuid"];
         [self setString:@"none" forKey:@"repeating_include"];
     }
     [super deleteWithCompletion:completion];
@@ -170,7 +170,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 - (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
     if (repeatingTypeCode == 0) {
-        [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
+        [self removeObjectForKey:kRepeatingTypeCode];
     } else {
         [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
     }
