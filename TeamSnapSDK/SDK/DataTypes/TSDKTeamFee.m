@@ -24,4 +24,12 @@
     [self setString:teamFeeDescription forKey:@"description"];
 }
 
+- (CGFloat)amountValue {
+    return [[self.amount stringByReplacingOccurrencesOfString:@"," withString:@""] floatValue];
+}
+
+- (CGFloat)balanceValue {
+    return [[self.balance stringByReplacingOccurrencesOfString:@"," withString:@""] floatValue];
+}
+
 @end

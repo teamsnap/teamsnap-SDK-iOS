@@ -90,16 +90,15 @@
     total = [NSNumber numberWithFloat:1.0f];
     statistic.alwaysDisplayDecimals = YES;
     displayString = [statistic displayStringForStatisticValue:total];
-    XCTAssertEqualObjects(displayString, @"1.00%");
+    XCTAssertEqualObjects(displayString, @"100.00%");
 
     total = [NSNumber numberWithFloat:1.009f];
     displayString = [statistic displayStringForStatisticValue:total];
-    XCTAssertEqualObjects(displayString, @"1.01%");
+    XCTAssertEqualObjects(displayString, @"100.90%");
     
     total = [NSNumber numberWithFloat:0.679f];
     displayString = [statistic displayStringForStatisticValue:total];
-    XCTAssertEqualObjects(displayString, @"0.68%");
-    
+    XCTAssertEqualObjects(displayString, @"67.90%");
 }
 
 - (void)testExample {
