@@ -9,13 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCompletionBlockTypes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TSDKDuplicateCompletionBlockStore : NSObject
 
-+ (instancetype _Nonnull)sharedInstance;
++ (instancetype)sharedInstance;
 
-- (BOOL)existingRequestExistsMatchingRequest:(NSURLRequest *_Nonnull)request;
-- (void)addCompletionBlock:(TSDKJSONCompletionBlock _Nonnull)completionBlock forRequest:(NSURLRequest *_Nonnull)request;
-- (void)removeAllCompletionBlocksForRequest:(NSURLRequest *_Nonnull)request;
-- (NSSet *_Nonnull)completionBlocksForRequest:(NSURLRequest *_Nonnull)request;
+- (BOOL)existingRequestExistsMatchingRequest:(NSURLRequest *)request;
+- (void)addCompletionBlock:(TSDKJSONCompletionBlock)completionBlock forRequest:(NSURLRequest *)request;
+- (void)removeAllCompletionBlocksForRequest:(NSURLRequest *)request;
+- (NSSet *)completionBlocksForRequest:(NSURLRequest *)request;
 
 @end
+
+NS_ASSUME_NONNULL_END
