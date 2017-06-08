@@ -10,7 +10,7 @@
 
 @interface TSDKDuplicateCompletionBlockStore()
 
-@property (strong, nonatomic) NSMutableDictionary* completionBlocksKeyedByRequest;
+@property (strong, nonatomic) NSMutableDictionary <NSString *, NSMutableSet *>* completionBlocksKeyedByRequest;
 @property (strong, nonatomic) dispatch_queue_t accessQueue;
 
 @end
@@ -64,11 +64,9 @@
     NSString *requestKey = [TSDKDuplicateCompletionBlockStore identifierFromRequest:request];
     
     dispatch_sync(self.accessQueue, ^{
-        id existingCompletion = [self.completionBlocksKeyedByRequest objectForKey:requestKey];
-        if([existingCompletion isKindOfClass:[NSMutableSet class]]) {
-            NSMutableSet* set = existingCompletion;
-            [set addObject:completionBlock];
-            
+        NSMutableSet *existingCompletions = [self.completionBlocksKeyedByRequest objectForKey:requestKey];
+        if(existingCompletions != nil) {
+            [existingCompletions addObject:completionBlock];
         } else {
             NSMutableSet *set = [NSMutableSet setWithObject:completionBlock];
             [self.completionBlocksKeyedByRequest setObject:set forKey:requestKey];
