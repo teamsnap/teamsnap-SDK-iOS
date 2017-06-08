@@ -71,10 +71,7 @@
 
 -(void)logElapsedTimeForId:(id)timerId {
     if (timerId) {
-        NSTimeInterval elepasedTime = [self getElapsedTimeForId:timerId];
-        NSTimeInterval cumulativeTime = [self cumulativeTimeForId:timerId];
-        
-        DLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, cumulativeTime);
+        DLog(@"Elapsed %@\n %f (%f)", timerId, [self getElapsedTimeForId:timerId], [self cumulativeTimeForId:timerId]);
     }
 }
 
