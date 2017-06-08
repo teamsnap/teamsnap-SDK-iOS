@@ -11,8 +11,9 @@
 
 @interface TSDKProfileTimer()
 
-@property (strong, nonatomic) NSMutableDictionary *timers;
-@property (strong, nonatomic) NSMutableDictionary *totalTimes;
+@property (strong, nonatomic) NSMutableDictionary <id<NSCoding>, NSDate *> *timers;
+@property (strong, nonatomic) NSMutableDictionary <id<NSCoding>, NSNumber *> *totalTimes;
+@property (strong, nonatomic) dispatch_queue_t accessQueue;
 
 @end
 
@@ -37,35 +38,43 @@
     if (self) {
         _timers = [[NSMutableDictionary alloc] init];
         _totalTimes = [[NSMutableDictionary alloc] init];
+        _accessQueue = dispatch_queue_create("com.teamsnap.perf.timer", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
 
 -(void) startTimeWithId:(id)timerId {
     if (timerId) {
-        [self.timers setObject:[NSDate date] forKey:timerId];
+        NSDate *timerDate = [NSDate date];
+        dispatch_sync(self.accessQueue, ^{
+            [self.timers setObject:timerDate
+                            forKey:timerId];
+        });
     }
 }
 
 -(NSTimeInterval) getElapsedTimeForId:(id)timerId {
     if (timerId) {
-        NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:[self.timers objectForKey:timerId]];
+        NSDate *__block currentDate;
+        dispatch_sync(self.accessQueue, ^{
+            currentDate = [self.timers objectForKey:timerId];
+        });
+        
+        NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:currentDate];
         [self addElapsedTime:elapsedTime toTotalForId:timerId];
+        
         return elapsedTime;
     } else {
         return 0.00f;
     }
 }
 
--(NSTimeInterval) getElapsedTimeForId:(id)timerId  logResult:(BOOL)logResult {
+-(void)logElapsedTimeForId:(id)timerId {
     if (timerId) {
         NSTimeInterval elepasedTime = [self getElapsedTimeForId:timerId];
-        if (logResult) {
-            DLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, [self cumulativeTimeForId:timerId]);
-        }
-        return elepasedTime;
-    } else {
-        return 0.00f;
+        NSTimeInterval cumulativeTime = [self cumulativeTimeForId:timerId];
+        
+        DLog(@"Elapsed %@\n %f (%f)", timerId, elepasedTime, cumulativeTime);
     }
 }
 
@@ -77,13 +86,20 @@
             totalTime = elapsedTime + [totalTimeNumber floatValue];
         }
         NSNumber *ETN = [NSNumber numberWithFloat:totalTime];
-        [_totalTimes setObject:ETN forKey:timerId];
+        
+        dispatch_sync(self.accessQueue, ^{
+            [self.totalTimes setObject:ETN forKey:timerId];
+        });
     }
 }
 
 -(NSTimeInterval) cumulativeTimeForId:(id)timerId {
     if (timerId) {
-        NSNumber *totalTimeNumber = [_totalTimes objectForKey:timerId];
+        NSNumber *__block totalTimeNumber;
+        dispatch_sync(self.accessQueue, ^{
+            totalTimeNumber = [self.totalTimes objectForKey:timerId];
+        });
+        
         if (totalTimeNumber) {
             return [totalTimeNumber floatValue];
         } else {
@@ -94,7 +110,7 @@
     }
 }
 
-- (void)resetTimerWithId:(id)timerId {
+- (void)resetTimerWithId:(NSObject<NSCoding> *)timerId {
     if (timerId) {
         [self.totalTimes removeObjectForKey:timerId];
         [self.timers removeObjectForKey:timerId];

@@ -199,7 +199,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #if TARGET_OS_IPHONE
                 [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
 #endif
-                [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
+                [[TSDKProfileTimer sharedInstance] logElapsedTimeForId:URL];
                 
                 dispatch_async([self processingQueue], ^{
                     
@@ -220,7 +220,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
                         if (data) {
                             JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                         }
-                        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
+                        [[TSDKProfileTimer sharedInstance] logElapsedTimeForId:@"JSON"];
                     } else if (data) {
                         NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
                         JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
@@ -474,7 +474,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #if TARGET_OS_IPHONE
         [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
 #endif
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
+        [[TSDKProfileTimer sharedInstance] logElapsedTimeForId:URL];
         
         dispatch_async([self processingQueue], ^{
             
