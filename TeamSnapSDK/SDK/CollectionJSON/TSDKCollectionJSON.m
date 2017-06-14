@@ -113,18 +113,13 @@
         datum = [NSArray arrayWithArray:[collection objectForKey:@"data"]];
     } else if (![collection objectForKey:@"data"]) {
     } else if ([[collection objectForKey:@"data"] isEqual:[NSNull null]]) {
-    } else {
-        DLog(@"Data is %@", [[collection objectForKey:@"data"] class]);
     }
     for (NSDictionary *data in datum) {
-        NSString *dataType = [data objectForKey:@"type"];
+        // API Is now providing Types for all objects. This will be useful to the SDK miving forward
+        //NSString *dataType = [data objectForKey:@"type"];
         if ([data objectForKey:@"array"]) {
             [self.data setObject:[data objectForKey:@"array"] forKey:[data objectForKey:@"name"]];
         } else if ([data objectForKey:@"value"]) {
-            if (dataType && [dataType isEqualToString:@"DateTime"]) {
-            } else if (dataType) {
-                DLog(@"DataType: %@", dataType);
-            }
             [self.data setObject:[data objectForKey:@"value"] forKey:[data objectForKey:@"name"]];
         }
     }
@@ -133,9 +128,6 @@
     NSMutableDictionary *tempLinks = [[NSMutableDictionary alloc] init];
     
     for (NSDictionary *link in links) {
-        if (![link objectForKey:@"href"] || ![link objectForKey:@"rel"]) {
-            DLog(@"No Value");
-        }
         [tempLinks setObject:[link objectForKey:@"href"] forKey:[link objectForKey:@"rel"]];
     }
     self.links = [tempLinks copy];
@@ -160,8 +152,6 @@
                 [_collection addObject:subCollection];
             }
         }
-    } else if ([items isKindOfClass:[NSDictionary class]]) {
-        DLog(@"Dictionary of %lu Items", (unsigned long)[(NSDictionary *)items count]);
     }
     if ([collection objectForKey:@"template"]) {
         TSDKCollectionJSON *template = [[TSDKCollectionJSON alloc] init];
