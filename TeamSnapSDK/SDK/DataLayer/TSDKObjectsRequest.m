@@ -23,7 +23,6 @@
 #import "TSDKTrackedItem.h"
 #import "TSDKAssignment.h"
 #import "NSDate+TSDKConveniences.h"
-#import "TSDKProfileTimer.h"
 #import "TSDKBroadcastEmail.h"
 #import "TSDKBroadcastAlert.h"
 #import "TSDKCustomField.h"
