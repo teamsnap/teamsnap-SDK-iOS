@@ -19,11 +19,10 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
 };
 
 typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
-    TSDKGameTypeCodeisHome = 0,
-    TSDKGameTypeCodeisAway = 1,
+    TSDKGameTypeCodeUnknown = 0,
+    TSDKGameTypeCodeisHome = 1,
+    TSDKGameTypeCodeisAway = 2,
 };
-
-
 
 
 @interface TSDKEvent : TSDKCollectionObject
