@@ -20,8 +20,8 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
 
 typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
     TSDKGameTypeCodeUnknown = 0,
-    TSDKGameTypeCodeisHome = 1,
-    TSDKGameTypeCodeisAway = 2,
+    TSDKGameTypeCodeIsHome = 1,
+    TSDKGameTypeCodeIsAway = 2,
 };
 
 
