@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FB4793F1EB0166D00574674 /* TSDKApplePaidFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FB4793D1EB0166C00574674 /* TSDKApplePaidFeature.h */; };
+		4FB479401EB0166D00574674 /* TSDKApplePaidFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB4793E1EB0166D00574674 /* TSDKApplePaidFeature.m */; };
 		4FC9AE791DE4CE5500B0C582 /* MemberPayments.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */; };
 		4FC9AE7C1DE4D10000B0C582 /* TSDKJSONFileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */; };
 		560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */ = {isa = PBXBuildFile; fileRef = 560578DC1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -243,8 +245,6 @@
 		969E80F81BAAE7AB00CA518F /* TSDKTrackedItemStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80AE1BAAE7AB00CA518F /* TSDKTrackedItemStatus.m */; };
 		969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80AF1BAAE7AB00CA518F /* TSDKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80FA1BAAE7AB00CA518F /* TSDKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80B01BAAE7AB00CA518F /* TSDKUser.m */; };
-		969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80FC1BAAE7B500CA518F /* TSDKProfileTimer.h */; };
-		969E80FF1BAAE7B500CA518F /* TSDKProfileTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */; };
 		96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */; };
 		96AF8E761E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 96AF8E741E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96AF8E771E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AF8E751E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m */; };
@@ -321,8 +321,6 @@
 		96B47F681BADB4850035F2CC /* TSDKCollectionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E806A1BAAE7AB00CA518F /* TSDKCollectionObject.m */; };
 		96B47F691BADB4A10035F2CC /* TSPCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80621BAAE7AB00CA518F /* TSPCache.h */; };
 		96B47F6A1BADB4A10035F2CC /* TSPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80631BAAE7AB00CA518F /* TSPCache.m */; };
-		96B47F6B1BADB4AA0035F2CC /* TSDKProfileTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80FC1BAAE7B500CA518F /* TSDKProfileTimer.h */; };
-		96B47F6C1BADB4AA0035F2CC /* TSDKProfileTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */; };
 		96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805B1BAAE79500CA518F /* TSDKTeamSnap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F6E1BADB4BC0035F2CC /* TSDKTeamSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */; };
 		96B4E2791DC3C08A003CC830 /* StirngConvenienceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B4E2781DC3C08A003CC830 /* StirngConvenienceTests.m */; };
@@ -362,6 +360,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4FB4793D1EB0166C00574674 /* TSDKApplePaidFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKApplePaidFeature.h; sourceTree = "<group>"; };
+		4FB4793E1EB0166D00574674 /* TSDKApplePaidFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKApplePaidFeature.m; sourceTree = "<group>"; };
 		4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MemberPayments.json; sourceTree = "<group>"; };
 		4FC9AE7A1DE4D10000B0C582 /* TSDKJSONFileResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKJSONFileResource.h; path = DataLayer/TSDKJSONFileResource.h; sourceTree = "<group>"; };
 		4FC9AE7B1DE4D10000B0C582 /* TSDKJSONFileResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKJSONFileResource.m; path = DataLayer/TSDKJSONFileResource.m; sourceTree = "<group>"; };
@@ -550,8 +550,6 @@
 		969E80AE1BAAE7AB00CA518F /* TSDKTrackedItemStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTrackedItemStatus.m; sourceTree = "<group>"; };
 		969E80AF1BAAE7AB00CA518F /* TSDKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TSDKUser.h; sourceTree = "<group>"; };
 		969E80B01BAAE7AB00CA518F /* TSDKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKUser.m; sourceTree = "<group>"; };
-		969E80FC1BAAE7B500CA518F /* TSDKProfileTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKProfileTimer.h; sourceTree = "<group>"; };
-		969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKProfileTimer.m; sourceTree = "<group>"; };
 		96AF8E741E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TSDKPublicConveniences.h"; sourceTree = "<group>"; };
 		96AF8E751E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TSDKPublicConveniences.m"; sourceTree = "<group>"; };
 		96B47F191BADB33E0035F2CC /* TeamSnapSDKTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeamSnapSDKTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -766,7 +764,6 @@
 				56458AA21C49723D007EE9B8 /* TSDKConstants.m */,
 				4FD57AFC1D9DDC33004E8CA8 /* TSDKLogging.h */,
 				969E80451BAAE62D00CA518F /* Info.plist */,
-				969E80FB1BAAE7B500CA518F /* Profiler */,
 				969E80601BAAE7AB00CA518F /* SDK */,
 			);
 			path = TeamSnapSDK;
@@ -956,6 +953,8 @@
 				56879C311E0340EA00FBA9F6 /* TSDKDivisionPreferences.m */,
 				56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */,
 				56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */,
+				4FB4793D1EB0166C00574674 /* TSDKApplePaidFeature.h */,
+				4FB4793E1EB0166D00574674 /* TSDKApplePaidFeature.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -977,15 +976,6 @@
 				969B7F011C7DE58C00FD3EA0 /* TSDKEventStatistic.m */,
 			);
 			path = Statistics;
-			sourceTree = "<group>";
-		};
-		969E80FB1BAAE7B500CA518F /* Profiler */ = {
-			isa = PBXGroup;
-			children = (
-				969E80FC1BAAE7B500CA518F /* TSDKProfileTimer.h */,
-				969E80FD1BAAE7B500CA518F /* TSDKProfileTimer.m */,
-			);
-			path = Profiler;
 			sourceTree = "<group>";
 		};
 		96B47F1A1BADB33E0035F2CC /* TeamSnapSDKTV */ = {
@@ -1098,6 +1088,7 @@
 				969B7EB71C7CA9F800FD3EA0 /* TSDKTeamMediumComment.h in Headers */,
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
 				960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */,
+				4FB4793F1EB0166D00574674 /* TSDKApplePaidFeature.h in Headers */,
 				9641AC211DF1BC7D008E4716 /* TSDKTslChat.h in Headers */,
 				969E80F71BAAE7AB00CA518F /* TSDKTrackedItemStatus.h in Headers */,
 				9678A3621D86EC4E0078631C /* TSDKLeagueCustomField.h in Headers */,
@@ -1124,7 +1115,6 @@
 				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
-				969E80FE1BAAE7B500CA518F /* TSDKProfileTimer.h in Headers */,
 				964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */,
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
 				96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */,
@@ -1165,7 +1155,6 @@
 				96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */,
 				96B47F211BADB4410035F2CC /* TSDKAssignment.h in Headers */,
 				96B47F3F1BADB4410035F2CC /* TSDKTeamFee.h in Headers */,
-				96B47F6B1BADB4AA0035F2CC /* TSDKProfileTimer.h in Headers */,
 				96B47F691BADB4A10035F2CC /* TSPCache.h in Headers */,
 				969B7EA31C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
 				969B7F031C7DE58C00FD3EA0 /* TSDKEventStatistic.h in Headers */,
@@ -1427,7 +1416,6 @@
 				569CFAC11D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m in Sources */,
 				560578DF1DEF7E1B00B93DF7 /* TSDKTslMetadatum.m in Sources */,
 				969E80F61BAAE7AB00CA518F /* TSDKTrackedItem.m in Sources */,
-				969E80FF1BAAE7B500CA518F /* TSDKProfileTimer.m in Sources */,
 				969B7EE11C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */,
 				965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
@@ -1450,6 +1438,7 @@
 				561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */,
 				969E80D61BAAE7AB00CA518F /* TSDKAvailability.m in Sources */,
 				561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
+				4FB479401EB0166D00574674 /* TSDKApplePaidFeature.m in Sources */,
 				969E80B61BAAE7AB00CA518F /* TSDKCollectionJSON.m in Sources */,
 				964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */,
 				969E80E41BAAE7AB00CA518F /* TSDKForumTopic.m in Sources */,
@@ -1527,7 +1516,6 @@
 				96B47F2C1BADB4410035F2CC /* TSDKCustomField.m in Sources */,
 				96B47F521BADB4640035F2CC /* TSDKTeamStatistic.m in Sources */,
 				969B7ED11C7CB28300FD3EA0 /* TSDKTeamMedium.m in Sources */,
-				96B47F6C1BADB4AA0035F2CC /* TSDKProfileTimer.m in Sources */,
 				96F4FC421BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				96B47F6A1BADB4A10035F2CC /* TSPCache.m in Sources */,
 				96B47F3E1BADB4410035F2CC /* TSDKTeam.m in Sources */,

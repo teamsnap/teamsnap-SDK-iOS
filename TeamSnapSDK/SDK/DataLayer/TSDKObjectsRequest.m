@@ -23,7 +23,6 @@
 #import "TSDKTrackedItem.h"
 #import "TSDKAssignment.h"
 #import "NSDate+TSDKConveniences.h"
-#import "TSDKProfileTimer.h"
 #import "TSDKBroadcastEmail.h"
 #import "TSDKBroadcastAlert.h"
 #import "TSDKCustomField.h"
@@ -65,6 +64,7 @@
 #import "TSDKApnDevice.h"
 #import "TSDKSmsGateway.h"
 #import "TSDKRootLinks.h"
+#import "TSDKApplePaidFeature.h"
 
 static NSMutableArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
