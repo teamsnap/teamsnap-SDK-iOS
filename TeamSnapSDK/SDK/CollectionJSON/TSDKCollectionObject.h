@@ -15,7 +15,7 @@
 #import "TSDKPersistenceFilePath.h"
 @class TSDKCollectionJSON;
 
-
+NS_ASSUME_NONNULL_BEGIN
 @protocol TSDKCollectionObjectBundledDataProtocol <NSObject>
 
 + (NSURL *_Nullable)bundledFileURL;
@@ -24,28 +24,28 @@
 
 @interface TSDKCollectionObject : NSObject <NSCoding, TSDKPersistenceFilePath>
 
-@property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
+@property (nonatomic, strong, nullable) TSDKCollectionJSON * collection;
+@property (nonatomic, strong, nullable) NSMutableDictionary * changedValues;
 @property (nonatomic, assign) BOOL logHeader;
-@property (nonatomic, strong) NSDate *_Nullable lastUpdate;
-@property (nonatomic, strong) NSURL * _Nonnull persistenceBaseFilePath;
+@property (nonatomic, strong, nullable) NSDate * lastUpdate;
+@property (nonatomic, strong) NSURL * persistenceBaseFilePath;
 
-- (instancetype _Nonnull)initWithCollection:(TSDKCollectionJSON *_Nonnull)collection;
-+ (id _Nullable)objectWithObject:(TSDKCollectionObject *_Nonnull)originalObject;
+- (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
++ (id _Nullable)objectWithObject:(TSDKCollectionObject *)originalObject;
 + (void)dumpClassSelectorInfo;
 +(NSDictionary *_Nullable)template;
-+(NSDictionary *_Nullable)templateForClass:(NSString *_Nonnull)className;
++(NSDictionary *_Nullable)templateForClass:(NSString *)className;
 +(void)setTemplate:(NSDictionary *_Nullable)template;
 +(void)setTemplate:(NSDictionary *_Nullable)template forClass:(NSString *_Nullable)className;
 +(NSMutableDictionary *_Nullable)commands;
-+(TSDKCollectionCommand *_Nullable)commandForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)commandsForClass:(NSString *_Nonnull)className;
-+(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)commandName;
++(TSDKCollectionCommand *_Nullable)commandForKey:(NSString *)commandName;
++(NSMutableDictionary *_Nullable)commandsForClass:(NSString *)className;
++(TSDKCollectionCommand *_Nullable)commandForClass:(NSString *)className forKey:(NSString *)commandName;
 
 + (NSMutableDictionary *_Nullable)queries;
-+(TSDKCollectionQuery *_Nullable)queryForKey:(NSString *_Nonnull)commandName;
-+(NSMutableDictionary *_Nullable)queriesForClass:(NSString *_Nonnull)className;
-+(TSDKCollectionQuery *_Nullable)queryForClass:(NSString *_Nonnull)className forKey:(NSString *_Nonnull)queryName;
++(TSDKCollectionQuery *_Nullable)queryForKey:(NSString *)commandName;
++(NSMutableDictionary *_Nullable)queriesForClass:(NSString *)className;
++(TSDKCollectionQuery *_Nullable)queryForClass:(NSString *)className forKey:(NSString *)queryName;
 
 +(NSURL *_Nullable)classURL;
 +(void)setClassURL:(NSURL *_Nullable)URL;
@@ -55,39 +55,40 @@
 + (NSString *_Nullable)completionBlockTypeName;
 + (NSString *_Nullable)completionBlockArrayDescription;
 
-- (NSString *_Nonnull)objectIdentifier;
-- (NSString * _Nonnull)objectIdentifierForKey:(NSString *_Nonnull)key;
-- (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *_Nonnull)collectionObject;
+- (NSString *)objectIdentifier;
+- (NSString * )objectIdentifierForKey:(NSString *)key;
+- (BOOL)isEqualToCollectionObject:(TSDKCollectionObject *)collectionObject;
 
 - (NSDictionary *_Nullable)dataToSave;
-- (NSString *_Nullable)getString:(NSString *_Nonnull)key;
-- (void)setString:(NSString *_Nullable)value forKey:(NSString *_Nonnull)aKey;
-- (NSInteger)getInteger:(NSString *_Nonnull)key;
-- (void)setInteger:(NSInteger)value forKey:(NSString *_Nonnull)aKey;
-- (NSDate *_Nullable)getDate:(NSString *_Nonnull)key;
-- (void)setDate:(NSDate *_Nullable)value forKey:(NSString *_Nonnull)aKey;
-- (BOOL)getBool:(NSString *_Nonnull)key;
-- (void)setBool:(BOOL)value forKey:(NSString *_Nonnull)aKey;
-- (CGFloat)getCGFloat:(NSString *_Nonnull)key;
-- (void)setCGFloat:(CGFloat)value forKey:(NSString *_Nonnull)aKey;
+- (NSString *_Nullable)getString:(NSString *)key;
+- (void)setString:(NSString *_Nullable)value forKey:(NSString *)aKey;
+- (NSInteger)getInteger:(NSString *)key;
+- (void)setInteger:(NSInteger)value forKey:(NSString *)aKey;
+- (NSDate *_Nullable)getDate:(NSString *)key;
+- (void)setDate:(NSDate *_Nullable)value forKey:(NSString *)aKey;
+- (BOOL)getBool:(NSString *)key;
+- (void)setBool:(BOOL)value forKey:(NSString *)aKey;
+- (CGFloat)getCGFloat:(NSString *)key;
+- (void)setCGFloat:(CGFloat)value forKey:(NSString *)aKey;
 
-- (void)setArray:(NSArray <NSString *> *_Nullable)value forKey:(NSString *_Nonnull)aKey;
-- (NSArray <NSString *> *_Nullable)getArrayForKey:(NSString *_Nonnull)key;
+- (void)setArray:(NSArray <NSString *> *_Nullable)value forKey:(NSString *)aKey;
+- (NSArray <NSString *> *_Nullable)getArrayForKey:(NSString *)key;
 
-- (NSURL *_Nullable)getLink:(NSString *_Nonnull)aKey;
-- (void)encodeWithCoder:(NSCoder *_Nonnull)coder;
+- (NSURL *_Nullable)getLink:(NSString *)aKey;
+- (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
 - (void)undoChanges;
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
-- (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * _Nonnull)queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
+- (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * )queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
-+ (void)arrayFromFileLink:(NSURL *_Nonnull)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)arrayFromLink:(NSURL *_Nonnull)link searchParams:(NSDictionary *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
-- (void)arrayFromLink:(NSURL *_Nonnull)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
++ (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
+- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
+- (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
-- (BOOL)writeToFileURL:(NSURL *_Nonnull)fileURL;
-+ (instancetype _Nullable)collectionObjectFromDataInFileURL:(NSURL *_Nonnull)fileURL;
+- (BOOL)writeToFileURL:(NSURL *)fileURL;
++ (instancetype _Nullable)collectionObjectFromDataInFileURL:(NSURL *)fileURL;
 
 @end
+NS_ASSUME_NONNULL_END

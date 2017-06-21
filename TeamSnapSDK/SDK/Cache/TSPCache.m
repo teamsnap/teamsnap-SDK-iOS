@@ -22,14 +22,24 @@ NSFileManager static *_fileManager = nil;
 
 +(NSURL *)cacheRootPath {
     if (!_rootPath) {
-        NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
         _rootPath = [[NSURL fileURLWithPath:directory isDirectory:YES] URLByAppendingPathComponent:@"teamsnap"];
     }
     if (![[self fileManager] fileExistsAtPath:[_rootPath path]]) {
         [[self fileManager] createDirectoryAtPath:[_rootPath path] withIntermediateDirectories:YES attributes:nil error:nil];
+        [self markDirectoryForNoBackup:_rootPath];
     }
 
     return _rootPath;
+}
+
++ (void)markDirectoryForNoBackup:(NSURL *)directory {
+    NSError *error = nil;
+    BOOL success = [_rootPath setResourceValue: [NSNumber numberWithBool: YES]
+                                        forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [_rootPath lastPathComponent], error);
+    }
 }
 
 +(NSURL *)cacheBasePath {

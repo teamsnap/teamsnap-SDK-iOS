@@ -224,6 +224,7 @@ static NSMutableDictionary *_classURLs;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     TSDKCollectionJSON *collection = [aDecoder decodeObjectForKey:@"collection"];
+    // we currently only persist collection data and the last update date.
     self = [self initWithCollection:collection];
     self.lastUpdate = [aDecoder decodeObjectForKey:@"lastUpdate"];
     return self;
