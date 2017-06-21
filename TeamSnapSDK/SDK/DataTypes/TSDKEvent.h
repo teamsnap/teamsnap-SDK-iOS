@@ -18,6 +18,11 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
     TSDKIncludeAllFutureEvents = 2
 };
 
+typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
+    TSDKGameTypeCodeUnknown = 0,
+    TSDKGameTypeCodeIsHome = 1,
+    TSDKGameTypeCodeIsAway = 2,
+};
 
 
 @interface TSDKEvent : TSDKCollectionObject
@@ -54,7 +59,7 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
 @property (nonatomic, assign) BOOL doesntCountTowardsRecord; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable timeZone; //Example: Eastern Time (US & Canada)
 @property (nonatomic, assign) NSInteger pointsForOpponent; //Example: **NULL**
-@property (nonatomic, assign) NSInteger gameTypeCode; //Example: 1
+@property (nonatomic, assign) TSDKGameTypeCode gameTypeCode; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable timeZoneOffset; //Example: -05:00
 @property (nonatomic, weak) NSDate *_Nullable arrivalDate; //Example: 2012-05-19T04:00:00Z
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-02-23T14:28:23Z

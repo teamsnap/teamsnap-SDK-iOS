@@ -265,4 +265,22 @@
     XCTAssertTrue(payment.amountPaid == 2.0, @"Expected amountPaid to be 2.0");
 }
 
+- (void)testEnumParsing {    
+    TSDKEvent *event = [[TSDKEvent alloc] init];
+    
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
+    
+    [event setInteger:0 forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
+    
+    [event setInteger:1 forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeIsHome, @"Event Game type code should have parsed as home");
+    
+    [event setInteger:2 forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeIsAway, @"Event Game type code should have parsed as away");
+
+    [event setInteger:NSNotFound forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
+}
+
 @end

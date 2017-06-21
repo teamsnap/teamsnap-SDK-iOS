@@ -176,4 +176,13 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     }
 }
 
+- (TSDKGameTypeCode)gameTypeCode {
+    NSInteger typeCode = [self getInteger:@"game_type_code"];
+    if (typeCode == NSNotFound) {
+        return TSDKGameTypeCodeUnknown;
+    } else {
+        return typeCode;
+    }
+}
+
 @end

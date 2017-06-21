@@ -17,7 +17,6 @@
 #import "TSDKCollectionJSON.h"
 #import "NSMutableURLRequest+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
-#import "TSDKProfileTimer.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
 #import "NSString+TSDKConveniences.h"
@@ -183,15 +182,16 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [request setHTTPBody:data];
             [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         }
-        
+
+#ifdef DEBUGCURL
         DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+#endif
         
         if([[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:request]) {
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
         } else {
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
             
-            [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
 #if TARGET_OS_IPHONE
             [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
 #endif
@@ -199,7 +199,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #if TARGET_OS_IPHONE
                 [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
 #endif
-                [[TSDKProfileTimer sharedInstance] logElapsedTimeForId:URL];
                 
                 dispatch_async([self processingQueue], ^{
                     
@@ -216,11 +215,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
                     
                     NSError *jsonError = nil;
                     if (success) {
-                        [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
                         if (data) {
                             JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                         }
-                        [[TSDKProfileTimer sharedInstance] logElapsedTimeForId:@"JSON"];
                     } else if (data) {
                         NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
                         JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
@@ -463,10 +460,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     [request setHTTPMethod:@"GET"];
     [request setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
-    
+#ifdef DEBUGCURL
     DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+#endif
     
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
 #if TARGET_OS_IPHONE
     [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
 #endif
@@ -474,7 +471,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #if TARGET_OS_IPHONE
         [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
 #endif
-        [[TSDKProfileTimer sharedInstance] logElapsedTimeForId:URL];
         
         dispatch_async([self processingQueue], ^{
             
