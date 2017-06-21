@@ -6,7 +6,6 @@
 #import "TSDKTeam.h"
 #import "TSDKConstants.h"
 #import "TSDKObjectsRequest.h"
-#import "TSDKProfileTimer.h"
 #import "TSDKEvent.h"
 #import "TSDKMember.h"
 #import "TSDKContact.h"

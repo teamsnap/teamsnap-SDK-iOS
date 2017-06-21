@@ -373,7 +373,6 @@ static void getArrayFromLinkIMP(id self, SEL _cmd, TSDKArrayCompletionBlock comp
     }
     
     NSURL *link = [self getLink:linkPropertyName];
-    DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
     
     [self arrayFromLink:link withConfiguration:[TSDKRequestConfiguration new] completion:completion];
 }
@@ -387,27 +386,9 @@ static void getArrayFromLinkWithConfigurationIMP(id self, SEL _cmd, TSDKRequestC
     }
     
     NSURL *link = [self getLink:linkPropertyName];
-    DLog(@"%@ %@ %@ - %@", [self class], NSStringFromSelector(_cmd), linkPropertyName, link);
     
     [self arrayFromLink:link withConfiguration:configuration completion:completion];
 }
-
-/*
- Not tested:
- static void getObjectFromLinkIMP(id self, SEL _cmd, TSDKCompletionBlock completion) {
- NSString *property = NSStringFromSelector(_cmd);
- NSString *linkPropertyName = [[property linkForGetProperty] camelCaseToUnderscores];
- 
- if ([linkPropertyName rangeOfString:@"link_"].location == 0) {
- linkPropertyName = [linkPropertyName stringByReplacingCharactersInRange:NSMakeRange(0, [@"link_" length]) withString:@""];
- }
- 
- NSURL *link = [self getLink:linkPropertyName];
- DLog(@"%@ - %@", linkPropertyName, link);
- 
- [self objectFromLink:link WithCompletion:completion];
- }
- */
 
 static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     const char * attrs = property_getAttributes( property );
