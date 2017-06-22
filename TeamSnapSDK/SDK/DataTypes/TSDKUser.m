@@ -52,45 +52,17 @@
     }];
 }
 
-- (NSMutableArray *)myMembersOnTeams {
-    if (!_myMembersOnTeams) {
-        _myMembersOnTeams = [[NSMutableArray alloc] init];
-    }
-    return _myMembersOnTeams;
-}
-
-- (void)addMember:(TSDKMember *)newMember {
-    NSUInteger existingMember = [self.myMembersOnTeams indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return [member.objectIdentifier isEqualToString:newMember.objectIdentifier];
-    }];
-    
-    if (existingMember != NSNotFound) {
-        [self.myMembersOnTeams removeObjectAtIndex:existingMember];
-    }
-    [self.myMembersOnTeams addObject:newMember];
-}
-
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    if (_myMembersOnTeams) {
-        if (completion) {
-            completion(YES, YES, _myMembersOnTeams, nil);
-        }
-    } else {
-        [self getPersonasWithConfiguration:configuration completion:completion];
-    }
+    [self getPersonasWithConfiguration:configuration completion:completion];
 }
 
 -(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
-    __typeof__(self) __weak weakSelf = self;
     [self arrayFromLink:self.linkPersonas withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        for (TSDKMember *member in objects) {
-            [weakSelf addMember:member];
-        }
         if (completion) {
-            completion(success, complete, weakSelf.myMembersOnTeams, nil);
+            completion(success, complete, objects, nil);
         }
     }];
-}
+}               
 
 - (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
@@ -106,14 +78,6 @@
             completion(success, complete, resultMembers, error);
         }
     }];
-}
-
-- (NSArray *)myMembersOnTeamId:(NSString *)teamId {
-    NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return [member.teamId isEqualToString:teamId];
-    }];
-    NSArray *resultMembers = [_myMembersOnTeams objectsAtIndexes:memberIndexes];
-    return resultMembers;
 }
 
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
@@ -233,4 +197,9 @@
         return 0;
     }
 }
+
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:@"current"];
+}
+
 @end

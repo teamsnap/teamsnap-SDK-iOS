@@ -41,5 +41,6 @@
 - (void)setCachePathURL:(NSURL * _Nonnull)cachePath;
 - (void)setCacheTimeoutMinutes:(NSUInteger)timeoutMinutes;
 - (void)clearCache;
+- (NSURL *_Nonnull)cachePath;
 
 @end
