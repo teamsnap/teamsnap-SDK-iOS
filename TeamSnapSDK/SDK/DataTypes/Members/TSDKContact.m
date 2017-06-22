@@ -8,6 +8,7 @@
 
 #import "TSDKContact.h"
 #import "NSMutableString+TSDKConveniences.h"
+#import "NSURL+TSDKConveniences.h"
 
 @implementation TSDKContact
 
@@ -31,7 +32,6 @@
 }
 
 - (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type {
-    NSURLComponents *messagesURLComponents = [[NSURLComponents alloc] initWithURL:self.linkMessages resolvingAgainstBaseURL:NO];
     NSString *messageTypeValue;
     switch (type) {
         case TSDKMessageTypeAlert:
@@ -44,10 +44,8 @@
             break;
     }
     NSURLQueryItem *typeSearchParameter = [NSURLQueryItem queryItemWithName:@"message_type" value:messageTypeValue];
-    messagesURLComponents.queryItems = @[typeSearchParameter];
-    return messagesURLComponents.URL;
+    return [self.linkMessages URLByAppendingQueryItem:typeSearchParameter];
 }
-
 
 - (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
     [self arrayFromLink:[self urlForMessageType:type] searchParams:nil withConfiguration:configuration completion:completion];
