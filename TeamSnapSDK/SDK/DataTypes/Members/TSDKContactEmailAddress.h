@@ -25,8 +25,8 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
-+ (void)actionInvite:(NSArray <TSDKContactEmailAddress *> *_Nonnull)contactEmailAddresses fromMemberId:(NSString *_Nonnull)memberId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
-- (void)inviteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration fromMemberId:(NSString *_Nonnull)memberId completion:(TSDKCompletionBlock _Nullable)completion;
++ (void)actionInvite:(NSArray <TSDKContactEmailAddress *> *_Nonnull)contactEmailAddresses withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
+- (void)inviteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
 
 
 @end
