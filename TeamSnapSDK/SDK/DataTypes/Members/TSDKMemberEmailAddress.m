@@ -7,6 +7,8 @@
 //
 
 #import "TSDKMemberEmailAddress.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
 
 @implementation TSDKMemberEmailAddress
 
@@ -45,6 +47,22 @@
 
 -(void)inviteAsSenderMemberId:(NSString *_Nonnull)senderMemberId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completion {
     [TSDKMemberEmailAddress actionInvite:@[self] asSenderMemberId:senderMemberId withConfiguration:configuration completion:completion];
+}
+
+- (void)postNewEmailWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion {
+    if ([self isNewObject]) {
+        NSURL *URL;
+        if ([[self class] classURL]) {
+            URL = [[self class] classURL];
+        } else {
+            URL = [NSURL URLWithString:[[[[[TSDKTeamSnap sharedInstance] rootLinks] collection] links] objectForKey:[[self class] SDKREL]]];
+        }
+        [self saveWithURL:URL completion:completion];
+    } else {
+        if(completion) {
+            completion(NO, nil, nil);
+        }
+    }
 }
 
 @end

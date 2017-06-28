@@ -57,5 +57,12 @@
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion __attribute__((deprecated));
 
 
+/**
+ This is a temporary method that will be deprecated in the near future as we move towards making Contact the primary object that a User utilizes to interact with a team. Use Contact Email Address if possible. This method allows you to POST a new email address. PUT/PATCH are deprecated.
+
+ @param completion The completion block fired when the command is completed.
+ */
+- (void)postNewEmailWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
+
 @end
 
