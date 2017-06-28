@@ -9,7 +9,7 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKMemberEmailAddress.h"
 
-@interface TSDKContactEmailAddress : TSDKMemberEmailAddress
+@interface TSDKContactEmailAddress : TSDKCollectionObject
 
 @property (nonatomic, weak) NSString *_Nullable label; //Example:
 @property (nonatomic, assign) BOOL isHidden; //Example: 0
