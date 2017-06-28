@@ -21,7 +21,7 @@
 
 @end
 
-@interface TSDKCollectionObject : NSObject <NSCoding>
+@interface TSDKCollectionObject : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
 @property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
