@@ -924,7 +924,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     
 }
 
-- (id)copyWithZone:(nullable NSZone *)zone {
+- (instancetype)copyWithZone:(nullable NSZone *)zone {
     id copy = [[[self class] allocWithZone:zone] init];
     
     if (copy) {
