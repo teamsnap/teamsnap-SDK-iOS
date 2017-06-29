@@ -75,8 +75,8 @@
         copy.type = [self.type copy];
         copy.version = [self.version copy];
         copy.links = [self.links copy];
-        copy.data = [self.data copy];
-        copy.collection = [self.collection copy];
+        copy.data = [self.data mutableCopy];
+        copy.collection = [self.collection mutableCopy];
         copy.commands = [self.commands copy];
         copy.queries = [self.queries copy];
     }
