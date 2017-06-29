@@ -916,6 +916,14 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     return self.objectIdentifier.hash;
 }
 
+#pragma mark - TSDKPersistenceFilePath
+
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
+    NSString *parentObjectPathComponent = [NSString stringWithFormat:@"%@-%@", [parentObject.class SDKREL], [parentObject objectIdentifier]];
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:parentObjectPathComponent] URLByAppendingPathComponent:[self SDKType]];
+    
+}
+
 - (id)copyWithZone:(nullable NSZone *)zone {
     id copy = [[[self class] allocWithZone:zone] init];
     
@@ -924,6 +932,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
     
     return copy;
+}
+
++ (NSURL * _Nullable)persistenceBaseFilePath {
+    return [[TSDKTeamSnap sharedInstance] cachePath];
 }
 
 @end

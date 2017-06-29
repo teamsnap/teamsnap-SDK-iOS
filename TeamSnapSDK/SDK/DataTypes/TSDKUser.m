@@ -50,6 +50,57 @@
     }];
 }
 
+- (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+    [self getPersonasWithConfiguration:configuration completion:completion];
+}
+
+-(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
+    [self arrayFromLink:self.linkPersonas withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, nil);
+        }
+    }];
+}               
+
+- (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+    [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+        NSArray *resultMembers = nil;
+        if (success) {
+            NSIndexSet *memberIndexes = [objects indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
+                return [member.teamId isEqualToString:teamId];
+            }];
+            resultMembers = [objects objectsAtIndexes:memberIndexes];
+
+        }
+        if (completion) {
+            completion(success, complete, resultMembers, error);
+        }
+    }];
+}
+
+-(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
+    [TSDKDataRequest requestObjectsForPath:self.linkTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            NSArray *teams = [self processGetTeamsResult:objects];
+            completion(success, complete, teams, error);
+        }
+    }];
+}
+
+-(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
+    [TSDKDataRequest requestObjectsForPath:self.linkActiveTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            NSArray *teams = [self processGetTeamsResult:objects];
+            completion(success, complete, teams, error);
+        }
+    }];
+}
+
+- (NSArray *)processGetTeamsResult:(TSDKCollectionJSON *)objects {
+    NSArray *newTeams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+    return newTeams;
+}
+
 - (void)teamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [TSDKObjectsRequest listTeams:teamIds WithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {
