@@ -12,6 +12,8 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
+#import "TSDKPersistenceFilePath.h"
+@class TSDKCollectionJSON;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,14 +25,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TSDKCollectionObject : NSObject <NSCoding>
+@interface TSDKCollectionObject : NSObject <NSCoding, TSDKPersistenceFilePath>
 
-@property (nonatomic, strong) TSDKCollectionJSON *_Nullable collection;
-@property (nonatomic, strong) NSMutableDictionary *_Nullable changedValues;
+@property (nonatomic, strong, nullable) TSDKCollectionJSON * collection;
+@property (nonatomic, strong, nullable) NSMutableDictionary * changedValues;
 @property (nonatomic, assign) BOOL logHeader;
-@property (nonatomic, strong) NSDate *_Nullable lastUpdate;
+@property (nonatomic, strong, nullable) NSDate * lastUpdate;
+@property (nonatomic, strong) NSURL * persistenceBaseFilePath;
 
-- (instancetype )initWithCollection:(TSDKCollectionJSON *)collection;
+- (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (id _Nullable)objectWithObject:(TSDKCollectionObject *)originalObject;
 + (void)dumpClassSelectorInfo;
 +(NSDictionary *_Nullable)template;
@@ -84,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
 + (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id>*_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
+- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id> *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;

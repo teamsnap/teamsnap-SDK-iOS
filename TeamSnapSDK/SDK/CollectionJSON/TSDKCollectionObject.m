@@ -228,7 +228,9 @@ static NSMutableDictionary *_classURLs;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     TSDKCollectionJSON *collection = [aDecoder decodeObjectForKey:@"collection"];
+    // we currently only persist collection data and the last update date.
     self = [self initWithCollection:collection];
+    self.lastUpdate = [aDecoder decodeObjectForKey:@"lastUpdate"];
     return self;
 }
 
@@ -697,6 +699,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:_collection forKey:@"collection"];
+    [coder encodeObject:_lastUpdate forKey:@"lastUpdate"];
 }
 
 - (BOOL)isNewObject {
@@ -923,6 +926,17 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (NSUInteger)hash {
     return self.objectIdentifier.hash;
+}
+
+#pragma mark - TSDKPersistenceFilePath
+
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
+    NSString *parentObjectPathComponent = [NSString stringWithFormat:@"%@-%@", [parentObject.class SDKREL], [parentObject objectIdentifier]];
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:parentObjectPathComponent] URLByAppendingPathComponent:[self SDKType]];
+}
+
++ (NSURL * _Nullable)persistenceBaseFilePath {
+    return [[TSDKTeamSnap sharedInstance] cachePath];
 }
 
 @end
