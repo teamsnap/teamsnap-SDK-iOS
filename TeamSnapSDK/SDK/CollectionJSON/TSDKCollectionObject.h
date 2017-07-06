@@ -30,11 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSDate * lastUpdate;
 @property (nonatomic, strong) NSURL * persistenceBaseFilePath;
 
-/**
- A convenience flag for clients. The SDK performs no logic using this flag. Clients may use it during bulk save/edits to properly delete items in a collection.
- */
-@property (nonatomic, assign) BOOL markedForDelete;
-
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (id _Nullable)objectWithObject:(TSDKCollectionObject *)originalObject;
 + (void)dumpClassSelectorInfo;
