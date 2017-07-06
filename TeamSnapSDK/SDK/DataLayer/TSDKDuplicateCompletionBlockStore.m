@@ -57,7 +57,7 @@
 
 - (void)addCompletionBlock:(TSDKJSONCompletionBlock)completionBlock forRequest:(NSURLRequest *)request {
     
-    if (request == nil) {
+    if (request == nil || completionBlock == nil) {
         return;
     }
     
