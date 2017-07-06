@@ -10,7 +10,8 @@
 
 @interface TSDKDuplicateCompletionBlockStore()
 
-@property (strong, nonatomic) NSMutableDictionary* completionBlocksKeyedByRequest;
+@property (strong, nonatomic) NSMutableDictionary <NSString *, NSMutableSet *>* completionBlocksKeyedByRequest;
+@property (strong, nonatomic) dispatch_queue_t accessQueue;
 
 @end
 
@@ -27,11 +28,16 @@
     return sharedInstance;
 }
 
-- (NSMutableDictionary *)completionBlocksKeyedByRequest {
-    if(!_completionBlocksKeyedByRequest) {
+- (instancetype)init {
+    if ( (self = [super init]) ) {
+        
         _completionBlocksKeyedByRequest = [[NSMutableDictionary alloc] init];
+        _accessQueue = dispatch_queue_create("com.teamsnap.completion-block-access", DISPATCH_QUEUE_SERIAL);
+        
+        return self;
     }
-    return _completionBlocksKeyedByRequest;
+    
+    return nil;
 }
 
 - (BOOL)existingRequestExistsMatchingRequest:(NSURLRequest *)request {
@@ -39,26 +45,33 @@
         return NO;
     }
     
-    if([self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]] != nil) {
-        return YES;
-    }
-    return NO;
+    NSString *key = [TSDKDuplicateCompletionBlockStore identifierFromRequest:request];
+    
+    BOOL __block hasExisting;
+    dispatch_sync(self.accessQueue, ^{
+        hasExisting = [self.completionBlocksKeyedByRequest.allKeys containsObject:key];
+    });
+    
+    return hasExisting;
 }
 
 - (void)addCompletionBlock:(TSDKJSONCompletionBlock)completionBlock forRequest:(NSURLRequest *)request {
     
-    if (request == nil) {
+    if (request == nil || completionBlock == nil) {
         return;
     }
     
-    if([[self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]] isKindOfClass:[NSMutableSet class]]) {
-        NSMutableSet* set = [self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
-        [set addObject:completionBlock];
-        
-    } else {
-        NSMutableSet *set = [NSMutableSet setWithObject:completionBlock];
-        [self.completionBlocksKeyedByRequest setObject:set forKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
-    }
+    NSString *requestKey = [TSDKDuplicateCompletionBlockStore identifierFromRequest:request];
+    
+    dispatch_sync(self.accessQueue, ^{
+        NSMutableSet *existingCompletions = [self.completionBlocksKeyedByRequest objectForKey:requestKey];
+        if(existingCompletions != nil) {
+            [existingCompletions addObject:completionBlock];
+        } else {
+            NSMutableSet *set = [NSMutableSet setWithObject:completionBlock];
+            [self.completionBlocksKeyedByRequest setObject:set forKey:requestKey];
+        }
+    });
 }
 
 - (NSSet *)completionBlocksForRequest:(NSURLRequest *)request {
@@ -66,7 +79,13 @@
         return [[NSSet alloc] init];
     }
     
-    return [self.completionBlocksKeyedByRequest objectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
+    NSString *requestKey = [TSDKDuplicateCompletionBlockStore identifierFromRequest:request];
+    
+    NSSet *__block completions;
+    dispatch_sync(self.accessQueue, ^{
+        completions = [self.completionBlocksKeyedByRequest objectForKey:requestKey];
+    });
+    return completions;
 }
 
 - (void)removeAllCompletionBlocksForRequest:(NSURLRequest *)request {
@@ -74,7 +93,10 @@
         return;
     }
     
-    [self.completionBlocksKeyedByRequest removeObjectForKey:[TSDKDuplicateCompletionBlockStore identifierFromRequest:request]];
+    NSString *requestKey = [TSDKDuplicateCompletionBlockStore identifierFromRequest:request];
+    dispatch_async(self.accessQueue, ^{
+        [self.completionBlocksKeyedByRequest removeObjectForKey:requestKey];
+    });
 }
 
 + (NSString *)identifierFromRequest:(NSURLRequest *)request {
