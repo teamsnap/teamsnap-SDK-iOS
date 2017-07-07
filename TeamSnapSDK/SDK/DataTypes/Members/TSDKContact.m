@@ -30,6 +30,15 @@
     }
 }
 
+- (BOOL)isDeletable {
+    if ([self.collection.data objectForKey:@"is_deletable"]) {
+        NSNumber *value = [self.collection.data objectForKey:@"is_deletable"];
+        return [value boolValue];
+    } else {
+        return NO;
+    }
+}
+
 - (BOOL)canMarkAsRead {
     return YES;
 }

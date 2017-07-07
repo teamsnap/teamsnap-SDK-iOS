@@ -29,6 +29,7 @@
 @property (nonatomic, assign) BOOL isEmailable; //Example: 0
 @property (nonatomic, assign) BOOL allowSharedAccess; //Example: 0
 @property (nonatomic, assign) BOOL isEditable; //Example: 0
+@property (nonatomic, assign) BOOL isDeletable; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable label; //Example: Father
 @property (nonatomic, weak) NSString *_Nullable addressStreet1; //Example:
 @property (nonatomic, weak) NSString *_Nullable invitationDeclined; //Example: **NULL**
