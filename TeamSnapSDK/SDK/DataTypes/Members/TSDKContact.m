@@ -11,7 +11,7 @@
 
 @implementation TSDKContact
 
-@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, isOwner, isCommissioner, isManager, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
+@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, isOwner, isCommissioner, isManager, isDeletable, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
 
 + (NSString *)SDKType {
     return @"contact";
@@ -27,15 +27,6 @@
         return [value boolValue];
     } else {
         return YES;
-    }
-}
-
-- (BOOL)isDeletable {
-    if ([self.collection.data objectForKey:@"is_deletable"]) {
-        NSNumber *value = [self.collection.data objectForKey:@"is_deletable"];
-        return [value boolValue];
-    } else {
-        return NO;
     }
 }
 
