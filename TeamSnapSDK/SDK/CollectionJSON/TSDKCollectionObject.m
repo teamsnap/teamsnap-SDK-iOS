@@ -192,7 +192,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 + (dispatch_queue_t)processingQueue {
-    return dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+    return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
 }
 
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
@@ -814,23 +814,33 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 + (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock) completion {
     [TSDKDataRequest requestObjectsForPath:link searchParamaters:nil sendDataDictionary:nil method:@"GET" withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        NSArray *result = nil;
-        if (success) {
-            if ([[objects collection] isKindOfClass:[NSArray class]]) {
-                result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-                for (TSDKCollectionObject *object in result) {
-                    [TSDKNotifications postRefreshedObject:object];
+        dispatch_async([self processingQueue], ^{
+            NSArray *result = nil;
+            if (success) {
+                if ([[objects collection] isKindOfClass:[NSArray class]]) {
+                    result = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        for (TSDKCollectionObject *object in result) {
+                            [TSDKNotifications postRefreshedObject:object];
+                        }
+                    });
                 }
             }
-        }
-        if (result == nil) {
-            result = [[NSArray alloc] init];
-        } else {
-            [TSDKNotifications postRefreshedObjectCollection:result];
-        }
-        if (completion) {
-            completion(success, complete, result, error);
-        }
+            if (result == nil) {
+                result = [[NSArray alloc] init];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [TSDKNotifications postRefreshedObjectCollection:result];
+                });
+            }
+            
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(success, complete, result, error);
+                });
+            }
+        });
     }];
 }
 
