@@ -59,7 +59,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (dispatch_queue_t)processingQueue {
-    return dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+    return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
 }
 
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key {
