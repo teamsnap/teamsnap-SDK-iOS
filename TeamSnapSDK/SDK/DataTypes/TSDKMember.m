@@ -22,7 +22,7 @@
 
 @implementation TSDKMember
 
- @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, gender, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto;
+ @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto;
 
 + (NSString *)SDKType {
     return @"member";
@@ -116,6 +116,40 @@
         return [self.birthday age];
     } else {
         return 0;
+    }
+}
+
+- (TSDKMemberGender)gender {
+    NSString *genderString = [self getString:@"gender"];
+    return [self genderFromString:genderString];
+}
+
+- (void)setGender:(TSDKMemberGender)gender {
+    NSString *genderString = [self stringFromGender:gender];
+    [self setString:genderString forKey:@"gender"];
+}
+
+- (TSDKMemberGender)genderFromString:(NSString *)string {
+    if([string.lowercaseString isEqualToString:@"female"]) {
+        return TSDKMemberGenderFemale;
+    } else if([string.lowercaseString isEqualToString:@"male"]) {
+        return TSDKMemberGenderMale;
+    } else {
+        return TSDKMemberGenderUnknown;
+    }
+}
+
+- (NSString *)stringFromGender:(TSDKMemberGender)gender {
+    switch (gender) {
+        case TSDKMemberGenderFemale:
+            return @"female";
+            break;
+        case TSDKMemberGenderMale:
+            return @"male";
+            break;
+        default:
+            return nil;
+            break;
     }
 }
 
