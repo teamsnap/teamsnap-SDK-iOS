@@ -144,6 +144,7 @@ typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
 
 - (TSDKMemberGender)gender;
 - (void)setGender:(TSDKMemberGender)gender;
+- (NSString *)stringFromGender:(TSDKMemberGender)gender;
 
 //Delete one or many members.
 //+(void)actionBulkDeleteMemberid:(NSString *_Nonnull)memberId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
