@@ -7,6 +7,24 @@ Drag the framework into your frameworks group, and copy files.
 make sure it appears under your `{target_name}->Build Phases->Link Binary With Libraries` (happens automatically) AND
 `{target_name}->General->Embedded Binaries` (Does not happen automatically)
 
+# Installation with CocoaPods
+
+[CocoaPods](http://cocoapods.org/) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries in your projects. See the [Get Started](http://cocoapods.org/#get_started) section for more details.
+
+# Podfile
+```
+platform :ios, '8.0'
+pod 'TeamSnapSDK', :git => 'git@github.com:teamsnap/teamsnap-SDK-iOS', :branch => 'master'
+```
+
+If you are using Swift, be sure to add `use_frameworks!` and set your target to iOS 8+:
+```
+platform :ios, '8.0'
+use_frameworks!
+```
+
+Now run ```pod install```
+
 # Setup
 
 In order to use the TeamSnapSDK, you will need to obtain a client ID and client secret for your specific application. You can create new applications and obtain these from [auth.teamsnap.com](https://auth.teamsnap.com/oath/applications).
