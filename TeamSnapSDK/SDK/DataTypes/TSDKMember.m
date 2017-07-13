@@ -121,15 +121,15 @@
 
 - (TSDKMemberGender)gender {
     NSString *genderString = [self getString:@"gender"];
-    return [self genderFromString:genderString];
+    return [TSDKMember genderFromString:genderString];
 }
 
 - (void)setGender:(TSDKMemberGender)gender {
-    NSString *genderString = [self stringFromGender:gender];
+    NSString *genderString = [TSDKMember stringFromGender:gender];
     [self setString:genderString forKey:@"gender"];
 }
 
-- (TSDKMemberGender)genderFromString:(NSString *)string {
++ (TSDKMemberGender)genderFromString:(NSString *)string {
     if([string.lowercaseString isEqualToString:@"female"]) {
         return TSDKMemberGenderFemale;
     } else if([string.lowercaseString isEqualToString:@"male"]) {
@@ -139,7 +139,7 @@
     }
 }
 
-- (NSString *)stringFromGender:(TSDKMemberGender)gender {
++ (NSString *)stringFromGender:(TSDKMemberGender)gender {
     switch (gender) {
         case TSDKMemberGenderFemale:
             return @"Female";
