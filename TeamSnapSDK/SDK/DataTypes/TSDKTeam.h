@@ -44,6 +44,7 @@
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
 @property (nonatomic, assign) BOOL isHiddenOnDashboard;
+@property (nonatomic, assign) BOOL isGameDay;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;
