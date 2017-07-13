@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
 @property (nullable, nonatomic, weak) NSString *addressZip; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *invitationCode; //Example: d3e4bd58170967126b089212
-@property (nullable, nonatomic, weak) NSString *_Nullable userId; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *userId; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *addressState; //Example:
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
 @property (nullable, nonatomic, weak) NSString *lastName; //Example: Rahaim
@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, weak) NSString *firstName; //Example: Jack
 @property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
-@property (nullable, nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nullable, nonatomic, weak) NSString *teamId; //Example: 71118
 @property (nonatomic, assign) BOOL isManager; //Example: 1
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 0
@@ -62,80 +62,80 @@ typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
 
 @interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
-@property (nullable, nonatomic, weak) NSString *_Nullable lastName; //Example: Seamans
-@property (nullable, nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2016-11-17T20:29:40Z
-@property (nullable, nonatomic, weak) NSString *_Nullable teamId; //Example: 2419116
+@property (nullable, nonatomic, weak) NSString *lastName; //Example: Seamans
+@property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2016-11-17T20:29:40Z
+@property (nullable, nonatomic, weak) NSString *teamId; //Example: 2419116
 @property (nonatomic, assign) BOOL hideAddress; //Example: 0
 @property (nonatomic, assign) BOOL isOwnershipPending; //Example: 0
-@property (nullable, nonatomic, weak) NSString *_Nullable addressStreet2; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
-@property (nullable, nonatomic, weak) NSString *_Nullable addressState; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *addressState; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasFacebookPostScoresEnabled; //Example: 0
 @property (nonatomic, assign) BOOL hideAge; //Example: 0
-@property (nullable, nonatomic, weak) NSString *_Nullable invitationDeclined; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *invitationDeclined; //Example: **NULL**
 @property (nonatomic, assign) BOOL isInvitable; //Example: 0
-@property (nullable, nonatomic, weak) NSString *_Nullable divisionId; //Example: <null>
-@property (nullable, nonatomic, weak) NSString *_Nullable addressZip; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSDate *_Nullable lastLoggedInAt; //Example: <null>
-@property (nullable, nonatomic, weak) NSString *_Nullable invitationCode; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSString *_Nullable position; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSDate *_Nullable birthday; //Example:
+@property (nullable, nonatomic, weak) NSString *divisionId; //Example: <null>
+@property (nullable, nonatomic, weak) NSString *addressZip; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSDate *lastLoggedInAt; //Example: <null>
+@property (nullable, nonatomic, weak) NSString *invitationCode; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *position; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSDate *birthday; //Example:
 @property (nonatomic, assign) BOOL isEmailable; //Example: 1
 @property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
 @property (nonatomic, assign) BOOL isInvited; //Example: 0
 @property (nonatomic, assign) BOOL isActivated; //Example: 1
-@property (nullable, nonatomic, weak) NSString *_Nullable sourceMemberId; //Example: <null>
-@property (nullable, nonatomic, weak) NSString *_Nullable addressStreet1; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *sourceMemberId; //Example: <null>
+@property (nullable, nonatomic, weak) NSString *addressStreet1; //Example: **NULL**
 @property (nonatomic, assign) BOOL isNonPlayer; //Example: 0
-@property (nullable, nonatomic, weak) NSString *_Nullable addressCity; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *addressCity; //Example: **NULL**
 @property (nonatomic, assign) BOOL isAgeHidden; //Example: 0
-@property (nullable, nonatomic, weak) NSString *_Nullable firstName; //Example: Skyler
+@property (nullable, nonatomic, weak) NSString *firstName; //Example: Skyler
 @property (nonatomic, assign) BOOL isManager; //Example: 1
-@property (nullable, nonatomic, weak) NSString *_Nullable jerseyNumber; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSString *_Nullable userId; //Example: 2971597
+@property (nullable, nonatomic, weak) NSString *jerseyNumber; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *userId; //Example: 2971597
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
-@property (nullable, nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-11-17T20:29:40Z
+@property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2016-11-17T20:29:40Z
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 0
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkBroadcastEmails;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkLeagueCustomFields;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkForumSubscriptions;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMessages;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkLeagueCustomData;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberStatistics;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkForumPosts;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkTeamMedia;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberPhotos;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMessageData;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkAssignments;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberRegistrationSignups;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberAssignments;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkUser;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkTeamMediumComments;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberPhoneNumbers __attribute__((deprecated));
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkContacts;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberBalances;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkCustomFields;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberPayments;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkCustomData;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkTrackedItemStatuses;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkBroadcastAlerts;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberFiles;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberLinks;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkAvailabilities;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkBroadcastEmailAttachments;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberEmailAddresses __attribute__((deprecated));
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkStatisticData;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkForumTopics;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkDivision;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkLeagueRegistrantDocuments;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberPreferences;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberThumbnail;
-@property (nullable, nonatomic, weak) NSURL *_Nullable linkMemberPhoto;
+@property (nullable, nonatomic, weak) NSURL *linkBroadcastEmails;
+@property (nullable, nonatomic, weak) NSURL *linkLeagueCustomFields;
+@property (nullable, nonatomic, weak) NSURL *linkForumSubscriptions;
+@property (nullable, nonatomic, weak) NSURL *linkMessages;
+@property (nullable, nonatomic, weak) NSURL *linkContactEmailAddresses;
+@property (nullable, nonatomic, weak) NSURL *linkTeam;
+@property (nullable, nonatomic, weak) NSURL *linkLeagueCustomData;
+@property (nullable, nonatomic, weak) NSURL *linkMemberStatistics;
+@property (nullable, nonatomic, weak) NSURL *linkForumPosts;
+@property (nullable, nonatomic, weak) NSURL *linkTeamMedia;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPhotos;
+@property (nullable, nonatomic, weak) NSURL *linkMessageData;
+@property (nullable, nonatomic, weak) NSURL *linkAssignments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberRegistrationSignups;
+@property (nullable, nonatomic, weak) NSURL *linkMemberAssignments;
+@property (nullable, nonatomic, weak) NSURL *linkUser;
+@property (nullable, nonatomic, weak) NSURL *linkTeamMediumComments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPhoneNumbers __attribute__((deprecated));
+@property (nullable, nonatomic, weak) NSURL *linkContacts;
+@property (nullable, nonatomic, weak) NSURL *linkMemberBalances;
+@property (nullable, nonatomic, weak) NSURL *linkContactPhoneNumbers;
+@property (nullable, nonatomic, weak) NSURL *linkCustomFields;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPayments;
+@property (nullable, nonatomic, weak) NSURL *linkCustomData;
+@property (nullable, nonatomic, weak) NSURL *linkTrackedItemStatuses;
+@property (nullable, nonatomic, weak) NSURL *linkBroadcastAlerts;
+@property (nullable, nonatomic, weak) NSURL *linkMemberFiles;
+@property (nullable, nonatomic, weak) NSURL *linkMemberLinks;
+@property (nullable, nonatomic, weak) NSURL *linkAvailabilities;
+@property (nullable, nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberEmailAddresses __attribute__((deprecated));
+@property (nullable, nonatomic, weak) NSURL *linkStatisticData;
+@property (nullable, nonatomic, weak) NSURL *linkForumTopics;
+@property (nullable, nonatomic, weak) NSURL *linkDivision;
+@property (nullable, nonatomic, weak) NSURL *linkLeagueRegistrantDocuments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPreferences;
+@property (nullable, nonatomic, weak) NSURL *linkMemberThumbnail;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPhoto;
 
 // Not AutoGenerated:
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPhotoArrayCompletionBlock)completion;
