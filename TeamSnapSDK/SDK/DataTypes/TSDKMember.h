@@ -42,6 +42,12 @@
 
 @end
 
+typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
+    TSDKMemberGenderFemale,
+    TSDKMemberGenderMale,
+    TSDKMemberGenderUnknown,
+};
+
 @interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, weak) NSString *_Nullable lastName; //Example: Seamans
@@ -75,7 +81,6 @@
 @property (nonatomic, assign) BOOL isManager; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable jerseyNumber; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable userId; //Example: 2971597
-@property (nonatomic, weak) NSString *_Nullable gender; //Example: **NULL**
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-11-17T20:29:40Z
@@ -136,6 +141,9 @@
 - (BOOL)isAtLeastManager;
 
 - (NSInteger)age;
+
+- (TSDKMemberGender)gender;
+- (void)setGender:(TSDKMemberGender)gender;
 
 //Delete one or many members.
 //+(void)actionBulkDeleteMemberid:(NSString *_Nonnull)memberId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
