@@ -142,10 +142,10 @@
 - (NSString *)stringFromGender:(TSDKMemberGender)gender {
     switch (gender) {
         case TSDKMemberGenderFemale:
-            return @"female";
+            return @"Female";
             break;
         case TSDKMemberGenderMale:
-            return @"male";
+            return @"Male";
             break;
         default:
             return nil;
