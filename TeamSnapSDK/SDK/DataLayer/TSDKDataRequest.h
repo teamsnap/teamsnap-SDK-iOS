@@ -10,29 +10,33 @@
 #import "TSDKRequestConfiguration.h"
 #import "TSDKCompletionBlockTypes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class TSDKCollectionJSON, TSDKinvitationFinder;
 
 @interface TSDKDataRequest : NSObject
 
-+ (NSURL *_Nonnull)baseURL;
-+ (void)setBaseURL:(NSURL *_Nonnull)URL;
++ (NSURL *)baseURL;
++ (void)setBaseURL:(NSURL *)URL;
 
-+ (NSURL *_Nonnull)appendPathToBaseURL:(NSString *_Nonnull)path;
++ (NSURL *)appendPathToBaseURL:(NSString *)path;
 
-+ (void)addRequestHeaderValue:(NSString *_Nonnull)value forKey:(NSString *_Nonnull)key;
-+ (NSDictionary *_Nonnull)requestHeaders;
-+ (void)requestJSONObjectsForPath:(NSURL *_Nonnull)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKJSONCompletionBlock _Nullable)completionBlock;
-+ (void)requestObjectsForPath:(NSURL *_Nonnull)URL withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
-+ (void)requestObjectsForPath:(NSURL *_Nonnull)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
-+ (void)requestObjectsForPath:(NSURL *_Nonnull)URL searchParamaters:(NSDictionary *_Nullable)searchParamaters sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
-+ (void)postDictionary:(NSDictionary *_Nonnull)postDictionary toURL:(NSURL *_Nonnull)url delegate:(id<NSURLSessionDataDelegate>_Nullable)delegate;
++ (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key;
++ (NSDictionary *)requestHeaders;
++ (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKJSONCompletionBlock _Nullable)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *_Nullable)searchParamaters sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
++ (void)postDictionary:(NSDictionary *)postDictionary toURL:(NSURL *)url delegate:(id<NSURLSessionDataDelegate>_Nullable)delegate;
 
 #if TARGET_OS_IPHONE
-+ (void)requestImageForPath:(NSURL *_Nonnull)URL configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKImageCompletionBlock _Nullable)completionBlock;
++ (void)requestImageForPath:(NSURL *)URL configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKImageCompletionBlock _Nullable)completionBlock;
 #endif
 
-+ (void)setClientId:(NSString *_Nonnull)clientId;
-+ (void)setClientSecret:(NSString *_Nonnull)clientSecret;
++ (void)setClientId:(NSString *)clientId;
++ (void)setClientSecret:(NSString *)clientSecret;
 + (void)setOAuthToken:(NSString *_Nullable)token;
 
 @end
+
+NS_ASSUME_NONNULL_END
