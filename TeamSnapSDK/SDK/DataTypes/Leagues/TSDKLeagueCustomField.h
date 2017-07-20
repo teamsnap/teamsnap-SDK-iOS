@@ -8,23 +8,22 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKCustomField.h"
 
-@interface TSDKLeagueCustomField : TSDKCollectionObject
+@interface TSDKLeagueCustomField : TSDKCollectionObject <TSDKCustomField>
 
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Public Field
 @property (nonatomic, weak) NSString *_Nullable validationType; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable divisionId; //Example: 2040
-@property (nonatomic, assign) NSInteger teamCanEdit; //Example: 1
-@property (nonatomic, assign) NSInteger teamCanRead; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable kind; //Example: Text
+@property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
+@property (nonatomic, assign) BOOL teamCanRead; //Example: 1
 @property (nonatomic, assign) NSInteger required; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable options; //Example: **NULL**
+@property (nonatomic, weak) NSArray<NSString *> *_Nullable options; //Example: **NULL**
 @property (nonatomic, weak) NSURL *_Nullable linkTeams;
 @property (nonatomic, weak) NSURL *_Nullable linkLeagueCustomData;
 
-
-
+- (CustomDataFieldType)fieldType;
 
 @end
 

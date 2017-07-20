@@ -5,11 +5,6 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-extern NSString * _Nonnull const TSDKCustomDataTypeDateString;
-extern NSString * _Nonnull const TSDKCustomDataTypeMenuString;
-extern NSString * _Nonnull const TSDKCustomDataTypeBoolString;
-extern NSString * _Nonnull const TSDKCustomDataTypeTextString;
-
 typedef enum {
     TSDKCustomDataTypeDate = 0,
     TSDKCustomDataTypeMenu = 1,
@@ -18,17 +13,29 @@ typedef enum {
     TSDKCustomDataTypeUnknown = 4
 } CustomDataFieldType;
 
-@interface TSDKCustomField : TSDKCollectionObject
+
+@protocol TSDKCustomField <NSObject>
+
+@property (nonatomic, weak) NSString *_Nullable name; //Example: Size
+@property (nonatomic, weak) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large
+@property (nonatomic, weak) NSString *_Nullable helpText; //Example: "Put your child's t-shirt size here"
+
+- (CustomDataFieldType)fieldType;
+- (void)setFieldType:(CustomDataFieldType)fieldType;
+
+@end
+
+@interface TSDKCustomField : TSDKCollectionObject <TSDKCustomField>
 
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Size
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable kind; //Example: Menu
-@property (nonatomic, weak) NSArray *_Nullable options;
+@property (nonatomic, weak) NSArray<NSString *> *_Nullable options;
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkCustomData;
 
-@property (nonatomic, assign) CustomDataFieldType dataType;
+- (CustomDataFieldType)fieldType;
+- (void)setFieldType:(CustomDataFieldType)fieldType;
 
 + (CustomDataFieldType)fieldTypeForString:(NSString *_Nullable)kind;
 + (NSString *_Nullable)fieldTypeStringForFieldType:(CustomDataFieldType)fieldType;
