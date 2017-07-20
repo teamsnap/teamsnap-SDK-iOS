@@ -57,4 +57,8 @@
     self.kind = [TSDKCustomField fieldTypeStringForFieldType:dataType];
 }
 
+- (NSString * _Nullable)customFieldId {
+    return self.leagueCustomFieldId;
+}
+
 @end

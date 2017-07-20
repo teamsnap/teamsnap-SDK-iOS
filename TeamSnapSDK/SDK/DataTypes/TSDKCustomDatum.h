@@ -23,7 +23,8 @@
 
 @property (nonatomic, assign) TSDKCustomDataFieldType dataType;
 @property (nonatomic, weak) NSDate *_Nullable dateValue;
-- (NSString *_Nullable)displayValue;
+- (NSString * _Nullable)displayValue;
+- (NSString * _Nullable)customFieldId;
 
 @end
 

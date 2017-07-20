@@ -12,17 +12,6 @@
 
 @interface TSDKLeagueCustomDatum : TSDKCollectionObject <TSDKCustomDataProtocol>
 
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Size
-@property (nonatomic, weak) NSArray *_Nullable options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
-@property (nonatomic, weak) NSString *_Nullable value; //Example: Small
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 1086731
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable kind; //Example: Menu
-@property (nonatomic, weak) NSString *_Nullable helpText; //Example:
-@property (nonatomic, assign) BOOL isPrivate; //Example: 0
-@property (nonatomic, assign) TSDKCustomDataFieldType dataType;
-@property (nonatomic, weak) NSDate *_Nullable dateValue;
-
 @property (nonatomic, weak) NSString *_Nullable leagueCustomFieldId; //Example: 35598
 @property (nonatomic, assign) BOOL teamCanRead; //Example: 1
 @property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
@@ -31,6 +20,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
 - (NSString *_Nullable)displayValue;
+- (NSString * _Nullable)customFieldId;
 
 @end
 
