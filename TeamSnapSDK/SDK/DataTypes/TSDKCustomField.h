@@ -5,14 +5,13 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef enum {
-    TSDKCustomDataTypeDate = 0,
-    TSDKCustomDataTypeMenu = 1,
-    TSDKCustomDataTypeBool = 2,
-    TSDKCustomDataTypeText = 3,
-    TSDKCustomDataTypeUnknown = 4
-} CustomDataFieldType;
-
+typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
+    TSDKCustomDataFieldTypeDate,
+    TSDKCustomDataFieldTypeMenu,
+    TSDKCustomDataFieldTypeBool,
+    TSDKCustomDataFieldTypeText,
+    TSDKCustomDataFieldTypeUnknown
+};
 
 @protocol TSDKCustomField <NSObject, NSCopying>
 
@@ -24,8 +23,8 @@ typedef enum {
 - (BOOL)teamCanEdit;
 - (BOOL)teamCanRead;
 
-- (CustomDataFieldType)fieldType;
-- (void)setFieldType:(CustomDataFieldType)fieldType;
+- (TSDKCustomDataFieldType)fieldType;
+- (void)setFieldType:(TSDKCustomDataFieldType)fieldType;
 
 @end
 
@@ -40,11 +39,11 @@ typedef enum {
 @property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
 @property (nonatomic, assign) BOOL teamCanRead; //Example: 1
 
-- (CustomDataFieldType)fieldType;
-- (void)setFieldType:(CustomDataFieldType)fieldType;
+- (TSDKCustomDataFieldType)fieldType;
+- (void)setFieldType:(TSDKCustomDataFieldType)fieldType;
 
-+ (CustomDataFieldType)fieldTypeForString:(NSString *_Nullable)kind;
-+ (NSString *_Nullable)fieldTypeStringForFieldType:(CustomDataFieldType)fieldType;
++ (TSDKCustomDataFieldType)fieldTypeForString:(NSString *_Nullable)kind;
++ (NSString *_Nullable)fieldTypeStringForFieldType:(TSDKCustomDataFieldType)fieldType;
 
 @end
 

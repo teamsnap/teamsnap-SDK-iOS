@@ -24,7 +24,7 @@
 }
 
 - (NSDate *)dateValue {
-    if (self.dataType == TSDKCustomDataTypeDate) {
+    if (self.dataType == TSDKCustomDataFieldTypeDate) {
         return [self.value dateFromJustDate];
     } else {
         return nil;
@@ -36,9 +36,9 @@
 }
 
 - (NSString *)displayValue {
-    if (self.dataType == TSDKCustomDataTypeDate) {
+    if (self.dataType == TSDKCustomDataFieldTypeDate) {
         return [self.dateValue shortString];
-    } else if (self.dataType == TSDKCustomDataTypeBool) {
+    } else if (self.dataType == TSDKCustomDataFieldTypeBool) {
         if ([self.value isEqualToString:@"1"]) {
             return @"Yes";
         } else {
@@ -49,11 +49,11 @@
     }
 }
 
-- (CustomDataFieldType)dataType {
+- (TSDKCustomDataFieldType)dataType {
     return [TSDKCustomField fieldTypeForString:self.kind];
 }
 
-- (void)setDataType:(CustomDataFieldType)dataType {
+- (void)setDataType:(TSDKCustomDataFieldType)dataType {
     self.kind = [TSDKCustomField fieldTypeStringForFieldType:dataType];
 }
 

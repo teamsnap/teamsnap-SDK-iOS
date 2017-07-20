@@ -20,7 +20,7 @@
 @property (nonatomic, weak) NSString *_Nullable kind; //Example: Menu
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
-@property (nonatomic, assign) CustomDataFieldType dataType;
+@property (nonatomic, assign) TSDKCustomDataFieldType dataType;
 @property (nonatomic, weak) NSDate *_Nullable dateValue;
 
 @property (nonatomic, weak) NSString *_Nullable leagueCustomFieldId; //Example: 35598

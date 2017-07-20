@@ -16,11 +16,11 @@
     return @"league_custom_field";
 }
 
-- (CustomDataFieldType)fieldType {
+- (TSDKCustomDataFieldType)fieldType {
     return [TSDKCustomField fieldTypeForString:[self getString:@"kind"]];
 }
 
-- (void)setFieldType:(CustomDataFieldType)fieldType {
+- (void)setFieldType:(TSDKCustomDataFieldType)fieldType {
     [self setString:[TSDKCustomField fieldTypeStringForFieldType:fieldType] forKey:@"kind"];
 }
 

@@ -23,7 +23,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeams;
 @property (nonatomic, weak) NSURL *_Nullable linkLeagueCustomData;
 
-- (CustomDataFieldType)fieldType;
+- (TSDKCustomDataFieldType)fieldType;
 
 @end
 

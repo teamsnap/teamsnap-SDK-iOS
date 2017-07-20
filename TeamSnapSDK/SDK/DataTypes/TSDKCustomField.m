@@ -20,11 +20,11 @@ NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
     return @"custom_field";
 }
 
-- (CustomDataFieldType)fieldType {
+- (TSDKCustomDataFieldType)fieldType {
     return [TSDKCustomField fieldTypeForString:[self getString:@"kind"]];
 }
 
-- (void)setFieldType:(CustomDataFieldType)fieldType {
+- (void)setFieldType:(TSDKCustomDataFieldType)fieldType {
     [self setString:[TSDKCustomField fieldTypeStringForFieldType:fieldType] forKey:@"kind"];
 }
 
@@ -41,26 +41,26 @@ NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
 }
 
 
-+ (CustomDataFieldType)fieldTypeForString:(NSString *)kind {
++ (TSDKCustomDataFieldType)fieldTypeForString:(NSString *)kind {
     if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeDateString uppercaseString]]) {
-        return TSDKCustomDataTypeDate;
+        return TSDKCustomDataFieldTypeDate;
     } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeMenuString uppercaseString]]) {
-        return TSDKCustomDataTypeMenu;
+        return TSDKCustomDataFieldTypeMenu;
     } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeBoolString uppercaseString]]) {
-        return TSDKCustomDataTypeBool;
-    } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeMenuString uppercaseString]]) {
-        return TSDKCustomDataTypeMenu;
+        return TSDKCustomDataFieldTypeBool;
+    } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeTextString uppercaseString]]) {
+        return TSDKCustomDataFieldTypeText;
     } else {
-        return TSDKCustomDataTypeText;
+        return TSDKCustomDataFieldTypeUnknown;
     }
 }
 
-+ (NSString *)fieldTypeStringForFieldType:(CustomDataFieldType)fieldType {
++ (NSString *)fieldTypeStringForFieldType:(TSDKCustomDataFieldType)fieldType {
     NSArray *fieldTypeStringArray = @[TSDKCustomDataTypeDateString,
                                        TSDKCustomDataTypeMenuString,
                                        TSDKCustomDataTypeBoolString,
                                        TSDKCustomDataTypeTextString];
-    if (fieldType != TSDKCustomDataTypeUnknown) {
+    if (fieldType != TSDKCustomDataFieldTypeUnknown) {
         return fieldTypeStringArray[fieldType];
     } else {
         return TSDKCustomDataTypeTextString;
