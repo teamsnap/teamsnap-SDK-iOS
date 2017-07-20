@@ -14,7 +14,7 @@ typedef enum {
 } CustomDataFieldType;
 
 
-@protocol TSDKCustomField <NSObject>
+@protocol TSDKCustomField <NSObject, NSCopying>
 
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Size
 @property (nonatomic, weak) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large

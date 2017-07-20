@@ -10,7 +10,7 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKCustomField.h"
 
-@protocol TSDKCustomDataProtocol <NSObject>
+@protocol TSDKCustomDataProtocol <NSObject, NSCopying>
 
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Size
 @property (nonatomic, weak) NSArray *_Nullable options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
@@ -29,12 +29,10 @@
 
 @interface TSDKCustomDatum : TSDKCollectionObject <TSDKCustomDataProtocol>
 
-
 @property (nonatomic, weak) NSString *_Nullable customFieldId; //Example: 25383
 @property (nonatomic, weak) NSURL *_Nullable linkCustomField;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
-
 
 @end
 
