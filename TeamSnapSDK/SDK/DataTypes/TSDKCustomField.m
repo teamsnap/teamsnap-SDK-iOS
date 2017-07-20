@@ -28,6 +28,19 @@ NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
     [self setString:[TSDKCustomField fieldTypeStringForFieldType:fieldType] forKey:@"kind"];
 }
 
+- (BOOL)teamCanEdit {
+    return YES; // Team level fields always return true. This field is used for League Custom Fields.
+}
+
+- (BOOL)teamCanRead {
+    return YES; // Team level fields always return true. This field is used for League Custom Fields.
+}
+
+- (BOOL)required {
+    return NO;  // Team level fields are never required. This field is used for League Custom Fields.
+}
+
+
 + (CustomDataFieldType)fieldTypeForString:(NSString *)kind {
     if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeDateString uppercaseString]]) {
         return TSDKCustomDataTypeDate;

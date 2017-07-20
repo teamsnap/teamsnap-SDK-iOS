@@ -20,6 +20,10 @@ typedef enum {
 @property (nonatomic, weak) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example: "Put your child's t-shirt size here"
 
+- (BOOL)required;
+- (BOOL)teamCanEdit;
+- (BOOL)teamCanRead;
+
 - (CustomDataFieldType)fieldType;
 - (void)setFieldType:(CustomDataFieldType)fieldType;
 
@@ -33,6 +37,8 @@ typedef enum {
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkCustomData;
+@property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
+@property (nonatomic, assign) BOOL teamCanRead; //Example: 1
 
 - (CustomDataFieldType)fieldType;
 - (void)setFieldType:(CustomDataFieldType)fieldType;
