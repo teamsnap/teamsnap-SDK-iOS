@@ -9,12 +9,12 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef enum TSDKAvailabilityState : NSInteger  {
-    TSDKAvailabilityIsNotAvailable = 0,
-    TSDKAvailabilityIsAvailable = 1,
-    TSDKAvailabilityIsMaybeAvailable = 2,
-    TSDKAvailabilityIsUnknown = 3
-} TSDKAvailabilityState;
+typedef NS_ENUM(NSInteger,TSDKAvailabilityState) {
+    TSDKAvailabilityStateIsNotAvailable = 0,
+    TSDKAvailabilityStateIsAvailable = 1,
+    TSDKAvailabilityStateIsMaybeAvailable = 2,
+    TSDKAvailabilityStateIsUnknown = 3
+};
 
 
 @interface TSDKAvailability : TSDKCollectionObject
