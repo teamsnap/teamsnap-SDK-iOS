@@ -19,6 +19,8 @@ typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
 @property (nonatomic, weak) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example: "Put your child's t-shirt size here"
 
+- (NSString * _Nonnull)objectIdentifier;
+
 - (BOOL)required;
 - (BOOL)teamCanEdit;
 - (BOOL)teamCanRead;
