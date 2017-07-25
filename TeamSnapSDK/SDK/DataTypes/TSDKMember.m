@@ -120,6 +120,40 @@
     }
 }
 
+- (TSDKMemberGender)gender {
+    NSString *genderString = [self getString:@"gender"];
+    return [TSDKMember genderFromString:genderString];
+}
+
+- (void)setGender:(TSDKMemberGender)gender {
+    NSString *genderString = [TSDKMember stringFromGender:gender];
+    [self setString:genderString forKey:@"gender"];
+}
+
++ (TSDKMemberGender)genderFromString:(NSString *)string {
+    if([string.lowercaseString isEqualToString:@"female"]) {
+        return TSDKMemberGenderFemale;
+    } else if([string.lowercaseString isEqualToString:@"male"]) {
+        return TSDKMemberGenderMale;
+    } else {
+        return TSDKMemberGenderUnknown;
+    }
+}
+
++ (NSString *)stringFromGender:(TSDKMemberGender)gender {
+    switch (gender) {
+        case TSDKMemberGenderFemale:
+            return @"Female";
+            break;
+        case TSDKMemberGenderMale:
+            return @"Male";
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
+
 - (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type {
     NSString *messageTypeValue;
     switch (type) {
