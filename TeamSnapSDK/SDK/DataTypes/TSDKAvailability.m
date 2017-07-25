@@ -23,7 +23,7 @@
 - (TSDKAvailabilityState)statusCode {
     NSInteger result = [super getInteger:@"status_code"];
     if (result == NSNotFound) {
-        return TSDKAvailabilityIsUnknown;
+        return TSDKAvailabilityStateIsUnknown;
     } else {
         return result;
     }
