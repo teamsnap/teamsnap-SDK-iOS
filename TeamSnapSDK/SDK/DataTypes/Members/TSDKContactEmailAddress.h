@@ -18,7 +18,7 @@
 @property (nonatomic, weak) NSString *_Nullable invitationState; //Example: new
 @property (nonatomic, assign) BOOL isInvited; //Example: 1
 @property (nonatomic, assign) BOOL isAccepted; //Example: 0
-@property (nonatomic, assign) NSInteger receivesTeamEmails; //Example: 0
+@property (nonatomic, assign) BOOL receivesTeamEmails; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable contactId; //Example: 210077327
 @property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2017-07-20T23:30:27Z
 @property (nonatomic, weak) NSString *_Nullable invitationCode; //Example: 0b79ddef80a8c334333a41a6
