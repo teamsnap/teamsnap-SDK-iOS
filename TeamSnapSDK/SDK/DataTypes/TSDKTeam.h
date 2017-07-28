@@ -27,6 +27,7 @@
 @property (nonatomic, weak) NSDate *_Nullable lastAccessedAt; //Example: 2016-02-22T21:32:04Z
 @property (nonatomic, weak) NSString *_Nullable timeZoneIanaName; //Example: America/Denver
 @property (nonatomic, weak) NSString *_Nullable locationPostalCode; //Example: 80302
+@property (nonatomic, weak) NSString *_Nullable locationState; //Example: 80302
 @property (nonatomic, weak) NSString *_Nullable name; //Example: TeamSnap
 @property (nonatomic, weak) NSString *_Nullable locationLongitude; //Example: -105.349559
 @property (nonatomic, weak) NSString *_Nullable planId; //Example: 26
@@ -44,6 +45,7 @@
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
 @property (nonatomic, assign) BOOL isHiddenOnDashboard;
+@property (nonatomic, assign) BOOL isGameDay;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroups;
 @property (nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;

@@ -16,25 +16,25 @@
     if (self) {
         NSIndexSet *availableIndexes = [availabilities indexesOfObjectsPassingTest:^BOOL(TSDKAvailability * _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
             NSLog(@"%ld - %@", (long)availability.statusCode, availability.status);
-            return availability.statusCode == TSDKAvailabilityIsAvailable;
+            return availability.statusCode == TSDKAvailabilityStateIsAvailable;
         }];
         
         _availabile = [availabilities objectsAtIndexes:availableIndexes];
         
         NSIndexSet *unknownAvailableIndexes = [availabilities indexesOfObjectsPassingTest:^BOOL(TSDKAvailability * _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
-            return availability.statusCode == TSDKAvailabilityIsUnknown;
+            return availability.statusCode == TSDKAvailabilityStateIsUnknown;
         }];
         
         _unknwownAvailability = [availabilities objectsAtIndexes:unknownAvailableIndexes];
         
         NSIndexSet *notAvailableIndexes = [availabilities indexesOfObjectsPassingTest:^BOOL(TSDKAvailability * _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
-            return availability.statusCode == TSDKAvailabilityIsNotAvailable;
+            return availability.statusCode == TSDKAvailabilityStateIsNotAvailable;
         }];
         
         _notAvailabile = [availabilities objectsAtIndexes:notAvailableIndexes];
         
         NSIndexSet *maybeAvailableIndexes = [availabilities indexesOfObjectsPassingTest:^BOOL(TSDKAvailability * _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
-            return availability.statusCode == TSDKAvailabilityIsMaybeAvailable;
+            return availability.statusCode == TSDKAvailabilityStateIsMaybeAvailable;
         }];
         
         _maybeAvailabile = [availabilities objectsAtIndexes:maybeAvailableIndexes];

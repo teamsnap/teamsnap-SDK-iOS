@@ -8,6 +8,7 @@
 
 #import "TSDKContact.h"
 #import "NSMutableString+TSDKConveniences.h"
+#import "NSURL+TSDKConveniences.h"
 
 @implementation TSDKContact
 
@@ -34,15 +35,24 @@
     return YES;
 }
 
-- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
-    NSDictionary *searchParams;
-    if(type == TSDKMessageTypeAlert) {
-        searchParams = @{@"message_type": @"alert"};
-    } else if(type == TSDKMessageTypeEmail) {
-        searchParams = @{@"message_type": @"email"};
+- (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type {
+    NSString *messageTypeValue;
+    switch (type) {
+        case TSDKMessageTypeAlert:
+            messageTypeValue = @"alert";
+            break;
+        case TSDKMessageTypeEmail:
+            messageTypeValue = @"email";
+            break;
+        default:
+            break;
     }
-    
-    [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
+    NSURLQueryItem *typeSearchParameter = [NSURLQueryItem queryItemWithName:@"message_type" value:messageTypeValue];
+    return [self.linkMessages URLByAppendingQueryItem:typeSearchParameter];
+}
+
+- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
+    [self arrayFromLink:[self urlForMessageType:type] searchParams:nil withConfiguration:configuration completion:completion];
 }
 
 - (NSString *_Nullable)contactId {

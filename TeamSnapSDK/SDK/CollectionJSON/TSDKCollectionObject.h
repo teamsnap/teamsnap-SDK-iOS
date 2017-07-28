@@ -16,6 +16,9 @@
 @class TSDKCollectionJSON;
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class TSDKCollectionJSON;
+
 @protocol TSDKCollectionObjectBundledDataProtocol <NSObject>
 
 + (NSURL *_Nullable)bundledFileURL;
@@ -85,11 +88,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
 + (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
+- (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id> *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;
 + (instancetype _Nullable)collectionObjectFromDataInFileURL:(NSURL *)fileURL;
 
 @end
+
 NS_ASSUME_NONNULL_END
