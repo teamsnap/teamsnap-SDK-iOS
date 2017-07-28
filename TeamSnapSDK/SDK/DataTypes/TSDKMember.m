@@ -154,30 +154,6 @@
     }
 }
 
--(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
-    
-    NSDictionary *searchParams;
-    if(type == TSDKMessageTypeAlert) {
-        searchParams = @{@"message_type": @"alert"};
-    } else if(type == TSDKMessageTypeEmail) {
-        searchParams = @{@"message_type": @"email"};
-    }
-}
-
-+ (NSString *)stringFromGender:(TSDKMemberGender)gender {
-    switch (gender) {
-        case TSDKMemberGenderFemale:
-            return @"Female";
-            break;
-        case TSDKMemberGenderMale:
-            return @"Male";
-            break;
-        default:
-            return nil;
-            break;
-    }
-}
-
 - (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type {
     NSString *messageTypeValue;
     switch (type) {
