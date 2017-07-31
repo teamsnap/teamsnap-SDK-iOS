@@ -10,7 +10,7 @@
 
 @implementation TSDKLeagueCustomField
 
-@dynamic helpText, name, validationType, divisionId, teamCanEdit, teamCanRead, required, options, linkTeams, linkLeagueCustomData;
+@dynamic helpText, name, validationType, divisionId, teamCanEdit, teamCanRead, position, required, options, linkTeams, linkLeagueCustomData;
 
 + (NSString *)SDKType {
     return @"league_custom_field";
