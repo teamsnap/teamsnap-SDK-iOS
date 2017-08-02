@@ -143,7 +143,7 @@
  @param asMemberId The Member to send the invite as
  @param completion Called when the action is completed
  */
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nonnull)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion __attribute__((deprecated));
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nonnull)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 
 /**
@@ -153,7 +153,7 @@
  @param asMemberId The Member to send the invite as
  @param completion Called when the action is completed
  */
-- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nullable)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion __attribute__((deprecated));
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *_Nullable)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 + (void)actionImportMembers:(NSArray <TSDKMember *> *_Nonnull)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
