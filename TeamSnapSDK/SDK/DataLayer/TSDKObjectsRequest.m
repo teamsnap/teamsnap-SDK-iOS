@@ -88,7 +88,9 @@ static NSArray *knownCompletionTypes;
                 }
             }
         }
-        free(classList);
+        if(classList != NULL) {
+            free(classList);
+        }
         supportedSDKObjects = supportedbjects;
     }
     return  supportedSDKObjects;
