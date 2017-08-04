@@ -73,7 +73,7 @@ static NSArray *knownCompletionTypes;
 
 + (NSArray *)supportedSDKObjects {
     if (!supportedSDKObjects) {
-        NSMutableArray *supportedbjects = [[NSMutableArray alloc] init];
+        NSMutableArray *supporteObjects = [[NSMutableArray alloc] init];
 
         unsigned int classCount = 0;
         Class *classList = objc_copyClassList(&classCount);
@@ -84,14 +84,14 @@ static NSArray *knownCompletionTypes;
                 Class class = NSClassFromString(className);
                 
                 if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                    [supportedbjects addObject:class];
+                    [supporteObjects addObject:class];
                 }
             }
         }
         if(classList != NULL) {
             free(classList);
         }
-        supportedSDKObjects = supportedbjects;
+        supportedSDKObjects = supporteObjects;
     }
     return  supportedSDKObjects;
 }
