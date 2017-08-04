@@ -79,11 +79,16 @@ static NSArray *knownCompletionTypes;
         Class *classList = objc_copyClassList(&classCount);
         
         for (unsigned int i = 0; i < classCount; i++) {
-            Class class = classList[i];
-            if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                [supportedbjects addObject:class];
+            NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
+            if([className hasPrefix:@"TSDK"]) {
+                Class class = NSClassFromString(className);
+                
+                if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
+                    [supportedbjects addObject:class];
+                }
             }
         }
+        free(classList);
         supportedSDKObjects = supportedbjects;
     }
     return  supportedSDKObjects;
