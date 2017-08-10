@@ -53,7 +53,7 @@
         cropString = @"fit";
     }
     NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
-                                              @"width":[NSNumber numberWithInteger:height],
+                                              @"width":[NSNumber numberWithInteger:width],
                                               @"crop":cropString};
     
     [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
