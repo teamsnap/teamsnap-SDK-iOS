@@ -66,14 +66,15 @@
 #import "TSDKRootLinks.h"
 #import "TSDKApplePaidFeature.h"
 
-static NSMutableArray *supportedSDKObjects;
+static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
+static dispatch_queue_t accessQueue;
 
 @implementation TSDKObjectsRequest
 
 + (NSArray *)supportedSDKObjects {
     if (!supportedSDKObjects) {
-        NSMutableArray *supporteObjects = [[NSMutableArray alloc] init];
+        NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
 
         unsigned int classCount = 0;
         Class *classList = objc_copyClassList(&classCount);
@@ -84,16 +85,23 @@ static NSArray *knownCompletionTypes;
                 Class class = NSClassFromString(className);
                 
                 if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                    [supporteObjects addObject:class];
+                    [supportedObjects addObject:class];
                 }
             }
         }
         if(classList != NULL) {
             free(classList);
         }
-        supportedSDKObjects = supporteObjects;
+        supportedSDKObjects = [supportedObjects copy];
     }
-    return  supportedSDKObjects;
+    return supportedSDKObjects;
+}
+
++ (dispatch_queue_t)accessQueue {
+    if(!accessQueue) {
+        accessQueue = dispatch_queue_create("com.teamsnap.TSDKObjectsRequest", DISPATCH_QUEUE_SERIAL);
+    }
+    return accessQueue;
 }
 
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
@@ -311,15 +319,21 @@ static NSArray *knownCompletionTypes;
 
 + (TSDKCollectionObject *)teamSnapObjectFromCollectionJSON:(TSDKCollectionJSON *)collectionJSON {
     TSDKCollectionObject *result = nil;
-    static NSMutableDictionary *unknownTypes;
     static NSMutableDictionary *logHeadersForTypes;
     
+#ifdef DEBUG
+    static NSMutableDictionary *unknownTypes;
     if (!unknownTypes) {
-        unknownTypes = [[NSMutableDictionary alloc] init];
+        dispatch_sync(self.accessQueue, ^{
+            unknownTypes = [[NSMutableDictionary alloc] init];
+        });
     }
+#endif
     
     if (!logHeadersForTypes) {
-        logHeadersForTypes = [[NSMutableDictionary alloc] init];
+        dispatch_sync(self.accessQueue, ^{
+            logHeadersForTypes = [[NSMutableDictionary alloc] init];
+        });
     }
     
     
@@ -329,17 +343,24 @@ static NSArray *knownCompletionTypes;
     
     if (classIndex!=NSNotFound) {
         result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
-        if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
-            DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
-        }
+        dispatch_sync(self.accessQueue, ^{
+            if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
+                DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
+                
+                [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
+                
+            }
+        });
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
-        
-        if (![unknownTypes objectForKey:collectionJSON.type]) {
-            DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
-        }
+#ifdef DEBUG
+        dispatch_sync(self.accessQueue, ^{
+            if (![unknownTypes objectForKey:collectionJSON.type]) {
+                DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
+                [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
+            }
+        });
+#endif
     }
 
     return result;
@@ -369,7 +390,6 @@ static NSArray *knownCompletionTypes;
 
 + (void)dumpCompletionTypes {
     NSMutableString *classCompletionBlockString = [[NSMutableString alloc] init];
-    //        NSMutableString *includeHeadersString = [[NSMutableString alloc] init];
     for (Class class in supportedSDKObjects) {
         [classCompletionBlockString appendFormat:@"%@\n", [[class completionBlockArrayDescription]  underscoresToCamelCase]];
     }
