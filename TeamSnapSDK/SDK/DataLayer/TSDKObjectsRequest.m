@@ -68,6 +68,7 @@
 
 static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
+static dispatch_queue_t accessQueue;
 
 @implementation TSDKObjectsRequest
 
@@ -96,8 +97,11 @@ static NSArray *knownCompletionTypes;
     return supportedSDKObjects;
 }
 
-+ (dispatch_queue_t)processingQueue {
-    return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
++ (dispatch_queue_t)accessQueue {
+    if(!accessQueue) {
+        accessQueue = dispatch_queue_create("com.teamsnap.TSDKObjectsRequest", DISPATCH_QUEUE_SERIAL);
+    }
+    return accessQueue;
 }
 
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
@@ -315,17 +319,19 @@ static NSArray *knownCompletionTypes;
 
 + (TSDKCollectionObject *)teamSnapObjectFromCollectionJSON:(TSDKCollectionJSON *)collectionJSON {
     TSDKCollectionObject *result = nil;
-    static NSMutableDictionary *unknownTypes;
     static NSMutableDictionary *logHeadersForTypes;
     
+#ifdef DEBUG
+    static NSMutableDictionary *unknownTypes;
     if (!unknownTypes) {
-        dispatch_barrier_sync([self processingQueue], ^{
+        dispatch_sync(self.accessQueue, ^{
             unknownTypes = [[NSMutableDictionary alloc] init];
         });
     }
+#endif
     
     if (!logHeadersForTypes) {
-        dispatch_barrier_sync([self processingQueue], ^{
+        dispatch_sync(self.accessQueue, ^{
             logHeadersForTypes = [[NSMutableDictionary alloc] init];
         });
     }
@@ -337,21 +343,24 @@ static NSArray *knownCompletionTypes;
     
     if (classIndex!=NSNotFound) {
         result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
-        if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
-            DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            dispatch_barrier_sync([self processingQueue], ^{
+        dispatch_sync(self.accessQueue, ^{
+            if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
+                DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
+                
                 [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
-            });
-        }
+                
+            }
+        });
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
-        
-        if (![unknownTypes objectForKey:collectionJSON.type]) {
-            DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            dispatch_barrier_sync([self processingQueue], ^{
+#ifdef DEBUG
+        dispatch_sync(self.accessQueue, ^{
+            if (![unknownTypes objectForKey:collectionJSON.type]) {
+                DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
                 [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
-            });
-        }
+            }
+        });
+#endif
     }
 
     return result;
