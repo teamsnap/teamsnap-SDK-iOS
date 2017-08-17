@@ -96,6 +96,10 @@ static NSArray *knownCompletionTypes;
     return supportedSDKObjects;
 }
 
++ (dispatch_queue_t)processingQueue {
+    return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
+}
+
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     NSString *searchString = [NSString stringWithFormat:@"teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
     
@@ -315,11 +319,15 @@ static NSArray *knownCompletionTypes;
     static NSMutableDictionary *logHeadersForTypes;
     
     if (!unknownTypes) {
-        unknownTypes = [[NSMutableDictionary alloc] init];
+        dispatch_barrier_sync([self processingQueue], ^{
+            unknownTypes = [[NSMutableDictionary alloc] init];
+        });
     }
     
     if (!logHeadersForTypes) {
-        logHeadersForTypes = [[NSMutableDictionary alloc] init];
+        dispatch_barrier_sync([self processingQueue], ^{
+            logHeadersForTypes = [[NSMutableDictionary alloc] init];
+        });
     }
     
     
@@ -331,14 +339,18 @@ static NSArray *knownCompletionTypes;
         result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
         if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
             DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
+            dispatch_barrier_sync([self processingQueue], ^{
+                [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
+            });
         }
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
         
         if (![unknownTypes objectForKey:collectionJSON.type]) {
             DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
+            dispatch_barrier_sync([self processingQueue], ^{
+                [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
+            });
         }
     }
 
