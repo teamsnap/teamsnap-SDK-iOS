@@ -66,14 +66,14 @@
 #import "TSDKRootLinks.h"
 #import "TSDKApplePaidFeature.h"
 
-static NSMutableArray *supportedSDKObjects;
+static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
 
 @implementation TSDKObjectsRequest
 
 + (NSArray *)supportedSDKObjects {
     if (!supportedSDKObjects) {
-        NSMutableArray *supporteObjects = [[NSMutableArray alloc] init];
+        NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
 
         unsigned int classCount = 0;
         Class *classList = objc_copyClassList(&classCount);
@@ -84,16 +84,16 @@ static NSArray *knownCompletionTypes;
                 Class class = NSClassFromString(className);
                 
                 if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                    [supporteObjects addObject:class];
+                    [supportedObjects addObject:class];
                 }
             }
         }
         if(classList != NULL) {
             free(classList);
         }
-        supportedSDKObjects = supporteObjects;
+        supportedSDKObjects = [supportedObjects copy];
     }
-    return  supportedSDKObjects;
+    return supportedSDKObjects;
 }
 
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
@@ -369,7 +369,6 @@ static NSArray *knownCompletionTypes;
 
 + (void)dumpCompletionTypes {
     NSMutableString *classCompletionBlockString = [[NSMutableString alloc] init];
-    //        NSMutableString *includeHeadersString = [[NSMutableString alloc] init];
     for (Class class in supportedSDKObjects) {
         [classCompletionBlockString appendFormat:@"%@\n", [[class completionBlockArrayDescription]  underscoresToCamelCase]];
     }
