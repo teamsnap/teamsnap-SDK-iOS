@@ -319,50 +319,23 @@ static dispatch_queue_t accessQueue;
 
 + (TSDKCollectionObject *)teamSnapObjectFromCollectionJSON:(TSDKCollectionJSON *)collectionJSON {
     TSDKCollectionObject *result = nil;
-    static NSMutableDictionary *logHeadersForTypes;
     
-#ifdef DEBUG
-    static NSMutableDictionary *unknownTypes;
-    if (!unknownTypes) {
-        dispatch_sync(self.accessQueue, ^{
-            unknownTypes = [[NSMutableDictionary alloc] init];
-        });
-    }
-#endif
+    __block NSArray *supportedSDKObjects;
     
-    if (!logHeadersForTypes) {
-        dispatch_sync(self.accessQueue, ^{
-            logHeadersForTypes = [[NSMutableDictionary alloc] init];
-        });
-    }
+    dispatch_sync([self accessQueue], ^{
+        supportedSDKObjects = [self.supportedSDKObjects copy];
+    });
     
-    
-    NSUInteger classIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class objClass, NSUInteger idx, BOOL *stop) {
+    NSUInteger classIndex = [supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class objClass, NSUInteger idx, BOOL *stop) {
         return [[objClass SDKType] isEqualToString:collectionJSON.type];
     }];
     
     if (classIndex!=NSNotFound) {
-        result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
-        dispatch_sync(self.accessQueue, ^{
-            if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
-                DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-                
-                [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
-                
-            }
-        });
+        result = [(TSDKCollectionObject *)[[supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
-#ifdef DEBUG
-        dispatch_sync(self.accessQueue, ^{
-            if (![unknownTypes objectForKey:collectionJSON.type]) {
-                DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-                [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
-            }
-        });
-#endif
     }
-
+    
     return result;
 }
 
@@ -378,6 +351,12 @@ static dispatch_queue_t accessQueue;
 }
 
 + (NSArray *)knownCompletionTypes {
+    __block NSArray *supportedSDKObjects;
+    
+    dispatch_sync([self accessQueue], ^{
+        supportedSDKObjects = [self.supportedSDKObjects copy];
+    });
+
     if (!knownCompletionTypes) {
         NSMutableArray *completionTypes = [[NSMutableArray alloc] init];
         for (Class class in supportedSDKObjects) {
@@ -385,10 +364,16 @@ static dispatch_queue_t accessQueue;
         }
         knownCompletionTypes = [NSArray arrayWithArray:completionTypes];
     }
-    return knownCompletionTypes;
+    return [knownCompletionTypes copy];
 }
 
 + (void)dumpCompletionTypes {
+    __block NSArray *supportedSDKObjects;
+    
+    dispatch_sync([self accessQueue], ^{
+        supportedSDKObjects = [self.supportedSDKObjects copy];
+    });
+
     NSMutableString *classCompletionBlockString = [[NSMutableString alloc] init];
     for (Class class in supportedSDKObjects) {
         [classCompletionBlockString appendFormat:@"%@\n", [[class completionBlockArrayDescription]  underscoresToCamelCase]];
@@ -398,21 +383,33 @@ static dispatch_queue_t accessQueue;
 }
 
 + (NSString *)typeForRel:(NSString *)rel {
-    NSInteger typeIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+    __block NSArray *supportedSDKObjects;
+    
+    dispatch_sync([self accessQueue], ^{
+        supportedSDKObjects = [self.supportedSDKObjects copy];
+    });
+
+    NSInteger typeIndex = [supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
         return [[class SDKREL] isEqualToString:rel];
     }];
     if (typeIndex != NSNotFound) {
-        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKType];
+        return [[supportedSDKObjects objectAtIndex:typeIndex] SDKType];
     }
     return nil;
 }
 
 + (NSString *)relForType:(NSString *)type {
-    NSInteger typeIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+    __block NSArray *supportedSDKObjects;
+    
+    dispatch_sync([self accessQueue], ^{
+        supportedSDKObjects = [self.supportedSDKObjects copy];
+    });
+
+    NSInteger typeIndex = [supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
         return [[class SDKType] isEqualToString:type];
     }];
     if (typeIndex != NSNotFound) {
-        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKREL];
+        return [[supportedSDKObjects objectAtIndex:typeIndex] SDKREL];
     }
     return nil;
 }
