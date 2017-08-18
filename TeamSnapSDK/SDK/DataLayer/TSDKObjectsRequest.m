@@ -68,7 +68,6 @@
 
 static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
-static dispatch_queue_t accessQueue;
 
 @implementation TSDKObjectsRequest
 
