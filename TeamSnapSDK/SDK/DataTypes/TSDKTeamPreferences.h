@@ -16,11 +16,11 @@ typedef NS_ENUM(NSInteger, TSDKTeamPreferenceAssignmentsEnabledFor) {
 };
 
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSInteger, TSDKTeamPreferenceAvailabilitiesSortOrder) {
     TSDKTeamPreferenceAvailabilitiesSortOrderName,
     TSDKTeamPreferenceAvailabilitiesSortOrderJerseyNumber,
     TSDKTeamPreferenceAvailabilitiesSortOrderDateSet,
-} TSDKTeamPreferenceAvailabilitiesSortOrder;
+};
 
 typedef enum : NSUInteger {
     TSDKTeamPreferenceMemberSortOrderFirstName,
