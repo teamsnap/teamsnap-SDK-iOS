@@ -113,6 +113,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPublicSite;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberPhotos;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPhotos;
+@property (nonatomic, weak) NSURL *_Nullable linkTeamPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamLogoPhotoFile;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
@@ -162,6 +163,7 @@
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
 
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
+- (NSURL * _Nullable)teamPhotoForWidth:(NSInteger)width height:(NSInteger)height;
 
 + (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 

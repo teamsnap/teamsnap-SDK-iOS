@@ -66,34 +66,37 @@
 #import "TSDKRootLinks.h"
 #import "TSDKApplePaidFeature.h"
 
-static NSMutableArray *supportedSDKObjects;
+static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
 
 @implementation TSDKObjectsRequest
 
 + (NSArray *)supportedSDKObjects {
     if (!supportedSDKObjects) {
-        NSMutableArray *supporteObjects = [[NSMutableArray alloc] init];
-
-        unsigned int classCount = 0;
-        Class *classList = objc_copyClassList(&classCount);
-        
-        for (unsigned int i = 0; i < classCount; i++) {
-            NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
-            if([className hasPrefix:@"TSDK"]) {
-                Class class = NSClassFromString(className);
-                
-                if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                    [supporteObjects addObject:class];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
+            
+            unsigned int classCount = 0;
+            Class *classList = objc_copyClassList(&classCount);
+            
+            for (unsigned int i = 0; i < classCount; i++) {
+                NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
+                if([className hasPrefix:@"TSDK"]) {
+                    Class class = NSClassFromString(className);
+                    
+                    if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
+                        [supportedObjects addObject:class];
+                    }
                 }
             }
-        }
-        if(classList != NULL) {
-            free(classList);
-        }
-        supportedSDKObjects = supporteObjects;
+            if(classList != NULL) {
+                free(classList);
+            }
+            supportedSDKObjects = [supportedObjects copy];
+        });
     }
-    return  supportedSDKObjects;
+    return supportedSDKObjects;
 }
 
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
@@ -311,37 +314,17 @@ static NSArray *knownCompletionTypes;
 
 + (TSDKCollectionObject *)teamSnapObjectFromCollectionJSON:(TSDKCollectionJSON *)collectionJSON {
     TSDKCollectionObject *result = nil;
-    static NSMutableDictionary *unknownTypes;
-    static NSMutableDictionary *logHeadersForTypes;
-    
-    if (!unknownTypes) {
-        unknownTypes = [[NSMutableDictionary alloc] init];
-    }
-    
-    if (!logHeadersForTypes) {
-        logHeadersForTypes = [[NSMutableDictionary alloc] init];
-    }
-    
-    
+
     NSUInteger classIndex = [self.supportedSDKObjects indexOfObjectPassingTest:^BOOL(Class objClass, NSUInteger idx, BOOL *stop) {
         return [[objClass SDKType] isEqualToString:collectionJSON.type];
     }];
     
     if (classIndex!=NSNotFound) {
         result = [(TSDKCollectionObject *)[[self.supportedSDKObjects objectAtIndex:classIndex] alloc] initWithCollection:collectionJSON];
-        if (result.logHeader && ![logHeadersForTypes objectForKey:collectionJSON.type]) {
-            DLog(@"type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            [logHeadersForTypes setObject:@"Logged" forKey:collectionJSON.type];
-        }
     } else {
         result = [[TSDKCollectionObject alloc] initWithCollection:collectionJSON];
-        
-        if (![unknownTypes objectForKey:collectionJSON.type]) {
-            DLog(@"Unknown type: %@\n%@", collectionJSON.type, [collectionJSON getObjectiveCHeaderSkeleton]);
-            [unknownTypes setValue:[collectionJSON getObjectiveCHeaderSkeleton] forKey:collectionJSON.type];
-        }
     }
-
+    
     return result;
 }
 
@@ -359,21 +342,20 @@ static NSArray *knownCompletionTypes;
 + (NSArray *)knownCompletionTypes {
     if (!knownCompletionTypes) {
         NSMutableArray *completionTypes = [[NSMutableArray alloc] init];
-        for (Class class in supportedSDKObjects) {
+        for (Class class in self.supportedSDKObjects) {
             [completionTypes addObject:[class completionBlockTypeName]];
         }
         knownCompletionTypes = [NSArray arrayWithArray:completionTypes];
     }
-    return knownCompletionTypes;
+    return [knownCompletionTypes copy];
 }
 
 + (void)dumpCompletionTypes {
     NSMutableString *classCompletionBlockString = [[NSMutableString alloc] init];
-    //        NSMutableString *includeHeadersString = [[NSMutableString alloc] init];
-    for (Class class in supportedSDKObjects) {
+    for (Class class in self.supportedSDKObjects) {
         [classCompletionBlockString appendFormat:@"%@\n", [[class completionBlockArrayDescription]  underscoresToCamelCase]];
     }
-    DLog(@"\n%@", [supportedSDKObjects componentsJoinedByString:@","]);
+    DLog(@"\n%@", [self.supportedSDKObjects componentsJoinedByString:@","]);
     DLog(@"\n%@",classCompletionBlockString);
 }
 
@@ -382,7 +364,7 @@ static NSArray *knownCompletionTypes;
         return [[class SDKREL] isEqualToString:rel];
     }];
     if (typeIndex != NSNotFound) {
-        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKType];
+        return [[self.supportedSDKObjects objectAtIndex:typeIndex] SDKType];
     }
     return nil;
 }
@@ -392,7 +374,7 @@ static NSArray *knownCompletionTypes;
         return [[class SDKType] isEqualToString:type];
     }];
     if (typeIndex != NSNotFound) {
-        return [[[self supportedSDKObjects] objectAtIndex:typeIndex] SDKREL];
+        return [[self.supportedSDKObjects objectAtIndex:typeIndex] SDKREL];
     }
     return nil;
 }

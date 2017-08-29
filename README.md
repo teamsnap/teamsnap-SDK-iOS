@@ -14,7 +14,7 @@ make sure it appears under your `{target_name}->Build Phases->Link Binary With L
 # Podfile
 ```
 platform :ios, '8.0'
-pod 'TeamSnapSDK', :git => 'git@github.com:teamsnap/teamsnap-SDK-iOS', :branch => 'master'
+pod 'TeamSnapSDK', :git => 'git@github.com:teamsnap/teamsnap-SDK-iOS.git', :branch => 'master'
 ```
 
 If you are using Swift, be sure to add `use_frameworks!` and set your target to iOS 8+:
