@@ -699,7 +699,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:_collection forKey:@"collection"];
-    [coder encodeObject:_lastUpdate forKey:@"lastUpdate"];
+    if (_lastUpdate) {
+        [coder encodeObject:_lastUpdate forKey:@"lastUpdate"];
+    }
 }
 
 - (BOOL)isNewObject {
