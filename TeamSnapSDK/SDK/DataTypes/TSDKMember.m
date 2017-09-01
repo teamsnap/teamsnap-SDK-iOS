@@ -20,6 +20,7 @@
 #import "TSDKConstants.h"
 #import "NSDate+TSDKConveniences.h"
 #import "NSURL+TSDKConveniences.h"
+#import "TSDKDivision.h"
 
 @implementation TSDKMember
 
@@ -282,6 +283,15 @@
             completion(NO, NO, [NSArray array], error);
         }
     }
+}
+
++ (NSURL * _Nullable)commissionerQueryFor:(TSDKDivision *)division {
+    TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"commissioners"];
+    NSURLQueryItem *divisionParameter = [NSURLQueryItem queryItemWithName:@"division_id" value:[division objectIdentifier]];
+    NSURL *queryURL = [NSURL URLWithString:queryCommand.href];
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:queryURL resolvingAgainstBaseURL:NO];
+    urlComponents.queryItems = @[divisionParameter];
+    return urlComponents.URL;
 }
 
 + (void)queryCommissionersTeamid:(NSString *_Nullable)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {
