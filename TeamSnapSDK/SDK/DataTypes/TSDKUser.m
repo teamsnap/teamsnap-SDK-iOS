@@ -202,4 +202,22 @@
     return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:@"current"];
 }
 
+- (TSDKHighestRoleType)highestRoleKey {
+    if ([self.highestRole isEqualToString:@"non-player"]) {
+        return TSDKHighestRoleTypeNonPlayer;
+    } else if ([self.highestRole isEqualToString:@"player"]) {
+        return TSDKHighestRoleTypePlayer;
+    } else if ([self.highestRole isEqualToString:@"manager"]) {
+        return TSDKHighestRoleTypeManager;
+    } else if ([self.highestRole isEqualToString:@"owner"]) {
+        return TSDKHighestRoleTypeOwner;
+    } else if ([self.highestRole isEqualToString:@"commissioner"]) {
+        return TSDKHighestRoleTypeCommissioner;
+    } else if ([self.highestRole isEqualToString:@"league_owner"]) {
+        return TSDKHighestRoleTypeLeagueOwner;
+    }
+    
+    return TSDKHighestRoleTypeUnknown;
+}
+
 @end

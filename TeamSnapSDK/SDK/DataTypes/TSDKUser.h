@@ -10,6 +10,17 @@
 #import "TSDKDataRequest.h"
 #import "TSDKMessage.h"
 
+typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
+    TSDKHighestRoleTypeNonPlayer = 0,
+    TSDKHighestRoleTypePlayer = 1,
+    TSDKHighestRoleTypeManager = 2,
+    TSDKHighestRoleTypeOwner = 3,
+    TSDKHighestRoleTypeCommissioner = 4,
+    TSDKHighestRoleTypeLeagueOwner = 5,
+    TSDKHighestRoleTypeUnknown = 6
+    
+};
+
 @interface TSDKUser : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger teamsCount;
@@ -44,6 +55,9 @@
 @property (nonatomic, weak) NSURL *_Nullable linkActiveDivisions;
 
 // Non Auto-generated
+
+@property (nonatomic, assign, readonly) TSDKHighestRoleType highestRoleKey;
+
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)TeamsWithIDs:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
