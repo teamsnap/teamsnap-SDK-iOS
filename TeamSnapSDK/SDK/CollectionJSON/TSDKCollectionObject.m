@@ -31,7 +31,12 @@ static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
 +(NSDictionary *)templateForClass:(NSString *)className {
-    return [_templates objectForKey:className];
+    if (_templates) {
+        @synchronized (self.templates) {
+            return [_templates objectForKey:className];
+        }
+    }
+    return nil;
 }
 
 - (NSMutableDictionary *)cachedDatesLookup {
@@ -50,10 +55,12 @@ static NSMutableDictionary *_classURLs;
 }
 
 +(void)setTemplate:(NSDictionary *)template forClass:(NSString *)className {
-    if (template) {
-        [self.templates setObject:template forKey:className];
-    } else {
-        [_templates removeObjectForKey:className];
+    @synchronized (self.templates) {
+        if (template) {
+            [self.templates setObject:template forKey:className];
+        } else {
+            [_templates removeObjectForKey:className];
+        }
     }
 }
 
