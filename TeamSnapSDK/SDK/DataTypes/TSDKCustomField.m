@@ -14,44 +14,57 @@ NSString * _Nonnull const TSDKCustomDataTypeBoolString = @"Check Box";
 NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
 
 @implementation TSDKCustomField
-@dynamic name, teamId, kind, options, helpText, linkTeam, linkCustomData;
+@dynamic name, teamId, options, helpText, linkTeam, linkCustomData;
 
 + (NSString *)SDKType {
     return @"custom_field";
 }
 
-+ (CustomDataFieldType)fieldTypeForString:(NSString *)kind {
+- (TSDKCustomDataFieldType)fieldType {
+    return [TSDKCustomField fieldTypeForString:[self getString:@"kind"]];
+}
+
+- (void)setFieldType:(TSDKCustomDataFieldType)fieldType {
+    [self setString:[TSDKCustomField fieldTypeStringForFieldType:fieldType] forKey:@"kind"];
+}
+
+- (BOOL)teamCanEdit {
+    return YES; // Team level fields always return true. This field is used for League Custom Fields.
+}
+
+- (BOOL)teamCanRead {
+    return YES; // Team level fields always return true. This field is used for League Custom Fields.
+}
+
+- (BOOL)required {
+    return NO;  // Team level fields are never required. This field is used for League Custom Fields.
+}
+
+
++ (TSDKCustomDataFieldType)fieldTypeForString:(NSString *)kind {
     if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeDateString uppercaseString]]) {
-        return TSDKCustomDataTypeDate;
+        return TSDKCustomDataFieldTypeDate;
     } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeMenuString uppercaseString]]) {
-        return TSDKCustomDataTypeMenu;
+        return TSDKCustomDataFieldTypeMenu;
     } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeBoolString uppercaseString]]) {
-        return TSDKCustomDataTypeBool;
-    } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeMenuString uppercaseString]]) {
-        return TSDKCustomDataTypeMenu;
+        return TSDKCustomDataFieldTypeBool;
+    } else if ([[kind uppercaseString] isEqualToString:[TSDKCustomDataTypeTextString uppercaseString]]) {
+        return TSDKCustomDataFieldTypeText;
     } else {
-        return TSDKCustomDataTypeText;
+        return TSDKCustomDataFieldTypeUnknown;
     }
 }
 
-+ (NSString *)fieldTypeStringForFieldType:(CustomDataFieldType)fieldType {
++ (NSString *)fieldTypeStringForFieldType:(TSDKCustomDataFieldType)fieldType {
     NSArray *fieldTypeStringArray = @[TSDKCustomDataTypeDateString,
                                        TSDKCustomDataTypeMenuString,
                                        TSDKCustomDataTypeBoolString,
                                        TSDKCustomDataTypeTextString];
-    if (fieldType != TSDKCustomDataTypeUnknown) {
+    if (fieldType != TSDKCustomDataFieldTypeUnknown) {
         return fieldTypeStringArray[fieldType];
     } else {
         return TSDKCustomDataTypeTextString;
     }
-}
-
-- (CustomDataFieldType)dataType {
-    return [TSDKCustomField fieldTypeForString:self.kind];
-}
-
-- (void)setDataType:(CustomDataFieldType)dataType {
-    self.kind = [TSDKCustomField fieldTypeStringForFieldType:dataType];
 }
 
 @end

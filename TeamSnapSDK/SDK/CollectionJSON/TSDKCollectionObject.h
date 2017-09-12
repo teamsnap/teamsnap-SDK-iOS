@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TSDKCollectionObject : NSObject <NSCoding, TSDKPersistenceFilePath>
+@interface TSDKCollectionObject : NSObject <NSCoding, NSCopying, TSDKPersistenceFilePath>
 
 @property (nonatomic, strong, nullable) TSDKCollectionJSON * collection;
 @property (nonatomic, strong, nullable) NSMutableDictionary * changedValues;
@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)undoChanges;
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * )queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
+- (void)saveWithURL:(NSURL * _Nonnull)url completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;

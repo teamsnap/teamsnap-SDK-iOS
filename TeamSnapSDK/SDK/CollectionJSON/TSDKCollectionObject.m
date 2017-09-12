@@ -950,6 +950,17 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 + (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
     NSString *parentObjectPathComponent = [NSString stringWithFormat:@"%@-%@", [parentObject.class SDKREL], [parentObject objectIdentifier]];
     return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:parentObjectPathComponent] URLByAppendingPathComponent:[self SDKType]];
+    
+}
+
+- (instancetype)copyWithZone:(nullable NSZone *)zone {
+    id copy = [[[self class] allocWithZone:zone] init];
+    
+    if (copy) {
+        [copy setCollection:[[self collection] copy]];
+    }
+    
+    return copy;
 }
 
 + (NSURL * _Nullable)persistenceBaseFilePath {

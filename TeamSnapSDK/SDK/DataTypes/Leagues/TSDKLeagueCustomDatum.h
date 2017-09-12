@@ -19,6 +19,9 @@
 @property (nonatomic, weak) NSURL *_Nullable linkLeagueCustomField;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
+- (NSString *_Nullable)displayValue;
+- (NSString * _Nullable)customFieldId;
+
 @end
 
 @interface TSDKLeagueCustomDatum (ForwardedMethods)
@@ -29,3 +32,5 @@
 
 
 @end
+
+

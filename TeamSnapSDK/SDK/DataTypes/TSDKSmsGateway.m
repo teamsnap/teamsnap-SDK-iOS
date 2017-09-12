@@ -20,4 +20,8 @@
     return @"sms_gateways";
 }
 
+- (NSString *)description {
+    return self.name;
+}
+
 @end

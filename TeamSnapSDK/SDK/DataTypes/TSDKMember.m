@@ -20,6 +20,7 @@
 #import "TSDKConstants.h"
 #import "NSDate+TSDKConveniences.h"
 #import "NSURL+TSDKConveniences.h"
+#import "TSDKDivision.h"
 
 @implementation TSDKMember
 
@@ -42,7 +43,7 @@
 }
 
 - (BOOL)isAtLeastManager {
-    return (self.isManager || self.isOwner);
+    return (self.isManager || self.isOwner || self.isCommissioner || self.isLeagueOwner);
 }
 
 #if TARGET_OS_IPHONE
@@ -53,7 +54,7 @@
         cropString = @"fit";
     }
     NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
-                                              @"width":[NSNumber numberWithInteger:height],
+                                              @"width":[NSNumber numberWithInteger:width],
                                               @"crop":cropString};
     
     [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -282,6 +283,15 @@
             completion(NO, NO, [NSArray array], error);
         }
     }
+}
+
++ (NSURL * _Nullable)commissionerQueryFor:(TSDKDivision *)division {
+    TSDKCollectionQuery *queryCommand = [TSDKMember queryForKey:@"commissioners"];
+    NSURLQueryItem *divisionParameter = [NSURLQueryItem queryItemWithName:@"division_id" value:[division objectIdentifier]];
+    NSURL *queryURL = [NSURL URLWithString:queryCommand.href];
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:queryURL resolvingAgainstBaseURL:NO];
+    urlComponents.queryItems = @[divisionParameter];
+    return urlComponents.URL;
 }
 
 + (void)queryCommissionersTeamid:(NSString *_Nullable)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion {

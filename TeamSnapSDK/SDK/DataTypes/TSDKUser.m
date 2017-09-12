@@ -17,15 +17,13 @@
 
 @interface TSDKUser()
 
-@property (strong, nonatomic) NSMutableArray *myMembersOnTeams;
-
 @end
 
 @implementation TSDKUser {
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, highestRole, isAdmin, displayAdsOnTeamList, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, highestRole, isAdmin, displayAdsOnTeamList, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions, linkContacts;
 
 + (NSString *)SDKType {
     return @"user";
@@ -103,7 +101,7 @@
     return newTeams;
 }
 
-- (void)TeamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+- (void)teamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [TSDKObjectsRequest listTeams:teamIds WithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {
             completion(success, complete, objects, error);
@@ -115,53 +113,6 @@
     [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {
             completion(success, complete, objects, error);
-        }
-    }];
-}
-
-- (void)teamIdsForAllMyTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSMutableArray *teamIds = nil;
-        if (success) {
-            teamIds = [[NSMutableArray alloc] init];
-            for (TSDKMember *member in objects) {
-                NSString *teamId = member.teamId;
-                if ([teamId isEqualToString:@"0"] == NO && teamId.length) {
-                    if (![teamIds containsObject:teamId]) {
-                        [teamIds addObject:teamId];
-                    }
-                }
-            }
-        }
-        if (completion) {
-            completion(success, complete, [NSArray arrayWithArray:teamIds], error);
-        }
-    }];
-}
-
-- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    
-    [self teamIdsForAllMyTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *teamIds, NSError *error) {
-        [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if (completion) {
-                completion(success, complete, objects, error);
-            }
-        }];
-        
-    }];
-
-}
-
-- (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    [self bulkLoadDataTypes:@[[TSDKTeam class], [TSDKTeamPreferences class], [TSDKTeamResults class], [TSDKPlan class]] withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        
-        NSIndexSet *indexes = [objects indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            return [obj isKindOfClass:[TSDKTeam class]];
-        }];
-        
-        NSArray *teams = [objects objectsAtIndexes:indexes];
-        if (completion) {
-            completion(success, complete, teams, error);
         }
     }];
 }

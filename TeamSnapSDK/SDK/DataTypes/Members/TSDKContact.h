@@ -29,6 +29,7 @@
 @property (nonatomic, assign) BOOL isEmailable; //Example: 0
 @property (nonatomic, assign) BOOL allowSharedAccess; //Example: 0
 @property (nonatomic, assign) BOOL isEditable; //Example: 0
+@property (nonatomic, assign) BOOL isDeletable; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable label; //Example: Father
 @property (nonatomic, weak) NSString *_Nullable addressStreet1; //Example:
 @property (nonatomic, weak) NSString *_Nullable invitationDeclined; //Example: **NULL**
@@ -37,6 +38,13 @@
 @property (nonatomic, weak) NSString *_Nullable addressStreet2; //Example: **NULL**
 @property (nonatomic, weak) NSString *_Nullable firstName; //Example: Jack
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, assign) BOOL isManager; //Example: 1
+@property (nonatomic, assign) BOOL isOwner; //Example: 1
+@property (nonatomic, assign) BOOL isCommissioner; //Example: 0
+@property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
+@property (nonatomic, assign) NSInteger emailLimit; //Example: 10, the max number of emails that can be added
+@property (nonatomic, assign) NSInteger position; //Example: 1, a sorting position for displaying Contacts in a list
+@property (nonatomic, assign) BOOL showName; //Example: YES, a flag for displaying a name with a Contact.
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
