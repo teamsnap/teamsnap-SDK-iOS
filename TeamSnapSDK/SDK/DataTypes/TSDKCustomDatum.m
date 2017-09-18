@@ -13,10 +13,18 @@
 @implementation TSDKCustomDatum
 @dynamic name, options, value, isPrivate, memberId, teamId, kind, customFieldId, helpText, linkCustomField, linkMember, linkTeam;
 
-// "Menu"
-// "Check Box"
-// "Text"
-// "Date"
+- (instancetype)initWithField:(TSDKCustomField *_Nonnull)field memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId {
+    self = [super init];
+    if(self) {
+        self.memberId = memberId;
+        self.teamId = teamId;
+        self.kind = field.kind;
+        self.options = field.options;
+        self.customFieldId = field.objectIdentifier;
+        self.name = field.name;
+    }
+    return self;
+}
 
 + (NSString *)SDKType {
     return @"custom_datum";

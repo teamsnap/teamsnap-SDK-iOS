@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
 @property (nonatomic, weak) NSString *_Nullable name; //Example: Size
 @property (nonatomic, weak) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example: "Put your child's t-shirt size here"
+@property (nonatomic, weak) NSString *_Nullable kind;
 
 - (NSString * _Nonnull)objectIdentifier;
 
@@ -36,6 +37,7 @@ typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSArray<NSString *> *_Nullable options;
 @property (nonatomic, weak) NSString *_Nullable helpText; //Example:
+@property (nonatomic, weak) NSString *_Nullable kind;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkCustomData;
 @property (nonatomic, assign) BOOL teamCanEdit; //Example: 1

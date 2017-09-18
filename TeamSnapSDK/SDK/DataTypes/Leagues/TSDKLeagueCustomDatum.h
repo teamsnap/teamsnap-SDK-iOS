@@ -22,6 +22,8 @@
 - (NSString *_Nullable)displayValue;
 - (NSString * _Nullable)customFieldId;
 
+- (instancetype _Nonnull)initWithField:(TSDKLeagueCustomField *_Nonnull)field memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId;
+
 @end
 
 @interface TSDKLeagueCustomDatum (ForwardedMethods)
