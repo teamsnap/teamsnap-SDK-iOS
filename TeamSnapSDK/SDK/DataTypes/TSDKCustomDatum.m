@@ -19,7 +19,7 @@
         self.memberId = memberId;
         self.teamId = teamId;
         self.kind = field.kind;
-        self.options = field.options;
+        self.options = field.options.copy;
         self.customFieldId = field.objectIdentifier;
         self.name = field.name;
     }

@@ -29,7 +29,7 @@
     if(self) {
         self.leagueCustomFieldId = [field objectIdentifier];
         self.name = field.name;
-        self.options = field.options;
+        self.options = field.options.copy;
         self.helpText = field.helpText;
         self.teamCanEdit = field.teamCanEdit;
         self.teamCanRead = field.teamCanRead;
