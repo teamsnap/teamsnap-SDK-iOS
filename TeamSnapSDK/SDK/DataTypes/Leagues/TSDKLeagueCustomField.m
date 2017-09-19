@@ -10,14 +10,14 @@
 
 @implementation TSDKLeagueCustomField
 
-@dynamic helpText, name, validationType, divisionId, teamCanEdit, teamCanRead, position, required, options, linkTeams, linkLeagueCustomData;
+@dynamic helpText, name, validationType, divisionId, teamCanEdit, kind, teamCanRead, position, required, options, linkTeams, linkLeagueCustomData;
 
 + (NSString *)SDKType {
     return @"league_custom_field";
 }
 
 - (TSDKCustomDataFieldType)fieldType {
-    return [TSDKCustomField fieldTypeForString:[self getString:@"kind"]];
+    return [TSDKCustomField fieldTypeForString:self.kind];
 }
 
 - (void)setFieldType:(TSDKCustomDataFieldType)fieldType {

@@ -37,6 +37,8 @@
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 
+- (instancetype _Nonnull )initWithField:(TSDKCustomField *_Nonnull)field memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId;
+
 @end
 
 @interface TSDKCustomDatum (ForwardedMethods)

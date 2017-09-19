@@ -14,14 +14,14 @@ NSString * _Nonnull const TSDKCustomDataTypeBoolString = @"Check Box";
 NSString * _Nonnull const TSDKCustomDataTypeTextString = @"Text";
 
 @implementation TSDKCustomField
-@dynamic name, teamId, options, helpText, linkTeam, linkCustomData;
+@dynamic name, teamId, options, helpText, kind, linkTeam, linkCustomData;
 
 + (NSString *)SDKType {
     return @"custom_field";
 }
 
 - (TSDKCustomDataFieldType)fieldType {
-    return [TSDKCustomField fieldTypeForString:[self getString:@"kind"]];
+    return [TSDKCustomField fieldTypeForString:self.kind];
 }
 
 - (void)setFieldType:(TSDKCustomDataFieldType)fieldType {

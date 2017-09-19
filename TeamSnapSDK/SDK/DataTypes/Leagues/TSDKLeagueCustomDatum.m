@@ -10,6 +10,7 @@
 #import "TSDKCustomField.h"
 #import "NSString+TSDKConveniences.h"
 #import "NSDate+TSDKConveniences.h"
+#import "TSDKLeagueCustomField.h"
 
 @implementation TSDKLeagueCustomDatum
 
@@ -21,6 +22,21 @@
 
 + (NSString *)SDKREL {
     return @"league_custom_data";
+}
+
+- (instancetype)initWithField:(TSDKLeagueCustomField *_Nonnull)field memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId {
+    self = [super init];
+    if(self) {
+        self.leagueCustomFieldId = [field objectIdentifier];
+        self.name = field.name;
+        self.options = field.options.copy;
+        self.helpText = field.helpText;
+        self.teamCanEdit = field.teamCanEdit;
+        self.teamCanRead = field.teamCanRead;
+        self.memberId = memberId;
+        self.teamId = teamId;
+    }
+    return self;
 }
 
 - (NSDate *)dateValue {
