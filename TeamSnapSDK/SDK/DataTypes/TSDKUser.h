@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, assign) BOOL displayAdsOnTeamList;
 @property (nonatomic, weak) NSString * _Nullable highestRole;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
+@property (nonatomic, weak) NSURL *_Nullable linkAdvertisements;
 @property (nonatomic, weak) NSURL *_Nullable linkApnDevices;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamsPreferences;
 @property (nonatomic, weak) NSURL *_Nullable linkPersonas;
@@ -70,6 +71,7 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 
 @interface TSDKUser (ForwardedMethods)
 
+-(void)getAdvertisementsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAdvertisementsArrayCompletionBlock _Nonnull)completion;
 -(void)getApnDevicesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKApnDevicesArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamsPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock _Nullable)completion;
 -(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
