@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TSDKCustomDatum.h"
+#import "TSDKCustomField.h"
 #import "NSDate+TSDKConveniences.h"
 
 @interface TSDKCustomDatumTests : XCTestCase
@@ -28,25 +29,25 @@
 
 - (void)testDataType {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
-    newDatum.kind = TSDKCustomDataTypeMenuString;
+    newDatum.kind = [TSDKCustomField fieldTypeStringForFieldType:TSDKCustomDataFieldTypeMenu];
     
     newDatum.value = @"Hello";
-    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeMenu);
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataFieldTypeMenu);
     
-    newDatum.dataType = TSDKCustomDataTypeDate;
-    XCTAssertEqualObjects(newDatum.kind, TSDKCustomDataTypeDateString);
+    newDatum.dataType = TSDKCustomDataFieldTypeDate;
+    XCTAssertEqualObjects(newDatum.kind, [TSDKCustomField fieldTypeStringForFieldType:TSDKCustomDataFieldTypeDate]);
     
     newDatum.kind = @"Foo";
-    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeText);
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataFieldTypeUnknown);
     
-    newDatum.dataType = TSDKCustomDataTypeUnknown;
-    XCTAssertEqual(newDatum.dataType, TSDKCustomDataTypeText);
-    XCTAssertEqualObjects(newDatum.kind, TSDKCustomDataTypeTextString);
+    newDatum.dataType = TSDKCustomDataFieldTypeUnknown;
+    XCTAssertEqual(newDatum.dataType, TSDKCustomDataFieldTypeText);
+    XCTAssertEqualObjects(newDatum.kind, [TSDKCustomField fieldTypeStringForFieldType:TSDKCustomDataFieldTypeText]);
 }
 
 - (void)testSetDate {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
-    newDatum.kind = TSDKCustomDataTypeMenuString;
+    newDatum.kind = [TSDKCustomField fieldTypeStringForFieldType:TSDKCustomDataFieldTypeMenu];
     newDatum.value = @"Hello";
     
     XCTAssertNil(newDatum.dateValue);
@@ -54,7 +55,7 @@
     newDatum.value = @"1967-05-12";
     XCTAssertNil(newDatum.dateValue);
     
-    newDatum.kind = TSDKCustomDataTypeDateString;
+    newDatum.kind = [TSDKCustomField fieldTypeStringForFieldType:TSDKCustomDataFieldTypeDate];
     XCTAssertNotNil(newDatum.dateValue);
     
     NSDate *newDate = [NSDate dateWithTimeInterval:(3600*24) sinceDate:newDatum.dateValue];
@@ -66,7 +67,7 @@
 
 - (void)testDisplayValue {
     TSDKCustomDatum *newDatum = [[TSDKCustomDatum alloc] init];
-    newDatum.dataType = TSDKCustomDataTypeDate;
+    newDatum.dataType = TSDKCustomDataFieldTypeDate;
 
     newDatum.value = @"1967-05-12";
     XCTAssertEqualObjects(@"May 12, 1967", newDatum.displayValue);
@@ -77,7 +78,7 @@
     newDatum.dateValue = newDate;
     XCTAssertEqualObjects(@"May 13, 1967", newDatum.displayValue);
     
-    newDatum.dataType = TSDKCustomDataTypeBool;
+    newDatum.dataType = TSDKCustomDataFieldTypeBool;
     newDatum.value = @"1";
     
     XCTAssertEqualObjects(newDatum.displayValue, @"Yes");
