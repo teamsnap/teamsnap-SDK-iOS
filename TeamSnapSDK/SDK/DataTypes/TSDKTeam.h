@@ -51,6 +51,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;
 @property (nonatomic, weak) NSURL *_Nullable linkMembersPreferences;
 @property (nonatomic, weak) NSURL *_Nullable linkAvailabilities;
+@property (nonatomic, weak) NSURL *_Nullable linkAdvertisements;
 @property (nonatomic, weak) NSURL *_Nullable linkForumTopics;
 @property (nonatomic, weak) NSURL *_Nullable linkOwner;
 @property (nonatomic, weak) NSURL *_Nullable linkDivisionMembersPreferences;
@@ -179,6 +180,7 @@
 -(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock _Nullable)completion;
 -(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getAdvertisementsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAdvertisementsArrayCompletionBlock _Nonnull)completion;
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAvailabilityArrayCompletionBlock _Nullable)completion;
 -(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumTopicArrayCompletionBlock _Nullable)completion;
 -(void)getOwnerWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
