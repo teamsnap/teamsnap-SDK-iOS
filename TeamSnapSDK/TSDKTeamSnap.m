@@ -181,7 +181,7 @@
         }
     };
     
-    if (self.rootLinks) {
+    if (self.rootLinks && configuration.forceReload == NO) {
         [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
     } else {
         TSDKTeamSnap __weak *weakSelf = self;
