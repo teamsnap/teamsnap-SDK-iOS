@@ -132,19 +132,19 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     }
 }
 
-- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent preferShortLabel:(BOOL)preferShortLabel {
-    if (self.isGame && opponent) {
+- (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel {
+    if (self.isGame && self.opponentName.length) {
         if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
             if ((self.label) && (![self.label isEqualToString:@""])) {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ at %2$@", @"Indicating there is an Event Named #1 at opponent #2"), self.label, opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ at %2$@", @"Indicating there is an Event Named #1 at opponent #2"), self.label, self.opponentName];
             } else {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-at %@", @"Indicating there is an Event at OPPONENT"), opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-at %@", @"Indicating there is an Event at OPPONENT"), self.opponentName];
             }
         } else {
             if (self.label && (![self.label isEqualToString:@""])) {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ vs. %2$@", @"Indicating there is an Event Named #1 against opponent #2"), self.label, opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ vs. %2$@", @"Indicating there is an Event Named #1 against opponent #2"), self.label, self.opponentName];
             } else {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-vs. %@", @"Indicating there is an Event against OPPONENT"), opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-vs. %@", @"Indicating there is an Event against OPPONENT"), self.opponentName];
             }
         }
     } else {
