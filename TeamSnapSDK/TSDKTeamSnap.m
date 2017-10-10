@@ -73,7 +73,7 @@
             }
         }];
     } else {
-        [self processInitialConnectionWithConfiguration:nil completion:completion];
+        [self processInitialConnectionWithConfiguration:configuration completion:completion];
     }
 }
 
