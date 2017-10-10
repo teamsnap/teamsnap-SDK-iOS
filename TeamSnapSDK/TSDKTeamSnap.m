@@ -79,7 +79,7 @@
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, NSError *error))completion {
     [self setOAuthToken:OAuthToken];
-    [self connectWithConfiguration:nil completion:completion];
+    [self connectWithConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
 }
 
 - (void)logout {
