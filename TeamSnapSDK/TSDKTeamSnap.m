@@ -73,13 +73,13 @@
             }
         }];
     } else {
-        [self processInitialConnectionWithConfiguration:nil completion:completion];
+        [self processInitialConnectionWithConfiguration:configuration completion:completion];
     }
 }
 
 - (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, NSError *error))completion {
     [self setOAuthToken:OAuthToken];
-    [self connectWithConfiguration:nil completion:completion];
+    [self connectWithConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
 }
 
 - (void)logout {
@@ -181,7 +181,7 @@
         }
     };
     
-    if (self.rootLinks) {
+    if (self.rootLinks && configuration.forceReload == NO) {
         [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
     } else {
         TSDKTeamSnap __weak *weakSelf = self;
