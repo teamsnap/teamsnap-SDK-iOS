@@ -78,6 +78,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) NSString *_Nullable ageGroup; //Example: **NULL**
 @property (nonatomic, assign) BOOL canTeamAddMembers;
 @property (nonatomic, assign) BOOL canTeamDeleteMembers;
+@property (nonatomic, assign) BOOL canDisplayTeamStore;
 
 @property (nonatomic, weak) NSString *_Nullable currencySymbol; //Example: $
 @property (nonatomic, assign) NSInteger hideHeader; //Example: 0
