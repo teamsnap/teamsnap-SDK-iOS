@@ -5,11 +5,11 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, TSDKMessageDatumMessageType) {
     TSDKMessageDatumMessageTypeAlert,
     TSDKMessageDatumMessageTypeEmail,
-    TSDKMessageDatumMessageTypeUnknown
-} TSDKMessageDatumMessageType;
+    TSDKMessageDatumMessageTypeUnknown,
+};
 
 @interface TSDKMessageDatum : TSDKCollectionObject
 
