@@ -5,6 +5,12 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef enum : NSUInteger {
+    TSDKMessageDatumMessageTypeAlert,
+    TSDKMessageDatumMessageTypeEmail,
+    TSDKMessageDatumMessageTypeUnknown
+} TSDKMessageDatumMessageType;
+
 @interface TSDKMessageDatum : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger unreadCount; //Example: 0
@@ -15,6 +21,9 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeam;
 @property (nonatomic, weak) NSURL *_Nullable linkUser;
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
+
+- (TSDKMessageDatumMessageType)messageTypeOfUnreadCount;
++ (NSString *_Nullable)stringValueForMessageType:(TSDKMessageDatumMessageType)messageType;
 
 @end
 
