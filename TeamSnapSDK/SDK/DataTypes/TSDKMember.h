@@ -40,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isOwner; //Example: 1
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 0
 @property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
+@property (nonatomic, assign) BOOL isDeletable; //Example: 0
 
 - (NSString *)objectIdentifier;
 - (NSString *)fullName;
