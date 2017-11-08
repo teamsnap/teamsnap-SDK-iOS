@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, assign) BOOL displayAdsOnTeamList;
 @property (nonatomic, weak) NSString * _Nullable highestRole;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
+@property (nonatomic, assign) BOOL isEligibleForFreeTrial; //Example: 0
+@property (nonatomic, assign) BOOL hasCc; //Example: 0 
 @property (nonatomic, weak) NSURL *_Nullable linkAdvertisements;
 @property (nonatomic, weak) NSURL *_Nullable linkApnDevices;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamsPreferences;
