@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 - (NSComparisonResult)compareStartDate:(TSDKEvent *_Nonnull)compareEvent;
-- (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel;
+- (NSString *_Nullable)displayNameWithOpponent:(TSDKOpponent *_Nonnull)opponent preferShortLabel:(BOOL)preferShortLabel;
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 @end
