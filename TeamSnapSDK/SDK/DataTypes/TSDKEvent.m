@@ -133,7 +133,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 }
 
 - (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel {
-    if (self.isGame && self.opponentName.length) {
+    if (self.isGame && self.opponentName.length > 0) {
         if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
             if ((self.label) && (![self.label isEqualToString:@""])) {
                 return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ at %2$@", @"Indicating there is an Event Named #1 at opponent #2"), self.label, self.opponentName];
