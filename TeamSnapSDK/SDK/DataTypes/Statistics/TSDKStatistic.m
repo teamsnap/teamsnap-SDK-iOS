@@ -24,7 +24,7 @@
 
 - (NSString *)displayStringForStatisticValue:(NSNumber *)statValue {
 
-    if ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber]) {
+    if ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber] && ![self isPercentage]) {
         return [NSString stringWithFormat:@"%ld", (long)[statValue integerValue]];
     } else {
         NSString *formatString = [NSString stringWithFormat:@"%%.%ldf", (long)self.precision];
