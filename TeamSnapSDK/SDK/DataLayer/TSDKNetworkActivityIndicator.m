@@ -29,17 +29,26 @@
 - (void)startActivity {
     @synchronized(self) {
         _numberOfActivities++;
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    });
 }
 
 - (void)stopActivity {
+    
+    BOOL showIndicator;
     @synchronized(self) {
         if (_numberOfActivities) {
             _numberOfActivities--;
         }
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = (_numberOfActivities > 0);
+        showIndicator = (_numberOfActivities > 0);
     }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = showIndicator;
+    });
 }
 
 @end
