@@ -202,6 +202,36 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     }
 }
 
+- (NSArray <NSString *> * _Nonnull)repeatFrequencyValuesForDisplay {
+    return @[NSLocalizedString(@"Does Not Repeat", @"Does not repeat"), NSLocalizedString(@"Weekly", @"Repeats Weekly"), NSLocalizedString(@"Daily", @"Daily")];
+}
+
+- (TSDKRepeatingEventFrequency)repeatFrequencyFor:(NSString * _Nonnull)displayValue {
+    if([[displayValue lowercaseString] isEqualToString:NSLocalizedString(@"Does Not Repeat", @"Does not repeat")]) {
+        return TSDKRepeatingEventFrequencyNone;
+    } else if([[displayValue lowercaseString] isEqualToString:NSLocalizedString(@"Weekly", @"Repeats Weekly")]) {
+        return TSDKRepeatingEventFrequencyWeekly;
+    } else if([[displayValue lowercaseString] isEqualToString:NSLocalizedString(@"Daily", @"Daily")]) {
+        return TSDKRepeatingEventFrequencyDaily;
+    }
+    
+    return TSDKRepeatingEventFrequencyNone;
+}
+
+- (NSString * _Nonnull)displayValueFor:(TSDKRepeatingEventFrequency)repeatFrequency {
+    switch (repeatFrequency) {
+        case TSDKRepeatingEventFrequencyNone:
+            return NSLocalizedString(@"Does Not Repeat", @"Does not repeat");
+            break;
+        case TSDKRepeatingEventFrequencyWeekly:
+            return NSLocalizedString(@"Weekly", @"Repeats Weekly");
+            break;
+        case TSDKRepeatingEventFrequencyDaily:
+            return NSLocalizedString(@"Daily", @"Daily");
+            break;
+    }
+}
+
 - (TSDKGameTypeCode)gameTypeCode {
     NSInteger typeCode = [self getInteger:@"game_type_code"];
     if (typeCode == NSNotFound) {

@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  TeamSnapSDK
+
+  Created by Skyler Seamans on 12/1/17.
+  Copyright © 2017 teamsnap. All rights reserved.
+*/
+
+"Does Not Repeat" = "Ne pas répéter";
+"Weekly" = "Chaque Semaine";
+"Daily" = "Quotidiennement";
