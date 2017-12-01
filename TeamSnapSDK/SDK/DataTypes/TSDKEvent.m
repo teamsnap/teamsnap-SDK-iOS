@@ -202,11 +202,11 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     }
 }
 
-- (NSArray <NSString *> * _Nonnull)repeatFrequencyValuesForDisplay {
++ (NSArray <NSString *> * _Nonnull)repeatFrequencyValuesForDisplay {
     return @[NSLocalizedString(@"Does Not Repeat", @"Does not repeat"), NSLocalizedString(@"Weekly", @"Repeats Weekly"), NSLocalizedString(@"Daily", @"Daily")];
 }
 
-- (TSDKRepeatingEventFrequency)repeatFrequencyFor:(NSString * _Nonnull)displayValue {
++ (TSDKRepeatingEventFrequency)repeatFrequencyFor:(NSString * _Nonnull)displayValue {
     if([[displayValue lowercaseString] isEqualToString:NSLocalizedString(@"Does Not Repeat", @"Does not repeat")]) {
         return TSDKRepeatingEventFrequencyNone;
     } else if([[displayValue lowercaseString] isEqualToString:NSLocalizedString(@"Weekly", @"Repeats Weekly")]) {
@@ -218,7 +218,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     return TSDKRepeatingEventFrequencyNone;
 }
 
-- (NSString * _Nonnull)displayValueFor:(TSDKRepeatingEventFrequency)repeatFrequency {
++ (NSString * _Nonnull)displayValueFor:(TSDKRepeatingEventFrequency)repeatFrequency {
     switch (repeatFrequency) {
         case TSDKRepeatingEventFrequencyNone:
             return NSLocalizedString(@"Does Not Repeat", @"Does not repeat");

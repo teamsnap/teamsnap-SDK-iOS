@@ -84,9 +84,9 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *_Nonnull)event completion:(TSDKCompletionBlock _Nullable)completion;
 
-- (NSArray <NSString *> * _Nonnull)repeatFrequencyValuesForDisplay;
-- (TSDKRepeatingEventFrequency)repeatFrequencyFor:(NSString * _Nonnull)displayValue;
-- (NSString * _Nonnull)displayValueFor:(TSDKRepeatingEventFrequency)repeatFrequency;
++ (NSArray <NSString *> * _Nonnull)repeatFrequencyValuesForDisplay;
++ (TSDKRepeatingEventFrequency)repeatFrequencyFor:(NSString * _Nonnull)displayValue;
++ (NSString * _Nonnull)displayValueFor:(TSDKRepeatingEventFrequency)repeatFrequency;
 
 - (void)setEditAssociatedRepeatingEvents:(TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents;
 - (TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents;
