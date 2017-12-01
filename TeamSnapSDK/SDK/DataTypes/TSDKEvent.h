@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 //+(void)actionBulkCreateWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionSendAvailabilityRemindersWithCompletion:(TSDKCompletionBlock)completion; //(null)
 
-@property (nonatomic, assign) TSDKRepeatingEventFrequency repeatingTypeCode;
+@property (nonatomic, assign) TSDKRepeatingEventFrequency repeatFrequency;
 
 - (void)setEditAssociatedRepeatingEvents:(TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents;
 - (TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents;
