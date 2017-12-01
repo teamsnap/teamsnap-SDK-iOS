@@ -6,16 +6,16 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSInteger, TSDKRepeatingEventTypeCode) {
-    TSDKEventDoesNotRepeat = 0,
-    TSDKEventRepeatsDaily = 1,
-    TSDKEventRepeatsWeekly = 2
+typedef NS_ENUM(NSInteger, TSDKRepeatingEventFrequency) {
+    TSDKRepeatingEventFrequencyNone = 0,
+    TSDKRepeatingEventFrequencyDaily = 1,
+    TSDKRepeatingEventFrequencyWeekly = 2
 };
 
 typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
-    TSDKExcludeOtherEvents = 0,
-    TSDKIncludeAllEvents = 1,
-    TSDKIncludeAllFutureEvents = 2
+    TSDKRepeatingEventIncludeEventsFalse = 0,
+    TSDKRepeatingEventIncludeEventsAll = 1,
+    TSDKRepeatingEventIncludeEventsFuture = 2
 };
 
 typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
@@ -84,7 +84,10 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 //+(void)actionBulkCreateWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionSendAvailabilityRemindersWithCompletion:(TSDKCompletionBlock)completion; //(null)
 
-@property (nonatomic, assign) TSDKRepeatingEventTypeCode repeatingTypeCode;
+@property (nonatomic, assign) TSDKRepeatingEventFrequency repeatingTypeCode;
+
+- (void)setShouldEditAssociatedRepeatingEvents:(TSDKRepeatingEventIncludeEvents)editAssociatedRepeatingEvents;
+- (TSDKRepeatingEventIncludeEvents)shouldEditAssociatedRepeatingEvents;
 
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;

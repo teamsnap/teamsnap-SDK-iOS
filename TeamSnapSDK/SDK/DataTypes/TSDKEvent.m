@@ -21,6 +21,32 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     return @"event";
 }
 
+- (void)setShouldEditAssociatedRepeatingEvents:(TSDKRepeatingEventIncludeEvents)editAssociatedRepeatingEvents {
+    switch (editAssociatedRepeatingEvents) {
+        case TSDKExcludeOtherEvents:
+            [self setString:@"none" forKey:@"repeating_include"];
+            break;
+        case TSDKIncludeAllFutureEvents:
+            [self setString:@"future" forKey:@"repeating_include"];
+            break;
+        case TSDKIncludeAllEvents:
+            [self setString:@"all" forKey:@"repeating_include"];
+            break;
+    }
+}
+
+- (TSDKRepeatingEventIncludeEvents)shouldEditAssociatedRepeatingEvents {
+    NSString *repeatingInclude = [self getString:@"repeating_include"];
+    if([[repeatingInclude lowercaseString] isEqualToString:@"future"]) {
+        return TSDKIncludeAllFutureEvents;
+    } else if ([[repeatingInclude lowercaseString] isEqualToString:@"all"]) {
+        return TSDKIncludeAllEvents;
+    } else {
+        return TSDKExcludeOtherEvents;
+    }
+    
+}
+
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *)event completion:(TSDKCompletionBlock)completion {
     if (event) {
         TSDKCollectionCommand *command = [self commandForKey:@"update_final_score"];
@@ -160,7 +186,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     }
 }
 
-- (TSDKRepeatingEventTypeCode)repeatingTypeCode {
+- (TSDKRepeatingEventFrequency)repeatFrequency {
     if ([[self.collection data] objectForKey:kRepeatingTypeCode]) {
         return [self getInteger:kRepeatingTypeCode];
     } else {
@@ -168,8 +194,8 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     }
 }
 
-- (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
-    if (repeatingTypeCode == 0) {
+- (void)setRepeatFrequency:(TSDKRepeatingEventFrequency)repeatFrequency {
+    if (repeatFrequency == 0) {
         [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
     } else {
         [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
