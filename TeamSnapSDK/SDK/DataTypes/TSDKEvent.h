@@ -12,10 +12,10 @@ typedef NS_ENUM(NSInteger, TSDKRepeatingEventFrequency) {
     TSDKRepeatingEventFrequencyWeekly = 2
 };
 
-typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
-    TSDKRepeatingEventIncludeEventsFalse = 0,
-    TSDKRepeatingEventIncludeEventsAll = 1,
-    TSDKRepeatingEventIncludeEventsFuture = 2
+typedef NS_ENUM(NSInteger, TSDKEditAssociatedRepeatingEvents){
+    TSDKEditAssociatedRepeatingEventsFalse = 0,
+    TSDKEditAssociatedRepeatingEventsAll = 1,
+    TSDKEditAssociatedRepeatingEventsFuture = 2
 };
 
 typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
@@ -86,8 +86,8 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 
 @property (nonatomic, assign) TSDKRepeatingEventFrequency repeatingTypeCode;
 
-- (void)setShouldEditAssociatedRepeatingEvents:(TSDKRepeatingEventIncludeEvents)editAssociatedRepeatingEvents;
-- (TSDKRepeatingEventIncludeEvents)shouldEditAssociatedRepeatingEvents;
+- (void)setEditAssociatedRepeatingEvents:(TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents;
+- (TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents;
 
 - (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;

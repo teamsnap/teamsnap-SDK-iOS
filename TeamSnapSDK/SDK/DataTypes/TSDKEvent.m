@@ -21,28 +21,28 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     return @"event";
 }
 
-- (void)setShouldEditAssociatedRepeatingEvents:(TSDKRepeatingEventIncludeEvents)editAssociatedRepeatingEvents {
+- (void)setEditAssociatedRepeatingEvents:(TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents{
     switch (editAssociatedRepeatingEvents) {
-        case TSDKExcludeOtherEvents:
+        case TSDKEditAssociatedRepeatingEventsFalse:
             [self setString:@"none" forKey:@"repeating_include"];
             break;
-        case TSDKIncludeAllFutureEvents:
+        case TSDKEditAssociatedRepeatingEventsFuture:
             [self setString:@"future" forKey:@"repeating_include"];
             break;
-        case TSDKIncludeAllEvents:
+        case TSDKEditAssociatedRepeatingEventsAll:
             [self setString:@"all" forKey:@"repeating_include"];
             break;
     }
 }
 
-- (TSDKRepeatingEventIncludeEvents)shouldEditAssociatedRepeatingEvents {
+- (TSDKEditAssociatedRepeatingEvents)editAssociatedRepeatingEvents {
     NSString *repeatingInclude = [self getString:@"repeating_include"];
     if([[repeatingInclude lowercaseString] isEqualToString:@"future"]) {
-        return TSDKIncludeAllFutureEvents;
+        return TSDKEditAssociatedRepeatingEventsFuture;
     } else if ([[repeatingInclude lowercaseString] isEqualToString:@"all"]) {
-        return TSDKIncludeAllEvents;
+        return TSDKEditAssociatedRepeatingEventsAll;
     } else {
-        return TSDKExcludeOtherEvents;
+        return TSDKEditAssociatedRepeatingEventsFalse;
     }
     
 }
@@ -190,7 +190,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     if ([[self.collection data] objectForKey:kRepeatingTypeCode]) {
         return [self getInteger:kRepeatingTypeCode];
     } else {
-        return TSDKEventDoesNotRepeat;
+        return TSDKRepeatingEventFrequencyNone;
     }
 }
 
@@ -198,7 +198,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     if (repeatFrequency == 0) {
         [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
     } else {
-        [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
+        [self setInteger:repeatFrequency forKey:kRepeatingTypeCode];
     }
 }
 
