@@ -195,7 +195,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 }
 
 - (void)setRepeatFrequency:(TSDKRepeatingEventFrequency)repeatFrequency {
-    if (repeatFrequency == 0) {
+    if (repeatFrequency == TSDKRepeatingEventFrequencyNone) {
         [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
     } else {
         [self setInteger:repeatFrequency forKey:kRepeatingTypeCode];
