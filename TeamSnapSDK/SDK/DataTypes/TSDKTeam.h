@@ -119,6 +119,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamLogoPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamStore;
+@property (nonatomic, weak) NSURL *_Nullable linkMobilePlanSelection;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
