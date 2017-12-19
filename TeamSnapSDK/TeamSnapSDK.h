@@ -92,3 +92,4 @@
 #import <TeamSnapSDK/NSString+TSDKPublicConveniences.h>
 #import <TeamsnapSDK/TSDKSmsGateway.h>
 #import <TeamSnapSDK/TSDKPersistenceFilePath.h>
+#import <TeamSnapSDK/TSDKMessagingPermission.h>

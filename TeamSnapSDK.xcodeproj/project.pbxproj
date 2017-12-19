@@ -105,6 +105,10 @@
 		968109311D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */; };
 		968457581CCE4AE000B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968457591CCE4AE600B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
+		968B996B1FE97E4F001E63F7 /* TSDKMessagingPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		968B996C1FE97E4F001E63F7 /* TSDKMessagingPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B996A1FE97E4F001E63F7 /* TSDKMessagingPermission.m */; };
+		968B996D1FE982E0001E63F7 /* TSDKMessagingPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		968B996E1FE982E4001E63F7 /* TSDKMessagingPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B996A1FE97E4F001E63F7 /* TSDKMessagingPermission.m */; };
 		968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */; };
 		969366C01CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
 		969366C11CC9545300721504 /* root.json in Resources */ = {isa = PBXBuildFile; fileRef = 969366BF1CC9545300721504 /* root.json */; };
@@ -442,6 +446,8 @@
 		9681092C1D8488C600D94C53 /* TSDKCollectionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKCollectionCommand.h; sourceTree = "<group>"; };
 		9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionCommand.m; sourceTree = "<group>"; };
 		968457571CCE4AE000B9946B /* TimeZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TimeZones.json; path = SDK/Resources/TimeZones.json; sourceTree = "<group>"; };
+		968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSDKMessagingPermission.h; path = Messages/TSDKMessagingPermission.h; sourceTree = "<group>"; };
+		968B996A1FE97E4F001E63F7 /* TSDKMessagingPermission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKMessagingPermission.m; path = Messages/TSDKMessagingPermission.m; sourceTree = "<group>"; };
 		968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObjectTests.m; sourceTree = "<group>"; };
 		969366BF1CC9545300721504 /* root.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = root.json; path = SDK/Resources/root.json; sourceTree = "<group>"; };
 		969366C31CC9549100721504 /* sports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sports.json; path = SDK/Resources/sports.json; sourceTree = "<group>"; };
@@ -722,6 +728,8 @@
 				5699E2791C90A6EE0061EC1D /* TSDKMessage.m */,
 				5688F54B1C91E2D80005C330 /* TSDKMessageDatum.h */,
 				5688F54C1C91E2D80005C330 /* TSDKMessageDatum.m */,
+				968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */,
+				968B996A1FE97E4F001E63F7 /* TSDKMessagingPermission.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -1117,6 +1125,7 @@
 				56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */,
 				56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */,
 				969B7EF81C7CF30600FD3EA0 /* TSDKOpponentResults.h in Headers */,
+				968B996B1FE97E4F001E63F7 /* TSDKMessagingPermission.h in Headers */,
 				563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */,
 				5699E27A1C90A6EE0061EC1D /* TSDKMessage.h in Headers */,
 				5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */,
@@ -1191,6 +1200,7 @@
 				965B7D3A1C18CA80009AF13E /* TSDKContact.h in Headers */,
 				969B7EB81C7CA9F800FD3EA0 /* TSDKTeamMediumComment.h in Headers */,
 				96B47F311BADB4410035F2CC /* TSDKForumTopic.h in Headers */,
+				968B996D1FE982E0001E63F7 /* TSDKMessagingPermission.h in Headers */,
 				96B47F351BADB4410035F2CC /* TSDKMember.h in Headers */,
 				96B47F2B1BADB4410035F2CC /* TSDKCustomField.h in Headers */,
 				965B7D461C18CB2F009AF13E /* TSDKContactPhoneNumber.h in Headers */,
@@ -1283,6 +1293,7 @@
 				TargetAttributes = {
 					969E803F1BAAE62D00CA518F = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0920;
 					};
 					969E80491BAAE62E00CA518F = {
 						CreatedOnToolsVersion = 7.0;
@@ -1387,6 +1398,7 @@
 				969E80CA1BAAE7AB00CA518F /* TSDKMemberStatistic.m in Sources */,
 				9612CD901C9B51AB00816460 /* TSDKNotifications.m in Sources */,
 				969E80D01BAAE7AB00CA518F /* TSDKStatisticGroup.m in Sources */,
+				968B996C1FE97E4F001E63F7 /* TSDKMessagingPermission.m in Sources */,
 				969E80BE1BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.m in Sources */,
 				969E80B81BAAE7AB00CA518F /* TSDKCollectionObject.m in Sources */,
 				969E80BA1BAAE7AB00CA518F /* NSDate+TSDKConveniences.m in Sources */,
@@ -1510,6 +1522,7 @@
 				969B7F051C7DE58C00FD3EA0 /* TSDKEventStatistic.m in Sources */,
 				969B7EFB1C7CF30600FD3EA0 /* TSDKOpponentResults.m in Sources */,
 				96B47F621BADB4810035F2CC /* NSString+TSDKConveniences.m in Sources */,
+				968B996E1FE982E4001E63F7 /* TSDKMessagingPermission.m in Sources */,
 				96B47F4C1BADB4640035F2CC /* TSDKStatistic.m in Sources */,
 				96B47F661BADB4850035F2CC /* TSDKCollectionJSON.m in Sources */,
 				9612CD911C9B51AB00816460 /* TSDKNotifications.m in Sources */,
@@ -1683,6 +1696,7 @@
 				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1706,6 +1720,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

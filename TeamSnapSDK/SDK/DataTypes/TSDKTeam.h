@@ -120,6 +120,8 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeamLogoPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamStore;
 @property (nonatomic, weak) NSURL *_Nullable linkMobilePlanSelection;
+@property (nonatomic, weak) NSURL *_Nullable linkMessagingPermissions;
+
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
@@ -252,5 +254,6 @@
 -(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
 -(void)getTeamPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getTeamLogoPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMessagingPermissionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagingPermissionsArrayCompletetionBlock _Nonnull)completion;
 
 @end
