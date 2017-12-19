@@ -11,10 +11,10 @@
 
 @interface TSDKMessagingPermission : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable message; //Example:
+@property (nonatomic, weak, nullable) NSString * message; //Example:
 @property (nonatomic, assign) BOOL canSendUserProvidedContent; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak, nullable) NSString * teamId; //Example: 71118
+@property (nonatomic, weak, nullable) NSURL * linkTeam;
 
 @end
 
