@@ -66,6 +66,7 @@
 #import "TSDKRootLinks.h"
 #import "TSDKApplePaidFeature.h"
 #import "TSDKAdvertisement.h"
+#import "TSDKMessagingPermission.h"
 
 static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
