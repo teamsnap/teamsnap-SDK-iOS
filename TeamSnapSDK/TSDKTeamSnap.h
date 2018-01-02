@@ -25,7 +25,7 @@
 + (NSURL * _Nonnull)baseURL;
 + (void)setBaseURL:(NSURL * _Nonnull)url;
 
-- (void)loginWithOAuthToken:(NSString * _Nonnull)OAuthToken completion:(nullable void (^)(BOOL success, NSError  *  _Nullable error))completion;
+- (void)loginWithOAuthToken:(NSString * _Nonnull)OAuthToken completion:(nullable void (^)(BOOL success, NSError  * _Nullable error, TSDKUser * _Nullable user))completion;
 - (void)logout;
 
 

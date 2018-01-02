@@ -132,7 +132,7 @@
 // User Auth
 + (void)loginWithUser:(NSString * _Nonnull)aUsername password:(NSString * _Nonnull)aPassword onCompletion:(TSDKLoginCompletionBlock _Nullable)completion;
 + (void)actionSendLoginLinkToEmailAddress:(NSString * _Nonnull)emailAddress withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKSimpleCompletionBlock _Nullable)completion;
-+ (void)actionRequestAuthTokenWithCode:(NSString * _Nonnull)code withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKLoginCompletionBlock _Nullable)completion;
++ (void)actionRequestAuthTokenWithCode:(NSString * _Nonnull)code withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKTokenCompletionBlock _Nullable)completion;
 + (void)resetPasswordForEmailAddress:(NSString * _Nonnull)emailAddress completion:(TSDKSimpleCompletionBlock _Nullable)completionBlock;
 
 @end

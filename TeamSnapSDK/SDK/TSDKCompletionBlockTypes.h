@@ -16,7 +16,8 @@ typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks *_Nullable rootLinks, 
 typedef void (^TSDKCompletionBlock)(BOOL success, BOOL complete, TSDKCollectionJSON *_Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKSaveCompletionBlock)(BOOL success, TSDKCollectionObject *_Nullable object, NSError *_Nullable error);
 typedef void (^TSDKInviteStatusCompletionBlock)(BOOL success, BOOL complete, TSDKinvitationFinder *_Nullable objects, NSError *_Nullable error);
-typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *_Nullable OAuthToken, NSError *_Nullable error);
+typedef void (^TSDKTokenCompletionBlock)(BOOL success, NSString *_Nullable OAuthToken, NSError *_Nullable error);
+typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *_Nullable OAuthToken, TSDKUser *_Nullable user, NSError *_Nullable error);
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *_Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKUploadProgressBlock)(TSDKBackgroundUploadProgressMonitorDelegate *_Nullable uploadStatus, NSError *_Nullable error);
 
