@@ -363,7 +363,7 @@
                     if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
                         OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
                         
-                        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:OAuthToken completion:^(BOOL success, NSError *error, TSDKUser *user) {
+                        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:OAuthToken completion:^(BOOL success, TSDKUser *user, NSError *error) {
                             if (completion) {
                                 completion(success, OAuthToken, user, error);
                             }

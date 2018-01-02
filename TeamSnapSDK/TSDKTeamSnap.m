@@ -65,11 +65,11 @@
     _OAuthToken = OAuthToken;
 }
 
-- (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSError *error, TSDKUser *user))completion {
+- (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, TSDKUser *user, NSError *error))completion {
     if (self.teamSnapUser) {
         [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
             if (completion) {
-                completion(rootLinks != nil, error, self.teamSnapUser);
+                completion(rootLinks != nil, self.teamSnapUser, error);
             }
         }];
     } else {
@@ -77,7 +77,7 @@
     }
 }
 
-- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, NSError *error, TSDKUser *user))completion {
+- (void)loginWithOAuthToken:(NSString *)OAuthToken completion:(void (^)(BOOL success, TSDKUser *user, NSError *error))completion {
     [self setOAuthToken:OAuthToken];
     [self connectWithConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
 }
@@ -132,7 +132,7 @@
         if (self.loginView) {
             [self.loginView dismissViewControllerAnimated:NO completion:nil];
         }
-        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(BOOL success, NSError *error, TSDKUser *user) {
+        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:[queryDictionary objectForKey:@"access_token"] completion:^(BOOL success, TSDKUser *user, NSError *error) {
             if (completion) {
                 completion(success, error);
             }
@@ -201,7 +201,7 @@
     }
 }
 
-- (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, NSError *error, TSDKUser *user))completion {
+- (void)processInitialConnectionWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, TSDKUser *user, NSError *error))completion {
     TSDKTeamSnap __weak *weakSelf = self;
     
     [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
@@ -210,10 +210,10 @@
                 weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
                 success = (BOOL)weakSelf.teamSnapUser;
                 if (completion) {
-                    completion(success, error, weakSelf.teamSnapUser);
+                    completion(success, weakSelf.teamSnapUser, error);
                 }
             } else {
-                completion(success, error, nil);
+                completion(success, nil, error);
             }
         }];
     }];
