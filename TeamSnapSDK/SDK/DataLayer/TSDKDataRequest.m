@@ -141,7 +141,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
         return;
     }
     if ([URL isFileURL]) {
-        NSLog(@"File URL");
         NSData *data = [NSData dataWithContentsOfURL:URL];
         BOOL success = NO;
         id JSON = nil;
