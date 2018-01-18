@@ -15,7 +15,6 @@
     self = [self init];
     if (self) {
         NSIndexSet *availableIndexes = [availabilities indexesOfObjectsPassingTest:^BOOL(TSDKAvailability * _Nonnull availability, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSLog(@"%ld - %@", (long)availability.statusCode, availability.status);
             return availability.statusCode == TSDKAvailabilityStateIsAvailable;
         }];
         
