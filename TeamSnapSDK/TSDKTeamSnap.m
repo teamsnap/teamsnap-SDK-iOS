@@ -161,15 +161,6 @@
     }
 }
 
-- (TSDKRootLinks *)rootLinks {
-    if(!_rootLinks) {
-        if([[TSPCache objectOfClass:[TSDKRootLinks class] withId:nil] isKindOfClass:[TSDKRootLinks class]]) {
-             _rootLinks = (TSDKRootLinks *)[TSPCache objectOfClass:[TSDKRootLinks class] withId:nil];
-        }
-    }
-    return _rootLinks;
-}
-
 - (void)rootLinksWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKRootLinkCompletionBlock)completion {
     TSDKSimpleCompletionBlock schemaCompletionBlock  = ^(BOOL success, NSError *error) {
         if (success) {
