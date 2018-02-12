@@ -852,7 +852,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id> *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
-//    [TSDKCollectionObject arrayFromL]
+    [TSDKCollectionObject arrayFromLink:link searchParams:searchParams withConfiguration:configuration completion:completion];
 }
 
 + (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id> *)searchParams withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
