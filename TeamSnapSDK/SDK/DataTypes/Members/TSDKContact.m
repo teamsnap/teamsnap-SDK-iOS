@@ -113,4 +113,17 @@
     return (self.isInvitable && self.invitationCode);
 }
 
+- (void)getMessageWithId:(NSString *_Nonnull)messageId withConfiguration:(TSDKRequestConfiguration *_Nonnull)configuration completion:(void (^_Nonnull)(TSDKMessage * _Nullable))completion {
+    NSDictionary *searchParams = @{@"id": messageId};
+    
+    [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+        TSDKMessage *message = [objects firstObject];
+        if([message.objectIdentifier isEqualToString:messageId]) {
+            completion(message);
+        } else {
+            completion(nil);
+        }
+    }];
+}
+
 @end

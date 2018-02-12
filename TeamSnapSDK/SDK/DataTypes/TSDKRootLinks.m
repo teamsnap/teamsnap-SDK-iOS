@@ -196,7 +196,7 @@
     }];
 }
 
-+ (void)actionRequestAuthTokenWithCode:(NSString * _Nonnull)code withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKLoginCompletionBlock _Nullable)completion {
++ (void)actionRequestAuthTokenWithCode:(NSString * _Nonnull)code withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKTokenCompletionBlock _Nullable)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             NSURL *tokenURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"/oauth/token"];
@@ -363,26 +363,26 @@
                     if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
                         OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
                         
-                        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:OAuthToken completion:^(BOOL success, NSError *error) {
+                        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:OAuthToken completion:^(BOOL success, TSDKUser *user, NSError *error) {
                             if (completion) {
-                                completion(success, OAuthToken, error);
+                                completion(success, OAuthToken, user, error);
                             }
                         }];
                     } else {
                         if (completion) {
-                            completion(success, OAuthToken, error);
+                            completion(success, nil, nil, error);
                         }
                     }
                 } else {
                     if (completion) {
-                        completion(success, OAuthToken, error);
+                        completion(success, nil, nil, error);
                     }
                 }
                 
             }];
         } else {
             if(completion) {
-                completion(NO, nil, error);
+                completion(NO, nil, nil, error);
             }
         }
     }];

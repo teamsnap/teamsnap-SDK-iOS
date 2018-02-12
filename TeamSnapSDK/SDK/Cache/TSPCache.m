@@ -10,7 +10,7 @@
 
 NSURL static *_rootPath = nil;
 NSURL static *_basePath = nil;
-NSUInteger static _maxCacheAgeMinutes = 60; // ~1 month
+NSUInteger static _maxCacheAgeMinutes = 60; // ~1 hour
 NSFileManager static *_fileManager = nil;
 
 @implementation TSPCache
