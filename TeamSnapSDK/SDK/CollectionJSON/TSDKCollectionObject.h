@@ -89,6 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
 + (void)arrayFromFileLink:(NSURL *)link completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id> *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
++ (void)arrayFromLink:(NSURL *)link searchParams:(NSDictionary <NSString *, id> *_Nullable)searchParams withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable) completion;
 - (void)arrayFromLink:(NSURL *)link withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL;

@@ -8,6 +8,9 @@
 #import "TSDKAvailabilityGroups.h"
 #import "TSDKMember.h"
 #import "TSDKOpponent.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
+#import "TSDKCompletionBlockTypes.h"
 
 NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
@@ -182,6 +185,28 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         return TSDKGameTypeCodeUnknown;
     } else {
         return typeCode;
+    }
+}
+
++ (void)getEventWithId:(NSString * _Nonnull)eventId teamId:(NSString * _Nonnull)teamId completion:(TSDKEventCompletionBlock _Nonnull)completion {
+    NSURL *baseEventSearchURL = [[[[TSDKTeamSnap sharedInstance] rootLinks] linkEvents] URLByAppendingPathComponent:@"search"];
+    if(baseEventSearchURL) {
+        NSDictionary *searchParams = @{@"team_id" : teamId, @"id" : eventId};
+        [TSDKEvent arrayFromLink:baseEventSearchURL searchParams:searchParams withConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+            TSDKEvent *matchingEvent;
+            for(TSDKEvent *event in objects) {
+                if([event.objectIdentifier isEqualToString:eventId]) {
+                    matchingEvent = event;
+                }
+            }
+            if(matchingEvent) {
+                completion(YES, matchingEvent, nil);
+            } else {
+                completion(NO, nil, error);
+            }
+        }];
+    } else {
+        completion(NO, nil, nil);
     }
 }
 

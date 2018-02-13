@@ -80,6 +80,7 @@ typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks * _Nullable rootLinks,
 typedef void (^TSDKTeamPreferencesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamPreferences *> *_Nullable teamsPreferences, NSError * _Nullable error);
 typedef void (^TSDKTeamResultsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamResults *> *_Nullable teamsResults, NSError * _Nullable error);
 typedef void (^TSDKEventArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKEvent *> *_Nullable events, NSError * _Nullable error);
+typedef void (^TSDKEventCompletionBlock)(BOOL success, TSDKEvent * _Nullable event, NSError * _Nullable error);
 typedef void (^TSDKImageCompletionBlock)(UIImage * _Nullable image);
 typedef void (^TSDKContactArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKContact *> *_Nullable contacts, NSError * _Nullable error);
 typedef void (^TSDKMemberPhotoArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMemberPhoto *> *_Nullable memberPhotos, NSError *_Nullable error);

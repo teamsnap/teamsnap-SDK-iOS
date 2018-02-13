@@ -80,9 +80,8 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 @property (nonatomic, weak) NSURL *_Nullable linkStatisticData;
 @property (nonatomic, weak) NSURL *_Nullable linkCalendarSingleEvent;
 
-+(void)actionUpdateFinalScoreForEvent:(TSDKEvent *_Nonnull)event completion:(TSDKCompletionBlock _Nullable)completion; //(null)
-//+(void)actionBulkCreateWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionSendAvailabilityRemindersWithCompletion:(TSDKCompletionBlock)completion; //(null)
++(void)actionUpdateFinalScoreForEvent:(TSDKEvent *_Nonnull)event completion:(TSDKCompletionBlock _Nullable)completion;
++ (void)getEventWithId:(NSString * _Nonnull)eventId teamId:(NSString * _Nonnull)teamId completion:(TSDKEventCompletionBlock _Nonnull)completion;
 
 @property (nonatomic, assign) TSDKRepeatingEventTypeCode repeatingTypeCode;
 
