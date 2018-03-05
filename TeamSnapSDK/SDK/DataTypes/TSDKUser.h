@@ -28,35 +28,38 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, assign) NSInteger managedDivisionsCount;
 @property (nonatomic, assign) NSInteger facebookId;
 @property (nonatomic, assign) BOOL receivesNewsletter;
-@property (nonatomic, weak) NSDate *_Nullable createdAt;
-@property (nonatomic, weak) NSString *_Nullable addressState;
-@property (nonatomic, weak) NSDate *_Nullable birthday;
-@property (nonatomic, weak) NSString *_Nullable firstName;
-@property (nonatomic, weak) NSString *_Nullable facebookAccessToken;
-@property (nonatomic, weak) NSDate *_Nullable updatedAt;
-@property (nonatomic, weak) NSString *_Nullable lastName;
-@property (nonatomic, weak) NSString *_Nullable email;
-@property (nonatomic, weak) NSString *_Nullable addressCountry;
+@property (nonatomic, weak, nullable) NSDate * createdAt;
+@property (nonatomic, weak, nullable) NSString * addressState;
+@property (nonatomic, weak, nullable) NSDate * birthday;
+@property (nonatomic, weak, nullable) NSString * firstName;
+@property (nonatomic, weak, nullable) NSString * facebookAccessToken;
+@property (nonatomic, weak, nullable) NSDate * updatedAt;
+@property (nonatomic, weak, nullable) NSString * lastName;
+@property (nonatomic, weak, nullable) NSString * email;
+@property (nonatomic, weak, nullable) NSString * addressCountry;
 @property (nonatomic, assign) BOOL displayAdsOnTeamList;
-@property (nonatomic, weak) NSString * _Nullable highestRole;
+@property (nonatomic, weak, nullable) NSString * highestRole;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
 @property (nonatomic, assign) BOOL isEligibleForFreeTrial; //Example: 0
 @property (nonatomic, assign) BOOL hasCc; //Example: 0 
-@property (nonatomic, weak) NSURL *_Nullable linkAdvertisements;
-@property (nonatomic, weak) NSURL *_Nullable linkApnDevices;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamsPreferences;
-@property (nonatomic, weak) NSURL *_Nullable linkPersonas;
-@property (nonatomic, weak) NSURL *_Nullable linkMessages;
-@property (nonatomic, weak) NSURL *_Nullable linkMessageData;
-@property (nonatomic, weak) NSURL *_Nullable linkFacebookPages;
-@property (nonatomic, weak) NSURL *_Nullable linkTeams;
-@property (nonatomic, weak) NSURL *_Nullable linkMembers;
-@property (nonatomic, weak) NSURL *_Nullable linkActiveTeams;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionMembers;
-@property (nonatomic, weak) NSURL *_Nullable linkTslMetadatum;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisions;
-@property (nonatomic, weak) NSURL *_Nullable linkActiveDivisions;
-@property (nonatomic, weak) NSURL *_Nullable linkContacts;
+@property (nonatomic, weak, nullable) NSURL * linkAdvertisements;
+@property (nonatomic, weak, nullable) NSURL * linkApnDevices;
+@property (nonatomic, weak, nullable) NSURL * linkTeamsPreferences;
+@property (nonatomic, weak, nullable) NSURL * linkPersonas;
+@property (nonatomic, weak, nullable) NSURL * linkMessages;
+@property (nonatomic, weak, nullable) NSURL * linkMessageData;
+@property (nonatomic, weak, nullable) NSURL * linkFacebookPages;
+@property (nonatomic, weak, nullable) NSURL * linkTeams;
+@property (nonatomic, weak, nullable) NSURL * linkMembers;
+@property (nonatomic, weak, nullable) NSURL * linkActiveTeams;
+@property (nonatomic, weak, nullable) NSURL * linkDivisionMembers;
+@property (nonatomic, weak, nullable) NSURL * linkTslMetadatum;
+@property (nonatomic, weak, nullable) NSURL * linkDivisions;
+@property (nonatomic, weak, nullable) NSURL * linkActiveDivisions;
+@property (nonatomic, weak, nullable) NSURL * linkContacts;
+@property (nonatomic, weak, nullable) NSURL * linkPayableInvoices;
+@property (nonatomic, weak, nullable) NSURL * linkInvoicesAggregates;
+@property (nonatomic, weak, nullable) NSURL * linkNextPayableInvoice;
 
 // Non Auto-generated
 
@@ -88,5 +91,8 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 - (void)getDivisionsWithConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getActiveDivisionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nonnull)completion;
+-(void)getPayableInvoicesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getNextPayableInvoiceWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
