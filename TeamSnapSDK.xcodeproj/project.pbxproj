@@ -19,6 +19,8 @@
 		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		561BC2791DE4C32D006BCCA1 /* TSDKApnDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */; };
+		5631BC33204EFE8C00F73515 /* TSDKInvoice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5631BC31204EFE8C00F73515 /* TSDKInvoice.h */; };
+		5631BC34204EFE8C00F73515 /* TSDKInvoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631BC32204EFE8C00F73515 /* TSDKInvoice.m */; };
 		563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
@@ -380,6 +382,8 @@
 		561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKDuplicateCompletionBlockStore.m; sourceTree = "<group>"; };
 		561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKApnDevice.h; sourceTree = "<group>"; };
 		561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKApnDevice.m; sourceTree = "<group>"; };
+		5631BC31204EFE8C00F73515 /* TSDKInvoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoice.h; sourceTree = "<group>"; };
+		5631BC32204EFE8C00F73515 /* TSDKInvoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoice.m; sourceTree = "<group>"; };
 		563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageRecipient.h; path = Protocols/TSDKMessageRecipient.h; sourceTree = "<group>"; };
 		56458AA11C49723D007EE9B8 /* TSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKConstants.h; sourceTree = "<group>"; };
 		56458AA21C49723D007EE9B8 /* TSDKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKConstants.m; sourceTree = "<group>"; };
@@ -972,6 +976,8 @@
 				4FB4793E1EB0166D00574674 /* TSDKApplePaidFeature.m */,
 				96E3EC041F8BB12400A1F805 /* TSDKAdvertisement.h */,
 				96E3EC051F8BB12400A1F805 /* TSDKAdvertisement.m */,
+				5631BC31204EFE8C00F73515 /* TSDKInvoice.h */,
+				5631BC32204EFE8C00F73515 /* TSDKInvoice.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1065,6 +1071,7 @@
 				969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */,
 				969B7ECE1C7CB28300FD3EA0 /* TSDKTeamMedium.h in Headers */,
 				969366D51CCA503800721504 /* TSDKCountry.h in Headers */,
+				5631BC33204EFE8C00F73515 /* TSDKInvoice.h in Headers */,
 				969E80CF1BAAE7AB00CA518F /* TSDKStatisticGroup.h in Headers */,
 				963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */,
 				969E80F11BAAE7AB00CA518F /* TSDKTeamFee.h in Headers */,
@@ -1458,6 +1465,7 @@
 				969E80D81BAAE7AB00CA518F /* TSDKBroadcastEmail.m in Sources */,
 				96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				969E80CC1BAAE7AB00CA518F /* TSDKStatistic.m in Sources */,
+				5631BC34204EFE8C00F73515 /* TSDKInvoice.m in Sources */,
 				561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */,
 				969E80D61BAAE7AB00CA518F /* TSDKAvailability.m in Sources */,
 				561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
