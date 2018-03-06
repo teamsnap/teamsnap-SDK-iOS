@@ -67,6 +67,8 @@
 #import "TSDKApplePaidFeature.h"
 #import "TSDKAdvertisement.h"
 #import "TSDKMessagingPermission.h"
+#import "TSDKInvoice.h"
+#import "TSDKInvoicesAggregate.h"
 
 static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;

@@ -60,7 +60,15 @@
             completion(success, complete, objects, nil);
         }
     }];
-}               
+}
+
+- (void)getInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInvoiceAggregateCompletetionBlock)completion {
+    [self arrayFromLink:self.linkInvoicesAggregates withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, complete, objects.firstObject, nil);
+        }
+    }];
+}
 
 - (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
