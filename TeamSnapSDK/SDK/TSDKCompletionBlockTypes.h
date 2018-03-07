@@ -88,6 +88,6 @@ typedef void (^TSDKFirebaseTokenCompletionBlock)(BOOL success, NSString *_Nullab
 typedef void (^TSDKAdvertisementsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKAdvertisement *> *_Nullable advertisements, NSError * _Nullable error);
 typedef void (^TSDKMessagingPermissionsArrayCompletetionBlock)(BOOL success, BOOL complete, NSArray<TSDKMessagingPermission *> *_Nullable messagingPermissions, NSError * _Nullable error);
 typedef void (^TSDKInvoicesArrayCompletetionBlock)(BOOL success, BOOL complete, NSArray<TSDKInvoice *> *_Nullable invoices, NSError * _Nullable error);
-typedef void (^TSDKInvoiceAggregateCompletetionBlock)(BOOL success, BOOL complete, TSDKInvoiceAggregate *_Nullable invoiceAggregate, NSError * _Nullable error);
+typedef void (^TSDKInvoiceAggregateCompletetionBlock)(BOOL success, BOOL complete, TSDKInvoicesAggregate *_Nullable invoiceAggregate, NSError * _Nullable error);
 
 #endif /* TSDKCompletionBlockTypes_h */
