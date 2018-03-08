@@ -34,7 +34,7 @@
 @property (nonatomic, weak, nullable) NSString * batchInvoiceId; //Example: 3586
 @property (nonatomic, assign) NSInteger subTotal; //Example: 10
 @property (nonatomic, weak, nullable) NSString * status; //Example: open
-@property (nonatomic, weak, nullable) NSString * paymentUrl; //Example: https://go.teamsnap.com/pay_invoice/82c295b2-20ce-11e8-858a-30e171559d06
+@property (nonatomic, weak, nullable) NSURL * paymentUrl; //Example: https://go.teamsnap.com/pay_invoice/82c295b2-20ce-11e8-858a-30e171559d06
 @property (nonatomic, weak, nullable) NSString * amountRefundedWithProcessingFeesRefundedWithCurrency; //Example: $0.00
 @property (nonatomic, weak, nullable) NSDate * sentAt; //Example: <null>
 @property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-03-05T23:39:56Z
