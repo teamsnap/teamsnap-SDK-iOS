@@ -23,7 +23,7 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, highestRole, isAdmin, isEligibleForFreeTrial, hasCc, displayAdsOnTeamList, linkAdvertisements, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions, linkContacts;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, highestRole, isAdmin, isEligibleForFreeTrial, hasCc, displayAdsOnTeamList, linkAdvertisements, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions, linkContacts, linkPayableInvoices, linkInvoicesAggregates, linkNextPayableInvoice;
 
 + (NSString *)SDKType {
     return @"user";
@@ -60,7 +60,15 @@
             completion(success, complete, objects, nil);
         }
     }];
-}               
+}
+
+- (void)getInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInvoiceAggregateCompletetionBlock)completion {
+    [self arrayFromLink:self.linkInvoicesAggregates withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, complete, objects.firstObject, nil);
+        }
+    }];
+}
 
 - (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
