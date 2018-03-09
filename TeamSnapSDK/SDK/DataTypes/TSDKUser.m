@@ -179,4 +179,15 @@
     return TSDKHighestRoleTypeUnknown;
 }
 
+- (NSURL)payableInvoicesSortedInAscendingOrderURL {
+    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkPayableInvoices resolvingAgainstBaseURL:NO];
+    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
+    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    
+    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"sort_due_at" value:@"asc"];
+    [queryItems addObjectsFromArray:@[versionQuery]];
+    fullySpecifiedURL.queryItems = queryItems;
+    return fullySpecifiedURL.URL;
+}
+
 @end
