@@ -179,7 +179,7 @@
     return TSDKHighestRoleTypeUnknown;
 }
 
-- (NSURL)payableInvoicesSortedInAscendingOrderURL {
+- (NSURL * _Nullable)payableInvoicesSortedInAscendingOrderURL {
     NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkPayableInvoices resolvingAgainstBaseURL:NO];
     NSMutableArray *queryItems = [[NSMutableArray alloc] init];
     [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
