@@ -311,6 +311,10 @@
     return [NSString stringWithString:mutableResult];
 }
 
+- (void)printObjectiveCHeaderSkeleton {
+    NSLog(@"%@", [self getObjectiveCHeaderSkeleton]);
+}
+
 + (NSString *_Nonnull)getObjectiveCHeaderForCommandsForTypeName:(NSString *_Nonnull)typeName {
     NSMutableString *actionsString = [[NSMutableString alloc] init];
     for (NSString *key in [TSDKCollectionObject commandsForClass:typeName]) {

@@ -118,6 +118,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPhotos;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamPhotoFile;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamLogoPhotoFile;
+@property (nonatomic, weak, nullable) NSURL * linkTeamChat;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamStore;
 @property (nonatomic, weak) NSURL *_Nullable linkMobilePlanSelection;
 @property (nonatomic, weak) NSURL *_Nullable linkMessagingPermissions;
