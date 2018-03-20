@@ -87,14 +87,6 @@
     self.OAuthToken = nil;
 }
 
-- (TSDKRootLinks *)rootLinks {
-    if(!_rootLinks) {
-        // load cached copy if available
-        _rootLinks = [TSPCache objectOfClass:[TSDKRootLinks class] withId:@""];
-    }
-    return _rootLinks;
-}
-
 - (void)configureForCombinedContactFeature {
     self.useCombinedContactCard = YES;
 }
@@ -192,6 +184,11 @@
             
                 [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {
+                TSDKCollectionObject *cachedObject = [TSPCache objectOfClass:[TSDKRootLinks class] withId:@""];
+                if([cachedObject isKindOfClass:[TSDKRootLinks class]]) {
+                    weakSelf.rootLinks = [TSPCache objectOfClass:[TSDKRootLinks class] withId:@""];
+                }
+                
                 if (completion) {
                     completion(weakSelf.rootLinks, error);
                 }
