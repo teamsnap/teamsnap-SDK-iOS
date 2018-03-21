@@ -34,7 +34,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) NSString *_Nullable teamMessage; //Example: <p>Test</p>
 @property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable globalUniformHome; //Example: White shirt, grey pants
-@property (nonatomic, assign) BOOL tslEnabled; //Example: 1
 @property (nonatomic, assign) TSDKTeamPreferenceAssignmentsEnabledFor assignmentsEnableForCode; //Example: 2
 @property (nonatomic, assign) BOOL paymentsIgnoreNonPlayers; //Example: 0
 @property (nonatomic, assign) BOOL remindersSendGame; //Example: 0

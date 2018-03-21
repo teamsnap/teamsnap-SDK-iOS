@@ -184,7 +184,7 @@
             
                 [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {
-                TSDKCollectionObject *cachedRootLinks = [TSPCache objectOfClass:[TSDKRootLinks class] withId:@""];
+                TSDKRootLinks *cachedRootLinks = [TSPCache objectOfClass:[TSDKRootLinks class] withId:@""];
                 if([cachedRootLinks isKindOfClass:[TSDKRootLinks class]]) {
                     weakSelf.rootLinks = cachedRootLinks;
                 }
