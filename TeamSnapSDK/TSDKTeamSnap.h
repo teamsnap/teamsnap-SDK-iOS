@@ -36,7 +36,7 @@
 - (BOOL)combinedContactFeatureIsActive;
 
 #if TARGET_OS_IPHONE
-- (SFSafariViewController * _Nonnull)presentLoginInViewController:(UIViewController * _Nonnull)viewController animated:(BOOL)animated clientId:(NSString * _Nonnull)clientId scope:(NSString * _Nonnull)scope redirectURL:(NSString * _Nonnull)redirectURL completion:(nullable void (^)(void))completion;
+- (SFSafariViewController * _Nonnull)presentLoginInViewController:(UIViewController * _Nonnull)viewController animated:(BOOL)animated clientId:(NSString * _Nonnull)clientId scope:(NSString * _Nonnull)scope redirectURL:(NSString * _Nonnull)redirectURL completion:(nullable void (^)(void))completion API_AVAILABLE(ios(9.0));
 - (BOOL)processLoginCallback:(NSURL * _Nonnull)url completion:(nullable void (^)(BOOL success, NSError *  _Nullable error))completion;
 #endif
 

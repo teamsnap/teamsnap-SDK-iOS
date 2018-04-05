@@ -25,7 +25,7 @@
 @interface TSDKTeamSnap()
 
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
-@property (nonatomic, strong) SFSafariViewController *loginView;
+@property (nonatomic, strong) SFSafariViewController *loginView API_AVAILABLE(ios(9.0));
 @property (nonatomic, assign) BOOL useCombinedContactCard;
 
 @end
@@ -96,7 +96,7 @@
 }
 
 #if TARGET_OS_IPHONE
-- (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion {
+- (SFSafariViewController *)presentLoginInViewController:(UIViewController *)viewController animated:(BOOL)animated clientId:(NSString *)clientId scope:(NSString *)scope redirectURL:(NSString *)redirectURL completion:(void (^)(void))completion API_AVAILABLE(ios(9.0)) {
     
     NSString *OAuthURLString = [NSString stringWithFormat:@"https://auth.teamsnap.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", clientId, redirectURL, scope];
     
@@ -126,7 +126,7 @@
     return [queryDictionary copy];
 }
 
-- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(BOOL success, NSError *error))completion {
+- (BOOL)processLoginCallback:(NSURL *)url completion:(void (^)(BOOL success, NSError *error))completion API_AVAILABLE(ios(9.0)) {
     NSDictionary *queryDictionary = [self queryDictionaryForReturnURL:url];
     if ([queryDictionary objectForKey:@"access_token"]) {
         if (self.loginView) {
