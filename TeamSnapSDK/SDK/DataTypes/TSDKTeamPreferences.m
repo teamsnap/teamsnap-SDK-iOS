@@ -108,7 +108,7 @@
 }
 
 #pragma mark -- MOCK has_lineups
-- (BOOL)hasLineups {
+- (BOOL)isEventLineupEnableds {
     return YES;
 }
 

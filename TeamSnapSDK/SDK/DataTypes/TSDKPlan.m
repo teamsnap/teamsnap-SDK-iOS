@@ -28,4 +28,8 @@
     return ([self freeTrial] || [self.planType isEqualToString:@"free"]);
 }
 
+- (BOOL)hasEventLineups {
+    return true;
+}
+
 @end
