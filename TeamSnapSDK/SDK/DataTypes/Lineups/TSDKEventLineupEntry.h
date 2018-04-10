@@ -15,7 +15,7 @@
 @property (nonatomic, assign) NSInteger sequence;
 @property (nonatomic, weak) NSString *_Nullable label; //(max 50)
 @property (nonatomic, weak) NSString *_Nullable memberName;
-@property (nonatomic, weak, readonly) NSString *_Nullable memberPhoto;
+@property (nonatomic, weak) NSString *_Nullable memberPhoto;
 @property (nonatomic, assign) TSDKAvailabilityState availabilityStatusCode;
 
 @end
