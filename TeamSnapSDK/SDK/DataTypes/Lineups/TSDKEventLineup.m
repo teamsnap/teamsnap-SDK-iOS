@@ -17,7 +17,7 @@
     return @"event_lineup";
 }
 
-- (TSDKEventLineupEntry *)lineUpEntryForId:(NSString *)meIdentifier memberId:(NSString *)memberId memberName:(NSString *)memberName memberPhoto:(NSString *)memberPhoto sequence:(NSInteger)sequence label:(NSString *)label {
+- (TSDKEventLineupEntry *)lineUpEntryForId:(NSString *)meIdentifier memberId:(NSString *)memberId memberName:(NSString *)memberName memberPhoto:(NSString *)memberPhoto sequence:(NSInteger)sequence label:(NSString *)label availability:(TSDKAvailability)availality {
     TSDKEventLineupEntry *lineup = [[TSDKEventLineupEntry alloc] init];
     [lineup.collection.data setValue:meIdentifier forKey:@"id"];
     lineup.eventLineupId = self.objectIdentifier;
@@ -27,6 +27,7 @@
     
     [lineup.collection.data setValue:memberName forKey:@"member_name"];
     [lineup.collection.data setValue:memberPhoto forKey:@"member_photo"];
+    [lineup setInteger:availality forKey:@"availability_status_code"];
     
     return lineup;
 }
@@ -35,20 +36,20 @@
     
     NSMutableArray <TSDKEventLineupEntry *>* lineups = [[NSMutableArray alloc] init];
     
-    TSDKEventLineupEntry *lineup1 = [self lineUpEntryForId:@"1" memberId:@"68" memberName:@"Ownie Owner" memberPhoto:nil sequence:(lineups.count+1) label:@"RW"];
+    TSDKEventLineupEntry *lineup1 = [self lineUpEntryForId:@"1" memberId:@"68" memberName:@"Ownie Owner" memberPhoto:nil sequence:(lineups.count+1) label:@"RW" availability:TSDKAvailabilityStateIsAvailable];
     
     [lineups addObject:lineup1];
     
-    TSDKEventLineupEntry *lineup5 = [self lineUpEntryForId:@"5" memberId:@"72" memberName:@"Sam Smith" memberPhoto:nil sequence:(lineups.count+1) label:@"LB"];
+    TSDKEventLineupEntry *lineup5 = [self lineUpEntryForId:@"5" memberId:@"72" memberName:@"Sam Smith" memberPhoto:nil sequence:(lineups.count+1) label:@"LB" availability:TSDKAvailabilityStateIsAvailable];
     [lineups addObject:lineup5];
     
-    TSDKEventLineupEntry *lineup2 = [self lineUpEntryForId:@"2" memberId:@"69" memberName:@"Someone Else" memberPhoto:nil sequence:(lineups.count+1) label:@"LW"];
+    TSDKEventLineupEntry *lineup2 = [self lineUpEntryForId:@"2" memberId:@"69" memberName:@"Someone Else" memberPhoto:nil sequence:(lineups.count+1) label:@"LW" availability:TSDKAvailabilityStateIsNotAvailable;
     [lineups addObject:lineup2];
     
-    TSDKEventLineupEntry *lineup3 = [self lineUpEntryForId:@"3" memberId:@"70" memberName:@"John Smith" memberPhoto:nil sequence:(lineups.count+1) label:@"FW"];
+    TSDKEventLineupEntry *lineup3 = [self lineUpEntryForId:@"3" memberId:@"70" memberName:@"John Smith" memberPhoto:nil sequence:(lineups.count+1) label:@"FW" availability:TSDKAvailabilityStateIsAvailable];
     [lineups addObject:lineup3];
     
-    TSDKEventLineupEntry *lineup4 = [self lineUpEntryForId:@"4" memberId:@"71" memberName:@"Fred Johnson" memberPhoto:nil sequence:(lineups.count+1) label:@"GOAL"];
+    TSDKEventLineupEntry *lineup4 = [self lineUpEntryForId:@"4" memberId:@"71" memberName:@"Fred Johnson" memberPhoto:nil sequence:(lineups.count+1) label:@"GOAL" availability:TSDKAvailabilityStateIsAvailable];
     [lineups addObject:lineup4];
     
     if (completion) {
