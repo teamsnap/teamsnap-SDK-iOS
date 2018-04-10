@@ -321,7 +321,7 @@
 // Data Mock
 - (TSDKSportPosition *)sportPositionForPositionId:(NSString *)positionId label:(NSString *)label {
     TSDKSportPosition *sportPosition = [[TSDKSportPosition alloc] init];
-    [sportPosition setValue:positionId forKeyPath:@"id"];
+    [sportPosition.collection.data setValue:positionId forKeys:@"id"];
     sportPosition.label = label;
     sportPosition.sportId = self.sportId;
     sportPosition.createdAt = [NSDate date];
