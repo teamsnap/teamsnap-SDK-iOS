@@ -11,6 +11,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
 #import "TSDKCompletionBlockTypes.h"
+#import "TSDKEventLineup.h"
 
 NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
@@ -207,6 +208,21 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         }];
     } else {
         completion(NO, nil, nil);
+    }
+}
+
+//Mock data
+- (void)getEventLineupWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventLineupCompletionBlock)completion {
+    TSDKEventLineup *eventLineup = [[TSDKEventLineup alloc] init];
+    [eventLineup.collection.data setValue:@"1" forKey:@"id"];
+    eventLineup.eventId = self.objectIdentifier;
+    eventLineup.isPublished = NO;
+    eventLineup.createdAt = [NSDate date];
+    eventLineup.updatedAt = [NSDate date];
+    if (completion) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(YES, YES, eventLineup, nil);
+        });
     }
 }
 

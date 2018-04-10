@@ -91,6 +91,8 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 - (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel;
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
+-(void)getEventLineupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupCompletionBlock _Nullable)completion;
+
 @end
 
 @interface TSDKEvent (ForwardedMethods)

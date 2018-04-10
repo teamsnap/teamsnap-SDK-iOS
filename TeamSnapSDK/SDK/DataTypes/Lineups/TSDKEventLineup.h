@@ -15,4 +15,6 @@
 @property (nonatomic, weak) NSDate *_Nullable createdAt;
 @property (nonatomic, weak) NSDate *_Nullable updatedAt;
 
+-(void)getEventLinupEntriesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupEntryArrayCompletionBlock _Nullable)completion;
+
 @end
