@@ -342,6 +342,9 @@
 		96BA259D207CF7E40097C911 /* TSDKEventLineup.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BA2594207CF15F0097C911 /* TSDKEventLineup.m */; };
 		96BA259E207CF7E90097C911 /* TSDKEventLineupEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BA2599207CF2E00097C911 /* TSDKEventLineupEntry.m */; };
 		96BA259F207CF7F20097C911 /* TSDKSportPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BA258F207BB72A0097C911 /* TSDKSportPosition.m */; };
+		96BA25A0207D08670097C911 /* TSDKSportPosition.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA258E207BB72A0097C911 /* TSDKSportPosition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96BA25A1207D08840097C911 /* TSDKEventLineup.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA2593207CF15F0097C911 /* TSDKEventLineup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96BA25A2207D08880097C911 /* TSDKEventLineupEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA2598207CF2E00097C911 /* TSDKEventLineupEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */; };
 		96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */; };
@@ -1225,6 +1228,7 @@
 				969B7EA31C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
 				969B7F031C7DE58C00FD3EA0 /* TSDKEventStatistic.h in Headers */,
 				96B47F511BADB4640035F2CC /* TSDKTeamStatistic.h in Headers */,
+				96BA25A0207D08670097C911 /* TSDKSportPosition.h in Headers */,
 				9681092F1D8488C600D94C53 /* TSDKCollectionCommand.h in Headers */,
 				96B47F2F1BADB4410035F2CC /* TSDKForumPost.h in Headers */,
 				96E1336D1D8862930027E382 /* TSDKMemberAssignment.h in Headers */,
@@ -1235,6 +1239,7 @@
 				969B7EAD1C7CA33500FD3EA0 /* TSDKMemberPreferences.h in Headers */,
 				96B47F331BADB4410035F2CC /* TSDKLocation.h in Headers */,
 				96F4E7D91C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.h in Headers */,
+				96BA25A2207D08880097C911 /* TSDKEventLineupEntry.h in Headers */,
 				96B47F291BADB4410035F2CC /* TSDKCustomDatum.h in Headers */,
 				96F4FC401BBDA389000D04B9 /* TSDKTeamResults.h in Headers */,
 				96B47F4B1BADB4640035F2CC /* TSDKStatistic.h in Headers */,
@@ -1263,6 +1268,7 @@
 				96B47F631BADB4850035F2CC /* TSDKCollectionQuery.h in Headers */,
 				96B47F471BADB4410035F2CC /* TSDKUser.h in Headers */,
 				96B47F491BADB4640035F2CC /* TSDKMemberStatistic.h in Headers */,
+				96BA25A1207D08840097C911 /* TSDKEventLineup.h in Headers */,
 				96B47F251BADB4410035F2CC /* TSDKBroadcastEmail.h in Headers */,
 				96B47F371BADB4410035F2CC /* TSDKOpponent.h in Headers */,
 				963A1B601C80E4BB006D695E /* TSDKAvailabilityGroups.h in Headers */,
