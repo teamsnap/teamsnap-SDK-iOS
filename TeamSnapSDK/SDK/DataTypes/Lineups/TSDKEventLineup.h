@@ -12,9 +12,11 @@
 
 @property (nonatomic, weak) NSString *_Nullable eventId;
 @property (nonatomic, assign) BOOL isPublished;
-@property (nonatomic, assign) NSInteger entryCount;
+@property (nonatomic, assign) NSInteger entriesCount;
 @property (nonatomic, weak) NSDate *_Nullable createdAt;
 @property (nonatomic, weak) NSDate *_Nullable updatedAt;
+
+@property (nonatomic, weak) NSURL *_Nullable linkEventLineupEntries;
 
 @end
 

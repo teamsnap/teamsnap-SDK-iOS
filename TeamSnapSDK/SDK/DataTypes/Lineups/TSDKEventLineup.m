@@ -11,7 +11,7 @@
 
 @implementation TSDKEventLineup
 
-@dynamic eventId, isPublished, entryCount, createdAt, updatedAt;
+@dynamic eventId, isPublished, entriesCount, createdAt, updatedAt, linkEventLineupEntries;
 
 + (NSString *)SDKType {
     return @"event_lineup";
