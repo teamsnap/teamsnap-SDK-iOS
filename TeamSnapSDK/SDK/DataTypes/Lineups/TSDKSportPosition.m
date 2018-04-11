@@ -10,7 +10,7 @@
 
 @implementation TSDKSportPosition
 
-@dynamic sportId, label, createdAt, updatedAt;
+@dynamic sportId, label;
 
 + (NSString *)SDKType {
     return @"sport_position";

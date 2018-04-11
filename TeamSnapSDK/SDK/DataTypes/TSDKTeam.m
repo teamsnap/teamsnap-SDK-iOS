@@ -317,34 +317,4 @@
     }
 }
 
-
-// Data Mock
-- (TSDKSportPosition *)sportPositionForPositionId:(NSString *)positionId label:(NSString *)label {
-    TSDKSportPosition *sportPosition = [[TSDKSportPosition alloc] init];
-    [sportPosition.collection.data setValue:positionId forKey:@"id"];
-    sportPosition.label = label;
-    sportPosition.sportId = self.sportId;
-    sportPosition.createdAt = [NSDate date];
-    sportPosition.updatedAt = [NSDate date];
-    return sportPosition;
-}
-
--(void)getSportPositionsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKSportPositionArrayCompletionBlock)completion {
-    NSMutableArray <TSDKSportPosition *>*positions = [[NSMutableArray alloc] init];
-    [positions addObject:[self sportPositionForPositionId:@"1" label:@"RW"]];
-    [positions addObject:[self sportPositionForPositionId:@"2" label:@"LW"]];
-    [positions addObject:[self sportPositionForPositionId:@"3" label:@"GOAL"]];
-    [positions addObject:[self sportPositionForPositionId:@"4" label:@"RB"]];
-    [positions addObject:[self sportPositionForPositionId:@"5" label:@"F"]];
-    [positions addObject:[self sportPositionForPositionId:@"6" label:@"LB"]];
-    
-    if (completion) {
-        NSArray <TSDKSportPosition *> *result = [NSArray arrayWithArray:positions];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(YES, YES, result, nil);
-        });
-    }
-}
-
-
 @end

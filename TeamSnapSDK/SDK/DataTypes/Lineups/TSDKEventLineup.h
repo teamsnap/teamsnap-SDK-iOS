@@ -12,8 +12,13 @@
 
 @property (nonatomic, weak) NSString *_Nullable eventId;
 @property (nonatomic, assign) BOOL isPublished;
+@property (nonatomic, assign) NSInteger entryCount;
 @property (nonatomic, weak) NSDate *_Nullable createdAt;
 @property (nonatomic, weak) NSDate *_Nullable updatedAt;
+
+@end
+
+@interface TSDKEventLineup (ForwardedMethods)
 
 -(void)getEventLinupEntriesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupEntryArrayCompletionBlock _Nullable)completion;
 
