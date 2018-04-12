@@ -90,6 +90,7 @@ typedef void (^TSDKMessagingPermissionsArrayCompletetionBlock)(BOOL success, BOO
 typedef void (^TSDKInvoicesArrayCompletetionBlock)(BOOL success, BOOL complete, NSArray<TSDKInvoice *> *_Nullable invoices, NSError * _Nullable error);
 typedef void (^TSDKInvoiceAggregateCompletetionBlock)(BOOL success, BOOL complete, TSDKInvoicesAggregate *_Nullable invoiceAggregate, NSError * _Nullable error);
 typedef void (^TSDKEventLineupCompletionBlock)(BOOL success, BOOL complete, TSDKEventLineup *_Nullable eventLineup, NSError *_Nullable error);
+typedef void (^TSDKEventLineupUpdateCompletionBlock)(BOOL success, BOOL complete, NSError *_Nullable error);
 typedef void (^TSDKEventLineupEntryArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKEventLineupEntry *>*_Nullable eventLineupEntries, NSError *_Nullable error);
 typedef void  (^TSDKSportPositionArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKSportPosition *>*_Nullable sportPositions, NSError *_Nullable error);
 
