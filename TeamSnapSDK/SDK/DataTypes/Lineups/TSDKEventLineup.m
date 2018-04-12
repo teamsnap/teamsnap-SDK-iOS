@@ -13,58 +13,12 @@
 
 @dynamic eventId, isPublished, entriesCount, createdAt, updatedAt, notifyTeam, linkEventLineupEntries;
 
-+ (void)updateEventLineup:(TSDKEventLineup *)lineup withLineupEntries:(NSArray <TSDKEventLineupEntry *> *)lineupEntries withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupUpdateCompletionBlock _Nullable)completion {
-    TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] init];
-    command.href = @"https://pod-megazord.teamsnap.com:3443/event_lineup_entries/bulk_update";
-    /// https://pod-megazord.teamsnap.com:3443/event_lineup_entries/bulk_update?templates=
-//    [
-//     {
-//         "data": [
-//                  {
-//                      "name": "member_id",
-//                      "value": "411"
-//                  },
-//                  {
-//                      "name": "sequence",
-//                      "value": "0"
-//                  },
-//                  {
-//                      "name": "label",
-//                      "value": "G"
-//                  },
-//                  {
-//                      "name": "event_lineup_id",
-//                      "value": "27"
-//                  }
-//                  ]
-//     },
-//     {
-//         "data": [
-//                  {
-//                      "name": "member_id",
-//                      "value": "135"
-//                  },
-//                  {
-//                      "name": "sequence",
-//                      "value": "1"
-//                  },
-//                  {
-//                      "name": "label",
-//                      "value": "F"
-//                  },
-//                  {
-//                      "name": "event_lineup_id",
-//                      "value": "27"
-//                  }
-//                  ]
-//     }
-//     ]
-    
-//    for lineupEntry in lineup.
++ (void)updateEventLineup:(TSDKEventLineup *)lineup withLineupEntries:(NSArray <TSDKEventLineupEntry *> *)lineupEntries withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupEntryArrayCompletionBlock _Nullable)completion {
+    TSDKCollectionCommand *command = [TSDKEventLineupEntry commandForKey:@"bulk_update_event_lineup_entries"];
     
     if (command == nil) {
         if (completion != nil) {
-            completion(NO, YES, nil);
+            completion(NO, YES, nil, nil);
         }
         return;
     }
@@ -100,9 +54,45 @@
         command.href = [command.href stringByAppendingString:templatesString];
     }
     
+    [command.data removeObjectForKey:@"templates"];
+    
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        NSArray *lineups = @[];
+        if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+            lineups = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            
+            NSMutableArray *deletedLineupEntries = [NSMutableArray arrayWithArray:[lineupEntries valueForKey:@"objectIdentifier"]];
+            NSMutableArray *insertedLineupEntries = [NSMutableArray arrayWithArray:[lineups valueForKey:@"objectIdentifier"]];
+            NSMutableArray *changedLineupEntries = [NSMutableArray array];
+            
+            for (TSDKEventLineupEntry *newLineupEntry in lineups) {
+                
+                NSString *newObjectID = newLineupEntry.objectIdentifier;
+                for (TSDKEventLineupEntry *existingLineupEntry in lineupEntries) {
+                    NSString *existingObjectIdentifier = existingLineupEntry.objectIdentifier;
+                    if ([existingObjectIdentifier isEqualToString:newObjectID]) {
+                        [changedLineupEntries addObject:existingObjectIdentifier];
+                        [insertedLineupEntries removeObject:existingObjectIdentifier];
+                        [deletedLineupEntries removeObject:existingObjectIdentifier];
+                        break;
+                    }
+                }
+            }
+            
+            for (TSDKEventLineupEntry *deletedLineupEntry in deletedLineupEntries) {
+                [TSDKNotifications postDeletedObject:deletedLineupEntry];
+            }
+            
+            for (TSDKEventLineupEntry *insertedLineupEntry in insertedLineupEntries) {
+                [TSDKNotifications postNewObject:insertedLineupEntry];
+            }
+            
+            for (TSDKEventLineupEntry *changedLineupEntry in changedLineupEntries) {
+                [TSDKNotifications postRefreshedObject:changedLineupEntry];
+            }
+        }
         if (completion != nil) {
-            completion(success, complete, error);
+            completion(success, complete, lineups, error);
         }
     }];
 }

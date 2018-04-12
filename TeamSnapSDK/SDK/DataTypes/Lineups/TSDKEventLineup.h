@@ -20,7 +20,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkEventLineupEntries;
 
 // Not auto-generated
-+ (void)updateEventLineup:(TSDKEventLineup *_Nonnull)lineup withLineupEntries:(NSArray <TSDKEventLineupEntry *> * _Nonnull)lineupEntries withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupUpdateCompletionBlock _Nullable)completion;
++ (void)updateEventLineup:(TSDKEventLineup *_Nonnull)lineup withLineupEntries:(NSArray <TSDKEventLineupEntry *> * _Nonnull)lineupEntries withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupEntryArrayCompletionBlock _Nullable)completion;
 
 @end
 
