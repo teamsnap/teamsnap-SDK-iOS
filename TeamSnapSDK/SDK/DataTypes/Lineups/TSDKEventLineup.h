@@ -13,6 +13,7 @@
 @property (nonatomic, weak) NSString *_Nullable eventId;
 @property (nonatomic, assign) BOOL isPublished;
 @property (nonatomic, assign) NSInteger entriesCount;
+@property (nonatomic, assign) BOOL notifyTeam;
 @property (nonatomic, weak) NSDate *_Nullable createdAt;
 @property (nonatomic, weak) NSDate *_Nullable updatedAt;
 
