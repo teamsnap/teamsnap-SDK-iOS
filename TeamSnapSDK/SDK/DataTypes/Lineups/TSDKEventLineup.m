@@ -14,7 +14,8 @@
 @dynamic eventId, isPublished, entriesCount, createdAt, updatedAt, notifyTeam, linkEventLineupEntries;
 
 + (void)updateEventLineup:(TSDKEventLineup *)lineup withLineupEntries:(NSArray <TSDKEventLineupEntry *> *)lineupEntries withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupUpdateCompletionBlock _Nullable)completion {
-    TSDKCollectionCommand *command = [TSDKEventLineupEntry commandForKey:@"bulk_update"];
+    TSDKCollectionCommand *command = [[TSDKCollectionCommand alloc] init];
+    command.href = @"https://pod-megazord.teamsnap.com:3443/event_lineup_entries/bulk_update";
     /// https://pod-megazord.teamsnap.com:3443/event_lineup_entries/bulk_update?templates=
 //    [
 //     {
@@ -72,17 +73,32 @@
     for (TSDKEventLineupEntry *lineupEntry in lineupEntries) {
         NSMutableArray *lineupProperties = [NSMutableArray array];
         
-        for (NSString *key in @[@"member_id", @"sequence", @"label", @"event_lineup_id"]) {
+        for (NSString *key in @[@"member_id", @"sequence", @"label"]) {
+            NSString *value = [lineupEntry.collection.data valueForKey:key];
+            if (value == nil) {
+                value = @"";
+            }
+            
             NSDictionary *lineupProperty = @{@"name" : key,
-                                             @"value" : [lineupEntry valueForKey:key]};
+                                             @"value" : value };
             [lineupProperties addObject:lineupProperty];
         }
+        
+        NSDictionary *lineupProperty = @{@"name" : @"event_lineup_id",
+                                         @"value" : lineup.objectIdentifier };
+        [lineupProperties addObject:lineupProperty];
         
         NSDictionary *entryDict = @{@"data":lineupProperties};
         [lineupEntriesArray addObject:entryDict];
     }
     
-    command.data[@"templates"] = lineupEntriesArray;
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:lineupEntriesArray options:0 error:&error];
+    if (data != nil) {
+        NSString *commandString = [[NSString stringWithCString:data.bytes encoding:NSUTF8StringEncoding] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSString *templatesString = [NSString stringWithFormat:@"?templates=%@", commandString];
+        command.href = [command.href stringByAppendingString:templatesString];
+    }
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion != nil) {
