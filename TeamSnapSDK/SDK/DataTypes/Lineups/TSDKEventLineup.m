@@ -49,7 +49,7 @@
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:lineupEntriesArray options:0 error:&error];
     if (data != nil) {
-        NSString *commandString = [[NSString stringWithCString:data.bytes encoding:NSUTF8StringEncoding] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSString *commandString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         NSString *templatesString = [NSString stringWithFormat:@"?templates=%@", commandString];
         command.href = [command.href stringByAppendingString:templatesString];
     }
