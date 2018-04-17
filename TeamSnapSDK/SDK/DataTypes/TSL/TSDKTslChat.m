@@ -41,4 +41,31 @@
     }
 }
 
++(void)actionLogDeletedFirebaseId:(NSString *_Nonnull)firebaseId deviceToken:(NSString *_Nullable)deviceToken teamId:(NSString *_Nonnull)teamId eventId:(NSString *_Nullable)eventId completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    
+    //This is a non-standard object.. We never retrieve these from the server.  So normal SDK Actions aren't relevant. This should probably be handled bt TSDK Root links, but I am including it here for organization and discoverability.
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks && (error==nil) && (rootLinks.linkTslChats != nil)) {
+            NSURL *tslChatURL = [rootLinks.linkTslChats URLByAppendingPathComponent:firebaseId];
+            NSMutableDictionary <NSString *, NSString *> *data = [NSMutableDictionary dictionaryWithCapacity:5];
+            data[@"team_id"] = teamId;
+            if (eventId != nil) {
+                data[@"event_id"] = eventId;
+            }
+            if (deviceToken) {
+                data[@"device_token"] = deviceToken;
+            }
+            [TSDKDataRequest requestJSONObjectsForPath:tslChatURL sendDataDictionary:data method:@"DELETE" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+                if (completion) {
+                    completion(success, error);
+                }
+            }];
+        } else {
+            if (completion) {
+                completion(NO, error);
+            }
+        }
+    }];
+}
+
 @end
