@@ -29,5 +29,8 @@
     }
 }
 
+- (void)setAvailabilityStatusCode:(TSDKAvailabilityState)availabilityStatusCode {
+    [super setInteger:availabilityStatusCode forKey:@"availability_status_code"];
+}
 
 @end
