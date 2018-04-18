@@ -49,11 +49,23 @@
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:lineupEntriesArray options:0 error:&error];
     if (data != nil) {
+        /**
+         ProTip: [[NSString alloc] initWithData:encoding:] does not result in the same value
+         that + [NSString stringWithCString:data.bytes encoding:] does, so we use initWithData:
+         because it always returns the correct decoded string internally whereas stringWithCString:
+         can at its discretion return (null).
+         */
         NSString *commandString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         NSString *templatesString = [NSString stringWithFormat:@"?templates=%@", commandString];
         command.href = [command.href stringByAppendingString:templatesString];
     }
     
+    /**
+     The default command data dictionary has an empty string stored for templates, which v3
+     really doesn't like and will throw a 400 if you send it in the body payload: {"templates":""}.
+     This is why we encode the payload above in the query string instead despite the payload body
+     being the way most other endpoints like the operate ¯\_(ツ)_/¯ #v3things
+     */
     [command.data removeObjectForKey:@"templates"];
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
