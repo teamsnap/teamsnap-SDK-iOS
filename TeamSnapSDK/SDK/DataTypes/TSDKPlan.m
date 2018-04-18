@@ -10,7 +10,7 @@
 
 @implementation TSDKPlan
 
-@dynamic hasTextMessaging, hasSeasons, hasStatistics, platform, hasPhotos, hasCustomFields, hasHideMarketplaceTab, annualPrice, hasAvailabilities, hasSponsorships, hasTeamMedia, hasSslSecurity, hasOffSeason, hasAdFree, monthlyPriceDescription, name, uploadQuotaInMb, hasTracking, isActive, hasPayments, hasTeamLogo, hasWeather, hasTeamColors, planType, hasRss, hasPaypal, hasExternalEmail, hasAssignments, hasCustomDomain, platformVersion, monthlyPrice, hasRosterPhotos, hasClubs;
+@dynamic hasTextMessaging, hasSeasons, hasStatistics, platform, hasPhotos, hasCustomFields, hasHideMarketplaceTab, annualPrice, hasAvailabilities, hasSponsorships, hasTeamMedia, hasSslSecurity, hasOffSeason, hasAdFree, monthlyPriceDescription, name, uploadQuotaInMb, hasTracking, isActive, hasPayments, hasTeamLogo, hasWeather, hasTeamColors, planType, hasRss, hasPaypal, hasExternalEmail, hasAssignments, hasCustomDomain, platformVersion, monthlyPrice, hasRosterPhotos, hasClubs, hasEventLineups;
 
 + (NSString *)SDKType {
     return @"plan";
@@ -26,10 +26,6 @@
 
 -(BOOL)freePlan {
     return ([self freeTrial] || [self.planType isEqualToString:@"free"]);
-}
-
-- (BOOL)hasEventLineups {
-    return true;
 }
 
 @end
