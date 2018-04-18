@@ -70,6 +70,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger shareAvailabilityNotes; //Example: 0
 @property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
+@property (nonatomic, assign) BOOL isTeamChatEnabled; // Examople 1
 @property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
 @property (nonatomic, weak) NSString *_Nullable gender; //Example: **NULL**
 @property (nonatomic, assign) BOOL filesShowTab; //Example: 1
