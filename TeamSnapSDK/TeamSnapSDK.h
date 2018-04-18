@@ -93,3 +93,7 @@
 #import <TeamsnapSDK/TSDKSmsGateway.h>
 #import <TeamSnapSDK/TSDKPersistenceFilePath.h>
 #import <TeamSnapSDK/TSDKMessagingPermission.h>
+#import <TeamSnapSDK/TSDKSportPosition.h>
+#import <TeamSnapSDK/TSDKEventLineup.h>
+#import <TeamSnapSDK/TSDKEventLineupEntry.h>
+

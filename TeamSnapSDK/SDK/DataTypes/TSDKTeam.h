@@ -256,5 +256,5 @@
 -(void)getTeamPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getTeamLogoPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getMessagingPermissionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagingPermissionsArrayCompletetionBlock _Nonnull)completion;
-
+-(void)getSportPositionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSportPositionArrayCompletionBlock _Nullable)completion;
 @end

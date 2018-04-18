@@ -44,6 +44,7 @@
 @property (nonatomic, assign) NSInteger monthlyPrice; //Example: 17.99
 @property (nonatomic, assign) BOOL hasRosterPhotos; //Example: 1
 @property (nonatomic, assign) BOOL hasClubs; //Example: 1
+@property (nonatomic, assign) BOOL hasEventLineups; // Example 1
 
 -(BOOL)freeTrial;
 -(BOOL)freeNotTrial;

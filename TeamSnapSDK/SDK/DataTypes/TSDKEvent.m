@@ -11,6 +11,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
 #import "TSDKCompletionBlockTypes.h"
+#import "TSDKEventLineup.h"
 
 NSString * const kRepeatingTypeCode = @"repeating_type_code";
 

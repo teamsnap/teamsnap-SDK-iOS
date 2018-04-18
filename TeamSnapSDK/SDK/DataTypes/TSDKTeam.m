@@ -21,6 +21,7 @@
 #import "NSURL+TSDKConveniences.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
 #import "TSDKNotifications.h"
+#import "TSDKSportPosition.h"
 
 @interface TSDKTeam()
 
@@ -315,7 +316,5 @@
         }
     }
 }
-
-
 
 @end

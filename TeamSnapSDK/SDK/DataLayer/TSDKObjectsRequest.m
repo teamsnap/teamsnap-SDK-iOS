@@ -69,6 +69,9 @@
 #import "TSDKMessagingPermission.h"
 #import "TSDKInvoice.h"
 #import "TSDKInvoicesAggregate.h"
+#import "TSDKSportPosition.h"
+#import "TSDKEventLineup.h"
+#import "TSDKEventLineupEntry.h"
 
 static NSArray *supportedSDKObjects;
 static NSArray *knownCompletionTypes;
