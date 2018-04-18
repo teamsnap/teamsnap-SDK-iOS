@@ -106,4 +106,10 @@
             break;
     }
 }
+
+#pragma mark -- MOCK has_lineups
+- (BOOL)hasLineups {
+    return YES;
+}
+
 @end

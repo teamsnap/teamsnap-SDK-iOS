@@ -333,6 +333,8 @@
 		96B47F6D1BADB4BC0035F2CC /* TSDKTeamSnap.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805B1BAAE79500CA518F /* TSDKTeamSnap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96B47F6E1BADB4BC0035F2CC /* TSDKTeamSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */; };
 		96B4E2791DC3C08A003CC830 /* StirngConvenienceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B4E2781DC3C08A003CC830 /* StirngConvenienceTests.m */; };
+		96BA2590207BB72A0097C911 /* TSDKSportPosition.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA258E207BB72A0097C911 /* TSDKSportPosition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96BA2591207BB72A0097C911 /* TSDKSportPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BA258F207BB72A0097C911 /* TSDKSportPosition.m */; };
 		96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */; };
 		96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */; };
@@ -574,6 +576,8 @@
 		96B47F1B1BADB33E0035F2CC /* TeamSnapSDKTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamSnapSDKTV.h; sourceTree = "<group>"; };
 		96B47F1D1BADB33E0035F2CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96B4E2781DC3C08A003CC830 /* StirngConvenienceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StirngConvenienceTests.m; path = Conveniences/StirngConvenienceTests.m; sourceTree = "<group>"; };
+		96BA258E207BB72A0097C911 /* TSDKSportPosition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSDKSportPosition.h; path = Lineups/TSDKSportPosition.h; sourceTree = "<group>"; };
+		96BA258F207BB72A0097C911 /* TSDKSportPosition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKSportPosition.m; path = Lineups/TSDKSportPosition.m; sourceTree = "<group>"; };
 		96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKBackgroundUploadProgressMonitorDelegate.h; sourceTree = "<group>"; };
 		96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKBackgroundUploadProgressMonitorDelegate.m; sourceTree = "<group>"; };
 		96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDataRequestTests.m; path = DataLayer/TSDKDataRequestTests.m; sourceTree = "<group>"; };
@@ -899,6 +903,7 @@
 		969E807D1BAAE7AB00CA518F /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				96BA258D207BB6CC0097C911 /* Lineups */,
 				9641AC1E1DF1BC49008E4716 /* TSL */,
 				96E133681D88626E0027E382 /* Assignments */,
 				96F7C5221D1049900022FA4C /* PhotoObjects */,
@@ -1025,6 +1030,15 @@
 			name = Conveniences;
 			sourceTree = "<group>";
 		};
+		96BA258D207BB6CC0097C911 /* Lineups */ = {
+			isa = PBXGroup;
+			children = (
+				96BA258E207BB72A0097C911 /* TSDKSportPosition.h */,
+				96BA258F207BB72A0097C911 /* TSDKSportPosition.m */,
+			);
+			name = Lineups;
+			sourceTree = "<group>";
+		};
 		96DA6AA31CD8E2F200368D80 /* DataLater */ = {
 			isa = PBXGroup;
 			children = (
@@ -1064,6 +1078,7 @@
 				960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */,
 				96E94B5E1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h in Headers */,
 				969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */,
+				96BA2590207BB72A0097C911 /* TSDKSportPosition.h in Headers */,
 				56879C321E0340EA00FBA9F6 /* TSDKDivisionPreferences.h in Headers */,
 				969E80E31BAAE7AB00CA518F /* TSDKForumTopic.h in Headers */,
 				969E80DD1BAAE7AB00CA518F /* TSDKCustomField.h in Headers */,
@@ -1448,6 +1463,7 @@
 				5699E27B1C90A6EE0061EC1D /* TSDKMessage.m in Sources */,
 				969E80C21BAAE7AB00CA518F /* NSString+TSDKConveniences.m in Sources */,
 				969B7EAE1C7CA33500FD3EA0 /* TSDKMemberPreferences.m in Sources */,
+				96BA2591207BB72A0097C911 /* TSDKSportPosition.m in Sources */,
 				96F7C52A1D104A920022FA4C /* TSDKMemberPhoto.m in Sources */,
 				965B7D3B1C18CA80009AF13E /* TSDKContact.m in Sources */,
 				969E80EE1BAAE7AB00CA518F /* TSDKSport.m in Sources */,
