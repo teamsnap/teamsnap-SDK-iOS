@@ -291,7 +291,7 @@
         return;
     }
 
-    command.data[@"team_ids"] = @[self.objectIdentifier];
+    command.data[@"team_ids"] = self.objectIdentifier;
     command.data[@"feature"] = feature;
     command.data[@"contact_id"] = contactId;
     
