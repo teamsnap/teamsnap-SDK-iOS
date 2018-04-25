@@ -173,6 +173,15 @@
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
 - (NSURL * _Nullable)teamPhotoForWidth:(NSInteger)width height:(NSInteger)height;
 
+/**
+ Sends the Team Owner an email highlighting a paid feature and encouraging them to upgrade.
+
+ @param feature A string describing the feature. Possible values are "alerts", "assignments", "availability", "files", "lineups", "photos", "statistics", "tsl", "tracking".
+ @param contactId The contact ID triggering the email.
+ @param completion Called upon completion.
+ */
+- (void)emailOwnerForUpsellFeature:(NSString * _Nonnull)feature fromContactId:(NSString * _Nonnull)contactId completion:(TSDKSimpleCompletionBlock _Nullable)completion;
+
 + (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
 //Toggles the visibility of teams on the list of active teams, per user. Requires a single id or a comma separated list of 'team_id's

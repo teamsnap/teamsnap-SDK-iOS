@@ -281,6 +281,27 @@
     return copy;
 }
 
+- (void)emailOwnerForUpsellFeature:(NSString * _Nonnull)feature fromContactId:(NSString * _Nonnull)contactId completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"send_upsell_message_from_contact"];
+    
+    if (command == nil) {
+        if (completion != nil) {
+            completion(NO, nil);
+        }
+        return;
+    }
+
+    command.data[@"team_ids"] = self.objectIdentifier;
+    command.data[@"feature"] = feature;
+    command.data[@"contact_id"] = contactId;
+    
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, error);
+        }
+    }];
+}
+
 + (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
     
     TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:[TSDKTeam SDKType] forKey:@"division_search"];
