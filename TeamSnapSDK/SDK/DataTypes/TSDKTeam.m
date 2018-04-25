@@ -290,7 +290,7 @@
         }
         return;
     }
-
+    [command.data removeAllObjects];
     command.data[@"team_id"] = self.objectIdentifier;
     command.data[@"feature"] = feature;
     command.data[@"contact_id"] = contactId;
