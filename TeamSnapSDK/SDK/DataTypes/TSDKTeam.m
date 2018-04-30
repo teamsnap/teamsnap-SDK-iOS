@@ -281,8 +281,14 @@
     return copy;
 }
 
-- (void)emailOwnerForUpsellFeature:(NSString * _Nonnull)feature fromContactId:(NSString * _Nonnull)contactId completion:(TSDKSimpleCompletionBlock _Nullable)completion {
-    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"send_upsell_message_from_contact"];
+- (void)emailOwnerForUpsellFeature:(NSString * _Nonnull)feature fromContactId:(NSString * _Nonnull)contactId isOwner:(BOOL)isOwner completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    
+    TSDKCollectionCommand *command;
+    if(isOwner) {
+        command = [TSDKTeam commandForKey:@"send_upsell_message_from_owner"];
+    } else {
+        command = [TSDKTeam commandForKey:@"send_upsell_message_from_contact"];
+    }
     
     if (command == nil) {
         if (completion != nil) {
@@ -293,7 +299,9 @@
     [command.data removeAllObjects];
     command.data[@"team_id"] = self.objectIdentifier;
     command.data[@"feature"] = feature;
-    command.data[@"contact_id"] = contactId;
+    if(isOwner == NO) {
+        command.data[@"contact_id"] = contactId;
+    }
     
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if(completion) {
