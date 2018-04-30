@@ -79,30 +79,28 @@ static NSArray *knownCompletionTypes;
 @implementation TSDKObjectsRequest
 
 + (NSArray *)supportedSDKObjects {
-    if (!supportedSDKObjects) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
-            
-            unsigned int classCount = 0;
-            Class *classList = objc_copyClassList(&classCount);
-            
-            for (unsigned int i = 0; i < classCount; i++) {
-                NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
-                if([className hasPrefix:@"TSDK"]) {
-                    Class class = NSClassFromString(className);
-                    
-                    if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                        [supportedObjects addObject:class];
-                    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
+        
+        unsigned int classCount = 0;
+        Class *classList = objc_copyClassList(&classCount);
+        
+        for (unsigned int i = 0; i < classCount; i++) {
+            NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
+            if([className hasPrefix:@"TSDK"]) {
+                Class class = NSClassFromString(className);
+                
+                if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
+                    [supportedObjects addObject:class];
                 }
             }
-            if(classList != NULL) {
-                free(classList);
-            }
-            supportedSDKObjects = [supportedObjects copy];
-        });
-    }
+        }
+        if(classList != NULL) {
+            free(classList);
+        }
+        supportedSDKObjects = [supportedObjects copy];
+    });
     return supportedSDKObjects;
 }
 
