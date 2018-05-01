@@ -45,6 +45,8 @@
 @property (nonatomic, assign) BOOL hasRosterPhotos; //Example: 1
 @property (nonatomic, assign) BOOL hasClubs; //Example: 1
 @property (nonatomic, assign) BOOL hasEventLineups; // Example 1
+@property (nonatomic, assign) BOOL hasTsl;
+@property (nonatomic, assign) BOOL hasTeamChat;
 
 -(BOOL)freeTrial;
 -(BOOL)freeNotTrial;
