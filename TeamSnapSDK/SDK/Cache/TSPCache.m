@@ -38,7 +38,7 @@ NSFileManager static *_fileManager = nil;
     BOOL success = [_rootPath setResourceValue: [NSNumber numberWithBool: YES]
                                         forKey: NSURLIsExcludedFromBackupKey error: &error];
     if(!success){
-        NSLog(@"Error excluding %@ from backup %@", [_rootPath lastPathComponent], error);
+        DLog(@"Error excluding %@ from backup %@", [_rootPath lastPathComponent], error);
     }
 }
 

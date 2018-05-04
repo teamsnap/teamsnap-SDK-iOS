@@ -65,7 +65,7 @@
             if (!error || (error && [[error.userInfo objectForKey:TSDKTeamSnapSDKHTTPResponseCodeKey] integerValue] != 420)) {
               XCTAssert(@"Returned !Success on /random");
             } else {
-                NSLog(@"Rate Limited - Not full test");
+                DLog(@"Rate Limited - Not full test");
             }
         }
         [countriesExpectation fulfill];
