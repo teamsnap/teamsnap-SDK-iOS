@@ -13,21 +13,32 @@ make sure it appears under your `{target_name}->Build Phases->Link Binary With L
 
 # Podfile
 ```
-platform :ios, '8.0'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
+
+target 'Teamsnap' do
 pod 'TeamSnapSDK', :git => 'git@github.com:teamsnap/teamsnap-SDK-iOS.git', :branch => 'master'
+end
 ```
 
 If you are using Swift, be sure to add `use_frameworks!` and set your target to iOS 8+:
 ```
-platform :ios, '8.0'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
 use_frameworks!
+
+target 'Teamsnap' do
+pod 'TeamSnapSDK', :git => 'git@github.com:teamsnap/teamsnap-SDK-iOS.git', :branch => 'master'
+end
 ```
 
 Now run ```pod install```
 
 # Setup
 
-In order to use the TeamSnapSDK, you will need to obtain a client ID and client secret for your specific application. You can create new applications and obtain these from [auth.teamsnap.com](https://auth.teamsnap.com/oath/applications).
+In order to use the TeamSnapSDK, you will need to obtain a client ID and client secret for your specific application. You can create new applications and obtain these from [auth.teamsnap.com](https://auth.teamsnap.com/oauth/applications).
 
 Before using the TeamSnapSDK, you need to configure TSDKTeamSnap with your new credentials:
 
