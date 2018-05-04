@@ -27,7 +27,7 @@ Now run ```pod install```
 
 # Setup
 
-In order to use the TeamSnapSDK, you will need to obtain a client ID and client secret for your specific application. You can create new applications and obtain these from [auth.teamsnap.com](https://auth.teamsnap.com/oath/applications).
+In order to use the TeamSnapSDK, you will need to obtain a client ID and client secret for your specific application. You can create new applications and obtain these from [auth.teamsnap.com](https://auth.teamsnap.com/oauth/applications).
 
 Before using the TeamSnapSDK, you need to configure TSDKTeamSnap with your new credentials:
 
