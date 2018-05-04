@@ -312,7 +312,7 @@
 }
 
 - (void)printObjectiveCHeaderSkeleton {
-    NSLog(@"%@", [self getObjectiveCHeaderSkeleton]);
+    DLog(@"%@", [self getObjectiveCHeaderSkeleton]);
 }
 
 + (NSString *_Nonnull)getObjectiveCHeaderForCommandsForTypeName:(NSString *_Nonnull)typeName {
