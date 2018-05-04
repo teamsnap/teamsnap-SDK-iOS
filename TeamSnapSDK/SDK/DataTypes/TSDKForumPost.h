@@ -12,28 +12,28 @@
 @interface TSDKForumPost : TSDKCollectionObject
 
 @property (nonatomic, assign) BOOL wasBroadcasted; //Example: **NULL**
-@property (nonatomic, weak) NSDate *createdAt; //Example: 2012-05-25T18:19:51Z
-@property (nonatomic, weak) NSString *posterName; //Example: Jason R
-@property (nonatomic, weak) NSString *message; //Example: <p>This is a test post!</p>
-@property (nonatomic, assign) NSInteger memberId; //Example: 993324
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, assign) NSInteger forumTopicId; //Example: 611875
-@property (nonatomic, weak) NSString *divisionMemberId; //Example: **NULL**
-@property (nonatomic, weak) NSDate *updatedAt; //Example: 2013-02-08T18:22:04Z
-@property (nonatomic, weak) NSURL *linkMember;
-@property (nonatomic, weak) NSURL *linkForumTopic;
-@property (nonatomic, weak) NSURL *linkTeam;
-@property (nonatomic, weak) NSURL *linkDivisionMember;
+@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-25T18:19:51Z
+@property (nonatomic, weak) NSString *_Nullable posterName; //Example: Jason R
+@property (nonatomic, weak) NSString *_Nullable message; //Example: <p>This is a test post!</p>
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable forumTopicId; //Example: 611875
+@property (nonatomic, weak) NSString *_Nullable divisionMemberId; //Example: **NULL**
+@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2013-02-08T18:22:04Z
+@property (nonatomic, weak) NSURL *_Nullable linkMember;
+@property (nonatomic, weak) NSURL *_Nullable linkForumTopic;
+@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, weak) NSURL *_Nullable linkDivisionMember;
 
-+ (void)savePost:(TSDKForumPost *)post broadcastToTeam:(BOOL)broadcastToTeam completion:(TSDKSaveCompletionBlock)completion;
++ (void)savePost:(TSDKForumPost *_Nonnull)post broadcastToTeam:(BOOL)broadcastToTeam completion:(TSDKSaveCompletionBlock _Nullable)completion;
 
 @end
 
 @interface TSDKForumPost (ForwardedMethods)
 
--(void)getMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion;
--(void)getForumTopicWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKForumTopicArrayCompletionBlock)completion;
--(void)getTeamWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
--(void)getDivisionMemberWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
+-(void)getForumTopicWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumTopicArrayCompletionBlock _Nullable)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
+-(void)getDivisionMemberWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 @end

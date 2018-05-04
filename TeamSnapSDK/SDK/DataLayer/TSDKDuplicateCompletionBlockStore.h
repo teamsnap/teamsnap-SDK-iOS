@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCompletionBlockTypes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TSDKDuplicateCompletionBlockStore : NSObject
 
 + (instancetype)sharedInstance;
@@ -19,3 +21,5 @@
 - (NSSet *)completionBlocksForRequest:(NSURLRequest *)request;
 
 @end
+
+NS_ASSUME_NONNULL_END

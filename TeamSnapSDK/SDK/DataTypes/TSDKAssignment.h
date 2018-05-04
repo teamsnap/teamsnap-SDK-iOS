@@ -9,12 +9,13 @@
 
 @property (nonatomic, weak) NSString *_Nullable updatedAt; //Example: **NULL**
 @property (nonatomic, assign) BOOL isEditable; //Example: 1
+@property (nonatomic, assign) NSInteger position; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable createdAt; //Example: **NULL**
-@property (nonatomic, assign) NSInteger memberId; //Example: 1282395
+@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 1282395
 @property (nonatomic, assign) BOOL managerCreated; //Example: 1
 @property (nonatomic, weak) NSString *_Nullable assignmentDescription; //Example: Chips?
-@property (nonatomic, assign) NSInteger eventId; //Example: 2781974
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nonatomic, weak) NSString *_Nullable eventId; //Example: 2781974
+@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, weak) NSURL *_Nullable linkMember;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberAssignment;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberAssignments;

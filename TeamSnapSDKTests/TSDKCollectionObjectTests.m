@@ -11,11 +11,13 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKUser.h"
 #import "TSDKEvent.h"
+#import "TSDKMemberPayment.h"
 #import "NSDictionary+dump.h"
+#import "TSDKJSONFileResource.h"
+#import "TSDKShortPropertyTest.h"
 
 @interface TSDKCollectionObjectTests : XCTestCase
 @property (nonatomic, strong) TSDKCollectionJSON *userCollectionJSON;
-
 @end
 
 @implementation TSDKCollectionObjectTests
@@ -41,9 +43,40 @@
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
         XCTAssertEqualObjects(user.firstName, @"Tester");
         XCTAssertNil(user.addressCountry);
+        XCTAssertEqualObjects(user.objectIdentifier, @"2");
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
+}
+
+- (void)testObjectIdentifiers {
+    TSDKCollectionJSON *memberPaymentsCollection = [TSDKJSONFileResource collectionFromJSONFileNamed:@"MemberPayments"];
+    NSArray *memberPayments = memberPaymentsCollection.collection;
+    TSDKMemberPayment *paymentNoPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.firstObject];
+    XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
+    paymentNoPayment.teamId = nil;
+    XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"949008");
+    XCTAssertNil(paymentNoPayment.teamId);
+    XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
+    
+    [paymentNoPayment undoChanges];
+    XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
+
+    [paymentNoPayment.collection.data removeObjectForKey:@"team_id"];
+    XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
+    XCTAssertNil(paymentNoPayment.teamId);
+    
+    XCTAssertEqualObjects(paymentNoPayment.objectIdentifier, @"19069782");
+    XCTAssertFalse(paymentNoPayment.isNewObject);
+    
+    TSDKMemberPayment *newPayment = [[TSDKMemberPayment alloc] init];
+    XCTAssertTrue(newPayment.isNewObject);
+    XCTAssertEqualObjects(newPayment.objectIdentifier, @"");
+    
+    TSDKShortPropertyTest *shortProperty = [[TSDKShortPropertyTest alloc] init];
+    shortProperty.a = @"a"; // test setter
+    NSString *a = shortProperty.a;  // test getter
+    XCTAssertEqual(shortProperty.a, a);
 }
 
 - (void)testObjectFromObject {
@@ -180,20 +213,74 @@
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
         
         XCTestExpectation *userExpectation = [self expectationWithDescription:@"Return from /random"];
-        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
         [user arrayFromLink:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
             if (success || complete) {
                 XCTAssert(@"Returned Success on nil link");
             }
-            XCTAssertNil(objects, @"Objects returned on nil array");
+            XCTAssertTrue(objects.count==0, @"Objects returned on nil array");
             [userExpectation fulfill];
         }];
     } else {
         XCTAssert(@"Collection JSON parsing failed");
     }
-    
+#pragma clang diagnostic pop
     [self waitForExpectationsWithTimeout:5 handler:nil];
     
+}
+
+- (void)testCGFloatParsing {
+    
+    TSDKCollectionJSON *memberPaymentsCollection = [TSDKJSONFileResource collectionFromJSONFileNamed:@"MemberPayments"];
+    NSArray *memberPayments = memberPaymentsCollection.collection;
+    
+    TSDKMemberPayment *paymentNoPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.firstObject];
+    XCTAssertTrue(paymentNoPayment.amountPaid == 0.0, @"Expected zero float values for amountPaid");
+    XCTAssertTrue(paymentNoPayment.amountDue == 0.0, @"Expected zero float values for amountDue");
+    
+    TSDKMemberPayment *paymentUpToDate = [[TSDKMemberPayment alloc] initWithCollection:memberPayments[1]];
+    XCTAssertTrue(paymentUpToDate.amountPaid == 450.0, @"Expected 450 for amountPaid");
+    XCTAssertTrue(paymentUpToDate.amountDue == 0.0, @"Expected zero for amountDue");
+    
+    TSDKMemberPayment *paymentPartial = [[TSDKMemberPayment alloc] initWithCollection:memberPayments[4]];
+    XCTAssertTrue(paymentPartial.amountPaid == 200.0, @"Expected 200 for amountPaid");
+    XCTAssertTrue(paymentPartial.amountDue == 250.0, @"Expected 250 for amountDue");
+    
+    // last payment in the array is hard-coded to have null values for amount_paid and amount_due
+    TSDKMemberPayment *lastPayment = [[TSDKMemberPayment alloc] initWithCollection:memberPayments.lastObject];
+    XCTAssertTrue(lastPayment.amountDue == 0.0, @"Expected 0.0 when server provides a null value");
+    XCTAssertTrue(lastPayment.amountPaid == 0.0, @"Expected 0.0 when server provides a null value");
+    
+    paymentPartial.amountPaid = 450.0;
+    paymentPartial.amountDue = 0.0;
+    XCTAssertTrue(paymentPartial.amountPaid == 450.0, @"Expected 450 for amountPaid");
+    XCTAssertTrue(paymentPartial.amountDue == 0.0, @"Expected zero for amountDue");
+    
+    TSDKMemberPayment *payment = [[TSDKMemberPayment alloc] init];
+    NSString *key = @"amount_paid";
+    [payment setCGFloat:2.0 forKey:key];
+    CGFloat paid = [payment getCGFloat:key];
+    XCTAssertTrue(paid == 2.0, @"Expected CGFloat value to be 2.0");
+    XCTAssertTrue(payment.amountPaid == 2.0, @"Expected amountPaid to be 2.0");
+}
+
+- (void)testEnumParsing {    
+    TSDKEvent *event = [[TSDKEvent alloc] init];
+    
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
+    
+    [event setInteger:0 forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
+    
+    [event setInteger:1 forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeIsHome, @"Event Game type code should have parsed as home");
+    
+    [event setInteger:2 forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeIsAway, @"Event Game type code should have parsed as away");
+
+    [event setInteger:NSNotFound forKey:@"game_type_code"];
+    XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
 }
 
 @end

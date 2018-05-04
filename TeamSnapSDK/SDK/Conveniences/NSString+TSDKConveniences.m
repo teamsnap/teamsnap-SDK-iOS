@@ -23,10 +23,22 @@
     return [[NSDateFormatter yearMonthDateFormatter] dateFromString:self];
 }
 
+// accespts 'TSDK'+ClassName and returns class_name
+- (NSString *)classNameToUnderscoredName {
+    NSString *baseClassName;
+    
+    if ([self hasPrefix:@"TSDK"]) {
+        baseClassName = [[[self substringFromIndex:4] camelCaseToUnderscores] substringFromIndex:1];
+    } else {
+        baseClassName = [[self camelCaseToUnderscores] substringFromIndex:1];
+    }
+    
+    return baseClassName;
+}
+
 - (NSString *)addClassNameToDescriptor:(NSString *)className {
     if ([self isEqualToString:@"description"]) {
-        NSString *strippedClassName = [className substringFromIndex:4];
-        strippedClassName = [[[strippedClassName substringToIndex:1] lowercaseString] stringByAppendingString:[strippedClassName substringFromIndex:1]];
+        NSString *strippedClassName = [className classNameToUnderscoredName];
         return [NSString stringWithFormat:@"%@_%@", strippedClassName, self];
     } else {
         return self;
@@ -38,7 +50,7 @@
         return self;
     }
     
-    NSString *strippedClassName = [[className substringFromIndex:4] lowercaseString];
+    NSString *strippedClassName = [className classNameToUnderscoredName];
     
     if ([[self substringToIndex:strippedClassName.length] isEqualToString:strippedClassName]) {
         return [self substringFromIndex:strippedClassName.length+1];

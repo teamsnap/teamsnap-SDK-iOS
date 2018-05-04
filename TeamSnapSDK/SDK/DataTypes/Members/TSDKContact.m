@@ -8,31 +8,54 @@
 
 #import "TSDKContact.h"
 #import "NSMutableString+TSDKConveniences.h"
+#import "NSURL+TSDKConveniences.h"
 
 @implementation TSDKContact
 
-@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
+@dynamic  isPushable, isInvitable, addressCity, isAddressHidden, addressZip, invitationCode, memberId, userId, addressState, updatedAt, isAlertable, lastName, isEmailable, allowSharedAccess, label, addressStreet1, invitationDeclined, addressCountry, createdAt, addressStreet2, firstName, teamId, isOwner, isCommissioner, isManager, isDeletable, emailLimit, showName, position, linkMember, linkContactPhoneNumbers, linkTeam, linkContactEmailAddresses, linkMessages;
 
 + (NSString *)SDKType {
     return @"contact";
+}
+
+- (BOOL)isAtLeastManager {
+    return (self.isManager || self.isOwner || self.isCommissioner || self.isLeagueOwner);
+}
+
+- (BOOL)isEditable {
+    if ([self.collection.data objectForKey:@"is_editable"]) {
+        NSNumber *value = [self.collection.data objectForKey:@"is_editable"];
+        return [value boolValue];
+    } else {
+        return YES;
+    }
 }
 
 - (BOOL)canMarkAsRead {
     return YES;
 }
 
-- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
-    NSDictionary *searchParams;
-    if(type == TSDKMessageTypeAlert) {
-        searchParams = @{@"message_type": @"alert"};
-    } else if(type == TSDKMessageTypeEmail) {
-        searchParams = @{@"message_type": @"email"};
+- (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type {
+    NSString *messageTypeValue;
+    switch (type) {
+        case TSDKMessageTypeAlert:
+            messageTypeValue = @"alert";
+            break;
+        case TSDKMessageTypeEmail:
+            messageTypeValue = @"email";
+            break;
+        default:
+            break;
     }
-    
-    [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
+    NSURLQueryItem *typeSearchParameter = [NSURLQueryItem queryItemWithName:@"message_type" value:messageTypeValue];
+    return [self.linkMessages URLByAppendingQueryItem:typeSearchParameter];
 }
 
-- (NSInteger)contactId {
+- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
+    [self arrayFromLink:[self urlForMessageType:type] searchParams:nil withConfiguration:configuration completion:completion];
+}
+
+- (NSString *_Nullable)contactId {
     return self.objectIdentifier;
 }
 
@@ -88,6 +111,19 @@
 
 - (BOOL)hasExistingInvitation {
     return (self.isInvitable && self.invitationCode);
+}
+
+- (void)getMessageWithId:(NSString *_Nonnull)messageId withConfiguration:(TSDKRequestConfiguration *_Nonnull)configuration completion:(void (^_Nonnull)(TSDKMessage * _Nullable))completion {
+    NSDictionary *searchParams = @{@"id": messageId};
+    
+    [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+        TSDKMessage *message = [objects firstObject];
+        if([message.objectIdentifier isEqualToString:messageId]) {
+            completion(message);
+        } else {
+            completion(nil);
+        }
+    }];
 }
 
 @end

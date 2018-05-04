@@ -17,6 +17,7 @@
 #import <TeamSnapSDK/TSDKTeamSnap.h>
 #import <TeamSnapSDK/TSDKRequestConfiguration.h>
 #import <TeamSnapSDK/TSDKRequestConfiguration.h>
+#import <teamSnapSDK/TSDKCollectionQuery.h>
 #import <teamSnapSDK/TSDKCollectionCommand.h>
 #import <teamSnapSDK/TSDKCollectionJSON.h>
 #import <teamSnapSDK/TSDKCollectionObject.h>
@@ -56,7 +57,6 @@
 #import <TeamSnapSDK/TSDKTeamResults.h>
 #import <TeamSnapSDK/TSDKInvitationFinder.h>
 #import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
-#import <TeamSnapSDK/TSDKProcessBulkObjectProtocol.h>
 #import <TeamSnapSDK/TSDKConstants.h>
 #import <TeamSnapSDK/TSDKTeamMediaGroup.h>
 #import <TeamSnapSDK/TSDKMemberPreferences.h>
@@ -75,7 +75,6 @@
 #import <TeamSnapSDK/TSDKDivisionLocation.h>
 #import <TeamSnapSDK/TSDKCountry.h>
 #import <TeamSnapSDK/TSDKTimeZone.h>
-#import <TeamSnapSDK/TSDKDivisionMember.h>
 #import <TeamSnapSDK/TSDKMessageRecipient.h>
 #import <TeamSnapSDK/TSDKMessageSender.h>
 #import <TeamSnapSDK/TSDKMemberPhoto.h>
@@ -83,3 +82,18 @@
 #import <TeamsnapSDK/TSDKLeagueCustomDatum.h>
 #import <TeamsnapSDK/TSDKLeagueCustomField.h>
 #import <TeamsnapSDK/TSDKMemberAssignment.h>
+#import <TeamSnapSDK/NSURL+TSDKConveniences.h>
+#import <TeamSnapSDK/TSDKTslMetadatum.h>
+#import <TeamsnapSDK/TSDKApnDevice.h>
+#import <TeamSnapSDK/TSDKTslChat.h>
+#import <TeamSnapSDK/TSDKTslScore.h>
+#import <TeamSnapSDK/TSDKDivision.h>
+#import <TeamSnapSDK/TSDKDivisionPreferences.h>
+#import <TeamSnapSDK/NSString+TSDKPublicConveniences.h>
+#import <TeamsnapSDK/TSDKSmsGateway.h>
+#import <TeamSnapSDK/TSDKPersistenceFilePath.h>
+#import <TeamSnapSDK/TSDKMessagingPermission.h>
+#import <TeamSnapSDK/TSDKSportPosition.h>
+#import <TeamSnapSDK/TSDKEventLineup.h>
+#import <TeamSnapSDK/TSDKEventLineupEntry.h>
+

@@ -7,6 +7,7 @@
 //
 
 #import "TSDKStatistic.h"
+#import "NSNumber+TSDKConveniences.h"
 
 @implementation TSDKStatistic
 
@@ -14,6 +15,31 @@
 
 + (NSString *)SDKType {
     return @"statistic";
+}
+
+- (CGFloat)round:(NSNumber *)value To:(NSInteger)decimalPlaces {
+    NSInteger power = pow(10, decimalPlaces);
+    return  [[NSNumber numberWithFloat:(round([value floatValue] * power) / power)] floatValue];
+}
+
+- (NSString *)displayStringForStatisticValue:(NSNumber *)statValue {
+
+    if ((self.alwaysDisplayDecimals == false) && [statValue isWholeNumber]) {
+        if (self.isPercentage) {
+            return [NSString stringWithFormat:@"%ld%%", (long)statValue.integerValue * 100];
+        } else {
+            return [NSString stringWithFormat:@"%ld", (long)statValue.integerValue];
+        }
+    } else {
+        NSString *formatString = [NSString stringWithFormat:@"%%.%ldf", (long)self.precision];
+        if ([self isPercentage]) {
+            formatString = [formatString stringByAppendingString:@"%%"];
+            statValue = @(statValue.floatValue * 100);
+        }
+        CGFloat roundedValue = [self round:statValue To:self.precision];
+        
+        return [NSString stringWithFormat:formatString, roundedValue];
+    }
 }
 
 @end

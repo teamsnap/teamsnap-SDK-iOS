@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 TeamSnap. All rights reserved.
 //
 #import "TSPCache.h"
+#import "TSDKLogging.h"
 
 NSURL static *_rootPath = nil;
 NSURL static *_basePath = nil;
-NSUInteger static _maxCacheAgeMinutes = 60; // ~1 month
+NSUInteger static _maxCacheAgeMinutes = 60; // ~1 hour
 NSFileManager static *_fileManager = nil;
 
 @implementation TSPCache
@@ -22,13 +23,23 @@ NSFileManager static *_fileManager = nil;
 +(NSURL *)cacheRootPath {
     if (!_rootPath) {
         NSString *directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-        _rootPath = [NSURL fileURLWithPath:directory isDirectory:YES];
+        _rootPath = [[NSURL fileURLWithPath:directory isDirectory:YES] URLByAppendingPathComponent:@"teamsnap"];
     }
     if (![[self fileManager] fileExistsAtPath:[_rootPath path]]) {
         [[self fileManager] createDirectoryAtPath:[_rootPath path] withIntermediateDirectories:YES attributes:nil error:nil];
+        [self markDirectoryForNoBackup:_rootPath];
     }
 
     return _rootPath;
+}
+
++ (void)markDirectoryForNoBackup:(NSURL *)directory {
+    NSError *error = nil;
+    BOOL success = [_rootPath setResourceValue: [NSNumber numberWithBool: YES]
+                                        forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [_rootPath lastPathComponent], error);
+    }
 }
 
 +(NSURL *)cacheBasePath {
@@ -57,7 +68,7 @@ NSFileManager static *_fileManager = nil;
 }
 
 +(NSURL *)pathForObjectClassName:(NSString *)className {
-    NSURL *destination = [self.cacheBasePath URLByAppendingPathComponent:className];
+    NSURL *destination = [[self cacheRootPath] URLByAppendingPathComponent:className];
     if (destination && ![[self fileManager] fileExistsAtPath:[destination path]]) {
         [[self fileManager] createDirectoryAtPath:[destination path] withIntermediateDirectories:YES attributes:nil error:nil];
     }
@@ -69,8 +80,11 @@ NSFileManager static *_fileManager = nil;
     return [self pathForObjectClassName:className];
 }
 
-+(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSUInteger)objectId {
-    return  [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:[NSString stringWithFormat:@"%ld", (long)objectId]];
++(NSURL *)pathForObjectClass:(Class)objectClass withId:(NSString *)objectId {
+    if(objectId.length == 0) {
+        objectId = @"Base";
+    }
+    return  [[self pathForObjectClass:objectClass] URLByAppendingPathComponent:objectId];
 }
 
 + (NSURL *)pathForObjectCollectionOfClass:(Class)objectClass {
@@ -101,21 +115,21 @@ NSFileManager static *_fileManager = nil;
     [self.fileManager removeItemAtURL:classCachePath error:&error];
 }
 
-+(void)invaidateObjectOfClass:(Class)objectClass withId:(NSUInteger)objectId {
++(void)invaidateObjectOfClass:(Class)objectClass withId:(NSString *)objectId {
     NSError *error = nil;
     NSURL *classCachePath = [self pathForObjectClass:objectClass withId:objectId];
     [self.fileManager removeItemAtURL:classCachePath error:&error];
 }
 
 +(void)saveObject:(TSDKCollectionObject *)collectionObject {
-    if (_basePath) {
+    if ([self pathForObjectClass:[collectionObject class] withId:collectionObject.objectIdentifier]) {
         if (collectionObject) {
             [collectionObject writeToFileURL:[self pathForObjectClass:[collectionObject class] withId:collectionObject.objectIdentifier]];
         }
     }
 }
 
-+(TSDKCollectionObject *)objectOfClass:(Class)objectClass withId:(NSUInteger)objectId {
++(TSDKCollectionObject *)objectOfClass:(Class)objectClass withId:(NSString *)objectId {
     NSURL *cacheFileURL =[self pathForObjectClass:objectClass withId:objectId];
     if ([self isValidCacheFile:cacheFileURL]) {
         TSDKCollectionObject *resultObject = [objectClass collectionObjectFromDataInFileURL:cacheFileURL];
@@ -145,7 +159,7 @@ NSFileManager static *_fileManager = nil;
         NSMutableDictionary *resultDictionary = [[NSMutableDictionary alloc] init];
         
         for (NSString *key in keys) {
-            TSDKCollectionObject *object = [self objectOfClass:objectClass withId:[key integerValue]];
+            TSDKCollectionObject *object = [self objectOfClass:objectClass withId:key];
             if (object) {
                 [resultDictionary setObject:object forKey:key];
             } else {
@@ -153,7 +167,7 @@ NSFileManager static *_fileManager = nil;
             }
         }
         if (resultDictionary.count >0 ) {
-            return resultDictionary;
+            return [resultDictionary copy];
         } else {
             return nil;
         }

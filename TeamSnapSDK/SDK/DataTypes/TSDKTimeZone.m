@@ -28,4 +28,8 @@
     [self setString:timeZoneDescription forKey:@"description"];
 }
 
+- (NSTimeZone *)nsTimeZone {
+    return [NSTimeZone timeZoneWithName:self.ianaName];
+}
+
 @end

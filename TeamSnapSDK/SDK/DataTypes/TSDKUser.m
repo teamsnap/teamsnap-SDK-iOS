@@ -10,12 +10,12 @@
 #import "TSDKTeam.h"
 #import "TSDKPlan.h"
 #import "TSDKTeamResults.h"
-#import "NSMutableDictionary+integerKey.h"
 #import "NSMutableDictionary+refreshCollectionData.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
+#import "NSDate+TSDKConveniences.h"
 
 @interface TSDKUser()
-
-@property (strong, nonatomic) NSMutableArray *myMembersOnTeams;
 
 @end
 
@@ -23,10 +23,22 @@
 
 }
 
-@dynamic teamsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, isAdmin, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers;
+@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, highestRole, isAdmin, isEligibleForFreeTrial, hasCc, displayAdsOnTeamList, linkAdvertisements, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions, linkContacts, linkPayableInvoices, linkInvoicesAggregates, linkNextPayableInvoice;
 
 + (NSString *)SDKType {
     return @"user";
+}
+
+- (NSString *)fullName {
+    if ((self.firstName.length>0) && (self.lastName.length>0)) {
+        return [[NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    } else if (self.firstName.length>0) {
+        return self.firstName;
+    } else if (self.lastName.length>0) {
+        return  self.lastName;
+    } else {
+        return @"";
+    }
 }
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock)completion {
@@ -38,63 +50,32 @@
     }];
 }
 
-- (NSMutableDictionary *)teams {
-    if (!_teams) {
-        _teams = [[NSMutableDictionary alloc] init];
-    }
-    return _teams;
-}
-
-- (void)addTeam:(TSDKTeam *)team {
-    [self.teams refreshCollectionObject:team];
-}
-
-- (NSMutableArray *)myMembersOnTeams {
-    if (!_myMembersOnTeams) {
-        _myMembersOnTeams = [[NSMutableArray alloc] init];
-    }
-    return _myMembersOnTeams;
-}
-
-- (void)addMember:(TSDKMember *)newMember {
-    NSUInteger existingMember = [self.myMembersOnTeams indexOfObjectPassingTest:^BOOL(TSDKMember  *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.objectIdentifier == newMember.objectIdentifier);
-    }];
-    
-    if (existingMember != NSNotFound) {
-        [self.myMembersOnTeams removeObjectAtIndex:existingMember];
-    }
-    [self.myMembersOnTeams addObject:newMember];
-}
-
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    if (_myMembersOnTeams) {
-        if (completion) {
-            completion(YES, YES, _myMembersOnTeams, nil);
-        }
-    } else {
-        [self getPersonasWithConfiguration:configuration completion:completion];
-    }
+    [self getPersonasWithConfiguration:configuration completion:completion];
 }
 
 -(void)getPersonasWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberArrayCompletionBlock)completion {
-    __typeof__(self) __weak weakSelf = self;
     [self arrayFromLink:self.linkPersonas withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        for (TSDKMember *member in objects) {
-            [weakSelf addMember:member];
-        }
         if (completion) {
-            completion(success, complete, weakSelf.myMembersOnTeams, nil);
+            completion(success, complete, objects, nil);
         }
     }];
 }
 
-- (void)myMembersOnTeamId:(NSInteger)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+- (void)getInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKInvoiceAggregateCompletetionBlock)completion {
+    [self arrayFromLink:self.linkInvoicesAggregates withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, complete, objects.firstObject, nil);
+        }
+    }];
+}
+
+- (void)myMembersOnTeamId:(NSString *)teamId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         NSArray *resultMembers = nil;
         if (success) {
             NSIndexSet *memberIndexes = [objects indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-                return (member.teamId == teamId);
+                return [member.teamId isEqualToString:teamId];
             }];
             resultMembers = [objects objectsAtIndexes:memberIndexes];
 
@@ -105,45 +86,30 @@
     }];
 }
 
-- (NSArray *)myMembersAcrossAllTeams {
-    return _myMembersOnTeams;
-}
-
-- (NSArray *)myMembersOnTeamId:(NSInteger)teamId {
-    NSIndexSet *memberIndexes = [_myMembersOnTeams indexesOfObjectsPassingTest:^BOOL(TSDKMember *member, NSUInteger idx, BOOL * _Nonnull stop) {
-        return (member.teamId == teamId);
-    }];
-    NSArray *resultMembers = [_myMembersOnTeams objectsAtIndexes:memberIndexes];
-    return resultMembers;
-}
-
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     [TSDKDataRequest requestObjectsForPath:self.linkTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        [self processGetTeamsResult:objects];
         if (completion) {
-            completion(success, complete, self.teams.allValues, error);
+            NSArray *teams = [self processGetTeamsResult:objects];
+            completion(success, complete, teams, error);
         }
     }];
 }
 
 -(void)getActiveTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     [TSDKDataRequest requestObjectsForPath:self.linkActiveTeams withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        [self processGetTeamsResult:objects];
         if (completion) {
-            completion(success, complete, self.teams.allValues, error);
+            NSArray *teams = [self processGetTeamsResult:objects];
+            completion(success, complete, teams, error);
         }
     }];
 }
 
-- (void)processGetTeamsResult:(TSDKCollectionJSON *)objects {
+- (NSArray *)processGetTeamsResult:(TSDKCollectionJSON *)objects {
     NSArray *newTeams = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
-    
-    for (TSDKTeam *team in newTeams) {
-        [self.teams refreshCollectionObject:team];
-    }
+    return newTeams;
 }
 
-- (void)TeamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+- (void)teamsWithIDs:(NSArray *)teamIds withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [TSDKObjectsRequest listTeams:teamIds WithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
         if (completion) {
             completion(success, complete, objects, error);
@@ -159,71 +125,6 @@
     }];
 }
 
-- (void)teamIdsForAllMyTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    [self myMembersOnTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSMutableArray *teamIds = nil;
-        if (success) {
-            teamIds = [[NSMutableArray alloc] init];
-            for (TSDKMember *member in objects) {
-                NSString *teamId = [NSString stringWithFormat:@"%ld", (long)member.teamId];
-                if (teamId != 0) {
-                    if (![teamIds containsObject:teamId]) {
-                        [teamIds addObject:[NSString stringWithFormat:@"%ld", (long)[teamId integerValue]]];
-                    }
-                }
-            }
-        }
-        if (completion) {
-            completion(success, complete, [NSArray arrayWithArray:teamIds], error);
-        }
-    }];
-}
-
-- (void)bulkLoadDataTypes:(NSArray *)objectDataTypes withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    __typeof__(self) __weak weakSelf = self;
-    
-    [self teamIdsForAllMyTeamsWithConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *teamIds, NSError *error) {
-        [TSDKObjectsRequest bulkLoadTeamDataForTeamIds:teamIds types:objectDataTypes completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-            if(success) {
-                for (TSDKCollectionObject *object in objects) {
-                    if ([object isKindOfClass:[TSDKTeam class]]) {
-                        [weakSelf addTeam:(TSDKTeam *)object];
-                    }
-                }
-            }
-            if (completion) {
-                completion(success, complete, objects, error);
-            }
-        }];
-        
-    }];
-
-}
-
-- (void)loadTeamOverviewForMyTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
-    [self bulkLoadDataTypes:@[[TSDKTeam class], [TSDKTeamPreferences class], [TSDKTeamResults class], [TSDKPlan class]] withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        
-        NSIndexSet *indexes = [objects indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            return [obj isKindOfClass:[TSDKTeam class]];
-        }];
-        
-        NSArray *teams = [objects objectsAtIndexes:indexes];
-        if (completion) {
-            completion(success, complete, teams, error);
-        }
-    }];
-}
-
-- (BOOL)processBulkLoadedObject:(TSDKCollectionObject *)bulkObject {
-    BOOL lProcessed = NO;
-    if ([bulkObject isKindOfClass:[TSDKMember class]]) {
-        lProcessed = YES;
-        [self addMember:(TSDKMember *)bulkObject];
-    }
-    
-    return lProcessed;
-}
-
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion {
     
     NSDictionary *searchParams;
@@ -234,6 +135,48 @@
     }
     
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
+}
+
+- (void)getTslMetadatumWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
+    NSURLComponents *fullySpecifiedURL = [NSURLComponents componentsWithURL:self.linkTslMetadatum resolvingAgainstBaseURL:NO];
+    NSMutableArray *queryItems = [[NSMutableArray alloc] init];
+    [queryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
+    
+    NSURLQueryItem *versionQuery = [NSURLQueryItem queryItemWithName:@"version" value:@"1.1"];
+    [queryItems addObjectsFromArray:@[versionQuery]];
+    fullySpecifiedURL.queryItems = queryItems;
+    
+    [self arrayFromLink:fullySpecifiedURL.URL withConfiguration:configuration completion:completion];
+}
+
+- (NSInteger)age {
+    if (self.birthday && (![self.birthday isEqual:[NSNull null]])) {
+        return [self.birthday age];
+    } else {
+        return 0;
+    }
+}
+
++ (NSURL * _Nullable)persistenceFilePathWithParentObject:(TSDKCollectionObject * _Nonnull)parentObject {
+    return [[[self persistenceBaseFilePath] URLByAppendingPathComponent:[self SDKType]] URLByAppendingPathComponent:@"current"];
+}
+
+- (TSDKHighestRoleType)highestRoleKey {
+    if ([self.highestRole isEqualToString:@"non-player"]) {
+        return TSDKHighestRoleTypeNonPlayer;
+    } else if ([self.highestRole isEqualToString:@"player"]) {
+        return TSDKHighestRoleTypePlayer;
+    } else if ([self.highestRole isEqualToString:@"manager"]) {
+        return TSDKHighestRoleTypeManager;
+    } else if ([self.highestRole isEqualToString:@"owner"]) {
+        return TSDKHighestRoleTypeOwner;
+    } else if ([self.highestRole isEqualToString:@"commissioner"]) {
+        return TSDKHighestRoleTypeCommissioner;
+    } else if ([self.highestRole isEqualToString:@"league_owner"]) {
+        return TSDKHighestRoleTypeLeagueOwner;
+    }
+    
+    return TSDKHighestRoleTypeUnknown;
 }
 
 @end

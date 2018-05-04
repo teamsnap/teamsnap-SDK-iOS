@@ -8,12 +8,13 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
-#import "TSDKProcessBulkObjectProtocol.h"
 #import "TSDKMessage.h"
 #import "TSDKMessageRecipient.h"
 #import "TSDKMessageSender.h"
-
+#import "TSDKCompletionBlockTypes.h"
+NS_ASSUME_NONNULL_BEGIN
 @class TSDKBackgroundUploadProgressMonitorDelegate;
+@class TSDKDivision;
 
 @protocol TSDKMemberOrContactProtocol <NSObject>
 
@@ -23,7 +24,7 @@
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
 @property (nullable, nonatomic, weak) NSString *addressZip; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *invitationCode; //Example: d3e4bd58170967126b089212
-@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
+@property (nullable, nonatomic, weak) NSString *userId; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *addressState; //Example:
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
 @property (nullable, nonatomic, weak) NSString *lastName; //Example: Rahaim
@@ -34,92 +35,117 @@
 @property (nullable, nonatomic, weak) NSString *firstName; //Example: Jack
 @property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
 @property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
+@property (nullable, nonatomic, weak) NSString *teamId; //Example: 71118
+@property (nonatomic, assign) BOOL isManager; //Example: 1
+@property (nonatomic, assign) BOOL isOwner; //Example: 1
+@property (nonatomic, assign) BOOL isCommissioner; //Example: 0
+@property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
+@property (nonatomic, assign) BOOL isDeletable; //Example: 0
 
-- (nonnull NSString *)fullName;
+- (NSString *)objectIdentifier;
+- (NSString *)fullName;
 - (nullable NSString *)fancyAddressString;
 - (nullable NSString *)addressString;
 
+/**
+ Manager is the lowest level of permission set. Above it is Owner and Commissioner. This convenience method checks isManager OR isOwner OR isCommissioner as that's what most permissions are based on.
+
+ @return true is the member/contact is the manager, or owner, or commissioner.
+ */
+- (BOOL)isAtLeastManager;
+
 @end
 
-@interface TSDKMember : TSDKCollectionObject <TSDKProcessBulkObjectProtocol, TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
+typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
+    TSDKMemberGenderFemale,
+    TSDKMemberGenderMale,
+    TSDKMemberGenderUnknown,
+};
 
-@property (nonatomic, assign) BOOL isPushable; //Example: 1
-@property (nullable, nonatomic, weak) NSString *lastName; //Example: Invite
-@property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2015-11-02T19:01:32Z
-@property (nonatomic, assign) NSInteger teamId; //Example: 71118
-@property (nonatomic, assign) BOOL isOwnershipPending; //Example: <null>
+@interface TSDKMember : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
+
+@property (nullable, nonatomic, weak) NSString *lastName; //Example: Seamans
+@property (nullable, nonatomic, weak) NSDate *createdAt; //Example: 2016-11-17T20:29:40Z
+@property (nullable, nonatomic, weak) NSString *teamId; //Example: 2419116
+@property (nonatomic, assign) BOOL hideAddress; //Example: 0
+@property (nonatomic, assign) BOOL isOwnershipPending; //Example: 0
 @property (nullable, nonatomic, weak) NSString *addressStreet2; //Example: **NULL**
+@property (nonatomic, assign) BOOL isPushable; //Example: 1
 @property (nullable, nonatomic, weak) NSString *addressState; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasFacebookPostScoresEnabled; //Example: 0
+@property (nonatomic, assign) BOOL hideAge; //Example: 0
 @property (nullable, nonatomic, weak) NSString *invitationDeclined; //Example: **NULL**
-@property (nonatomic, assign) BOOL isInvitable; //Example: 1
+@property (nonatomic, assign) BOOL isInvitable; //Example: 0
+@property (nullable, nonatomic, weak) NSString *divisionId; //Example: <null>
 @property (nullable, nonatomic, weak) NSString *addressZip; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSString *lastLoggedInAt; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSString *invitationCode; //Example: d3e4bd58170967126b089212
+@property (nullable, nonatomic, weak) NSDate *lastLoggedInAt; //Example: <null>
+@property (nullable, nonatomic, weak) NSString *invitationCode; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSString *position; //Example: **NULL**
 @property (nullable, nonatomic, weak) NSDate *birthday; //Example:
 @property (nonatomic, assign) BOOL isEmailable; //Example: 1
-@property (nonatomic, assign) BOOL isInvited; //Example: 1
-@property (nonatomic, assign) BOOL isActivated; //Example: 0
+@property (nonatomic, assign) BOOL isLeagueOwner; //Example: 0
+@property (nonatomic, assign) BOOL isInvited; //Example: 0
+@property (nonatomic, assign) BOOL isActivated; //Example: 1
+@property (nullable, nonatomic, weak) NSString *sourceMemberId; //Example: <null>
 @property (nullable, nonatomic, weak) NSString *addressStreet1; //Example: **NULL**
 @property (nonatomic, assign) BOOL isNonPlayer; //Example: 0
 @property (nullable, nonatomic, weak) NSString *addressCity; //Example: **NULL**
-@property (nonatomic, assign) BOOL isAgeHidden; //Example: <null>
-@property (nullable, nonatomic, weak) NSString *firstName; //Example: 2nd
-@property (nonatomic, assign) BOOL isManager; //Example: 0
+@property (nonatomic, assign) BOOL isAgeHidden; //Example: 0
+@property (nullable, nonatomic, weak) NSString *firstName; //Example: Skyler
+@property (nonatomic, assign) BOOL isManager; //Example: 1
 @property (nullable, nonatomic, weak) NSString *jerseyNumber; //Example: **NULL**
-@property (nonatomic, assign) NSInteger userId; //Example: **NULL**
-@property (nullable, nonatomic, weak) NSString *gender; //Example: Male
-@property (nonatomic, assign) BOOL isOwner; //Example: 0
-@property (nonatomic, assign) BOOL isAddressHidden; //Example: <null>
-@property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2015-11-18T02:20:03Z
+@property (nullable, nonatomic, weak) NSString *userId; //Example: 2971597
+@property (nonatomic, assign) BOOL isOwner; //Example: 1
+@property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
+@property (nullable, nonatomic, weak) NSDate *updatedAt; //Example: 2016-11-17T20:29:40Z
+@property (nonatomic, assign) BOOL isCommissioner; //Example: 0
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
 @property (nullable, nonatomic, weak) NSURL *linkBroadcastEmails;
-@property (nullable, nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
-@property (nullable, nonatomic, weak) NSURL *linkMemberLinks;
-@property (nullable, nonatomic, weak) NSURL *linkMemberPreferences;
-@property (nullable, nonatomic, weak) NSURL *linkTeam;
-@property (nullable, nonatomic, weak) NSURL *linkMemberPhoneNumbers;
-@property (nullable, nonatomic, weak) NSURL *linkMessages;
-@property (nullable, nonatomic, weak) NSURL *linkMemberEmailAddresses;
-@property (nullable, nonatomic, weak) NSURL *linkStatisticData;
-@property (nullable, nonatomic, weak) NSURL *linkForumSubscriptions;
-@property (nullable, nonatomic, weak) NSURL *linkLeagueCustomData;
-@property (nullable, nonatomic, weak) NSURL *linkContactPhoneNumbers;
-@property (nullable, nonatomic, weak) NSURL *linkContactEmailAddresses;
-@property (nullable, nonatomic, weak) NSURL *linkTeamMedia;
-@property (nullable, nonatomic, weak) NSURL *linkTrackedItemStatuses;
-@property (nullable, nonatomic, weak) NSURL *linkForumTopics;
-@property (nullable, nonatomic, weak) NSURL *linkTeamMediumComments;
-@property (nullable, nonatomic, weak) NSURL *linkCustomFields;
-@property (nullable, nonatomic, weak) NSURL *linkAssignments;
-@property (nullable, nonatomic, weak) NSURL *linkCustomData;
-@property (nullable, nonatomic, weak) NSURL *linkMemberStatistics;
-@property (nullable, nonatomic, weak) NSURL *linkAvailabilities;
-@property (nullable, nonatomic, weak) NSURL *linkMemberBalances;
-@property (nullable, nonatomic, weak) NSURL *linkForumPosts;
-@property (nullable, nonatomic, weak) NSURL *linkBroadcastAlerts;
-@property (nullable, nonatomic, weak) NSURL *linkMemberPayments;
 @property (nullable, nonatomic, weak) NSURL *linkLeagueCustomFields;
-@property (nullable, nonatomic, weak) NSURL *linkLeagueRegistrantDocuments;
-@property (nullable, nonatomic, weak) NSURL *linkContacts;
-@property (nullable, nonatomic, weak) NSURL *linkMemberFiles;
-@property (nullable, nonatomic, weak) NSURL *linkMemberPhoto;
-@property (nullable, nonatomic, weak) NSURL *linkMemberThumbnail;
+@property (nullable, nonatomic, weak) NSURL *linkForumSubscriptions;
+@property (nullable, nonatomic, weak) NSURL *linkMessages;
+@property (nullable, nonatomic, weak) NSURL *linkContactEmailAddresses;
+@property (nullable, nonatomic, weak) NSURL *linkTeam;
+@property (nullable, nonatomic, weak) NSURL *linkLeagueCustomData;
+@property (nullable, nonatomic, weak) NSURL *linkMemberStatistics;
+@property (nullable, nonatomic, weak) NSURL *linkForumPosts;
+@property (nullable, nonatomic, weak) NSURL *linkTeamMedia;
 @property (nullable, nonatomic, weak) NSURL *linkMemberPhotos;
-
-//+(void)actionRemoveMemberPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionDisableMemberWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionUploadMemberPhotoWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionGenerateMemberThumbnailWithCompletion:(TSDKCompletionBlock)completion; //(null)
-//+(void)actionImportFromTeamWithCompletion:(TSDKCompletionBlock)completion; //(null)
+@property (nullable, nonatomic, weak) NSURL *linkMessageData;
+@property (nullable, nonatomic, weak) NSURL *linkAssignments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberRegistrationSignups;
+@property (nullable, nonatomic, weak) NSURL *linkMemberAssignments;
+@property (nullable, nonatomic, weak) NSURL *linkUser;
+@property (nullable, nonatomic, weak) NSURL *linkTeamMediumComments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPhoneNumbers __attribute__((deprecated));
+@property (nullable, nonatomic, weak) NSURL *linkContacts;
+@property (nullable, nonatomic, weak) NSURL *linkMemberBalances;
+@property (nullable, nonatomic, weak) NSURL *linkContactPhoneNumbers;
+@property (nullable, nonatomic, weak) NSURL *linkCustomFields;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPayments;
+@property (nullable, nonatomic, weak) NSURL *linkCustomData;
+@property (nullable, nonatomic, weak) NSURL *linkTrackedItemStatuses;
+@property (nullable, nonatomic, weak) NSURL *linkBroadcastAlerts;
+@property (nullable, nonatomic, weak) NSURL *linkMemberFiles;
+@property (nullable, nonatomic, weak) NSURL *linkMemberLinks;
+@property (nullable, nonatomic, weak) NSURL *linkAvailabilities;
+@property (nullable, nonatomic, weak) NSURL *linkBroadcastEmailAttachments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberEmailAddresses __attribute__((deprecated));
+@property (nullable, nonatomic, weak) NSURL *linkStatisticData;
+@property (nullable, nonatomic, weak) NSURL *linkForumTopics;
+@property (nullable, nonatomic, weak) NSURL *linkDivision;
+@property (nullable, nonatomic, weak) NSURL *linkLeagueRegistrantDocuments;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPreferences;
+@property (nullable, nonatomic, weak) NSURL *linkMemberThumbnail;
+@property (nullable, nonatomic, weak) NSURL *linkMemberPhoto;
 
 // Not AutoGenerated:
 - (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPhotoArrayCompletionBlock)completion;
 
++ (NSURL * _Nullable)commissionerQueryFor:(TSDKDivision * _Nonnull)division;
+
 #if TARGET_OS_IPHONE
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL memberId:(NSInteger)memberId progress:(nullable TSDKUploadProgressBlock)progressBlock;
++(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(nullable TSDKUploadProgressBlock)progressBlock;
 -(void)getMemberPhotoWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKImageCompletionBlock)completion;
 -(void)getMemberThumbnailWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKImageCompletionBlock)completion;
 
@@ -128,51 +154,92 @@
 
 #endif
 
--(nullable TSDKTeam *)team;
-@property (nullable, strong, nonatomic) NSMutableDictionary *contacts;
-@property (nullable, strong, nonatomic) NSMutableDictionary *emailAddresses;
-@property (nullable, strong, nonatomic) NSMutableDictionary *phoneNumbers;
-
-
-- (BOOL)isAtLeastManager;
-- (BOOL)isAtLeastOwner;
-
 - (NSInteger)age;
+
+- (TSDKMemberGender)gender;
+- (void)setGender:(TSDKMemberGender)gender;
++ (nullable NSString *)stringFromGender:(TSDKMemberGender)gender;
+
+//Delete one or many members.
+//+(void)actionBulkDeleteMemberid:(NSString *_Nonnull)memberId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)actionRemoveMemberPhotoMemberid:(NSString *_Nonnull)memberId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Given source_member_ids (array) and a destination_team_id, source members and related member data will be imported to the destination team. Newly created members will be returned.
+//+(void)actionImportFromTeamDestinationteamid:(NSString *_Nonnull)destinationTeamId sendInvites:(NSString *_Nonnull)sendInvites sourceMemberIds:(NSString *_Nonnull)sourceMemberIds WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)actionDisableMemberMemberid:(NSString *_Nonnull)memberId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)actionUploadMemberPhotoY:(NSString *_Nonnull)y height:(NSString *_Nonnull)height memberId:(NSString *_Nonnull)memberId file:(NSString *_Nonnull)file x:(NSString *_Nonnull)x width:(NSString *_Nonnull)width WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)actionGenerateMemberThumbnailY:(NSString *_Nonnull)y memberId:(NSString *_Nonnull)memberId x:(NSString *_Nonnull)x width:(NSString *_Nonnull)width height:(NSString *_Nonnull)height WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)actionSetCommissionerAccessMemberid:(NSString *_Nonnull)memberId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Move one or many members to a new division and/or team.
+//+(void)actionMoveMemberMemberid:(NSString *_Nonnull)memberId divisionId:(NSString *_Nonnull)divisionId teamId:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
++ (void)querySearchId:(NSString *_Nullable)id pageNumber:(NSInteger)pageNumber userId:(NSString *_Nullable)userId teamId:(NSString *_Nullable)teamId divisionId:(NSString *_Nullable)divisionId pageSize:(NSInteger)pageSize WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
+
++ (void)queryCommissionersTeamid:(NSString *_Nullable)teamId divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
+
+//Given a user ID, returns members directly associated with the user as well as members associated with the user via a shared access contact.
+//+(void)queryPersonasUserid:(NSString *_Nonnull)userId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)queryOwnerTeamid:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//Given a user ID, returns all members associated with user's active season teams.  If include_archived_teams (boolean) parameter is supplied, members associated with archived teams will be returned as well.
+//+(void)queryImportableMembersUserid:(NSString *_Nonnull)userId includeArchivedTeams:(NSString *_Nonnull)includeArchivedTeams WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//BETA: (This endpoint subject to change) Searches the division and subdivision for the members meeting the search criteria. Searches using this endpoint accept additional parameters. You can search for equality by formatting the string as 'operator:equals,value:<SEARCH STRING>'. You may search for additional parameters by sending them as an array, for instance: ?birthday[]=operator:less_than,value:2016-02-02&birthday[]=operator:greater_than,value:2010-02-02.
+//+(void)queryAdvancedDivisionSearchEmail:(NSString *_Nonnull)email pageNumber:(NSString *_Nonnull)pageNumber isOwner:(NSString *_Nonnull)isOwner isManager:(NSString *_Nonnull)isManager isCommissioner:(NSString *_Nonnull)isCommissioner isAssigned:(NSString *_Nonnull)isAssigned customField:(NSString *_Nonnull)customField birthday:(NSString *_Nonnull)birthday firstName:(NSString *_Nonnull)firstName registrationFormId:(NSString *_Nonnull)registrationFormId isOwnershipPending:(NSString *_Nonnull)isOwnershipPending pageSize:(NSString *_Nonnull)pageSize lastName:(NSString *_Nonnull)lastName teamId:(NSString *_Nonnull)teamId gender:(NSString *_Nonnull)gender divisionId:(NSString *_Nonnull)divisionId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//BETA: (This endpoint subject to change) Searches the division and subdivision for the members meeting the search criteria.
+//+(void)queryDivisionSearchPagenumber:(NSString *_Nonnull)pageNumber divisionId:(NSString *_Nonnull)divisionId isCommissioner:(NSString *_Nonnull)isCommissioner isActivated:(NSString *_Nonnull)isActivated isUnassigned:(NSString *_Nonnull)isUnassigned isOwnershipPending:(NSString *_Nonnull)isOwnershipPending pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
+//+(void)queryManagersTeamid:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 @end
 
 @interface TSDKMember (ForwardedMethods)
 
--(void)getBroadcastEmailsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKBroadcastEmailArrayCompletionBlock)completion;
--(void)getBroadcastEmailAttachmentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
--(void)getMemberLinksWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
--(void)getMemberPreferencesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPreferencesArrayCompletionBlock)completion;
--(void)getTeamWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKTeamArrayCompletionBlock)completion;
--(void)getMemberPhoneNumbersWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPhoneNumberArrayCompletionBlock)completion;
--(void)getMessagesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(nullable TSDKMessagesArrayCompletionBlock)completion;
--(void)getMemberEmailAddressesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberEmailAddressArrayCompletionBlock)completion;
--(void)getStatisticDataWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKStatisticDatumArrayCompletionBlock)completion;
--(void)getForumSubscriptionsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKForumSubscriptionArrayCompletionBlock)completion;
--(void)getLeagueCustomDataWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKCustomLeagueDatumArrayCompletionBlock)completion;
--(void)getContactPhoneNumbersWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKContactPhoneNumberArrayCompletionBlock)completion;
--(void)getContactEmailAddressesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKContactEmailAddressArrayCompletionBlock)completion;
--(void)getTeamMediaWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
--(void)getTrackedItemStatusesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKTrackedItemStatusArrayCompletionBlock)completion;
--(void)getForumTopicsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKForumTopicArrayCompletionBlock)completion;
--(void)getTeamMediumCommentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKTeamMediumCommentArrayCompletionBlock)completion;
--(void)getCustomFieldsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKCustomFieldArrayCompletionBlock)completion;
--(void)getAssignmentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKAssignmentArrayCompletionBlock)completion;
--(void)getCustomDataWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKCustomDatumArrayCompletionBlock)completion;
--(void)getMemberStatisticsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberStatisticArrayCompletionBlock)completion;
--(void)getAvailabilitiesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKAvailabilityArrayCompletionBlock)completion;
--(void)getMemberBalancesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberBalanceArrayCompletionBlock)completion;
--(void)getUserWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKUserArrayCompletionBlock)completion;
--(void)getForumPostsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKForumPostArrayCompletionBlock)completion;
--(void)getBroadcastAlertsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKBroadcastAlertArrayCompletionBlock)completion;
--(void)getMemberPaymentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPaymentArrayCompletionBlock)completion;
--(void)getLeagueCustomFieldsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKLeagueCustomFieldArrayCompletionBlock)completion;
--(void)getLeagueRegistrantDocumentsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
--(void)getContactsWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKContactArrayCompletionBlock)completion;
--(void)getMemberFilesWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKArrayCompletionBlock)completion;
+-(void)getBroadcastEmailsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastEmailArrayCompletionBlock _Nonnull)completion;
+-(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKLeagueCustomFieldArrayCompletionBlock _Nonnull)completion;
+-(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumSubscriptionArrayCompletionBlock _Nonnull)completion;
+-(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
+-(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberStatisticArrayCompletionBlock _Nonnull)completion;
+-(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumPostArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nonnull)completion;
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAssignmentArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberRegistrationSignupsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberAssignmentArrayCompletionBlock _Nonnull)completion;
+-(void)getUserWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKUserArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumCommentArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock _Nonnull)completion __attribute__((deprecated));
+-(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberBalanceArrayCompletionBlock _Nonnull)completion;
+-(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock _Nonnull)completion;
+-(void)getCustomFieldsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomFieldArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPaymentArrayCompletionBlock _Nonnull)completion;
+-(void)getCustomDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomDatumArrayCompletionBlock _Nonnull)completion;
+-(void)getTrackedItemStatusesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTrackedItemStatusArrayCompletionBlock _Nonnull)completion;
+-(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberLinksWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAvailabilityArrayCompletionBlock _Nonnull)completion;
+-(void)getBroadcastEmailAttachmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock _Nonnull)completion __attribute__((deprecated)); 
+-(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticDatumArrayCompletionBlock _Nonnull)completion;
+-(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumTopicArrayCompletionBlock _Nonnull)completion;
+-(void)getDivisionWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getLeagueRegistrantDocumentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPreferencesArrayCompletionBlock _Nonnull)completion;
+
 
 @end
+NS_ASSUME_NONNULL_END

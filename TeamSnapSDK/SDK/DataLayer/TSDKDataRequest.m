@@ -17,7 +17,6 @@
 #import "TSDKCollectionJSON.h"
 #import "NSMutableURLRequest+TSDKConveniences.h"
 #import "TSDKCollectionObject.h"
-#import "TSDKProfileTimer.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
 #import "NSString+TSDKConveniences.h"
@@ -30,7 +29,7 @@ static NSString *clientId;
 static NSString *clientSecret;
 static NSString *_device;
 
-static NSMutableDictionary *_requestHeaders = nil;
+static NSDictionary *_requestHeaders = nil;
 static NSString *OAuthToken = nil;
 
 static NSRecursiveLock *accessDetailsLock = nil;
@@ -59,8 +58,14 @@ static NSRecursiveLock *accessDetailsLock = nil;
     return session;
 }
 
++ (dispatch_queue_t)processingQueue {
+    return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
+}
+
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key {
-    [self.requestHeaders setObject:value forKey:key];
+    NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] initWithDictionary:self.requestHeaders];
+    [mutableRequestHeaders setObject:value forKey:key];
+    _requestHeaders = [mutableRequestHeaders copy];
 }
 
 #if TARGET_OS_IPHONE
@@ -100,13 +105,16 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 #endif
 
-+ (NSMutableDictionary *)requestHeaders {
++ (NSDictionary *)requestHeaders {
     if (!_requestHeaders) {
-        _requestHeaders = [[NSMutableDictionary alloc] init];
-        [_requestHeaders setObject:@"application/json" forKey:@"Accept"];
-        [_requestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
-        [_requestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
-        //[_requestHeaders setObject:@"gzip" forKey:@"Accept-Encoding"];
+        NSMutableDictionary *mutableRequestHeaders = [[NSMutableDictionary alloc] init];
+        [mutableRequestHeaders setObject:@"application/json" forKey:@"Accept"];
+        [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
+        [mutableRequestHeaders setObject:@"3" forKey:@"X_TEAMSNAP_API_VERSION"];
+        [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
+        if([[TSDKTeamSnap sharedInstance] combinedContactFeatureIsActive]) {
+            [mutableRequestHeaders setObject:@"ghost_contact" forKey:@"X-Teamsnap-Api-Features"];
+        }
         
         NSMutableArray *acceptLanguagesComponents = [NSMutableArray array];
         [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -114,12 +122,13 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
             *stop = q <= 0.5f;
         }];
-        [_requestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
+        [mutableRequestHeaders setObject:[acceptLanguagesComponents componentsJoinedByString:@", "] forKey:@"Accept-Language"];
         
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         if (version) {
-            [_requestHeaders setObject:version forKey:@"X-Client-Version"];
+            [mutableRequestHeaders setObject:version forKey:@"X-Client-Version"];
         }
+        _requestHeaders = [mutableRequestHeaders copy];
     }
     return _requestHeaders;
 }
@@ -132,7 +141,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
         return;
     }
     if ([URL isFileURL]) {
-        NSLog(@"File URL");
         NSData *data = [NSData dataWithContentsOfURL:URL];
         BOOL success = NO;
         id JSON = nil;
@@ -141,7 +149,9 @@ static NSRecursiveLock *accessDetailsLock = nil;
             success = YES;
             JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         }
-        completionBlock(success, NO, JSON, error);
+        if (completionBlock) {
+            completionBlock(success, NO, JSON, error);
+        }
     } else {
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
         if (request == nil) {
@@ -156,7 +166,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         if (OAuthToken) {
-            [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+            [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
         }
         
         if (method) {
@@ -173,15 +183,16 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [request setHTTPBody:data];
             [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         }
-        
+
+#ifdef DEBUGCURL
         DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+#endif
         
         if([[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:request]) {
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
         } else {
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
             
-            [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
 #if TARGET_OS_IPHONE
             [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
 #endif
@@ -189,53 +200,63 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #if TARGET_OS_IPHONE
                 [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
 #endif
-                [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
                 
-                BOOL success = NO;
-                BOOL requestCompleted = NO;
-                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                    success = [httpResponse wasSuccess];
-                }
-                id JSON = nil;
-                
-                requestCompleted = success;
-                
-                if (success) {
-                    [[TSDKProfileTimer sharedInstance] startTimeWithId:@"JSON"];
-                    if (data) {
-                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                    }
-                    [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:@"JSON" logResult:YES];
-                } else {
-                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                dispatch_async([self processingQueue], ^{
                     
-                    if (data) {
-                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                        TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
-                        if (errorJSON.errorTitle) {
-                            userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
-                        }
-                        if (errorJSON.errorMessage) {
-                            userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
-                        }
-                        NSInteger errorCode = 0;
-                        if (errorJSON.errorCode != NSNotFound) {
-                            errorCode = [userInfo[@"errorCode"] integerValue];
-                        }
-                        
-                        if([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                            userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
-                        }
-                        
-                        error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    BOOL success = NO;
+                    BOOL requestCompleted = NO;
+                    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                        success = [httpResponse wasSuccess];
                     }
-                }
-                
-                for(TSDKJSONCompletionBlock completionBlock in [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request].allObjects) {
-                    completionBlock(success, requestCompleted, JSON, error);
-                }
-                [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
+                    id JSON = nil;
+                    NSError *responseError = error;
+                    
+                    requestCompleted = success;
+                    
+                    NSError *jsonError = nil;
+                    if (success) {
+                        if (data) {
+                            JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                        }
+                    } else if (data) {
+                        NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                        JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                        
+                        if (jsonError != nil ) {
+                            responseError = jsonError;
+                        } else {
+                            TSDKCollectionJSON *errorJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
+                            if (errorJSON.errorTitle) {
+                                userInfo[NSLocalizedFailureReasonErrorKey] = errorJSON.errorTitle;
+                            }
+                            if (errorJSON.errorMessage) {
+                                userInfo[NSLocalizedDescriptionKey] = errorJSON.errorMessage;
+                            }
+                            NSInteger errorCode = ((NSHTTPURLResponse *)response).statusCode;
+                            if (errorJSON.errorCode != NSNotFound) {
+                                errorCode = [userInfo[@"errorCode"] integerValue];
+                            }
+                            
+                            if([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                                userInfo[TSDKTeamSnapSDKHTTPResponseCodeKey] = [NSNumber numberWithInteger:((NSHTTPURLResponse *)response).statusCode];
+                            }
+                            
+                            responseError = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:[userInfo copy]];
+                        }
+                    }
+                    
+                    NSSet *completionBlocks =  [[[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request] copy];
+                    
+                    [[TSDKDuplicateCompletionBlockStore sharedInstance] removeAllCompletionBlocksForRequest:request];
+                    
+                    for(TSDKJSONCompletionBlock completionBlock in completionBlocks.allObjects) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completionBlock(success, requestCompleted, JSON, responseError);
+                        });
+                    }
+                    
+                });
             }];
             remoteTask.priority = configuration.priority;
             [remoteTask resume];
@@ -244,45 +265,51 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completionBlock) {
-            completionBlock(success, complete, objects, error);
-        }
-    }];
+    [TSDKDataRequest requestObjectsForPath:URL sendDataDictionary:nil method:nil withConfiguration:configuration completion:completionBlock];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    
-    if (!URL) {
-        if (completionBlock) {
-            completionBlock(NO, NO, nil, nil);
++ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+        if (!URL) {
+            if (completionBlock) {
+                completionBlock(NO, NO, nil, nil);
+            }
+            return;
         }
-        return;
-    }
-    
-    NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
-
-    if (searchParamaters) {
-        NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
-        for (NSString *key in searchParamaters) {
-            [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@",key, [searchParamaters objectForKey:key]]];
+        
+        NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
+        
+        if (searchParamaters) {
+            NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
+            for (NSString *key in searchParamaters) {
+                id value = [searchParamaters objectForKey:key];
+                if([value isKindOfClass:[NSArray class]]) {
+                    NSString *commaSeparatedString = [value componentsJoinedByString:@","];
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
+                } else  {
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
+                }
+                
+            }
+            NSString *separator = @"&";
+            if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
+                separator = @"?";
+            }
+            [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
         }
-        NSString *separator = @"&";
-        if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
-            separator = @"?";
-        }
-        [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
-    }
-    
-    [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
-        TSDKCollectionJSON *containerCollection = nil;
-        if ([objects isKindOfClass:[NSDictionary class]]) {
-            containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
-        }
-        if (completionBlock) {
-            completionBlock(success, complete, containerCollection, error);
-        }
-    }];
+        
+        [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+            dispatch_async([self processingQueue], ^{
+                TSDKCollectionJSON *containerCollection = nil;
+                if ([objects isKindOfClass:[NSDictionary class]]) {
+                    containerCollection = [[TSDKCollectionJSON alloc] initWithJSON:(NSDictionary *)objects];
+                }
+                if (completionBlock) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionBlock(success, complete, containerCollection, error);
+                    });
+                }
+            });
+        }];
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
@@ -400,7 +427,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
     }
     
     NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -429,15 +456,15 @@ static NSRecursiveLock *accessDetailsLock = nil;
     }
     
     if (OAuthToken) {
-        [request setValue:OAuthToken forHTTPHeaderField:@"X-TEAMSNAP-ACCESS-TOKEN"];
+        [request setValue:[@"Bearer " stringByAppendingString:OAuthToken] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:@"GET"];
     [request setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
-    
+#ifdef DEBUGCURL
     DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+#endif
     
-    [[TSDKProfileTimer sharedInstance] startTimeWithId:URL];
 #if TARGET_OS_IPHONE
     [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
 #endif
@@ -445,45 +472,30 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #if TARGET_OS_IPHONE
         [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
 #endif
-        [[TSDKProfileTimer sharedInstance] getElapsedTimeForId:URL logResult:YES];
         
-        BOOL success = NO;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            success = [httpResponse wasSuccess];
-        }
-        UIImage *image = nil;
-        if (success) {
-            image = [UIImage imageWithData:data];
-        }
-        
-        if (completionBlock) {
-            completionBlock(image);
-        }
+        dispatch_async([self processingQueue], ^{
+            
+            BOOL success = NO;
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                success = [httpResponse wasSuccess];
+            }
+            UIImage *image = nil;
+            if (success) {
+                image = [UIImage imageWithData:data scale:[UIScreen mainScreen].scale];
+            }
+            
+            if (completionBlock) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(image);
+                });
+            }
+        });
     }];
     remoteTask.priority = configuration.priority;
     [remoteTask resume];
 }
 #endif
-
-+ (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
-     NSString *scopes = @"read write";
-    
-    NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, clientId, clientSecret, scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
-    
-    [TSDKDataRequest requestJSONObjectsForPath:[NSURL URLWithString:OauthURL] sendDataDictionary:envelope method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        NSString *OAuthToken = nil;
-        if ([objects isKindOfClass:[NSDictionary class]]) {
-            if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
-                OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
-                [TSDKDataRequest setOAuthToken:OAuthToken];
-            }
-        }
-        if (completion) {
-            completion(success, OAuthToken, error);
-        }
-    }];
-}
 
 + (void)setClientId:(NSString *)theClientId {
     clientId = theClientId;

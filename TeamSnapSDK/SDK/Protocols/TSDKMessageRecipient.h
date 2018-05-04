@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "TSDKMessage.h"
-
+NS_ASSUME_NONNULL_BEGIN
 @protocol TSDKMessageRecipient <NSObject>
 
-@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, weak, nullable) NSString *userId;
 
-- (NSInteger)objectIdentifier;
-
-- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock)completion;
+- (NSString *)objectIdentifier;
+- (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type;
+- (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
 - (BOOL)canMarkAsRead;
 
 @end
+NS_ASSUME_NONNULL_END

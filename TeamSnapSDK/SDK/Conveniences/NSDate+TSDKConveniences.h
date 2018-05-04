@@ -7,12 +7,14 @@
 
 @interface NSDate (TSDKConveniences)
 
-- (NSString *)shortString;
+- (NSString *_Nullable)shortString;
 
-- (NSString *)YYYYMMDDString;
+- (NSString *_Nullable)YYYYMMDDString;
 
-- (NSString *)RCF3339DateTimeString;
+- (NSString *_Nullable)RCF3339DateTimeString;
 
-- (BOOL)isSameDayAs:(NSDate *)dateToCompare;
+- (BOOL)isSameDayAs:(NSDate *_Nullable)dateToCompare;
+
+- (NSInteger)age;
 
 @end

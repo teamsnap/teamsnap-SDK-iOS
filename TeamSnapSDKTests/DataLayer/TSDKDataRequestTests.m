@@ -27,7 +27,8 @@
 
 - (void)testRequestObjectsForPath {
     XCTestExpectation *nilLinkExpectation = [self expectationWithDescription:@"Return from nil link"];
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     [TSDKDataRequest requestObjectsForPath:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (success || complete) {
             XCTAssert(@"Returned Success on nil link");
@@ -49,9 +50,9 @@
         [nilLinkExpectation2 fulfill];
     }];
     
-    
     // test if we don't have a completeion block
     [TSDKDataRequest requestObjectsForPath:nil searchParamaters:nil sendDataDictionary:nil method:nil withConfiguration:nil completion:nil];
+#pragma clang diagnostic pop
     
     XCTestExpectation *countriesExpectation = [self expectationWithDescription:@"Return from /random"];
 
@@ -76,7 +77,8 @@
 
 - (void)testRequestJSONObjectsForPath {
     XCTestExpectation *nilLinkExpectation = [self expectationWithDescription:@"Return from nil link"];
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     [TSDKDataRequest requestJSONObjectsForPath:nil sendDataDictionary:nil method:@"POST" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
         if (success || complete) {
             XCTAssert(@"Returned Success on nil link");
@@ -87,7 +89,7 @@
     }];
     
     [TSDKDataRequest requestJSONObjectsForPath:nil sendDataDictionary:nil method:@"POST" configuration:nil withCompletion:nil];
-    
+#pragma clang diagnostic pop    
     [self waitForExpectationsWithTimeout:5 handler:nil];
 }
 

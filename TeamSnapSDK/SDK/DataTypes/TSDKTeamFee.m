@@ -16,4 +16,20 @@
     return @"team_fee";
 }
 
+- (NSString *)teamFeeDescription {
+    return [self getString:@"description"];
+}
+
+- (void)setTeamFeeDescription:(NSString *)teamFeeDescription {
+    [self setString:teamFeeDescription forKey:@"description"];
+}
+
+- (CGFloat)amountValue {
+    return [[self.amount stringByReplacingOccurrencesOfString:@"," withString:@""] floatValue];
+}
+
+- (CGFloat)balanceValue {
+    return [[self.balance stringByReplacingOccurrencesOfString:@"," withString:@""] floatValue];
+}
+
 @end

@@ -32,4 +32,15 @@
     [comp1 year]  == [comp2 year];
 }
 
+- (NSInteger)age {
+    NSDate* now = [NSDate date];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitYear
+                                       fromDate:self
+                                       toDate:now
+                                       options:0];
+    NSInteger age = [ageComponents year];
+    return age;
+}
+
 @end

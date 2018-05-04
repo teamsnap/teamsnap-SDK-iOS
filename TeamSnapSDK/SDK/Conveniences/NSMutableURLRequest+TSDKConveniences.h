@@ -7,6 +7,6 @@
 
 @interface NSMutableURLRequest (TSDKConveniences)
 
--(NSString *)getCurlEquivalent;
+-(NSString *_Nonnull)getCurlEquivalent;
 
 @end

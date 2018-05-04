@@ -8,26 +8,22 @@
 #import "TSDKAvailabilityGroups.h"
 #import "TSDKMember.h"
 #import "TSDKOpponent.h"
+#import "TSDKTeamSnap.h"
+#import "TSDKRootLinks.h"
+#import "TSDKCompletionBlockTypes.h"
+#import "TSDKEventLineup.h"
 
+NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 @implementation TSDKEvent {
 
 }
 
-@dynamic uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, repeatingType, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, repeatingTypeCode, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAvailabilities, linkLocation, linkEventStatistics, linkDivisionLocation, linkAssignments, linkMemberAssignments, linkOpponent, linkTeam, linkStatisticData, linkCalendarSingleEvent;
+@dynamic opponentName, locationName, uniform, teamId, iconColor, createdAt, opponentId, isGame, label, gameType, shootoutPointsForTeam, shootoutPointsForOpponent, timeZoneDescription, tracksAvailability, isCanceled, sourceTimeZoneIanaName, divisionLocationId, additionalLocationDetails, endDate, isTbd, resultsUrl, isLeagueControlled, name, isShootout, pointsForTeam, locationId, minutesToArriveEarly, formattedResults, startDate, doesntCountTowardsRecord, timeZone, pointsForOpponent, gameTypeCode, timeZoneOffset, arrivalDate, updatedAt, isOvertime, repeatingUuid, results, notes, timeZoneIanaName, durationInMinutes, linkAvailabilities, linkLocation, linkEventStatistics, linkDivisionLocation, linkAssignments, linkMemberAssignments, linkOpponent, linkTeam, linkStatisticData, linkCalendarSingleEvent;
 
 + (NSString *)SDKType {
     return @"event";
 }
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        _availabilitiesByRoster = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
 
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *)event completion:(TSDKCompletionBlock)completion {
     if (event) {
@@ -71,7 +67,7 @@
 - (void)setNotifyTeamAsMember:(TSDKMember *)member {
     if (member) {
         [self setBool:YES forKey:@"notify_team"];
-        [self setInteger:member.objectIdentifier forKey:@"notify_team_as_member_id"];
+        [self setString:member.objectIdentifier forKey:@"notify_team_as_member_id"];
     } else {
         [self.collection.data removeObjectForKey:@"notify_team_as_member_id"];
         [self setBool:NO forKey:@"notify_team"];
@@ -140,22 +136,26 @@
     }
 }
 
-- (NSString *)displayNameWithOpponent:(TSDKOpponent *)opponent {
-    if (self.isGame && opponent) {
+- (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel {
+    if (self.isGame && self.opponentName.length > 0) {
         if ([[self.gameType uppercaseString] isEqualToString:@"AWAY"]) {
             if ((self.label) && (![self.label isEqualToString:@""])) {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ at %2$@", @"Indicating there is an Event Named #1 at opponent #2"), self.label, opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ at %2$@", @"Indicating there is an Event Named #1 at opponent #2"), self.label, self.opponentName];
             } else {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-at %@", @"Indicating there is an Event at OPPONENT"), opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-at %@", @"Indicating there is an Event at OPPONENT"), self.opponentName];
             }
         } else {
             if (self.label && (![self.label isEqualToString:@""])) {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ vs. %2$@", @"Indicating there is an Event Named #1 against opponent #2"), self.label, opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-%1$@ vs. %2$@", @"Indicating there is an Event Named #1 against opponent #2"), self.label, self.opponentName];
             } else {
-                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-vs. %@", @"Indicating there is an Event against OPPONENT"), opponent.name];
+                return [NSString stringWithFormat:NSLocalizedString(@"EVENT-vs. %@", @"Indicating there is an Event against OPPONENT"), self.opponentName];
             }
         }
     } else {
+        if(preferShortLabel && self.label.length) {
+            return self.label;
+        }
+        
         if (!self.name || (self.name.length == 0)) {
             return NSLocalizedString(@"Event", nil);
         } else {
@@ -164,5 +164,51 @@
     }
 }
 
+- (TSDKRepeatingEventTypeCode)repeatingTypeCode {
+    if ([[self.collection data] objectForKey:kRepeatingTypeCode]) {
+        return [self getInteger:kRepeatingTypeCode];
+    } else {
+        return TSDKEventDoesNotRepeat;
+    }
+}
+
+- (void)setRepeatingTypeCode:(TSDKRepeatingEventTypeCode)repeatingTypeCode {
+    if (repeatingTypeCode == 0) {
+        [[[self collection] data] removeObjectForKey:kRepeatingTypeCode];
+    } else {
+        [self setInteger:repeatingTypeCode forKey:kRepeatingTypeCode];
+    }
+}
+
+- (TSDKGameTypeCode)gameTypeCode {
+    NSInteger typeCode = [self getInteger:@"game_type_code"];
+    if (typeCode == NSNotFound) {
+        return TSDKGameTypeCodeUnknown;
+    } else {
+        return typeCode;
+    }
+}
+
++ (void)getEventWithId:(NSString * _Nonnull)eventId teamId:(NSString * _Nonnull)teamId completion:(TSDKEventCompletionBlock _Nonnull)completion {
+    NSURL *baseEventSearchURL = [[[[TSDKTeamSnap sharedInstance] rootLinks] linkEvents] URLByAppendingPathComponent:@"search"];
+    if(baseEventSearchURL) {
+        NSDictionary *searchParams = @{@"team_id" : teamId, @"id" : eventId};
+        [TSDKEvent arrayFromLink:baseEventSearchURL searchParams:searchParams withConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
+            TSDKEvent *matchingEvent;
+            for(TSDKEvent *event in objects) {
+                if([event.objectIdentifier isEqualToString:eventId]) {
+                    matchingEvent = event;
+                }
+            }
+            if(matchingEvent) {
+                completion(YES, matchingEvent, nil);
+            } else {
+                completion(NO, nil, error);
+            }
+        }];
+    } else {
+        completion(NO, nil, nil);
+    }
+}
 
 @end

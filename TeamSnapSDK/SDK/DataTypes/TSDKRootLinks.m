@@ -8,6 +8,7 @@
 
 #import "TSDKRootLinks.h"
 #import "TSDKDataRequest.h"
+#import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 #import "TSPCache.h"
 #import "TSDKTeamSnap.h"
@@ -20,8 +21,7 @@
 
 @implementation TSDKRootLinks
 
-@dynamic linkDivisionContactPhoneNumbers, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkLocations, linkTeamMediumComments, linkTeamsPreferences, linkMemberLinks, linkForumTopics, linkTeamMedia, linkEvents, linkStatistics, linkSweet, linkTrackedItemStatuses, linkTslPhotos, linkContactPhoneNumbers, linkContactEmailAddresses, linkTeamPublicSites, linkAssignments, linkDivisionMemberPhoneNumbers, linkDude, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkPublicFeatures, linkTslChats, linkRandom, linkPlansAll, linkMemberStatistics, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkReferrals, linkLeagueCustomData, linkSports, linkAvailabilities, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkMembersPreferences, linkTslMetadata, linkDivisionsPreferences, linkOpponents, linkApiv2Root, linkMemberEmailAddresses, linkStatisticData, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkXyzzy, linkPaymentNotes, linkForumPosts, linkContacts, linkCountries;
-;
+@dynamic linkDivisionContactPhoneNumbers, linkPaymentNotes, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkMemberRegistrationSignups, linkTeamMediumComments, linkMemberLinks, linkLocations, linkTeamsPreferences, linkForumTopics, linkMessages, linkTeamMedia, linkEvents, linkStatistics, linkContactPhoneNumbers, linkTrackedItemStatuses, linkTslPhotos, linkDivisionMemberPhoneNumbers, linkContactEmailAddresses, linkMemberAssignments, linkTeamPublicSites, linkAssignments, linkDude, linkGcmDevices, linkSweet, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkDivisionEventsImports, linkPublicFeatures, linkTslChats, linkRegistrationForms, linkPlansAll, linkRandom, linkMemberStatistics, linkTeamPhotos, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkLeagueCustomData, linkAuthorizationRoot, linkSports, linkAvailabilities, linkAuthorizationUsers, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkAuthorizationMagicLinks, linkMembersPreferences, linkApiv2Root, linkDivisionsPreferences, linkOpponents, linkStatisticData, linkRegistrationSignupStatuses, linkMemberEmailAddresses, linkTslMetadata, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkMemberPhotos, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkAuthorizationUserRegistrations, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkMessageData, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkAuthorizationPasswordResets, linkXyzzy, linkApnDevices, linkAuthorizationTokens, linkForumPosts, linkContacts, linkCountries, linkAuthorizationUserRegistrationInitializations, linkApplePaidFeatures;
 
 + (NSString *)SDKType {
     return nil;
@@ -63,6 +63,14 @@
                         [[TSDKCollectionObject commandsForClass:type] setValue:command forKey:command.rel];
                     }
                 }
+                if ([[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"]) {
+                    NSArray *queries = [[schemaDictionary objectForKey:@"collection"] objectForKey:@"queries"];
+                    for (NSDictionary *queryDictionary in queries) {
+                        TSDKCollectionQuery *query = [[TSDKCollectionQuery alloc] initWithJSONDict:queryDictionary];
+                        [[TSDKCollectionObject queriesForClass:type] setValue:query forKey:query.rel];
+                    }
+                }
+                
             }
         }
     }
@@ -103,7 +111,7 @@
                 }
             } else {
                 if (completion) {
-                    completion(success, success, nil, error);
+                    completion(success, success, [NSArray array], error);
                 }
             }
         }];
@@ -130,7 +138,7 @@
 
 
 + (void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
             TSDKCollectionCommand *collectionCommand = [rootLinks.collection.commands objectForKey:@"send_invitations"];
             if (collectionCommand) {
@@ -138,23 +146,28 @@
                 [collectionCommand executeWithCompletion:completion];
             } else {
                 if (completion) {
-                    completion(NO, NO, nil, nil);
+                    completion(NO, NO, nil, error);
                 }
             }
         } else {
-            completion(NO, NO, nil, nil);
+            completion(NO, NO, nil, error);
         }
      }];
 }
 
-+ (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
-    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks) {
++ (void)actionSendLoginLinkToEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL completion:(TSDKSimpleCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
-            TSDKCollectionCommand *collectionCommand = [TSDKCollectionObject commandForClass:@"root" forKey:@"welcome"];
-            if (collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+            TSDKCollectionCommand *collectionCommand = [[TSDKCollectionCommand alloc] init];
+            NSURL *magicLinkURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"magic_links"];
+            collectionCommand.href = magicLinkURL.absoluteString;
+            collectionCommand.rel = magicLinkURL.path;
+            
+            if (magicLinkURL && collectionCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
                 collectionCommand.data[@"client_id"] = [[TSDKTeamSnap sharedInstance] clientId];
-                collectionCommand.data[@"email_address"] = emailAddress;
+                collectionCommand.data[@"email"] = emailAddress;
                 collectionCommand.data[@"redirect_uri"] = [callbackURL absoluteString];
+                collectionCommand.data[@"scope"] = @"read write";
                 [collectionCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                     if (completion) {
                         completion(success, error);
@@ -162,13 +175,12 @@
                 }];
             } else {
                 if (completion) {
-                    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+                    NSDictionary *userInfo;
+                    
                     if (![[TSDKTeamSnap sharedInstance] clientId]) {
-                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Client ID required";
-                        userInfo[NSLocalizedDescriptionKey] = @"The TeamSnap SDK client ID is missing.";
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
                     } else {
-                        userInfo[NSLocalizedFailureReasonErrorKey] = @"Command not found";
-                        userInfo[NSLocalizedDescriptionKey] = @"There was an error connecting to the TeamSnap server";
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
                     }
                     NSInteger errorCode = 1;
                     
@@ -177,7 +189,128 @@
                 }
             }
         } else {
-            completion(NO, nil);
+            if(completion) {
+                completion(NO, error);
+            }
+        }
+    }];
+}
+
++ (void)actionRequestAuthTokenWithCode:(NSString * _Nonnull)code withCallbackURL:(NSURL * _Nonnull)callbackURL completion:(TSDKTokenCompletionBlock _Nullable)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks) {
+            NSURL *tokenURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"/oauth/token"];
+            
+            if (tokenURL && [[TSDKTeamSnap sharedInstance] clientId].length && [[TSDKTeamSnap sharedInstance] clientSecret].length) {
+                NSDictionary *parameters = @{@"client_id" : [[TSDKTeamSnap sharedInstance] clientId], @"client_secret" : [[TSDKTeamSnap sharedInstance] clientSecret], @"code" : code, @"redirect_uri" : [callbackURL absoluteString], @"grant_type" : @"authorization_code"};
+                
+                [TSDKDataRequest requestJSONObjectsForPath:tokenURL sendDataDictionary:parameters method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                    NSString *OAuthToken = nil;
+                    if ([objects isKindOfClass:[NSDictionary class]]) {
+                        if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
+                            OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
+                            [TSDKDataRequest setOAuthToken:OAuthToken];
+                        }
+                    }
+                    if (completion) {
+                        completion(success, OAuthToken, error);
+                    }
+                }];
+                
+            } else {
+                if (completion) {
+                    NSDictionary *userInfo;
+                    
+                    if ([[TSDKTeamSnap sharedInstance] clientId].length == 0) {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
+                    } else if([[TSDKTeamSnap sharedInstance] clientSecret].length == 0) {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client Secret required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client secret is missing."};
+                    } else {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
+                    }
+                    NSInteger errorCode = 1;
+                    
+                    NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    completion(NO, nil, error);
+                }
+            }
+        } else {
+            if(completion) {
+                completion(NO, nil, error);
+            }
+        }
+        
+    }];
+}
+
++ (void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks) {
+            NSURL *url = rootLinks.linkAuthorizationUserRegistrationInitializations;
+            if(url && [[TSDKTeamSnap sharedInstance] clientId]) {
+                NSDictionary *postData = @{@"client_id" : [[TSDKTeamSnap sharedInstance] clientId], @"email_address" : emailAddress, @"redirect_uri" : [callbackURL absoluteString]};
+                
+                [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:postData method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                    if (completion) {
+                        completion(success, error);
+                    }
+                }];
+            } else {
+                if (completion) {
+                    NSDictionary *userInfo;
+                    
+                    if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
+                    } else {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
+                    }
+                    NSInteger errorCode = 1;
+                    
+                    NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    completion(NO, error);
+                }
+            }
+        } else {
+            completion(NO, error);
+        }
+    }];
+}
+
++(void)queryGenerateFirebaseTokenTeamid:(NSString *_Nonnull)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks) {
+            TSDKCollectionQuery *queryCommand = [TSDKCollectionObject queryForClass:@"root" forKey:@"generate_firebase_token"];
+            if (queryCommand && [[TSDKTeamSnap sharedInstance] clientId]) {
+                queryCommand.data[@"team_id"] = teamId;
+                queryCommand.data[@"version"] = version;
+                [queryCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                    NSString *firebaseToken = nil;
+                    
+                    if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                        TSDKCollectionJSON *tokenCollectonObject = [(NSArray *)[objects collection] firstObject];
+                        firebaseToken = [[tokenCollectonObject data] objectForKey:@"token"];
+                    }
+                    if (completion) {
+                        completion(success, firebaseToken, error);
+                    }
+                }];
+            } else {
+                if (completion) {
+                    NSDictionary *userInfo;
+                    
+                    if (![[TSDKTeamSnap sharedInstance] clientId]) {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Client ID required", NSLocalizedDescriptionKey : @"The TeamSnap SDK client ID is missing."};
+                    } else {
+                        userInfo = @{NSLocalizedFailureReasonErrorKey : @"Command not found", NSLocalizedDescriptionKey : @"There was an error connecting to the TeamSnap server"};
+                    }
+                    NSInteger errorCode = 1;
+                    
+                    NSError *error = [[NSError alloc] initWithDomain:TSDKTeamSnapSDKErrorDomainKey code:errorCode userInfo:userInfo];
+                    completion(NO, nil, error);
+                }
+            }
+        } else {
+            completion(NO, nil, error);
         }
     }];
 }
@@ -192,6 +325,68 @@
     } else {
         return [rel substringToIndex:rel.length-1];
     }
+}
+
++ (void)resetPasswordForEmailAddress:(NSString * _Nonnull)emailAddress completion:(TSDKSimpleCompletionBlock)completionBlock {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks) {
+            NSURL *url = rootLinks.linkAuthorizationPasswordResets;
+            if(url) {
+                NSDictionary *userObject = @{@"email" : emailAddress};
+                NSDictionary *postData = @{@"client_id" : [[TSDKTeamSnap sharedInstance] clientId], @"user" : userObject};
+                
+                [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:postData method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                    if(completionBlock) {
+                        completionBlock(success, error);
+                    }
+                }];
+                
+            }
+        } else {
+            if(completionBlock) {
+                completionBlock(NO, error);
+            }
+        }
+    }];
+}
+
++ (void)loginWithUser:(NSString *)aUsername password:(NSString *)aPassword onCompletion:(TSDKLoginCompletionBlock)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:[TSDKRequestConfiguration defaultRequestConfiguration] completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks) {
+            NSURL *oauthURL = [[rootLinks linkAuthorization] URLByAppendingPathComponent:@"oauth/token"];
+            NSString *scopes = @"read write";
+            
+            NSDictionary *envelope = [NSDictionary dictionaryWithObjects:@[@"password", aUsername, aPassword, [[TSDKTeamSnap sharedInstance] clientId], [[TSDKTeamSnap sharedInstance] clientSecret], scopes] forKeys:@[@"grant_type", @"username", @"password", @"client_id", @"client_secret", @"scope"]];
+            [TSDKDataRequest requestJSONObjectsForPath:oauthURL sendDataDictionary:envelope method:@"POST" configuration:[TSDKRequestConfiguration defaultRequestConfiguration] withCompletion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
+                NSString *OAuthToken = nil;
+                if (success && [objects isKindOfClass:[NSDictionary class]]) {
+                    if ([(NSDictionary *)objects objectForKey:@"access_token"]) {
+                        OAuthToken = [(NSDictionary *)objects objectForKey:@"access_token"];
+                        
+                        [[TSDKTeamSnap sharedInstance] loginWithOAuthToken:OAuthToken completion:^(BOOL success, TSDKUser *user, NSError *error) {
+                            if (completion) {
+                                completion(success, OAuthToken, user, error);
+                            }
+                        }];
+                    } else {
+                        if (completion) {
+                            completion(success, nil, nil, error);
+                        }
+                    }
+                } else {
+                    if (completion) {
+                        completion(success, nil, nil, error);
+                    }
+                }
+                
+            }];
+        } else {
+            if(completion) {
+                completion(NO, nil, nil, error);
+            }
+        }
+    }];
+    
 }
 
 @end
