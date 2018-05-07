@@ -81,8 +81,7 @@ static NSArray *knownCompletionTypes;
 + (NSArray *)supportedSDKObjects {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _supportedSDKObjects = @[[TSDKDataRequest class],
-                                 [TSDKTeam class],
+        _supportedSDKObjects = @[[TSDKTeam class],
                                  [TSDKUser class],
                                  [TSDKMember class],
                                  [TSDKMemberEmailAddress class],
