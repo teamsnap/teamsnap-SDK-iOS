@@ -110,7 +110,6 @@ static NSArray *knownCompletionTypes;
                                  [TSDKMemberStatistic class],
                                  [TSDKTeamPreferences class],
                                  [TSDKPlan class],
-                                 [TSDKTeamSnap class],
                                  [TSDKTeamResults class],
                                  [TSDKinvitationFinder class],
                                  [TSDKTeamMediaGroup class],
