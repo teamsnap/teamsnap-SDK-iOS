@@ -20,7 +20,7 @@
 @interface TSDKCollectionObject()
 
 @property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
-
+@property (nonatomic, strong) NSString *_objectIdentifier;
 @end
 
 @implementation TSDKCollectionObject
@@ -519,10 +519,14 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSString * _Nonnull)objectIdentifier {
-    if ((!self.collection.data[@"id"]) || ([self.collection.data[@"id"] isEqual:[NSNull null]])) {
-        return @"";
+    if (self._objectIdentifier == nil) {
+        // ObjectIdentifier could be a String or Int.
+        self._objectIdentifier = [self.collection.data[@"id"] description];
+        if ((self._objectIdentifier == nil) || [self._objectIdentifier isEqual:[NSNull null]]) {
+            self._objectIdentifier = @"";
+        }
     }
-    return [self objectIdentifierForKey:@"id"];
+    return self._objectIdentifier;
 }
 
 - (NSString * _Nonnull)objectIdentifierForKey:(NSString *)key {
@@ -755,6 +759,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                     NSArray *returnedCollections = (NSArray *)objects.collection;
                     if ([returnedCollections count]==1) {
                         [weakSelf setCollection:[returnedCollections objectAtIndex:0]];
+                        weakSelf._objectIdentifier = nil;
                         [TSDKNotifications postNewObject:self];
                     } else {
                         NSArray *returnedObjects = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
