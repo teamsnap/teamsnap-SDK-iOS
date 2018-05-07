@@ -73,7 +73,7 @@
 #import "TSDKEventLineup.h"
 #import "TSDKEventLineupEntry.h"
 
-static NSArray *supportedSDKObjects;
+static NSArray *_supportedSDKObjects;
 static NSArray *knownCompletionTypes;
 
 @implementation TSDKObjectsRequest
@@ -81,27 +81,69 @@ static NSArray *knownCompletionTypes;
 + (NSArray *)supportedSDKObjects {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
-        
-        unsigned int classCount = 0;
-        Class *classList = objc_copyClassList(&classCount);
-        
-        for (unsigned int i = 0; i < classCount; i++) {
-            NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
-            if([className hasPrefix:@"TSDK"]) {
-                Class class = NSClassFromString(className);
-                
-                if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                    [supportedObjects addObject:class];
-                }
-            }
-        }
-        if(classList != NULL) {
-            free(classList);
-        }
-        supportedSDKObjects = [supportedObjects copy];
+        _supportedSDKObjects = @[[TSDKTeam class],
+                                 [TSDKUser class],
+                                 [TSDKMember class],
+                                 [TSDKMemberEmailAddress class],
+                                 [TSDKMemberPhoneNumber class],
+                                 [TSDKContact class],
+                                 [TSDKContactEmailAddress class],
+                                 [TSDKContactPhoneNumber class],
+                                 [TSDKEvent class],
+                                 [TSDKTrackedItem class],
+                                 [TSDKAssignment class],
+                                 [TSDKBroadcastEmail class],
+                                 [TSDKBroadcastAlert class],
+                                 [TSDKCustomField class],
+                                 [TSDKCustomDatum class],
+                                 [TSDKForumTopic class],
+                                 [TSDKForumPost class],
+                                 [TSDKLocation class],
+                                 [TSDKOpponent class],
+                                 [TSDKTeamFee class],
+                                 [TSDKTrackedItemStatus class],
+                                 [TSDKStatistic class],
+                                 [TSDKStatisticDatum class],
+                                 [TSDKStatisticGroup class],
+                                 [TSDKTeamStatistic class],
+                                 [TSDKSport class],
+                                 [TSDKMemberStatistic class],
+                                 [TSDKTeamPreferences class],
+                                 [TSDKPlan class],
+                                 [TSDKTeamResults class],
+                                 [TSDKinvitationFinder class],
+                                 [TSDKTeamMediaGroup class],
+                                 [TSDKMemberPreferences class],
+                                 [TSDKForumSubscription class],
+                                 [TSDKTeamMedium class],
+                                 [TSDKPaymentNote class],
+                                 [TSDKMemberPayment class],
+                                 [TSDKMemberBalance class],
+                                 [TSDKOpponentResults class],
+                                 [TSDKEventStatistic class],
+                                 [TSDKMessage class],
+                                 [TSDKMessageDatum class],
+                                 [TSDKDivisionLocation class],
+                                 [TSDKCountry class],
+                                 [TSDKTimeZone class],
+                                 [TSDKLeagueCustomDatum class],
+                                 [TSDKLeagueCustomField class],
+                                 [TSDKMemberAssignment class],
+                                 [TSDKApnDevice class],
+                                 [TSDKSmsGateway class],
+                                 [TSDKRootLinks class],
+                                 [TSDKApplePaidFeature class],
+                                 [TSDKAdvertisement class],
+                                 [TSDKMessagingPermission class],
+                                 [TSDKInvoice class],
+                                 [TSDKInvoicesAggregate class],
+                                 [TSDKSportPosition class],
+                                 [TSDKEventLineup class],
+                                 [TSDKEventLineupEntry class],
+                                 [TSDKMemberPhoto class]];
+
     });
-    return supportedSDKObjects;
+    return _supportedSDKObjects;
 }
 
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
