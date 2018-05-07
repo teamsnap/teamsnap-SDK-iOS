@@ -139,7 +139,8 @@ static NSArray *knownCompletionTypes;
                                  [TSDKInvoicesAggregate class],
                                  [TSDKSportPosition class],
                                  [TSDKEventLineup class],
-                                 [TSDKEventLineupEntry class]];
+                                 [TSDKEventLineupEntry class],
+                                 [TSDKMemberPhoto class]];
 
     });
     return _supportedSDKObjects;
