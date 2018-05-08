@@ -715,7 +715,10 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)isNewObject {
-    return ([[self objectIdentifier] isEqualToString:@""] || [[self objectIdentifier] integerValue] == 0);
+    if (([[[self collection] data] objectForKey:@"id"] == nil) || [[[[[self collection] data] objectForKey:@"id"] description] isEqualToString:@""] || [[[[self collection] data] objectForKey:@"id"] isEqual:[NSNull null]] || ([[[[self collection] data] objectForKey:@"id"] integerValue] == 0)) {
+        return YES;
+    }
+    return FALSE;    
 }
 
 - (NSURL *)urlForSave {
