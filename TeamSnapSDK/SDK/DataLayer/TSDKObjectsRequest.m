@@ -160,15 +160,23 @@ static NSArray *knownCompletionTypes;
     Class *classList = objc_copyClassList(&classCount);
 
     for (unsigned int i = 0; i < classCount; i++) {
-        NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
-        if([className hasPrefix:@"TSDK"]) {
-            Class class = NSClassFromString(className);
-            
-            if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
-                [supportedObjects addObject:class];
+        const char* potentialClassName = class_getName(classList[i]);
+        if (potentialClassName != NULL &&
+            strcmp(potentialClassName, "nil") != 0 &&
+            strcmp(potentialClassName, "") != 0) {
+            NSString *className = [NSString stringWithUTF8String:potentialClassName];
+            if([className hasPrefix:@"TSDK"]) {
+                Class class = NSClassFromString(className);
+                
+                if( [class isEqual:[TSDKCollectionObject class]] == false) {
+                    if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
+                        [supportedObjects addObject:class];
+                    }
+                }
             }
         }
     }
+    
     if(classList != NULL) {
         free(classList);
     }

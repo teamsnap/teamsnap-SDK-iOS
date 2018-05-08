@@ -26,8 +26,7 @@
     NSMutableArray *staticListA = [NSMutableArray arrayWithArray:[TSDKObjectsRequest supportedSDKObjects]];
     
     NSMutableArray *dynamicListA = [NSMutableArray arrayWithArray:[TSDKObjectsRequest dynamicSupportedObjectsList]];
-    // These two classes shouldn't be tested for. One is a test class, the other is the top level class.
-    [dynamicListA removeObject:[TSDKCollectionObject class]];
+    // This class shouldn't be tested for. It is a test class only present in this test target.
     [dynamicListA removeObject:[TSDKShortPropertyTest class]];
     
     NSLog(@"%@", staticListA);
