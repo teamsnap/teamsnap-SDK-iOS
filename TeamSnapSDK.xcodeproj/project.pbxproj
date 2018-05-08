@@ -345,6 +345,7 @@
 		96BA25A0207D08670097C911 /* TSDKSportPosition.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA258E207BB72A0097C911 /* TSDKSportPosition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96BA25A1207D08840097C911 /* TSDKEventLineup.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA2593207CF15F0097C911 /* TSDKEventLineup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96BA25A2207D08880097C911 /* TSDKEventLineupEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 96BA2598207CF2E00097C911 /* TSDKEventLineupEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96C3564820A203DA002007A5 /* TSDKObjectsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C3564720A203DA002007A5 /* TSDKObjectsRequestTest.m */; };
 		96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */; };
 		96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */; };
@@ -592,6 +593,7 @@
 		96BA2594207CF15F0097C911 /* TSDKEventLineup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKEventLineup.m; path = Lineups/TSDKEventLineup.m; sourceTree = "<group>"; };
 		96BA2598207CF2E00097C911 /* TSDKEventLineupEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSDKEventLineupEntry.h; path = Lineups/TSDKEventLineupEntry.h; sourceTree = "<group>"; };
 		96BA2599207CF2E00097C911 /* TSDKEventLineupEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKEventLineupEntry.m; path = Lineups/TSDKEventLineupEntry.m; sourceTree = "<group>"; };
+		96C3564720A203DA002007A5 /* TSDKObjectsRequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKObjectsRequestTest.m; path = DataLayer/TSDKObjectsRequestTest.m; sourceTree = "<group>"; };
 		96D756A41D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKBackgroundUploadProgressMonitorDelegate.h; sourceTree = "<group>"; };
 		96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKBackgroundUploadProgressMonitorDelegate.m; sourceTree = "<group>"; };
 		96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDataRequestTests.m; path = DataLayer/TSDKDataRequestTests.m; sourceTree = "<group>"; };
@@ -1062,6 +1064,7 @@
 			children = (
 				96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */,
 				96E052161D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m */,
+				96C3564720A203DA002007A5 /* TSDKObjectsRequestTest.m */,
 			);
 			name = DataLater;
 			sourceTree = "<group>";
@@ -1541,6 +1544,7 @@
 				96E052171D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
 				96E052181D775F43005155C3 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
+				96C3564820A203DA002007A5 /* TSDKObjectsRequestTest.m in Sources */,
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				96E94B5B1E7C2FC7006D7494 /* TSDKStatisticTests.m in Sources */,
 				960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */,

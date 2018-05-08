@@ -153,6 +153,28 @@ static NSArray *knownCompletionTypes;
     return _supportedSDKObjects;
 }
 
++ (NSArray *)dynamicSupportedObjectsList {
+    NSMutableArray *supportedObjects = [[NSMutableArray alloc] init];
+
+    unsigned int classCount = 0;
+    Class *classList = objc_copyClassList(&classCount);
+
+    for (unsigned int i = 0; i < classCount; i++) {
+        NSString *className = [NSString stringWithUTF8String:class_getName(classList[i])];
+        if([className hasPrefix:@"TSDK"]) {
+            Class class = NSClassFromString(className);
+            
+            if(class && [class isSubclassOfClass:[TSDKCollectionObject class]]) {
+                [supportedObjects addObject:class];
+            }
+        }
+    }
+    if(classList != NULL) {
+        free(classList);
+    }
+    return supportedObjects;
+}
+
 + (void)listTeams:(NSArray *)teamIds WithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKTeamArrayCompletionBlock)completion {
     NSString *searchString = [NSString stringWithFormat:@"teams/search?team_id=%@", [teamIds componentsJoinedByString:@","]];
     
