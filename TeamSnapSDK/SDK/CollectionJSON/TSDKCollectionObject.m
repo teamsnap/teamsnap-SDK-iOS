@@ -230,6 +230,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 - (void)setCollection:(TSDKCollectionJSON *)collection {
+    self._objectIdentifier = nil;
     _collection = collection;
     _lastUpdate = [NSDate date];
 }
@@ -715,10 +716,16 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)isNewObject {
-    if (([[[self collection] data] objectForKey:@"id"] == nil) || [[[[[self collection] data] objectForKey:@"id"] description] isEqualToString:@""] || [[[[self collection] data] objectForKey:@"id"] isEqual:[NSNull null]] || ([[[[self collection] data] objectForKey:@"id"] integerValue] == 0)) {
+    id rawIdentifier = self.collection.data[@"id"];
+    
+    if (rawIdentifier == nil ||
+        [[rawIdentifier description] isEqualToString:@""] ||
+        [rawIdentifier isEqual:[NSNull null]] ||
+        [rawIdentifier integerValue] == 0) {
         return YES;
     }
-    return FALSE;    
+    
+    return NO;
 }
 
 - (NSURL *)urlForSave {
@@ -762,7 +769,6 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
                 if ([objects.collection isKindOfClass:[NSArray class]]) {
                     NSArray *returnedCollections = (NSArray *)objects.collection;
                     if ([returnedCollections count]==1) {
-                        weakSelf._objectIdentifier = nil;
                         [weakSelf setCollection:[returnedCollections objectAtIndex:0]];
                         [TSDKNotifications postNewObject:self];
                     } else {
