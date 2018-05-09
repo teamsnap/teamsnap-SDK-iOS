@@ -20,6 +20,7 @@
 @interface TSDKCollectionObject()
 
 @property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
+@property (nonatomic, strong) NSString *_objectIdentifier;
 
 @end
 
@@ -229,6 +230,7 @@ static NSMutableDictionary *_classURLs;
 }
 
 - (void)setCollection:(TSDKCollectionJSON *)collection {
+    self._objectIdentifier = nil;
     _collection = collection;
     _lastUpdate = [NSDate date];
 }
@@ -519,10 +521,14 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSString * _Nonnull)objectIdentifier {
-    if ((!self.collection.data[@"id"]) || ([self.collection.data[@"id"] isEqual:[NSNull null]])) {
-        return @"";
+    if (self._objectIdentifier == nil) {
+        // ObjectIdentifier could be a String or Int.
+        self._objectIdentifier = [self.collection.data[@"id"] description];
+        if ((self._objectIdentifier == nil) || [self._objectIdentifier isEqual:[NSNull null]]) {
+            self._objectIdentifier = @"";
+        }
     }
-    return [self objectIdentifierForKey:@"id"];
+    return self._objectIdentifier;
 }
 
 - (NSString * _Nonnull)objectIdentifierForKey:(NSString *)key {
@@ -710,7 +716,16 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)isNewObject {
-    return ([[self objectIdentifier] isEqualToString:@""] || [[self objectIdentifier] integerValue] == 0);
+    id rawIdentifier = self.collection.data[@"id"];
+    
+    if (rawIdentifier == nil ||
+        [[rawIdentifier description] isEqualToString:@""] ||
+        [rawIdentifier isEqual:[NSNull null]] ||
+        [rawIdentifier integerValue] == 0) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (NSURL *)urlForSave {
