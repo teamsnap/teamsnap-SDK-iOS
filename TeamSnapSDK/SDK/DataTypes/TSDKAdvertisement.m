@@ -10,9 +10,10 @@
 
 @implementation TSDKAdvertisement
 
-@dynamic userId, teamId, canDisplayAds, linkTeam, linkUser;
+@dynamic userId, teamId, canDisplayAds, linkTeam, linkUser, mobileInterstitialSnoozeMinutes;
 
 + (NSString *)SDKType {
     return @"advertisement";
 }
+
 @end
