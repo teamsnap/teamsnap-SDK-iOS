@@ -32,7 +32,7 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     });
 }
 
@@ -47,7 +47,7 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = showIndicator;
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = showIndicator;
     });
 }
 
