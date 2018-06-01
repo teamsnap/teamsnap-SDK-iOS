@@ -59,6 +59,10 @@
 		9612CD8F1C9B51AB00816460 /* TSDKNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9612CD901C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
 		9612CD911C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
+		962EB17B20C190DB0038E416 /* TSDKBatchInvoiceLineItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 962EB17920C190DB0038E416 /* TSDKBatchInvoiceLineItem.h */; };
+		962EB17C20C190DB0038E416 /* TSDKBatchInvoiceLineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 962EB17A20C190DB0038E416 /* TSDKBatchInvoiceLineItem.m */; };
+		962EB17F20C197D40038E416 /* TSDKInvoiceRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 962EB17D20C197D40038E416 /* TSDKInvoiceRecipient.h */; };
+		962EB18020C197D40038E416 /* TSDKInvoiceRecipient.m in Sources */ = {isa = PBXBuildFile; fileRef = 962EB17E20C197D40038E416 /* TSDKInvoiceRecipient.m */; };
 		9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */; };
 		963A1B5E1C80E4B6006D695E /* TSDKAvailabilityGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		963A1B5F1C80E4B6006D695E /* TSDKAvailabilityGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */; };
@@ -436,6 +440,10 @@
 		961257D71D241AEB005B991D /* TSDKNetworkActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNetworkActivityIndicator.m; sourceTree = "<group>"; };
 		9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKNotifications.h; sourceTree = "<group>"; };
 		9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNotifications.m; sourceTree = "<group>"; };
+		962EB17920C190DB0038E416 /* TSDKBatchInvoiceLineItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKBatchInvoiceLineItem.h; sourceTree = "<group>"; };
+		962EB17A20C190DB0038E416 /* TSDKBatchInvoiceLineItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKBatchInvoiceLineItem.m; sourceTree = "<group>"; };
+		962EB17D20C197D40038E416 /* TSDKInvoiceRecipient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoiceRecipient.h; sourceTree = "<group>"; };
+		962EB17E20C197D40038E416 /* TSDKInvoiceRecipient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoiceRecipient.m; sourceTree = "<group>"; };
 		9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCustomDatumTests.m; path = DataType/TSDKCustomDatumTests.m; sourceTree = "<group>"; };
 		963A1B5C1C80E4B6006D695E /* TSDKAvailabilityGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKAvailabilityGroups.h; sourceTree = "<group>"; };
 		963A1B5D1C80E4B6006D695E /* TSDKAvailabilityGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKAvailabilityGroups.m; sourceTree = "<group>"; };
@@ -1011,6 +1019,10 @@
 				564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */,
 				5612365620C0A7800019342C /* TSDKBatchInvoice.h */,
 				5612365720C0A7800019342C /* TSDKBatchInvoice.m */,
+				962EB17920C190DB0038E416 /* TSDKBatchInvoiceLineItem.h */,
+				962EB17A20C190DB0038E416 /* TSDKBatchInvoiceLineItem.m */,
+				962EB17D20C197D40038E416 /* TSDKInvoiceRecipient.h */,
+				962EB17E20C197D40038E416 /* TSDKInvoiceRecipient.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1200,10 +1212,12 @@
 				9641AC251DF1BCC3008E4716 /* TSDKTslScore.h in Headers */,
 				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
 				969E80B31BAAE7AB00CA518F /* TSDKCollectionQuery.h in Headers */,
+				962EB17F20C197D40038E416 /* TSDKInvoiceRecipient.h in Headers */,
 				969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */,
 				964CDDE71BB4514B00909D11 /* TSDKRootLinks.h in Headers */,
 				969E80C31BAAE7AB00CA518F /* NSHTTPURLResponse+convenience.h in Headers */,
 				969E80BD1BAAE7AB00CA518F /* NSMutableURLRequest+TSDKConveniences.h in Headers */,
+				962EB17B20C190DB0038E416 /* TSDKBatchInvoiceLineItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1480,7 @@
 				969E80BA1BAAE7AB00CA518F /* NSDate+TSDKConveniences.m in Sources */,
 				964CDDEE1BB4519400909D11 /* TSDKPublicFeatures.m in Sources */,
 				969E80DE1BAAE7AB00CA518F /* TSDKCustomField.m in Sources */,
+				962EB18020C197D40038E416 /* TSDKInvoiceRecipient.m in Sources */,
 				96E1336C1D88627C0027E382 /* TSDKMemberAssignment.m in Sources */,
 				969B7ED01C7CB28300FD3EA0 /* TSDKTeamMedium.m in Sources */,
 				969E80FA1BAAE7AB00CA518F /* TSDKUser.m in Sources */,
@@ -1473,6 +1488,7 @@
 				960E2FF21CEF5B03004F540E /* NSMutableString+TSDKConveniences.m in Sources */,
 				969E80CE1BAAE7AB00CA518F /* TSDKStatisticDatum.m in Sources */,
 				969B7EB91C7CA9F800FD3EA0 /* TSDKTeamMediumComment.m in Sources */,
+				962EB17C20C190DB0038E416 /* TSDKBatchInvoiceLineItem.m in Sources */,
 				969E80C01BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.m in Sources */,
 				969B7EA41C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.m in Sources */,
 				96AF8E771E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m in Sources */,
