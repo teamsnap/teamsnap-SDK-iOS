@@ -72,6 +72,7 @@
 #import "TSDKSportPosition.h"
 #import "TSDKEventLineup.h"
 #import "TSDKEventLineupEntry.h"
+#import "TSDKBatchInvoice.h"
 
 static NSArray *_supportedSDKObjects;
 static NSArray *knownCompletionTypes;
@@ -148,7 +149,8 @@ static NSArray *knownCompletionTypes;
                                [TSDKTslChat class],
                                [TSDKTeamPreferences class],
                                [TSDKLocation class],
-                               [TSDKDivisionLocation class]];
+                               [TSDKDivisionLocation class],
+                                 [TSDKBatchInvoice class]];
     });
     return _supportedSDKObjects;
 }

@@ -17,6 +17,8 @@
 		5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */ = {isa = PBXBuildFile; fileRef = 560995981EA7F64B0072DB2B /* TSDKPersistenceFilePath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */; };
 		561170F01D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
+		5612365820C0A7800019342C /* TSDKBatchInvoice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5612365620C0A7800019342C /* TSDKBatchInvoice.h */; };
+		5612365920C0A7800019342C /* TSDKBatchInvoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612365720C0A7800019342C /* TSDKBatchInvoice.m */; };
 		561BC2791DE4C32D006BCCA1 /* TSDKApnDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */; };
 		5631BC33204EFE8C00F73515 /* TSDKInvoice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5631BC31204EFE8C00F73515 /* TSDKInvoice.h */; };
@@ -395,6 +397,8 @@
 		560995981EA7F64B0072DB2B /* TSDKPersistenceFilePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKPersistenceFilePath.h; path = Protocols/TSDKPersistenceFilePath.h; sourceTree = "<group>"; };
 		561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKDuplicateCompletionBlockStore.h; sourceTree = "<group>"; };
 		561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKDuplicateCompletionBlockStore.m; sourceTree = "<group>"; };
+		5612365620C0A7800019342C /* TSDKBatchInvoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKBatchInvoice.h; sourceTree = "<group>"; };
+		5612365720C0A7800019342C /* TSDKBatchInvoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKBatchInvoice.m; sourceTree = "<group>"; };
 		561BC2771DE4C32D006BCCA1 /* TSDKApnDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKApnDevice.h; sourceTree = "<group>"; };
 		561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKApnDevice.m; sourceTree = "<group>"; };
 		5631BC31204EFE8C00F73515 /* TSDKInvoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoice.h; sourceTree = "<group>"; };
@@ -1005,6 +1009,8 @@
 				5631BC32204EFE8C00F73515 /* TSDKInvoice.m */,
 				564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */,
 				564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */,
+				5612365620C0A7800019342C /* TSDKBatchInvoice.h */,
+				5612365720C0A7800019342C /* TSDKBatchInvoice.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1153,6 +1159,7 @@
 				96E1336B1D88627C0027E382 /* TSDKMemberAssignment.h in Headers */,
 				965B7D3F1C18CAE1009AF13E /* TSDKContactEmailAddress.h in Headers */,
 				965B7D331C18C7EE009AF13E /* TSDKMemberEmailAddress.h in Headers */,
+				5612365820C0A7800019342C /* TSDKBatchInvoice.h in Headers */,
 				969B7EB71C7CA9F800FD3EA0 /* TSDKTeamMediumComment.h in Headers */,
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
 				960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */,
@@ -1348,7 +1355,7 @@
 				TargetAttributes = {
 					969E803F1BAAE62D00CA518F = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 0930;
 					};
 					969E80491BAAE62E00CA518F = {
 						CreatedOnToolsVersion = 7.0;
@@ -1516,6 +1523,7 @@
 				969B7EF41C7CC77600FD3EA0 /* TSDKMemberBalance.m in Sources */,
 				969E80D81BAAE7AB00CA518F /* TSDKBroadcastEmail.m in Sources */,
 				96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
+				5612365920C0A7800019342C /* TSDKBatchInvoice.m in Sources */,
 				969E80CC1BAAE7AB00CA518F /* TSDKStatistic.m in Sources */,
 				5631BC34204EFE8C00F73515 /* TSDKInvoice.m in Sources */,
 				561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */,
