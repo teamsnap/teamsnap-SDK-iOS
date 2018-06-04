@@ -15,124 +15,124 @@
 
 @interface TSDKTeam : TSDKCollectionObject <NSCopying>
 
-@property (nonatomic, weak) NSString *_Nullable sportId; //Example: 52
-@property (nonatomic, weak) NSString *_Nullable leagueUrl; //Example:
+@property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2016-11-28T20:51:47Z
 @property (nonatomic, assign) BOOL isInLeague; //Example: 0
 @property (nonatomic, assign) BOOL hasReachedRosterLimit; //Example: 0
-@property (nonatomic, assign) NSInteger canExportMedia; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable timeZoneOffset; //Example: -07:00
-@property (nonatomic, weak) NSString *_Nullable locationLatitude; //Example: 40.036037
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-02-22T21:26:59Z
-@property (nonatomic, assign) BOOL hasExportableMedia; //Example: 1
-@property (nonatomic, weak) NSDate *_Nullable lastAccessedAt; //Example: 2016-02-22T21:32:04Z
-@property (nonatomic, weak) NSString *_Nullable timeZoneIanaName; //Example: America/Denver
-@property (nonatomic, assign) NSInteger nonPlayerMemberCount; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable locationPostalCode; //Example: 80302
-@property (nonatomic, weak) NSString *_Nullable locationState; //Example: 80302
-@property (nonatomic, weak) NSString *_Nullable name; //Example: TeamSnap
-@property (nonatomic, weak) NSString *_Nullable locationLongitude; //Example: -105.349559
-@property (nonatomic, assign) NSInteger playerMemberCount; //Example: 4
-@property (nonatomic, weak) NSString *_Nullable planId; //Example: 26
-@property (nonatomic, weak) NSString *_Nullable leagueName; //Example:
-@property (nonatomic, weak) NSString *_Nullable timeZoneDescription; //Example: Mountain Time (US & Canada)
-@property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
-@property (nonatomic, weak) NSString *_Nullable seasonName; //Example:
-@property (nonatomic, weak) NSString *_Nullable locationCountry; //Example: United States
-@property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 130056353
-@property (nonatomic, weak) NSString *_Nullable divisionName; //Example:
-@property (nonatomic, weak) NSString *_Nullable divisionId; //Example: 60366
-@property (nonatomic, weak) NSString *_Nullable humanizedMediaStorageUsed; //Example: 124.03 MB
-@property (nonatomic, weak) NSDate *_Nullable billedAt; //Example: 2013-09-20T00:00:00.000+00:00
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-27T03:32:51Z
-@property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
+@property (nonatomic, weak, nullable) NSString * planId; //Example: 33
+@property (nonatomic, weak, nullable) NSString * locationCountry; //Example: United States
+@property (nonatomic, assign) NSInteger memberLimit; //Example: 4000
+@property (nonatomic, weak, nullable) NSString * locationLatitude; //Example: **NULL**
+@property (nonatomic, weak, nullable) NSString * timeZoneDescription; //Example: Central Time (US & Canada)
+@property (nonatomic, weak, nullable) NSString * divisionId; //Example: <null>
+@property (nonatomic, assign) BOOL hasExportableMedia; //Example: 0
+@property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 0
+@property (nonatomic, weak, nullable) NSString * sportId; //Example: 7
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
-@property (nonatomic, assign) BOOL isHiddenOnDashboard;
-@property (nonatomic, assign) BOOL isGameDay;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroups;
-@property (nonatomic, weak) NSURL *_Nullable linkContactEmailAddresses;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionContactEmailAddresses;
-@property (nonatomic, weak) NSURL *_Nullable linkMembersPreferences;
-@property (nonatomic, weak) NSURL *_Nullable linkAvailabilities;
-@property (nonatomic, weak) NSURL *_Nullable linkAdvertisements;
-@property (nonatomic, weak) NSURL *_Nullable linkForumTopics;
-@property (nonatomic, weak) NSURL *_Nullable linkOwner;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionMembersPreferences;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMediumComments;
-@property (nonatomic, weak) NSURL *_Nullable linkForumSubscriptions;
-@property (nonatomic, weak) NSURL *_Nullable linkEvents;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamPaypalPreferences;
-@property (nonatomic, weak) NSURL *_Nullable linkForumPosts;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMedia;
-@property (nonatomic, weak) NSURL *_Nullable linkSport;
-@property (nonatomic, weak) NSURL *_Nullable linkContacts;
-@property (nonatomic, weak) NSURL *_Nullable linkTrackedItemStatuses;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionContacts;
-@property (nonatomic, weak) NSURL *_Nullable linkManagers;
-@property (nonatomic, weak) NSURL *_Nullable linkLeagueRegistrantDocuments;
-@property (nonatomic, weak) NSURL *_Nullable linkStatisticAggregates;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionLocations;
-@property (nonatomic, weak) NSURL *_Nullable linkOpponents;
-@property (nonatomic, weak) NSURL *_Nullable linkCustomData;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionContactPhoneNumbers;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamPreferences;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionTeamStandings;
-@property (nonatomic, weak) NSURL *_Nullable linkPaymentNotes;
-@property (nonatomic, weak) NSURL *_Nullable linkPlan;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamFees;
-@property (nonatomic, weak) NSURL *_Nullable linkEventsOverview;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberPhoneNumbers;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberLinks;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionMembers;
-@property (nonatomic, weak) NSURL *_Nullable linkBroadcastEmailAttachments;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamStatistics;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberEmailAddresses;
-@property (nonatomic, weak) NSURL *_Nullable linkMembers;
-@property (nonatomic, weak) NSURL *_Nullable linkStatistics;
-@property (nonatomic, weak) NSURL *_Nullable linkSponsors;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberBalances;
-@property (nonatomic, weak) NSURL *_Nullable linkStatisticGroups;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberStatistics;
-@property (nonatomic, weak) NSURL *_Nullable linkOpponentsResults;
-@property (nonatomic, weak) NSURL *_Nullable linkPaypalCurrency;
-@property (nonatomic, weak) NSURL *_Nullable linkTrackedItems;
-@property (nonatomic, weak) NSURL *_Nullable linkAssignments;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamResults;
-@property (nonatomic, weak) NSURL *_Nullable linkLeagueCustomData;
-@property (nonatomic, weak) NSURL *_Nullable linkContactPhoneNumbers;
-@property (nonatomic, weak) NSURL *_Nullable linkMessageData;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberFiles;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberPayments;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionMemberPhoneNumbers;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionMemberEmailAddresses;
-@property (nonatomic, weak) NSURL *_Nullable linkLeagueCustomFields;
-@property (nonatomic, weak) NSURL *_Nullable linkMessages;
-@property (nonatomic, weak) NSURL *_Nullable linkLocations;
-@property (nonatomic, weak) NSURL *_Nullable linkCustomFields;
-@property (nonatomic, weak) NSURL *_Nullable linkStatisticData;
-@property (nonatomic, weak) NSURL *_Nullable linkBroadcastEmails;
-@property (nonatomic, weak) NSURL *_Nullable linkEventsCsvExport;
-@property (nonatomic, weak) NSURL *_Nullable linkEventStatistics;
-@property (nonatomic, weak) NSURL *_Nullable linkBroadcastAlerts;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamPublicSite;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberPhotos;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamPhotos;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamPhotoFile;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamLogoPhotoFile;
+@property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
+@property (nonatomic, weak, nullable) NSDate * billedAt; //Example: 2016-11-28T20:51:47Z
+@property (nonatomic, weak, nullable) NSDate * lastAccessedAt; //Example: <null>
+@property (nonatomic, assign) BOOL isHiddenOnDashboard; //Example: 1
+@property (nonatomic, weak, nullable) NSString * seasonName; //Example: **NULL**
+@property (nonatomic, weak, nullable) NSString * activeSeasonTeamId; //Example: <null>
+@property (nonatomic, weak, nullable) NSString * name; //Example: -1
+@property (nonatomic, weak, nullable) NSString * leagueName; //Example: **NULL**
+@property (nonatomic, weak, nullable) NSString * humanizedMediaStorageUsed; //Example: 0 B
+@property (nonatomic, assign) BOOL isGameDay; //Example: 0
+@property (nonatomic, assign) BOOL isGatewayRequiredForSms; //Example: 0
+@property (nonatomic, weak, nullable) NSString * divisionName; //Example: **NULL**
+@property (nonatomic, assign) BOOL hasPlaayVideo; //Example: 0
+@property (nonatomic, weak, nullable) NSString * locationLongitude; //Example: **NULL**
+@property (nonatomic, assign) NSInteger playerMemberCount; //Example: 3
+@property (nonatomic, assign) BOOL hasReachedMemberLimit; //Example: 0
+@property (nonatomic, weak, nullable) NSString * locationState; //Example: **NULL**
+@property (nonatomic, weak, nullable) NSString * timeZoneOffset; //Example: -06:00
+@property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-05-23T22:37:12Z
+@property (nonatomic, assign) NSInteger canExportMedia; //Example: 0
+@property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
+@property (nonatomic, weak, nullable) NSString * timeZoneIanaName; //Example: America/Chicago
+@property (nonatomic, assign) NSInteger nonPlayerMemberCount; //Example: 0
+@property (nonatomic, weak, nullable) NSString * leagueUrl; //Example: **NULL**
+@property (nonatomic, weak, nullable) NSString * locationPostalCode; //Example: 94108
+@property (nonatomic, weak, nullable) NSURL * linkTeamMediaGroups;
+@property (nonatomic, weak, nullable) NSURL * linkContactEmailAddresses;
+@property (nonatomic, weak, nullable) NSURL * linkMembersPreferences;
+@property (nonatomic, weak, nullable) NSURL * linkAvailabilities;
+@property (nonatomic, weak, nullable) NSURL * linkForumTopics;
+@property (nonatomic, weak, nullable) NSURL * linkTeamStores;
+@property (nonatomic, weak, nullable) NSURL * linkOwner;
+@property (nonatomic, weak, nullable) NSURL * linkTeamMediumComments;
+@property (nonatomic, weak, nullable) NSURL * linkForumSubscriptions;
+@property (nonatomic, weak, nullable) NSURL * linkEvents;
+@property (nonatomic, weak, nullable) NSURL * linkTeamPaypalPreferences;
+@property (nonatomic, weak, nullable) NSURL * linkForumPosts;
+@property (nonatomic, weak, nullable) NSURL * linkTeamMedia;
+@property (nonatomic, weak, nullable) NSURL * linkCalendarWebcal;
+@property (nonatomic, weak, nullable) NSURL * linkSport;
+@property (nonatomic, weak, nullable) NSURL * linkContacts;
+@property (nonatomic, weak, nullable) NSURL * linkMembersCsvExport;
+@property (nonatomic, weak, nullable) NSURL * linkTrackedItemStatuses;
+@property (nonatomic, weak, nullable) NSURL * linkMemberPhotos;
+@property (nonatomic, weak, nullable) NSURL * linkManagers;
+@property (nonatomic, weak, nullable) NSURL * linkCommissioners;
+@property (nonatomic, weak, nullable) NSURL * linkAvailabilitiesCsvExport;
+@property (nonatomic, weak, nullable) NSURL * linkLeagueRegistrantDocuments;
+@property (nonatomic, weak, nullable) NSURL * linkStatisticAggregates;
+@property (nonatomic, weak, nullable) NSURL * linkOpponents;
+@property (nonatomic, weak, nullable) NSURL * linkCalendarHttpGamesOnly;
+@property (nonatomic, weak, nullable) NSURL * linkCustomData;
+@property (nonatomic, weak, nullable) NSURL * linkTeamPreferences;
+@property (nonatomic, weak, nullable) NSURL * linkMobilePlanSelection;
+@property (nonatomic, weak, nullable) NSURL * linkCalendarHttp;
+@property (nonatomic, weak, nullable) NSURL * linkDivisionTeamStandings;
+@property (nonatomic, weak, nullable) NSURL * linkPaymentNotes;
+@property (nonatomic, weak, nullable) NSURL * linkPlan;
+@property (nonatomic, weak, nullable) NSURL * linkTeamFees;
+@property (nonatomic, weak, nullable) NSURL * linkEventsOverview;
+@property (nonatomic, weak, nullable) NSURL * linkMemberPhoneNumbers;
+@property (nonatomic, weak, nullable) NSURL * linkMemberLinks;
+@property (nonatomic, weak, nullable) NSURL * linkTeamStore;
+@property (nonatomic, weak, nullable) NSURL * linkBroadcastEmailAttachments;
+@property (nonatomic, weak, nullable) NSURL * linkTeamStatistics;
+@property (nonatomic, weak, nullable) NSURL * linkMemberEmailAddresses;
+@property (nonatomic, weak, nullable) NSURL * linkMessagingPermissions;
+@property (nonatomic, weak, nullable) NSURL * linkMembers;
+@property (nonatomic, weak, nullable) NSURL * linkStatistics;
+@property (nonatomic, weak, nullable) NSURL * linkBatchInvoicesAggregates;
+@property (nonatomic, weak, nullable) NSURL * linkSponsors;
+@property (nonatomic, weak, nullable) NSURL * linkMemberBalances;
+@property (nonatomic, weak, nullable) NSURL * linkStatisticGroups;
+@property (nonatomic, weak, nullable) NSURL * linkMemberStatistics;
+@property (nonatomic, weak, nullable) NSURL * linkOpponentsResults;
+@property (nonatomic, weak, nullable) NSURL * linkPaypalCurrency;
+@property (nonatomic, weak, nullable) NSURL * linkTrackedItems;
+@property (nonatomic, weak, nullable) NSURL * linkAssignments;
+@property (nonatomic, weak, nullable) NSURL * linkTeamResults;
+@property (nonatomic, weak, nullable) NSURL * linkTeamPhotoFile;
+@property (nonatomic, weak, nullable) NSURL * linkLeagueCustomData;
+@property (nonatomic, weak, nullable) NSURL * linkContactPhoneNumbers;
+@property (nonatomic, weak, nullable) NSURL * linkMemberFiles;
+@property (nonatomic, weak, nullable) NSURL * linkAdvertisements;
+@property (nonatomic, weak, nullable) NSURL * linkMemberPayments;
+@property (nonatomic, weak, nullable) NSURL * linkLeagueCustomFields;
+@property (nonatomic, weak, nullable) NSURL * linkMessages;
+@property (nonatomic, weak, nullable) NSURL * linkLocations;
+@property (nonatomic, weak, nullable) NSURL * linkCustomFields;
+@property (nonatomic, weak, nullable) NSURL * linkSportPositions;
+@property (nonatomic, weak, nullable) NSURL * linkBroadcastEmails;
+@property (nonatomic, weak, nullable) NSURL * linkStatisticData;
+@property (nonatomic, weak, nullable) NSURL * linkTeamLogoPhotoFile;
 @property (nonatomic, weak, nullable) NSURL * linkTeamChat;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamStore;
-@property (nonatomic, weak) NSURL *_Nullable linkMobilePlanSelection;
-@property (nonatomic, weak) NSURL *_Nullable linkMessagingPermissions;
+@property (nonatomic, weak, nullable) NSURL * linkBatchInvoices;
+@property (nonatomic, weak, nullable) NSURL * linkEventsCsvExport;
+@property (nonatomic, weak, nullable) NSURL * linkCalendarWebcalGamesOnly;
+@property (nonatomic, weak, nullable) NSURL * linkEventStatistics;
+@property (nonatomic, weak, nullable) NSURL * linkMessageData;
+@property (nonatomic, weak, nullable) NSURL * linkBroadcastAlerts;
+@property (nonatomic, weak, nullable) NSURL * linkTeamPublicSite;
 
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
-
-// Non Collection links:
-@property (nonatomic, weak) NSURL *_Nullable linkCalendarHttpGamesOnly;
-@property (nonatomic, weak) NSURL *_Nullable linkCalendarHttp;
-@property (nonatomic, weak) NSURL *_Nullable linkCalendarWebcal;
-@property (nonatomic, weak) NSURL *_Nullable linkCalendarWebcalGamesOnly;
-@property (nonatomic, weak) NSURL *_Nullable linkMembersCsvExport;
 
 - (instancetype _Nullable)initWithName:(NSString *_Nonnull)name locationCountry:(NSString *_Nonnull)locationCountry locationPostalCode:(NSString *_Nullable)locationPostalCode ianaTimeZoneName:(NSString *_Nonnull)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId;
 - (void)bulkLoadDataWithTypes:(NSArray *_Nonnull)dataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
@@ -142,7 +142,7 @@
 
 - (void)updateTimeZone:(NSTimeZone *_Nonnull)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
-
+-(void)getBatchInvoicesAggregateWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBatchInvoiceAggregateCompletionBlock _Nonnull)completion;
 
 /**
  Deprecated: This endpoint will be removed in a future release. Use the invite link from contact_email_address instead.
@@ -193,78 +193,78 @@
 
 @interface TSDKTeam (ForwardedMethods)
 
--(void)getTeamMediaGroupsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediaGroupArrayCompletionBlock _Nullable)completion;
--(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock _Nullable)completion;
--(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getTeamMediaGroupsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediaGroupArrayCompletionBlock _Nonnull)completion;
+-(void)getContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactEmailAddressArrayCompletionBlock _Nonnull)completion;
+-(void)getMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAvailabilityArrayCompletionBlock _Nonnull)completion;
+-(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumTopicArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamStoresWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getOwnerWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumCommentArrayCompletionBlock _Nonnull)completion;
+-(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumSubscriptionArrayCompletionBlock _Nonnull)completion;
+-(void)getEventsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamPaypalPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumPostArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumArrayCompletionBlock _Nonnull)completion;
+-(void)getCalendarWebcalWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getSportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSportArrayCompletionBlock _Nonnull)completion;
+-(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nonnull)completion;
+-(void)getMembersCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTrackedItemStatusesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTrackedItemStatusArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nonnull)completion;
+-(void)getManagersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getCommissionersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getAvailabilitiesCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getLeagueRegistrantDocumentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getStatisticAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getOpponentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKOpponentArrayCompletionBlock _Nonnull)completion;
+-(void)getCalendarHttpGamesOnlyWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getCustomDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomDatumArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock _Nonnull)completion;
+-(void)getMobilePlanSelectionWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getCalendarHttpWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getDivisionTeamStandingsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getPaymentNotesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPaymentNoteArrayCompletionBlock _Nonnull)completion;
+-(void)getPlanWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPlanArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamFeesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamFeeArrayCompletionBlock _Nonnull)completion;
+-(void)getEventsOverviewWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberLinksWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamStoreWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getBroadcastEmailAttachmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamStatisticArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock _Nonnull)completion;
+-(void)getMessagingPermissionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagingPermissionsArrayCompletionBlock _Nonnull)completion;
+-(void)getMembersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nonnull)completion;
+-(void)getStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticArrayCompletionBlock _Nonnull)completion;
+-(void)getSponsorsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberBalanceArrayCompletionBlock _Nonnull)completion;
+-(void)getStatisticGroupsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticGroupArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberStatisticArrayCompletionBlock _Nonnull)completion;
+-(void)getOpponentsResultsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getPaypalCurrencyWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getTrackedItemsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTrackedItemArrayCompletionBlock _Nonnull)completion;
+-(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAssignmentArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamResultsArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomLeagueDatumArrayCompletionBlock _Nonnull)completion;
+-(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock _Nonnull)completion;
+-(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getAdvertisementsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAdvertisementsArrayCompletionBlock _Nonnull)completion;
--(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAvailabilityArrayCompletionBlock _Nullable)completion;
--(void)getForumTopicsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumTopicArrayCompletionBlock _Nullable)completion;
--(void)getOwnerWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getDivisionMembersPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTeamMediumCommentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumCommentArrayCompletionBlock _Nullable)completion;
--(void)getForumSubscriptionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumSubscriptionArrayCompletionBlock _Nullable)completion;
--(void)getEventsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
--(void)getTeamPaypalPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumPostArrayCompletionBlock _Nullable)completion;
--(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getCalendarWebcalWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getSportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSportArrayCompletionBlock _Nullable)completion;
--(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nullable)completion;
--(void)getMembersCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTrackedItemStatusesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTrackedItemStatusArrayCompletionBlock _Nullable)completion;
--(void)getDivisionContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getManagersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getLeagueRegistrantDocumentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getStatisticAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getDivisionLocationsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getOpponentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKOpponentArrayCompletionBlock _Nullable)completion;
--(void)getCalendarHttpGamesOnlyWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getCustomDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomDatumArrayCompletionBlock _Nullable)completion;
--(void)getDivisionContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTeamPreferencesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamPreferencesArrayCompletionBlock _Nullable)completion;
--(void)getCalendarHttpWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getDivisionTeamStandingsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getPaymentNotesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPaymentNoteArrayCompletionBlock _Nullable)completion;
--(void)getPlanWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPlanArrayCompletionBlock _Nullable)completion;
--(void)getTeamFeesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamFeeArrayCompletionBlock _Nullable)completion;
--(void)getEventsOverviewWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhoneNumberArrayCompletionBlock _Nullable)completion;
--(void)getMemberLinksWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getDivisionMembersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKDivisionMembersArrayCompletionBlock _Nullable)completion;
--(void)getBroadcastEmailAttachmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTeamStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamStatisticArrayCompletionBlock _Nullable)completion;
--(void)getMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberEmailAddressArrayCompletionBlock _Nullable)completion;
--(void)getMembersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberArrayCompletionBlock _Nullable)completion;
--(void)getStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticArrayCompletionBlock _Nullable)completion;
--(void)getSponsorsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMemberBalancesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberBalanceArrayCompletionBlock _Nullable)completion;
--(void)getStatisticGroupsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticGroupArrayCompletionBlock _Nullable)completion;
--(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberStatisticArrayCompletionBlock _Nullable)completion;
--(void)getOpponentsResultsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getPaypalCurrencyWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getTrackedItemsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTrackedItemArrayCompletionBlock _Nullable)completion;
--(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAssignmentArrayCompletionBlock _Nullable)completion;
--(void)getTeamResultsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamResultsArrayCompletionBlock _Nullable)completion;
--(void)getLeagueCustomDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomLeagueDatumArrayCompletionBlock _Nullable)completion;
--(void)getContactPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactPhoneNumberArrayCompletionBlock _Nullable)completion;
--(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMemberFilesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPaymentArrayCompletionBlock _Nullable)completion;
--(void)getDivisionMemberPhoneNumbersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKLeagueCustomFieldArrayCompletionBlock _Nullable)completion;
--(void)getLocationsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKLocationArrayCompletionBlock _Nullable)completion;
--(void)getCustomFieldsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomFieldArrayCompletionBlock _Nullable)completion;
--(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticDatumArrayCompletionBlock _Nullable)completion;
--(void)getBroadcastEmailsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastEmailArrayCompletionBlock _Nullable)completion;
--(void)getEventsCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventStatisticArrayCompletionBlock _Nullable)completion;
--(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock _Nullable)completion;
--(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
--(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
--(void)getTeamPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getMemberPaymentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPaymentArrayCompletionBlock _Nonnull)completion;
+-(void)getLeagueCustomFieldsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKLeagueCustomFieldArrayCompletionBlock _Nonnull)completion;
+-(void)getLocationsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKLocationArrayCompletionBlock _Nonnull)completion;
+-(void)getCustomFieldsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCustomFieldArrayCompletionBlock _Nonnull)completion;
+-(void)getSportPositionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSportPositionArrayCompletionBlock _Nonnull)completion;
+-(void)getBroadcastEmailsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastEmailArrayCompletionBlock _Nonnull)completion;
+-(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticDatumArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamLogoPhotoFileWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
--(void)getMessagingPermissionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagingPermissionsArrayCompletetionBlock _Nonnull)completion;
--(void)getSportPositionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSportPositionArrayCompletionBlock _Nullable)completion;
+-(void)getTeamChatWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getBatchInvoicesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBatchInvoicesArrayCompletionBlock _Nonnull)completion;
+-(void)getEventsCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getCalendarWebcalGamesOnlyWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventStatisticArrayCompletionBlock _Nonnull)completion;
+-(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMessagesDatumArrayCompletionBlock _Nonnull)completion;
+-(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock _Nonnull)completion;
+-(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 @end
