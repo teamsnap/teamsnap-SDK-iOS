@@ -73,6 +73,8 @@
 #import "TSDKEventLineup.h"
 #import "TSDKEventLineupEntry.h"
 #import "TSDKBatchInvoice.h"
+#import "TSDKBatchInvoiceLineItem.h"
+#import "TSDKInvoiceRecipient.h"
 #import "TSDKBatchInvoicesAggregate.h"
 
 static NSArray *_supportedSDKObjects;
@@ -150,9 +152,11 @@ static NSArray *knownCompletionTypes;
                                [TSDKTslChat class],
                                [TSDKTeamPreferences class],
                                [TSDKLocation class],
-                                [TSDKDivisionLocation class],
-                                [TSDKBatchInvoice class],
-                                [TSDKBatchInvoicesAggregate class]];
+                               [TSDKDivisionLocation class],
+                               [TSDKBatchInvoiceLineItem class],
+                               [TSDKInvoiceRecipient class],
+                               [TSDKBatchInvoice class],
+                               [TSDKBatchInvoicesAggregate class]];
     });
     return _supportedSDKObjects;
 }
