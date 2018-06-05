@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
-#import "TSDKObjectsRequest.h"
+//q#import "TSDKObjectsRequest.h"
 
 typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
     TSDKBatchInvoiceStatusOpen,
@@ -11,6 +11,8 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
     TSDKBatchInvoiceStatusCanceled,
     TSDKBatchInvoiceStatusUnknown
 };
+
+@class TSDKMember, TSDKBatchInvoiceLineItem;
 
 @interface TSDKBatchInvoice : TSDKCollectionObject
 
@@ -47,8 +49,9 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
 //+(void)actionCancelId:(NSString *_Nonnull)id WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 //Beta: (This endpoint is subject to change) Creates a batch invoice and associated batch invoice line items and invoices.
-//+(void)actionCreateWithInvoicesDueat:(NSString *_Nonnull)dueAt divisionId:(NSString *_Nonnull)divisionId title:(NSString *_Nonnull)title isRecipientPayingTransactionFees:(NSString *_Nonnull)isRecipientPayingTransactionFees teamId:(NSString *_Nonnull)teamId description:(NSString *_Nonnull)description type:(NSString *_Nonnull)type batchInvoiceLineItems:(NSString *_Nonnull)batchInvoiceLineItems WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+//+(void)actionCreateWithInvoicesDueat:(NSString *_Nonnull)dueAt divisionId:(NSString *_Nullable)divisionId title:(NSString *_Nonnull)title isRecipientPayingTransactionFees:(NSString *_Nonnull)isRecipientPayingTransactionFees teamId:(NSString *_Nullable)teamId description:(NSString *_Nullable)description type:(NSString *_Nonnull)type batchInvoiceLineItems:(NSString *_Nonnull)batchInvoiceLineItems WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
++(void)actionCreateWithInvoicesDueat:(NSString *_Nonnull)dueAt teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description type:(NSString *_Nonnull)type invoiceLineItems:(NSArray<TSDKBacthInvoiceLineItem *> *)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(NSString *_Nonnull)isRecipientPayingTransactionFees completion:(TSDKCompletionBlock _Nullable)completion;
 
 
 //+(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSString *_Nonnull)pageNumber divisionId:(NSString *_Nonnull)divisionId teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;

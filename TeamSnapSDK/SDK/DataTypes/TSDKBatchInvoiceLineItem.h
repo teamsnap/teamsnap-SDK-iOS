@@ -9,7 +9,7 @@
 @interface TSDKBatchInvoiceLineItem : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger amount; //Example: 2
-@property (nonatomic, weak, nullable) NSString * invoiceCategoryId; //Example: 1
+@property (nonatomic, assign) NSInteger invoiceCategoryId; //Example: 1
 @property (nonatomic, assign) NSInteger quantity; //Example: 1
 @property (nonatomic, weak, nullable) NSString * amountWithCurrency; //Example: $2.00
 @property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-04-25T20:28:42Z
