@@ -9,10 +9,18 @@
 #import "TSDKBatchInvoiceLineItem.h"
 
 @implementation TSDKBatchInvoiceLineItem
-@dynamic amount, invoiceCategoryId, quantity, amountWithCurrency, createdAt, batchInvoiceId, batchInvoiceLineItemDescription, updatedAt, linkTeam, linkBatchInvoice;
+@dynamic amount, quantity, amountWithCurrency, createdAt, batchInvoiceId, batchInvoiceLineItemDescription, updatedAt, linkTeam, linkBatchInvoice;
 
 + (NSString *)SDKType {
     return @"batch_invoice_line_item";
+}
+
+- (void)setInvoiceCategoryId:(TSDKInvoiceCategory)category {
+    [self setInteger:category forKey:@"invoice_category_id"];
+}
+
+- (TSDKInvoiceCategory)invoiceCategoryId {
+    return [self getInteger:@"invoice_category_id"];
 }
 
 @end
