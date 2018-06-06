@@ -31,6 +31,13 @@ static NSMutableDictionary *_commandDictionary;
 static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
++ (void)initialize
+{
+    // Explicitly not checking for subclasses here in order to synthesize dynamic property
+    //  method implementations for ALL subclasses of TSDKCollectionObject
+    [self synthesizePropertyImplementations];
+}
+
 +(NSDictionary *)templateForClass:(NSString *)className {
     @synchronized (self.templates) {
         return [self.templates objectForKey:className];
@@ -442,7 +449,119 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     DLog(@"%@", output);
 }
 
-+ (BOOL)resolveInstanceMethod:(SEL)aSEL {
+static Class originalImplementerOfProperty(objc_property_t property, Class subclass) {
+    unsigned int superCount = 0;
+    objc_property_t *superProperties = class_copyPropertyList([subclass superclass], &superCount);
+    
+    const char *propertyName = property_getName(property);
+    NSString *propertyNameString = [NSString stringWithUTF8String:propertyName];
+    
+    const char * propAttr = property_getAttributes(property);
+    for (int i = 0; i < superCount; i++) {
+        objc_property_t supes = superProperties[i];
+        const char *superName = property_getName(supes);
+        NSString *superPropertyName = [NSString stringWithUTF8String:superName];
+        const char *superAttr = property_getAttributes(supes);
+        
+        if ([superPropertyName isEqualToString:propertyNameString] && strcmp(propAttr, superAttr) == 0) {
+            // Superclass also has method
+            return originalImplementerOfProperty(property, [subclass superclass]);
+        }
+    }
+    
+    if (superProperties != NULL) {
+        free(superProperties);
+    }
+    
+    return subclass;
+}
+
+static void addImplementationForSelector(objc_property_t prop, SEL selector, Class class) {
+    if (selector != NULL) {
+        if (originalImplementerOfProperty(prop, class) != class) {
+            NSLog(@"Skipping superclass property setter \"%@\"", NSStringFromSelector(selector));
+            return;
+        }
+        
+        if ([class resolveInstanceMethod:selector] == NO) {
+            if ([class assignMethodImplementationForSelector:selector]) {
+                NSLog(@"✅ Successfully added custom implementation for property %@", NSStringFromSelector(selector));
+            } else {
+                NSLog(@"❌ Failed to add custom implementation for property %@", NSStringFromSelector(selector));
+            }
+        } else {
+            NSLog(@"Found existing implementation for property %@", NSStringFromSelector(selector));
+        }
+    } else {
+        NSLog(@"No setter found with name: %@", NSStringFromSelector(selector));
+    }
+}
+
++ (void)synthesizePropertyImplementations {
+    
+    NSLog(@"Attempting property enumeration for %@", NSStringFromClass(self));
+    
+    unsigned int propCount = 0;
+    objc_property_t *props = class_copyPropertyList(self, &propCount);
+    
+    if (propCount > 0) {
+        
+        NSLog(@"Enumerating %i properties for %@", propCount, NSStringFromClass(self));
+        
+        for (unsigned int i = 0; i < propCount; i++) {
+            
+            objc_property_t prop = props[i];
+            const char * name = property_getName(prop);
+            NSString *propertyNameString = [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
+            
+            const char *attr = property_getAttributes(prop);
+            NSString *attributeString = [NSString stringWithCString:attr encoding:NSASCIIStringEncoding];
+            
+            NSLog(@"Processing property with attributes: %@", attributeString);
+            
+            NSArray<NSString *> *attributeComponents = [attributeString componentsSeparatedByString:@","];
+            
+            // Only synthesize dynamic properties
+            if ([attributeComponents containsObject:@"D"]) {
+                if (sizeof(name) > 0 && [attributeComponents containsObject:@"R"] == NO) {
+                    // Readwrite, synthesize setter and getter
+                    
+                    // construct setter
+                    char upperFirstChar = (char)toupper(name[0]);
+                    NSString *upperFirstCharString = [NSString stringWithFormat:@"%c", upperFirstChar];
+                    NSString *trimmedPropertyName = [propertyNameString substringFromIndex:1];
+                    NSString *augmentedSetterString = [NSString stringWithFormat:@"set%@%@:", upperFirstCharString, trimmedPropertyName];
+                    
+                    SEL setter = NSSelectorFromString(augmentedSetterString);
+                    if (setter != NULL) {
+                        NSLog(@"Attempting to add selector for setter: %@", NSStringFromSelector(setter));
+                        addImplementationForSelector(prop, setter, self);
+                    } else {
+                        NSLog(@"Failed to construct selector for setter: %@", augmentedSetterString);
+                    }
+                }
+                
+                SEL getter = NSSelectorFromString(propertyNameString);
+                if (getter != NULL) {
+                    NSLog(@"Attempting to add selector for getter: %@", NSStringFromSelector(getter));
+                    addImplementationForSelector(prop, getter, self);
+                } else {
+                    NSLog(@"Failed to construct selector for getter: %@", propertyNameString);
+                }
+            } else {
+                NSLog(@"Skipping non-dynamic property %s", name);
+            }
+        }
+    } else {
+        NSLog(@"No properties found for %@", NSStringFromClass(self));
+    }
+    
+    if (props != NULL) {
+        free(props);
+    }
+}
+
++ (BOOL)assignMethodImplementationForSelector:(SEL)aSEL {
     //NSString *command = [NSStringFromSelector(aSEL) camelCaseToUnderscores];
     
     NSMutableString *property = [NSMutableString stringWithString:NSStringFromSelector(aSEL)];
