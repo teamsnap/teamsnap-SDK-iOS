@@ -519,8 +519,8 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
             
             // Only synthesize dynamic properties
             if ([attributeComponents containsObject:@"D"]) {
-                if (sizeof(name) > 0 && [attributeComponents containsObject:@"R"] == NO) {
                     // Readwrite, synthesize setter and getter
+                if (strlen(name) > 0 && [attributeComponents containsObject:@"R"] == NO) {
                     
                     // construct setter
                     NSString *upperFirstCharString = [[NSString stringWithFormat:@"%c", name[0]] uppercaseString];
