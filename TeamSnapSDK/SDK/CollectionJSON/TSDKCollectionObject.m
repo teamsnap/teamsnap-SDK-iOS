@@ -449,33 +449,6 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     DLog(@"%@", output);
 }
 
-static Class originalImplementerOfProperty(objc_property_t property, Class subclass) {
-    unsigned int superCount = 0;
-    objc_property_t *superProperties = class_copyPropertyList([subclass superclass], &superCount);
-    
-    const char *propertyName = property_getName(property);
-    NSString *propertyNameString = [NSString stringWithUTF8String:propertyName];
-    
-    const char * propAttr = property_getAttributes(property);
-    for (int i = 0; i < superCount; i++) {
-        objc_property_t supes = superProperties[i];
-        const char *superName = property_getName(supes);
-        NSString *superPropertyName = [NSString stringWithUTF8String:superName];
-        const char *superAttr = property_getAttributes(supes);
-        
-        if ([superPropertyName isEqualToString:propertyNameString] && strcmp(propAttr, superAttr) == 0) {
-            // Superclass also has method
-            return originalImplementerOfProperty(property, [subclass superclass]);
-        }
-    }
-    
-    if (superProperties != NULL) {
-        free(superProperties);
-    }
-    
-    return subclass;
-}
-
 // Want this separate from DLog. When we know this is reliable, we can optionally remove
 //  these logging calls entirely.
 #if (0 && DEBUG)
@@ -542,7 +515,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                         RuntimeLog(@"Attempting to add selector for setter: %@", NSStringFromSelector(setter));
                         addImplementationForSelector(prop, setter, self);
                     } else {
-                        RuntimeLog(@"Failed to construct selector for setter: %@", augmentedSetterString);
+                        RuntimeLog(@"Failed to construct selector for setter: %@", setterName);
                     }
                 }
                 
