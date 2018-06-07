@@ -41,7 +41,7 @@
 @property (nonatomic, assign) BOOL hasPayments; //Example: 0
 @property (nonatomic, weak, nullable) NSString * amountRefundedWithProcessingFeesRefundedWithCurrency; //Example: $0.00
 @property (nonatomic, weak, nullable) NSDate * sentAt; //Example: <null>
-@property (nonatomic, weak, nullable) NSString * paymentUrl; //Example: https://go.teamsnap.com/pay_invoice/793e4a19-5aa6-11e8-8534-3ca82a21c0e6
+@property (nonatomic, weak, nullable) NSURL * paymentUrl; //Example: https://go.teamsnap.com/pay_invoice/793e4a19-5aa6-11e8-8534-3ca82a21c0e6
 @property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-05-18T14:19:28Z
 @property (nonatomic, weak, nullable) NSString * balanceWithCurrency; //Example: $150.00
 @property (nonatomic, weak, nullable) NSString * title; //Example: Memorial Tournament
