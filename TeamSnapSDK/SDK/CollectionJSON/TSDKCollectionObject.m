@@ -476,37 +476,33 @@ static Class originalImplementerOfProperty(objc_property_t property, Class subcl
     return subclass;
 }
 
+// Want this separate from DLog. When we know this is reliable, we can optionally remove
+//  these logging calls entirely.
+#if (0 && DEBUG)
+#define RuntimeLog(fmt, ...) NSLog((fmt), ##__VA_ARGS__);
+#else
+#define RuntimeLog(...)
+#endif
+
 static void addImplementationForSelector(objc_property_t prop, SEL selector, Class class) {
     if (selector != NULL) {
-        if (originalImplementerOfProperty(prop, class) != class) {
-            NSLog(@"Skipping superclass property setter \"%@\"", NSStringFromSelector(selector));
-            return;
-        }
-        
-        if ([class resolveInstanceMethod:selector] == NO) {
-            if ([class assignMethodImplementationForSelector:selector]) {
-                NSLog(@"✅ Successfully added custom implementation for property %@", NSStringFromSelector(selector));
-            } else {
-                NSLog(@"❌ Failed to add custom implementation for property %@", NSStringFromSelector(selector));
-            }
+        if ([class assignMethodImplementationForSelector:selector]) {
+            RuntimeLog(@"✅ Successfully added custom implementation for property %@", NSStringFromSelector(selector));
         } else {
-            NSLog(@"Found existing implementation for property %@", NSStringFromSelector(selector));
+            RuntimeLog(@"❌ Failed to add custom implementation for property %@", NSStringFromSelector(selector));
         }
-    } else {
-        NSLog(@"No setter found with name: %@", NSStringFromSelector(selector));
     }
 }
 
 + (void)synthesizePropertyImplementations {
-    
-    NSLog(@"Attempting property enumeration for %@", NSStringFromClass(self));
+    RuntimeLog(@"Attempting property enumeration for %@", NSStringFromClass(self));
     
     unsigned int propCount = 0;
     objc_property_t *props = class_copyPropertyList(self, &propCount);
     
     if (propCount > 0) {
         
-        NSLog(@"Enumerating %i properties for %@", propCount, NSStringFromClass(self));
+        RuntimeLog(@"Enumerating %i properties for %@", propCount, NSStringFromClass(self));
         
         for (unsigned int i = 0; i < propCount; i++) {
             
@@ -517,7 +513,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
             const char *attr = property_getAttributes(prop);
             NSString *attributeString = [NSString stringWithCString:attr encoding:NSASCIIStringEncoding];
             
-            NSLog(@"Processing property with attributes: %@", attributeString);
+            RuntimeLog(@"Processing property with attributes: %@", attributeString);
             
             NSArray<NSString *> *attributeComponents = [attributeString componentsSeparatedByString:@","];
             
@@ -527,33 +523,32 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                     // Readwrite, synthesize setter and getter
                     
                     // construct setter
-                    char upperFirstChar = (char)toupper(name[0]);
-                    NSString *upperFirstCharString = [NSString stringWithFormat:@"%c", upperFirstChar];
+                    NSString *upperFirstCharString = [[NSString stringWithFormat:@"%c", name[0]] uppercaseString];
                     NSString *trimmedPropertyName = [propertyNameString substringFromIndex:1];
                     NSString *augmentedSetterString = [NSString stringWithFormat:@"set%@%@:", upperFirstCharString, trimmedPropertyName];
                     
                     SEL setter = NSSelectorFromString(augmentedSetterString);
                     if (setter != NULL) {
-                        NSLog(@"Attempting to add selector for setter: %@", NSStringFromSelector(setter));
+                        RuntimeLog(@"Attempting to add selector for setter: %@", NSStringFromSelector(setter));
                         addImplementationForSelector(prop, setter, self);
                     } else {
-                        NSLog(@"Failed to construct selector for setter: %@", augmentedSetterString);
+                        RuntimeLog(@"Failed to construct selector for setter: %@", augmentedSetterString);
                     }
                 }
                 
                 SEL getter = NSSelectorFromString(propertyNameString);
                 if (getter != NULL) {
-                    NSLog(@"Attempting to add selector for getter: %@", NSStringFromSelector(getter));
+                    RuntimeLog(@"Attempting to add selector for getter: %@", NSStringFromSelector(getter));
                     addImplementationForSelector(prop, getter, self);
                 } else {
-                    NSLog(@"Failed to construct selector for getter: %@", propertyNameString);
+                    RuntimeLog(@"Failed to construct selector for getter: %@", propertyNameString);
                 }
             } else {
-                NSLog(@"Skipping non-dynamic property %s", name);
+                RuntimeLog(@"Skipping non-dynamic property %s", name);
             }
         }
     } else {
-        NSLog(@"No properties found for %@", NSStringFromClass(self));
+        RuntimeLog(@"No properties found for %@", NSStringFromClass(self));
     }
     
     if (props != NULL) {
