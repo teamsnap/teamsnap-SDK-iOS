@@ -519,15 +519,25 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
             
             // Only synthesize dynamic properties
             if ([attributeComponents containsObject:@"D"]) {
-                    // Readwrite, synthesize setter and getter
                 if (strlen(name) > 0 && [attributeComponents containsObject:@"R"] == NO) {
                     
-                    // construct setter
-                    NSString *upperFirstCharString = [[NSString stringWithFormat:@"%c", name[0]] uppercaseString];
-                    NSString *trimmedPropertyName = [propertyNameString substringFromIndex:1];
-                    NSString *augmentedSetterString = [NSString stringWithFormat:@"set%@%@:", upperFirstCharString, trimmedPropertyName];
+                    NSString *setterName = nil;
+                    for (NSString *attribute in attributeComponents) {
+                        if ([attribute hasPrefix:@"S"]) {
+                            // Has a custom setter, extract setter
+                            setterName = [attribute substringFromIndex:1];
+                        }
+                    }
                     
-                    SEL setter = NSSelectorFromString(augmentedSetterString);
+                    if (setterName == nil) {
+                        // Readwrite, synthesize setter
+                        // Construct setter
+                        NSString *upperFirstCharString = [[NSString stringWithFormat:@"%c", name[0]] uppercaseString];
+                        NSString *trimmedPropertyName = [propertyNameString substringFromIndex:1];
+                        setterName = [NSString stringWithFormat:@"set%@%@:", upperFirstCharString, trimmedPropertyName];
+                    }
+                    
+                    SEL setter = NSSelectorFromString(setterName);
                     if (setter != NULL) {
                         RuntimeLog(@"Attempting to add selector for setter: %@", NSStringFromSelector(setter));
                         addImplementationForSelector(prop, setter, self);
