@@ -22,4 +22,16 @@
     return amountPaidFloat/amountTotal;
 }
 
+- (TSDKInvoiceStatus)invoiceStatus {
+    if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
+        return TSDKInvoiceStatusOpen;
+    } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
+        return TSDKInvoiceStatusPaid;
+    } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
+        return TSDKInvoiceStatusCanceled;
+    } else {
+        return TSDKInvoiceStatusUnknown;
+    }
+}
+
 @end

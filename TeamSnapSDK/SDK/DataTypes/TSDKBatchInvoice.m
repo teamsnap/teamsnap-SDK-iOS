@@ -17,15 +17,15 @@
     return amountPaidFloat/amountInvoicedFloat;
 }
 
-- (TSDKBatchInvoiceStatus)invoiceStatus {
+- (TSDKInvoiceStatus)invoiceStatus {
     if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
-        return TSDKBatchInvoiceStatusOpen;
+        return TSDKInvoiceStatusOpen;
     } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
-        return TSDKBatchInvoiceStatusPaid;
+        return TSDKInvoiceStatusPaid;
     } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
-        return TSDKBatchInvoiceStatusCanceled;
+        return TSDKInvoiceStatusCanceled;
     } else {
-        return TSDKBatchInvoiceStatusUnknown;
+        return TSDKInvoiceStatusUnknown;
     }
 }
 

@@ -4,8 +4,9 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKBatchInvoice.h"
 
-@interface TSDKInvoice : TSDKCollectionObject
+@interface TSDKInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
 @property (nonatomic, assign) BOOL isPayableOffline; //Example: 1
 @property (nonatomic, assign) NSInteger paymentAdjustmentsAmount; //Example: 0
@@ -76,6 +77,8 @@
  @return A float value indicating the percentage of amount paid vs the amount invoiced.
  */
 - (CGFloat)percentPaid;
+
+- (TSDKInvoiceStatus)invoiceStatus;
 
 @end
 
