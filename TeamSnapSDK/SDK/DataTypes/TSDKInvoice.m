@@ -16,4 +16,10 @@
     return @"invoice";
 }
 
+- (CGFloat)percentPaid {
+    CGFloat amountPaidFloat = (CGFloat)self.amountPaid;
+    CGFloat amountTotal = (CGFloat)self.total;
+    return amountPaidFloat/amountTotal;
+}
+
 @end
