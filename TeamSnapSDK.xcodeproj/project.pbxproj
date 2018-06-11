@@ -83,6 +83,8 @@
 		964E1AD01DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 964E1ACE1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964E1AD11DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E1ACF1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m */; };
 		964E1AD31DCA5324002B9A73 /* NSURLConvenenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E1AD21DCA5324002B9A73 /* NSURLConvenenceTests.m */; };
+		964E319420CAF873009CEBEF /* TSDKInvoiceMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 964E319220CAF873009CEBEF /* TSDKInvoiceMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		964E319520CAF873009CEBEF /* TSDKInvoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E319320CAF873009CEBEF /* TSDKInvoiceMessage.m */; };
 		9652304D1CAC65EB0087FC23 /* TSDKDivisionLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9652304E1CAC65EB0087FC23 /* TSDKDivisionLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */; };
 		9652304F1CAC65F00087FC23 /* TSDKDivisionLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -464,6 +466,8 @@
 		964E1ACE1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+TSDKConveniences.h"; sourceTree = "<group>"; };
 		964E1ACF1DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+TSDKConveniences.m"; sourceTree = "<group>"; };
 		964E1AD21DCA5324002B9A73 /* NSURLConvenenceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSURLConvenenceTests.m; path = Conveniences/NSURLConvenenceTests.m; sourceTree = "<group>"; };
+		964E319220CAF873009CEBEF /* TSDKInvoiceMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoiceMessage.h; sourceTree = "<group>"; };
+		964E319320CAF873009CEBEF /* TSDKInvoiceMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoiceMessage.m; sourceTree = "<group>"; };
 		9652304B1CAC65EB0087FC23 /* TSDKDivisionLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKDivisionLocation.h; path = Leagues/TSDKDivisionLocation.h; sourceTree = "<group>"; };
 		9652304C1CAC65EB0087FC23 /* TSDKDivisionLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKDivisionLocation.m; path = Leagues/TSDKDivisionLocation.m; sourceTree = "<group>"; };
 		965B7D2B1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TSDKMemberPhoneNumber.h; path = Members/TSDKMemberPhoneNumber.h; sourceTree = "<group>"; };
@@ -1029,6 +1033,8 @@
 				962EB17E20C197D40038E416 /* TSDKInvoiceRecipient.m */,
 				569F9A8C20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.h */,
 				569F9A8D20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m */,
+				964E319220CAF873009CEBEF /* TSDKInvoiceMessage.h */,
+				964E319320CAF873009CEBEF /* TSDKInvoiceMessage.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1180,6 +1186,7 @@
 				5612365820C0A7800019342C /* TSDKBatchInvoice.h in Headers */,
 				969B7EB71C7CA9F800FD3EA0 /* TSDKTeamMediumComment.h in Headers */,
 				969E80D71BAAE7AB00CA518F /* TSDKBroadcastEmail.h in Headers */,
+				964E319420CAF873009CEBEF /* TSDKInvoiceMessage.h in Headers */,
 				960E2FF11CEF5B03004F540E /* NSMutableString+TSDKConveniences.h in Headers */,
 				4FB4793F1EB0166D00574674 /* TSDKApplePaidFeature.h in Headers */,
 				564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */,
@@ -1376,7 +1383,7 @@
 				TargetAttributes = {
 					969E803F1BAAE62D00CA518F = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 0940;
 					};
 					969E80491BAAE62E00CA518F = {
 						CreatedOnToolsVersion = 7.0;
@@ -1545,6 +1552,7 @@
 				969B7EC51C7CAE2600FD3EA0 /* TSDKForumSubscription.m in Sources */,
 				969E80EC1BAAE7AB00CA518F /* TSDKPlan.m in Sources */,
 				969B7EF41C7CC77600FD3EA0 /* TSDKMemberBalance.m in Sources */,
+				964E319520CAF873009CEBEF /* TSDKInvoiceMessage.m in Sources */,
 				969E80D81BAAE7AB00CA518F /* TSDKBroadcastEmail.m in Sources */,
 				96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */,
 				5612365920C0A7800019342C /* TSDKBatchInvoice.m in Sources */,

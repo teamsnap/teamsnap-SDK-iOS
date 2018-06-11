@@ -20,6 +20,7 @@ typedef void (^TSDKTokenCompletionBlock)(BOOL success, NSString *_Nullable OAuth
 typedef void (^TSDKLoginCompletionBlock)(BOOL success, NSString *_Nullable OAuthToken, TSDKUser *_Nullable user, NSError *_Nullable error);
 typedef void (^TSDKDictionaryCompletionBlock)(BOOL success, BOOL complete, NSDictionary *_Nullable objects, NSError *_Nullable error);
 typedef void (^TSDKUploadProgressBlock)(TSDKBackgroundUploadProgressMonitorDelegate *_Nullable uploadStatus, NSError *_Nullable error);
+typedef void (^TSDKBatchInvoiceCreatedBlock)(BOOL success, BOOL complete, TSDKBatchInvoice *_Nullable objects, NSError *_Nullable error);
 
 
 typedef void (^TSDKCustomDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCustomDatum *> *_Nonnull customData, NSError *_Nullable error);

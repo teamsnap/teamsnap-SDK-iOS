@@ -102,4 +102,5 @@
 #import <TeamSnapSDK/TSDKInvoice.h>
 #import <TeamSnapSDK/TSDKInvoiceRecipient.h>
 #import <TeamSnapSDK/TSDKBatchInvoicesAggregate.h>
+#import <TeamSnapSDK/TSDKInvoiceMessage.h>
 

@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
 //Beta: (This endpoint is subject to change) Creates a batch invoice and associated batch invoice line items and invoices.
 //+(void)actionCreateWithInvoicesDueat:(NSString *_Nonnull)dueAt divisionId:(NSString *_Nullable)divisionId title:(NSString *_Nonnull)title isRecipientPayingTransactionFees:(NSString *_Nonnull)isRecipientPayingTransactionFees teamId:(NSString *_Nullable)teamId description:(NSString *_Nullable)description type:(NSString *_Nonnull)type batchInvoiceLineItems:(NSString *_Nonnull)batchInvoiceLineItems WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
-+ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKCompletionBlock _Nullable)completion;
++ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
 + (void)test;
 

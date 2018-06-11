@@ -76,6 +76,7 @@
 #import "TSDKBatchInvoiceLineItem.h"
 #import "TSDKInvoiceRecipient.h"
 #import "TSDKBatchInvoicesAggregate.h"
+#import "TSDKInvoiceMessage.h"
 
 static NSArray *_supportedSDKObjects;
 static NSArray *knownCompletionTypes;
@@ -156,7 +157,8 @@ static NSArray *knownCompletionTypes;
                                [TSDKBatchInvoiceLineItem class],
                                [TSDKInvoiceRecipient class],
                                [TSDKBatchInvoice class],
-                               [TSDKBatchInvoicesAggregate class]];
+                               [TSDKBatchInvoicesAggregate class],
+                               [TSDKInvoiceMessage class]];
     });
     return _supportedSDKObjects;
 }

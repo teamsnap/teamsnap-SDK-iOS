@@ -184,6 +184,8 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         }
         
+#define DEBUGCURL
+        
 #ifdef DEBUGCURL
         DLog(@"Curl:\n%@", [request getCurlEquivalent]);
 #endif
