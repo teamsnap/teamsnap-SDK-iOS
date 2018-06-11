@@ -21,10 +21,14 @@
 
 @property (nonatomic, strong) NSMutableDictionary *cachedDatesLookup;
 @property (nonatomic, strong) NSString *_objectIdentifier;
+@property (nonatomic, strong) dispatch_queue_t collection_access_queue;
+@property (nonatomic, strong) NSMutableDictionary *changeStack;
 
 @end
 
 @implementation TSDKCollectionObject
+
+@synthesize collection = _collection;
 
 static NSMutableDictionary *_templates;
 static NSMutableDictionary *_commandDictionary;
@@ -184,9 +188,10 @@ static NSMutableDictionary *_classURLs;
     self = [super init];
     if (self) {
         _collection = [[TSDKCollectionJSON alloc] init];
-        _changedValues = [[NSMutableDictionary alloc] init];
+        _changeStack = [[NSMutableDictionary alloc] init];
         _logHeader = NO;
         _lastUpdate = nil;
+        _collection_access_queue = dispatch_queue_create("com.teamsnap.sdk.collection", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -206,8 +211,10 @@ static NSMutableDictionary *_classURLs;
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
     
     TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
-    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalObject.collection.data];
-    newCollection.type = originalObject.collection.type;
+    TSDKCollectionJSON *originalCollection = originalObject.collection;
+    
+    newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalCollection.data];
+    newCollection.type = originalCollection.type;
     
     NSArray *allKeys = [[newCollection data] allKeys];
     for (NSString *key in allKeys) {
@@ -231,8 +238,15 @@ static NSMutableDictionary *_classURLs;
 
 - (void)setCollection:(TSDKCollectionJSON *)collection {
     self._objectIdentifier = nil;
-    _collection = collection;
-    _lastUpdate = [NSDate date];
+    
+    [self willChangeValueForKey:@"collection"];
+    dispatch_barrier_async(self.collection_access_queue, ^{
+        _collection = collection;
+        _lastUpdate = [NSDate date];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self didChangeValueForKey:@"collection"];
+        });
+    });
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -245,7 +259,7 @@ static NSMutableDictionary *_classURLs;
 
 static id propertyIMP(id self, SEL _cmd) {
     NSString *command = [[NSStringFromSelector(_cmd) camelCaseToUnderscores] stripClassNameFromDescriptor:NSStringFromClass([self class])];
-    id value = [[[self collection] data] valueForKey:command];
+    id value = [self collectionObjectForKey:command];
     if ([value isEqual:[NSNull null]]) {
         return nil;
     } else {
@@ -523,7 +537,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 - (NSString * _Nonnull)objectIdentifier {
     if (self._objectIdentifier == nil) {
         // ObjectIdentifier could be a String or Int.
-        self._objectIdentifier = [self.collection.data[@"id"] description];
+        self._objectIdentifier = [[self collectionObjectForKey:@"id"] description];
         if ((self._objectIdentifier == nil) || [self._objectIdentifier isEqual:[NSNull null]]) {
             self._objectIdentifier = @"";
         }
@@ -533,7 +547,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (NSString * _Nonnull)objectIdentifierForKey:(NSString *)key {
 
-    NSObject *identifierObject = self.collection.data[key];
+    NSObject *identifierObject = [self collectionObjectForKey:key];
     if ([identifierObject isEqual:[NSNull null]]) {
         return nil;
     }
@@ -545,73 +559,164 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
+    
+    id __block collectionData = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        collectionData = _collection.data[aKey];
+    });
+    
     if (value) {
-        if ([value isEqual:_collection.data[aKey]]) {
+        if ([value isEqual:collectionData]) {
             return;
         }
     } else {
-        if (!_collection.data[aKey] || [_collection.data[aKey] isEqual:[NSNull null]]) {
+        if (!collectionData || [collectionData isEqual:[NSNull null]]) {
             return;
         }
     }
-    if (![_changedValues objectForKey:aKey]) {
-        if (_collection.data[aKey]) {
-            [_changedValues setObject:_collection.data[aKey] forKey:aKey];
+    
+    if (![self changedValueForKey:aKey]) {
+        if (collectionData) {
+            [self setChangeValue:collectionData forKey:aKey];
         } else {
-            [_changedValues setObject:[NSNull null] forKey:aKey];
+            [self setChangeValue:[NSNull null] forKey:aKey];
         }
     }
-    if (value) {
-        _collection.data[aKey] = value;
-    } else {
-        _collection.data[aKey] = [NSNull null];
-    }
+    
+    dispatch_barrier_async(self.collection_access_queue, ^{
+        
+        if (value) {
+            _collection.data[aKey] = value;
+        } else {
+            _collection.data[aKey] = [NSNull null];
+        }
+    });
 }
 
 - (void)undoChanges {
-    for (NSString *key in _changedValues) {
-        self.collection.data[key] = _changedValues[key];
-    }
-    [_changedValues removeAllObjects];
+    dispatch_sync(self.collection_access_queue, ^{
+        for (NSString *key in self.changeStack) {
+            _collection.data[key] = self.changeStack[key];
+        }
+    });
+    
+    [self clearChanges];
+}
+
+- (void)clearChanges {
+    dispatch_barrier_async(self.collection_access_queue, ^{
+        [self.changeStack removeAllObjects];
+    });
+}
+
+- (NSDictionary *)changedValues {
+    NSDictionary *__block changeDict = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        changeDict = [self.changeStack copy];
+    });
+    return changeDict;
+}
+
+- (id)changedValueForKey:(NSString *)aKey {
+    id __block value = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        value = [self.changeStack objectForKey:aKey];
+    });
+    
+    return value;
+}
+
+- (void)setChangeValue:(id)value forKey:(NSString *)aKey {
+    dispatch_barrier_async(self.collection_access_queue, ^{
+        [self.changeStack setObject:value forKey:aKey];
+    });
 }
 
 - (NSDictionary *)dataToSave {
     NSMutableArray *tempDataToSave = [[NSMutableArray alloc] init];
     
     if ([self isNewObject]) {
-        NSArray *allKeys = [_collection.data allKeys];
+        NSArray *__block allKeys = nil;
+        dispatch_sync(self.collection_access_queue, ^{
+            allKeys = [_collection.data allKeys];
+        });
+        
         if ([[self class] template]) {
             for (NSString *key in [[self class] template]) {
-                if(![key isEqualToString:@"type"] && _collection.data[key]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                id __block collectionData = nil;
+                dispatch_sync(self.collection_access_queue, ^{
+                    collectionData = _collection.data[key];
+                });
+                
+                if(![key isEqualToString:@"type"] && collectionData) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
                     [tempDataToSave addObject:itemDictionary];
                 }
             }
         } else {
             for (NSString *key in allKeys) {
-                if (_collection.data[key] && ![key isEqualToString:@"id"]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
+                
+                id __block collectionData = nil;
+                dispatch_sync(self.collection_access_queue, ^{
+                    collectionData = _collection.data[key];
+                });
+                
+                if (collectionData && ![key isEqualToString:@"id"]) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
                     [tempDataToSave addObject:itemDictionary];
                 }
             }
         }
     } else {
-        for (NSString *key in _changedValues) {
-            if (_collection.data[key]) {
-                NSDictionary *itemDictionary = @{@"name" : key, @"value" : _collection.data[key]};
-                [tempDataToSave addObject:itemDictionary];
+        dispatch_sync(self.collection_access_queue, ^{
+            for (NSString *key in self.changeStack) {
+                id __block collectionData = nil;
+                
+                collectionData = _collection.data[key];
+                
+                if (collectionData) {
+                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
+                    [tempDataToSave addObject:itemDictionary];
+                }
             }
-        }
+        });
     }
     NSDictionary *data = @{@"data" : tempDataToSave};
     return data;
 }
 
+- (id)collectionObjectForKey:(NSString *)key {
+    id __block collectionData = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        collectionData = _collection.data[key];
+    });
+    
+    return collectionData;
+}
+
+- (void)removeCollectionObjectForKey:(NSString *)aKey {
+    dispatch_barrier_async(self.collection_access_queue, ^{
+        [_collection.data removeObjectForKey:aKey];
+    });
+}
+
+- (TSDKCollectionJSON *)collection {
+    TSDKCollectionJSON *__block coll = nil;
+    
+    dispatch_sync(self.collection_access_queue, ^{
+        coll = [_collection copy];
+    });
+    
+    return coll;
+}
+
 - (NSString *)getString:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
+    NSString *collectionData = [self collectionObjectForKey:key];
+    
+    if ([collectionData isEqual:[NSNull null]]) {
         return @"";
     }
-    return _collection.data[key];
+    return collectionData;
 }
 
 - (void)setString:(NSString *)value forKey:(NSString *)aKey {
@@ -619,11 +724,13 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSInteger)getInteger:(NSString *)key {
-    if ((!_collection.data[key]) || ([_collection.data[key] isEqual:[NSNull null]])) {
+    NSNumber *collectionData = [self collectionObjectForKey:key];
+    
+    if ((!collectionData) || ([collectionData isEqual:[NSNull null]])) {
         return NSNotFound;
     }
-    NSNumber *value = _collection.data[key];
-    return value.integerValue;
+    
+    return collectionData.integerValue;
 }
 
 - (void)setInteger:(NSInteger)value forKey:(NSString *)aKey {
@@ -636,10 +743,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSDate *)getDate:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]]) {
+    NSString *collectionData = [self collectionObjectForKey:key];
+    
+    if ([collectionData isEqual:[NSNull null]]) {
         return nil;
     }
-    NSString *dateString = self.collection.data[key];
+    NSString *dateString = collectionData;
     if (dateString.length == 0) {
         return nil;
     }
@@ -671,10 +780,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)getBool:(NSString *)aKey {
-    if ([_collection.data[aKey] isEqual:[NSNull null]]) {
+    NSNumber *collectionData = [self collectionObjectForKey:aKey];
+    if ([collectionData isEqual:[NSNull null]]) {
         return NO;
     }
-    return [(NSNumber *) _collection.data[aKey] boolValue];
+    return [collectionData boolValue];
 }
 
 - (void)setBool:(BOOL)value forKey:(NSString *)aKey {
@@ -682,10 +792,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (CGFloat)getCGFloat:(NSString *)aKey {
-    if ([_collection.data[aKey] isEqual:[NSNull null]]) {
+    NSNumber *collectionData = [self collectionObjectForKey:aKey];
+    if ([collectionData isEqual:[NSNull null]]) {
         return 0.0f;
     }
-    return [_collection.data[aKey] floatValue];
+    return [collectionData floatValue];
 }
 
 - (void)setCGFloat:(CGFloat)value forKey:(NSString *)aKey {
@@ -697,26 +808,39 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSArray <NSString *> *)getArrayForKey:(NSString *)key {
-    if ([_collection.data[key] isEqual:[NSNull null]] || [_collection.data[key] isKindOfClass:[NSArray class]] == NO) {
+    NSArray *collectionData = [self collectionObjectForKey:key];
+    if ([collectionData isEqual:[NSNull null]] || [collectionData isKindOfClass:[NSArray class]] == NO) {
         return nil;
     }
-    return _collection.data[key];
+    return collectionData;
 }
 
 - (NSURL *)getLink:(NSString *)aKey {
-    if ([_collection.links[aKey] isEqual:[NSNull null]]) {
+    id __block linksForKey = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        linksForKey = _collection.links[aKey];
+    });
+    
+    if ([linksForKey isEqual:[NSNull null]]) {
         return nil;
     }
-    return [NSURL URLWithString:_collection.links[aKey]];
+    return [NSURL URLWithString:linksForKey];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:_collection forKey:@"collection"];
-    [coder encodeObject:_lastUpdate forKey:@"lastUpdate"];
+    TSDKCollectionJSON *__block coll = nil;
+    NSDate *__block last = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        coll = [_collection copy];
+        last = _lastUpdate;
+    });
+    
+    [coder encodeObject:coll forKey:@"collection"];
+    [coder encodeObject:last forKey:@"lastUpdate"];
 }
 
 - (BOOL)isNewObject {
-    id rawIdentifier = self.collection.data[@"id"];
+    id rawIdentifier = [self collectionObjectForKey:@"id"];
     
     if (rawIdentifier == nil ||
         [[rawIdentifier description] isEqualToString:@""] ||
@@ -729,7 +853,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (NSURL *)urlForSave {
-    NSURL *URL;
+    NSURL *__block URL = nil;
     if ([self isNewObject]) {
         if ([[self class] classURL]) {
             URL = [[self class] classURL];
@@ -738,7 +862,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         }
         
     } else {
-        URL = self.collection.href;
+        dispatch_sync(self.collection_access_queue, ^{
+            URL = _collection.href;
+        });
     }
 
     return URL;
@@ -765,7 +891,9 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         
         [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
-                [weakSelf.changedValues removeAllObjects];
+                
+                [weakSelf clearChanges];
+                
                 if ([objects.collection isKindOfClass:[NSArray class]]) {
                     NSArray *returnedCollections = (NSArray *)objects.collection;
                     if ([returnedCollections count]==1) {
@@ -784,12 +912,19 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             }
         }];
     } else {
-        if (self.changedValues.count>0) {
+        NSInteger __block changedCount = 0;
+        dispatch_sync(self.collection_access_queue, ^{
+            changedCount = self.changedValues.count;
+        });
+        
+        if (changedCount > 0) {
             NSDictionary *postObject = @{@"template": dataToSave};
             __typeof__(self) __weak weakSelf = self;
             [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"PATCH" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
                 if (success) {
-                    [weakSelf.changedValues removeAllObjects];
+                    
+                    [weakSelf clearChanges];
+                    
                     if ([objects.collection isKindOfClass:[NSArray class]]) {
                         NSArray *returnedCollections = (NSArray *)objects.collection;
                         if ([returnedCollections count]==1) {
@@ -819,7 +954,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     if (self.isNewObject == NO) {
         NSDictionary *dataToSave = [self dataToSave];
         NSDictionary *postObject = @{@"template": dataToSave};
-        [TSDKDataRequest requestObjectsForPath:self.collection.href sendDataDictionary:postObject method:@"DELETE" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        NSURL *__block href = nil;
+        dispatch_sync(self.collection_access_queue, ^{
+            href = _collection.href;
+        });
+        
+        [TSDKDataRequest requestObjectsForPath:href sendDataDictionary:postObject method:@"DELETE" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 [TSDKNotifications postDeletedObject:self];
             }
@@ -907,7 +1047,11 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {
-    [TSDKDataRequest requestObjectsForPath:self.collection.href withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+    NSURL *__block href = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        href = _collection.href;
+    });
+    [TSDKDataRequest requestObjectsForPath:href withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (success) {
             [self setCollection:[objects.collection objectAtIndex:0]];
             [TSDKNotifications postRefreshedObject:self];
@@ -919,7 +1063,12 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (BOOL)writeToFileURL:(NSURL *)fileURL {
-    NSData *collectionData = [self.collection dataEncodedForSave];
+    NSData *__block collectionData = nil;
+    
+    dispatch_sync(self.collection_access_queue, ^{
+        collectionData = [_collection dataEncodedForSave];
+    });
+    
     NSError *error;
     [collectionData writeToURL:fileURL options:NSDataWritingAtomic error:&error];
     if (error) {
@@ -973,13 +1122,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 }
 
 - (instancetype)copyWithZone:(nullable NSZone *)zone {
-    id copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setCollection:[[self collection] copy]];
-    }
-    
-    return copy;
+    return [[[self class] allocWithZone:zone] initWithCollection:self.collection];
 }
 
 + (NSURL * _Nullable)persistenceBaseFilePath {

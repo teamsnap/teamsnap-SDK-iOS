@@ -62,7 +62,7 @@
     [paymentNoPayment undoChanges];
     XCTAssertEqualObjects(paymentNoPayment.teamId, @"949008");
 
-    [paymentNoPayment.collection.data removeObjectForKey:@"team_id"];
+    [paymentNoPayment removeCollectionObjectForKey:@"team_id"];
     XCTAssertNotEqualObjects(paymentNoPayment.teamId, @"");
     XCTAssertNil(paymentNoPayment.teamId);
     
@@ -88,7 +88,7 @@
         TSDKUser *newUser = [TSDKUser objectWithObject:user];
         XCTAssertNotNil(newUser);
         XCTAssertTrue(newUser.isNewObject);
-        XCTAssertNil([newUser.collection.data objectForKey:@"team_id"]);
+        XCTAssertNil([newUser collectionObjectForKey:@"team_id"]);
         XCTAssertEqualObjects(newUser.lastName, @"Joe");
         NSString *objectClassName = NSStringFromClass([newUser class]);
         XCTAssertEqualObjects(objectClassName, @"TSDKUser");
@@ -107,7 +107,7 @@
         XCTAssertEqualObjects(user.firstName, @"First");
         XCTAssertEqualObjects([[user changedValues] valueForKey:@"first_name"] , @"Tester");
         user.lastName = nil;
-        XCTAssertEqualObjects([[user.collection data] valueForKey:@"last_name"], [NSNull null]);
+        XCTAssertEqualObjects([user collectionObjectForKey:@"last_name"], [NSNull null]);
         XCTAssertNil(user.lastName);
         XCTAssertEqualObjects([[user changedValues] valueForKey:@"last_name"], @"Joe");
         
@@ -141,7 +141,7 @@
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);
     XCTAssertEqual([event.changedValues objectForKey:@"name"], [NSNull null]);
-    [event.changedValues removeAllObjects];
+    [event clearChanges];
     
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);
@@ -198,11 +198,11 @@
         TSDKCollectionJSON *subCollection = [(NSArray *)_userCollectionJSON.collection firstObject];
         
         TSDKUser *user= [[TSDKUser alloc] initWithCollection:subCollection];
-        [user.collection.data setObject:@"" forKey:@"created_at"];
+        [user setString:@"" forKey:@"created_at"];
         XCTAssertNoThrow(user.createdAt);
     }
     
-    [[event.collection data] setObject:@"8-13" forKey:@"start_date"];
+    [event setString:@"8-13" forKey:@"start_date"];
     XCTAssertNoThrow(event.startDate);
 }
 

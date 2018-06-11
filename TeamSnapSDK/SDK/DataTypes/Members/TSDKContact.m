@@ -23,8 +23,8 @@
 }
 
 - (BOOL)isEditable {
-    if ([self.collection.data objectForKey:@"is_editable"]) {
-        NSNumber *value = [self.collection.data objectForKey:@"is_editable"];
+    NSNumber *value = [self collectionObjectForKey:@"is_editable"];
+    if (value != nil) {
         return [value boolValue];
     } else {
         return YES;

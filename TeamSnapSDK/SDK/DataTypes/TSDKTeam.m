@@ -193,8 +193,8 @@
 
 - (void)setTimeZoneIanaName:(NSString *)timeZoneIanaName {
     [self setString:timeZoneIanaName forKey:@"time_zone_iana_name"];
-    self.collection.data[@"time_zone"] = timeZoneIanaName;
-    [self.changedValues setObject:[NSNull null] forKey:@"time_zone"];
+    [self setString:timeZoneIanaName forKey:@"time_zone"];
+    [self setChangeValue:[NSNull null] forKey:@"time_zone"];
 }
 
 - (NSTimeZone *)timeZone {
@@ -280,13 +280,7 @@
 }
 
 - (id)copyWithZone:(nullable NSZone *)zone {
-    id copy = [[[self class] allocWithZone:zone] init];
-    
-    if (copy) {
-        [copy setCollection:[[self collection] copy]];
-    }
-    
-    return copy;
+    return [[[self class] allocWithZone:zone] initWithCollection:self.collection];
 }
 
 - (void)emailOwnerForUpsellFeature:(NSString * _Nonnull)feature fromContactId:(NSString * _Nonnull)contactId isOwner:(BOOL)isOwner completion:(TSDKSimpleCompletionBlock _Nullable)completion {

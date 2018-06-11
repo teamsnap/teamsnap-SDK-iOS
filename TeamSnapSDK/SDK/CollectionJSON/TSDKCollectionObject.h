@@ -27,14 +27,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSDKCollectionObject : NSObject <NSCoding, NSCopying, TSDKPersistenceFilePath>
 
-@property (nonatomic, strong, nullable) TSDKCollectionJSON * collection;
-@property (nonatomic, strong, nullable) NSMutableDictionary * changedValues;
+@property (nonatomic, copy, nullable) TSDKCollectionJSON * collection;
+@property (nonatomic, copy, readonly, nullable) NSDictionary * changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong, nullable) NSDate * lastUpdate;
 @property (nonatomic, strong) NSURL * persistenceBaseFilePath;
 
+- (TSDKCollectionJSON *)collection __deprecated;
+
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (id _Nullable)objectWithObject:(TSDKCollectionObject *)originalObject;
+
 + (void)dumpClassSelectorInfo;
 +(NSDictionary *_Nullable)template;
 +(NSDictionary *_Nullable)templateForClass:(NSString *)className;
@@ -76,6 +79,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setArray:(NSArray <NSString *> *_Nullable)value forKey:(NSString *)aKey;
 - (NSArray <NSString *> *_Nullable)getArrayForKey:(NSString *)key;
+
+- (id)collectionObjectForKey:(NSString *)key;
+- (void)removeCollectionObjectForKey:(NSString *)aKey;
+
+- (id _Nullable)changedValueForKey:(NSString *)aKey;
+- (void)setChangeValue:(id)value forKey:(NSString *)aKey;
+- (void)clearChanges;
 
 - (NSURL *_Nullable)getLink:(NSString *)aKey;
 - (void)encodeWithCoder:(NSCoder *)coder;
