@@ -192,6 +192,7 @@ static NSMutableDictionary *_classURLs;
         _logHeader = NO;
         _lastUpdate = nil;
         _collection_access_queue = dispatch_queue_create("com.teamsnap.sdk.collection", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_set_target_queue(_collection_access_queue, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0));
     }
     return self;
 }
