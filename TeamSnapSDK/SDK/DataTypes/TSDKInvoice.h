@@ -88,8 +88,7 @@
 -(void)getInvoiceRecipientsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoiceRecipientArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
 -(void)getBatchInvoiceWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBatchInvoicesArrayCompletionBlock _Nonnull)completion;
--(void)getInvoicePaymentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
-
+-(void)getInvoicePaymentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoicePaymentsArrayCompletionBlock _Nonnull)completion;
 
 @end
 
