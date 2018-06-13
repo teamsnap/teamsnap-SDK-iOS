@@ -1,0 +1,651 @@
+{
+    "collection": {
+        "commands": [
+            {
+                "data": [
+                    {
+                        "name": "batch_invoice_id",
+                        "value": null
+                    },
+                    {
+                        "name": "member_ids",
+                        "prompt": "An array of member ids for whom the invoices will be created.",
+                        "value": null
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/invoices/create_from_batch_invoice",
+                "prompt": "Create invoices using batch_invoice as a template for the specified ids.",
+                "rel": "create_from_batch_invoice"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": null
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/invoices/cancel",
+                "prompt": "Cancel invoice. Creates a line item opposite of the invoice balance. If payments have been made sets status to paid. If no payments have been made, sets status to canceled.",
+                "rel": "cancel"
+            }
+        ],
+        "href": "https://api.teamsnap.com/v3/invoices",
+        "items": [
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "type": "String",
+                        "value": 66078
+                    },
+                    {
+                        "name": "uuid",
+                        "type": "String",
+                        "value": "fa1806cf-6d85-11e8-858a-30e171559d06"
+                    },
+                    {
+                        "name": "type",
+                        "type": "String",
+                        "value": "invoice"
+                    },
+                    {
+                        "name": "batch_invoice_id",
+                        "type": "String",
+                        "value": 10986
+                    },
+                    {
+                        "name": "sent_at",
+                        "type": "DateTime",
+                        "value": null
+                    },
+                    {
+                        "name": "due_at",
+                        "type": "DateTime",
+                        "value": "2018-06-18T14:41:10Z"
+                    },
+                    {
+                        "name": "invoice_to",
+                        "type": "String",
+                        "value": "Aiden John Rahaim"
+                    },
+                    {
+                        "name": "invoice_from",
+                        "type": "String",
+                        "value": null
+                    },
+                    {
+                        "name": "sub_total",
+                        "type": "Float",
+                        "value": 32.13
+                    },
+                    {
+                        "name": "sub_total_with_currency",
+                        "type": "String",
+                        "value": "$32.13"
+                    },
+                    {
+                        "name": "processing_fees_billed",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_billed_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "processing_fees_canceled",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_canceled_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "processing_fees_sub_total",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_sub_total_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "amount_refunded",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_refunded_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "amount_refunded_with_processing_fees_refunded",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_refunded_with_processing_fees_refunded_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "total",
+                        "type": "Float",
+                        "value": 32.13
+                    },
+                    {
+                        "name": "total_with_currency",
+                        "type": "String",
+                        "value": "$32.13"
+                    },
+                    {
+                        "name": "amount_paid",
+                        "type": "Float",
+                        "value": 3.14
+                    },
+                    {
+                        "name": "amount_paid_with_currency",
+                        "type": "String",
+                        "value": "$3.14"
+                    },
+                    {
+                        "name": "processing_fees_paid",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_paid_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "amount_paid_with_processing_fees_paid",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_paid_with_processing_fees_paid_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "payment_adjustments_amount",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "payment_adjustments_amount_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "balance",
+                        "type": "Float",
+                        "value": 32.13
+                    },
+                    {
+                        "name": "balance_with_currency",
+                        "type": "String",
+                        "value": "$32.13"
+                    },
+                    {
+                        "name": "title",
+                        "type": "String",
+                        "value": "Fees?"
+                    },
+                    {
+                        "name": "description",
+                        "type": "String",
+                        "value": ""
+                    },
+                    {
+                        "name": "status",
+                        "type": "String",
+                        "value": "open"
+                    },
+                    {
+                        "name": "is_cancelable",
+                        "type": "String",
+                        "value": true
+                    },
+                    {
+                        "name": "can_pay_by_payment_schedule",
+                        "type": "String",
+                        "value": false
+                    },
+                    {
+                        "name": "has_payment_schedule",
+                        "type": "String",
+                        "value": false
+                    },
+                    {
+                        "name": "is_payable",
+                        "type": "String",
+                        "value": true
+                    },
+                    {
+                        "name": "is_payable_offline",
+                        "type": "String",
+                        "value": true
+                    },
+                    {
+                        "name": "has_payments",
+                        "type": "String",
+                        "value": false
+                    },
+                    {
+                        "name": "payment_url",
+                        "type": "String",
+                        "value": "https://go.teamsnap.com/pay_invoice/fa1806cf-6d85-11e8-858a-30e171559d06"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "DateTime",
+                        "value": "2018-06-11T14:44:42Z"
+                    },
+                    {
+                        "name": "updated_at",
+                        "type": "DateTime",
+                        "value": "2018-06-11T14:44:42Z"
+                    },
+                    {
+                        "name": "division_id",
+                        "type": "String",
+                        "value": null
+                    },
+                    {
+                        "name": "team_id",
+                        "type": "String",
+                        "value": 71118
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/invoices/66078",
+                "links": [
+                    {
+                        "href": "https://api.teamsnap.com/v3/batch_invoices/10986",
+                        "rel": "batch_invoice"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/teams/71118",
+                        "rel": "team"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/invoice_line_items/search?invoice_id=66078",
+                        "rel": "invoice_line_items"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/invoice_recipients/search?invoice_id=66078",
+                        "rel": "invoice_recipients"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/invoice_payments/search?invoice_id=66078",
+                        "rel": "invoice_payments"
+                    }
+                ],
+                "rel": "invoice-66078"
+            },
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "type": "String",
+                        "value": 66084
+                    },
+                    {
+                        "name": "uuid",
+                        "type": "String",
+                        "value": "fa298a2f-6d85-11e8-858a-30e171559d06"
+                    },
+                    {
+                        "name": "type",
+                        "type": "String",
+                        "value": "invoice"
+                    },
+                    {
+                        "name": "batch_invoice_id",
+                        "type": "String",
+                        "value": 10986
+                    },
+                    {
+                        "name": "sent_at",
+                        "type": "DateTime",
+                        "value": null
+                    },
+                    {
+                        "name": "due_at",
+                        "type": "DateTime",
+                        "value": "2018-06-18T14:41:10Z"
+                    },
+                    {
+                        "name": "invoice_to",
+                        "type": "String",
+                        "value": "2nd Invite"
+                    },
+                    {
+                        "name": "invoice_from",
+                        "type": "String",
+                        "value": null
+                    },
+                    {
+                        "name": "sub_total",
+                        "type": "Float",
+                        "value": 32.13
+                    },
+                    {
+                        "name": "sub_total_with_currency",
+                        "type": "String",
+                        "value": "$32.13"
+                    },
+                    {
+                        "name": "processing_fees_billed",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_billed_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "processing_fees_canceled",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_canceled_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "processing_fees_sub_total",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_sub_total_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "amount_refunded",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_refunded_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "amount_refunded_with_processing_fees_refunded",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_refunded_with_processing_fees_refunded_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "total",
+                        "type": "Float",
+                        "value": 32.13
+                    },
+                    {
+                        "name": "total_with_currency",
+                        "type": "String",
+                        "value": "$32.13"
+                    },
+                    {
+                        "name": "amount_paid",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_paid_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "processing_fees_paid",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "processing_fees_paid_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "amount_paid_with_processing_fees_paid",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "amount_paid_with_processing_fees_paid_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "payment_adjustments_amount",
+                        "type": "Float",
+                        "value": 0.0
+                    },
+                    {
+                        "name": "payment_adjustments_amount_with_currency",
+                        "type": "String",
+                        "value": "$0.00"
+                    },
+                    {
+                        "name": "balance",
+                        "type": "Float",
+                        "value": 32.13
+                    },
+                    {
+                        "name": "balance_with_currency",
+                        "type": "String",
+                        "value": "$32.13"
+                    },
+                    {
+                        "name": "title",
+                        "type": "String",
+                        "value": "Fees?"
+                    },
+                    {
+                        "name": "description",
+                        "type": "String",
+                        "value": ""
+                    },
+                    {
+                        "name": "status",
+                        "type": "String",
+                        "value": "open"
+                    },
+                    {
+                        "name": "is_cancelable",
+                        "type": "String",
+                        "value": true
+                    },
+                    {
+                        "name": "can_pay_by_payment_schedule",
+                        "type": "String",
+                        "value": false
+                    },
+                    {
+                        "name": "has_payment_schedule",
+                        "type": "String",
+                        "value": false
+                    },
+                    {
+                        "name": "is_payable",
+                        "type": "String",
+                        "value": true
+                    },
+                    {
+                        "name": "is_payable_offline",
+                        "type": "String",
+                        "value": true
+                    },
+                    {
+                        "name": "has_payments",
+                        "type": "String",
+                        "value": false
+                    },
+                    {
+                        "name": "payment_url",
+                        "type": "String",
+                        "value": "https://go.teamsnap.com/pay_invoice/fa298a2f-6d85-11e8-858a-30e171559d06"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "DateTime",
+                        "value": "2018-06-11T14:44:42Z"
+                    },
+                    {
+                        "name": "updated_at",
+                        "type": "DateTime",
+                        "value": "2018-06-11T14:44:42Z"
+                    },
+                    {
+                        "name": "division_id",
+                        "type": "String",
+                        "value": null
+                    },
+                    {
+                        "name": "team_id",
+                        "type": "String",
+                        "value": 71118
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/invoices/66084",
+                "links": [
+                    {
+                        "href": "https://api.teamsnap.com/v3/batch_invoices/10986",
+                        "rel": "batch_invoice"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/teams/71118",
+                        "rel": "team"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/invoice_line_items/search?invoice_id=66084",
+                        "rel": "invoice_line_items"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/invoice_recipients/search?invoice_id=66084",
+                        "rel": "invoice_recipients"
+                    },
+                    {
+                        "href": "https://api.teamsnap.com/v3/invoice_payments/search?invoice_id=66084",
+                        "rel": "invoice_payments"
+                    }
+                ],
+                "rel": "invoice-66084"
+            }
+        ],
+        "links": [
+            {
+                "href": "https://api.teamsnap.com/v3/batch_invoices",
+                "rel": "batch_invoice"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/invoice_line_items",
+                "rel": "invoice_line_items"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/invoice_recipients",
+                "rel": "invoice_recipients"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/invoice_payments",
+                "rel": "invoice_payments"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/",
+                "rel": "root"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/invoices/search?batch_invoice_id=10986",
+                "rel": "self"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/divisions",
+                "rel": "division"
+            },
+            {
+                "href": "https://api.teamsnap.com/v3/teams",
+                "rel": "team"
+            }
+        ],
+        "prompt": "Beta: (This endpoint is subject to change) Returns invoices",
+        "queries": [
+            {
+                "data": [
+                    {
+                        "name": "id",
+                        "value": null
+                    },
+                    {
+                        "name": "batch_invoice_id",
+                        "value": null
+                    },
+                    {
+                        "name": "user_id",
+                        "value": null
+                    },
+                    {
+                        "name": "status",
+                        "value": null
+                    },
+                    {
+                        "name": "member_id",
+                        "value": null
+                    },
+                    {
+                        "name": "page_size",
+                        "prompt": "The number of items to return for each page. Sending this parameter with the query will enable paging for the returned collection.",
+                        "value": null
+                    },
+                    {
+                        "name": "page_number",
+                        "prompt": "The number of the page to be returned. This requires that paging be turned on by also providing the page_size parameter.",
+                        "value": null
+                    }
+                ],
+                "href": "https://api.teamsnap.com/v3/invoices/search",
+                "rel": "search"
+            }
+        ],
+        "rel": "invoices",
+        "template": {
+            "data": [
+                {
+                    "name": "batch_invoice_id",
+                    "value": null
+                },
+                {
+                    "name": "member_id",
+                    "value": null
+                },
+                {
+                    "name": "sent_at",
+                    "value": null
+                },
+                {
+                    "name": "due_at",
+                    "value": null
+                },
+                {
+                    "name": "type",
+                    "value": "invoice"
+                }
+            ]
+        },
+        "version": "3.699.0"
+    }
+}

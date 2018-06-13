@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
     TSDKBatchInvoiceStatusUnknown
 };
 
-@class TSDKMember, TSDKBatchInvoiceLineItem;
+@class TSDKMember, TSDKBatchInvoiceLineItem, TSDKInvoice;
 
 @interface TSDKBatchInvoice : TSDKCollectionObject
 
@@ -24,18 +24,18 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
 @property (nonatomic, weak, nullable) NSString * status; //Example: open
 @property (nonatomic, weak, nullable) NSString * title; //Example: Memorial Tournament
 @property (nonatomic, assign) BOOL isCancelable; //Example: 1
-@property (nonatomic, assign) NSInteger paymentAdjustmentsAmount; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * paymentAdjustmentsAmount; //Example: 0
 @property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-05-18T14:19:28Z
 @property (nonatomic, weak, nullable) NSString * paymentAdjustmentsAmountWithCurrency; //Example: $0.00
-@property (nonatomic, assign) NSInteger invoicesPastDueCount; //Example: 5
+@property (nonatomic, weak, nullable) NSDecimalNumber *invoicesPastDueCount; //Example: 5
 @property (nonatomic, assign) BOOL isDeletable; //Example: 0
 @property (nonatomic, assign) NSInteger invoicesCount; //Example: 5
-@property (nonatomic, assign) NSInteger amountPaid; //Example: 0
-@property (nonatomic, assign) NSInteger amountInvoiced; //Example: 750
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountPaid; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountInvoiced; //Example: 750
 @property (nonatomic, weak, nullable) NSString * amountPaidWithCurrency; //Example: $0.00
 @property (nonatomic, assign) NSInteger invoicesUnpaidCount; //Example: 5
 @property (nonatomic, weak, nullable) NSString * amountDueWithCurrency; //Example: $750.00
-@property (nonatomic, assign) NSInteger amountDue; //Example: 750
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountDue; //Example: 750
 @property (nonatomic, assign) NSInteger invoicesPaidCount; //Example: 0
 @property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-05-18T14:19:28Z
 @property (nonatomic, weak, nullable) NSString * divisionId; //Example: <null>
@@ -51,11 +51,11 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
 //+(void)actionCancelId:(NSString *_Nonnull)id WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 //Beta: (This endpoint is subject to change) Creates a batch invoice and associated batch invoice line items and invoices.
-//+(void)actionCreateWithInvoicesDueat:(NSString *_Nonnull)dueAt divisionId:(NSString *_Nullable)divisionId title:(NSString *_Nonnull)title isRecipientPayingTransactionFees:(NSString *_Nonnull)isRecipientPayingTransactionFees teamId:(NSString *_Nullable)teamId description:(NSString *_Nullable)description type:(NSString *_Nonnull)type batchInvoiceLineItems:(NSString *_Nonnull)batchInvoiceLineItems WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
-+ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
++ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray *_Nonnull)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
-+ (void)test;
++ (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId completon:(TSDKSimpleCompletionBlock _Nullable)completion;
+- (void)cancelWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 
 //+(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSString *_Nonnull)pageNumber divisionId:(NSString *_Nonnull)divisionId teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;

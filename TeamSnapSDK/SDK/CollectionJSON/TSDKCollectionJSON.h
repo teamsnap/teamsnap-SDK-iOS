@@ -23,7 +23,6 @@
 @property (nonatomic, strong) NSDictionary *_Nullable queries;
 @property (nonatomic, strong) NSMutableArray <TSDKCollectionJSON *> *_Nullable collection;
 
-+ (NSDictionary *_Nullable)dictionaryToCollectionJSON:(NSDictionary *_Nonnull)dictionary;
 - (instancetype _Nullable)initWithCoder:(NSCoder *_Nonnull)aDecoder;
 - (instancetype _Nullable)initWithJSON:(NSDictionary *_Nonnull)JSON;
 + (instancetype _Nullable)collectionJSONForEncodedData:(NSData *_Nonnull)objectData;

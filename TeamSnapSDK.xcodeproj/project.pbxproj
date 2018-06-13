@@ -119,6 +119,10 @@
 		968109311D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */; };
 		968457581CCE4AE000B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968457591CCE4AE600B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
+		9687E26020D01F44007AAE1D /* TSDKInvoiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9687E25F20D01F44007AAE1D /* TSDKInvoiceTests.m */; };
+		9687E26420D08143007AAE1D /* invoice.json in Resources */ = {isa = PBXBuildFile; fileRef = 9687E26320D08143007AAE1D /* invoice.json */; };
+		9687E26A20D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 9687E26820D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.h */; };
+		9687E26B20D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9687E26920D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.m */; };
 		968B996B1FE97E4F001E63F7 /* TSDKMessagingPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		968B996C1FE97E4F001E63F7 /* TSDKMessagingPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B996A1FE97E4F001E63F7 /* TSDKMessagingPermission.m */; };
 		968B996D1FE982E0001E63F7 /* TSDKMessagingPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -487,6 +491,10 @@
 		9681092C1D8488C600D94C53 /* TSDKCollectionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKCollectionCommand.h; sourceTree = "<group>"; };
 		9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionCommand.m; sourceTree = "<group>"; };
 		968457571CCE4AE000B9946B /* TimeZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TimeZones.json; path = SDK/Resources/TimeZones.json; sourceTree = "<group>"; };
+		9687E25F20D01F44007AAE1D /* TSDKInvoiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKInvoiceTests.m; path = DataType/TSDKInvoiceTests.m; sourceTree = "<group>"; };
+		9687E26320D08143007AAE1D /* invoice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = invoice.json; sourceTree = "<group>"; };
+		9687E26820D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TSDKCollectionJSON.h"; sourceTree = "<group>"; };
+		9687E26920D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TSDKCollectionJSON.m"; sourceTree = "<group>"; };
 		968B99691FE97E4F001E63F7 /* TSDKMessagingPermission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSDKMessagingPermission.h; path = Messages/TSDKMessagingPermission.h; sourceTree = "<group>"; };
 		968B996A1FE97E4F001E63F7 /* TSDKMessagingPermission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKMessagingPermission.m; path = Messages/TSDKMessagingPermission.m; sourceTree = "<group>"; };
 		968CCDA31C8E076C00B5A854 /* TSDKCollectionObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionObjectTests.m; sourceTree = "<group>"; };
@@ -664,6 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */,
+				9687E26320D08143007AAE1D /* invoice.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -697,6 +706,7 @@
 				9631B5E71CECA73400215647 /* TSDKCustomDatumTests.m */,
 				960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */,
 				96E94B5A1E7C2FC7006D7494 /* TSDKStatisticTests.m */,
+				9687E25F20D01F44007AAE1D /* TSDKInvoiceTests.m */,
 			);
 			name = DataType;
 			sourceTree = "<group>";
@@ -911,6 +921,8 @@
 				96AF8E751E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m */,
 				96E94B5C1E7C53BF006D7494 /* NSNumber+TSDKConveniences.h */,
 				96E94B5D1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m */,
+				9687E26820D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.h */,
+				9687E26920D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.m */,
 			);
 			path = Conveniences;
 			sourceTree = "<group>";
@@ -1155,6 +1167,7 @@
 				969B7EAC1C7CA33500FD3EA0 /* TSDKMemberPreferences.h in Headers */,
 				969B7EDF1C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */,
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
+				9687E26A20D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.h in Headers */,
 				969B7F021C7DE58C00FD3EA0 /* TSDKEventStatistic.h in Headers */,
 				965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
 				561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */,
@@ -1430,6 +1443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC9AE791DE4CE5500B0C582 /* MemberPayments.json in Resources */,
+				9687E26420D08143007AAE1D /* invoice.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1515,6 +1529,7 @@
 				968109301D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */,
 				969B7E9A1C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m in Sources */,
 				969E80E81BAAE7AB00CA518F /* TSDKMember.m in Sources */,
+				9687E26B20D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.m in Sources */,
 				96BA2596207CF15F0097C911 /* TSDKEventLineup.m in Sources */,
 				969E80D41BAAE7AB00CA518F /* TSDKAssignment.m in Sources */,
 				9652304E1CAC65EB0087FC23 /* TSDKDivisionLocation.m in Sources */,
@@ -1591,6 +1606,7 @@
 				96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */,
 				56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */,
 				96B4E2791DC3C08A003CC830 /* StirngConvenienceTests.m in Sources */,
+				9687E26020D01F44007AAE1D /* TSDKInvoiceTests.m in Sources */,
 				96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "TSDKCollectionCommand.h"
+#import "NSDictionary+TSDKCollectionJSON.h"
 #import "TSDKCollectionJSON.h"
 #import "TSDKDataRequest.h"
 
@@ -18,9 +19,9 @@
     [TSDKDataRequest requestObjectsForPath:destinationURL sendDataDictionary:self.data method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
 }
 
--(void)executeCollectionJSONWithCompletion:(TSDKCompletionBlock)completion {
+-(void)executeCollectionJSONTemplateWithCompletion:(TSDKCompletionBlock)completion {
     NSURL *destinationURL = [NSURL URLWithString:self.href];
-    NSDictionary *dataToSend = [TSDKCollectionJSON dictionaryToCollectionJSON:self.data];
+    NSDictionary *dataToSend =  [self.data collectionJSONTemplate];
     [TSDKDataRequest requestObjectsForPath:destinationURL sendDataDictionary:dataToSend  method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
 }
 

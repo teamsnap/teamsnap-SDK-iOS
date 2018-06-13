@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, TSDKInvoiceCategory) {
 
 @interface TSDKBatchInvoiceLineItem : TSDKCollectionObject
 
-@property (nonatomic, assign) CGFloat amount; //Example: 2
+@property (nonatomic, weak, nullable) NSDecimalNumber * amount; //Example: 2
 @property (nonatomic, assign) TSDKInvoiceCategory invoiceCategoryId; //Example: 1
 @property (nonatomic, assign) NSInteger quantity; //Example: 1
 @property (nonatomic, weak, nullable) NSString * amountWithCurrency; //Example: $2.00

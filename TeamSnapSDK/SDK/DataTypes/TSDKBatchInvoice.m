@@ -3,6 +3,8 @@
 
 #import "TSDKBatchInvoice.h"
 #import "TSDKBatchInvoiceLineItem.h"
+#import "NSDictionary+TSDKCollectionJSON.h"
+#import "TSDKInvoice.h"
 #import "TSDKMember.h"
 #import "NSDate+TSDKConveniences.h"
 
@@ -15,8 +17,18 @@
 }
 
 - (CGFloat)percentPaid {
-    CGFloat amountPaidFloat = (CGFloat)self.amountPaid;
-    CGFloat amountInvoicedFloat = (CGFloat)self.amountInvoiced;
+    if (self.amountInvoiced == nil) {
+        return 100.0;
+    }
+    if (self.amountPaid == nil) {
+        return 0.0;
+    }
+    CGFloat amountPaidFloat = [self.amountPaid floatValue] ;
+    CGFloat amountInvoicedFloat = [self.amountInvoiced floatValue];
+    if (amountInvoicedFloat <= 0.01) {
+        return 100.0;
+    }
+    
     return amountPaidFloat/amountInvoicedFloat;
 }
 
@@ -30,16 +42,6 @@
     } else {
         return TSDKBatchInvoiceStatusUnknown;
     }
-}
-
-/*
-+(void)actionCreateWithInvoicesDueat:(NSString *_Nonnull)dueAt divisionId:(NSString *_Nullable)divisionId title:(NSString *_Nonnull)title isRecipientPayingTransactionFees:(NSString *_Nonnull)isRecipientPayingTransactionFees teamId:(NSString *_Nonnull)teamId description:(NSString *_Nullable)description type:(NSString *_Nonnull)type batchInvoiceLineItems:(NSString *_Nonnull)batchInvoiceLineItems members:(NSArray<TSDKMember *> *)members WithCompletion:(TSDKCompletionBlock _Nullable)completion {
-
-}
-*/
-
-+ (void)test {
-    NSLog(@"Tested");
 }
 
 + (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
@@ -68,11 +70,12 @@
         
         NSMutableArray<NSDictionary *> *lineItemArray = [[NSMutableArray alloc] init];
         for (TSDKBatchInvoiceLineItem *lineItem in invoiceLineItems) {
-            NSDictionary *dataToSave = @{@"amount": [NSNumber numberWithFloat:lineItem.amount],
+            NSDecimalNumber *amount = lineItem.amount;
+            NSDictionary *dataToSave = @{@"amount": amount,
                                          @"invoice_category_id": [NSNumber numberWithInteger:lineItem.invoiceCategoryId],
                                          @"quantity": [NSNumber numberWithInteger:lineItem.quantity]
                                          };
-            [lineItemArray addObject: [TSDKCollectionJSON dictionaryToCollectionJSON:dataToSave]];
+            [lineItemArray addObject: [dataToSave collectionJSONTemplate]];
         }
         
         createInvoiceCommand.data[@"batch_invoice_line_items"] = lineItemArray;
@@ -82,15 +85,46 @@
             [membersStrings addObject:member.objectIdentifier];
         }
         createInvoiceCommand.data[@"member_ids"] = membersStrings;
-        [createInvoiceCommand executeCollectionJSONWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        [createInvoiceCommand executeCollectionJSONTemplateWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
             
-            TSDKBatchInvoice *batchInvoice;
-            if (success) {
-                batchInvoice = [[TSDKBatchInvoice alloc] initWithCollection:objects.collection.firstObject];
+            TSDKBatchInvoice *batchInvoice = nil;
+            NSMutableArray <TSDKBatchInvoiceLineItem *> *batchInvoiceLineItems = [[NSMutableArray alloc] init];
+            NSMutableArray <TSDKInvoice *> *invoices = [[NSMutableArray alloc] init];
+            
+            if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+                // This currently returns a mixed bag of batch_invoice, batch_invoice_line
+                NSArray<TSDKCollectionObject *> *results = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+                
+                for (TSDKCollectionObject *resultObject in results) {
+                    if ([resultObject isKindOfClass:[TSDKBatchInvoice class]]) {
+                        batchInvoice = (TSDKBatchInvoice *)resultObject;
+                    } else if ([resultObject isKindOfClass:[TSDKBatchInvoiceLineItem class]]) {
+                        [batchInvoiceLineItems addObject:(TSDKBatchInvoiceLineItem *)resultObject];
+                    } else if ([resultObject isKindOfClass:[TSDKInvoice class]]) {
+                        [invoices addObject:(TSDKInvoice *)resultObject];
+                    }
+                }
             }
-            completion(success, complete, batchInvoice, error);
+            
+            completion(success, complete, batchInvoice, [NSArray arrayWithArray: batchInvoiceLineItems], [NSArray arrayWithArray:invoices], error);
         }];
     }
+}
+
++ (void)cancelInvoiceId:(NSString *)invoiceId completon:(TSDKSimpleCompletionBlock)completion {
+    TSDKCollectionCommand *cancelInvoiceCommand = [[self commandForKey:@"cancel"] copy];
+    cancelInvoiceCommand.data[@"id"] = invoiceId;
+    
+    [cancelInvoiceCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+    
+}
+
+- (void)cancelWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKBatchInvoice cancelInvoiceId:self.objectIdentifier completon:completion];
 }
 
 @end
