@@ -10,10 +10,28 @@
 
 @implementation TSDKInvoice
 
-@dynamic paymentAdjustmentsAmount, processingFeesCanceledWithCurrency, amountRefundedWithProcessingFeesRefunded, processingFeesCanceled, createdAt, processingFeesSubTotalWithCurrency, dueAt, invoiceFrom, amountPaid, divisionId, processingFeesBilledWithCurrency, invoiceDescription, uuid, amountPaidWithProcessingFeesPaid, processingFeesSubTotal, paymentAdjustmentsAmountWithCurrency, processingFeesBilled, amountRefunded, isCancelable, amountRefundedWithCurrency, invoiceTo, total, processingFeesPaidWithCurrency, processingFeesPaid, batchInvoiceId, subTotal, status, paymentUrl, amountRefundedWithProcessingFeesRefundedWithCurrency, sentAt, updatedAt, balanceWithCurrency, balance, amountPaidWithProcessingFeesPaidWithCurrency, title, subTotalWithCurrency, amountPaidWithCurrency, totalWithCurrency, linkDivision, linkInvoiceLineItems, linkInvoiceRecipients, linkBatchInvoice, linkInvoicePayments;
+@dynamic isPayableOffline, paymentAdjustmentsAmount, processingFeesCanceledWithCurrency, amountRefundedWithProcessingFeesRefunded, processingFeesCanceled, createdAt, processingFeesSubTotalWithCurrency, teamId, dueAt, invoiceFrom, isPayable, amountPaid, invoiceDescription, processingFeesBilledWithCurrency, divisionId, uuid, amountPaidWithProcessingFeesPaid, processingFeesSubTotal, paymentAdjustmentsAmountWithCurrency, processingFeesBilled, amountRefunded, isCancelable, amountRefundedWithCurrency, invoiceTo, total, processingFeesPaidWithCurrency, processingFeesPaid, batchInvoiceId, subTotal, status, hasPaymentSchedule, hasPayments, amountRefundedWithProcessingFeesRefundedWithCurrency, sentAt, paymentUrl, updatedAt, balanceWithCurrency, title, balance, amountPaidWithProcessingFeesPaidWithCurrency, subTotalWithCurrency, amountPaidWithCurrency, totalWithCurrency, canPayByPaymentSchedule, linkInvoiceLineItems, linkInvoiceRecipients, linkTeam, linkBatchInvoice, linkInvoicePayments;
 
 + (NSString *)SDKType {
     return @"invoice";
+}
+
+- (CGFloat)percentPaid {
+    CGFloat amountPaidFloat = (CGFloat)self.amountPaid;
+    CGFloat amountTotal = (CGFloat)self.total;
+    return amountPaidFloat/amountTotal;
+}
+
+- (TSDKInvoiceStatus)invoiceStatus {
+    if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
+        return TSDKInvoiceStatusOpen;
+    } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
+        return TSDKInvoiceStatusPaid;
+    } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
+        return TSDKInvoiceStatusCanceled;
+    } else {
+        return TSDKInvoiceStatusUnknown;
+    }
 }
 
 @end
