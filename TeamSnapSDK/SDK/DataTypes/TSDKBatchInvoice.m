@@ -47,11 +47,6 @@
 + (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
     
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
-    
-    // Hacky hack: Do not merge
-    if ([createInvoiceCommand.href containsString:@"create_with_invoices"] == NO) {
-        createInvoiceCommand.href = [createInvoiceCommand.href stringByAppendingPathComponent:@"create_with_invoices"];
-    }
 
     if (createInvoiceCommand) {
         createInvoiceCommand.data[@"due_at"] = [dueDate RCF3339DateTimeString];
