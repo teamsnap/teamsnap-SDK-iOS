@@ -29,6 +29,8 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
+		5676302720D0915C002AEFE7 /* TSDKInvoicePayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */; };
+		5676302820D0915C002AEFE7 /* TSDKInvoicePayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */; };
 		568251DC1E01EEE900B6FE5E /* TSDKDivision.h in Headers */ = {isa = PBXBuildFile; fileRef = 568251DA1E01EEE900B6FE5E /* TSDKDivision.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 568251DB1E01EEE900B6FE5E /* TSDKDivision.m */; };
 		56879C321E0340EA00FBA9F6 /* TSDKDivisionPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 56879C301E0340EA00FBA9F6 /* TSDKDivisionPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -421,6 +423,8 @@
 		5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageSender.h; path = Protocols/TSDKMessageSender.h; sourceTree = "<group>"; };
 		564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicesAggregate.h; sourceTree = "<group>"; };
 		564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicesAggregate.m; sourceTree = "<group>"; };
+		5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicePayment.h; sourceTree = "<group>"; };
+		5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicePayment.m; sourceTree = "<group>"; };
 		568251DA1E01EEE900B6FE5E /* TSDKDivision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKDivision.h; sourceTree = "<group>"; };
 		568251DB1E01EEE900B6FE5E /* TSDKDivision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKDivision.m; sourceTree = "<group>"; };
 		56879C301E0340EA00FBA9F6 /* TSDKDivisionPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKDivisionPreferences.h; sourceTree = "<group>"; };
@@ -1047,6 +1051,8 @@
 				569F9A8D20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m */,
 				964E319220CAF873009CEBEF /* TSDKInvoiceMessage.h */,
 				964E319320CAF873009CEBEF /* TSDKInvoiceMessage.m */,
+				5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */,
+				5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1168,6 +1174,7 @@
 				969B7EDF1C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */,
 				969E80E91BAAE7AB00CA518F /* TSDKOpponent.h in Headers */,
 				9687E26A20D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.h in Headers */,
+				5676302720D0915C002AEFE7 /* TSDKInvoicePayment.h in Headers */,
 				969B7F021C7DE58C00FD3EA0 /* TSDKEventStatistic.h in Headers */,
 				965B7D2D1C18C5BE009AF13E /* TSDKMemberPhoneNumber.h in Headers */,
 				561170EF1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h in Headers */,
@@ -1515,6 +1522,7 @@
 				969E80FA1BAAE7AB00CA518F /* TSDKUser.m in Sources */,
 				969E805F1BAAE79500CA518F /* TSDKTeamSnap.m in Sources */,
 				960E2FF21CEF5B03004F540E /* NSMutableString+TSDKConveniences.m in Sources */,
+				5676302820D0915C002AEFE7 /* TSDKInvoicePayment.m in Sources */,
 				969E80CE1BAAE7AB00CA518F /* TSDKStatisticDatum.m in Sources */,
 				969B7EB91C7CA9F800FD3EA0 /* TSDKTeamMediumComment.m in Sources */,
 				962EB17C20C190DB0038E416 /* TSDKBatchInvoiceLineItem.m in Sources */,

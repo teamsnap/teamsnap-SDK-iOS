@@ -7,16 +7,32 @@
 #import "TSDKMember.h"
 #import "TSDKBatchInvoiceLineItem.h"
 
-typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
-    TSDKBatchInvoiceStatusOpen,
-    TSDKBatchInvoiceStatusPaid,
-    TSDKBatchInvoiceStatusCanceled,
-    TSDKBatchInvoiceStatusUnknown
+typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
+    TSDKInvoiceStatusOpen,
+    TSDKInvoiceStatusPaid,
+    TSDKInvoiceStatusCanceled,
+    TSDKInvoiceStatusUnknown
 };
 
 @class TSDKMember, TSDKBatchInvoiceLineItem, TSDKInvoice;
 
-@interface TSDKBatchInvoice : TSDKCollectionObject
+@protocol TSDKInvoiceProtocol <NSObject>
+
+@property (nonatomic, weak, nullable) NSString * title; //Example: Memorial Tournament
+@property (nonatomic, weak, nullable) NSDate * dueAt; //Example: 2018-05-25T00:00:00Z
+@property (nonatomic, assign) BOOL isCancelable; //Example: 1
+@property (nonatomic, weak, nullable) NSDecimalNumber * paymentAdjustmentsAmount; //Example: 0
+@property (nonatomic, weak, nullable) NSString * paymentAdjustmentsAmountWithCurrency; //Example: $0.00
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountPaid; //Example: 0
+@property (nonatomic, weak, nullable) NSString * amountPaidWithCurrency; //Example: $0.00
+
+- (CGFloat)percentPaid;
+
+- (TSDKInvoiceStatus)invoiceStatus;
+
+@end
+
+@interface TSDKBatchInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
 @property (nonatomic, assign) BOOL isRecipientPayingTransactionFees; //Example: 1
 @property (nonatomic, weak, nullable) NSString * teamId; //Example: 3852291
@@ -68,7 +84,7 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceStatus) {
  */
 - (CGFloat)percentPaid;
 
-- (TSDKBatchInvoiceStatus)invoiceStatus;
+- (TSDKInvoiceStatus)invoiceStatus;
 
 @end
 
