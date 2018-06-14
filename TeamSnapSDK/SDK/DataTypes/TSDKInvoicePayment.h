@@ -23,6 +23,7 @@
 @property (nonatomic, assign) NSInteger amountWithProcessingFee; //Example: 150
 @property (nonatomic, weak, nullable) NSURL * linkInvoice;
 @property (nonatomic, weak, nullable) NSURL * linkTeam;
+@property (nonatomic, weak, nullable) NSURL * linkInvoicePaymentTransactions;
 
 
 //Records a submitted wepay credit card invoice_payment
@@ -65,5 +66,6 @@
 
 -(void)getInvoiceWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoicesArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
+-(void)getInvoicePaymentTransactionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
