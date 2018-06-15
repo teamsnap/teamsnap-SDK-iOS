@@ -44,7 +44,7 @@
     }
 }
 
-+ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
++ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
     
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
 
@@ -60,13 +60,10 @@
         } else {
             [createInvoiceCommand.data removeObjectForKey:@"description"];
         }
-        
-        createInvoiceCommand.data[@"type"] = [NSNumber numberWithInteger:invoiceType];
-        
+                
         NSMutableArray<NSDictionary *> *lineItemArray = [[NSMutableArray alloc] init];
         for (TSDKBatchInvoiceLineItem *lineItem in invoiceLineItems) {
-            NSDecimalNumber *amount = lineItem.amount;
-            NSDictionary *dataToSave = @{@"amount": amount,
+            NSDictionary *dataToSave = @{@"amount": lineItem.amount,
                                          @"invoice_category_id": [NSNumber numberWithInteger:lineItem.invoiceCategoryId],
                                          @"quantity": [NSNumber numberWithInteger:lineItem.quantity]
                                          };

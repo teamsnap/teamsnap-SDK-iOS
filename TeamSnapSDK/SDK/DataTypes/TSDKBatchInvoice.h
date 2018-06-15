@@ -68,7 +68,7 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 
 //Beta: (This endpoint is subject to change) Creates a batch invoice and associated batch invoice line items and invoices.
 
-+ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceType:(TSDKInvoiceCategory)invoiceType invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray *_Nonnull)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
++ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray *_Nonnull)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId completon:(TSDKSimpleCompletionBlock _Nullable)completion;
 - (void)cancelWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
