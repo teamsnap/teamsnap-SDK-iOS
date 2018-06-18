@@ -283,6 +283,10 @@ static id linkPropertyIMP(id self, SEL _cmd) {
     return [self getLink:command];
 }
 
+static id decimalPropertyIMP(id self, SEL _cmd) {
+    NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
+    return [self getDecimal:command];
+}
 
 static BOOL boolPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
@@ -602,6 +606,8 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
             class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "d@:");
         } else if ([propertyType hasPrefix:@"Tf,"]) {
             class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "f@:");
+        } else if ([propertyType containsString:@"NSDecimalNumber"]) {
+            class_addMethod([self class], aSEL,(IMP)decimalPropertyIMP, "f@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
@@ -765,6 +771,17 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
             [self.cachedDatesLookup setObject:value forKey:dateString];
         }
     }
+}
+
+- (NSDecimalNumber *)getDecimal:(NSString *)key {
+    if ([_collection.data[key] isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return [NSDecimalNumber decimalNumberWithDecimal:[_collection.data[key] decimalValue]];
+}
+
+- (void)setDecimal:(NSDecimalNumber *)decimal forKey:(NSString *)key {
+    [self setObject:decimal forKey:key];
 }
 
 - (BOOL)getBool:(NSString *)aKey {

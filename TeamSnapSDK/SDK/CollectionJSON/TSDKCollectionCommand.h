@@ -10,4 +10,6 @@
 
 @interface TSDKCollectionCommand : TSDKCollectionQuery <NSCopying, NSCoding>
 
+-(void)executeCollectionJSONTemplateWithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
 @end

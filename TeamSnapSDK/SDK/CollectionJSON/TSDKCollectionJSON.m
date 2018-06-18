@@ -8,6 +8,7 @@
 
 #import "TSDKCollectionJSON.h"
 #import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
+#import "NSDictionary+TSDKCollectionJSON.h"
 #import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
 #import "NSString+TSDKConveniences.h"
@@ -19,19 +20,6 @@
 @end
 
 @implementation TSDKCollectionJSON
-
-+(NSDictionary *)dictionaryToCollectionJSON:(NSDictionary *)dictionary {
-    NSMutableArray *tempDataToSave = [[NSMutableArray alloc] init];
-    
-    NSArray *allKeys = [dictionary allKeys];
-    for (NSString *key in allKeys) {
-        NSDictionary *itemDictionary = @{@"name" : key, @"value" : dictionary[key]};
-        [tempDataToSave addObject:itemDictionary];
-    }
-    NSDictionary *postObject = @{@"template":@{@"data":tempDataToSave}};
-
-    return postObject;
-}
 
 
 - (instancetype)init {

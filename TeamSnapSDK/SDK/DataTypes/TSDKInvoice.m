@@ -17,9 +17,19 @@
 }
 
 - (CGFloat)percentPaid {
-    CGFloat amountPaidFloat = (CGFloat)self.amountPaid;
-    CGFloat amountTotal = (CGFloat)self.total;
-    return amountPaidFloat/amountTotal;
+    if (self.total == nil) {
+        return 100.0;
+    }
+    if (self.amountPaid == nil) {
+        return 0.0;
+    }
+    CGFloat amountPaidFloat = [self.amountPaid floatValue] ;
+    CGFloat totalFloat = [self.total floatValue];
+    if (totalFloat <= 0.01) {
+        return 100.0;
+    }
+    
+    return amountPaidFloat/totalFloat;
 }
 
 - (TSDKInvoiceStatus)invoiceStatus {
