@@ -160,9 +160,9 @@ static NSArray *knownCompletionTypes;
                                [TSDKInvoiceRecipient class],
                                [TSDKBatchInvoice class],
                                [TSDKBatchInvoicesAggregate class],
-                               [TSDKInvoicePaymentTransaction class]];
+                               [TSDKInvoicePaymentTransaction class],
                                [TSDKInvoiceMessage class],
-  							   [TSDKInvoicePayment class];
+  							   [TSDKInvoicePayment class]];
     });
     return _supportedSDKObjects;
 }
