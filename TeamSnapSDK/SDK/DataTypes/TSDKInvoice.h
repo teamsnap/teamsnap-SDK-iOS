@@ -6,6 +6,11 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKBatchInvoice.h"
 
+typedef enum : NSUInteger {
+    TSDKInvoiceOfflinePaymentMethodCash,
+    TSDKInvoiceOfflinePaymentMethodCheck,
+} TSDKInvoiceOfflinePaymentMethod;
+
 @interface TSDKInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
 @property (nonatomic, assign) BOOL isPayableOffline; //Example: 1
@@ -79,6 +84,8 @@
 - (CGFloat)percentPaid;
 
 - (TSDKInvoiceStatus)invoiceStatus;
+
+- (void)makePayment:(NSDecimalNumber * _Nonnull)amount method:(TSDKInvoiceOfflinePaymentMethod)method note:(NSString * _Nullable)note completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 @end
 
