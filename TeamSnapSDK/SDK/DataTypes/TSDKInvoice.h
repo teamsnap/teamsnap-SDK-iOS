@@ -6,10 +6,10 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKBatchInvoice.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
     TSDKInvoiceOfflinePaymentMethodCash,
     TSDKInvoiceOfflinePaymentMethodCheck,
-} TSDKInvoiceOfflinePaymentMethod;
+};
 
 @interface TSDKInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
