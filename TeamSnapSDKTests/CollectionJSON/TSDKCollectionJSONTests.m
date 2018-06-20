@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TSDKCollectionJSON.h"
+#import "NSDictionary+TSDKCollectionJSON.h"
 #import "NSDictionary+dump.h"
 #import "NSString+TSDKConveniences.h"
 
@@ -30,7 +31,7 @@
 
 - (void)testDctionaryToCollectionJSON {
     NSDictionary *dictionary1 = @{@"name1":@"test1",@"int1":@1};
-    NSDictionary *result1 = [TSDKCollectionJSON dictionaryToCollectionJSON:dictionary1];
+    NSDictionary *result1 = [dictionary1 collectionJSONTemplate];
     
     XCTAssertTrue(result1.count==1, "Unexpected top level dictionary size.");
     

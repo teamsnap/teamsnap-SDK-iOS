@@ -6,10 +6,18 @@
 #import "TSDKObjectsRequest.h"
 
 
+typedef NS_ENUM(NSInteger, TSDKInvoiceCategory) {
+    TSDKInvoiceCategoryFee = 1,
+    TSDKInvoiceCategoryDues = 2,
+    TSDKInvoiceCategoryTournament = 3,
+    TSDKInvoiceCategoryUniform = 4,
+    TSDKInvoiceCategoryTeamExpense = 5
+};
+
 @interface TSDKBatchInvoiceLineItem : TSDKCollectionObject
 
-@property (nonatomic, assign) NSInteger amount; //Example: 2
-@property (nonatomic, weak, nullable) NSString * invoiceCategoryId; //Example: 1
+@property (nonatomic, weak, nullable) NSDecimalNumber * amount; //Example: 2
+@property (nonatomic, assign) TSDKInvoiceCategory invoiceCategoryId; //Example: 1
 @property (nonatomic, assign) NSInteger quantity; //Example: 1
 @property (nonatomic, weak, nullable) NSString * amountWithCurrency; //Example: $2.00
 @property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-04-25T20:28:42Z

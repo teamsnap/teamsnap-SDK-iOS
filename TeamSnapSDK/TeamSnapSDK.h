@@ -96,6 +96,12 @@
 #import <TeamSnapSDK/TSDKSportPosition.h>
 #import <TeamSnapSDK/TSDKEventLineup.h>
 #import <TeamSnapSDK/TSDKEventLineupEntry.h>
+#import <TeamSnapSDK/TSDKBatchInvoice.h>
+#import <TeamSnapSDK/TSDKBatchInvoiceLineItem.h>
+#import <TeamSnapSDK/TSDKInvoicesAggregate.h>
 #import <TeamSnapSDK/TSDKInvoice.h>
+#import <TeamSnapSDK/TSDKInvoiceRecipient.h>
 #import <TeamSnapSDK/TSDKInvoicePayment.h>
+#import <TeamSnapSDK/TSDKBatchInvoicesAggregate.h>
+#import <TeamSnapSDK/TSDKInvoiceMessage.h>
 #import <TeamSnapSDK/TSDKInvoicePaymentTransaction.h>

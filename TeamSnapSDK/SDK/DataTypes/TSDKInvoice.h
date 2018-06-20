@@ -14,34 +14,34 @@ typedef enum : NSUInteger {
 @interface TSDKInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
 @property (nonatomic, assign) BOOL isPayableOffline; //Example: 1
-@property (nonatomic, assign) NSInteger paymentAdjustmentsAmount; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * paymentAdjustmentsAmount; //Example: 0
 @property (nonatomic, weak, nullable) NSString * processingFeesCanceledWithCurrency; //Example: $0.00
-@property (nonatomic, assign) NSInteger amountRefundedWithProcessingFeesRefunded; //Example: 0
-@property (nonatomic, assign) NSInteger processingFeesCanceled; //Example: 0
-@property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-05-18T14:19:28Z
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountRefundedWithProcessingFeesRefunded; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * processingFeesCanceled; //Example: 0
+@property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-03-05T23:39:56Z
 @property (nonatomic, weak, nullable) NSString * processingFeesSubTotalWithCurrency; //Example: $0.00
 @property (nonatomic, weak, nullable) NSString * teamId; //Example: 3852291
-@property (nonatomic, weak, nullable) NSDate * dueAt; //Example: 2018-05-25T00:00:00Z
-@property (nonatomic, weak, nullable) NSString * invoiceFrom; //Example: **NULL**
+@property (nonatomic, weak, nullable) NSDate * dueAt; //Example: 2018-02-01T08:00:00Z
+@property (nonatomic, weak, nullable) NSString * invoiceFrom; //Example: Steph Test League April 2016
 @property (nonatomic, assign) BOOL isPayable; //Example: 1
-@property (nonatomic, assign) NSInteger amountPaid; //Example: 0
-@property (nonatomic, weak, nullable) NSString * invoiceDescription; //Example: Field fees
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountPaid; //Example: 0
+@property (nonatomic, weak, nullable) NSString * divisionId; //Example: 90472
 @property (nonatomic, weak, nullable) NSString * processingFeesBilledWithCurrency; //Example: $0.00
-@property (nonatomic, weak, nullable) NSString * divisionId; //Example: <null>
-@property (nonatomic, weak, nullable) NSString * uuid; //Example: 793e4a19-5aa6-11e8-8534-3ca82a21c0e6
-@property (nonatomic, assign) NSInteger amountPaidWithProcessingFeesPaid; //Example: 0
-@property (nonatomic, assign) NSInteger processingFeesSubTotal; //Example: 0
+@property (nonatomic, weak, nullable) NSString * invoiceDescription; //Example: Your feb dues are overdue
+@property (nonatomic, weak, nullable) NSString * uuid; //Example: 82c295b2-20ce-11e8-858a-30e171559d06
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountPaidWithProcessingFeesPaid; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * processingFeesSubTotal; //Example: 0
 @property (nonatomic, weak, nullable) NSString * paymentAdjustmentsAmountWithCurrency; //Example: $0.00
-@property (nonatomic, assign) NSInteger processingFeesBilled; //Example: 0
-@property (nonatomic, assign) NSInteger amountRefunded; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * processingFeesBilled; //Example: 0
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountRefunded; //Example: 0
 @property (nonatomic, assign) BOOL isCancelable; //Example: 1
 @property (nonatomic, weak, nullable) NSString * amountRefundedWithCurrency; //Example: $0.00
-@property (nonatomic, weak, nullable) NSString * invoiceTo; //Example: Kirby Ziegler
-@property (nonatomic, assign) NSInteger total; //Example: 150
+@property (nonatomic, weak, nullable) NSString * invoiceTo; //Example: Skyler Seamans
+@property (nonatomic, weak, nullable) NSDecimalNumber * total; //Example: 10
 @property (nonatomic, weak, nullable) NSString * processingFeesPaidWithCurrency; //Example: $0.00
-@property (nonatomic, assign) NSInteger processingFeesPaid; //Example: 0
-@property (nonatomic, weak, nullable) NSString * batchInvoiceId; //Example: 9146
-@property (nonatomic, assign) NSInteger subTotal; //Example: 150
+@property (nonatomic, weak, nullable) NSDecimalNumber * processingFeesPaid; //Example: 0
+@property (nonatomic, weak, nullable) NSString * batchInvoiceId; //Example: 3586
+@property (nonatomic, assign) NSInteger subTotal; //Example: 10
 @property (nonatomic, weak, nullable) NSString * status; //Example: open
 @property (nonatomic, assign) BOOL hasPaymentSchedule; //Example: 0
 @property (nonatomic, assign) BOOL hasPayments; //Example: 0
@@ -51,7 +51,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-05-18T14:19:28Z
 @property (nonatomic, weak, nullable) NSString * balanceWithCurrency; //Example: $150.00
 @property (nonatomic, weak, nullable) NSString * title; //Example: Memorial Tournament
-@property (nonatomic, assign) NSInteger balance; //Example: 150
+@property (nonatomic, weak, nullable) NSDecimalNumber * balance; //Example: 10
 @property (nonatomic, weak, nullable) NSString * amountPaidWithProcessingFeesPaidWithCurrency; //Example: $0.00
 @property (nonatomic, weak, nullable) NSString * subTotalWithCurrency; //Example: $150.00
 @property (nonatomic, weak, nullable) NSString * amountPaidWithCurrency; //Example: $0.00

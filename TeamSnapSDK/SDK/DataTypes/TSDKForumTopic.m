@@ -7,6 +7,7 @@
 //
 
 #import "TSDKForumTopic.h"
+#import "NSDictionary+TSDKCollectionJSON.h"
 #import "TSDKTeamSnap.h"
 #import "TSDKDataRequest.h"
 #import "TSDKRootLinks.h"
@@ -31,7 +32,7 @@
     }
     
     [data setObject:teamId forKey:@"team_id"];
-    NSDictionary *postObject = [TSDKCollectionJSON dictionaryToCollectionJSON:[data copy]];
+    NSDictionary *postObject = [[data copy] collectionJSONTemplate];
 
     [TSDKDataRequest requestObjectsForPath:[[[TSDKTeamSnap sharedInstance] rootLinks] linkForumTopics] sendDataDictionary:postObject method:@"POST" withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (completion) {

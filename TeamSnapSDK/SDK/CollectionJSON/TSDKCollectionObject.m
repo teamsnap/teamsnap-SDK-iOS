@@ -31,6 +31,13 @@ static NSMutableDictionary *_commandDictionary;
 static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
++ (void)initialize
+{
+    // Explicitly not checking for subclasses here in order to synthesize dynamic property
+    //  method implementations for ALL subclasses of TSDKCollectionObject
+    [self synthesizePropertyImplementations];
+}
+
 +(NSDictionary *)templateForClass:(NSString *)className {
     @synchronized (self.templates) {
         return [self.templates objectForKey:className];
@@ -276,6 +283,10 @@ static id linkPropertyIMP(id self, SEL _cmd) {
     return [self getLink:command];
 }
 
+static id decimalPropertyIMP(id self, SEL _cmd) {
+    NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
+    return [self getDecimal:command];
+}
 
 static BOOL boolPropertyIMP(id self, SEL _cmd) {
     NSString *command = [NSStringFromSelector(_cmd) camelCaseToUnderscores];
@@ -442,7 +453,97 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     DLog(@"%@", output);
 }
 
-+ (BOOL)resolveInstanceMethod:(SEL)aSEL {
+// Want this separate from DLog. When we know this is reliable, we can optionally remove
+//  these logging calls entirely.
+#if (0 && DEBUG)
+#define RuntimeLog(fmt, ...) NSLog((fmt), ##__VA_ARGS__);
+#else
+#define RuntimeLog(...)
+#endif
+
+static void addImplementationForSelector(objc_property_t prop, SEL selector, Class class) {
+    if (selector != NULL) {
+        if ([class assignMethodImplementationForSelector:selector]) {
+            RuntimeLog(@"✅ Successfully added custom implementation for property %@", NSStringFromSelector(selector));
+        } else {
+            RuntimeLog(@"❌ Failed to add custom implementation for property %@", NSStringFromSelector(selector));
+        }
+    }
+}
+
++ (void)synthesizePropertyImplementations {
+    RuntimeLog(@"Attempting property enumeration for %@", NSStringFromClass(self));
+    
+    unsigned int propCount = 0;
+    objc_property_t *props = class_copyPropertyList(self, &propCount);
+    
+    if (propCount > 0) {
+        
+        RuntimeLog(@"Enumerating %i properties for %@", propCount, NSStringFromClass(self));
+        
+        for (unsigned int i = 0; i < propCount; i++) {
+            
+            objc_property_t prop = props[i];
+            const char * name = property_getName(prop);
+            NSString *propertyNameString = [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
+            
+            const char *attr = property_getAttributes(prop);
+            NSString *attributeString = [NSString stringWithCString:attr encoding:NSASCIIStringEncoding];
+            
+            RuntimeLog(@"Processing property with attributes: %@", attributeString);
+            
+            NSArray<NSString *> *attributeComponents = [attributeString componentsSeparatedByString:@","];
+            
+            // Only synthesize dynamic properties
+            if ([attributeComponents containsObject:@"D"]) {
+                if (strlen(name) > 0 && [attributeComponents containsObject:@"R"] == NO) {
+                    
+                    NSString *setterName = nil;
+                    for (NSString *attribute in attributeComponents) {
+                        if ([attribute hasPrefix:@"S"]) {
+                            // Has a custom setter, extract setter
+                            setterName = [attribute substringFromIndex:1];
+                        }
+                    }
+                    
+                    if (setterName == nil) {
+                        // Readwrite, synthesize setter
+                        // Construct setter
+                        NSString *upperFirstCharString = [[NSString stringWithFormat:@"%c", name[0]] uppercaseString];
+                        NSString *trimmedPropertyName = [propertyNameString substringFromIndex:1];
+                        setterName = [NSString stringWithFormat:@"set%@%@:", upperFirstCharString, trimmedPropertyName];
+                    }
+                    
+                    SEL setter = NSSelectorFromString(setterName);
+                    if (setter != NULL) {
+                        RuntimeLog(@"Attempting to add selector for setter: %@", NSStringFromSelector(setter));
+                        addImplementationForSelector(prop, setter, self);
+                    } else {
+                        RuntimeLog(@"Failed to construct selector for setter: %@", setterName);
+                    }
+                }
+                
+                SEL getter = NSSelectorFromString(propertyNameString);
+                if (getter != NULL) {
+                    RuntimeLog(@"Attempting to add selector for getter: %@", NSStringFromSelector(getter));
+                    addImplementationForSelector(prop, getter, self);
+                } else {
+                    RuntimeLog(@"Failed to construct selector for getter: %@", propertyNameString);
+                }
+            } else {
+                RuntimeLog(@"Skipping non-dynamic property %s", name);
+            }
+        }
+    } else {
+        RuntimeLog(@"No properties found for %@", NSStringFromClass(self));
+    }
+    
+    if (props != NULL) {
+        free(props);
+    }
+}
+
++ (BOOL)assignMethodImplementationForSelector:(SEL)aSEL {
     //NSString *command = [NSStringFromSelector(aSEL) camelCaseToUnderscores];
     
     NSMutableString *property = [NSMutableString stringWithString:NSStringFromSelector(aSEL)];
@@ -505,6 +606,8 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "d@:");
         } else if ([propertyType hasPrefix:@"Tf,"]) {
             class_addMethod([self class], aSEL,(IMP)floatPropertyIMP, "f@:");
+        } else if ([propertyType containsString:@"NSDecimalNumber"]) {
+            class_addMethod([self class], aSEL,(IMP)decimalPropertyIMP, "f@:");
         } else {
             class_addMethod([self class], aSEL,(IMP)propertyIMP, "@@:");
         }
@@ -668,6 +771,17 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
             [self.cachedDatesLookup setObject:value forKey:dateString];
         }
     }
+}
+
+- (NSDecimalNumber *)getDecimal:(NSString *)key {
+    if ([_collection.data[key] isEqual:[NSNull null]]) {
+        return nil;
+    }
+    return [NSDecimalNumber decimalNumberWithDecimal:[_collection.data[key] decimalValue]];
+}
+
+- (void)setDecimal:(NSDecimalNumber *)decimal forKey:(NSString *)key {
+    [self setObject:decimal forKey:key];
 }
 
 - (BOOL)getBool:(NSString *)aKey {
