@@ -29,7 +29,7 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
-		5676302720D0915C002AEFE7 /* TSDKInvoicePayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */; };
+		5676302720D0915C002AEFE7 /* TSDKInvoicePayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5676302820D0915C002AEFE7 /* TSDKInvoicePayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */; };
 		568251DC1E01EEE900B6FE5E /* TSDKDivision.h in Headers */ = {isa = PBXBuildFile; fileRef = 568251DA1E01EEE900B6FE5E /* TSDKDivision.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 568251DB1E01EEE900B6FE5E /* TSDKDivision.m */; };
@@ -43,7 +43,7 @@
 		569CFAC11D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 569CFABF1D1DB06400CD6772 /* NSDateFormatter+TSDKConvenience.m */; };
 		569F9A8E20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 569F9A8C20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		569F9A8F20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 569F9A8D20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m */; };
-		56A1804820D3275B0075775A /* TSDKInvoicePaymentTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 56A1804620D3275B0075775A /* TSDKInvoicePaymentTransaction.h */; };
+		56A1804820D3275B0075775A /* TSDKInvoicePaymentTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 56A1804620D3275B0075775A /* TSDKInvoicePaymentTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56A1804920D3275B0075775A /* TSDKInvoicePaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A1804720D3275B0075775A /* TSDKInvoicePaymentTransaction.m */; };
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
