@@ -7,6 +7,7 @@
 //
 
 #import "TSDKInvoice.h"
+#import "TSDKInvoicePayment.h"
 
 @implementation TSDKInvoice
 
@@ -42,6 +43,27 @@
     } else {
         return TSDKInvoiceStatusUnknown;
     }
+}
+
+- (void)makePayment:(NSDecimalNumber * _Nonnull)amount method:(TSDKInvoiceOfflinePaymentMethod)method note:(NSString * _Nullable)note completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    TSDKCollectionCommand *command;
+    switch (method) {
+        case TSDKInvoiceOfflinePaymentMethodCash:
+            command = [TSDKInvoicePayment commandForKey:@"pay_offline_cash"];
+            break;
+        case TSDKInvoiceOfflinePaymentMethodCheck:
+            command =[TSDKInvoicePayment commandForKey:@"pay_offline_cash"];
+            break;
+    }
+    
+    command.data[@"invoice_id"] = self.objectIdentifier;
+    command.data[@"amount"] = [amount stringValue];
+    command.data[@"detail"] = note;
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
 }
 
 @end

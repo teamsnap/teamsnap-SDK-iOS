@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSInteger amount; //Example: 150
 @property (nonatomic, weak, nullable) NSString * amountWithCurrency; //Example: $150.00
 @property (nonatomic, weak, nullable) NSString * amountWithProcessingFeeWithCurrency; //Example: $150.00
+@property (nonatomic, weak, nullable) NSString * processingFeeWithCurrency; //Example: $150.00
 @property (nonatomic, weak, nullable) NSDate * scheduledAt; //Example: <null>
 @property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-05-15T16:25:18Z
 @property (nonatomic, weak, nullable) NSDate * lastTransactedAt; //Example: 2018-05-15T16:25:18Z
@@ -23,6 +24,7 @@
 @property (nonatomic, assign) NSInteger amountWithProcessingFee; //Example: 150
 @property (nonatomic, weak, nullable) NSURL * linkInvoice;
 @property (nonatomic, weak, nullable) NSURL * linkTeam;
+@property (nonatomic, weak, nullable) NSURL * linkInvoicePaymentTransactions;
 
 
 //Records a submitted wepay credit card invoice_payment
@@ -65,5 +67,6 @@
 
 -(void)getInvoiceWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoicesArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
+-(void)getInvoicePaymentTransactionsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoicePaymentTransactionsArrayCompletionBlock _Nonnull)completion;
 
 @end
