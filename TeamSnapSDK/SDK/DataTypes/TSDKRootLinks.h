@@ -18,6 +18,7 @@
 @property (nonatomic, weak) NSURL *_Nullable linkTeamsResults;
 @property (nonatomic, weak) NSURL *_Nullable linkMe;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberRegistrationSignups;
+@property (nonatomic, weak, nullable) NSURL * linkHoyle;
 @property (nonatomic, weak) NSURL *_Nullable linkTeamMediumComments;
 @property (nonatomic, weak) NSURL *_Nullable linkMemberLinks;
 @property (nonatomic, weak) NSURL *_Nullable linkLocations;
