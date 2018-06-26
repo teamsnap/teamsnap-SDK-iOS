@@ -66,4 +66,20 @@
     }];
 }
 
++ (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId WithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    
+    TSDKCollectionCommand *cancelInvoiceCommand = [self commandForKey:@"cancel"];
+    cancelInvoiceCommand.data[@"id"] = invoiceId;
+    
+    [cancelInvoiceCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+}
+
+- (void)cancelWithCompletion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKInvoice cancelInvoiceId:self.objectIdentifier WithCompletion:completion];
+}
+
 @end
