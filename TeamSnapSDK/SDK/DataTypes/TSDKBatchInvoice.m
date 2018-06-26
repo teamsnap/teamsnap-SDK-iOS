@@ -104,7 +104,7 @@
 }
 
 + (void)cancelInvoiceId:(NSString *)invoiceId completon:(TSDKSimpleCompletionBlock)completion {
-    TSDKCollectionCommand *cancelInvoiceCommand = [[self commandForKey:@"cancel"] copy];
+    TSDKCollectionCommand *cancelInvoiceCommand = [self commandForKey:@"cancel"];
     cancelInvoiceCommand.data[@"id"] = invoiceId;
     
     [cancelInvoiceCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
