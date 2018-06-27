@@ -16,4 +16,20 @@
      return @"invoice_recipients_invoices_aggregate";
  }
 
+- (CGFloat)percentPaid {
+    if (self.amountInvoiced == nil) {
+        return 100.0;
+    }
+    if (self.amountCollected == nil) {
+        return 0.0;
+    }
+    CGFloat amountPaidFloat = [self.amountCollected floatValue] ;
+    CGFloat totalFloat = [self.amountInvoiced floatValue];
+    if (totalFloat <= 0.01) {
+        return 100.0;
+    }
+    
+    return amountPaidFloat/totalFloat;
+}
+
 @end
