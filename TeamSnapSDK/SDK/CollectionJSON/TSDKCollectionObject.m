@@ -32,7 +32,6 @@ static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
 + (void)initialize {
-    [super initialize];
     // Explicitly not checking for subclasses here in order to synthesize dynamic property
     //  method implementations for ALL subclasses of TSDKCollectionObject
     [self synthesizePropertyImplementations];
