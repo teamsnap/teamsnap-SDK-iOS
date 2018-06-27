@@ -283,4 +283,14 @@
     XCTAssertTrue(event.gameTypeCode == TSDKGameTypeCodeUnknown, @"Event Game type code should have parsed as unknown");
 }
 
+- (void)testDynamicMethod {
+    TSDKCollectionJSON *memberPaymentsCollection = [TSDKJSONFileResource collectionFromJSONFileNamed:@"MemberPayments"];
+    NSArray *memberPayments = memberPaymentsCollection.collection;
+    TSDKMemberPayment *memberPayment = [[TSDKMemberPayment alloc] initWithCollection: [memberPayments firstObject]];
+    
+    [memberPayment getMemberWithConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray<TSDKMember *> * _Nullable members, NSError * _Nullable error) {
+        // We don't care if this returns. We just want to make sure the getMemberWithConfiguration didn't fail.
+    }];
+}
+
 @end

@@ -31,8 +31,7 @@ static NSMutableDictionary *_commandDictionary;
 static NSMutableDictionary *_queryDictionary;
 static NSMutableDictionary *_classURLs;
 
-+ (void)initialize
-{
++ (void)initialize {
     // Explicitly not checking for subclasses here in order to synthesize dynamic property
     //  method implementations for ALL subclasses of TSDKCollectionObject
     [self synthesizePropertyImplementations];
@@ -463,7 +462,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 static void addImplementationForSelector(objc_property_t prop, SEL selector, Class class) {
     if (selector != NULL) {
-        if ([class assignMethodImplementationForSelector:selector]) {
+        if ([class resolveInstanceMethod:selector]) {
             RuntimeLog(@"✅ Successfully added custom implementation for property %@", NSStringFromSelector(selector));
         } else {
             RuntimeLog(@"❌ Failed to add custom implementation for property %@", NSStringFromSelector(selector));
@@ -543,7 +542,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     }
 }
 
-+ (BOOL)assignMethodImplementationForSelector:(SEL)aSEL {
++ (BOOL)resolveInstanceMethod:(SEL)aSEL {
     //NSString *command = [NSStringFromSelector(aSEL) camelCaseToUnderscores];
     
     NSMutableString *property = [NSMutableString stringWithString:NSStringFromSelector(aSEL)];
