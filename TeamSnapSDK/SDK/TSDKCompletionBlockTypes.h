@@ -91,7 +91,7 @@ typedef void (^TSDKInvoiceAggregateCompletionBlock)(BOOL success, BOOL complete,
 typedef void (^TSDKBatchInvoicesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKBatchInvoice *> *_Nullable invoices, NSError * _Nullable error);
 typedef void (^TSDKBatchInvoiceLineItemArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKBacthInvoiceLineItem *> *_Nullable invoiceLineItems, NSError * _Nullable error);
 typedef void (^TSDKBatchInvoiceAggregateCompletionBlock)(BOOL success, BOOL complete, TSDKBatchInvoicesAggregate *_Nullable invoiceAggregate, NSError * _Nullable error);
-typedef void (^TSDKInvoiceRecipientsInvoicesAggregateCompletionBlock)(BOOL success, BOOL complete, TSDKInvoiceRecipientsInvoicesAggregate *_Nullable aggregates, NSError * _Nullable error);
+typedef void (^TSDKInvoiceRecipientsInvoicesAggregateCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKInvoiceRecipientsInvoicesAggregate *> *_Nullable aggregates, NSError * _Nullable error);
 typedef void (^TSDKInvoiceRecipientArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKInvoiceRecipient *> *_Nullable invoiceLineItems, NSError * _Nullable error);
 typedef void (^TSDKEventLineupCompletionBlock)(BOOL success, BOOL complete, TSDKEventLineup *_Nullable eventLineup, NSError *_Nullable error);
 typedef void (^TSDKEventLineupEntryArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKEventLineupEntry *>*_Nullable eventLineupEntries, NSError *_Nullable error);
