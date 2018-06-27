@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) NSURL * linkTeamsResults;
 @property (nonatomic, weak, nullable) NSURL * linkMe;
 @property (nonatomic, weak, nullable) NSURL * linkMemberRegistrationSignups;
-@property (nonatomic, weak, nullable) NSURL * linkHoyle;
+@property (nonatomic, weak, nullable) NSURL * linkCardFeed;
 @property (nonatomic, weak, nullable) NSURL * linkTeamMediumComments;
 @property (nonatomic, weak, nullable) NSURL * linkMemberLinks;
 @property (nonatomic, weak, nullable) NSURL * linkLocations;
