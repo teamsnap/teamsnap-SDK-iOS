@@ -29,6 +29,8 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
+		566145F620E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		566145F720E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */; };
 		5676302720D0915C002AEFE7 /* TSDKInvoicePayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5676302820D0915C002AEFE7 /* TSDKInvoicePayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */; };
 		568251DC1E01EEE900B6FE5E /* TSDKDivision.h in Headers */ = {isa = PBXBuildFile; fileRef = 568251DA1E01EEE900B6FE5E /* TSDKDivision.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -425,6 +427,8 @@
 		5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageSender.h; path = Protocols/TSDKMessageSender.h; sourceTree = "<group>"; };
 		564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicesAggregate.h; sourceTree = "<group>"; };
 		564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicesAggregate.m; sourceTree = "<group>"; };
+		566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoiceRecipientsInvoicesAggregate.h; sourceTree = "<group>"; };
+		566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoiceRecipientsInvoicesAggregate.m; sourceTree = "<group>"; };
 		5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicePayment.h; sourceTree = "<group>"; };
 		5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicePayment.m; sourceTree = "<group>"; };
 		568251DA1E01EEE900B6FE5E /* TSDKDivision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKDivision.h; sourceTree = "<group>"; };
@@ -1059,6 +1063,8 @@
 				5676302620D0915C002AEFE7 /* TSDKInvoicePayment.m */,
 				56A1804620D3275B0075775A /* TSDKInvoicePaymentTransaction.h */,
 				56A1804720D3275B0075775A /* TSDKInvoicePaymentTransaction.m */,
+				566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */,
+				566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1158,6 +1164,7 @@
 				969E80E31BAAE7AB00CA518F /* TSDKForumTopic.h in Headers */,
 				969E80DD1BAAE7AB00CA518F /* TSDKCustomField.h in Headers */,
 				969E80D31BAAE7AB00CA518F /* TSDKAssignment.h in Headers */,
+				566145F620E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h in Headers */,
 				969E80EB1BAAE7AB00CA518F /* TSDKPlan.h in Headers */,
 				969E80E11BAAE7AB00CA518F /* TSDKForumPost.h in Headers */,
 				969E80DB1BAAE7AB00CA518F /* TSDKCustomDatum.h in Headers */,
@@ -1572,6 +1579,7 @@
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
 				9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */,
 				568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */,
+				566145F720E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m in Sources */,
 				96E94B5F1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
 				969E80B41BAAE7AB00CA518F /* TSDKCollectionQuery.m in Sources */,

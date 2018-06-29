@@ -18,10 +18,10 @@
 }
 
 - (CGFloat)percentPaid {
-    if (self.total == nil) {
-        return 100.0;
+    if (self.total == nil || self.total.floatValue == 0.0) {
+        return 0.0;
     }
-    if (self.amountPaid == nil) {
+    if (self.amountPaid == nil || self.amountPaid.floatValue == 0.0) {
         return 0.0;
     }
     CGFloat amountPaidFloat = [self.amountPaid floatValue] ;
