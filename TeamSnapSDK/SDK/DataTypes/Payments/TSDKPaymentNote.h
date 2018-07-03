@@ -11,17 +11,17 @@
 
 @interface TSDKPaymentNote : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable note; //Example:
-@property (nonatomic, weak) NSString *_Nullable memberPaymentId; //Example: 1311716
-@property (nonatomic, weak) NSString *_Nullable teamFeeDescription; //Example: Team Fee ($30.00)
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2013-04-17T19:20:22Z
-@property (nonatomic, weak) NSString *_Nullable noteAuthor; //Example: Jason R
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 1282395
-@property (nonatomic, weak) NSString *_Nullable paymentNoteDescription; //Example: Applied payment of $30.00 resulting in a balance of $0.00
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkMemberPayment;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSString *_Nullable note; //Example:
+@property (nonatomic, strong) NSString *_Nullable memberPaymentId; //Example: 1311716
+@property (nonatomic, strong) NSString *_Nullable teamFeeDescription; //Example: Team Fee ($30.00)
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2013-04-17T19:20:22Z
+@property (nonatomic, strong) NSString *_Nullable noteAuthor; //Example: Jason R
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 1282395
+@property (nonatomic, strong) NSString *_Nullable paymentNoteDescription; //Example: Applied payment of $30.00 resulting in a balance of $0.00
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkMemberPayment;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
 
 @end
 

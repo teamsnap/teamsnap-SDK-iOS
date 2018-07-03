@@ -10,6 +10,6 @@
 
 @interface TSDKShortPropertyTest : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *a;
+@property (nonatomic, strong) NSString *a;
 
 @end

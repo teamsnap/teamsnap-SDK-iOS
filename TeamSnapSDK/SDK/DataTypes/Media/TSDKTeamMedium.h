@@ -12,28 +12,28 @@
 
 @interface TSDKTeamMedium : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable teamMediumDescription; //Example: Ball
+@property (nonatomic, strong) NSString *_Nullable teamMediumDescription; //Example: Ball
 @property (nonatomic, assign) NSInteger originalFileSize; //Example: 5176834
 @property (nonatomic, assign) NSInteger position; //Example: 1
-@property (nonatomic, weak) NSURL *_Nullable mediumUrl; //Example: https://35b7f1d7d0790b02114c-1b8897185d70b198c119e1d2b7efd8a2.ssl.cf1.rackcdn.com/user_files/3263711/original/upload_133315715520120601-24224-1knpgia-0.jpg
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-03-31T01:27:34Z
-@property (nonatomic, weak) NSString *_Nullable teamMediaGroupId; //Example: 56194
-@property (nonatomic, weak) NSString *_Nullable mediaFormat; //Example: image
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2012-06-01T09:09:20Z
+@property (nonatomic, strong) NSURL *_Nullable mediumUrl; //Example: https://35b7f1d7d0790b02114c-1b8897185d70b198c119e1d2b7efd8a2.ssl.cf1.rackcdn.com/user_files/3263711/original/upload_133315715520120601-24224-1knpgia-0.jpg
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-03-31T01:27:34Z
+@property (nonatomic, strong) NSString *_Nullable teamMediaGroupId; //Example: 56194
+@property (nonatomic, strong) NSString *_Nullable mediaFormat; //Example: image
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2012-06-01T09:09:20Z
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkMedium;
-@property (nonatomic, weak) NSURL *_Nullable linkMediumThumbnail;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMediumPhotoFile;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMediumComments;
-@property (nonatomic, weak) NSURL *_Nullable linkImageUrl;
-@property (nonatomic, weak) NSURL *_Nullable linkMediumMidsizeThumbnail;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkMediumSmallThumbnail;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMediaGroup;
-@property (nonatomic, weak) NSURL *_Nullable linkMediumMidsize;
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkMedium;
+@property (nonatomic, strong) NSURL *_Nullable linkMediumThumbnail;
+@property (nonatomic, strong) NSURL *_Nullable linkTeamMediumPhotoFile;
+@property (nonatomic, strong) NSURL *_Nullable linkTeamMediumComments;
+@property (nonatomic, strong) NSURL *_Nullable linkImageUrl;
+@property (nonatomic, strong) NSURL *_Nullable linkMediumMidsizeThumbnail;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkMediumSmallThumbnail;
+@property (nonatomic, strong) NSURL *_Nullable linkTeamMediaGroup;
+@property (nonatomic, strong) NSURL *_Nullable linkMediumMidsize;
 
 
 - (TeamMediaGroupFormatType)mediaType;

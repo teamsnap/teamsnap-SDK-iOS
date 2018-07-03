@@ -16,16 +16,16 @@ typedef NS_ENUM(NSInteger, TSDKInvoiceCategory) {
 
 @interface TSDKBatchInvoiceLineItem : TSDKCollectionObject
 
-@property (nonatomic, weak, nullable) NSDecimalNumber * amount; //Example: 2
+@property (nonatomic, strong, nullable) NSDecimalNumber * amount; //Example: 2
 @property (nonatomic, assign) TSDKInvoiceCategory invoiceCategoryId; //Example: 1
 @property (nonatomic, assign) NSInteger quantity; //Example: 1
-@property (nonatomic, weak, nullable) NSString * amountWithCurrency; //Example: $2.00
-@property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-04-25T20:28:42Z
-@property (nonatomic, weak, nullable) NSString * batchInvoiceId; //Example: 7034
-@property (nonatomic, weak, nullable) NSString * batchInvoiceLineItemDescription; //Example: Default description
-@property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-04-25T20:28:42Z
-@property (nonatomic, weak, nullable) NSURL * linkTeam;
-@property (nonatomic, weak, nullable) NSURL * linkBatchInvoice;
+@property (nonatomic, strong, nullable) NSString * amountWithCurrency; //Example: $2.00
+@property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2018-04-25T20:28:42Z
+@property (nonatomic, strong, nullable) NSString * batchInvoiceId; //Example: 7034
+@property (nonatomic, strong, nullable) NSString * batchInvoiceLineItemDescription; //Example: Default description
+@property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2018-04-25T20:28:42Z
+@property (nonatomic, strong, nullable) NSURL * linkTeam;
+@property (nonatomic, strong, nullable) NSURL * linkBatchInvoice;
 
 @end
 

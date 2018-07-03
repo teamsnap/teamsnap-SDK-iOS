@@ -14,13 +14,13 @@ typedef NS_ENUM(NSUInteger, TSDKMessageDatumMessageType) {
 @interface TSDKMessageDatum : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger unreadCount; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 102
-@property (nonatomic, weak) NSString *_Nullable userId; //Example: 7
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 7
-@property (nonatomic, weak) NSString *_Nullable contactId; //Example: **NULL**
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkUser;
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 102
+@property (nonatomic, strong) NSString *_Nullable userId; //Example: 7
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 7
+@property (nonatomic, strong) NSString *_Nullable contactId; //Example: **NULL**
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkUser;
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
 
 - (TSDKMessageDatumMessageType)messageTypeOfUnreadCount;
 + (NSString *_Nullable)stringValueForMessageType:(TSDKMessageDatumMessageType)messageType;

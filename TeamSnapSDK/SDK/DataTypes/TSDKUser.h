@@ -28,38 +28,38 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, assign) NSInteger managedDivisionsCount;
 @property (nonatomic, assign) NSInteger facebookId;
 @property (nonatomic, assign) BOOL receivesNewsletter;
-@property (nonatomic, weak, nullable) NSDate * createdAt;
-@property (nonatomic, weak, nullable) NSString * addressState;
-@property (nonatomic, weak, nullable) NSDate * birthday;
-@property (nonatomic, weak, nullable) NSString * firstName;
-@property (nonatomic, weak, nullable) NSString * facebookAccessToken;
-@property (nonatomic, weak, nullable) NSDate * updatedAt;
-@property (nonatomic, weak, nullable) NSString * lastName;
-@property (nonatomic, weak, nullable) NSString * email;
-@property (nonatomic, weak, nullable) NSString * addressCountry;
+@property (nonatomic, strong, nullable) NSDate * createdAt;
+@property (nonatomic, strong, nullable) NSString * addressState;
+@property (nonatomic, strong, nullable) NSDate * birthday;
+@property (nonatomic, strong, nullable) NSString * firstName;
+@property (nonatomic, strong, nullable) NSString * facebookAccessToken;
+@property (nonatomic, strong, nullable) NSDate * updatedAt;
+@property (nonatomic, strong, nullable) NSString * lastName;
+@property (nonatomic, strong, nullable) NSString * email;
+@property (nonatomic, strong, nullable) NSString * addressCountry;
 @property (nonatomic, assign) BOOL displayAdsOnTeamList;
-@property (nonatomic, weak, nullable) NSString * highestRole;
+@property (nonatomic, strong, nullable) NSString * highestRole;
 @property (nonatomic, assign) BOOL isAdmin; //Example: 0
 @property (nonatomic, assign) BOOL isEligibleForFreeTrial; //Example: 0
 @property (nonatomic, assign) BOOL hasCc; //Example: 0 
-@property (nonatomic, weak, nullable) NSURL * linkAdvertisements;
-@property (nonatomic, weak, nullable) NSURL * linkApnDevices;
-@property (nonatomic, weak, nullable) NSURL * linkTeamsPreferences;
-@property (nonatomic, weak, nullable) NSURL * linkPersonas;
-@property (nonatomic, weak, nullable) NSURL * linkMessages;
-@property (nonatomic, weak, nullable) NSURL * linkMessageData;
-@property (nonatomic, weak, nullable) NSURL * linkFacebookPages;
-@property (nonatomic, weak, nullable) NSURL * linkTeams;
-@property (nonatomic, weak, nullable) NSURL * linkMembers;
-@property (nonatomic, weak, nullable) NSURL * linkActiveTeams;
-@property (nonatomic, weak, nullable) NSURL * linkDivisionMembers;
-@property (nonatomic, weak, nullable) NSURL * linkTslMetadatum;
-@property (nonatomic, weak, nullable) NSURL * linkDivisions;
-@property (nonatomic, weak, nullable) NSURL * linkActiveDivisions;
-@property (nonatomic, weak, nullable) NSURL * linkContacts;
-@property (nonatomic, weak, nullable) NSURL * linkPayableInvoices;
-@property (nonatomic, weak, nullable) NSURL * linkInvoicesAggregates;
-@property (nonatomic, weak, nullable) NSURL * linkNextPayableInvoice;
+@property (nonatomic, strong, nullable) NSURL * linkAdvertisements;
+@property (nonatomic, strong, nullable) NSURL * linkApnDevices;
+@property (nonatomic, strong, nullable) NSURL * linkTeamsPreferences;
+@property (nonatomic, strong, nullable) NSURL * linkPersonas;
+@property (nonatomic, strong, nullable) NSURL * linkMessages;
+@property (nonatomic, strong, nullable) NSURL * linkMessageData;
+@property (nonatomic, strong, nullable) NSURL * linkFacebookPages;
+@property (nonatomic, strong, nullable) NSURL * linkTeams;
+@property (nonatomic, strong, nullable) NSURL * linkMembers;
+@property (nonatomic, strong, nullable) NSURL * linkActiveTeams;
+@property (nonatomic, strong, nullable) NSURL * linkDivisionMembers;
+@property (nonatomic, strong, nullable) NSURL * linkTslMetadatum;
+@property (nonatomic, strong, nullable) NSURL * linkDivisions;
+@property (nonatomic, strong, nullable) NSURL * linkActiveDivisions;
+@property (nonatomic, strong, nullable) NSURL * linkContacts;
+@property (nonatomic, strong, nullable) NSURL * linkPayableInvoices;
+@property (nonatomic, strong, nullable) NSURL * linkInvoicesAggregates;
+@property (nonatomic, strong, nullable) NSURL * linkNextPayableInvoice;
 
 // Non Auto-generated
 

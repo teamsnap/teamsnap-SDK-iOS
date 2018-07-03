@@ -11,14 +11,14 @@
 
 @interface TSDKForumTopic : TSDKCollectionObject
 
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-25T18:19:51Z
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2013-02-08T18:22:04Z
-@property (nonatomic, weak) NSString *_Nullable title; //Example: Test Post
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-05-25T18:19:51Z
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2013-02-08T18:22:04Z
+@property (nonatomic, strong) NSString *_Nullable title; //Example: Test Post
 @property (nonatomic, assign) BOOL isAnnouncement; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSURL *_Nullable linkForumSubscriptions;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkForumPosts;
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSURL *_Nullable linkForumSubscriptions;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkForumPosts;
 
 +(void)addNewTopicWithTitle:(NSString *_Nonnull)title isAnnouncement:(BOOL)isAnnouncement forTeamId:(NSString *_Nonnull)teamId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;
 

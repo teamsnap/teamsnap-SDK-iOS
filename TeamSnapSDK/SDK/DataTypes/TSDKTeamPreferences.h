@@ -31,16 +31,16 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) NSInteger tslScorePushEnabled; //Example: 1
 @property (nonatomic, assign) BOOL trackedItemsIsPrivate; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable teamMessage; //Example: <p>Test</p>
+@property (nonatomic, strong) NSString *_Nullable teamMessage; //Example: <p>Test</p>
 @property (nonatomic, assign) BOOL availabilitiesShowTab; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable globalUniformHome; //Example: White shirt, grey pants
+@property (nonatomic, strong) NSString *_Nullable globalUniformHome; //Example: White shirt, grey pants
 @property (nonatomic, assign) TSDKTeamPreferenceAssignmentsEnabledFor assignmentsEnableForCode; //Example: 2
 @property (nonatomic, assign) BOOL paymentsIgnoreNonPlayers; //Example: 0
 @property (nonatomic, assign) BOOL remindersSendGame; //Example: 0
 @property (nonatomic, assign) BOOL globalUseInternationalDate; //Example: 0
 @property (nonatomic, assign) NSInteger availabilityGameCutoff; //Example: 72
 @property (nonatomic, assign) BOOL isTrackedItemsPrivate; //Example: <null>
-@property (nonatomic, weak) NSString *_Nullable assignmentsEnableFor; //Example: Events
+@property (nonatomic, strong) NSString *_Nullable assignmentsEnableFor; //Example: Events
 @property (nonatomic, assign) BOOL trackedItemsIgnoreNonPlayers; //Example: 0
 @property (nonatomic, assign) BOOL isYouth; //Example: 1
 @property (nonatomic, assign) BOOL isTslPushEnabled; //Example: 1
@@ -49,45 +49,45 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isCoed; //Example: 1
 @property (nonatomic, assign) BOOL paymentsShowTab; //Example: 1
 @property (nonatomic, assign) BOOL remindersSendEvent; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable alternateSportName; //Example:
+@property (nonatomic, strong) NSString *_Nullable alternateSportName; //Example:
 @property (nonatomic, assign) NSInteger colorSchemeCd; //Example: 0
 @property (nonatomic, assign) BOOL announcementAboveHomePhoto; //Example: 1
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-02-23T14:50:23Z
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2016-02-23T14:50:23Z
 @property (nonatomic, assign) BOOL isPaymentsPrivate; //Example: 0
 @property (nonatomic, assign) BOOL teamMediaShowTab; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable skillLevel; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable skillLevel; //Example: **NULL**
 @property (nonatomic, assign) BOOL trackedItemsShowTab; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable teamHeadline; //Example: A message from the Team Manager...
-@property (nonatomic, weak) NSString *_Nullable globalUniformAway; //Example: Blue shirt, gray pants
+@property (nonatomic, strong) NSString *_Nullable teamHeadline; //Example: A message from the Team Manager...
+@property (nonatomic, strong) NSString *_Nullable globalUniformAway; //Example: Blue shirt, gray pants
 @property (nonatomic, assign) NSInteger globalUseInternationalTime; //Example: 0
 @property (nonatomic, assign) BOOL assignmentsShowTab; //Example: 1
 @property (nonatomic, assign) BOOL leagueControlledSettings; //Example: 0
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-03-25T23:46:01Z
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-03-25T23:46:01Z
 @property (nonatomic, assign) BOOL tslPushEnabled; //Example: 1
 @property (nonatomic, assign) BOOL statisticsShowTab; //Example: 1
 @property (nonatomic, assign) BOOL isTslScorePushEnabled; //Example: 1
 @property (nonatomic, assign) BOOL marketplaceShowTab; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger shareAvailabilityNotes; //Example: 0
 @property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
 @property (nonatomic, assign) BOOL isTeamChatEnabled; // Examople 1
 @property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable gender; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable gender; //Example: **NULL**
 @property (nonatomic, assign) BOOL filesShowTab; //Example: 1
 @property (nonatomic, assign) BOOL showDivisionStandings; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable ageGroup; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable ageGroup; //Example: **NULL**
 @property (nonatomic, assign) BOOL canTeamAddMembers;
 @property (nonatomic, assign) BOOL canTeamDeleteMembers;
 @property (nonatomic, assign) BOOL canDisplayTeamStore;
 @property (nonatomic, assign) BOOL isStoreConfigured;
 @property (nonatomic, assign, readonly) BOOL isEventLineupEnabled;
 
-@property (nonatomic, weak) NSString *_Nullable currencySymbol; //Example: $
+@property (nonatomic, strong) NSString *_Nullable currencySymbol; //Example: $
 @property (nonatomic, assign) NSInteger hideHeader; //Example: 0
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamPhoto;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamLogo;
-@property (nonatomic, weak) NSURL *_Nullable linkSportPositions;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkTeamPhoto;
+@property (nonatomic, strong) NSURL *_Nullable linkTeamLogo;
+@property (nonatomic, strong) NSURL *_Nullable linkSportPositions;
 
 // Not AutoGenerated:
 #if TARGET_OS_IPHONE

@@ -7,48 +7,48 @@
 
 @interface TSDKDivision : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable sportId; //Example: 7
-@property (nonatomic, weak) NSString *_Nullable leagueUrl; //Example:
+@property (nonatomic, strong) NSString *_Nullable sportId; //Example: 7
+@property (nonatomic, strong) NSString *_Nullable leagueUrl; //Example:
 @property (nonatomic, assign) BOOL isArchived; //Example: <null>
-@property (nonatomic, weak) NSString *_Nullable postalCode; //Example: 75233
-@property (nonatomic, weak) NSString *_Nullable timeZoneOffset; //Example: -06:00
-@property (nonatomic, weak) NSString *_Nullable country; //Example: United States
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-08-12T21:38:13Z
+@property (nonatomic, strong) NSString *_Nullable postalCode; //Example: 75233
+@property (nonatomic, strong) NSString *_Nullable timeZoneOffset; //Example: -06:00
+@property (nonatomic, strong) NSString *_Nullable country; //Example: United States
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2016-08-12T21:38:13Z
 @property (nonatomic, assign) NSInteger leftBoundary; //Example: 1
 @property (nonatomic, assign) NSInteger rightBoundary; //Example: 6
-@property (nonatomic, weak) NSString *_Nullable parentId; //Example: <null>
+@property (nonatomic, strong) NSString *_Nullable parentId; //Example: <null>
 @property (nonatomic, assign) BOOL isDeletable; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable rootId; //Example: 60360
-@property (nonatomic, weak) NSString *_Nullable timeZoneIanaName; //Example: America/Chicago
+@property (nonatomic, strong) NSString *_Nullable rootId; //Example: 60360
+@property (nonatomic, strong) NSString *_Nullable timeZoneIanaName; //Example: America/Chicago
 @property (nonatomic, assign) BOOL isDisabled; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Test League
-@property (nonatomic, weak) NSString *_Nullable planId; //Example: 33
-@property (nonatomic, weak) NSString *_Nullable leagueName; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable timeZoneDescription; //Example: Central Time (US & Canada)
-@property (nonatomic, weak) NSString *_Nullable seasonName; //Example:
-@property (nonatomic, weak) NSString *_Nullable locationCountry; //Example: United States
-@property (nonatomic, weak) NSString *_Nullable timeZone; //Example: Central Time (US & Canada)
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Test League
+@property (nonatomic, strong) NSString *_Nullable planId; //Example: 33
+@property (nonatomic, strong) NSString *_Nullable leagueName; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable timeZoneDescription; //Example: Central Time (US & Canada)
+@property (nonatomic, strong) NSString *_Nullable seasonName; //Example:
+@property (nonatomic, strong) NSString *_Nullable locationCountry; //Example: United States
+@property (nonatomic, strong) NSString *_Nullable timeZone; //Example: Central Time (US & Canada)
 @property (nonatomic, assign) BOOL isAncestorArchived; //Example: 0
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2016-01-05T22:59:32Z
-@property (nonatomic, weak) NSString *_Nullable parentDivisionName; //Example:
-@property (nonatomic, weak) NSString *_Nullable billingAddress; //Example:
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2016-01-05T22:59:32Z
+@property (nonatomic, strong) NSString *_Nullable parentDivisionName; //Example:
+@property (nonatomic, strong) NSString *_Nullable billingAddress; //Example:
 @property (nonatomic, assign) NSInteger allTeamsCount; //Example: 17
 @property (nonatomic, assign) NSInteger activeTeamsCount; //Example: 17
 @property (nonatomic, assign) NSInteger allChildrenCount; //Example: 2
 @property (nonatomic, assign) NSInteger activeChildrenCount; //Example: 2
 @property (nonatomic, assign) NSInteger activeDescendantsCount; //Example: 0 
-@property (nonatomic, weak) NSURL *_Nullable linkParent;
-@property (nonatomic, weak) NSURL *_Nullable linkChildren;
-@property (nonatomic, weak) NSURL *_Nullable linkActiveChildren;
-@property (nonatomic, weak) NSURL *_Nullable linkAncestors;
-@property (nonatomic, weak) NSURL *_Nullable linkDescendants;
-@property (nonatomic, weak) NSURL *_Nullable linkRegistrationForms;
-@property (nonatomic, weak) NSURL *_Nullable linkPlan;
-@property (nonatomic, weak) NSURL *_Nullable linkTeams;
-@property (nonatomic, weak) NSURL *_Nullable linkActiveTeams;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionEvents;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionPreferences;
-@property (nonatomic, weak) NSURL *_Nullable linkDivisionLogoPhotoFile;
+@property (nonatomic, strong) NSURL *_Nullable linkParent;
+@property (nonatomic, strong) NSURL *_Nullable linkChildren;
+@property (nonatomic, strong) NSURL *_Nullable linkActiveChildren;
+@property (nonatomic, strong) NSURL *_Nullable linkAncestors;
+@property (nonatomic, strong) NSURL *_Nullable linkDescendants;
+@property (nonatomic, strong) NSURL *_Nullable linkRegistrationForms;
+@property (nonatomic, strong) NSURL *_Nullable linkPlan;
+@property (nonatomic, strong) NSURL *_Nullable linkTeams;
+@property (nonatomic, strong) NSURL *_Nullable linkActiveTeams;
+@property (nonatomic, strong) NSURL *_Nullable linkDivisionEvents;
+@property (nonatomic, strong) NSURL *_Nullable linkDivisionPreferences;
+@property (nonatomic, strong) NSURL *_Nullable linkDivisionLogoPhotoFile;
 
 - (NSURL * _Nullable)divisionLogoURLForWidth:(NSInteger)width height:(NSInteger)height; // not autogenerated
 

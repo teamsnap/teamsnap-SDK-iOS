@@ -11,10 +11,10 @@
 
 @interface TSDKTeamStatistic : TSDKCollectionObject
 
-@property (nonatomic, weak) NSNumber *_Nullable average; //Example: 0
-@property (nonatomic, weak) NSNumber *_Nullable total; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable statisticId; //Example: 3093146
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkStatistic;
+@property (nonatomic, strong) NSNumber *_Nullable average; //Example: 0
+@property (nonatomic, strong) NSNumber *_Nullable total; //Example: 0
+@property (nonatomic, strong) NSString *_Nullable statisticId; //Example: 3093146
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkStatistic;
 
 @end

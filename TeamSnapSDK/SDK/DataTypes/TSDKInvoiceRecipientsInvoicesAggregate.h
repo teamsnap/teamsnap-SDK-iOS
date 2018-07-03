@@ -7,20 +7,20 @@
 
 @interface TSDKInvoiceRecipientsInvoicesAggregate : TSDKCollectionObject
 
-@property (nonatomic, weak, nullable) NSString * invoiceTo; //Example:
-@property (nonatomic, weak, nullable) NSString * amountCollectedWithCurrency; //Example: $0.00
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountCollected; //Example: 0
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountInvoiced; //Example: 0
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountDue; //Example: 0
+@property (nonatomic, strong, nullable) NSString * invoiceTo; //Example:
+@property (nonatomic, strong, nullable) NSString * amountCollectedWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountCollected; //Example: 0
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountInvoiced; //Example: 0
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountDue; //Example: 0
 @property (nonatomic, assign) NSInteger invoicesCount; //Example: 0
-@property (nonatomic, weak, nullable) NSString * amountInvoicedWithCurrency; //Example: $0.00
-@property (nonatomic, weak, nullable) NSString * amountDueWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSString * amountInvoicedWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSString * amountDueWithCurrency; //Example: $0.00
 @property (nonatomic, assign) NSInteger paidInvoicesCount; //Example: 0
 @property (nonatomic, assign) NSInteger openInvoicesCount; //Example: 0
-@property (nonatomic, weak, nullable) NSString * memberId; //Example: 33734521
-@property (nonatomic, weak, nullable) NSURL * linkMember;
-@property (nonatomic, weak, nullable) NSURL * linkTeam;
-@property (nonatomic, weak, nullable) NSURL * linkInvoices;
+@property (nonatomic, strong, nullable) NSString * memberId; //Example: 33734521
+@property (nonatomic, strong, nullable) NSURL * linkMember;
+@property (nonatomic, strong, nullable) NSURL * linkTeam;
+@property (nonatomic, strong, nullable) NSURL * linkInvoices;
 
 - (CGFloat)percentPaid;
 

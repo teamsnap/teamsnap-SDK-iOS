@@ -209,21 +209,21 @@
             
             id value = [self.data objectForKey:key];
             if ([key rangeOfString:@"_id"].location == key.length-3) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSString * %@; //Example: %@ \n", camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSString * %@; //Example: %@ \n", camelCaseKey, value]];
             } else if (([key rangeOfString:@"is_"].location == 0) || ([key rangeOfString:@"has_"].location == 0) || ([key rangeOfString:@"show_"].location == 0) || ([key containsString:@"_show_tab"])) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([key rangeOfString:@"_at"].location == key.length-3) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSDate * %@; //Example: %@ \n", camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSDate * %@; //Example: %@ \n", camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSArray class]]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSArray * %@;\n",camelCaseKey]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSArray * %@;\n",camelCaseKey]];
             } else if ([value isKindOfClass:[NSNumber class]]) {
                 [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, assign) NSInteger %@; //Example: %@ \n",camelCaseKey, value]];
             } else if ([value isKindOfClass:[NSNull class]]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSString * %@; //Example: %@ \n", camelCaseKey, @"**NULL**"]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSString * %@; //Example: %@ \n", camelCaseKey, @"**NULL**"]];
             } else if ([(NSString *)value dateFromRCF3339DateTimeString]) {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSDate * %@; //Example: %@ \n", camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSDate * %@; //Example: %@ \n", camelCaseKey, value]];
             } else {
-                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSString * %@; //Example: %@ \n", camelCaseKey, value]];
+                [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSString * %@; //Example: %@ \n", camelCaseKey, value]];
             }
         }
     }
@@ -236,7 +236,7 @@
         NSString *getKey = [NSString stringWithFormat:@"get_%@",key];
         
         [dynamicProperties addObject:camelCaseKey];
-        [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, weak, nullable) NSURL * %@;\n", camelCaseKey]];
+        [mutableResult appendString:[NSString stringWithFormat:@"@property (nonatomic, strong, nullable) NSURL * %@;\n", camelCaseKey]];
         
         NSString *typeString = [TSDKObjectsRequest typeForRel:key];
         if (!typeString) {

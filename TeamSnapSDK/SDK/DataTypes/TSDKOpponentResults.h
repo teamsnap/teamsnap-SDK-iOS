@@ -12,13 +12,13 @@
 @interface TSDKOpponentResults : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger losses; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable opponentRecord; //Example: 0-1
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable opponentRecord; //Example: 0-1
 @property (nonatomic, assign) NSInteger overtimeLosses; //Example: 0
 @property (nonatomic, assign) NSInteger wins; //Example: 0
 @property (nonatomic, assign) NSInteger ties; //Example: 0
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkOpponent;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkOpponent;
 
 @end
 
