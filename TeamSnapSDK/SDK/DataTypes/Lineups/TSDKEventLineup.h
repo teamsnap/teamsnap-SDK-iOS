@@ -10,14 +10,14 @@
 
 @interface TSDKEventLineup : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable eventId;
+@property (nonatomic, strong) NSString *_Nullable eventId;
 @property (nonatomic, assign) BOOL isPublished;
 @property (nonatomic, assign) NSInteger entriesCount;
 @property (nonatomic, assign) BOOL notifyTeam;
-@property (nonatomic, weak) NSDate *_Nullable createdAt;
-@property (nonatomic, weak) NSDate *_Nullable updatedAt;
+@property (nonatomic, strong) NSDate *_Nullable createdAt;
+@property (nonatomic, strong) NSDate *_Nullable updatedAt;
 
-@property (nonatomic, weak) NSURL *_Nullable linkEventLineupEntries;
+@property (nonatomic, strong) NSURL *_Nullable linkEventLineupEntries;
 
 // Not auto-generated
 + (void)updateEventLineup:(TSDKEventLineup *_Nonnull)lineup withLineupEntries:(NSArray <TSDKEventLineupEntry *> * _Nonnull)lineupEntries withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupEntryArrayCompletionBlock _Nullable)completion;

@@ -12,7 +12,7 @@
 
 @interface TSDKDivisionLocation : TSDKLocation;
 
-@property (nonatomic, weak) NSString *_Nullable divisionId; //Example: 2040
+@property (nonatomic, strong) NSString *_Nullable divisionId; //Example: 2040
 
 @end
 

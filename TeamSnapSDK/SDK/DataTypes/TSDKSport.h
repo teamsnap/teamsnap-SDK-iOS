@@ -36,18 +36,18 @@ extern const NSInteger TSPSportNonSportGroup;
 
 @property (nonatomic, assign) BOOL hasShootouts; //Example: 0
 @property (nonatomic, assign) BOOL hasStatisticTemplate; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable shootoutLabel; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable overtimeLabel; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable shootoutLabel; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable overtimeLabel; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasCustomizedLanguage; //Example: 1
 @property (nonatomic, assign) BOOL isNonSport; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable overtimeAbbrev; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable overtimeAbbrev; //Example: **NULL**
 @property (nonatomic, assign) BOOL tracksPoints; //Example: 1
 @property (nonatomic, assign) BOOL hasOvertime; //Example: 0
 @property (nonatomic, assign) BOOL lowScoreWins; //Example: 0
-@property (nonatomic, weak) NSString *_Nullable shootoutAbbrev; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Baseball
+@property (nonatomic, strong) NSString *_Nullable shootoutAbbrev; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Baseball
 @property (nonatomic, assign) BOOL tracksOvertimeLosses; //Example: 0
-@property (nonatomic, weak) NSURL *_Nullable linkSportLogo;
+@property (nonatomic, strong) NSURL *_Nullable linkSportLogo;
 
 -(NSString *_Nullable)memberDescription;
 -(NSString *_Nullable)membersDescription;

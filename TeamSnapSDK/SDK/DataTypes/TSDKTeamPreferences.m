@@ -11,8 +11,8 @@
 
 @interface TSDKTeamPreferences()
 
-@property (nonatomic, weak) NSString *availabilitiesSortOrder; //Example: date
-@property (nonatomic, weak) NSString *memberSortOrder; //Example: last
+@property (nonatomic, strong) NSString *availabilitiesSortOrder; //Example: date
+@property (nonatomic, strong) NSString *memberSortOrder; //Example: last
 
 @end
 

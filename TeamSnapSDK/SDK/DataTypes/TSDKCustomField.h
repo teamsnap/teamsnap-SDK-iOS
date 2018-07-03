@@ -15,10 +15,10 @@ typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
 
 @protocol TSDKCustomField <NSObject, NSCopying>
 
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Size
-@property (nonatomic, weak) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large
-@property (nonatomic, weak) NSString *_Nullable helpText; //Example: "Put your child's t-shirt size here"
-@property (nonatomic, weak) NSString *_Nullable kind;
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Size
+@property (nonatomic, strong) NSArray<NSString *> *_Nullable options; // Example: Small, Medium, Large
+@property (nonatomic, strong) NSString *_Nullable helpText; //Example: "Put your child's t-shirt size here"
+@property (nonatomic, strong) NSString *_Nullable kind;
 
 - (NSString * _Nonnull)objectIdentifier;
 
@@ -33,13 +33,13 @@ typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
 
 @interface TSDKCustomField : TSDKCollectionObject <TSDKCustomField>
 
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Size
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSArray<NSString *> *_Nullable options;
-@property (nonatomic, weak) NSString *_Nullable helpText; //Example:
-@property (nonatomic, weak) NSString *_Nullable kind;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkCustomData;
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Size
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSArray<NSString *> *_Nullable options;
+@property (nonatomic, strong) NSString *_Nullable helpText; //Example:
+@property (nonatomic, strong) NSString *_Nullable kind;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkCustomData;
 @property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
 @property (nonatomic, assign) BOOL teamCanRead; //Example: 1
 

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol TSDKMessageRecipient <NSObject>
 
-@property (nonatomic, weak, nullable) NSString *userId;
+@property (nonatomic, strong, nullable) NSString *userId;
 
 - (NSString *)objectIdentifier;
 - (NSURL * _Nullable)urlForMessageType:(TSDKMessageType)type;

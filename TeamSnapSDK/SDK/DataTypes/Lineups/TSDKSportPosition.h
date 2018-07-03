@@ -12,7 +12,7 @@
 
 @interface TSDKSportPosition : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable sportId;
-@property (nonatomic, weak) NSString *_Nullable label;
+@property (nonatomic, strong) NSString *_Nullable sportId;
+@property (nonatomic, strong) NSString *_Nullable label;
 
 @end

@@ -12,18 +12,18 @@
 
 @interface TSDKLeagueCustomField : TSDKCollectionObject <TSDKCustomField>
 
-@property (nonatomic, weak) NSString *_Nullable helpText; //Example:
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Public Field
-@property (nonatomic, weak) NSString *_Nullable validationType; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable divisionId; //Example: 2040
-@property (nonatomic, weak) NSString *_Nullable kind;
+@property (nonatomic, strong) NSString *_Nullable helpText; //Example:
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Public Field
+@property (nonatomic, strong) NSString *_Nullable validationType; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable divisionId; //Example: 2040
+@property (nonatomic, strong) NSString *_Nullable kind;
 @property (nonatomic, assign) NSInteger position; //Example: 3 
 @property (nonatomic, assign) BOOL required; //Example: 1
 @property (nonatomic, assign) BOOL teamCanEdit; //Example: 1
 @property (nonatomic, assign) BOOL teamCanRead; //Example: 1
-@property (nonatomic, weak) NSArray<NSString *> *_Nullable options; //Example: **NULL**
-@property (nonatomic, weak) NSURL *_Nullable linkTeams;
-@property (nonatomic, weak) NSURL *_Nullable linkLeagueCustomData;
+@property (nonatomic, strong) NSArray<NSString *> *_Nullable options; //Example: **NULL**
+@property (nonatomic, strong) NSURL *_Nullable linkTeams;
+@property (nonatomic, strong) NSURL *_Nullable linkLeagueCustomData;
 
 - (TSDKCustomDataFieldType)fieldType;
 

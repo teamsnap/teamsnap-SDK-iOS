@@ -7,12 +7,12 @@
 
 @interface TSDKAdvertisement : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable userId; //Example: 388192
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable userId; //Example: 388192
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) NSInteger mobileInterstitialSnoozeMinutes; //Example: 480
 @property (nonatomic, assign) BOOL canDisplayAds; //Example: 1
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkUser;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkUser;
 
 
 @end
