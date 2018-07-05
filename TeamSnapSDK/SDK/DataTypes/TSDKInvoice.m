@@ -54,7 +54,7 @@
         case TSDKInvoiceStatusCanceled:
             return @"canceled";
         case TSDKInvoiceStatusUnknown:
-            return "";
+            return @"";
     }
     
 }
