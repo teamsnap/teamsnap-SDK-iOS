@@ -35,11 +35,11 @@
     [paymentRequestCommand executeWithCompletion:completion];
 }
 
-+(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId status:(NSString *_Nonnull)status subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion {
++(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId status:(TSDKInvoiceStatus)status subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion {
     
     TSDKCollectionCommand *paymentRequestCommand = [[self commandForKey:@"payment_request"] copy];
     
-    paymentRequestCommand.data[@"status"] = status;
+    paymentRequestCommand.data[@"status"] = [TSDKInvoice invoiceStatusStringForStatus:status];
     [paymentRequestCommand.data removeObjectForKey:@"member_ids"];
     
     paymentRequestCommand.data[@"batch_invoice_id"] = batchId;

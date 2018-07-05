@@ -33,16 +33,38 @@
     return amountPaidFloat/totalFloat;
 }
 
-- (TSDKInvoiceStatus)invoiceStatus {
-    if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
++ (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString {
+    if([[statusString lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
         return TSDKInvoiceStatusOpen;
-    } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
+    } else if([[statusString lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
         return TSDKInvoiceStatusPaid;
-    } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
+    } else if([[statusString lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
         return TSDKInvoiceStatusCanceled;
     } else {
         return TSDKInvoiceStatusUnknown;
     }
+}
+
++(NSString *_Nonnull)invoiceStatusStringForStatus:(TSDKInvoiceStatus)status {
+    switch (status) {
+        case TSDKInvoiceStatusOpen:
+            return @"open";
+            break;
+        case TSDKInvoiceStatusPaid:
+            return @"paid";
+            break;
+        case TSDKInvoiceStatusCanceled:
+            return @"canceled";
+            break;
+        default:
+            return @"";
+            break;
+    }
+    
+}
+
+- (TSDKInvoiceStatus)invoiceStatus {
+    return [TSDKInvoice invoiceStatusForStatusString:self.status];
 }
 
 - (void)makePayment:(NSDecimalNumber * _Nonnull)amount method:(TSDKInvoiceOfflinePaymentMethod)method note:(NSString * _Nullable)note completion:(TSDKSimpleCompletionBlock _Nullable)completion {

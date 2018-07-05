@@ -33,15 +33,7 @@
 }
 
 - (TSDKInvoiceStatus)invoiceStatus {
-    if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
-        return TSDKInvoiceStatusOpen;
-    } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
-        return TSDKInvoiceStatusPaid;
-    } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
-        return TSDKInvoiceStatusCanceled;
-    } else {
-        return TSDKInvoiceStatusUnknown;
-    }
+    return [TSDKInvoice invoiceStatusForStatusString:self.status];
 }
 
 + (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate
@@ -131,7 +123,7 @@
     // This is a convienence method for 'TSDKInvoice createFromBatchInvoiceId' which seems misplaced and misnamed.
     
     [TSDKInvoice createFromBatchInvoiceId:self.objectIdentifier
-                             forMemberIds:memberIds
+                             forMembers:memberIds
                                completion:completion];
 }
 
