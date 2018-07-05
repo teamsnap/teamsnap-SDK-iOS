@@ -49,16 +49,12 @@
     switch (status) {
         case TSDKInvoiceStatusOpen:
             return @"open";
-            break;
         case TSDKInvoiceStatusPaid:
             return @"paid";
-            break;
         case TSDKInvoiceStatusCanceled:
             return @"canceled";
-            break;
-        default:
-            return @"";
-            break;
+        case TSDKInvoiceStatusUnknown:
+            return "";
     }
     
 }
