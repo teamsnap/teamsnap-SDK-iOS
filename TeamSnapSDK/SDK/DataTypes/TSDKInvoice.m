@@ -33,16 +33,34 @@
     return amountPaidFloat/totalFloat;
 }
 
-- (TSDKInvoiceStatus)invoiceStatus {
-    if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
++ (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString {
+    if([[statusString lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
         return TSDKInvoiceStatusOpen;
-    } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
+    } else if([[statusString lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
         return TSDKInvoiceStatusPaid;
-    } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
+    } else if([[statusString lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
         return TSDKInvoiceStatusCanceled;
     } else {
         return TSDKInvoiceStatusUnknown;
     }
+}
+
++(NSString *_Nonnull)invoiceStatusStringForStatus:(TSDKInvoiceStatus)status {
+    switch (status) {
+        case TSDKInvoiceStatusOpen:
+            return @"open";
+        case TSDKInvoiceStatusPaid:
+            return @"paid";
+        case TSDKInvoiceStatusCanceled:
+            return @"canceled";
+        case TSDKInvoiceStatusUnknown:
+            return @"";
+    }
+    
+}
+
+- (TSDKInvoiceStatus)invoiceStatus {
+    return [TSDKInvoice invoiceStatusForStatusString:self.status];
 }
 
 - (void)makePayment:(NSDecimalNumber * _Nonnull)amount method:(TSDKInvoiceOfflinePaymentMethod)method note:(NSString * _Nullable)note completion:(TSDKSimpleCompletionBlock _Nullable)completion {
@@ -60,6 +78,23 @@
     command.data[@"amount"] = [amount stringValue];
     command.data[@"detail"] = note;
     [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+}
+
++ (void)createFromBatchInvoiceId:(NSString *_Nonnull)batchInvoiceId
+                      forMembers:(NSArray <NSString *>*_Nonnull)memberIds
+                  completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    
+    TSDKCollectionCommand *createInvoicesCommand = [self commandForKey:@"create_from_batch_invoice"];
+    
+    createInvoicesCommand.data[@"batch_invoice_id"] = batchInvoiceId;
+    
+    createInvoicesCommand.data[@"member_ids"] = memberIds;
+    
+    [createInvoicesCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
             completion(success, error);
         }
