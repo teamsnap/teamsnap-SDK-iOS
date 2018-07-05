@@ -65,7 +65,9 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
 
 
 //Create invoices using batch_invoice as a template for the specified ids.
-//+(void)actionCreateFromBatchInvoiceMemberids:(NSString *_Nonnull)memberIds batchInvoiceId:(NSString *_Nonnull)batchInvoiceId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
++ (void)createFromBatchInvoiceId:(NSString *_Nonnull)batchInvoiceId
+                    forMemberIds:(NSArray <NSString *>*_Nonnull)memberIds
+                  completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 //Cancel invoice. Creates a line item opposite of the invoice balance. If payments have been made sets status to paid. If no payments have been made, sets status to canceled.
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId WithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;

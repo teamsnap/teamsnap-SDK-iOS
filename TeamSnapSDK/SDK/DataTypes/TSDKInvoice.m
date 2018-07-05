@@ -66,6 +66,23 @@
     }];
 }
 
++ (void)createFromBatchInvoiceId:(NSString *_Nonnull)batchInvoiceId
+                      forMembers:(NSArray <NSString *>*_Nonnull)memberIds
+                  completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    
+    TSDKCollectionCommand *createInvoicesCommand = [self commandForKey:@"create_from_batch_invoice"];
+    
+    createInvoicesCommand.data[@"batch_invoice_id"] = batchInvoiceId;
+    
+    createInvoicesCommand.data[@"member_ids"] = memberIds;
+    
+    [createInvoicesCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (completion) {
+            completion(success, error);
+        }
+    }];
+}
+
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId WithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion {
     
     TSDKCollectionCommand *cancelInvoiceCommand = [self commandForKey:@"cancel"];

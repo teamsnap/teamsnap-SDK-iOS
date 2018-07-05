@@ -68,11 +68,18 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 
 //Beta: (This endpoint is subject to change) Creates a batch invoice and associated batch invoice line items and invoices.
 
-+ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray *_Nonnull)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
++ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate
+                           teamId:(NSString *_Nonnull)teamId
+                            title:(NSString *_Nonnull)title
+                      description:(NSString *_Nullable)description
+                 invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
+                          members:(NSArray *_Nonnull)members
+ isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees
+                       completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId completon:(TSDKSimpleCompletionBlock _Nullable)completion;
 - (void)cancelWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
-
+- (void)addRecipientsWithMembers:(NSArray <NSString *> *_Nonnull)memberIds completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 //+(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSString *_Nonnull)pageNumber divisionId:(NSString *_Nonnull)divisionId teamId:(NSString *_Nonnull)teamId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
