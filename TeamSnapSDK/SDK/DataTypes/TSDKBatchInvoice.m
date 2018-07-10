@@ -33,18 +33,17 @@
 }
 
 - (TSDKInvoiceStatus)invoiceStatus {
-    if([[self.status lowercaseString] isEqualToString:[@"open" lowercaseString]]) {
-        return TSDKInvoiceStatusOpen;
-    } else if([[self.status lowercaseString] isEqualToString:[@"paid" lowercaseString]]) {
-        return TSDKInvoiceStatusPaid;
-    } else if([[self.status lowercaseString] isEqualToString:[@"canceled" lowercaseString]]) {
-        return TSDKInvoiceStatusCanceled;
-    } else {
-        return TSDKInvoiceStatusUnknown;
-    }
+    return [TSDKInvoice invoiceStatusForStatusString:self.status];
 }
 
-+ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate teamId:(NSString *_Nonnull)teamId title:(NSString *_Nonnull)title description:(NSString *_Nullable)description invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems members:(NSArray<TSDKMember *> *)members isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
++ (void)createInvoicesWithDueDate:(NSDate *_Nonnull)dueDate
+                           teamId:(NSString *_Nonnull)teamId
+                            title:(NSString *_Nonnull)title
+                      description:(NSString *_Nullable)description
+                 invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
+                          members:(NSArray<TSDKMember *> *)members
+ isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees
+                       completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
     
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
 
@@ -117,6 +116,15 @@
 
 - (void)cancelWithCompletion:(TSDKSimpleCompletionBlock)completion {
     [TSDKBatchInvoice cancelInvoiceId:self.objectIdentifier completon:completion];
+}
+
+- (void)addRecipientsWithMembers:(NSArray <NSString *> *_Nonnull)memberIds
+                      completion:(TSDKSimpleCompletionBlock _Nullable)completion {
+    // This is a convienence method for 'TSDKInvoice createFromBatchInvoiceId' which seems misplaced and misnamed.
+    
+    [TSDKInvoice createFromBatchInvoiceId:self.objectIdentifier
+                             forMembers:memberIds
+                               completion:completion];
 }
 
 @end

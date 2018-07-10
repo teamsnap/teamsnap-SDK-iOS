@@ -9,9 +9,10 @@
 #import <TeamSnapSDK/TeamSnapSDK.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKBatchInvoice.h"
 
 @interface TSDKInvoiceMessage : TSDKCollectionObject
 
 +(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId MemberIds:(NSArray<NSString *> *_Nonnull)memberIds subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion;
-+(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId status:(NSString *_Nonnull)status subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion;
++(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId status:(TSDKInvoiceStatus)status subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion;
 @end

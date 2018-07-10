@@ -4,12 +4,34 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
-#import "TSDKBatchInvoice.h"
 
 typedef NS_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
     TSDKInvoiceOfflinePaymentMethodCash,
     TSDKInvoiceOfflinePaymentMethodCheck,
 };
+
+typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
+    TSDKInvoiceStatusOpen,
+    TSDKInvoiceStatusPaid,
+    TSDKInvoiceStatusCanceled,
+    TSDKInvoiceStatusUnknown
+};
+
+@protocol TSDKInvoiceProtocol <NSObject>
+
+@property (nonatomic, weak, nullable) NSString * title; //Example: Memorial Tournament
+@property (nonatomic, weak, nullable) NSDate * dueAt; //Example: 2018-05-25T00:00:00Z
+@property (nonatomic, assign) BOOL isCancelable; //Example: 1
+@property (nonatomic, weak, nullable) NSDecimalNumber * paymentAdjustmentsAmount; //Example: 0
+@property (nonatomic, weak, nullable) NSString * paymentAdjustmentsAmountWithCurrency; //Example: $0.00
+@property (nonatomic, weak, nullable) NSDecimalNumber * amountPaid; //Example: 0
+@property (nonatomic, weak, nullable) NSString * amountPaidWithCurrency; //Example: $0.00
+
+- (CGFloat)percentPaid;
+
+- (TSDKInvoiceStatus)invoiceStatus;
+
+@end
 
 @interface TSDKInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
@@ -63,9 +85,13 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
 @property (nonatomic, strong, nullable) NSURL * linkBatchInvoice;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicePayments;
 
++ (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString;
++(NSString *_Nonnull)invoiceStatusStringForStatus:(TSDKInvoiceStatus)status;
 
 //Create invoices using batch_invoice as a template for the specified ids.
-//+(void)actionCreateFromBatchInvoiceMemberids:(NSString *_Nonnull)memberIds batchInvoiceId:(NSString *_Nonnull)batchInvoiceId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
++ (void)createFromBatchInvoiceId:(NSString *_Nonnull)batchInvoiceId
+                    forMembers:(NSArray <NSString *>*_Nonnull)memberIds
+                  completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 //Cancel invoice. Creates a line item opposite of the invoice balance. If payments have been made sets status to paid. If no payments have been made, sets status to canceled.
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId WithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
