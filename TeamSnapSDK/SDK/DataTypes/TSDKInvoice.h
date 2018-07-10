@@ -19,13 +19,13 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 
 @protocol TSDKInvoiceProtocol <NSObject>
 
-@property (nonatomic, weak, nullable) NSString * title; //Example: Memorial Tournament
-@property (nonatomic, weak, nullable) NSDate * dueAt; //Example: 2018-05-25T00:00:00Z
+@property (nonatomic, strong, nullable) NSString * title; //Example: Memorial Tournament
+@property (nonatomic, strong, nullable) NSDate * dueAt; //Example: 2018-05-25T00:00:00Z
 @property (nonatomic, assign) BOOL isCancelable; //Example: 1
-@property (nonatomic, weak, nullable) NSDecimalNumber * paymentAdjustmentsAmount; //Example: 0
-@property (nonatomic, weak, nullable) NSString * paymentAdjustmentsAmountWithCurrency; //Example: $0.00
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountPaid; //Example: 0
-@property (nonatomic, weak, nullable) NSString * amountPaidWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSDecimalNumber * paymentAdjustmentsAmount; //Example: 0
+@property (nonatomic, strong, nullable) NSString * paymentAdjustmentsAmountWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountPaid; //Example: 0
+@property (nonatomic, strong, nullable) NSString * amountPaidWithCurrency; //Example: $0.00
 
 - (CGFloat)percentPaid;
 
