@@ -56,7 +56,6 @@
         case TSDKInvoiceStatusUnknown:
             return @"";
     }
-    
 }
 
 - (TSDKInvoiceStatus)invoiceStatus {
