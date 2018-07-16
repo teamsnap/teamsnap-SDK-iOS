@@ -12,15 +12,15 @@
 @interface TSDKStatisticDatum : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger ranking; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable statisticId; //Example: 769991
-@property (nonatomic, weak) NSNumber *_Nullable value; //Example: 5
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 3652826
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable eventId; //Example: 2357548
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkStatistic;
-@property (nonatomic, weak) NSURL *_Nullable linkEvent;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSString *_Nullable statisticId; //Example: 769991
+@property (nonatomic, strong) NSNumber *_Nullable value; //Example: 5
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 3652826
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable eventId; //Example: 2357548
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkStatistic;
+@property (nonatomic, strong) NSURL *_Nullable linkEvent;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
 
 //+(void)actionBulkDeleteStatisticDataWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionBulkUpdateStatisticDataWithCompletion:(TSDKCompletionBlock)completion; //(null)

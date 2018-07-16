@@ -7,11 +7,11 @@
 
 @interface TSDKApnDevice : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable token;
-@property (nonatomic, weak) NSString *_Nullable appVersion;
-@property (nonatomic, weak) NSURL *_Nullable linkSelf;
-@property (nonatomic, weak) NSURL *_Nullable linkUser;
-@property (nonatomic, weak) NSURL *_Nullable linkRoot;
+@property (nonatomic, strong) NSString *_Nullable token;
+@property (nonatomic, strong) NSString *_Nullable appVersion;
+@property (nonatomic, strong) NSURL *_Nullable linkSelf;
+@property (nonatomic, strong) NSURL *_Nullable linkUser;
+@property (nonatomic, strong) NSURL *_Nullable linkRoot;
 
 @end
 

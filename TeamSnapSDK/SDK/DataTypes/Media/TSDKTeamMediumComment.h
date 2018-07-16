@@ -11,14 +11,14 @@
 
 @interface TSDKTeamMediumComment : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable teamMediumId; //Example: 4147693
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2016-02-23T14:50:45.000+00:00
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2016-02-23T14:50:45.000+00:00
-@property (nonatomic, weak) NSString *_Nullable comment; //Example: Up
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkTeamMedium;
+@property (nonatomic, strong) NSString *_Nullable teamMediumId; //Example: 4147693
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2016-02-23T14:50:45.000+00:00
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2016-02-23T14:50:45.000+00:00
+@property (nonatomic, strong) NSString *_Nullable comment; //Example: Up
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkTeamMedium;
 
 @end
 

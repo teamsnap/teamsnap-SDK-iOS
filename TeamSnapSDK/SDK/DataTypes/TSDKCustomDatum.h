@@ -12,17 +12,17 @@
 
 @protocol TSDKCustomDataProtocol <NSObject, NSCopying>
 
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Size
-@property (nonatomic, weak) NSArray *_Nullable options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
-@property (nonatomic, weak) NSString *_Nullable value; //Example: Small
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 1086731
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable kind; //Example: Menu
-@property (nonatomic, weak) NSString *_Nullable helpText; //Example:
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Size
+@property (nonatomic, strong) NSArray *_Nullable options; //Example: Y Small, Y Medium,Y Large,Small,Medium,Large
+@property (nonatomic, strong) NSString *_Nullable value; //Example: Small
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 1086731
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable kind; //Example: Menu
+@property (nonatomic, strong) NSString *_Nullable helpText; //Example:
 @property (nonatomic, assign) BOOL isPrivate; //Example: 0
 
 @property (nonatomic, assign) TSDKCustomDataFieldType dataType;
-@property (nonatomic, weak) NSDate *_Nullable dateValue;
+@property (nonatomic, strong) NSDate *_Nullable dateValue;
 
 - (NSString * _Nonnull)objectIdentifier;
 - (NSString * _Nullable)displayValue;
@@ -32,10 +32,10 @@
 
 @interface TSDKCustomDatum : TSDKCollectionObject <TSDKCustomDataProtocol>
 
-@property (nonatomic, weak) NSString *_Nullable customFieldId; //Example: 25383
-@property (nonatomic, weak) NSURL *_Nullable linkCustomField;
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSString *_Nullable customFieldId; //Example: 25383
+@property (nonatomic, strong) NSURL *_Nullable linkCustomField;
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
 
 - (instancetype _Nonnull )initWithField:(TSDKCustomField *_Nonnull)field memberId:(NSString *_Nonnull)memberId teamId:(NSString *_Nonnull)teamId;
 

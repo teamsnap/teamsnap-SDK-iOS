@@ -7,7 +7,7 @@
 
 @interface TSDKSmsGateway : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable domain; //Example: @msg.acsalaska.com
-@property (nonatomic, weak) NSString *_Nullable name; //Example: ACS Alaska
+@property (nonatomic, strong) NSString *_Nullable domain; //Example: @msg.acsalaska.com
+@property (nonatomic, strong) NSString *_Nullable name; //Example: ACS Alaska
 
 @end

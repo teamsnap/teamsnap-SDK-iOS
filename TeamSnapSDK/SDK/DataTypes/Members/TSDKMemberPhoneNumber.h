@@ -11,20 +11,20 @@
 
 @interface TSDKMemberPhoneNumber : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable label; //Example: Cell
+@property (nonatomic, strong) NSString *_Nullable label; //Example: Cell
 @property (nonatomic, assign) BOOL isPreferred; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable phoneNumber; //Example: 9192475214
+@property (nonatomic, strong) NSString *_Nullable phoneNumber; //Example: 9192475214
 @property (nonatomic, assign) BOOL isHidden; //Example: 0
 @property (nonatomic, assign) BOOL smsEnabled; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable smsEmailAddress; //Example: 9192475214@txt.att.net
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-11-09T18:39:40.000+00:00
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2012-11-09T18:39:40.000+00:00
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable smsGatewayId; //Example: at&t
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkSmsGateway;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSString *_Nullable smsEmailAddress; //Example: 9192475214@txt.att.net
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-11-09T18:39:40.000+00:00
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2012-11-09T18:39:40.000+00:00
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable smsGatewayId; //Example: at&t
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkSmsGateway;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
 
 @end
 

@@ -18,16 +18,16 @@ typedef NS_ENUM(NSInteger, TSDKTrackedItemStatusCode) {
 
 @interface TSDKTrackedItemStatus : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable status; //Example: Complete
+@property (nonatomic, strong) NSString *_Nullable status; //Example: Complete
 @property (nonatomic, assign) NSInteger statusCode; //Example: 1
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2015-02-25T16:52:48Z
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 10757149
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2015-02-25T16:52:48Z
-@property (nonatomic, weak) NSString *_Nullable trackedItemId; //Example: 286943
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkTrackedItem;
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2015-02-25T16:52:48Z
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 10757149
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2015-02-25T16:52:48Z
+@property (nonatomic, strong) NSString *_Nullable trackedItemId; //Example: 286943
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkTrackedItem;
 
 @end
 

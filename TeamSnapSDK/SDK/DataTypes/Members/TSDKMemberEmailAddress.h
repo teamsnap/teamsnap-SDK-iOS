@@ -11,19 +11,19 @@
 
 @interface TSDKMemberEmailAddress : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable label; //Example: Home
+@property (nonatomic, strong) NSString *_Nullable label; //Example: Home
 @property (nonatomic, assign) BOOL isHidden; //Example: 0
-@property (nonatomic, weak) NSDate *_Nullable createdAt; //Example: 2012-05-25T18:17:49Z
-@property (nonatomic, weak) NSString *_Nullable invitationState; //Example: not_invitable
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-05-25T18:17:49Z
+@property (nonatomic, strong) NSString *_Nullable invitationState; //Example: not_invitable
 @property (nonatomic, assign) BOOL isInvited; //Example: 0
 @property (nonatomic, assign) BOOL receivesTeamEmails; //Example: 1
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2014-08-29T23:49:11Z
-@property (nonatomic, weak) NSString *_Nullable invitationCode; //Example: **NULL**
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable email; //Example: jr@myi40.com
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 993324
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2014-08-29T23:49:11Z
+@property (nonatomic, strong) NSString *_Nullable invitationCode; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable email; //Example: jr@myi40.com
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 993324
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
 
 /**
  Deprecated in a future version. Use contact_email_address/invite instead.

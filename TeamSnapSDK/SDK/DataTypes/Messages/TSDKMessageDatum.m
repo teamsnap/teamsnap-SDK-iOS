@@ -10,7 +10,7 @@
 
 @interface TSDKMessageDatum ()
 
-@property (nonatomic, weak) NSString *_Nullable messageType;
+@property (nonatomic, strong) NSString *_Nullable messageType;
 
 @end
 
