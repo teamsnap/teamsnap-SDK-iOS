@@ -15,121 +15,121 @@
 
 @interface TSDKTeam : TSDKCollectionObject <NSCopying>
 
-@property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2016-11-28T20:51:47Z
+@property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2016-11-28T20:51:47Z
 @property (nonatomic, assign) BOOL isInLeague; //Example: 0
 @property (nonatomic, assign) BOOL hasReachedRosterLimit; //Example: 0
-@property (nonatomic, weak, nullable) NSString * planId; //Example: 33
-@property (nonatomic, weak, nullable) NSString * locationCountry; //Example: United States
+@property (nonatomic, strong, nullable) NSString * planId; //Example: 33
+@property (nonatomic, strong, nullable) NSString * locationCountry; //Example: United States
 @property (nonatomic, assign) NSInteger memberLimit; //Example: 4000
-@property (nonatomic, weak, nullable) NSString * locationLatitude; //Example: **NULL**
-@property (nonatomic, weak, nullable) NSString * timeZoneDescription; //Example: Central Time (US & Canada)
-@property (nonatomic, weak, nullable) NSString * divisionId; //Example: <null>
+@property (nonatomic, strong, nullable) NSString * locationLatitude; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * timeZoneDescription; //Example: Central Time (US & Canada)
+@property (nonatomic, strong, nullable) NSString * divisionId; //Example: <null>
 @property (nonatomic, assign) BOOL hasExportableMedia; //Example: 0
 @property (nonatomic, assign) NSInteger mediaStorageUsed; //Example: 0
-@property (nonatomic, weak, nullable) NSString * sportId; //Example: 7
+@property (nonatomic, strong, nullable) NSString * sportId; //Example: 7
 @property (nonatomic, assign) BOOL isRetired; //Example: 0
 @property (nonatomic, assign) BOOL isArchivedSeason; //Example: 0
-@property (nonatomic, weak, nullable) NSDate * billedAt; //Example: 2016-11-28T20:51:47Z
-@property (nonatomic, weak, nullable) NSDate * lastAccessedAt; //Example: <null>
+@property (nonatomic, strong, nullable) NSDate * billedAt; //Example: 2016-11-28T20:51:47Z
+@property (nonatomic, strong, nullable) NSDate * lastAccessedAt; //Example: <null>
 @property (nonatomic, assign) BOOL isHiddenOnDashboard; //Example: 1
-@property (nonatomic, weak, nullable) NSString * seasonName; //Example: **NULL**
-@property (nonatomic, weak, nullable) NSString * activeSeasonTeamId; //Example: <null>
-@property (nonatomic, weak, nullable) NSString * name; //Example: -1
-@property (nonatomic, weak, nullable) NSString * leagueName; //Example: **NULL**
-@property (nonatomic, weak, nullable) NSString * humanizedMediaStorageUsed; //Example: 0 B
+@property (nonatomic, strong, nullable) NSString * seasonName; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * activeSeasonTeamId; //Example: <null>
+@property (nonatomic, strong, nullable) NSString * name; //Example: -1
+@property (nonatomic, strong, nullable) NSString * leagueName; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * humanizedMediaStorageUsed; //Example: 0 B
 @property (nonatomic, assign) BOOL isGameDay; //Example: 0
 @property (nonatomic, assign) BOOL isGatewayRequiredForSms; //Example: 0
-@property (nonatomic, weak, nullable) NSString * divisionName; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * divisionName; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasPlaayVideo; //Example: 0
-@property (nonatomic, weak, nullable) NSString * locationLongitude; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * locationLongitude; //Example: **NULL**
 @property (nonatomic, assign) NSInteger playerMemberCount; //Example: 3
 @property (nonatomic, assign) BOOL hasReachedMemberLimit; //Example: 0
-@property (nonatomic, weak, nullable) NSString * locationState; //Example: **NULL**
-@property (nonatomic, weak, nullable) NSString * timeZoneOffset; //Example: -06:00
-@property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-05-23T22:37:12Z
+@property (nonatomic, strong, nullable) NSString * locationState; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * timeZoneOffset; //Example: -06:00
+@property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2018-05-23T22:37:12Z
 @property (nonatomic, assign) NSInteger canExportMedia; //Example: 0
 @property (nonatomic, assign) NSInteger rosterLimit; //Example: 4000
-@property (nonatomic, weak, nullable) NSString * timeZoneIanaName; //Example: America/Chicago
+@property (nonatomic, strong, nullable) NSString * timeZoneIanaName; //Example: America/Chicago
 @property (nonatomic, assign) NSInteger nonPlayerMemberCount; //Example: 0
-@property (nonatomic, weak, nullable) NSString * leagueUrl; //Example: **NULL**
-@property (nonatomic, weak, nullable) NSString * locationPostalCode; //Example: 94108
-@property (nonatomic, weak, nullable) NSURL * linkTeamMediaGroups;
-@property (nonatomic, weak, nullable) NSURL * linkContactEmailAddresses;
-@property (nonatomic, weak, nullable) NSURL * linkMembersPreferences;
-@property (nonatomic, weak, nullable) NSURL * linkAvailabilities;
-@property (nonatomic, weak, nullable) NSURL * linkForumTopics;
-@property (nonatomic, weak, nullable) NSURL * linkTeamStores;
-@property (nonatomic, weak, nullable) NSURL * linkOwner;
-@property (nonatomic, weak, nullable) NSURL * linkTeamMediumComments;
-@property (nonatomic, weak, nullable) NSURL * linkForumSubscriptions;
-@property (nonatomic, weak, nullable) NSURL * linkEvents;
-@property (nonatomic, weak, nullable) NSURL * linkTeamPaypalPreferences;
-@property (nonatomic, weak, nullable) NSURL * linkForumPosts;
-@property (nonatomic, weak, nullable) NSURL * linkTeamMedia;
-@property (nonatomic, weak, nullable) NSURL * linkCalendarWebcal;
-@property (nonatomic, weak, nullable) NSURL * linkSport;
-@property (nonatomic, weak, nullable) NSURL * linkContacts;
-@property (nonatomic, weak, nullable) NSURL * linkMembersCsvExport;
-@property (nonatomic, weak, nullable) NSURL * linkTrackedItemStatuses;
-@property (nonatomic, weak, nullable) NSURL * linkMemberPhotos;
-@property (nonatomic, weak, nullable) NSURL * linkManagers;
-@property (nonatomic, weak, nullable) NSURL * linkCommissioners;
-@property (nonatomic, weak, nullable) NSURL * linkAvailabilitiesCsvExport;
-@property (nonatomic, weak, nullable) NSURL * linkLeagueRegistrantDocuments;
-@property (nonatomic, weak, nullable) NSURL * linkStatisticAggregates;
-@property (nonatomic, weak, nullable) NSURL * linkOpponents;
-@property (nonatomic, weak, nullable) NSURL * linkCalendarHttpGamesOnly;
-@property (nonatomic, weak, nullable) NSURL * linkCustomData;
-@property (nonatomic, weak, nullable) NSURL * linkTeamPreferences;
-@property (nonatomic, weak, nullable) NSURL * linkMobilePlanSelection;
-@property (nonatomic, weak, nullable) NSURL * linkCalendarHttp;
-@property (nonatomic, weak, nullable) NSURL * linkDivisionTeamStandings;
-@property (nonatomic, weak, nullable) NSURL * linkPaymentNotes;
-@property (nonatomic, weak, nullable) NSURL * linkPlan;
-@property (nonatomic, weak, nullable) NSURL * linkTeamFees;
-@property (nonatomic, weak, nullable) NSURL * linkEventsOverview;
-@property (nonatomic, weak, nullable) NSURL * linkMemberPhoneNumbers;
-@property (nonatomic, weak, nullable) NSURL * linkMemberLinks;
-@property (nonatomic, weak, nullable) NSURL * linkTeamStore;
-@property (nonatomic, weak, nullable) NSURL * linkBroadcastEmailAttachments;
-@property (nonatomic, weak, nullable) NSURL * linkTeamStatistics;
-@property (nonatomic, weak, nullable) NSURL * linkMemberEmailAddresses;
-@property (nonatomic, weak, nullable) NSURL * linkMessagingPermissions;
-@property (nonatomic, weak, nullable) NSURL * linkMembers;
-@property (nonatomic, weak, nullable) NSURL * linkStatistics;
-@property (nonatomic, weak, nullable) NSURL * linkBatchInvoicesAggregates;
-@property (nonatomic, weak, nullable) NSURL * linkSponsors;
-@property (nonatomic, weak, nullable) NSURL * linkMemberBalances;
-@property (nonatomic, weak, nullable) NSURL * linkStatisticGroups;
-@property (nonatomic, weak, nullable) NSURL * linkMemberStatistics;
-@property (nonatomic, weak, nullable) NSURL * linkOpponentsResults;
-@property (nonatomic, weak, nullable) NSURL * linkPaypalCurrency;
-@property (nonatomic, weak, nullable) NSURL * linkTrackedItems;
-@property (nonatomic, weak, nullable) NSURL * linkAssignments;
-@property (nonatomic, weak, nullable) NSURL * linkTeamResults;
-@property (nonatomic, weak, nullable) NSURL * linkTeamPhotoFile;
-@property (nonatomic, weak, nullable) NSURL * linkLeagueCustomData;
-@property (nonatomic, weak, nullable) NSURL * linkContactPhoneNumbers;
-@property (nonatomic, weak, nullable) NSURL * linkMemberFiles;
-@property (nonatomic, weak, nullable) NSURL * linkAdvertisements;
-@property (nonatomic, weak, nullable) NSURL * linkMemberPayments;
-@property (nonatomic, weak, nullable) NSURL * linkLeagueCustomFields;
-@property (nonatomic, weak, nullable) NSURL * linkMessages;
-@property (nonatomic, weak, nullable) NSURL * linkLocations;
-@property (nonatomic, weak, nullable) NSURL * linkCustomFields;
-@property (nonatomic, weak, nullable) NSURL * linkSportPositions;
-@property (nonatomic, weak, nullable) NSURL * linkBroadcastEmails;
-@property (nonatomic, weak, nullable) NSURL * linkStatisticData;
-@property (nonatomic, weak, nullable) NSURL * linkTeamLogoPhotoFile;
-@property (nonatomic, weak, nullable) NSURL * linkTeamChat;
-@property (nonatomic, weak, nullable) NSURL * linkBatchInvoices;
-@property (nonatomic, weak, nullable) NSURL * linkEventsCsvExport;
-@property (nonatomic, weak, nullable) NSURL * linkCalendarWebcalGamesOnly;
-@property (nonatomic, weak, nullable) NSURL * linkEventStatistics;
-@property (nonatomic, weak, nullable) NSURL * linkMessageData;
-@property (nonatomic, weak, nullable) NSURL * linkBroadcastAlerts;
-@property (nonatomic, weak, nullable) NSURL * linkTeamPublicSite;
-@property (nonatomic, weak, nullable) NSURL * linkInvoiceRecipientsInvoicesAggregates;
+@property (nonatomic, strong, nullable) NSString * leagueUrl; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * locationPostalCode; //Example: 94108
+@property (nonatomic, strong, nullable) NSURL * linkTeamMediaGroups;
+@property (nonatomic, strong, nullable) NSURL * linkContactEmailAddresses;
+@property (nonatomic, strong, nullable) NSURL * linkMembersPreferences;
+@property (nonatomic, strong, nullable) NSURL * linkAvailabilities;
+@property (nonatomic, strong, nullable) NSURL * linkForumTopics;
+@property (nonatomic, strong, nullable) NSURL * linkTeamStores;
+@property (nonatomic, strong, nullable) NSURL * linkOwner;
+@property (nonatomic, strong, nullable) NSURL * linkTeamMediumComments;
+@property (nonatomic, strong, nullable) NSURL * linkForumSubscriptions;
+@property (nonatomic, strong, nullable) NSURL * linkEvents;
+@property (nonatomic, strong, nullable) NSURL * linkTeamPaypalPreferences;
+@property (nonatomic, strong, nullable) NSURL * linkForumPosts;
+@property (nonatomic, strong, nullable) NSURL * linkTeamMedia;
+@property (nonatomic, strong, nullable) NSURL * linkCalendarWebcal;
+@property (nonatomic, strong, nullable) NSURL * linkSport;
+@property (nonatomic, strong, nullable) NSURL * linkContacts;
+@property (nonatomic, strong, nullable) NSURL * linkMembersCsvExport;
+@property (nonatomic, strong, nullable) NSURL * linkTrackedItemStatuses;
+@property (nonatomic, strong, nullable) NSURL * linkMemberPhotos;
+@property (nonatomic, strong, nullable) NSURL * linkManagers;
+@property (nonatomic, strong, nullable) NSURL * linkCommissioners;
+@property (nonatomic, strong, nullable) NSURL * linkAvailabilitiesCsvExport;
+@property (nonatomic, strong, nullable) NSURL * linkLeagueRegistrantDocuments;
+@property (nonatomic, strong, nullable) NSURL * linkStatisticAggregates;
+@property (nonatomic, strong, nullable) NSURL * linkOpponents;
+@property (nonatomic, strong, nullable) NSURL * linkCalendarHttpGamesOnly;
+@property (nonatomic, strong, nullable) NSURL * linkCustomData;
+@property (nonatomic, strong, nullable) NSURL * linkTeamPreferences;
+@property (nonatomic, strong, nullable) NSURL * linkMobilePlanSelection;
+@property (nonatomic, strong, nullable) NSURL * linkCalendarHttp;
+@property (nonatomic, strong, nullable) NSURL * linkDivisionTeamStandings;
+@property (nonatomic, strong, nullable) NSURL * linkPaymentNotes;
+@property (nonatomic, strong, nullable) NSURL * linkPlan;
+@property (nonatomic, strong, nullable) NSURL * linkTeamFees;
+@property (nonatomic, strong, nullable) NSURL * linkEventsOverview;
+@property (nonatomic, strong, nullable) NSURL * linkMemberPhoneNumbers;
+@property (nonatomic, strong, nullable) NSURL * linkMemberLinks;
+@property (nonatomic, strong, nullable) NSURL * linkTeamStore;
+@property (nonatomic, strong, nullable) NSURL * linkBroadcastEmailAttachments;
+@property (nonatomic, strong, nullable) NSURL * linkTeamStatistics;
+@property (nonatomic, strong, nullable) NSURL * linkMemberEmailAddresses;
+@property (nonatomic, strong, nullable) NSURL * linkMessagingPermissions;
+@property (nonatomic, strong, nullable) NSURL * linkMembers;
+@property (nonatomic, strong, nullable) NSURL * linkStatistics;
+@property (nonatomic, strong, nullable) NSURL * linkBatchInvoicesAggregates;
+@property (nonatomic, strong, nullable) NSURL * linkSponsors;
+@property (nonatomic, strong, nullable) NSURL * linkMemberBalances;
+@property (nonatomic, strong, nullable) NSURL * linkStatisticGroups;
+@property (nonatomic, strong, nullable) NSURL * linkMemberStatistics;
+@property (nonatomic, strong, nullable) NSURL * linkOpponentsResults;
+@property (nonatomic, strong, nullable) NSURL * linkPaypalCurrency;
+@property (nonatomic, strong, nullable) NSURL * linkTrackedItems;
+@property (nonatomic, strong, nullable) NSURL * linkAssignments;
+@property (nonatomic, strong, nullable) NSURL * linkTeamResults;
+@property (nonatomic, strong, nullable) NSURL * linkTeamPhotoFile;
+@property (nonatomic, strong, nullable) NSURL * linkLeagueCustomData;
+@property (nonatomic, strong, nullable) NSURL * linkContactPhoneNumbers;
+@property (nonatomic, strong, nullable) NSURL * linkMemberFiles;
+@property (nonatomic, strong, nullable) NSURL * linkAdvertisements;
+@property (nonatomic, strong, nullable) NSURL * linkMemberPayments;
+@property (nonatomic, strong, nullable) NSURL * linkLeagueCustomFields;
+@property (nonatomic, strong, nullable) NSURL * linkMessages;
+@property (nonatomic, strong, nullable) NSURL * linkLocations;
+@property (nonatomic, strong, nullable) NSURL * linkCustomFields;
+@property (nonatomic, strong, nullable) NSURL * linkSportPositions;
+@property (nonatomic, strong, nullable) NSURL * linkBroadcastEmails;
+@property (nonatomic, strong, nullable) NSURL * linkStatisticData;
+@property (nonatomic, strong, nullable) NSURL * linkTeamLogoPhotoFile;
+@property (nonatomic, strong, nullable) NSURL * linkTeamChat;
+@property (nonatomic, strong, nullable) NSURL * linkBatchInvoices;
+@property (nonatomic, strong, nullable) NSURL * linkEventsCsvExport;
+@property (nonatomic, strong, nullable) NSURL * linkCalendarWebcalGamesOnly;
+@property (nonatomic, strong, nullable) NSURL * linkEventStatistics;
+@property (nonatomic, strong, nullable) NSURL * linkMessageData;
+@property (nonatomic, strong, nullable) NSURL * linkBroadcastAlerts;
+@property (nonatomic, strong, nullable) NSURL * linkTeamPublicSite;
+@property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipientsInvoicesAggregates;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;

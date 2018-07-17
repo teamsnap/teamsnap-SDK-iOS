@@ -11,12 +11,12 @@
 
 @interface TSDKForumSubscription : TSDKCollectionObject
 
-@property (nonatomic, weak) NSString *_Nullable memberId; //Example: 1943020
-@property (nonatomic, weak) NSDate *_Nullable updatedAt; //Example: 2015-08-28T20:21:41Z
-@property (nonatomic, weak) NSString *_Nullable forumTopicId; //Example: 2099728
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkMember;
-@property (nonatomic, weak) NSURL *_Nullable linkForumTopic;
+@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 1943020
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2015-08-28T20:21:41Z
+@property (nonatomic, strong) NSString *_Nullable forumTopicId; //Example: 2099728
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkMember;
+@property (nonatomic, strong) NSURL *_Nullable linkForumTopic;
 
 @end
 

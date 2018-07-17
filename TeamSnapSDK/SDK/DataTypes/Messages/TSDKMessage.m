@@ -11,7 +11,7 @@
 
 @interface TSDKMessage()
 
-@property (nonatomic, weak) NSString *messageType; //Example: Email
+@property (nonatomic, strong) NSString *messageType; //Example: Email
 
 @end
 

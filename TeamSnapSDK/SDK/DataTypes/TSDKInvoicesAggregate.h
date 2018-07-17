@@ -7,10 +7,10 @@
 
 @interface TSDKInvoicesAggregate : TSDKCollectionObject
 
-@property (nonatomic, weak, nullable) NSDecimalNumber * openInvoicesBalance; //Example: 368
-@property (nonatomic, weak, nullable) NSString * openInvoicesBalanceWithCurrency; //Example: $368.00
-@property (nonatomic, weak, nullable) NSString * userId; //Example: 2971597
-@property (nonatomic, weak, nullable) NSURL * linkUsers;
+@property (nonatomic, strong, nullable) NSDecimalNumber * openInvoicesBalance; //Example: 368
+@property (nonatomic, strong, nullable) NSString * openInvoicesBalanceWithCurrency; //Example: $368.00
+@property (nonatomic, strong, nullable) NSString * userId; //Example: 2971597
+@property (nonatomic, strong, nullable) NSURL * linkUsers;
 
 @end
 

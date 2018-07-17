@@ -7,24 +7,24 @@
 
 @interface TSDKInvoicePayment : TSDKCollectionObject
 
-@property (nonatomic, weak, nullable) NSString * detail; //Example: **NULL**
-@property (nonatomic, weak, nullable) NSString * initialPaymentProviderName; //Example: Offline
+@property (nonatomic, strong, nullable) NSString * detail; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * initialPaymentProviderName; //Example: Offline
 @property (nonatomic, assign) BOOL isRefundable; //Example: 1
-@property (nonatomic, weak, nullable) NSString * initialPaymentProviderId; //Example: 8
+@property (nonatomic, strong, nullable) NSString * initialPaymentProviderId; //Example: 8
 @property (nonatomic, assign) NSInteger amount; //Example: 150
-@property (nonatomic, weak, nullable) NSString * amountWithCurrency; //Example: $150.00
-@property (nonatomic, weak, nullable) NSString * amountWithProcessingFeeWithCurrency; //Example: $150.00
-@property (nonatomic, weak, nullable) NSString * processingFeeWithCurrency; //Example: $150.00
-@property (nonatomic, weak, nullable) NSDate * scheduledAt; //Example: <null>
-@property (nonatomic, weak, nullable) NSDate * createdAt; //Example: 2018-05-15T16:25:18Z
-@property (nonatomic, weak, nullable) NSDate * lastTransactedAt; //Example: 2018-05-15T16:25:18Z
-@property (nonatomic, weak, nullable) NSDate * updatedAt; //Example: 2018-05-15T16:25:18Z
-@property (nonatomic, weak, nullable) NSString * invoiceId; //Example: 52600
-@property (nonatomic, weak, nullable) NSString * status; //Example: paid
+@property (nonatomic, strong, nullable) NSString * amountWithCurrency; //Example: $150.00
+@property (nonatomic, strong, nullable) NSString * amountWithProcessingFeeWithCurrency; //Example: $150.00
+@property (nonatomic, strong, nullable) NSString * processingFeeWithCurrency; //Example: $150.00
+@property (nonatomic, strong, nullable) NSDate * scheduledAt; //Example: <null>
+@property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2018-05-15T16:25:18Z
+@property (nonatomic, strong, nullable) NSDate * lastTransactedAt; //Example: 2018-05-15T16:25:18Z
+@property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2018-05-15T16:25:18Z
+@property (nonatomic, strong, nullable) NSString * invoiceId; //Example: 52600
+@property (nonatomic, strong, nullable) NSString * status; //Example: paid
 @property (nonatomic, assign) NSInteger amountWithProcessingFee; //Example: 150
-@property (nonatomic, weak, nullable) NSURL * linkInvoice;
-@property (nonatomic, weak, nullable) NSURL * linkTeam;
-@property (nonatomic, weak, nullable) NSURL * linkInvoicePaymentTransactions;
+@property (nonatomic, strong, nullable) NSURL * linkInvoice;
+@property (nonatomic, strong, nullable) NSURL * linkTeam;
+@property (nonatomic, strong, nullable) NSURL * linkInvoicePaymentTransactions;
 
 
 //Records a submitted wepay credit card invoice_payment

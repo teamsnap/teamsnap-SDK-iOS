@@ -12,10 +12,10 @@
 @interface TSDKStatisticGroup : TSDKCollectionObject
 
 @property (nonatomic, assign) NSInteger position; //Example: 1
-@property (nonatomic, weak) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, weak) NSString *_Nullable name; //Example: Offense
-@property (nonatomic, weak) NSURL *_Nullable linkTeam;
-@property (nonatomic, weak) NSURL *_Nullable linkStatistics;
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable name; //Example: Offense
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkStatistics;
 
 //+(void)actionReorderStatisticGroupsWithCompletion:(TSDKCompletionBlock)completion; //(null)
 

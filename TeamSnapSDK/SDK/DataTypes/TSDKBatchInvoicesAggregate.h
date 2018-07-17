@@ -7,16 +7,16 @@
 
 @interface TSDKBatchInvoicesAggregate : TSDKCollectionObject
 
-@property (nonatomic, weak, nullable) NSString * divisionId; //Example: <null>
-@property (nonatomic, weak, nullable) NSString * amountDueWithCurrency; //Example: $750.00
+@property (nonatomic, strong, nullable) NSString * divisionId; //Example: <null>
+@property (nonatomic, strong, nullable) NSString * amountDueWithCurrency; //Example: $750.00
 @property (nonatomic, assign) NSInteger openBatchInvoicesCount; //Example: 5
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountDue; //Example: 750
-@property (nonatomic, weak, nullable) NSString * amountInvoicedWithCurrency; //Example: $750.00
-@property (nonatomic, weak, nullable) NSString * teamId; //Example: 3852291
-@property (nonatomic, weak, nullable) NSString * amountCollectedWithCurrency; //Example: $0.00
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountCollected; //Example: 0
-@property (nonatomic, weak, nullable) NSDecimalNumber * amountInvoiced; //Example: 750
-@property (nonatomic, weak, nullable) NSURL * linkTeam;
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountDue; //Example: 750
+@property (nonatomic, strong, nullable) NSString * amountInvoicedWithCurrency; //Example: $750.00
+@property (nonatomic, strong, nullable) NSString * teamId; //Example: 3852291
+@property (nonatomic, strong, nullable) NSString * amountCollectedWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountCollected; //Example: 0
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountInvoiced; //Example: 750
+@property (nonatomic, strong, nullable) NSURL * linkTeam;
 
 @end
 
