@@ -42,7 +42,7 @@
                       description:(NSString *_Nullable)description
                  invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
                           members:(NSArray<TSDKMember *> *)members
-            transactionFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)transactionFeesPaidBy
+            processingFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)processingFeesPaidBy
                        completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
     
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
@@ -51,7 +51,7 @@
         createInvoiceCommand.data[@"due_at"] = [dueDate RCF3339DateTimeString];
         createInvoiceCommand.data[@"title"] = title;
         
-        createInvoiceCommand.data[@"transaction_fees_paid_by"] = [TSDKBatchInvoice feesPaidByString:transactionFeesPaidBy];
+        createInvoiceCommand.data[@"processing_fee_paid_by"] = [TSDKBatchInvoice feesPaidByString:processingFeesPaidBy];
         
         createInvoiceCommand.data[@"team_id"] = teamId;
         [createInvoiceCommand.data removeObjectForKey:@"division_id"];

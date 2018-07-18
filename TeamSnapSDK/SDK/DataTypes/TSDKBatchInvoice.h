@@ -58,7 +58,7 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
                       description:(NSString *_Nullable)description
                  invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
                           members:(NSArray *_Nonnull)members
-            transactionFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)transactionFeesPaidBy
+             processingFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)processingFeesPaidBy
                        completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId completon:(TSDKSimpleCompletionBlock _Nullable)completion;
