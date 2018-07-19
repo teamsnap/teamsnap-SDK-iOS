@@ -140,7 +140,7 @@
     NSString *testValue = @"test event";
     event.name = testValue;
     XCTAssertEqual(event.name, testValue);
-    XCTAssertEqual([event.changedValues objectForKey:@"name"], [NSNull null]);
+    XCTAssertNil([event.changedValues objectForKey:@"name"]);
     [event clearChanges];
     
     event.name = testValue;

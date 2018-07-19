@@ -33,8 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSDate * lastUpdate;
 @property (nonatomic, strong) NSURL * persistenceBaseFilePath;
 
-- (TSDKCollectionJSON *)collection __deprecated;
-
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (id _Nullable)objectWithObject:(TSDKCollectionObject *)originalObject;
 
@@ -83,8 +81,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)collectionObjectForKey:(NSString *)key;
 - (void)removeCollectionObjectForKey:(NSString *)aKey;
 
+- (TSDKCollectionCommand *_Nullable)commandForKey:(NSString *)key;
+- (NSURL *_Nullable)linkForKey:(NSString *)key;
+
 - (id _Nullable)changedValueForKey:(NSString *)aKey;
-- (void)setChangeValue:(id)value forKey:(NSString *)aKey;
+- (void)setChangedValue:(id _Nullable)value forKey:(NSString *)aKey;
+- (void)removeChangedValueForKey:(NSString *)key;
 - (void)clearChanges;
 
 - (NSURL *_Nullable)getLink:(NSString *)aKey;

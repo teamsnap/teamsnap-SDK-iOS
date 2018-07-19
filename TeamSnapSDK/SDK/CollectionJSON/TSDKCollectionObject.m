@@ -577,11 +577,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     }
     
     if (![self changedValueForKey:aKey]) {
-        if (collectionData) {
-            [self setChangeValue:collectionData forKey:aKey];
-        } else {
-            [self setChangeValue:[NSNull null] forKey:aKey];
-        }
+        [self setChangedValue:collectionData forKey:aKey];
     }
     
     dispatch_barrier_async(self.collection_access_queue, ^{
@@ -627,9 +623,19 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
     return value;
 }
 
-- (void)setChangeValue:(id)value forKey:(NSString *)aKey {
+- (void)setChangedValue:(id)value forKey:(NSString *)aKey {
+    if (value == nil) {
+        [self removeChangedValueForKey:aKey];
+    } else {
+        dispatch_barrier_async(self.collection_access_queue, ^{
+            [self.changeStack setObject:value forKey:aKey];
+        });
+    }
+}
+
+- (void)removeChangedValueForKey:(NSString *)key {
     dispatch_barrier_async(self.collection_access_queue, ^{
-        [self.changeStack setObject:value forKey:aKey];
+        [self.changeStack removeObjectForKey:key];
     });
 }
 
@@ -859,7 +865,7 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
         if ([[self class] classURL]) {
             URL = [[self class] classURL];
         } else {
-            URL = [NSURL URLWithString:[[[[[TSDKTeamSnap sharedInstance] rootLinks] collection] links] objectForKey:[[self class] SDKREL]]];
+            URL = [[[TSDKTeamSnap sharedInstance] rootLinks] linkForKey:[[self class] SDKREL]];
         }
         
     } else {
@@ -1112,6 +1118,22 @@ static BOOL property_getTypeString( objc_property_t property, char *buffer ) {
 
 - (NSUInteger)hash {
     return self.objectIdentifier.hash;
+}
+
+- (TSDKCollectionCommand *)commandForKey:(NSString *)key {
+    TSDKCollectionCommand *__block command = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        command = [_collection.commands[key] copy];
+    });
+    return command;
+}
+
+- (NSURL *_Nullable)linkForKey:(NSString *)key {
+    NSString *__block urlString = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        urlString = [_collection.links[key] copy];
+    });
+    return [NSURL URLWithString:urlString];
 }
 
 #pragma mark - TSDKPersistenceFilePath

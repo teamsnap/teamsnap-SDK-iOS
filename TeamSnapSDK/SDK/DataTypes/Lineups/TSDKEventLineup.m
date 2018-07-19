@@ -29,7 +29,7 @@
         
         for (NSString *key in @[@"member_id", @"sequence", @"label"]) {
             
-            NSString *value = [lineupEntry collectionObjectForKey:key];
+            NSString *value = [lineupEntry getString:key];
             if (value == nil) {
                 value = @"";
             }
