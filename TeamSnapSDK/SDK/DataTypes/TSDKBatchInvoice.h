@@ -10,6 +10,11 @@
 
 @class TSDKMember, TSDKBatchInvoiceLineItem, TSDKInvoice;
 
+typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
+    TSDKBatchInvoiceFeesPaidByPayer,
+    TSDKBatchInvoiceFeesPaidByPayee
+};
+
 @interface TSDKBatchInvoice : TSDKCollectionObject <TSDKInvoiceProtocol>
 
 @property (nonatomic, assign) BOOL isRecipientPayingTransactionFees; //Example: 1
@@ -40,6 +45,7 @@
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkBatchInvoiceLineItems;
 
++(NSString *_Nonnull)stringForFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)feesPaidBy;
 
 //Beta: (This endpoint is subject to change) Cancel batch invoice. Cancels all invoices belonging to batch invoice, as a result sets status on batch invoice to canceled. There must be invoices in order to cancel a batch invoice.
 //+(void)actionCancelId:(NSString *_Nonnull)id WithCompletion:(TSDKCompletionBlock _Nullable)completion;
@@ -52,7 +58,7 @@
                       description:(NSString *_Nullable)description
                  invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
                           members:(NSArray *_Nonnull)members
- isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees
+             processingFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)processingFeesPaidBy
                        completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId completon:(TSDKSimpleCompletionBlock _Nullable)completion;
@@ -76,7 +82,7 @@
 @interface TSDKBatchInvoice (ForwardedMethods)
 
 -(void)getInvoicesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
--(void)getInvoiceRecipientsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getInvoiceRecipientsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoiceRecipientArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nonnull)completion;
 -(void)getBatchInvoiceLineItemsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBatchInvoiceLineItemArrayCompletionBlock _Nonnull)completion;
 

@@ -42,7 +42,7 @@
                       description:(NSString *_Nullable)description
                  invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
                           members:(NSArray<TSDKMember *> *)members
- isRecipientPayingTransactionFees:(BOOL)isRecipientPayingTransactionFees
+            processingFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)processingFeesPaidBy
                        completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
     
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
@@ -50,7 +50,8 @@
     if (createInvoiceCommand) {
         createInvoiceCommand.data[@"due_at"] = [dueDate RCF3339DateTimeString];
         createInvoiceCommand.data[@"title"] = title;
-        createInvoiceCommand.data[@"is_recipient_paying_transaction_fees"] = [NSNumber numberWithBool:isRecipientPayingTransactionFees];
+        
+        createInvoiceCommand.data[@"processing_fee_paid_by"] = [TSDKBatchInvoice stringForFeesPaidBy:processingFeesPaidBy];
         
         createInvoiceCommand.data[@"team_id"] = teamId;
         [createInvoiceCommand.data removeObjectForKey:@"division_id"];
@@ -59,6 +60,10 @@
         } else {
             [createInvoiceCommand.data removeObjectForKey:@"description"];
         }
+        
+        // this was depricated before it was implemented but is still in the command payload.
+        [createInvoiceCommand.data removeObjectForKey:@"is_recipient_paying_transaction_fees"];
+
                 
         NSMutableArray<NSDictionary *> *lineItemArray = [[NSMutableArray alloc] init];
         for (TSDKBatchInvoiceLineItem *lineItem in invoiceLineItems) {
@@ -125,6 +130,15 @@
     [TSDKInvoice createFromBatchInvoiceId:self.objectIdentifier
                              forMembers:memberIds
                                completion:completion];
+}
+
++(NSString *_Nonnull)stringForFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)feesPaidBy {
+    switch (feesPaidBy) {
+        case TSDKBatchInvoiceFeesPaidByPayer:
+            return @"payer";
+        case TSDKBatchInvoiceFeesPaidByPayee:
+            return @"payee";
+    }
 }
 
 @end

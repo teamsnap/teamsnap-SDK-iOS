@@ -14,6 +14,25 @@
     return @"invoice_message";
 }
 
++(NSString *_Nonnull)invoiceFilterStringForStatus:(TSDKInvoiceFilter)status {
+    switch (status) {
+        case TSDKInvoiceFilterOpen:
+            return @"open";
+        case TSDKInvoiceFilterPaid:
+            return @"paid";
+        case TSDKInvoiceFilterCanceled:
+            return @"canceled";
+        case TSDKInvoiceFilterPending:
+            return @"pending";
+        case TSDKInvoiceFilterSubmitted:
+            return @"submitted";
+        case TSDKInvoiceFilterAll:
+            return @"all";
+        case TSDKInvoiceFilterUnknown:
+            return @"";
+    }
+}
+
 +(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId MemberIds:(NSArray<NSString *> *_Nonnull)memberIds subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion {
     TSDKCollectionCommand *paymentRequestCommand = [[self commandForKey:@"payment_request"] copy];
     paymentRequestCommand.data[@"member_ids"] = memberIds;
@@ -35,11 +54,11 @@
     [paymentRequestCommand executeWithCompletion:completion];
 }
 
-+(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId status:(TSDKInvoiceStatus)status subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion {
++(void)actionPaymentRequestForBatchId:(NSString *_Nonnull)batchId status:(TSDKInvoiceFilter)status subject:(NSString *_Nullable)subject body:(NSString *_Nullable)body completion:(TSDKCompletionBlock _Nullable)completion {
     
     TSDKCollectionCommand *paymentRequestCommand = [[self commandForKey:@"payment_request"] copy];
     
-    paymentRequestCommand.data[@"status"] = [TSDKInvoice invoiceStatusStringForStatus:status];
+    paymentRequestCommand.data[@"status"] = [TSDKInvoiceMessage invoiceFilterStringForStatus:status];
     [paymentRequestCommand.data removeObjectForKey:@"member_ids"];
     
     paymentRequestCommand.data[@"batch_invoice_id"] = batchId;
