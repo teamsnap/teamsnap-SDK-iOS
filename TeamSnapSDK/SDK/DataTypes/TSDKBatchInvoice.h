@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkBatchInvoiceLineItems;
 
-+(NSString *_Nonnull)feesPaidByString:(TSDKBatchInvoiceFeesPaidBy)feesPaidBy;
++(NSString *_Nonnull)stringForFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)feesPaidBy;
 
 //Beta: (This endpoint is subject to change) Cancel batch invoice. Cancels all invoices belonging to batch invoice, as a result sets status on batch invoice to canceled. There must be invoices in order to cancel a batch invoice.
 //+(void)actionCancelId:(NSString *_Nonnull)id WithCompletion:(TSDKCompletionBlock _Nullable)completion;

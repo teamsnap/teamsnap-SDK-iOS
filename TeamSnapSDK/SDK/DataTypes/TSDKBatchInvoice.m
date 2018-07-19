@@ -51,7 +51,7 @@
         createInvoiceCommand.data[@"due_at"] = [dueDate RCF3339DateTimeString];
         createInvoiceCommand.data[@"title"] = title;
         
-        createInvoiceCommand.data[@"processing_fee_paid_by"] = [TSDKBatchInvoice feesPaidByString:processingFeesPaidBy];
+        createInvoiceCommand.data[@"processing_fee_paid_by"] = [TSDKBatchInvoice stringForFeesPaidBy:processingFeesPaidBy];
         
         createInvoiceCommand.data[@"team_id"] = teamId;
         [createInvoiceCommand.data removeObjectForKey:@"division_id"];
@@ -132,7 +132,7 @@
                                completion:completion];
 }
 
-+(NSString *_Nonnull)feesPaidByString:(TSDKBatchInvoiceFeesPaidBy)feesPaidBy {
++(NSString *_Nonnull)stringForFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)feesPaidBy {
     switch (feesPaidBy) {
         case TSDKBatchInvoiceFeesPaidByPayer:
             return @"payer";
