@@ -55,7 +55,7 @@
         if ([[self class] classURL]) {
             URL = [[self class] classURL];
         } else {
-            URL = [NSURL URLWithString:[[[[[TSDKTeamSnap sharedInstance] rootLinks] collection] links] objectForKey:[[self class] SDKREL]]];
+            URL = [[[TSDKTeamSnap sharedInstance] rootLinks] linkForKey:[[self class] SDKREL]];
         }
         [self saveWithURL:URL completion:completion];
     } else {
