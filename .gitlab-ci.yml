@@ -1,0 +1,17 @@
+stages:
+  - build
+  - test
+
+before_script:
+  - ruby -v
+  - which ruby
+
+.ios-build: &ios-build
+  tags:
+    - iOS
+    - Xcode9.3
+
+'Branch Build':
+  <<: *ios-build
+  script:
+    - fastlane test --verbose

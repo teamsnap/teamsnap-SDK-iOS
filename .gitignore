@@ -30,3 +30,7 @@ Reveal.framework/Versions/Current
 
 # AppCoder
 .idea/*
+
+# Fastlane
+fastlane/test_output/*
+fastlane/report.xml
