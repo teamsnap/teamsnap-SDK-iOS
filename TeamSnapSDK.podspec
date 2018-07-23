@@ -5,11 +5,16 @@ Pod::Spec.new do |s|
   s.summary      = "TeamSnap SDK for API v3"
   s.description  = "A library to access TeamSnap API v3"
   s.homepage     = "https://github.com/teamsnap/teamsnap-SDK-iOS"
-  s.license      = { :type => 'TeamSnap Internal', :text => 'TEAMSNAP CONFIDENTIAL & INTERNAL ONLY' }
-  s.author       = { "Jason Rahaim" => "jason@teamsnap.com", "Skyler Seamans" => "skyler.seamans@teamsnap.com", "Mark Gallegos" => "mark.gallegos@teamsnap.com" }
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.authors      = {
+    "Jason Rahaim" => "jason@teamsnap.com",
+    "Skyler Seamans" => "skyler.seamans@teamsnap.com",
+    "Mark Gallegos" => "mark.gallegos@teamsnap.com",
+    "Lars Anderson" => "lars.anderson@teamsnap.com",
+  }
   s.platform     = :ios, "8.0"
   s.resources    = ['TeamSnapSDK/SDK/Resources/*']
-  s.source       = { :git => "git@github.com:teamsnap/teamsnap-SDK-iOS.git", :tag => "Pod-#{s.version}" }
+  s.source       = { :git => "https://github.com/teamsnap/teamsnap-SDK-iOS.git", :tag => "Pod-#{s.version}" }
   
   s.source_files = 'TeamSnapSDK/*.{h,m}'  
 
@@ -18,24 +23,23 @@ Pod::Spec.new do |s|
   end
   
   s.subspec 'SDK' do |sp|
-  
     sp.source_files = 'TeamSnapSDK/SDK/*.{h,m}'
     
-	sp.subspec 'Cache' do |spSDK|
-	  spSDK.source_files = 'TeamSnapSDK/SDK/Cache/*.{h,m}'
-	end
+  	sp.subspec 'Cache' do |spSDK|
+  	  spSDK.source_files = 'TeamSnapSDK/SDK/Cache/*.{h,m}'
+  	end
 
-	sp.subspec 'CollectionJSON' do |spSDK|
-	  spSDK.source_files = 'TeamSnapSDK/SDK/CollectionJSON/*.{h,m}'
-	end
+  	sp.subspec 'CollectionJSON' do |spSDK|
+  	  spSDK.source_files = 'TeamSnapSDK/SDK/CollectionJSON/*.{h,m}'
+  	end
 
-	sp.subspec 'Conveniences' do |spSDK|
-	  spSDK.source_files = 'TeamSnapSDK/SDK/Conveniences/*.{h,m}'
-	end
+  	sp.subspec 'Conveniences' do |spSDK|
+  	  spSDK.source_files = 'TeamSnapSDK/SDK/Conveniences/*.{h,m}'
+  	end
 
     sp.subspec 'DataLayer' do |spSDK|
       spSDK.source_files = 'TeamSnapSDK/SDK/DataLayer/*.{h,m}'
-	end  
+	  end  
 	
     sp.subspec 'DataTypes' do |spSDK|
     
@@ -79,13 +83,11 @@ Pod::Spec.new do |s|
         spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/TSL/*.{h,m}'
       end
       
-		spSDK.subspec 'Lineups' do |spTypes|
+		  spSDK.subspec 'Lineups' do |spTypes|
         spTypes.source_files = 'TeamSnapSDK/SDK/DataTypes/Lineups/*.{h,m}'
       end
       
       spSDK.source_files = 'TeamSnapSDK/SDK/DataTypes/*.{h,m}'
-    
-	end  	
+	  end  	
   end
-  
 end
