@@ -16,6 +16,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
 #import "TSDKNotifications.h"
+#import "TSDKLogging.h"
 
 @interface TSDKCollectionObject()
 
