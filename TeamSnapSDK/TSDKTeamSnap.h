@@ -4,14 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSDKDataRequest.h"
-#import "TSDKLogging.h"
-
-#if TARGET_OS_IPHONE
-#import <SafariServices/SafariServices.h>
-#endif
-
-@class TSDKRequestConfiguration, TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan, SFSafariViewController;
+#import "TSDKCompletionBlockTypes.h"
+@class TSDKRequestConfiguration, TSDKUser, TSDKTeam, TSDKRootLinks, TSDKPublicFeatures, TSDKTslPhotos, TSDKPlan, SFSafariViewController, UIViewController;
 
 @interface TSDKTeamSnap : NSObject
 

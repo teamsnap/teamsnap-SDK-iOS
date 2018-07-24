@@ -80,6 +80,7 @@
 #import "TSDKInvoicePayment.h"
 #import "TSDKInvoicePaymentTransaction.h"
 #import "TSDKInvoiceRecipientsInvoicesAggregate.h"
+#import "TSDKLogging.h"
 
 static NSArray *_supportedSDKObjects;
 static NSArray *knownCompletionTypes;

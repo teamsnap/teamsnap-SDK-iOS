@@ -18,6 +18,8 @@
 #import "TSDKTslPhotos.h"
 #import "TSDKPlan.h"
 #import "TSDKCompletionBlockTypes.h"
+#import "TSDKDataRequest.h"
+#import "TSDKLogging.h"
 #if TARGET_OS_IPHONE
 #import <SafariServices/SafariServices.h>
 #endif
