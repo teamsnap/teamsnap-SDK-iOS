@@ -1,7 +1,6 @@
 stages:
   - build
-  - validate
-  - deploy
+  - test
 
 before_script:
   - ruby -v
@@ -14,43 +13,5 @@ before_script:
 
 'Branch Build':
   <<: *ios-build
-  stage: build
   script:
     - fastlane test --verbose
-
-'Validate Podspec Version Optional':
-  <<: *ios-build
-  stage: validate
-  allow_failure: true
-  except:
-    - master
-  script: ./validate_version.sh
-
-'Lint Podspec Optional':
-  <<: *ios-build
-  stage: validate
-  allow_failure: true
-  except:
-    - master
-  script: pod spec lint TeamSnapSDK.podspec
-
-'Validate Podspec Version Required':
-  <<: *ios-build
-  stage: validate
-  only:
-    - master
-  script: ./validate_version.sh
-
-'Lint Podspec Required':
-  <<: *ios-build
-  stage: validate
-  only:
-    - master
-  script: pod spec lint TeamSnapSDK.podspec
-
-# 'Release Podspec':
-#   <<: *ios-build
-#   stage: deploy
-#   only:
-#     - master
-#   script: pod trunk push TeamSnapSDK.podspec
