@@ -30,11 +30,7 @@
     @synchronized(self) {
         _numberOfActivities++;
     }
-    #if !defined(TSDK_TARGET_APP_EXTENSIONS)
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    });
-    #endif
+    [self setActivityIndicatorVisible:YES];
 }
 
 - (void)stopActivity {
@@ -46,11 +42,18 @@
         }
         showIndicator = (_numberOfActivities > 0);
     }
-    #if !defined(TSDK_TARGET_APP_EXTENSIONS)
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = showIndicator;
-    });
-    #endif
+    [self setActivityIndicatorVisible:showIndicator];
+}
+
+- (void)setActivityIndicatorVisible:(BOOL)visible {
+    Class UIApplicationClass = NSClassFromString(@"UIApplication");
+    BOOL hasApplication = UIApplicationClass && [UIApplicationClass respondsToSelector:@selector(sharedApplication)];
+    if (hasApplication) {
+        UIApplication *app = [UIApplicationClass performSelector:@selector(sharedApplication)];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            app.networkActivityIndicatorVisible = visible;
+        });
+    }
 }
 
 @end
