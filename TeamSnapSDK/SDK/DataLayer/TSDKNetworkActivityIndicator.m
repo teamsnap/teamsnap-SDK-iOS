@@ -30,10 +30,11 @@
     @synchronized(self) {
         _numberOfActivities++;
     }
-    
+    #if !defined(TSDK_TARGET_APP_EXTENSIONS)
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     });
+    #endif
 }
 
 - (void)stopActivity {
@@ -45,10 +46,11 @@
         }
         showIndicator = (_numberOfActivities > 0);
     }
-    
+    #if !defined(TSDK_TARGET_APP_EXTENSIONS)
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIApplication sharedApplication].networkActivityIndicatorVisible = showIndicator;
     });
+    #endif
 }
 
 @end
