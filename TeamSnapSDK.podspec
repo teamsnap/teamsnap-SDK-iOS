@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
     :tag => "Pod-#{s.version}"
   }
   
-  s.source_files = 'TeamSnapSDK/*.{h,m}'
+  s.source_files = 'TeamSnapSDK/**/*.{h,m}'
 end

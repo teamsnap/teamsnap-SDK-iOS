@@ -404,6 +404,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46916082210A4B65007EB4E5 /* TeamSnapSDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = TeamSnapSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4FB4793D1EB0166C00574674 /* TSDKApplePaidFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKApplePaidFeature.h; sourceTree = "<group>"; };
 		4FB4793E1EB0166D00574674 /* TSDKApplePaidFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKApplePaidFeature.m; sourceTree = "<group>"; };
 		4FC9AE781DE4CE5500B0C582 /* MemberPayments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MemberPayments.json; sourceTree = "<group>"; };
@@ -825,6 +826,7 @@
 				969E804E1BAAE62E00CA518F /* TeamSnapSDKTests */,
 				96B47F1A1BADB33E0035F2CC /* TeamSnapSDKTV */,
 				969E80411BAAE62D00CA518F /* Products */,
+				46916082210A4B65007EB4E5 /* TeamSnapSDK.podspec */,
 			);
 			sourceTree = "<group>";
 		};
