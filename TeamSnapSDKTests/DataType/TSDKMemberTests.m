@@ -29,10 +29,10 @@
     TSDKMember *member = [[TSDKMember alloc] init];
     XCTAssertEqualObjects(@"", member.fullName);
     
-    [member.collection.data setValue:[NSNull null] forKey:@"first_name"];
+    [member removeCollectionObjectForKey:@"first_name"];
     XCTAssertEqualObjects(@"", member.fullName);
     
-    [member.collection.data setValue:[NSNull null] forKey:@"last_name"];
+    [member removeCollectionObjectForKey:@"last_name"];
     XCTAssertEqualObjects(@"", member.fullName);
     
     member.firstName = @"Ronnie";
