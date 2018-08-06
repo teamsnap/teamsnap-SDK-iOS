@@ -274,7 +274,6 @@
 		969E80F81BAAE7AB00CA518F /* TSDKTrackedItemStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80AE1BAAE7AB00CA518F /* TSDKTrackedItemStatus.m */; };
 		969E80F91BAAE7AB00CA518F /* TSDKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80AF1BAAE7AB00CA518F /* TSDKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80FA1BAAE7AB00CA518F /* TSDKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80B01BAAE7AB00CA518F /* TSDKUser.m */; };
-		96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */; };
 		96AF8E761E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = 96AF8E741E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96AF8E771E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AF8E751E01E9B6002C6FD4 /* NSString+TSDKPublicConveniences.m */; };
 		96B47F1C1BADB33E0035F2CC /* TeamSnapSDKTV.h in Headers */ = {isa = PBXBuildFile; fileRef = 96B47F1B1BADB33E0035F2CC /* TeamSnapSDKTV.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -370,7 +369,6 @@
 		96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D756A51D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m */; };
 		96DA6AA51CD8E32400368D80 /* TSDKDataRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DA6AA41CD8E32400368D80 /* TSDKDataRequestTests.m */; };
 		96E052171D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E052161D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m */; };
-		96E052181D775F43005155C3 /* TSDKDuplicateCompletionBlockStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */; };
 		96E1336B1D88627C0027E382 /* TSDKMemberAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E133691D88627C0027E382 /* TSDKMemberAssignment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96E1336C1D88627C0027E382 /* TSDKMemberAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E1336A1D88627C0027E382 /* TSDKMemberAssignment.m */; };
 		96E1336D1D8862930027E382 /* TSDKMemberAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E133691D88627C0027E382 /* TSDKMemberAssignment.h */; };
@@ -1621,10 +1619,8 @@
 				9631B5E81CECA73400215647 /* TSDKCustomDatumTests.m in Sources */,
 				4FC9AE7C1DE4D10000B0C582 /* TSDKJSONFileResource.m in Sources */,
 				969E80501BAAE62E00CA518F /* TeamSnapSDKTests.m in Sources */,
-				96A1BBB01CA18B2700D564F3 /* TSDKCollectionJSON.m in Sources */,
 				96E052171D775E93005155C3 /* TSDKDuplicateCompletionBlockStoreTests.m in Sources */,
 				96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */,
-				96E052181D775F43005155C3 /* TSDKDuplicateCompletionBlockStore.m in Sources */,
 				96C3564820A203DA002007A5 /* TSDKObjectsRequestTest.m in Sources */,
 				968CCDA41C8E076C00B5A854 /* TSDKCollectionObjectTests.m in Sources */,
 				96E94B5B1E7C2FC7006D7494 /* TSDKStatisticTests.m in Sources */,

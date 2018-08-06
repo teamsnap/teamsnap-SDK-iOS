@@ -140,7 +140,7 @@
 + (void)actionSendInvitationsToEmailaddress:(NSString *)emailAddress WithCompletion:(TSDKCompletionBlock)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
-            TSDKCollectionCommand *collectionCommand = [rootLinks.collection.commands objectForKey:@"send_invitations"];
+            TSDKCollectionCommand *collectionCommand = [rootLinks commandForKey:@"send_invitations"];
             if (collectionCommand) {
                 [collectionCommand.data setObject:emailAddress forKey:@"email_address"];
                 [collectionCommand executeWithCompletion:completion];
