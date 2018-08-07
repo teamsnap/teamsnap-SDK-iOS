@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSDKCollectionObject : NSObject <NSCoding, NSCopying, TSDKPersistenceFilePath>
 
-@property (nonatomic, copy, nullable) TSDKCollectionJSON * collection;
+@property (nonatomic, copy, readonly, nullable) TSDKCollectionJSON * collection __deprecated;
 @property (nonatomic, copy, readonly, nullable) NSDictionary * changedValues;
 @property (nonatomic, assign) BOOL logHeader;
 @property (nonatomic, strong, nullable) NSDate * lastUpdate;
@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection;
 + (id _Nullable)objectWithObject:(TSDKCollectionObject *)originalObject;
+- (void)updateWithCollectionFromObject:(TSDKCollectionObject *)otherObject;
 
 + (void)dumpClassSelectorInfo;
 +(NSDictionary *_Nullable)template;
@@ -78,6 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setArray:(NSArray <NSString *> *_Nullable)value forKey:(NSString *)aKey;
 - (NSArray <NSString *> *_Nullable)getArrayForKey:(NSString *)key;
 
+- (void)setCollectionObject:(NSObject<NSCoding> * _Nullable)object forKey:(NSString *)key;
 - (id)collectionObjectForKey:(NSString *)key;
 - (void)removeCollectionObjectForKey:(NSString *)aKey;
 

@@ -402,6 +402,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46713CF72118BE49004B16DC /* TSDKCollectionObject+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSDKCollectionObject+Internal.h"; sourceTree = "<group>"; };
 		46916082210A4B65007EB4E5 /* TeamSnapSDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = TeamSnapSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4FB4793D1EB0166C00574674 /* TSDKApplePaidFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKApplePaidFeature.h; sourceTree = "<group>"; };
 		4FB4793E1EB0166D00574674 /* TSDKApplePaidFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKApplePaidFeature.m; sourceTree = "<group>"; };
@@ -904,6 +905,7 @@
 				9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */,
 				969E80671BAAE7AB00CA518F /* TSDKCollectionJSON.h */,
 				969E80681BAAE7AB00CA518F /* TSDKCollectionJSON.m */,
+				46713CF72118BE49004B16DC /* TSDKCollectionObject+Internal.h */,
 				969E80691BAAE7AB00CA518F /* TSDKCollectionObject.h */,
 				969E806A1BAAE7AB00CA518F /* TSDKCollectionObject.m */,
 			);
