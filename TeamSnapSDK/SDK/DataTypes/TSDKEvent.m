@@ -55,7 +55,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         if (success) {
             NSArray *events = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
             if (events.count>0) {
-                [self setCollection:[events.firstObject collection]];
+                [self updateWithCollectionFromObject:events.firstObject];
             }
         }
         if (completion) {

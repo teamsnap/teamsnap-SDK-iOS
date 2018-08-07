@@ -77,7 +77,10 @@
 }
 
 - (void)getSchemasArrayWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock) completion {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSArray *versionComponents = [self.collection.version componentsSeparatedByString:@"."];
+#pragma clang diagnostic pop
     NSString *majorMinorVersion = nil;
     if (versionComponents.count>1) {
         majorMinorVersion = [NSString stringWithFormat:@"%@.%@", versionComponents[0],versionComponents[1]];

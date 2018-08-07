@@ -16,6 +16,7 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKRootLinks.h"
 #import "TSDKNotifications.h"
+#import "TSDKCollectionObject+Internal.h"
 
 @interface TSDKCollectionObject()
 
@@ -206,7 +207,8 @@ static NSMutableDictionary *_classURLs;
 - (instancetype)initWithCollection:(TSDKCollectionJSON *)collection {
     self = [self init];
     if (self) {
-        [self setCollection:collection];
+        _collection = collection;
+        _lastUpdate = [NSDate date];
     }
     return self;
 }
@@ -218,7 +220,10 @@ static NSMutableDictionary *_classURLs;
 + (id)objectWithObject:(TSDKCollectionObject *)originalObject {
     
     TSDKCollectionJSON *newCollection = [[TSDKCollectionJSON alloc] init];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     TSDKCollectionJSON *originalCollection = originalObject.collection;
+#pragma clang diagnostic pop
     
     newCollection.data = [NSMutableDictionary dictionaryWithDictionary:originalCollection.data];
     newCollection.type = originalCollection.type;
@@ -248,8 +253,8 @@ static NSMutableDictionary *_classURLs;
     
     [self willChangeValueForKey:@"collection"];
     dispatch_barrier_async(self.collection_access_queue, ^{
-        _collection = collection;
-        _lastUpdate = [NSDate date];
+        self->_collection = collection;
+        self->_lastUpdate = [NSDate date];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self didChangeValueForKey:@"collection"];
         });
@@ -661,11 +666,11 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     [self setObject:value forKey:key];
 }
 
-- (void)setObject:(NSObject *)value forKey:(NSString *)aKey {
+- (void)setObject:(NSObject<NSCoding> *)value forKey:(NSString *)aKey {
     
     id __block collectionData = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        collectionData = _collection.data[aKey];
+        collectionData = self->_collection.data[aKey];
     });
     
     if (value) {
@@ -685,9 +690,9 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     dispatch_barrier_async(self.collection_access_queue, ^{
         
         if (value) {
-            _collection.data[aKey] = value;
+            self->_collection.data[aKey] = value;
         } else {
-            _collection.data[aKey] = [NSNull null];
+            self->_collection.data[aKey] = [NSNull null];
         }
     });
 }
@@ -695,7 +700,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 - (void)undoChanges {
     dispatch_sync(self.collection_access_queue, ^{
         for (NSString *key in self.changeStack) {
-            _collection.data[key] = self.changeStack[key];
+            self->_collection.data[key] = self.changeStack[key];
         }
     });
     
@@ -747,14 +752,14 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     if ([self isNewObject]) {
         NSArray *__block allKeys = nil;
         dispatch_sync(self.collection_access_queue, ^{
-            allKeys = [_collection.data allKeys];
+            allKeys = [self->_collection.data allKeys];
         });
         
         if ([[self class] template]) {
             for (NSString *key in [[self class] template]) {
                 id __block collectionData = nil;
                 dispatch_sync(self.collection_access_queue, ^{
-                    collectionData = _collection.data[key];
+                    collectionData = self->_collection.data[key];
                 });
                 
                 if(![key isEqualToString:@"type"] && collectionData) {
@@ -767,7 +772,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                 
                 id __block collectionData = nil;
                 dispatch_sync(self.collection_access_queue, ^{
-                    collectionData = _collection.data[key];
+                    collectionData = self->_collection.data[key];
                 });
                 
                 if (collectionData && ![key isEqualToString:@"id"]) {
@@ -781,7 +786,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
             for (NSString *key in self.changeStack) {
                 id __block collectionData = nil;
                 
-                collectionData = _collection.data[key];
+                collectionData = self->_collection.data[key];
                 
                 if (collectionData) {
                     NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
@@ -794,10 +799,14 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     return data;
 }
 
+- (void)setCollectionObject:(NSObject<NSCoding> * _Nullable)object forKey:(NSString *)key {
+    [self setObject:object forKey:key];
+}
+
 - (id)collectionObjectForKey:(NSString *)key {
     id __block collectionData = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        collectionData = _collection.data[key];
+        collectionData = self->_collection.data[key];
     });
     
     return collectionData;
@@ -805,7 +814,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 
 - (void)removeCollectionObjectForKey:(NSString *)aKey {
     dispatch_barrier_async(self.collection_access_queue, ^{
-        [_collection.data removeObjectForKey:aKey];
+        [self->_collection.data removeObjectForKey:aKey];
     });
 }
 
@@ -813,10 +822,17 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     TSDKCollectionJSON *__block coll = nil;
     
     dispatch_sync(self.collection_access_queue, ^{
-        coll = [_collection copy];
+        coll = [self->_collection copy];
     });
     
     return coll;
+}
+
+- (void)updateWithCollectionFromObject:(TSDKCollectionObject *)otherObject {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    [self setCollection:otherObject.collection];
+#pragma clang diagnostic pop
 }
 
 - (NSString *)getString:(NSString *)key {
@@ -939,7 +955,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 - (NSURL *)getLink:(NSString *)aKey {
     id __block linksForKey = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        linksForKey = _collection.links[aKey];
+        linksForKey = self->_collection.links[aKey];
     });
     
     if ([linksForKey isEqual:[NSNull null]]) {
@@ -952,8 +968,8 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     TSDKCollectionJSON *__block coll = nil;
     NSDate *__block last = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        coll = [_collection copy];
-        last = _lastUpdate;
+        coll = [self->_collection copy];
+        last = self->_lastUpdate;
     });
     
     [coder encodeObject:coll forKey:@"collection"];
@@ -984,7 +1000,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
         
     } else {
         dispatch_sync(self.collection_access_queue, ^{
-            URL = _collection.href;
+            URL = self->_collection.href;
         });
     }
 
@@ -1077,7 +1093,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
         NSDictionary *postObject = @{@"template": dataToSave};
         NSURL *__block href = nil;
         dispatch_sync(self.collection_access_queue, ^{
-            href = _collection.href;
+            href = self->_collection.href;
         });
         
         [TSDKDataRequest requestObjectsForPath:href sendDataDictionary:postObject method:@"DELETE" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
@@ -1170,7 +1186,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock)completion {
     NSURL *__block href = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        href = _collection.href;
+        href = self->_collection.href;
     });
     [TSDKDataRequest requestObjectsForPath:href withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
         if (success) {
@@ -1187,7 +1203,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     NSData *__block collectionData = nil;
     
     dispatch_sync(self.collection_access_queue, ^{
-        collectionData = [_collection dataEncodedForSave];
+        collectionData = [self->_collection dataEncodedForSave];
     });
     
     NSError *error;
@@ -1237,7 +1253,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 - (TSDKCollectionCommand *)commandForKey:(NSString *)key {
     TSDKCollectionCommand *__block command = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        command = [_collection.commands[key] copy];
+        command = [self->_collection.commands[key] copy];
     });
     return command;
 }
@@ -1245,7 +1261,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 - (NSURL *_Nullable)linkForKey:(NSString *)key {
     NSString *__block urlString = nil;
     dispatch_sync(self.collection_access_queue, ^{
-        urlString = [_collection.links[key] copy];
+        urlString = [self->_collection.links[key] copy];
     });
     return [NSURL URLWithString:urlString];
 }
@@ -1259,7 +1275,10 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 }
 
 - (instancetype)copyWithZone:(nullable NSZone *)zone {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [[[self class] allocWithZone:zone] initWithCollection:self.collection];
+#pragma clang diagnostic pop
 }
 
 + (NSURL * _Nullable)persistenceBaseFilePath {

@@ -11,8 +11,9 @@
 @implementation NSMutableDictionary (refreshCollectionData)
 
 - (void)refreshCollectionObject:(TSDKCollectionObject *)object {
-    if ([self objectForKey:object.objectIdentifier]) {
-        [[self objectForKey:object.objectIdentifier] setCollection:object.collection];
+    TSDKCollectionObject *storedObject = [self objectForKey:object.objectIdentifier];
+    if (storedObject) {
+        [storedObject updateWithCollectionFromObject:object];
     } else {
         [self setObject:object forKey:object.objectIdentifier];
     }
