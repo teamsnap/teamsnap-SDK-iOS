@@ -742,7 +742,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 
 - (void)removeChangedValueForKey:(NSString *)key {
     dispatch_barrier_async(self.collection_access_queue, ^{
-        [self.changeStack removeObjectForKey:key];
+        [self.changeStack setObject:[NSNull null] forKey:key];
     });
 }
 
@@ -757,27 +757,24 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
         
         if ([[self class] template]) {
             for (NSString *key in [[self class] template]) {
-                id __block collectionData = nil;
-                dispatch_sync(self.collection_access_queue, ^{
-                    collectionData = self->_collection.data[key];
-                });
-                
-                if(![key isEqualToString:@"type"] && collectionData) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
-                    [tempDataToSave addObject:itemDictionary];
+                if (![key isEqualToString:@"type"]) {
+                    id collectionData = [self collectionObjectForKey:key];
+                    
+                    if(collectionData != nil) {
+                        NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
+                        [tempDataToSave addObject:itemDictionary];
+                    }
                 }
             }
         } else {
             for (NSString *key in allKeys) {
-                
-                id __block collectionData = nil;
-                dispatch_sync(self.collection_access_queue, ^{
-                    collectionData = self->_collection.data[key];
-                });
-                
-                if (collectionData && ![key isEqualToString:@"id"]) {
-                    NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
-                    [tempDataToSave addObject:itemDictionary];
+                if (![key isEqualToString:@"id"]) {
+                    id collectionData = [self collectionObjectForKey:key];
+                    
+                    if (collectionData != nil) {
+                        NSDictionary *itemDictionary = @{@"name" : key, @"value" : collectionData};
+                        [tempDataToSave addObject:itemDictionary];
+                    }
                 }
             }
         }
