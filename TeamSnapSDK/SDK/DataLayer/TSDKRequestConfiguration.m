@@ -21,6 +21,10 @@
     return configuration;
 }
 
++ (instancetype _Nonnull)requestConfigurationWithPriority:(CGFloat)priority {
+    return [TSDKRequestConfiguration requestConfigurationWithForceReload:NO withPriority:priority];
+}
+
 + (instancetype)requestConfigurationWithForceReload:(BOOL)forceReload withPriority:(CGFloat)priority;{
     TSDKRequestConfiguration *configuration = [[TSDKRequestConfiguration alloc] init];
     [configuration setForceReload:forceReload];

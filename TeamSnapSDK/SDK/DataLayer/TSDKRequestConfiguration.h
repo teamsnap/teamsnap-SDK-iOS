@@ -27,6 +27,15 @@
  */
 + (instancetype _Nonnull)requestConfigurationWithForceReload:(BOOL)forceReload;
 
+
+/**
+ Initializes a request configuration with the specified priority. forceReload is defaulted to NO.
+
+ @param priority The relative priority at which you’d like a host to handle the task, specified as a floating point value between 0.0 (lowest priority) and 1.0 (highest priority).
+ @return An initialized request configuration
+ */
++ (instancetype _Nonnull)requestConfigurationWithPriority:(CGFloat)priority;
+
 /**
  *  Initializes a standard request configuration
  *
