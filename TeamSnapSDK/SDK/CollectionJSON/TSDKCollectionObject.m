@@ -1005,7 +1005,15 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
-    [self saveWithURL:[self urlForSave] completion:completion];
+    [self saveWithURL:[self urlForSave] completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, [objects firstObject], error);
+        }
+    }];
+}
+
++ (void)saveObject:(TSDKCollectionObject *)object completion:(TSDKArrayCompletionBlock)completion {
+    [object saveWithURL:[object urlForSave] completion:completion];
 }
 
 - (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> *)queryItems completion:(TSDKSaveCompletionBlock)completion {
@@ -1014,10 +1022,14 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     [allQueryItems addObjectsFromArray:fullySpecifiedURL.queryItems];
     [allQueryItems addObjectsFromArray:queryItems];
     fullySpecifiedURL.queryItems = queryItems;
-    [self saveWithURL:fullySpecifiedURL.URL completion:completion];
+    [self saveWithURL:fullySpecifiedURL.URL completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, [objects firstObject], error);
+        }
+    }];
 }
 
-- (void)saveWithURL:(NSURL *)url completion:(TSDKSaveCompletionBlock)completion {
+- (void)saveWithURL:(NSURL *)url completion:(TSDKArrayCompletionBlock)completion {
     NSDictionary *dataToSave = [self dataToSave];
     if ([self isNewObject]) {
         NSDictionary *postObject = @{@"template": dataToSave};
@@ -1033,17 +1045,21 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                     if ([returnedCollections count]==1) {
                         [weakSelf setCollection:[returnedCollections objectAtIndex:0]];
                         [TSDKNotifications postNewObject:self];
+                        if (completion) {
+                            completion(success, complete, @[weakSelf], error);
+                        }
                     } else {
                         NSArray *returnedObjects = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                         for (TSDKCollectionObject *object in returnedObjects) {
                             [TSDKNotifications postNewObject:object];
                         }
+                        if (completion) {
+                            completion(success, complete, returnedObjects, error);
+                        }
                     }
                 }
             }
-            if (completion) {
-                completion(success, weakSelf, error);
-            }
+            
         }];
     } else {
         NSInteger __block changedCount = 0;
@@ -1064,21 +1080,25 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                         if ([returnedCollections count]==1) {
                             [weakSelf setCollection:[returnedCollections firstObject]];
                             [TSDKNotifications postSavedObject:self];
+                            if (completion) {
+                                completion(success, complete, @[weakSelf], error);
+                            }
                         } else {
                             NSArray *returnedObjects = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
                             for (TSDKCollectionObject *object in returnedObjects) {
                                 [TSDKNotifications postSavedObject:object];
                             }
+                            if (completion) {
+                                completion(success, complete, returnedObjects, error);
+                            }
                         }
                     }
                 }
-                if (completion) {
-                    completion(success, weakSelf, error);
-                }
+                
             }];
         } else {
             if (completion) {
-                completion(YES, self, nil);
+                completion(YES, YES, @[self], nil);
             }
         }
     }

@@ -73,7 +73,7 @@ typedef void (^TSDKAvailabilityGroupCompletionBlock)(BOOL success, BOOL complete
 typedef void (^TSDKMessagesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMessage *> *_Nullable messages, NSError *_Nullable error);
 typedef void (^TSDKMessagesDatumArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMessageDatum *> *_Nullable messageDatums, NSError *_Nullable error);
 typedef void (^TSDKDivisionMembersArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKDivisionMember *> *_Nullable messages, NSError *_Nullable error);
-typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray *_Nonnull objects, NSError *_Nullable error);
+typedef void (^TSDKArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKCollectionObject *> *_Nonnull objects, NSError *_Nullable error);
 typedef void (^TSDKMemberArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKMember *> *_Nullable members, NSError * _Nullable error);
 typedef void (^TSDKRootLinkCompletionBlock)(TSDKRootLinks * _Nullable rootLinks, NSError * _Nullable error);
 typedef void (^TSDKTeamPreferencesArrayCompletionBlock)(BOOL success, BOOL complete, NSArray <TSDKTeamPreferences *> *_Nullable teamsPreferences, NSError * _Nullable error);
