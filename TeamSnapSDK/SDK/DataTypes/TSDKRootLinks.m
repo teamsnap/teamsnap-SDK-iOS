@@ -392,4 +392,13 @@
     
 }
 
+- (NSURL * _Nullable)queryURL {
+    TSDKCollectionQuery *query = [self queryForKey:@"query"];
+    if([query isKindOfClass:[TSDKCollectionQuery class]]) {
+        return [NSURL URLWithString:query.href];
+    } else {
+        return nil;
+    }
+}
+
 @end

@@ -114,5 +114,4 @@ typedef NS_ENUM(NSUInteger, TSDKEventEditMode) {
 -(void)getCalendarSingleEventWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getEventLineupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupCompletionBlock _Nullable)completion;
 
-
 @end

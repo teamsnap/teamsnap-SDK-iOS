@@ -254,7 +254,6 @@ static NSMutableDictionary *_classURLs;
     [self willChangeValueForKey:@"collection"];
     dispatch_barrier_async(self.collection_access_queue, ^{
         self->_collection = collection;
-        self->_lastUpdate = [NSDate date];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self didChangeValueForKey:@"collection"];
         });
@@ -813,6 +812,15 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     dispatch_barrier_async(self.collection_access_queue, ^{
         [self->_collection.data removeObjectForKey:aKey];
     });
+}
+
+- (id)queryForKey:(NSString *)key {
+    id __block collectionData = nil;
+    dispatch_sync(self.collection_access_queue, ^{
+        collectionData = self->_collection.queries[key];
+    });
+    
+    return collectionData;
 }
 
 - (TSDKCollectionJSON *)collection {

@@ -83,6 +83,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)collectionObjectForKey:(NSString *)key;
 - (void)removeCollectionObjectForKey:(NSString *)aKey;
 
+- (id)queryForKey:(NSString *)key;
+
 - (TSDKCollectionCommand *_Nullable)commandForKey:(NSString *)key;
 - (NSURL *_Nullable)linkForKey:(NSString *)key;
 
