@@ -97,6 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (BOOL)isNewObject;
 - (void)undoChanges;
+- (NSURL *)urlForSave;
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
 + (void)saveObject:(TSDKCollectionObject *)object completion:(TSDKArrayCompletionBlock)completion;
 - (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * )queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;

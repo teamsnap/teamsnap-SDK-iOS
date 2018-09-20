@@ -91,6 +91,7 @@ typedef NS_ENUM(NSUInteger, TSDKEventEditMode) {
 
 @property (nonatomic, assign) TSDKRepeatingEventTypeCode repeatingTypeCode;
 
++ (void)saveEvent:(TSDKEvent * _Nonnull)event notifyTeamAsMember:(TSDKMember * _Nullable)member completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 - (NSComparisonResult)compareStartDate:(TSDKEvent *_Nonnull)compareEvent;
 - (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel;

@@ -90,7 +90,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         [event setChangedValue:event.repeatingUuid forKey:@"repeating_uuid"];
         [event setEditMode:TSDKEventEditModeSingle];
     }
-    
+    [event saveWithURL:[event urlForSave] completion:completion];
 }
 
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
