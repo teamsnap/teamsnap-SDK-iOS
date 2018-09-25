@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, strong) NSString *_Nullable name; //Example: Falcon Park
 @property (nonatomic, strong) NSString *_Nullable url; //Example: http://www.google.com
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
 @property (nonatomic, strong) NSURL *_Nullable linkTeam;
 @property (nonatomic, strong) NSURL *_Nullable linkEvents;
 
