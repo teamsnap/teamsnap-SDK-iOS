@@ -81,7 +81,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL canDisplayTeamStore;
 @property (nonatomic, assign) BOOL isStoreConfigured;
 @property (nonatomic, assign, readonly) BOOL isEventLineupEnabled;
-
+@property (nonatomic, assign) BOOL canSetupWePay;
 @property (nonatomic, strong) NSString *_Nullable currencySymbol; //Example: $
 @property (nonatomic, assign) NSInteger hideHeader; //Example: 0
 @property (nonatomic, strong) NSURL *_Nullable linkTeam;

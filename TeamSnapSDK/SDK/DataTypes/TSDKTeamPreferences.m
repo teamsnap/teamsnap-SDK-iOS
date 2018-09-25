@@ -28,6 +28,10 @@
     return @"teams_preferences";
 }
 
+- (BOOL)canSetupWePay {
+    return YES;
+}
+
 
 #if TARGET_OS_IPHONE
 -(void)getTeamPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
