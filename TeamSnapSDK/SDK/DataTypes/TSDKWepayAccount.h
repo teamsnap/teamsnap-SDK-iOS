@@ -46,6 +46,19 @@ typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
 
 - (TSDKWePayAccountState)state;
 
+/**
+ Creates a new WePay Account and associated that account to the team passed in the teamID parameter.
+
+ @param email The email to create the account for
+ @param firstName User's firts name
+ @param lastName User's last name
+ @param accountName An account name (user input)
+ @param accountDescription An account description (user input)
+ @param teamId The Team to associate the account with.
+ @param countryCode Current valid values are "US" or "CA"
+ @param completion A completion block called once the action is completed
+ */
++ (void)createWithEmail:(NSString * _Nonnull)email firstName:(NSString *_Nonnull)firstName lastName:(NSString *_Nonnull)lastName accountName:(NSString *_Nonnull)accountName accountDescription:(NSString *_Nonnull)accountDescription teamId:(NSString *_Nonnull)teamId countryCode:(NSString *_Nonnull)countryCode completion:(TSDKWepayAccountCompletionBlock _Nonnull)completion;
 
 @end
 

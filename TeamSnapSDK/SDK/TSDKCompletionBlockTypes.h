@@ -99,5 +99,5 @@ typedef void  (^TSDKSportPositionArrayCompletionBlock)(BOOL success, BOOL comple
 typedef void  (^TSDKInvoicePaymentsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKInvoicePayment *>*_Nullable invoicePayments, NSError *_Nullable error);
 typedef void  (^TSDKInvoicePaymentTransactionsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKInvoicePaymentTransaction *>*_Nullable invoicePaymentTransactions, NSError *_Nullable error);
 typedef void  (^TSDKWepayAccountsArrayCompletionBlock)(BOOL success, BOOL complete, NSArray<TSDKWepayAccount *>*_Nullable accounts, NSError *_Nullable error);
-
+typedef void  (^TSDKWepayAccountCompletionBlock)(BOOL success, BOOL complete, TSDKWepayAccount *_Nullable accounts, NSError *_Nullable error);
 #endif /* TSDKCompletionBlockTypes_h */

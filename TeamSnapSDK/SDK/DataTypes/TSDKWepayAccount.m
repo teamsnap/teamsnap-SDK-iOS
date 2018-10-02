@@ -35,4 +35,36 @@
     }
 }
 
++ (void)createWithEmail:(NSString *)email firstName:(NSString *)firstName lastName:(NSString *)lastName accountName:(NSString *)accountName accountDescription:(NSString *)accountDescription teamId:(NSString *)teamId countryCode:(NSString *)countryCode completion:(TSDKWepayAccountCompletionBlock)completion {
+    TSDKCollectionCommand *createAccountCommand = [[TSDKCollectionObject commandForClass:@"wepay_accounts" forKey:@"create_with_access"] copy];
+    createAccountCommand.data[@"first_name"] = firstName;
+    createAccountCommand.data[@"last_name"] = lastName;
+    createAccountCommand.data[@"account_name"] = accountName;
+    createAccountCommand.data[@"account_description"] = accountDescription;
+    createAccountCommand.data[@"email"] = email;
+    createAccountCommand.data[@"team_id"] = teamId;
+    createAccountCommand.data[@"country_code"] = countryCode;
+    
+    [createAccountCommand executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        if (success && ([[objects collection] isKindOfClass:[NSArray class]])) {
+            NSArray *accounts = [TSDKObjectsRequest SDKObjectsFromCollection:objects];
+            TSDKWepayAccount *newAccount;
+            
+            for(id object in accounts) {
+                if([object isKindOfClass:[TSDKWepayAccount class]]) {
+                    newAccount = object;
+                }
+            }
+            
+            if(newAccount) {
+                completion(success, complete, newAccount, error);
+            } else {
+                completion(success, complete, nil, error);
+            }
+        } else {
+            completion(success, complete, nil, error);
+        }
+    }];
+}
+
 @end
