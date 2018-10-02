@@ -13,6 +13,16 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
+typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
+    TSDKWePayAccountStateSubmitted,
+    TSDKWePayAccountStateActionRequired,
+    TSDKWePayAccountStatePending,
+    TSDKWePayAccountStateActive,
+    TSDKWePayAccountStateDisabled,
+    TSDKWePayAccountStateDeleted,
+    TSDKWePayAccountStateUnknown
+};
+
 @interface TSDKWepayAccount : TSDKCollectionObject
 
 @property (nonatomic, strong, nullable) NSString * userId; //Example: 2971597
@@ -24,7 +34,6 @@
 @property (nonatomic, strong, nullable) NSString * wepayUserId; //Example: <null>
 @property (nonatomic, strong, nullable) NSString * wepayAccessToken; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasCreatedWepayAccount; //Example: 1
-@property (nonatomic, strong, nullable) NSString * wepayAccountState; //Example: submitted
 @property (nonatomic, strong, nullable) NSString * wepayAccountId; //Example: <null>
 @property (nonatomic, assign) BOOL hasCompletedBankAccount; //Example: 0
 @property (nonatomic, strong, nullable) NSString * wepayActionReasons; //Example: **NULL**
@@ -34,6 +43,9 @@
 @property (nonatomic, strong, nullable) NSDate * expiredAt; //Example: <null>
 @property (nonatomic, strong, nullable) NSString * divisionId; //Example: <null>
 @property (nonatomic, strong, nullable) NSURL * linkUser;
+
+- (TSDKWePayAccountState)state;
+
 
 @end
 
