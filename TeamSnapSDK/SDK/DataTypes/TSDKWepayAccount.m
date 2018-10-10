@@ -67,4 +67,10 @@
     }];
 }
 
+- (void)sendConfirmationWithCompletion:(TSDKCompletionBlock)completion {
+    TSDKCollectionCommand *sendConfirmationCommand = [[TSDKCollectionObject commandForClass:@"wepay_accounts" forKey:@"send_confirmation"] copy];
+    sendConfirmationCommand.data[@"id"] = self.objectIdentifier;
+    [sendConfirmationCommand executeWithCompletion:completion];
+}
+
 @end

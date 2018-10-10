@@ -60,6 +60,14 @@ typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
  */
 + (void)createWithEmail:(NSString * _Nonnull)email firstName:(NSString *_Nonnull)firstName lastName:(NSString *_Nonnull)lastName accountName:(NSString *_Nonnull)accountName accountDescription:(NSString *_Nonnull)accountDescription teamId:(NSString *_Nonnull)teamId countryCode:(NSString *_Nonnull)countryCode completion:(TSDKWepayAccountCompletionBlock _Nonnull)completion;
 
+
+/**
+ Sends a confirmation email to an account if it's in the "pending" state.
+
+ @param completion A completion block called once the action is completed.
+ */
+- (void)sendConfirmationWithCompletion:(TSDKCompletionBlock)completion;
+
 @end
 
 @interface TSDKWepayAccount (ForwardedMethods)
