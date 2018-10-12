@@ -69,7 +69,7 @@
             command = [TSDKInvoicePayment commandForKey:@"pay_offline_cash"];
             break;
         case TSDKInvoiceOfflinePaymentMethodCheck:
-            command =[TSDKInvoicePayment commandForKey:@"pay_offline_cash"];
+            command =[TSDKInvoicePayment commandForKey:@"pay_offline_check"];
             break;
     }
     
