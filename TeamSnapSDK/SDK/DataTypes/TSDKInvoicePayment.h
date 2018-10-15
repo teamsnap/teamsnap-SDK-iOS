@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
+#import "TSDKInvoice.h"
 
 @interface TSDKInvoicePayment : TSDKCollectionObject
 
@@ -26,6 +27,8 @@
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicePaymentTransactions;
 
+- (void)actionRefundAmount:(NSDecimalNumber *_Nonnull)amount refundMethod:(TSDKInvoiceOfflinePaymentMethod)refundMethod detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
 
 //Records a submitted wepay credit card invoice_payment
 //+(void)actionPayWepayCreditCardAmount:(NSString *_Nonnull)amount invoiceId:(NSString *_Nonnull)invoiceId creditCardId:(NSString *_Nonnull)creditCardId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
@@ -36,17 +39,11 @@
 //Records wepay refunded invoice_payments
 //+(void)actionRecordRefundedWepayPaymentAmount:(NSString *_Nonnull)amount refundReason:(NSString *_Nonnull)refundReason wepayProcessingFee:(NSString *_Nonnull)wepayProcessingFee invoicePaymentId:(NSString *_Nonnull)invoicePaymentId teamsnapProcessingFee:(NSString *_Nonnull)teamsnapProcessingFee WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
-//Records an offline cash refund for an invoice_payment
-//+(void)actionRefundOfflineCashAmount:(NSString *_Nonnull)amount invoicePaymentId:(NSString *_Nonnull)invoicePaymentId detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
 //Records wepay pending invoice_payments
 //+(void)actionRecordPendingWepayPaymentAmount:(NSString *_Nonnull)amount teamsnapProcessingFee:(NSString *_Nonnull)teamsnapProcessingFee wepayProcessingFee:(NSString *_Nonnull)wepayProcessingFee wepayCheckoutId:(NSString *_Nonnull)wepayCheckoutId invoicePaymentId:(NSString *_Nonnull)invoicePaymentId referenceId:(NSString *_Nonnull)referenceId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 //Records a check payment for an invoice
-//+(void)actionPayOfflineCheckAmount:(NSString *_Nonnull)amount invoiceId:(NSString *_Nonnull)invoiceId detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//Records an offline check refund for an invoice_payment
-//+(void)actionRefundOfflineCheckAmount:(NSString *_Nonnull)amount invoicePaymentId:(NSString *_Nonnull)invoicePaymentId detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+//+(void)actionPayOfflineCheckAmount:(NSString *_Nonnull)amount invoiceId:(NSString *_Nonnull)invoiceId detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion
 
 //Records wepay failed payments
 //+(void)actionRecordFailedWepayPaymentErrordescription:(NSString *_Nonnull)errorDescription invoicePaymentId:(NSString *_Nonnull)invoicePaymentId wepayErrorId:(NSString *_Nonnull)wepayErrorId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
