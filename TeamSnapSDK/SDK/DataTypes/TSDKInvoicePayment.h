@@ -12,7 +12,7 @@
 @property (nonatomic, strong, nullable) NSString * initialPaymentProviderName; //Example: Offline
 @property (nonatomic, assign) BOOL isRefundable; //Example: 1
 @property (nonatomic, strong, nullable) NSString * initialPaymentProviderId; //Example: 8
-@property (nonatomic, assign) NSInteger amount; //Example: 150
+@property (nonatomic, strong, nullable) NSDecimalNumber * amount; //Example: 150
 @property (nonatomic, strong, nullable) NSString * amountWithCurrency; //Example: $150.00
 @property (nonatomic, strong, nullable) NSString * amountWithProcessingFeeWithCurrency; //Example: $150.00
 @property (nonatomic, strong, nullable) NSString * processingFeeWithCurrency; //Example: $150.00
@@ -22,7 +22,7 @@
 @property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2018-05-15T16:25:18Z
 @property (nonatomic, strong, nullable) NSString * invoiceId; //Example: 52600
 @property (nonatomic, strong, nullable) NSString * status; //Example: paid
-@property (nonatomic, assign) NSInteger amountWithProcessingFee; //Example: 150
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountWithProcessingFee; //Example: 150
 @property (nonatomic, strong, nullable) NSURL * linkInvoice;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicePaymentTransactions;
