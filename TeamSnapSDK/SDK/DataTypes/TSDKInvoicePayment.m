@@ -16,7 +16,7 @@
     return @"invoice_payment";
 }
 
-- (void)actionRefundAmount:(NSDecimalNumber *_Nonnull)amount refundMethod:(TSDKInvoiceOfflinePaymentMethod)refundMethod detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion {
+- (void)refundAmount:(NSDecimalNumber *_Nonnull)amount refundMethod:(TSDKInvoiceOfflinePaymentMethod)refundMethod detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion {
     TSDKCollectionCommand *refundCommand;
     switch (refundMethod) {
         case TSDKInvoiceOfflinePaymentMethodCash:
