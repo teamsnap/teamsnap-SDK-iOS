@@ -215,13 +215,16 @@
     }
 }
 
-- (void)getEventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {
-    
-    [TSDKObjectsRequest listEventsForTeam:self startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:^(BOOL success, BOOL complete, NSArray *objects, NSError *error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
+- (void)getEventsInDateRange:(NSDate *)startDate endDate:(NSDate *)endDate withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKPagedEventsCompletionBlock)completion {
+    [TSDKObjectsRequest listEventsForTeams:@[self] pageNumber:nil pageSize:nil startDate:startDate endDate:endDate configuration:configuration completion:completion];
+}
+
+- (void)getEventsStartingAfter:(NSDate *_Nonnull)date pageSize:(NSNumber *_Nullable)pageSize pageNumber:(NSNumber *_Nullable)pageNumber configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion {
+    [TSDKObjectsRequest listEventsForTeams:@[self] pageNumber:pageNumber pageSize:pageSize startDate:date endDate:nil configuration:configuration completion:completion];
+}
+
+- (void)getEventsStartingBefore:(NSDate *_Nonnull)date pageSize:(NSNumber *_Nullable)pageSize pageNumber:(NSNumber *_Nullable)pageNumber configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion {
+    [TSDKObjectsRequest listEventsForTeams:@[self] pageNumber:pageNumber pageSize:pageSize startDate:nil endDate:date configuration:configuration completion:completion];
 }
 
 - (void)getEventWithId:(NSString *_Nonnull)eventId withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKEventArrayCompletionBlock)completion {

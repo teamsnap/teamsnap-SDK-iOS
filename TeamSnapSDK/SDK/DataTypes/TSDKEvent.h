@@ -24,6 +24,12 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
     TSDKGameTypeCodeIsAway = 2,
 };
 
+typedef NS_ENUM(NSUInteger, TSDKEventEditMode) {
+    TSDKEventEditModeSingle,
+    TSDKEventEditModeRepeatingFuture,
+    TSDKEventEditModeRepeatingAll,
+};
+
 
 @interface TSDKEvent : TSDKCollectionObject
 
@@ -85,11 +91,13 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 
 @property (nonatomic, assign) TSDKRepeatingEventTypeCode repeatingTypeCode;
 
-- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSaveCompletionBlock _Nullable)completion;
++ (void)saveEvent:(TSDKEvent * _Nonnull)event notifyTeamAsMember:(TSDKMember * _Nullable)member completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 - (NSComparisonResult)compareStartDate:(TSDKEvent *_Nonnull)compareEvent;
 - (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel;
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *_Nullable)member completion:(TSDKSimpleCompletionBlock _Nullable)completion;
+- (TSDKEventEditMode)editMode;
+- (void)setEditMode:(TSDKEventEditMode)editMode;
 
 @end
 
@@ -106,6 +114,5 @@ typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
 -(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticDatumArrayCompletionBlock _Nullable)completion;
 -(void)getCalendarSingleEventWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getEventLineupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupCompletionBlock _Nullable)completion;
-
 
 @end

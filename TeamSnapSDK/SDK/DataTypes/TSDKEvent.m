@@ -76,18 +76,21 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
     // if they call save, don't notify team;
-    [self saveAndNotifyTeamAsRosterMember:nil completion:completion];
+    [TSDKEvent saveEvent:self notifyTeamAsMember:nil completion:^(BOOL success, BOOL complete, NSArray<TSDKEvent *> * _Nullable events, NSError * _Nullable error) {
+        if(completion) {
+            completion(success, [events firstObject], error);
+        }
+    }];
 }
 
-- (void)saveAndNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSaveCompletionBlock)completion {
-    [self setNotifyTeamAsMember:member];
-    
++ (void)saveEvent:(TSDKEvent * _Nonnull)event notifyTeamAsMember:(TSDKMember * _Nullable)member completion:(TSDKEventArrayCompletionBlock _Nullable)completion {
+    [event setNotifyTeamAsMember:member];
     // Until we have better support for Repeating events make sure repeating_include is set to "none"
-    if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
-        [self setChangedValue:self.repeatingUuid forKey:@"repeating_uuid"];
-        [self setString:@"none" forKey:@"repeating_include"];
+    if (event.repeatingUuid && ([event getString:@"repeating_include"] == nil)) {
+        [event setChangedValue:event.repeatingUuid forKey:@"repeating_uuid"];
+        [event setEditMode:TSDKEventEditModeSingle];
     }
-    [super saveWithCompletion:completion];
+    [event saveWithURL:[event urlForSave] completion:completion];
 }
 
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
@@ -96,6 +99,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 
 - (void)deleteAndShouldNotifyTeamAsRosterMember:(TSDKMember *)member completion:(TSDKSimpleCompletionBlock)completion {
     [self setNotifyTeamAsMember:member];
+
     if (self.repeatingUuid && ([self getString:@"repeating_include"] == nil)) {
         [self setChangedValue:self.repeatingUuid forKey:@"repeating_uuid"];
         [self setString:@"none" forKey:@"repeating_include"];
@@ -114,6 +118,33 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
             completion(success, complete, availability, error);
         }
     }];
+}
+
+- (TSDKEventEditMode)editMode {
+    if(self.repeatingUuid.length == 0) {
+        return TSDKEventEditModeSingle;
+    } else {
+        NSString *repeatingMode  = [[self getString:@"repeating_include"] lowercaseString];
+        if([repeatingMode isEqualToString:@"all"]) {
+            return TSDKEventEditModeRepeatingAll;
+        } else if([repeatingMode isEqualToString:@"future"]) {
+            return TSDKEventEditModeRepeatingFuture;
+        } else {
+            return TSDKEventEditModeSingle;
+        }
+    }
+}
+
+- (void)setEditMode:(TSDKEventEditMode)editMode {
+    switch (editMode) {
+        case TSDKEventEditModeSingle:
+            [self setString:@"none" forKey:@"repeating_include"];
+            break;
+        case TSDKEventEditModeRepeatingAll:
+            [self setString:@"all" forKey:@"repeating_include"];
+        case TSDKEventEditModeRepeatingFuture:
+            [self setString:@"future" forKey:@"repeating_include"];
+    }
 }
 
 - (NSComparisonResult)compareStartDate:(TSDKEvent *)compareEvent {

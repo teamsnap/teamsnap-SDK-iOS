@@ -139,7 +139,10 @@
 - (instancetype _Nullable)initWithName:(NSString *_Nonnull)name locationCountry:(NSString *_Nonnull)locationCountry locationPostalCode:(NSString *_Nullable)locationPostalCode ianaTimeZoneName:(NSString *_Nonnull)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId;
 - (void)bulkLoadDataWithTypes:(NSArray *_Nonnull)dataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
-- (void)getEventsInDateRange:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
+- (void)getEventsInDateRange:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion;
+- (void)getEventsStartingAfter:(NSDate *_Nonnull)date pageSize:(NSNumber *_Nullable)pageSize pageNumber:(NSNumber *_Nullable)pageNumber configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion;
+- (void)getEventsStartingBefore:(NSDate *_Nonnull)date pageSize:(NSNumber *_Nullable)pageSize pageNumber:(NSNumber *_Nullable)pageNumber configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion;
+
 - (void)getEventWithId:(NSString *_Nonnull)eventId withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 
 - (void)updateTimeZone:(NSTimeZone *_Nonnull)timeZone offsetEventTimes:(BOOL)offsetEventTimes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completion;

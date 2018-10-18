@@ -288,37 +288,17 @@ static NSArray *knownCompletionTypes;
     }
 }
 
-+ (void)listEventsForTeam:(TSDKTeam *)team startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(TSDKArrayCompletionBlock)completion {
-    if (team) {
-        
-        NSMutableDictionary *dateParamaters = [[NSMutableDictionary alloc] init];
-        if (startDate) {
-            [dateParamaters setValue:[startDate RCF3339DateTimeString] forKey:@"started_after"];
-        }
-        
-        if (endDate) {
-            [dateParamaters setValue:[endDate RCF3339DateTimeString] forKey:@"started_before"];
-        }
-        
-        [TSDKDataRequest requestObjectsForPath:team.linkEvents searchParamaters:[dateParamaters copy] sendDataDictionary:nil method:nil withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-            NSArray *events;
-            if (success) {
-                events = [self SDKObjectsFromCollection:objects collectionType:[TSDKEvent SDKType]];
-            }
-            if (completion) {
-                completion(success, complete, events, error);
-            }
-        }];
-    }
-}
-
-+ (NSDictionary *)eventsParametersWithTeams:(NSArray *)teams pageNumber:(NSInteger)pageNumber pageSize:(NSInteger)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate {
++ (NSDictionary *)eventsParametersWithTeams:(NSArray *)teams pageNumber:(NSNumber *)pageNumber pageSize:(NSNumber *)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate {
     
     NSString *teamIds = [self teamIdsParameterForTeams:teams];
     NSMutableDictionary *paramaters = [[NSMutableDictionary alloc] init];
     [paramaters setValue:teamIds forKey:@"team_id"];
-    [paramaters setValue:[@(pageNumber) stringValue] forKey:@"page_number"];
-    [paramaters setValue:[@(pageSize) stringValue] forKey:@"page_size"];
+    if(pageNumber) {
+        [paramaters setValue:[pageNumber stringValue] forKey:@"page_number"];
+    }
+    if(pageSize) {
+        [paramaters setValue:[pageSize stringValue] forKey:@"page_size"];
+    }
     if (startDate) {
         [paramaters setValue:[startDate RCF3339DateTimeString] forKey:@"started_after"];
     }
@@ -338,40 +318,119 @@ static NSArray *knownCompletionTypes;
     return [teamIds componentsJoinedByString:@","];
 }
 
-+ (void)listEventsForTeams:(NSArray *)teams pageNumber:(NSInteger)pageNumber pageSize:(NSInteger)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate rootLinks:(TSDKRootLinks *)rootLinks completion:(TSDKArrayCompletionBlock)completion {
 
-    NSString *eventsBaseURL = rootLinks.linkEvents.absoluteString;
-    NSURL *eventsURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/search", eventsBaseURL]];
-    NSDictionary *parameters = [self eventsParametersWithTeams:teams pageNumber:pageNumber pageSize:pageSize startDate:startDate endDate:endDate];
-    
-    [TSDKDataRequest requestObjectsForPath:eventsURL searchParamaters:parameters sendDataDictionary:nil method:nil withConfiguration:[TSDKRequestConfiguration new] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        NSArray *parsedObjects;
-        if (success) {
-            parsedObjects = [self SDKObjectsFromCollection:objects];
-        }
-        
-        if (parsedObjects == nil) {
-            parsedObjects = [[NSArray alloc] init];
-        }
-        
-        if (completion) {
-            completion(success, complete, parsedObjects, error);
++ (void)listEventsForTeams:(NSArray<TSDKTeam*>* _Nonnull)teams pageNumber:(NSNumber * _Nullable)pageNumber pageSize:(NSNumber * _Nullable)pageSize startDate:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion {
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+        if (rootLinks) {
+            NSString *eventsBaseURL = rootLinks.linkEvents.absoluteString;
+            NSURL *eventsURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/search", eventsBaseURL]];
+            NSDictionary *parameters = [self eventsParametersWithTeams:teams pageNumber:pageNumber pageSize:pageSize startDate:startDate endDate:endDate];
+            
+            [TSDKDataRequest requestObjectsForPath:eventsURL searchParamaters:parameters sendDataDictionary:nil method:nil withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+                [TSDKObjectsRequest handleEventsResponseWithSuccess:success complete:complete objects:objects error:error completion:completion];
+            }];
+        } else if (completion) {
+            completion(NO, NO, nil, nil, nil);
         }
     }];
 }
 
-+ (void)listEventsForTeams:(NSArray<TSDKTeam*>*)teamIds pageNumber:(NSInteger)pageNumber pageSize:(NSInteger)pageSize startDate:(NSDate*)startDate endDate:(NSDate*)endDate completion:(TSDKEventArrayCompletionBlock)completion {
-    
-    // these values are checked before using but we should assert their expected value right away
-    NSParameterAssert(startDate);
-    
++ (void)getNextEventsForPageURL:(NSURL * _Nonnull)url configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion {
+    [TSDKDataRequest requestObjectsForPath:url withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        [TSDKObjectsRequest handleEventsResponseWithSuccess:success complete:complete objects:objects error:error completion:completion];
+    }];
+}
+
++ (void)getEventsAndAvailabilityForTeam:(TSDKTeam * _Nonnull)team memberId:(NSString *)memberId pageNumber:(NSNumber * _Nullable)pageNumber pageSize:(NSNumber * _Nullable)pageSize startDate:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate configuration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPagedEventsAndAvailabilitiesCompletionBlock _Nonnull)completion {
     [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:nil completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         if (rootLinks) {
-            [self listEventsForTeams:teamIds pageNumber:pageNumber pageSize:pageSize startDate:startDate endDate:endDate rootLinks:rootLinks completion:completion];
+            NSURL *queryURL = [rootLinks queryURL];
+            NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:queryURL resolvingAgainstBaseURL:NO];
+            NSMutableArray *queryItems = [[NSMutableArray alloc] initWithArray:urlComponents.queryItems];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"types" value:@"event,availability"]];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"scope_to" value:@"event"]];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"page_size" value:pageSize.stringValue]];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"page_number" value:pageNumber.stringValue]];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"event__team_id" value:team.objectIdentifier]];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"availability__member_id" value:memberId]];
+            if(startDate) {
+                [queryItems addObject:[NSURLQueryItem queryItemWithName:@"event__started_after" value:[startDate RCF3339DateTimeString]]];
+                [queryItems addObject:[NSURLQueryItem queryItemWithName:@"event__sort_start_date" value:@"asc"]];
+            }
+            if(endDate) {
+                [queryItems addObject:[NSURLQueryItem queryItemWithName:@"event__started_before" value:[endDate RCF3339DateTimeString]]];
+                [queryItems addObject:[NSURLQueryItem queryItemWithName:@"event__sort_start_date" value:@"desc"]];
+            }
+            urlComponents.queryItems = queryItems;
+            
+            [TSDKDataRequest requestObjectsForPath:urlComponents.URL withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+                NSArray *parsedObjects;
+                NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:(parsedObjects.count / 2)];
+                NSMutableArray *availabilities = [[NSMutableArray alloc] initWithCapacity:(parsedObjects.count / 2)];
+                
+                if (success) {
+                    parsedObjects = [self SDKObjectsFromCollection:objects];
+                    for(id object in parsedObjects) {
+                        if([object isKindOfClass:[TSDKEvent class]]) {
+                            [events addObject:object];
+                        } else if([object isKindOfClass:[TSDKAvailability class]]) {
+                            [availabilities addObject:object];
+                        }
+                    }
+                }
+                
+                NSURL *nextPageURL = [NSURL URLWithString:[objects.links objectForKey:@"next"]];
+                
+                if (completion) {
+                    completion(success, complete, events, availabilities, nextPageURL, error);
+                }
+            }];
         } else if (completion) {
-            completion(NO, NO, nil, nil);
+            completion(NO, NO, nil, nil, nil, nil);
         }
     }];
+}
+
++ (void)getNextEventsAndAvailabilityForPageURL:(NSURL * _Nonnull)url configuration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPagedEventsAndAvailabilitiesCompletionBlock _Nullable)completion {
+    [TSDKDataRequest requestObjectsForPath:url withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+        NSArray *parsedObjects;
+        NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:(parsedObjects.count / 2)];
+        NSMutableArray *availabilities = [[NSMutableArray alloc] initWithCapacity:(parsedObjects.count / 2)];
+        
+        if (success) {
+            parsedObjects = [self SDKObjectsFromCollection:objects];
+            for(id object in parsedObjects) {
+                if([object isKindOfClass:[TSDKEvent class]]) {
+                    [events addObject:object];
+                } else if([object isKindOfClass:[TSDKAvailability class]]) {
+                    [availabilities addObject:object];
+                }
+            }
+        }
+        
+        NSURL *nextPageURL = [NSURL URLWithString:[objects.links objectForKey:@"next"]];
+        
+        if (completion) {
+            completion(success, complete, events, availabilities, nextPageURL, error);
+        }
+    }];
+}
+
++ (void)handleEventsResponseWithSuccess:(BOOL)success complete:(BOOL)complete objects:(TSDKCollectionJSON *)objects error:(NSError *)error completion:(TSDKPagedEventsCompletionBlock _Nullable)completion {
+    NSArray *parsedObjects;
+    if (success) {
+        parsedObjects = [self SDKObjectsFromCollection:objects];
+    }
+    
+    if (parsedObjects == nil) {
+        parsedObjects = [[NSArray alloc] init];
+    }
+    
+    NSURL *nextPageURL = [NSURL URLWithString:[objects.links objectForKey:@"next"]];
+    
+    if (completion) {
+        completion(success, complete, parsedObjects, nextPageURL, error);
+    }
 }
 
 + (void)invitationStatusForEmailAddress:(NSString *)emailAddress withCompletion:(TSDKInviteStatusCompletionBlock)completionBlock {

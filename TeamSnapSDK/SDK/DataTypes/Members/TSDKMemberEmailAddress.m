@@ -57,7 +57,11 @@
         } else {
             URL = [[[TSDKTeamSnap sharedInstance] rootLinks] linkForKey:[[self class] SDKREL]];
         }
-        [self saveWithURL:URL completion:completion];
+        [self saveWithURL:URL completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
+            if(completion) {
+                completion(success, [objects firstObject], error);
+            }
+        }];
     } else {
         if(completion) {
             completion(NO, nil, nil);
