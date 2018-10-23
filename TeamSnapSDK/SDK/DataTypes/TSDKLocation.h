@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSURL *_Nullable linkTeam;
 @property (nonatomic, strong) NSURL *_Nullable linkEvents;
 
+- (BOOL)hasGeocodedLocation;
+
 @end
 
 @interface TSDKLocation (ForwardedMethods)

@@ -16,4 +16,18 @@
     return @"location";
 }
 
+- (BOOL)hasGeocodedLocation {
+    NSNumber *latitude = [self collectionObjectForKey:@"latitude"];
+    NSNumber *longitude = [self collectionObjectForKey:@"longitude"];
+    
+    if ((latitude == nil) || [latitude isEqual:[NSNull null]] || ([latitude doubleValue] == 0.00)) {
+        return NO;
+    }
+    
+    if ((longitude == nil) || [longitude isEqual:[NSNull null]] || ([longitude doubleValue] == 0.00)) {
+        return NO;
+    }
+    return YES;
+}
+
 @end
