@@ -1012,6 +1012,12 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     return URL;
 }
 
+- (void)setCollectionHref:(NSURL *)href {
+    dispatch_barrier_async(self.collection_access_queue, ^{
+        self->_collection.href = href;
+    });
+}
+
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
     [self saveWithURL:[self urlForSave] completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
         if(completion) {
