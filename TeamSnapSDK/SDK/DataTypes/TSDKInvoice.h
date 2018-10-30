@@ -79,6 +79,8 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 @property (nonatomic, strong, nullable) NSString * amountPaidWithCurrency; //Example: $0.00
 @property (nonatomic, strong, nullable) NSString * totalWithCurrency; //Example: $150.00
 @property (nonatomic, assign) NSInteger canPayByPaymentSchedule; //Example: 0
+@property (nonatomic, strong, nullable) NSString * amountCollectedWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountCollected; //Example: 0
 @property (nonatomic, strong, nullable) NSURL * linkInvoiceLineItems;
 @property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipients;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;

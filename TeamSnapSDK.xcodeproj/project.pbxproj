@@ -29,7 +29,7 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
-		565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */; };
+		565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		565B9E022162CC6600A337C8 /* TSDKWepayAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */; };
 		566145F620E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		566145F720E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */; };
@@ -1430,6 +1430,7 @@
 					};
 					969E80491BAAE62E00CA518F = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = YN466NRGZP;
 					};
 					96B47F181BADB33E0035F2CC = {
 						CreatedOnToolsVersion = 7.1;
@@ -1884,6 +1885,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YN466NRGZP;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1898,6 +1900,7 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = NO;
+				DEVELOPMENT_TEAM = YN466NRGZP;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
