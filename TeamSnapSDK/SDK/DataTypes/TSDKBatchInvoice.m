@@ -10,7 +10,7 @@
 
 @implementation TSDKBatchInvoice
 
-@dynamic isRecipientPayingTransactionFees, teamId, amountInvoicedWithCurrency, status, title, isCancelable, paymentAdjustmentsAmount, updatedAt, paymentAdjustmentsAmountWithCurrency, invoicesPastDueCount, isDeletable, invoicesCount, amountPaid, amountInvoiced, amountPaidWithCurrency, invoicesUnpaidCount, amountDueWithCurrency, amountDue, invoicesPaidCount, createdAt, divisionId, dueAt, batchInvoiceDescription, amountCollectedWithCurrency, linkInvoices, linkInvoiceRecipients, linkTeam, linkBatchInvoiceLineItems;
+@dynamic isRecipientPayingTransactionFees, teamId, amountInvoicedWithCurrency, status, title, isCancelable, paymentAdjustmentsAmount, updatedAt, paymentAdjustmentsAmountWithCurrency, invoicesPastDueCount, isDeletable, invoicesCount, amountPaid, amountInvoiced, amountPaidWithCurrency, invoicesUnpaidCount, amountDueWithCurrency, amountDue, invoicesPaidCount, createdAt, divisionId, dueAt, amountCollected, batchInvoiceDescription, amountCollectedWithCurrency, linkInvoices, linkInvoiceRecipients, linkTeam, linkBatchInvoiceLineItems;
 
 + (NSString *)SDKType {
     return @"batch_invoice";
@@ -20,16 +20,16 @@
     if (self.amountInvoiced == nil || self.amountInvoiced.floatValue == 0.0) {
         return 0.0;
     }
-    if (self.amountPaid == nil || self.amountPaid.floatValue == 0.0) {
+    if (self.amountCollected == nil || self.amountCollected.floatValue == 0.0) {
         return 0.0;
     }
-    CGFloat amountPaidFloat = [self.amountPaid floatValue] ;
+    CGFloat amountCollectedFloat = [self.amountCollected floatValue] ;
     CGFloat amountInvoicedFloat = [self.amountInvoiced floatValue];
     if (amountInvoicedFloat <= 0.01) {
         return 100.0;
     }
     
-    return amountPaidFloat/amountInvoicedFloat;
+    return amountCollectedFloat/amountInvoicedFloat;
 }
 
 - (TSDKInvoiceStatus)invoiceStatus {

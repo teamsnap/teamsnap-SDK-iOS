@@ -21,16 +21,16 @@
     if (self.total == nil || self.total.floatValue == 0.0) {
         return 0.0;
     }
-    if (self.amountPaid == nil || self.amountPaid.floatValue == 0.0) {
+    if (self.amountCollected == nil || self.amountCollected.floatValue == 0.0) {
         return 0.0;
     }
-    CGFloat amountPaidFloat = [self.amountPaid floatValue] ;
+    CGFloat amountCollectedFloat = [self.amountCollected floatValue] ;
     CGFloat totalFloat = [self.total floatValue];
     if (totalFloat <= 0.01) {
         return 100.0;
     }
     
-    return amountPaidFloat/totalFloat;
+    return amountCollectedFloat/totalFloat;
 }
 
 + (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString {
