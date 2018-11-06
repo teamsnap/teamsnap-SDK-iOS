@@ -43,6 +43,7 @@ typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
 @property (nonatomic, strong, nullable) NSDate * expiredAt; //Example: <null>
 @property (nonatomic, strong, nullable) NSString * divisionId; //Example: <null>
 @property (nonatomic, strong, nullable) NSURL * linkUser;
+@property (nonatomic, strong, nullable) NSURL * linkWepayLogin;
 
 - (TSDKWePayAccountState)state;
 
