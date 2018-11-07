@@ -130,6 +130,8 @@
 @property (nonatomic, strong, nullable) NSURL * linkBroadcastAlerts;
 @property (nonatomic, strong, nullable) NSURL * linkTeamPublicSite;
 @property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipientsInvoicesAggregates;
+@property (nonatomic, strong, nullable) NSURL * linkWepayAccounts;
+@property (nonatomic, strong, nullable) NSURL * linkGrantedWepayAccount;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
@@ -271,5 +273,7 @@
 -(void)getBroadcastAlertsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBroadcastAlertArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamPublicSiteWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getInvoiceRecipientsInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoiceRecipientsInvoicesAggregateCompletionBlock _Nonnull)completion;
+-(void)getWepayAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
+-(void)getGrantedWepayAccountWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
 
 @end
