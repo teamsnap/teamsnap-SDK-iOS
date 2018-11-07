@@ -29,6 +29,8 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
+		565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		565B9E022162CC6600A337C8 /* TSDKWepayAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */; };
 		566145F620E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		566145F720E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */; };
 		5676302720D0915C002AEFE7 /* TSDKInvoicePayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -427,6 +429,8 @@
 		5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageSender.h; path = Protocols/TSDKMessageSender.h; sourceTree = "<group>"; };
 		564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicesAggregate.h; sourceTree = "<group>"; };
 		564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicesAggregate.m; sourceTree = "<group>"; };
+		565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKWepayAccount.h; sourceTree = "<group>"; };
+		565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKWepayAccount.m; sourceTree = "<group>"; };
 		566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoiceRecipientsInvoicesAggregate.h; sourceTree = "<group>"; };
 		566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoiceRecipientsInvoicesAggregate.m; sourceTree = "<group>"; };
 		5676302520D0915C002AEFE7 /* TSDKInvoicePayment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicePayment.h; sourceTree = "<group>"; };
@@ -1067,6 +1071,8 @@
 				56A1804720D3275B0075775A /* TSDKInvoicePaymentTransaction.m */,
 				566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */,
 				566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */,
+				565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */,
+				565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1255,6 +1261,7 @@
 				5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */,
 				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
+				565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */,
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
@@ -1423,6 +1430,7 @@
 					};
 					969E80491BAAE62E00CA518F = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = YN466NRGZP;
 					};
 					96B47F181BADB33E0035F2CC = {
 						CreatedOnToolsVersion = 7.1;
@@ -1577,6 +1585,7 @@
 				969E80F61BAAE7AB00CA518F /* TSDKTrackedItem.m in Sources */,
 				969B7EE11C7CBBB300FD3EA0 /* TSDKMemberPayment.m in Sources */,
 				965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,
+				565B9E022162CC6600A337C8 /* TSDKWepayAccount.m in Sources */,
 				56A1804920D3275B0075775A /* TSDKInvoicePaymentTransaction.m in Sources */,
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
 				9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */,
@@ -1876,6 +1885,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YN466NRGZP;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1890,6 +1900,7 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = NO;
+				DEVELOPMENT_TEAM = YN466NRGZP;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
