@@ -11,7 +11,7 @@
 
 @implementation TSDKInvoice
 
-@dynamic isPayableOffline, paymentAdjustmentsAmount, processingFeesCanceledWithCurrency, amountRefundedWithProcessingFeesRefunded, processingFeesCanceled, createdAt, processingFeesSubTotalWithCurrency, teamId, dueAt, invoiceFrom, isPayable, amountPaid, invoiceDescription, processingFeesBilledWithCurrency, divisionId, uuid, amountPaidWithProcessingFeesPaid, processingFeesSubTotal, paymentAdjustmentsAmountWithCurrency, processingFeesBilled, amountRefunded, isCancelable, amountRefundedWithCurrency, invoiceTo, total, processingFeesPaidWithCurrency, processingFeesPaid, batchInvoiceId, subTotal, status, hasPaymentSchedule, hasPayments, amountRefundedWithProcessingFeesRefundedWithCurrency, sentAt, paymentUrl, updatedAt, balanceWithCurrency, title, balance, amountPaidWithProcessingFeesPaidWithCurrency, subTotalWithCurrency, amountPaidWithCurrency, totalWithCurrency, canPayByPaymentSchedule, linkInvoiceLineItems, linkInvoiceRecipients, linkTeam, linkBatchInvoice, linkInvoicePayments;
+@dynamic isPayableOffline, paymentAdjustmentsAmount, processingFeesCanceledWithCurrency, amountRefundedWithProcessingFeesRefunded, processingFeesCanceled, createdAt, processingFeesSubTotalWithCurrency, teamId, dueAt, invoiceFrom, isPayable, amountPaid, invoiceDescription, processingFeesBilledWithCurrency, divisionId, uuid, amountPaidWithProcessingFeesPaid, processingFeesSubTotal, paymentAdjustmentsAmountWithCurrency, processingFeesBilled, amountRefunded, isCancelable, amountRefundedWithCurrency, invoiceTo, total, processingFeesPaidWithCurrency, processingFeesPaid, batchInvoiceId, subTotal, status, hasPaymentSchedule, hasPayments, amountCollected, amountCollectedWithCurrency, amountRefundedWithProcessingFeesRefundedWithCurrency, sentAt, paymentUrl, updatedAt, balanceWithCurrency, title, balance, amountPaidWithProcessingFeesPaidWithCurrency, subTotalWithCurrency, amountPaidWithCurrency, totalWithCurrency, canPayByPaymentSchedule, linkInvoiceLineItems, linkInvoiceRecipients, linkTeam, linkBatchInvoice, linkInvoicePayments;
 
 + (NSString *)SDKType {
     return @"invoice";
@@ -21,16 +21,16 @@
     if (self.total == nil || self.total.floatValue == 0.0) {
         return 0.0;
     }
-    if (self.amountPaid == nil || self.amountPaid.floatValue == 0.0) {
+    if (self.amountCollected == nil || self.amountCollected.floatValue == 0.0) {
         return 0.0;
     }
-    CGFloat amountPaidFloat = [self.amountPaid floatValue] ;
+    CGFloat amountCollectedFloat = [self.amountCollected floatValue] ;
     CGFloat totalFloat = [self.total floatValue];
     if (totalFloat <= 0.01) {
         return 100.0;
     }
     
-    return amountPaidFloat/totalFloat;
+    return amountCollectedFloat/totalFloat;
 }
 
 + (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString {
@@ -69,7 +69,7 @@
             command = [TSDKInvoicePayment commandForKey:@"pay_offline_cash"];
             break;
         case TSDKInvoiceOfflinePaymentMethodCheck:
-            command =[TSDKInvoicePayment commandForKey:@"pay_offline_cash"];
+            command =[TSDKInvoicePayment commandForKey:@"pay_offline_check"];
             break;
     }
     

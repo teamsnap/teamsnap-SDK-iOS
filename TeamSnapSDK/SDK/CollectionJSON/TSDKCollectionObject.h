@@ -82,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setCollectionObject:(NSObject<NSCoding> * _Nullable)object forKey:(NSString *)key;
 - (id)collectionObjectForKey:(NSString *)key;
 - (void)removeCollectionObjectForKey:(NSString *)aKey;
+- (void)setCollectionHref:(NSURL *)href;
 
 - (id)queryForKey:(NSString *)key;
 

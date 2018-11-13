@@ -40,6 +40,8 @@ typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
 @property (nonatomic, strong, nullable) NSString * divisionId; //Example: <null>
 @property (nonatomic, strong, nullable) NSDate * dueAt; //Example: 2018-05-25T00:00:00Z
 @property (nonatomic, strong, nullable) NSString * batchInvoiceDescription; //Example: Field fees
+@property (nonatomic, strong, nullable) NSString * amountCollectedWithCurrency; //Example: $0.00
+@property (nonatomic, strong, nullable) NSDecimalNumber * amountCollected; //Example: 750
 @property (nonatomic, strong, nullable) NSURL * linkInvoices;
 @property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipients;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
