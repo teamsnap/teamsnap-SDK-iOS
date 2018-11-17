@@ -10,7 +10,7 @@
 
 @implementation TSDKInvoiceRecipient
 
-@dynamic invoiceableId, invoiceId, invoiceableType, createdAt, batchInvoiceId, invoiceTo, updatedAt, linkMember, linkInvoice, linkTeam, linkBatchInvoice;
+@dynamic invoiceableId, invoiceId, invoiceableType, createdAt, batchInvoiceId, invoiceTo, updatedAt, invoiceRecipientPhotoFile, linkMember, linkInvoice, linkTeam, linkBatchInvoice;
 
 + (NSString *)SDKType {
     return @"invoice_recipient";
