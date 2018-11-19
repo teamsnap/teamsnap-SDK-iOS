@@ -14,7 +14,7 @@
 @property (nonatomic, strong, nullable) NSString * batchInvoiceId; //Example: 7034
 @property (nonatomic, strong, nullable) NSString * invoiceTo; //Example: Morgan Ziegler
 @property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2018-04-25T20:28:43Z
-@property (nonatomic, strong, nullable) NSURL * invoiceRecipientPhotoFile;
+@property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipientPhotoFile;
 @property (nonatomic, strong, nullable) NSURL * linkMember;
 @property (nonatomic, strong, nullable) NSURL * linkInvoice;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;

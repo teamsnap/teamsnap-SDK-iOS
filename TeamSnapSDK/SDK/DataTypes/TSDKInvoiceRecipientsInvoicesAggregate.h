@@ -19,7 +19,7 @@
 @property (nonatomic, assign) NSInteger openInvoicesCount; //Example: 0
 @property (nonatomic, strong, nullable) NSString * memberId; //Example: 33734521
 @property (nonatomic, strong, nullable) NSURL * invoiceToPhotoOriginalUrl; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSURL * invoiceRecipientPhotoFile;
+@property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipientPhotoFile;
 @property (nonatomic, strong, nullable) NSURL * linkMember;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkInvoices;
