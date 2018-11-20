@@ -10,7 +10,7 @@
 
 @implementation TSDKInvoiceRecipientsInvoicesAggregate
 
- @dynamic invoiceTo, amountCollectedWithCurrency, amountCollected, amountInvoiced, amountDue, invoicesCount, amountInvoicedWithCurrency, amountDueWithCurrency, paidInvoicesCount, openInvoicesCount, memberId, invoiceToPhotoOriginalUrl, linkMember, linkTeam, linkInvoices;
+ @dynamic invoiceTo, amountCollectedWithCurrency, amountCollected, amountInvoiced, amountDue, invoicesCount, amountInvoicedWithCurrency, amountDueWithCurrency, paidInvoicesCount, openInvoicesCount, memberId, invoiceToPhotoOriginalUrl, linkInvoiceRecipientPhotoFile, linkMember, linkTeam, linkInvoices;
  
  + (NSString *)SDKType {
      return @"invoice_recipients_invoices_aggregate";
