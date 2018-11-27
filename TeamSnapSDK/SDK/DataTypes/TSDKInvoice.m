@@ -18,10 +18,10 @@
 }
 
 - (CGFloat)percentPaid {
-    if (self.subTotal == nil || self.subTotal.floatValue == 0.0) {
+    if (self.subTotal == nil || [self.subTotal compare:NSDecimalNumber.zero] == NSOrderedSame) {
         return 0.0;
     }
-    if (self.amountCollected == nil || self.amountCollected.floatValue == 0.0) {
+    if (self.amountCollected == nil || [self.amountCollected compare:NSDecimalNumber.zero] == NSOrderedSame) {
         return 0.0;
     }
     CGFloat amountCollectedFloat = [self.amountCollected floatValue] ;
