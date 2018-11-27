@@ -63,7 +63,7 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 @property (nonatomic, strong, nullable) NSString * processingFeesPaidWithCurrency; //Example: $0.00
 @property (nonatomic, strong, nullable) NSDecimalNumber * processingFeesPaid; //Example: 0
 @property (nonatomic, strong, nullable) NSString * batchInvoiceId; //Example: 3586
-@property (nonatomic, assign) NSInteger subTotal; //Example: 10
+@property (nonatomic, strong, nullable) NSDecimalNumber * subTotal; //Example: 10
 @property (nonatomic, strong, nullable) NSString * status; //Example: open
 @property (nonatomic, assign) BOOL hasPaymentSchedule; //Example: 0
 @property (nonatomic, assign) BOOL hasPayments; //Example: 0
