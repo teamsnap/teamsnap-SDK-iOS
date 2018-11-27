@@ -18,19 +18,19 @@
 }
 
 - (CGFloat)percentPaid {
-    if (self.total == nil || self.total.floatValue == 0.0) {
+    if (self.subTotal == nil || self.subTotal.floatValue == 0.0) {
         return 0.0;
     }
     if (self.amountCollected == nil || self.amountCollected.floatValue == 0.0) {
         return 0.0;
     }
     CGFloat amountCollectedFloat = [self.amountCollected floatValue] ;
-    CGFloat totalFloat = [self.total floatValue];
-    if (totalFloat <= 0.01) {
+    CGFloat subTotalFloat = [self.subTotal floatValue];
+    if (subTotalFloat <= 0.01) {
         return 100.0;
     }
     
-    return amountCollectedFloat/totalFloat;
+    return amountCollectedFloat / subTotalFloat;
 }
 
 + (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString {
