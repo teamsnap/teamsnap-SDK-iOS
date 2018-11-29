@@ -39,6 +39,7 @@ typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
 @property (nonatomic, strong, nullable) NSString * wepayActionReasons; //Example: **NULL**
 @property (nonatomic, assign) BOOL hasConfirmedEmailAddress; //Example: 0
 @property (nonatomic, strong, nullable) NSString * referenceId; //Example: f5d06061-8935-46eb-8cce-30362f572e3c
+@property (nonatomic, strong, nullable) NSString * userFullName; //Example: Bob Smith
 @property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2018-09-28T15:28:11Z
 @property (nonatomic, strong, nullable) NSDate * expiredAt; //Example: <null>
 @property (nonatomic, strong, nullable) NSString * divisionId; //Example: <null>
