@@ -48,7 +48,7 @@
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
 
     if (createInvoiceCommand) {
-        createInvoiceCommand.data[@"due_at"] = [dueDate RCF3339DateTimeString];
+        createInvoiceCommand.data[@"due_at"] = [dueDate YYYYMMDDStringFromGregorianCalendar];    // We're intentionally only sending the year/month/date here. The BE will perform some conversions on it to make it due at 11:59:59 pm in the team's timezone.
         createInvoiceCommand.data[@"title"] = title;
         
         createInvoiceCommand.data[@"processing_fee_paid_by"] = [TSDKBatchInvoice stringForFeesPaidBy:processingFeesPaidBy];

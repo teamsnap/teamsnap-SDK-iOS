@@ -36,6 +36,12 @@
  */
 + (NSDateFormatter *_Nonnull)yearMonthDateFormatter;
 /**
+ *  Creates a singleton date formatter with format yyyy-MM-dd forced to the Gregorian calendar
+ *
+ *  @return A date formatter with format yyyy-MM-dd
+ */
++ (NSDateFormatter *_Nonnull)gregorianYearMonthDateFormatter;
+/**
  *  Creates a singleton date formatter with format MMM d, yyyy
  *
  *  @return A date formatter with format MMM d, yyyy
