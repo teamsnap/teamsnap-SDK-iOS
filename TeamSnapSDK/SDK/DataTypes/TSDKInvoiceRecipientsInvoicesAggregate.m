@@ -10,17 +10,17 @@
 
 @implementation TSDKInvoiceRecipientsInvoicesAggregate
 
- @dynamic invoiceTo, amountCollectedWithCurrency, amountCollected, amountInvoiced, amountDue, invoicesCount, amountInvoicedWithCurrency, amountDueWithCurrency, paidInvoicesCount, openInvoicesCount, memberId, invoiceToPhotoOriginalUrl, linkMember, linkTeam, linkInvoices;
+ @dynamic invoiceTo, amountCollectedWithCurrency, amountCollected, amountInvoiced, amountDue, invoicesCount, amountInvoicedWithCurrency, amountDueWithCurrency, paidInvoicesCount, openInvoicesCount, memberId, invoiceToPhotoOriginalUrl, linkInvoiceRecipientPhotoFile, linkMember, linkTeam, linkInvoices;
  
  + (NSString *)SDKType {
      return @"invoice_recipients_invoices_aggregate";
  }
 
 - (CGFloat)percentPaid {
-    if (self.amountInvoiced == nil || self.amountInvoiced.floatValue == 0.0) {
+    if (self.amountInvoiced == nil || [self.amountInvoiced compare:NSDecimalNumber.zero] == NSOrderedSame) {
         return 0.0;
     }
-    if (self.amountCollected == nil || self.amountCollected.floatValue == 0.0) {
+    if (self.amountCollected == nil || [self.amountCollected compare:NSDecimalNumber.zero] == NSOrderedSame) {
         return 0.0;
     }
     CGFloat amountPaidFloat = [self.amountCollected floatValue] ;
