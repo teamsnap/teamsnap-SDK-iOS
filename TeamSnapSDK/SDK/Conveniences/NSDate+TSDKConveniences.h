@@ -11,6 +11,8 @@
 
 - (NSString *_Nullable)YYYYMMDDString;
 
+- (NSString *_Nullable)YYYYMMDDStringFromGregorianCalendar;
+
 - (NSString *_Nullable)RCF3339DateTimeString;
 
 - (BOOL)isSameDayAs:(NSDate *_Nullable)dateToCompare;

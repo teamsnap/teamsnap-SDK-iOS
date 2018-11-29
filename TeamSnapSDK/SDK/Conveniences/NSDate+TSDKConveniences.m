@@ -16,6 +16,10 @@
     return [[NSDateFormatter yearMonthDateFormatter] stringFromDate:self];
 }
 
+- (NSString *_Nullable)YYYYMMDDStringFromGregorianCalendar {
+    return [[NSDateFormatter gregorianYearMonthDateFormatter] stringFromDate:self];
+}
+
 - (NSString *)RCF3339DateTimeString {
     return [[NSDateFormatter RCF3339Style1DateFormatter] stringFromDate:self];
 }
