@@ -10,7 +10,7 @@
 
 @implementation TSDKLocation
 
-@dynamic phone, address, notes, teamId, name, url, latitude, longitude, linkTeam, linkEvents;
+@dynamic phone, address, notes, teamId, name, url, latitude, longitude, isDeletable, linkTeam, linkEvents;
 
 + (NSString *)SDKType {
     return @"location";
