@@ -61,13 +61,24 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
-        
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     });
     
     return dateFormatter;
-
 }
+
++ (NSDateFormatter *_Nonnull)gregorianYearMonthDateFormatter {
+    static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    });
+    
+    return dateFormatter;
+}
+
 + (NSDateFormatter *)monthDateYearFormatter {
     static NSDateFormatter *dateFormatter = nil;
     static dispatch_once_t onceToken;

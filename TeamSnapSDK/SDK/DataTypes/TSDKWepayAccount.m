@@ -10,7 +10,7 @@
 
 @implementation TSDKWepayAccount
 
-@dynamic userId, isDebitOptedIn, updatedAt, accountName, hasCompletedKyc, wepayDisabledAt, wepayUserId, wepayAccessToken, hasCreatedWepayAccount, wepayAccountId, hasCompletedBankAccount, wepayActionReasons, hasConfirmedEmailAddress, referenceId, createdAt, expiredAt, divisionId, linkUser, linkWepayLogin;
+@dynamic userId, isDebitOptedIn, updatedAt, accountName, hasCompletedKyc, wepayDisabledAt, wepayUserId, wepayAccessToken, hasCreatedWepayAccount, wepayAccountId, hasCompletedBankAccount, userFullName,  wepayActionReasons, hasConfirmedEmailAddress, referenceId, createdAt, expiredAt, divisionId, linkUser, linkWepayLogin;
 
 + (NSString *)SDKType {
     return @"wepay_account";
