@@ -1074,7 +1074,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                 }
             } else {
                 if (completion) {
-                    completion(success, complete, returnedObjects, error);
+                    completion(success, complete, @[weakSelf], error);
                 }
             }
             
@@ -1113,7 +1113,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
                     }
                 } else {
                     if (completion) {
-                        completion(success, complete, returnedObjects, error);
+                        completion(success, complete, @[weakSelf], error);
                     }
                 }
                 
