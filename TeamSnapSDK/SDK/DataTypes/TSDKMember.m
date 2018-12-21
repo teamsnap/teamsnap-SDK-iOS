@@ -24,7 +24,7 @@
 
 @implementation TSDKMember
 
- @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, isDeletable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto;
+ @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, isDeletable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto, linkMemberPhotoFile;
 
 + (NSString *)SDKType {
     return @"member";
@@ -78,6 +78,31 @@
             completion(image);
         }
     }];
+}
+
+- (NSURL *)linkForMemberPhotWithHeight:(NSInteger)height width:(NSInteger)width {
+    
+    NSURL *url = [[self linkMemberPhotoFile] URLByAppendingQuery:@"height" value:[NSString stringWithFormat:@"%ld",(long)height]];
+    
+    url = [url URLByAppendingQuery:@"width" value:[NSString stringWithFormat:@"%ld",(long)width]];
+    
+    url = [url URLByAppendingQuery:@"crop" value:@"fill"];
+    return url;
+}
+
+- (NSURL *)linkForMemberPhotWithHeight:(NSInteger)height {
+    
+    NSURL *url = [[self linkMemberPhotoFile] URLByAppendingQuery:@"height" value:[NSString stringWithFormat:@"%ld",(long)height]];
+    
+    url = [url URLByAppendingQuery:@"crop" value:@"proportional"];
+    return url;
+}
+
+- (NSURL *)linkForMemberPhotoWithWidth:(NSInteger)width {
+    NSURL *url = [[self linkMemberPhotoFile] URLByAppendingQuery:@"width" value:[NSString stringWithFormat:@"%ld",(long)width]];
+    
+    url = [url URLByAppendingQuery:@"crop" value:@"proportional"];
+    return url;
 }
 
 +(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(TSDKUploadProgressBlock)progressBlock {
