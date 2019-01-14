@@ -144,11 +144,10 @@ typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
 /**
  Returns a URL with the correct cropping parameters appended. This URL uses "smart" fill cropping to crop using face detection.
 
- @param width the width of the image
- @param height the height of the image
+ @param size the width and height of the image requested
  @return A fully specified URL for the photo
  */
-- (NSURL * _Nullable)memberPhotoURLForWidth:(NSInteger)width height:(NSInteger)height;
+- (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size;
 
 
 /**
