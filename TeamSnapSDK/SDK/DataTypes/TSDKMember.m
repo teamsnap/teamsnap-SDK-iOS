@@ -64,6 +64,22 @@
     }];
 }
 
+- (NSURL * _Nullable)memberPhotoURLForWidth:(NSInteger)width height:(NSInteger)height {
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:self.linkMemberPhotoFile resolvingAgainstBaseURL:NO];
+    if(urlComponents == nil || self.linkMemberPhotoFile == nil) {
+        return nil;
+    }
+    
+    NSMutableArray <NSURLQueryItem *> *queryItems = [NSMutableArray arrayWithArray:[urlComponents queryItems]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"width" value:[[NSNumber numberWithInteger:width] stringValue]]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"height" value:[[NSNumber numberWithInteger:height] stringValue]]];
+    // Potential v3 crop values are "fit", "fill" and "proportional". Of these values, only "fill" uses smart detection to find faces. See Confluence for more detail.
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"crop" value:@"fill"]];
+    urlComponents.queryItems = queryItems;
+    
+    return urlComponents.URL;
+}
+
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkMemberPhotos configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
