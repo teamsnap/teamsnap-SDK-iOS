@@ -65,8 +65,12 @@
 }
 
 - (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size {
+    if(self.linkMemberPhotoFile == nil || self.linkMemberPhotoFile.absoluteString.length == 0) {
+        return nil;
+    }
+    
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:self.linkMemberPhotoFile resolvingAgainstBaseURL:NO];
-    if(urlComponents == nil || self.linkMemberPhotoFile == nil) {
+    if(urlComponents == nil) {
         return nil;
     }
     
