@@ -24,7 +24,7 @@
 
 @implementation TSDKMember
 
- @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, isDeletable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto;
+ @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, isDeletable, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto, linkMemberPhotoFile;
 
 + (NSString *)SDKType {
     return @"member";
@@ -62,6 +62,26 @@
             completion(success, complete, objects, error);
         }
     }];
+}
+
+- (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size {
+    if(self.linkMemberPhotoFile == nil || self.linkMemberPhotoFile.absoluteString.length == 0) {
+        return nil;
+    }
+    
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:self.linkMemberPhotoFile resolvingAgainstBaseURL:NO];
+    if(urlComponents == nil) {
+        return nil;
+    }
+    
+    NSMutableArray <NSURLQueryItem *> *queryItems = [NSMutableArray arrayWithArray:[urlComponents queryItems]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"width" value:[[NSNumber numberWithFloat:size.width] stringValue]]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"height" value:[[NSNumber numberWithFloat:size.height] stringValue]]];
+    // Potential v3 crop values are "fit", "fill" and "proportional". Of these values, only "fill" uses smart detection to find faces. See Confluence for more detail.
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"crop" value:@"fill"]];
+    urlComponents.queryItems = queryItems;
+    
+    return urlComponents.URL;
 }
 
 -(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
