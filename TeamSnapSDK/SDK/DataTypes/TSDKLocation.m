@@ -30,8 +30,7 @@
 
     return ((fabs(dLatitude) <= 90.00) &&
             (fabs(dLongitude) <= 180.00) &&
-            (fabs(dLatitude) >= 0.01) &&
-            (fabs(dLongitude) >= 0.01));
+            (fabs(dLatitude) >= 0.01));
 }
 
 -(double)latitude {
