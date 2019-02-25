@@ -88,6 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSURL * linkDivisionMemberEmailAddresses;
 @property (nonatomic, strong, nullable) NSURL * linkDivisionContactEmailAddresses;
 @property (nonatomic, strong, nullable) NSURL * linkAuthorizationUserRegistrations;
+@property (nonatomic, strong, nullable) NSURL * linkMobileAdvertisingIdentities;
 @property (nonatomic, strong, nullable) NSURL * linkSponsors;
 @property (nonatomic, strong, nullable) NSURL * linkTeams;
 @property (nonatomic, strong, nullable) NSURL * linkPaypalCurrencies;
@@ -139,6 +140,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)actionSendLoginLinkToEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 + (void)actionRequestAuthTokenWithCode:(NSString *)code withCallbackURL:(NSURL *)callbackURL completion:(TSDKTokenCompletionBlock _Nullable)completion;
 + (void)resetPasswordForEmailAddress:(NSString *)emailAddress completion:(TSDKSimpleCompletionBlock _Nullable)completionBlock;
++ (void)sendAdvertisingIdentifierForUser:(NSString *)advertisingID withCompletion:(TSDKSimpleCompletionBlock _Nullable)completionBlock;
 
 @end
 
@@ -214,6 +216,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getAuthorizationUserRegistrationsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
+-(void)getMobileAdvertisingIdentitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getSponsorsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getTeamsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock)completion;
 -(void)getPaypalCurrenciesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
