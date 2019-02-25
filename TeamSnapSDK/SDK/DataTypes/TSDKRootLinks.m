@@ -14,6 +14,8 @@
 #import "TSDKTeamSnap.h"
 #import "TSDKConstants.h"
 
+static NSString * const lastDateSentKey = @"TSDKAdvertisingIdentifierLastSentSecondsSinceEpoch";
+
 @interface TSDKRootLinks()
 @property (nonatomic, assign) BOOL schemas;
 @property (nonatomic, assign) BOOL unauthenticatedSchemas;
@@ -21,7 +23,7 @@
 
 @implementation TSDKRootLinks
 
-@dynamic linkDivisionContactPhoneNumbers, linkPaymentNotes, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkMemberRegistrationSignups, linkCardFeed, linkTeamMediumComments, linkMemberLinks, linkLocations, linkTeamsPreferences, linkForumTopics, linkMessages, linkTeamMedia, linkEvents, linkStatistics, linkContactPhoneNumbers, linkTrackedItemStatuses, linkTslPhotos, linkDivisionMemberPhoneNumbers, linkContactEmailAddresses, linkMemberAssignments, linkTeamPublicSites, linkAssignments, linkDude, linkGcmDevices, linkSweet, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkDivisionEventsImports, linkPublicFeatures, linkTslChats, linkRegistrationForms, linkPlansAll, linkRandom, linkMemberStatistics, linkTeamPhotos, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkLeagueCustomData, linkAuthorizationRoot, linkSports, linkAvailabilities, linkAuthorizationUsers, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkAuthorizationMagicLinks, linkMembersPreferences, linkApiv2Root, linkDivisionsPreferences, linkOpponents, linkStatisticData, linkRegistrationSignupStatuses, linkMemberEmailAddresses, linkTslMetadata, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkMemberPhotos, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkAuthorizationUserRegistrations, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkMessageData, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkAuthorizationPasswordResets, linkXyzzy, linkApnDevices, linkAuthorizationTokens, linkForumPosts, linkContacts, linkCountries, linkAuthorizationUserRegistrationInitializations, linkApplePaidFeatures;
+@dynamic linkDivisionContactPhoneNumbers, linkPaymentNotes, linkDivisions, linkBroadcastAlerts, linkTeamsResults, linkMe, linkMemberRegistrationSignups, linkCardFeed, linkTeamMediumComments, linkMemberLinks, linkLocations, linkTeamsPreferences, linkForumTopics, linkMessages, linkTeamMedia, linkEvents, linkStatistics, linkContactPhoneNumbers, linkTrackedItemStatuses, linkTslPhotos, linkDivisionMemberPhoneNumbers, linkContactEmailAddresses, linkMemberAssignments, linkTeamPublicSites, linkAssignments, linkDude, linkGcmDevices, linkSweet, linkOpponentsResults, linkTrackedItems, linkSmsGateways, linkDivisionLocations, linkForecasts, linkDivisionEventsImports, linkPublicFeatures, linkTslChats, linkRegistrationForms, linkPlansAll, linkRandom, linkMemberStatistics, linkTeamPhotos, linkDivisionMembers, linkTeamMediaGroups, linkForumSubscriptions, linkGeocodedLocations, linkLeagueCustomData, linkAuthorizationRoot, linkSports, linkAvailabilities, linkAuthorizationUsers, linkMemberBalances, linkMemberPayments, linkLeagueCustomFields, linkMembers, linkAuthorizationMagicLinks, linkMembersPreferences, linkApiv2Root, linkDivisionsPreferences, linkOpponents, linkStatisticData, linkRegistrationSignupStatuses, linkMemberEmailAddresses, linkTslMetadata, linkTeamsPaypalPreferences, linkBroadcastEmails, linkTeamStatistics, linkDivisionMembersPreferences, linkPlans, linkSelf, linkDivisionTeamStandings, linkMemberPhotos, linkAuthorization, linkDivisionMemberEmailAddresses, linkDivisionContactEmailAddresses, linkAuthorizationUserRegistrations, linkMobileAdvertisingIdentities, linkSponsors, linkTeams, linkPaypalCurrencies, linkFacebookPages, linkMemberPhoneNumbers, linkEventStatistics, linkCustomData, linkMemberFiles, linkMessageData, linkTeamFees, linkBroadcastEmailAttachments, linkTimeZones, linkTslScores, linkLeagueRegistrantDocuments, linkStatisticGroups, linkStatisticAggregates, linkCustomFields, linkDivisionContacts, linkUsers, linkDivisionEvents, linkSchemas, linkRoot, linkAuthorizationPasswordResets, linkXyzzy, linkApnDevices, linkAuthorizationTokens, linkForumPosts, linkContacts, linkCountries, linkAuthorizationUserRegistrationInitializations, linkApplePaidFeatures;
 
 + (NSString *)SDKType {
     return nil;
@@ -349,6 +351,61 @@
             if(completionBlock) {
                 completionBlock(NO, error);
             }
+        }
+    }];
+}
+
++ (void)sendAdvertisingIdentifierForUser:(NSString *_Nonnull)advertisingID withCompletion:(TSDKSimpleCompletionBlock _Nullable)completionBlock {
+    
+    TSDKUser *user = [[TSDKTeamSnap sharedInstance] teamSnapUser];
+    
+    /// Is the user logged in?
+    if (user == nil || advertisingID == nil) {
+        if (completionBlock != nil) {
+            completionBlock(false, nil);
+        }
+        return;
+    }
+    
+    /// Have we already sent this ID once today?
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSTimeInterval secondsSinceEpoch = [defaults doubleForKey:lastDateSentKey];
+    NSTimeInterval lastSentIntervalAgo = ([[NSDate date] timeIntervalSince1970] - secondsSinceEpoch);
+    NSTimeInterval secondsPerDay = 60/*s/min*/*60/*min/hr*/*24/*hr/day*/;
+    
+    if ((secondsSinceEpoch > 0) &&
+        (lastSentIntervalAgo < secondsPerDay)) {
+        /// Last sent <24h ago — wait to send again
+        if (completionBlock != nil) {
+            completionBlock(false, nil);
+        }
+        return;
+    }
+    
+    [defaults setDouble:[[NSDate date] timeIntervalSince1970] forKey:lastDateSentKey];
+    
+    TSDKRequestConfiguration *config = [TSDKRequestConfiguration defaultRequestConfiguration];
+    [[TSDKTeamSnap sharedInstance] rootLinksWithConfiguration:config completion:^(TSDKRootLinks * _Nullable rootLinks, NSError * _Nullable error) {
+        if (rootLinks != nil) {
+            NSURL *url = rootLinks.linkMobileAdvertisingIdentities;
+            
+            if (url != nil) {
+                NSDictionary *postData = @{@"device_advertising_uuid" : advertisingID};
+                
+                [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:postData method:@"POST" configuration:config withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+                    if (error != nil) {
+                        /// Clear key for next run since we errored here
+                        [defaults removeObjectForKey:lastDateSentKey];
+                    }
+                    if (completionBlock != nil) {
+                        completionBlock(success, error);
+                    }
+                }];
+            } else if (completionBlock != nil) {
+                completionBlock(false, nil);
+            }
+        } else {
+            completionBlock(false, nil);
         }
     }];
 }
