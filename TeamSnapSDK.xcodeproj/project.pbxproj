@@ -23,7 +23,7 @@
 		561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */; };
 		5631BC33204EFE8C00F73515 /* TSDKInvoice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5631BC31204EFE8C00F73515 /* TSDKInvoice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5631BC34204EFE8C00F73515 /* TSDKInvoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631BC32204EFE8C00F73515 /* TSDKInvoice.m */; };
-		56321294222F1D4A00CC4E89 /* TSDKPartnerPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 56321292222F1D4A00CC4E89 /* TSDKPartnerPreferences.h */; };
+		56321294222F1D4A00CC4E89 /* TSDKPartnerPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 56321292222F1D4A00CC4E89 /* TSDKPartnerPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56321295222F1D4A00CC4E89 /* TSDKPartnerPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 56321293222F1D4A00CC4E89 /* TSDKPartnerPreferences.m */; };
 		563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
