@@ -132,6 +132,7 @@
 @property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipientsInvoicesAggregates;
 @property (nonatomic, strong, nullable) NSURL * linkWepayAccounts;
 @property (nonatomic, strong, nullable) NSURL * linkGrantedWepayAccount;
+@property (nonatomic, strong, nullable) NSURL * linkPartnersPreferencesFlipGive;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
@@ -275,5 +276,6 @@
 -(void)getInvoiceRecipientsInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoiceRecipientsInvoicesAggregateCompletionBlock _Nonnull)completion;
 -(void)getWepayAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
 -(void)getGrantedWepayAccountWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
+-(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
