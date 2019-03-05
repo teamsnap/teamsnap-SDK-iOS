@@ -276,6 +276,6 @@
 -(void)getInvoiceRecipientsInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoiceRecipientsInvoicesAggregateCompletionBlock _Nonnull)completion;
 -(void)getWepayAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
 -(void)getGrantedWepayAccountWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
--(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPartnerPreferencesArrayCompletionBlock _Nonnull)completion;
 
 @end
