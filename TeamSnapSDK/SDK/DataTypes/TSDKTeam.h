@@ -189,6 +189,15 @@
  */
 - (void)emailOwnerForUpsellFeature:(NSString * _Nonnull)feature fromContactId:(NSString * _Nonnull)contactId isOwner:(BOOL)isOwner completion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
+
+/**
+ Opts team into fundraising (current partner is FlipGive).
+
+ @param amountInCents The goal amount for the fundraising in cents.
+ @param completion Called upon completion.
+ */
+- (void)enableFundraisingWithAmount:(NSInteger)amountInCents completion:(TSDKCompletionBlock)completion;
+
 + (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
 //Toggles the visibility of teams on the list of active teams, per user. Requires a single id or a comma separated list of 'team_id's

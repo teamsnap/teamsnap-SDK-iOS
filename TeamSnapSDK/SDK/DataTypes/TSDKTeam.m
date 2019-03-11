@@ -49,6 +49,17 @@
     }];
 }
 
+- (void)enableFundraisingWithAmount:(NSInteger)amountInCents completion:(TSDKCompletionBlock)completion; {
+    TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"enable_fundraising"];
+    command.data[@"team_id"] = self.objectIdentifier;
+    command.data[@"goal_cents"] = [NSNumber numberWithInteger:amountInCents];
+    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        if (completion) {
+            completion(success, complete, objects, error);
+        }
+    }];
+}
+
 -(void)getBatchInvoicesAggregateWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBatchInvoiceAggregateCompletionBlock _Nonnull)completion {
     [self arrayFromLink:self.linkBatchInvoicesAggregates withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nonnull objects, NSError * _Nullable error) {
         if(completion) {
