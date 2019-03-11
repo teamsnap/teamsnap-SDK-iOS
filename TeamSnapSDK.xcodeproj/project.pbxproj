@@ -23,6 +23,8 @@
 		561BC27A1DE4C32D006BCCA1 /* TSDKApnDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */; };
 		5631BC33204EFE8C00F73515 /* TSDKInvoice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5631BC31204EFE8C00F73515 /* TSDKInvoice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5631BC34204EFE8C00F73515 /* TSDKInvoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631BC32204EFE8C00F73515 /* TSDKInvoice.m */; };
+		56321294222F1D4A00CC4E89 /* TSDKPartnerPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 56321292222F1D4A00CC4E89 /* TSDKPartnerPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		56321295222F1D4A00CC4E89 /* TSDKPartnerPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 56321293222F1D4A00CC4E89 /* TSDKPartnerPreferences.m */; };
 		563E3EFB1CD13A9200B0F1FF /* TSDKMessageRecipient.h in Headers */ = {isa = PBXBuildFile; fileRef = 563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA31C49723D007EE9B8 /* TSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 56458AA11C49723D007EE9B8 /* TSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56458AA41C49723D007EE9B8 /* TSDKConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 56458AA21C49723D007EE9B8 /* TSDKConstants.m */; };
@@ -423,6 +425,8 @@
 		561BC2781DE4C32D006BCCA1 /* TSDKApnDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKApnDevice.m; sourceTree = "<group>"; };
 		5631BC31204EFE8C00F73515 /* TSDKInvoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoice.h; sourceTree = "<group>"; };
 		5631BC32204EFE8C00F73515 /* TSDKInvoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoice.m; sourceTree = "<group>"; };
+		56321292222F1D4A00CC4E89 /* TSDKPartnerPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKPartnerPreferences.h; sourceTree = "<group>"; };
+		56321293222F1D4A00CC4E89 /* TSDKPartnerPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKPartnerPreferences.m; sourceTree = "<group>"; };
 		563E3EFA1CD13A9200B0F1FF /* TSDKMessageRecipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageRecipient.h; path = Protocols/TSDKMessageRecipient.h; sourceTree = "<group>"; };
 		56458AA11C49723D007EE9B8 /* TSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKConstants.h; sourceTree = "<group>"; };
 		56458AA21C49723D007EE9B8 /* TSDKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKConstants.m; sourceTree = "<group>"; };
@@ -1073,6 +1077,8 @@
 				566145F520E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m */,
 				565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */,
 				565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */,
+				56321292222F1D4A00CC4E89 /* TSDKPartnerPreferences.h */,
+				56321293222F1D4A00CC4E89 /* TSDKPartnerPreferences.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1246,6 +1252,7 @@
 				960556D21BE15F87003AB59D /* TSDKinvitationFinder.h in Headers */,
 				56A1804820D3275B0075775A /* TSDKInvoicePaymentTransaction.h in Headers */,
 				969E80B51BAAE7AB00CA518F /* TSDKCollectionJSON.h in Headers */,
+				56321294222F1D4A00CC4E89 /* TSDKPartnerPreferences.h in Headers */,
 				5688F54D1C91E2D80005C330 /* TSDKMessageDatum.h in Headers */,
 				96D756A61D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.h in Headers */,
 				969E80C71BAAE7AB00CA518F /* TSDKObjectsRequest.h in Headers */,
@@ -1587,6 +1594,7 @@
 				965B7D471C18CB2F009AF13E /* TSDKContactPhoneNumber.m in Sources */,
 				565B9E022162CC6600A337C8 /* TSDKWepayAccount.m in Sources */,
 				56A1804920D3275B0075775A /* TSDKInvoicePaymentTransaction.m in Sources */,
+				56321295222F1D4A00CC4E89 /* TSDKPartnerPreferences.m in Sources */,
 				969E80E01BAAE7AB00CA518F /* TSDKEvent.m in Sources */,
 				9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */,
 				568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */,
