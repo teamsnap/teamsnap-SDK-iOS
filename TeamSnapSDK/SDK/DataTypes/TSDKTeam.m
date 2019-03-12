@@ -53,11 +53,7 @@
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"enable_fundraising"];
     command.data[@"team_id"] = self.objectIdentifier;
     command.data[@"goal_cents"] = [NSNumber numberWithInteger:amountInCents];
-    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
+    [command executeWithCompletion:completion];
 }
 
 -(void)getBatchInvoicesAggregateWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKBatchInvoiceAggregateCompletionBlock _Nonnull)completion {
