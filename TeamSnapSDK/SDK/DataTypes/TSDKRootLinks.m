@@ -392,10 +392,11 @@ static NSString * const lastDateSentKey = @"TSDKAdvertisingIdentifierLastSentSec
             if (url != nil) {
                 NSDictionary *postData = @{@"device_advertising_uuid" : advertisingID};
                 
-                [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:postData method:@"POST" configuration:config withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
+                TSDKRequestConfiguration *requestConfig = [TSDKRequestConfiguration defaultRequestConfiguration];
+                [TSDKDataRequest requestJSONObjectsForPath:url sendDataDictionary:postData method:@"POST" configuration:requestConfig withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
                     if (error != nil) {
                         /// Clear key for next run since we errored here
-                        [defaults removeObjectForKey:lastDateSentKey];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:lastDateSentKey];
                     }
                     if (completionBlock != nil) {
                         completionBlock(success, error);
@@ -404,7 +405,7 @@ static NSString * const lastDateSentKey = @"TSDKAdvertisingIdentifierLastSentSec
             } else if (completionBlock != nil) {
                 completionBlock(false, nil);
             }
-        } else {
+        } else if (completionBlock != nil) {
             completionBlock(false, nil);
         }
     }];
