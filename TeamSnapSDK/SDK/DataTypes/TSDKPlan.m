@@ -10,7 +10,7 @@
 
 @implementation TSDKPlan
 
-@dynamic hasTextMessaging, hasSeasons, hasStatistics, platform, hasPhotos, hasCustomFields, hasHideMarketplaceTab, annualPrice, hasAvailabilities, hasSponsorships, hasTeamMedia, hasSslSecurity, hasOffSeason, hasAdFree, monthlyPriceDescription, name, uploadQuotaInMb, hasTracking, isActive, hasPayments, hasTeamLogo, hasWeather, hasTeamColors, planType, hasRss, hasPaypal, hasExternalEmail, hasAssignments, hasCustomDomain, platformVersion, monthlyPrice, hasRosterPhotos, hasClubs, hasEventLineups, hasTsl, hasTeamChat;
+@dynamic hasEventLineup, hasTextMessaging, hasSeasons, hasTsl, hasStatistics, platform, hasPhotos, createdAt, memberLimit, hasCustomFields, hasHideMarketplaceTab, annualPrice, hasAvailabilities, hasSponsorships, hasTeamMedia, hasSslSecurity, hasOffSeason, hasAdFree, monthlyPriceDescription, name, uploadQuotaInMb, hasTracking, hasUnlimitedMembers, hasExternalEmail, hasPayments, hasTeamLogo, hasWeather, hasTeamColors, hasRss, hasAvailabilitiesExport, hasPaypal, hasCustomDomain, hasAssignments, isActive, planType, platformVersion, updatedAt, monthlyPrice, hasTeamChat, hasRosterPhotos, hasClubs;
 
 + (NSString *)SDKType {
     return @"plan";
