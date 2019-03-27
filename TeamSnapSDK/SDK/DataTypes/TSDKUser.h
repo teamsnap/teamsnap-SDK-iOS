@@ -34,7 +34,6 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, assign) NSInteger activeTeamsCount; //Example: 92
 @property (nonatomic, assign) NSInteger teamsCount; //Example: 111
 @property (nonatomic, assign) NSInteger managedDivisionsCount; //Example: 4
-@property (nonatomic, strong, nullable) NSArray <NSString *> * managedTeamIds;
 @property (nonatomic, assign) BOOL isLabRat; //Example: 0
 @property (nonatomic, assign) BOOL isAdmin; //Example: 1
 @property (nonatomic, assign) BOOL hasCc; //Example: 0
@@ -67,7 +66,7 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, strong, nullable) NSURL * linkContacts;
 
 // Non Auto-generated
-
+- (NSArray <NSString *> *)managedTeamIds;
 @property (nonatomic, assign, readonly) TSDKHighestRoleType highestRoleKey;
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
