@@ -23,46 +23,50 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 
 @interface TSDKUser : TSDKCollectionObject
 
-@property (nonatomic, assign) NSInteger teamsCount;
-@property (nonatomic, assign) NSInteger activeTeamsCount;
-@property (nonatomic, assign) NSInteger managedDivisionsCount;
-@property (nonatomic, assign) NSInteger facebookId;
-@property (nonatomic, assign) BOOL receivesNewsletter;
-@property (nonatomic, strong, nullable) NSDate * createdAt;
-@property (nonatomic, strong, nullable) NSString * addressState;
-@property (nonatomic, strong, nullable) NSDate * birthday;
-@property (nonatomic, strong, nullable) NSString * firstName;
-@property (nonatomic, strong, nullable) NSString * facebookAccessToken;
-@property (nonatomic, strong, nullable) NSDate * updatedAt;
-@property (nonatomic, strong, nullable) NSString * lastName;
-@property (nonatomic, strong, nullable) NSString * email;
-@property (nonatomic, strong, nullable) NSString * addressCountry;
-@property (nonatomic, assign) BOOL displayAdsOnTeamList;
-@property (nonatomic, strong, nullable) NSString * highestRole;
-@property (nonatomic, assign) BOOL isAdmin; //Example: 0
+@property (nonatomic, strong, nullable) NSString * firstName; //Example: Skyler
+@property (nonatomic, strong, nullable) NSString * lastName; //Example: Seamans
+@property (nonatomic, strong, nullable) NSString * email; //Example: skyler.seamans@teamsnap.com
+@property (nonatomic, strong, nullable) NSDate * birthday; //Example: 1986-06-01
+@property (nonatomic, strong, nullable) NSString * addressState; //Example:
+@property (nonatomic, strong, nullable) NSString * addressCountry; //Example:
+@property (nonatomic, strong, nullable) NSString * highestRole; //Example: league_owner
+@property (nonatomic, strong, nullable) NSString * personUuid; //Example: **NULL**
+@property (nonatomic, assign) NSInteger activeTeamsCount; //Example: 92
+@property (nonatomic, assign) NSInteger teamsCount; //Example: 111
+@property (nonatomic, assign) NSInteger managedDivisionsCount; //Example: 4
+@property (nonatomic, assign) BOOL isLabRat; //Example: 0
+@property (nonatomic, assign) BOOL isAdmin; //Example: 1
+@property (nonatomic, assign) BOOL hasCc; //Example: 0
+@property (nonatomic, assign) BOOL canSendMessages; //Example: 1
+@property (nonatomic, assign) BOOL displayAdsOnTeamList; //Example: 0
+@property (nonatomic, assign) BOOL receivesNewsletter; //Example: 1
 @property (nonatomic, assign) BOOL isEligibleForFreeTrial; //Example: 0
-@property (nonatomic, assign) BOOL hasCc; //Example: 0 
-@property (nonatomic, strong, nullable) NSURL * linkAdvertisements;
-@property (nonatomic, strong, nullable) NSURL * linkApnDevices;
-@property (nonatomic, strong, nullable) NSURL * linkTeamsPreferences;
-@property (nonatomic, strong, nullable) NSURL * linkPersonas;
+@property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2019-03-22T19:19:35Z
+@property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2014-09-02T13:28:43Z
+@property (nonatomic, strong, nullable) NSURL * linkActiveTeams;
 @property (nonatomic, strong, nullable) NSURL * linkMessages;
+@property (nonatomic, strong, nullable) NSURL * linkDivisionMembers;
+@property (nonatomic, strong, nullable) NSURL * linkEvents;
+@property (nonatomic, strong, nullable) NSURL * linkTeamsPreferences;
+@property (nonatomic, strong, nullable) NSURL * linkActiveDivisions;
+@property (nonatomic, strong, nullable) NSURL * linkExperiments;
+@property (nonatomic, strong, nullable) NSURL * linkApnDevices;
+@property (nonatomic, strong, nullable) NSURL * linkMembers;
 @property (nonatomic, strong, nullable) NSURL * linkMessageData;
+@property (nonatomic, strong, nullable) NSURL * linkPayableInvoices;
 @property (nonatomic, strong, nullable) NSURL * linkFacebookPages;
 @property (nonatomic, strong, nullable) NSURL * linkTeams;
-@property (nonatomic, strong, nullable) NSURL * linkMembers;
-@property (nonatomic, strong, nullable) NSURL * linkActiveTeams;
-@property (nonatomic, strong, nullable) NSURL * linkDivisionMembers;
 @property (nonatomic, strong, nullable) NSURL * linkTslMetadatum;
-@property (nonatomic, strong, nullable) NSURL * linkDivisions;
-@property (nonatomic, strong, nullable) NSURL * linkActiveDivisions;
-@property (nonatomic, strong, nullable) NSURL * linkContacts;
-@property (nonatomic, strong, nullable) NSURL * linkPayableInvoices;
+@property (nonatomic, strong, nullable) NSURL * linkGcmDevices;
+@property (nonatomic, strong, nullable) NSURL * linkPersonas;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicesAggregates;
+@property (nonatomic, strong, nullable) NSURL * linkAdvertisements;
 @property (nonatomic, strong, nullable) NSURL * linkNextPayableInvoice;
+@property (nonatomic, strong, nullable) NSURL * linkDivisions;
+@property (nonatomic, strong, nullable) NSURL * linkContacts;
 
 // Non Auto-generated
-
+- (NSArray <NSString *> *)managedTeamIds;
 @property (nonatomic, assign, readonly) TSDKHighestRoleType highestRoleKey;
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;

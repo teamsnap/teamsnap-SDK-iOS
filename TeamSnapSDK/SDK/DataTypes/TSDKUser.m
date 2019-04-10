@@ -23,10 +23,23 @@
 
 }
 
-@dynamic teamsCount, activeTeamsCount, managedDivisionsCount, facebookId, receivesNewsletter, createdAt, addressState, birthday, firstName, facebookAccessToken, updatedAt, lastName, email, addressCountry, highestRole, isAdmin, isEligibleForFreeTrial, hasCc, displayAdsOnTeamList, linkAdvertisements, linkApnDevices, linkTeamsPreferences, linkPersonas, linkFacebookPages, linkTeams, linkMembers, linkActiveTeams, linkMessageData, linkDivisionMembers, linkDivisions, linkTslMetadatum, linkActiveDivisions, linkContacts, linkPayableInvoices, linkInvoicesAggregates, linkNextPayableInvoice;
+@dynamic personUuid, highestRole, birthday, managedDivisionsCount, canSendMessages, updatedAt, activeTeamsCount, addressState, lastName, isEligibleForFreeTrial, teamsCount, email, isAdmin, hasCc, addressCountry, createdAt, displayAdsOnTeamList, firstName, receivesNewsletter, isLabRat, linkActiveTeams, linkMessages, linkDivisionMembers, linkEvents, linkTeamsPreferences, linkActiveDivisions, linkExperiments, linkApnDevices, linkMembers, linkMessageData, linkPayableInvoices, linkFacebookPages, linkTeams, linkTslMetadatum, linkGcmDevices, linkPersonas, linkInvoicesAggregates, linkAdvertisements, linkNextPayableInvoice, linkDivisions, linkContacts;
 
 + (NSString *)SDKType {
     return @"user";
+}
+
+- (NSArray <NSString *> *)managedTeamIds {
+    NSArray <NSNumber *> *teamIdsAsNumbers = [self collectionObjectForKey:@"managed_team_ids"];
+    if(teamIdsAsNumbers) {
+        NSMutableArray <NSString *> *teamIds = [[NSMutableArray alloc] initWithCapacity:teamIdsAsNumbers.count];
+        for (NSNumber *teamId in teamIdsAsNumbers) {
+            [teamIds addObject:[teamId stringValue]];
+        }
+        return [teamIds copy];
+    } else {
+        return [NSArray array];
+    }
 }
 
 - (NSString *)fullName {
