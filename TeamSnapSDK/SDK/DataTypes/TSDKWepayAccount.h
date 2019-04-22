@@ -68,7 +68,7 @@ typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
 
  @param completion A completion block called once the action is completed.
  */
-- (void)sendConfirmationWithCompletion:(TSDKCompletionBlock)completion;
+- (void)sendConfirmationWithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 @end
 

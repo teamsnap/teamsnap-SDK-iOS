@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, strong, nullable) NSURL * linkContacts;
 
 // Non Auto-generated
-- (NSArray <NSString *> *)managedTeamIds;
+- (NSArray <NSString *> *_Nonnull)managedTeamIds;
 @property (nonatomic, assign, readonly) TSDKHighestRoleType highestRoleKey;
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;

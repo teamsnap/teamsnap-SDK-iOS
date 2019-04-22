@@ -8,11 +8,11 @@
 @interface TSDKInvoicePaymentTransaction : TSDKCollectionObject
 
 @property (nonatomic, strong, nullable) NSString * detail; //Example: **NULL**
-@property (nonatomic, assign) NSDecimalNumber * processingFee; //Example: 0
-@property (nonatomic, assign) NSDecimalNumber * amountWithProcessingFee; //Example: 25
+@property (nonatomic, assign, nullable) NSDecimalNumber * processingFee; //Example: 0
+@property (nonatomic, assign, nullable) NSDecimalNumber * amountWithProcessingFee; //Example: 25
 @property (nonatomic, strong, nullable) NSString * amountWithCurrency; //Example: $25.00
 @property (nonatomic, strong, nullable) NSString * paymentType; //Example: Cash
-@property (nonatomic, assign) NSDecimalNumber * amount; //Example: 25
+@property (nonatomic, assign, nullable) NSDecimalNumber * amount; //Example: 25
 @property (nonatomic, strong, nullable) NSString * paymentProviderId; //Example: 8
 @property (nonatomic, strong, nullable) NSString * amountWithProcessingFeeWithCurrency; //Example: $25.00
 @property (nonatomic, strong, nullable) NSDate * transactedAt; //Example: 2018-05-14T15:45:35Z
