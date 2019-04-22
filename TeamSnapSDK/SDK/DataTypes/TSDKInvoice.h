@@ -87,7 +87,7 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 @property (nonatomic, strong, nullable) NSURL * linkBatchInvoice;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicePayments;
 
-+ (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *)statusString;
++ (TSDKInvoiceStatus)invoiceStatusForStatusString:(NSString *_Nonnull)statusString;
 +(NSString *_Nonnull)invoiceStatusStringForStatus:(TSDKInvoiceStatus)status;
 
 //Create invoices using batch_invoice as a template for the specified ids.
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
 //Cancel invoice. Creates a line item opposite of the invoice balance. If payments have been made sets status to paid. If no payments have been made, sets status to canceled.
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId WithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
-- (void)cancelWithCompletion:(TSDKSimpleCompletionBlock)completion;
+- (void)cancelWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 //+(void)querySearchStatus:(NSString *_Nonnull)status pageNumber:(NSString *_Nonnull)pageNumber id:(NSString *_Nonnull)id memberId:(NSString *_Nonnull)memberId userId:(NSString *_Nonnull)userId batchInvoiceId:(NSString *_Nonnull)batchInvoiceId pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 

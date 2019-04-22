@@ -196,7 +196,7 @@
  @param amountInCents The goal amount for the fundraising in cents.
  @param completion Called upon completion.
  */
-- (void)enableFundraisingWithAmount:(NSInteger)amountInCents completion:(TSDKCompletionBlock)completion;
+- (void)enableFundraisingWithAmount:(NSInteger)amountInCents completion:(TSDKCompletionBlock _Nullable)completion;
 
 + (void)queryDivisionSearchPagesize:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber divisionId:(NSString *_Nonnull)divisionId isActive:(BOOL)isActive isCommissioner:(BOOL)isCommissioner WithCompletion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 
