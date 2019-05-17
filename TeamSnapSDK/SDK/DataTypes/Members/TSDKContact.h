@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSString *_Nullable invitationCode; //Example: **NULL**
 @property (nonatomic, strong) NSString *_Nullable memberId; //Example: 993324
 @property (nonatomic, strong) NSString *_Nullable userId; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * userFirstName; //Example: **Bob**
+@property (nonatomic, strong, nullable) NSString * userLastName; //Example: **Loblaw**
 @property (nonatomic, strong) NSString *_Nullable addressState; //Example:
 @property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2015-10-30T17:50:41Z
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
