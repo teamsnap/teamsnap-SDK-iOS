@@ -52,6 +52,15 @@
 }
 #endif
 
+- (NSString *)currencyCode {
+    // We need to dafault currencyCode to "USD"
+    NSString *currencyCode = [self getString:@"currency_code"];
+    if ((currencyCode == nil) || [currencyCode length] == 0) {
+        return @"USD";
+    }
+    return currencyCode;
+}
+
 - (TSDKTeamPreferenceMemberSortOrder)memberSortOrderPreference {
     if([[self.memberSortOrder lowercaseString] isEqualToString:[[self rawValueForMemberSortOrder:TSDKTeamPreferenceMemberSortOrderLastName] lowercaseString]]) {
         return TSDKTeamPreferenceMemberSortOrderLastName;
