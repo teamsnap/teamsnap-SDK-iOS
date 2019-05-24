@@ -10,7 +10,7 @@ before_script:
 .ios-build: &ios-build
   tags:
     - iOS
-    - Xcode10
+    - Xcode10.2
 
 'Branch Build':
   <<: *ios-build
