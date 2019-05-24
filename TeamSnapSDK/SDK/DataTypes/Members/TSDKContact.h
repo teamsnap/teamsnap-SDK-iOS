@@ -15,6 +15,7 @@
 @interface TSDKContact : TSDKCollectionObject <TSDKMessageRecipient, TSDKMessageSender, TSDKMemberOrContactProtocol>
 
 @property (nonatomic, assign) BOOL isPushable; //Example: 1
+@property (nonatomic, assign) BOOL isSelectableForChat; //Example: 1
 @property (nonatomic, assign) BOOL isInvitable; //Example: 0
 @property (nonatomic, strong) NSString *_Nullable addressCity; //Example:
 @property (nonatomic, assign) BOOL isAddressHidden; //Example: 0
