@@ -126,4 +126,16 @@
     }];
 }
 
+- (NSString *_Nonnull)fullNameOfUser {
+    if ((self.userFirstName.length>0) && (self.userLastName.length>0)) {
+        return [[NSString stringWithFormat:@"%@ %@", self.userFirstName, self.userLastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    } else if (self.userFirstName.length>0) {
+        return self.userFirstName;
+    } else if (self.userLastName.length>0) {
+        return self.userLastName;
+    } else {
+        return @"";
+    }
+}
+
 @end
