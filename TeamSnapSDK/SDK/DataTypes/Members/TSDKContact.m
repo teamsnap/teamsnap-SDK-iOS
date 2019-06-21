@@ -61,11 +61,16 @@
 
 - (NSString *)fullName {
     if ((self.firstName.length>0) && (self.lastName.length>0)) {
-        NSPersonNameComponents *nameComponents = [[NSPersonNameComponents alloc] init];
-        nameComponents.givenName = self.firstName;
-        nameComponents.familyName = self.lastName;
-        
-        NSString *fullName = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:nameComponents style:NSPersonNameComponentsFormatterStyleDefault options: 0];
+        NSString *fullName;
+        if (@available(iOS 9.0, *)) {
+            NSPersonNameComponents *nameComponents = [[NSPersonNameComponents alloc] init];
+            nameComponents.givenName = self.firstName;
+            nameComponents.familyName = self.lastName;
+            
+            fullName = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:nameComponents style:NSPersonNameComponentsFormatterStyleDefault options: 0];
+        } else {
+            fullName = [@[self.firstName, self.lastName] componentsJoinedByString:@" "];
+        }
         
         return [fullName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     } else if (self.firstName && self.firstName.length>0) {
@@ -134,11 +139,17 @@
 
 - (NSString *_Nonnull)fullNameOfUser {
     if ((self.userFirstName.length > 0) && (self.userLastName.length > 0)) {
-        NSPersonNameComponents *nameComponents = [[NSPersonNameComponents alloc] init];
-        nameComponents.givenName = self.userFirstName;
-        nameComponents.familyName = self.userLastName;
         
-        NSString *fullName = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:nameComponents style:NSPersonNameComponentsFormatterStyleDefault options: 0];
+        NSString *fullName;
+        if (@available(iOS 9.0, *)) {
+            NSPersonNameComponents *nameComponents = [[NSPersonNameComponents alloc] init];
+            nameComponents.givenName = self.userFirstName;
+            nameComponents.familyName = self.userLastName;
+            
+            fullName = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:nameComponents style:NSPersonNameComponentsFormatterStyleDefault options: 0];
+        } else {
+            fullName = [@[self.userFirstName, self.userLastName] componentsJoinedByString:@" "];
+        }
         
         return [fullName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     } else if (self.userFirstName.length > 0) {
