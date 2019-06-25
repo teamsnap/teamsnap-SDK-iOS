@@ -81,6 +81,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL canDisplayTeamStore;
 @property (nonatomic, assign) BOOL isStoreConfigured;
 @property (nonatomic, assign, readonly) BOOL isEventLineupEnabled;
+@property (nonatomic, assign, readonly) BOOL isDirectMessageEnabled;
 @property (nonatomic, assign) BOOL canSetupWepay;
 @property (nonatomic, strong) NSString *_Nullable currencySymbol; //Example: $
 @property (nonatomic, strong) NSString *_Nullable currencyCode; //Example: USD
