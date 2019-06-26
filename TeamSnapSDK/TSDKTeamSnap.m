@@ -27,6 +27,7 @@
 @property (nonatomic, strong) TSDKPublicFeatures *publicFeatures;
 @property (nonatomic, strong) SFSafariViewController *loginView API_AVAILABLE(ios(9.0));
 @property (nonatomic, assign) BOOL useCombinedContactCard;
+@property (nonatomic, strong, nonnull) NSOperationQueue *loginCompletionQueue;
 
 @end
 
@@ -50,6 +51,15 @@
     [TSDKDataRequest setBaseURL:url];
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _loginCompletionQueue = [[NSOperationQueue alloc] init];
+    }
+    
+    return self;
+}
+
 - (void)setClientId:(NSString *)clientId {
     [TSDKDataRequest setClientId:clientId];
     _clientId = clientId;
@@ -66,14 +76,43 @@
 }
 
 - (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, TSDKUser *user, NSError *error))completion {
-    if (self.teamSnapUser) {
-        [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
-            if (completion) {
-                completion(rootLinks != nil, self.teamSnapUser, error);
-            }
+    
+    NSError *__block loginError = nil;
+    BOOL __block loginSuccess = YES;
+    if (completion != nil) {
+        BOOL allowAuth = (self.loginCompletionQueue.operationCount == 0);
+        if (allowAuth) {
+            // Initial
+            [self.loginCompletionQueue setSuspended:YES];
+        }
+        
+        [self.loginCompletionQueue addOperationWithBlock:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(loginSuccess, self.teamSnapUser, loginError);
+            });
         }];
+        
+        if (allowAuth) {
+            if (self.teamSnapUser) {
+                [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
+                    loginSuccess = (rootLinks != nil);
+                    loginError = error;
+                    [self.loginCompletionQueue setSuspended:NO];
+                }];
+            } else {
+                [self processInitialConnectionWithConfiguration:configuration completion:^(BOOL success, TSDKUser *user, NSError *error) {
+                    loginSuccess = success;
+                    loginError = error;
+                    [self.loginCompletionQueue setSuspended:NO];
+                }];
+            }
+        }
     } else {
-        [self processInitialConnectionWithConfiguration:configuration completion:completion];
+        if (self.teamSnapUser) {
+            [self rootLinksWithConfiguration:configuration completion:nil];
+        } else {
+            [self processInitialConnectionWithConfiguration:configuration completion:nil];
+        }
     }
 }
 
@@ -85,6 +124,8 @@
 - (void)logout {
     self.teamSnapUser = nil;
     self.OAuthToken = nil;
+    [self.loginCompletionQueue cancelAllOperations];
+    self.loginCompletionQueue = [[NSOperationQueue alloc] init];
 }
 
 - (void)configureForCombinedContactFeature {
