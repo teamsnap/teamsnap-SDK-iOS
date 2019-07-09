@@ -44,7 +44,20 @@
 
 - (NSString *)fullName {
     if ((self.firstName.length>0) && (self.lastName.length>0)) {
-        return [[NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        NSString *fullName;
+        if (@available(iOS 9.0, *)) {
+            NSPersonNameComponents *nameComponents = [[NSPersonNameComponents alloc] init];
+            
+            nameComponents.givenName = self.firstName;
+            nameComponents.familyName = self.lastName;
+            
+            fullName = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:nameComponents style:NSPersonNameComponentsFormatterStyleDefault options: 0];
+        } else {
+            fullName = [@[self.firstName, self.lastName] componentsJoinedByString:@" "];
+        }
+        
+        return [fullName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     } else if (self.firstName.length>0) {
         return self.firstName;
     } else if (self.lastName.length>0) {

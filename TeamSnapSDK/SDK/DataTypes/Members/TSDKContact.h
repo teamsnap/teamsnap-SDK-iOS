@@ -65,5 +65,8 @@
 -(void)getMessagesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration type:(TSDKMessageType)type completion:(TSDKMessagesArrayCompletionBlock _Nullable)completion;
 - (void)getMessageWithId:(NSString *_Nonnull)messageId withConfiguration:(TSDKRequestConfiguration *_Nonnull)configuration completion:(void (^_Nonnull)(TSDKMessage * _Nullable))completion;
 
+- (NSString *_Nonnull)fullName;
+- (NSString *_Nonnull)fullNameOfUser;
+
 @end
 
