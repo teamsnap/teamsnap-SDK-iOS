@@ -53,6 +53,7 @@
 @property (nonatomic, assign) NSInteger nonPlayerMemberCount; //Example: 0
 @property (nonatomic, strong, nullable) NSString * leagueUrl; //Example: **NULL**
 @property (nonatomic, strong, nullable) NSString * locationPostalCode; //Example: 94108
+@property (nonatomic, strong, nullable) NSString * activePaymentProvider; // Example: Stripe
 @property (nonatomic, strong, nullable) NSURL * linkTeamMediaGroups;
 @property (nonatomic, strong, nullable) NSURL * linkContactEmailAddresses;
 @property (nonatomic, strong, nullable) NSURL * linkMembersPreferences;
@@ -132,6 +133,7 @@
 @property (nonatomic, strong, nullable) NSURL * linkInvoiceRecipientsInvoicesAggregates;
 @property (nonatomic, strong, nullable) NSURL * linkWepayAccounts;
 @property (nonatomic, strong, nullable) NSURL * linkGrantedWepayAccount;
+@property (nonatomic, strong, nullable) NSURL * linkStripeAccounts;
 @property (nonatomic, strong, nullable) NSURL * linkPartnersPreferencesFlipGive;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
@@ -285,6 +287,7 @@
 -(void)getInvoiceRecipientsInvoicesAggregatesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKInvoiceRecipientsInvoicesAggregateCompletionBlock _Nonnull)completion;
 -(void)getWepayAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
 -(void)getGrantedWepayAccountWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
+-(void)getStripeAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStripeAccountCompletionBlock _Nonnull)completion;
 -(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPartnerPreferencesArrayCompletionBlock _Nonnull)completion;
 
 @end

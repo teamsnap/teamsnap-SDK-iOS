@@ -108,3 +108,4 @@
 #import <TeamSnapSDK/TSDKInvoiceRecipientsInvoicesAggregate.h>
 #import <TeamSnapSDK/TSDKWepayAccount.h>
 #import <TeamSnapSDK/TSDKPartnerPreferences.h>
+#import <TeamSnapSDK/TSDKStripeAccount.h>
