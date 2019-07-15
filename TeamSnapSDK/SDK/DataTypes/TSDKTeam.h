@@ -53,7 +53,8 @@
 @property (nonatomic, assign) NSInteger nonPlayerMemberCount; //Example: 0
 @property (nonatomic, strong, nullable) NSString * leagueUrl; //Example: **NULL**
 @property (nonatomic, strong, nullable) NSString * locationPostalCode; //Example: 94108
-@property (nonatomic, strong, nullable) NSString * activePaymentProvider; // Example: Stripe
+@property (nonatomic, strong, nullable) NSString * activePaymentProvider; // Example: stripe
+@property (nonatomic, strong, nullable) NSString * defaultPaymentProvider; // Example: stripe
 @property (nonatomic, strong, nullable) NSURL * linkTeamMediaGroups;
 @property (nonatomic, strong, nullable) NSURL * linkContactEmailAddresses;
 @property (nonatomic, strong, nullable) NSURL * linkMembersPreferences;
