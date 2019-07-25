@@ -127,6 +127,8 @@
 		9681092F1D8488C600D94C53 /* TSDKCollectionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 9681092C1D8488C600D94C53 /* TSDKCollectionCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		968109301D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */; };
 		968109311D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */; };
+		9681418A22D391A500649B58 /* TSDKStripeAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 9681418822D391A500649B58 /* TSDKStripeAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9681418B22D391A500649B58 /* TSDKStripeAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 9681418922D391A500649B58 /* TSDKStripeAccount.m */; };
 		968457581CCE4AE000B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		968457591CCE4AE600B9946B /* TimeZones.json in Resources */ = {isa = PBXBuildFile; fileRef = 968457571CCE4AE000B9946B /* TimeZones.json */; };
 		9687E26020D01F44007AAE1D /* TSDKInvoiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9687E25F20D01F44007AAE1D /* TSDKInvoiceTests.m */; };
@@ -510,6 +512,8 @@
 		9678A35F1D86EC4E0078631C /* TSDKLeagueCustomField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKLeagueCustomField.m; path = Leagues/TSDKLeagueCustomField.m; sourceTree = "<group>"; };
 		9681092C1D8488C600D94C53 /* TSDKCollectionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKCollectionCommand.h; sourceTree = "<group>"; };
 		9681092D1D8488C600D94C53 /* TSDKCollectionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKCollectionCommand.m; sourceTree = "<group>"; };
+		9681418822D391A500649B58 /* TSDKStripeAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSDKStripeAccount.h; path = Payments/TSDKStripeAccount.h; sourceTree = "<group>"; };
+		9681418922D391A500649B58 /* TSDKStripeAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKStripeAccount.m; path = Payments/TSDKStripeAccount.m; sourceTree = "<group>"; };
 		968457571CCE4AE000B9946B /* TimeZones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TimeZones.json; path = SDK/Resources/TimeZones.json; sourceTree = "<group>"; };
 		9687E25F20D01F44007AAE1D /* TSDKInvoiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TSDKInvoiceTests.m; path = DataType/TSDKInvoiceTests.m; sourceTree = "<group>"; };
 		9687E26320D08143007AAE1D /* invoice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = invoice.json; sourceTree = "<group>"; };
@@ -821,6 +825,8 @@
 				969B7EDE1C7CBBB300FD3EA0 /* TSDKMemberPayment.m */,
 				969B7EF01C7CC77600FD3EA0 /* TSDKMemberBalance.h */,
 				969B7EF11C7CC77600FD3EA0 /* TSDKMemberBalance.m */,
+				9681418822D391A500649B58 /* TSDKStripeAccount.h */,
+				9681418922D391A500649B58 /* TSDKStripeAccount.m */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -1268,6 +1274,7 @@
 				5609959A1EA7F64B0072DB2B /* TSDKPersistenceFilePath.h in Headers */,
 				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
+				9681418A22D391A500649B58 /* TSDKStripeAccount.h in Headers */,
 				565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */,
@@ -1449,6 +1456,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 969E80361BAAE62D00CA518F;
@@ -1566,6 +1574,7 @@
 				965B7D411C18CAE1009AF13E /* TSDKContactEmailAddress.m in Sources */,
 				969E80F01BAAE7AB00CA518F /* TSDKTeam.m in Sources */,
 				968109301D8488C600D94C53 /* TSDKCollectionCommand.m in Sources */,
+				9681418B22D391A500649B58 /* TSDKStripeAccount.m in Sources */,
 				969B7E9A1C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m in Sources */,
 				969E80E81BAAE7AB00CA518F /* TSDKMember.m in Sources */,
 				9687E26B20D153C7007AAE1D /* NSDictionary+TSDKCollectionJSON.m in Sources */,
