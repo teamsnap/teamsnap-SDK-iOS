@@ -11,6 +11,7 @@
 @property (nonatomic, strong, nullable) NSString * detail; //Example: **NULL**
 @property (nonatomic, strong, nullable) NSString * initialPaymentProviderName; //Example: Offline
 @property (nonatomic, assign) BOOL isRefundable; //Example: 1
+@property (nonatomic, assign) BOOL isRefundableOnline; //Example: 1
 @property (nonatomic, strong, nullable) NSString * initialPaymentProviderId; //Example: 8
 @property (nonatomic, strong, nullable) NSDecimalNumber * amount; //Example: 150
 @property (nonatomic, strong, nullable) NSString * amountWithCurrency; //Example: $150.00
@@ -27,7 +28,7 @@
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicePaymentTransactions;
 
-- (void)refundAmount:(NSDecimalNumber *_Nonnull)amount refundMethod:(TSDKInvoiceOfflinePaymentMethod)refundMethod detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+- (void)refundAmount:(NSDecimalNumber *_Nonnull)amount refundMethod:(TSDKInvoiceRefundMethod)refundMethod detail:(NSString *_Nonnull)detail WithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 
 //Records a submitted wepay credit card invoice_payment

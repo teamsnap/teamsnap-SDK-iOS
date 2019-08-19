@@ -10,6 +10,12 @@ typedef NS_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
     TSDKInvoiceOfflinePaymentMethodCheck,
 };
 
+typedef NS_ENUM(NSUInteger, TSDKInvoiceRefundMethod) {
+    TSDKInvoiceRefundMethodCash,
+    TSDKInvoiceRefundMethodCheck,
+    TSDKInvoiceRefundMethodCard
+};
+
 typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
     TSDKInvoiceStatusOpen,
     TSDKInvoiceStatusPaid,
