@@ -24,6 +24,7 @@
 @property (nonatomic, strong, nullable) NSString * invoiceId; //Example: 52600
 @property (nonatomic, strong, nullable) NSString * status; //Example: paid
 @property (nonatomic, strong, nullable) NSDecimalNumber * amountWithProcessingFee; //Example: 150
+@property (nonatomic, strong, nullable) NSString * paymentType; //Example: Credit Card
 @property (nonatomic, strong, nullable) NSURL * linkInvoice;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 @property (nonatomic, strong, nullable) NSURL * linkInvoicePaymentTransactions;

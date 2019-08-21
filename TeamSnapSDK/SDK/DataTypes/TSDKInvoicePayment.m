@@ -10,7 +10,10 @@
 
 @implementation TSDKInvoicePayment
 
-@dynamic detail, initialPaymentProviderName, isRefundable, isRefundableOnline, initialPaymentProviderId, amount, amountWithCurrency, amountWithProcessingFeeWithCurrency, processingFeeWithCurrency, scheduledAt, createdAt, lastTransactedAt, updatedAt, invoiceId, status, amountWithProcessingFee, linkInvoice, linkTeam, linkInvoicePaymentTransactions;
+@dynamic detail, initialPaymentProviderName, isRefundable, isRefundableOnline, initialPaymentProviderId, amount, amountWithCurrency,
+    amountWithProcessingFeeWithCurrency, processingFeeWithCurrency, scheduledAt, createdAt,
+    lastTransactedAt, updatedAt, invoiceId, status, amountWithProcessingFee, paymentType,
+    linkInvoice, linkTeam, linkInvoicePaymentTransactions;
 
 + (NSString *)SDKType {
     return @"invoice_payment";
@@ -32,7 +35,6 @@
         case TSDKInvoiceRefundMethodCard:
             refundCommand = [TSDKInvoicePayment commandForKey:@"refund_online_payment"];
             // refund on-line payment doesn't take an amount. It's full refunds only as of 8/19
-            //TODO: Refund Card
             break;
     }
     refundCommand.data[@"detail"] = detail;
