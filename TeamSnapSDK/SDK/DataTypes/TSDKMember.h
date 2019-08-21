@@ -100,6 +100,7 @@ typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
 @property (nullable, nonatomic, strong) NSDate *updatedAt; //Example: 2016-11-17T20:29:40Z
 @property (nonatomic, assign) BOOL isCommissioner; //Example: 0
 @property (nonatomic, assign) BOOL isAlertable; //Example: 0
+@property (nonatomic, assign) BOOL isShownUnreachableForChatBanner; //Example: 0 
 @property (nullable, nonatomic, strong) NSURL *linkBroadcastEmails;
 @property (nullable, nonatomic, strong) NSURL *linkLeagueCustomFields;
 @property (nullable, nonatomic, strong) NSURL *linkForumSubscriptions;
