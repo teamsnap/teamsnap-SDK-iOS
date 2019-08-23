@@ -220,10 +220,11 @@
         
         [TSDKDataRequest requestObjectsForPath:[TSDKDataRequest baseURL] withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
-                weakSelf.rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
-                [TSPCache saveObject:weakSelf.rootLinks];
+                TSDKRootLinks *rootLinks = [[TSDKRootLinks alloc] initWithCollection:objects];
+                [TSPCache saveObject:rootLinks];
+                weakSelf.rootLinks = rootLinks;
             
-                [self.rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
+                [rootLinks getSchemasWithConfiguration:configuration completion:schemaCompletionBlock];
             } else {
                 TSDKCollectionObject *cachedRootLinks = [TSPCache objectOfClass:[TSDKRootLinks class] withId:@""];
                 if([cachedRootLinks isKindOfClass:[TSDKRootLinks class]]) {
@@ -244,10 +245,10 @@
     [self rootLinksWithConfiguration:configuration completion:^(TSDKRootLinks *rootLinks, NSError * _Nullable error) {
         [TSDKDataRequest requestObjectsForPath:rootLinks.linkMe withConfiguration:configuration completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
-                weakSelf.teamSnapUser = [TSDKObjectsRequest processLoginCollectionJSON:objects];
-                success = (BOOL)weakSelf.teamSnapUser;
+                TSDKUser *user = [TSDKObjectsRequest processLoginCollectionJSON:objects];
+                weakSelf.teamSnapUser = user;
                 if (completion) {
-                    completion(success, weakSelf.teamSnapUser, error);
+                    completion((user != nil), user, error);
                 }
             } else {
                 completion(success, nil, error);
