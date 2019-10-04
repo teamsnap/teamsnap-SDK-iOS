@@ -6,25 +6,25 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSInteger, TSDKRepeatingEventTypeCode) {
+typedef NS_CLOSED_ENUM(NSInteger, TSDKRepeatingEventTypeCode) {
     TSDKEventDoesNotRepeat = 0,
     TSDKEventRepeatsDaily = 1,
     TSDKEventRepeatsWeekly = 2
 };
 
-typedef NS_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
+typedef NS_CLOSED_ENUM(NSInteger, TSDKRepeatingEventIncludeEvents){
     TSDKExcludeOtherEvents = 0,
     TSDKIncludeAllEvents = 1,
     TSDKIncludeAllFutureEvents = 2
 };
 
-typedef NS_ENUM(NSInteger, TSDKGameTypeCode){
+typedef NS_CLOSED_ENUM(NSInteger, TSDKGameTypeCode){
     TSDKGameTypeCodeUnknown = 0,
     TSDKGameTypeCodeIsHome = 1,
     TSDKGameTypeCodeIsAway = 2,
 };
 
-typedef NS_ENUM(NSUInteger, TSDKEventEditMode) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
     TSDKEventEditModeSingle,
     TSDKEventEditModeRepeatingFuture,
     TSDKEventEditModeRepeatingAll,

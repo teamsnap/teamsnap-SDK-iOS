@@ -9,7 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSInteger, TSDKTrackedItemStatusCode) {
+typedef NS_CLOSED_ENUM(NSInteger, TSDKTrackedItemStatusCode) {
     TSDKTrackedItemStatusCodeNotFound = -1,
     TSDKTrackedItemStatusCodeNo = 0,
     TSDKTrackedItemStatusCodeYes = 1,

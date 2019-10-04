@@ -5,18 +5,18 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKInvoiceOfflinePaymentMethod) {
     TSDKInvoiceOfflinePaymentMethodCash,
     TSDKInvoiceOfflinePaymentMethodCheck,
 };
 
-typedef NS_ENUM(NSUInteger, TSDKInvoiceRefundMethod) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKInvoiceRefundMethod) {
     TSDKInvoiceRefundMethodCash,
     TSDKInvoiceRefundMethodCheck,
     TSDKInvoiceRefundMethodCard
 };
 
-typedef NS_ENUM(NSUInteger, TSDKInvoiceStatus) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKInvoiceStatus) {
     TSDKInvoiceStatusOpen,
     TSDKInvoiceStatusPaid,
     TSDKInvoiceStatusCanceled,

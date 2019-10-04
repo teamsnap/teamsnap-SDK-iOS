@@ -10,7 +10,7 @@
 
 @class TSDKMember, TSDKBatchInvoiceLineItem, TSDKInvoice;
 
-typedef NS_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
     TSDKBatchInvoiceFeesPaidByPayer,
     TSDKBatchInvoiceFeesPaidByPayee
 };

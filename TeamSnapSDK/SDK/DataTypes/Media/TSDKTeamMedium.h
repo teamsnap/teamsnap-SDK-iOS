@@ -36,8 +36,8 @@
 @property (nonatomic, strong) NSURL *_Nullable linkMediumMidsize;
 
 
-- (TeamMediaGroupFormatType)mediaType;
-- (void)setMediaType:(TeamMediaGroupFormatType)mediaType;
+- (TSDKTeamMediaGroupFormatType)mediaType;
+- (void)setMediaType:(TSDKTeamMediaGroupFormatType)mediaType;
 - (NSURL *_Nullable)linkForImageWithHeight:(NSInteger)height width:(NSInteger)width;
 - (NSURL *_Nullable)linkForImageWithHeight:(NSInteger)height;
 - (NSURL *_Nullable)linkForImageWithWidth:(NSInteger)width;

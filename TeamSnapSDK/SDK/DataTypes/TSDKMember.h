@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef NS_ENUM(NSUInteger, TSDKMemberGender) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKMemberGender) {
     TSDKMemberGenderFemale,
     TSDKMemberGenderMale,
     TSDKMemberGenderUnknown,

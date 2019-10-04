@@ -5,7 +5,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSUInteger, TSDKMessageDatumMessageType) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKMessageDatumMessageType) {
     TSDKMessageDatumMessageTypeAlert,
     TSDKMessageDatumMessageTypeEmail,
     TSDKMessageDatumMessageTypeUnknown,

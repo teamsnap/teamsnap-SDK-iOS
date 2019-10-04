@@ -12,11 +12,11 @@
 extern NSString * _Nonnull const TSDKTeamMediaGroupImageFormatString;
 extern NSString * _Nonnull const TSDKTeamMediaGroupFileFormatString;
 
-typedef enum {
-    TSDKTeamMediaGroupUnknownFormat = 0,
-    TSDKTeamMediaGroupImageFormat = 1,
-    TSDKTeamMediaGroupFileFormat = 2
-} TeamMediaGroupFormatType;
+typedef NS_CLOSED_ENUM(NSInteger, TSDKTeamMediaGroupFormatType) {
+    TSDKTeamMediaGroupFormatTypeUnknown = 0,
+    TSDKTeamMediaGroupFormatTypeImage = 1,
+    TSDKTeamMediaGroupFormatTypeFile = 2
+};
 
 @interface TSDKTeamMediaGroup : TSDKCollectionObject
 
@@ -35,11 +35,11 @@ typedef enum {
 //+(void)actionFacebookShareTeamMediaGroupWithCompletion:(TSDKCompletionBlock)completion; //(null)
 //+(void)actionReorderTeamMediaGroupsWithCompletion:(TSDKCompletionBlock)completion; //(null)
 
-+ (TeamMediaGroupFormatType)mediaFormatForString:(NSString *_Nullable)mediaFormat;
-+ (NSString *_Nullable)mediaFormatStringForMediaFormat:(TeamMediaGroupFormatType)fieldType;
++ (TSDKTeamMediaGroupFormatType)mediaFormatForString:(NSString *_Nullable)mediaFormat;
++ (NSString *_Nullable)mediaFormatStringForMediaFormat:(TSDKTeamMediaGroupFormatType)fieldType;
 
-- (TeamMediaGroupFormatType)mediaType;
-- (void)setMediaType:(TeamMediaGroupFormatType)mediaType;
+- (TSDKTeamMediaGroupFormatType)mediaType;
+- (void)setMediaType:(TSDKTeamMediaGroupFormatType)mediaType;
 
 @end
 

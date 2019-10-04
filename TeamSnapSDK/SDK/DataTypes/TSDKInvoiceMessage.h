@@ -11,7 +11,7 @@
 #import "TSDKObjectsRequest.h"
 #import "TSDKBatchInvoice.h"
 
-typedef NS_ENUM(NSUInteger, TSDKInvoiceFilter) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKInvoiceFilter) {
     TSDKInvoiceFilterOpen,
     TSDKInvoiceFilterPaid,
     TSDKInvoiceFilterCanceled,
