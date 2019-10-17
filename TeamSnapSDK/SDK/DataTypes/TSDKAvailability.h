@@ -9,7 +9,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSInteger,TSDKAvailabilityState) {
+typedef NS_CLOSED_ENUM(NSInteger,TSDKAvailabilityState) {
     TSDKAvailabilityStateIsNotAvailable = 0,
     TSDKAvailabilityStateIsAvailable = 1,
     TSDKAvailabilityStateIsMaybeAvailable = 2,

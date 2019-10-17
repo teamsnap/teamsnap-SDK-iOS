@@ -48,11 +48,11 @@
 }
 
 
-- (TeamMediaGroupFormatType)mediaType {
+- (TSDKTeamMediaGroupFormatType)mediaType {
     return [TSDKTeamMediaGroup mediaFormatForString:self.mediaFormat];
 }
 
-- (void)setMediaType:(TeamMediaGroupFormatType)mediaType {
+- (void)setMediaType:(TSDKTeamMediaGroupFormatType)mediaType {
     self.mediaFormat = [TSDKTeamMediaGroup mediaFormatStringForMediaFormat:mediaType];
 }
 

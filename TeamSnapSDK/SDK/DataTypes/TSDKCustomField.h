@@ -5,7 +5,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSUInteger, TSDKCustomDataFieldType) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKCustomDataFieldType) {
     TSDKCustomDataFieldTypeDate,
     TSDKCustomDataFieldTypeMenu,
     TSDKCustomDataFieldTypeBool,

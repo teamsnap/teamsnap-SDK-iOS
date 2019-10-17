@@ -6,7 +6,7 @@
 #import "TSDKObjectsRequest.h"
 
 
-typedef NS_ENUM(NSInteger, TSDKInvoiceCategory) {
+typedef NS_CLOSED_ENUM(NSInteger, TSDKInvoiceCategory) {
     TSDKInvoiceCategoryFee = 1,
     TSDKInvoiceCategoryDues = 2,
     TSDKInvoiceCategoryTournament = 3,

@@ -19,22 +19,22 @@ NSString * _Nonnull const TSDKTeamMediaGroupFileFormatString = @"file";
     return @"team_media_group";
 }
 
-+ (TeamMediaGroupFormatType)mediaFormatForString:(NSString *_Nullable)mediaFormat {
++ (TSDKTeamMediaGroupFormatType)mediaFormatForString:(NSString *_Nullable)mediaFormat {
     if ([mediaFormat isEqualToString:TSDKTeamMediaGroupImageFormatString]) {
-        return TSDKTeamMediaGroupImageFormat;
+        return TSDKTeamMediaGroupFormatTypeImage;
     } else if ([mediaFormat isEqualToString:TSDKTeamMediaGroupFileFormatString]) {
-        return TSDKTeamMediaGroupFileFormat;
+        return TSDKTeamMediaGroupFormatTypeFile;
     } else {
-        return TSDKTeamMediaGroupUnknownFormat;
+        return TSDKTeamMediaGroupFormatTypeUnknown;
     }
 }
 
-+ (NSString *_Nullable)mediaFormatStringForMediaFormat:(TeamMediaGroupFormatType)fieldType {
++ (NSString *_Nullable)mediaFormatStringForMediaFormat:(TSDKTeamMediaGroupFormatType)fieldType {
     switch (fieldType) {
-        case TSDKTeamMediaGroupImageFormat:
+        case TSDKTeamMediaGroupFormatTypeImage:
             return TSDKTeamMediaGroupImageFormatString;
             break;
-        case TSDKTeamMediaGroupFileFormat:
+        case TSDKTeamMediaGroupFormatTypeFile:
             return TSDKTeamMediaGroupFileFormatString;
             break;
         default:
@@ -43,11 +43,11 @@ NSString * _Nonnull const TSDKTeamMediaGroupFileFormatString = @"file";
     }
 }
 
-- (TeamMediaGroupFormatType)mediaType {
+- (TSDKTeamMediaGroupFormatType)mediaType {
     return [TSDKTeamMediaGroup mediaFormatForString:self.mediaFormat];
 }
 
-- (void)setMediaType:(TeamMediaGroupFormatType)mediaType {
+- (void)setMediaType:(TSDKTeamMediaGroupFormatType)mediaType {
     self.mediaFormat = [TSDKTeamMediaGroup mediaFormatStringForMediaFormat:mediaType];
 }
 

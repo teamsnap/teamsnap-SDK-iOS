@@ -13,7 +13,7 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSUInteger, TSDKWePayAccountState) {
+typedef NS_CLOSED_ENUM(NSUInteger, TSDKWePayAccountState) {
     TSDKWePayAccountStateSubmitted,
     TSDKWePayAccountStateActionRequired,
     TSDKWePayAccountStatePending,

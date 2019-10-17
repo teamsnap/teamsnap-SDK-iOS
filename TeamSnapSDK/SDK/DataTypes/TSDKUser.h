@@ -10,7 +10,7 @@
 #import "TSDKDataRequest.h"
 #import "TSDKMessage.h"
 
-typedef NS_ENUM(NSInteger,TSDKHighestRoleType) {
+typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
     TSDKHighestRoleTypeNonPlayer = 0,
     TSDKHighestRoleTypePlayer = 1,
     TSDKHighestRoleTypeManager = 2,

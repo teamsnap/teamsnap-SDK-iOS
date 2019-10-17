@@ -9,23 +9,23 @@
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
 
-typedef NS_ENUM(NSInteger, TSDKTeamPreferenceAssignmentsEnabledFor) {
+typedef NS_CLOSED_ENUM(NSInteger, TSDKTeamPreferenceAssignmentsEnabledFor) {
     TSDKTeamPreferenceAssignmentsEnabledForAll = 0,
     TSDKTeamPreferenceAssignmentsEnabledForGames = 1,
     TSDKTeamPreferenceAssignmentsEnabledForEvents = 2,
 };
 
 
-typedef NS_ENUM(NSInteger, TSDKTeamPreferenceAvailabilitiesSortOrder) {
+typedef NS_CLOSED_ENUM(NSInteger, TSDKTeamPreferenceAvailabilitiesSortOrder) {
     TSDKTeamPreferenceAvailabilitiesSortOrderName,
     TSDKTeamPreferenceAvailabilitiesSortOrderJerseyNumber,
     TSDKTeamPreferenceAvailabilitiesSortOrderDateSet,
 };
 
-typedef enum : NSUInteger {
+typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
     TSDKTeamPreferenceMemberSortOrderFirstName,
     TSDKTeamPreferenceMemberSortOrderLastName,
-} TSDKTeamPreferenceMemberSortOrder;
+};
 
 @interface TSDKTeamPreferences : TSDKCollectionObject
 
