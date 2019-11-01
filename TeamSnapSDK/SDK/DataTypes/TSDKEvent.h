@@ -76,6 +76,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 @property (nonatomic, strong) NSString *_Nullable timeZoneIanaName; //Example: America/New_York
 @property (nonatomic, assign) NSInteger durationInMinutes; //Example: 120
 @property (nonatomic, strong) NSURL *_Nullable linkAvailabilities;
+@property (nonatomic, strong, nullable) NSURL * linkSuggestedAssignments;
 @property (nonatomic, strong) NSURL *_Nullable linkLocation;
 @property (nonatomic, strong) NSURL *_Nullable linkEventStatistics;
 @property (nonatomic, strong) NSURL *_Nullable linkDivisionLocation;
