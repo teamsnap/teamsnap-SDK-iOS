@@ -82,6 +82,7 @@
 #import "TSDKInvoiceRecipientsInvoicesAggregate.h"
 #import "TSDKWepayAccount.h"
 #import "TSDKStripeAccount.h"
+#import "TSDKSuggestedAssignment.h"
 
 static NSArray *_supportedSDKObjects;
 static NSArray *knownCompletionTypes;
