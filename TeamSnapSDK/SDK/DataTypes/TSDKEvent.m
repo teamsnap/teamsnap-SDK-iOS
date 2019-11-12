@@ -168,13 +168,13 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
 }
 
 - (BOOL)isSameDayAs:(TSDKEvent *)eventToCompare {
-    NSCalendar *firstEventCal = [NSCalendar currentCalendar];
+    NSCalendar *firstEventCal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSTimeZone *firstEventTimeZone = [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
     if(firstEventTimeZone) {
         firstEventCal.timeZone = firstEventTimeZone;
     }
     
-    NSCalendar *secondEventCal = [NSCalendar currentCalendar];
+    NSCalendar *secondEventCal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSTimeZone *secondEventTimeZone = [NSTimeZone timeZoneWithName:eventToCompare.timeZoneIanaName];
     if(secondEventTimeZone) {
         secondEventCal.timeZone = secondEventTimeZone;
@@ -184,9 +184,9 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     NSDateComponents* comp1 = [firstEventCal components:unitFlags fromDate:self.startDate];
     NSDateComponents* comp2 = [secondEventCal components:unitFlags fromDate:eventToCompare.startDate];
     
-    return [comp1 day]   == [comp2 day] &&
-    [comp1 month] == [comp2 month] &&
-    [comp1 year]  == [comp2 year];
+    return ([comp1 day] == [comp2 day] &&
+            [comp1 month] == [comp2 month] &&
+            [comp1 year]  == [comp2 year]);
 }
 
 - (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel {
