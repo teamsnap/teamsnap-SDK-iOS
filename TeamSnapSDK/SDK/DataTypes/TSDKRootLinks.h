@@ -132,6 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)actionWelcomeEmailAddress:(NSString *)emailAddress withCallbackURL:(NSURL *)callbackURL withCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 +(void)queryGenerateFirebaseTokenTeamid:(NSString *)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock _Nullable)completion;
++(void)queryGenerateFirebaseStagingTokenTeamid:(NSString *)teamId version:(NSString *)version WithCompletion:(TSDKFirebaseTokenCompletionBlock _Nullable)completion;
 
 - (NSURL * _Nullable)queryURL;
 
