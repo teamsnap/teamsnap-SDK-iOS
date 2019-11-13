@@ -151,13 +151,13 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     if (self.isTbd && compareEvent.isTbd) {
         return [self.startDate compare:compareEvent.startDate];
     } else if (self.isTbd && (compareEvent.isTbd == NO)) {
-        if ([self.startDate isSameDayAs:compareEvent.startDate]) {
+        if ([self isSameDayAs:compareEvent]) {
             return NSOrderedAscending;
         } else {
             return [self.startDate compare:compareEvent.startDate];
         }
     } else if ((self.isTbd == NO)  && compareEvent.isTbd) {
-        if ([self.startDate isSameDayAs:compareEvent.startDate]) {
+        if ([self isSameDayAs:compareEvent]) {
             return NSOrderedDescending;
         } else {
             return [self.startDate compare:compareEvent.startDate];
@@ -165,6 +165,28 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
     } else {
         return [self.startDate compare:compareEvent.startDate];
     }
+}
+
+- (BOOL)isSameDayAs:(TSDKEvent *)eventToCompare {
+    NSCalendar *firstEventCal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSTimeZone *firstEventTimeZone = [NSTimeZone timeZoneWithName:self.timeZoneIanaName];
+    if(firstEventTimeZone) {
+        firstEventCal.timeZone = firstEventTimeZone;
+    }
+    
+    NSCalendar *secondEventCal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSTimeZone *secondEventTimeZone = [NSTimeZone timeZoneWithName:eventToCompare.timeZoneIanaName];
+    if(secondEventTimeZone) {
+        secondEventCal.timeZone = secondEventTimeZone;
+    }
+    
+    NSCalendarUnit unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+    NSDateComponents* comp1 = [firstEventCal components:unitFlags fromDate:self.startDate];
+    NSDateComponents* comp2 = [secondEventCal components:unitFlags fromDate:eventToCompare.startDate];
+    
+    return ([comp1 day] == [comp2 day] &&
+            [comp1 month] == [comp2 month] &&
+            [comp1 year]  == [comp2 year]);
 }
 
 - (NSString *_Nullable)displayNameWithShortLabelPreference:(BOOL)preferShortLabel {
