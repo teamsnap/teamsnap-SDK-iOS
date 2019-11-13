@@ -180,7 +180,7 @@ NSString * const kRepeatingTypeCode = @"repeating_type_code";
         secondEventCal.timeZone = secondEventTimeZone;
     }
     
-    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+    NSCalendarUnit unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
     NSDateComponents* comp1 = [firstEventCal components:unitFlags fromDate:self.startDate];
     NSDateComponents* comp2 = [secondEventCal components:unitFlags fromDate:eventToCompare.startDate];
     
