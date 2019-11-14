@@ -170,7 +170,8 @@ static NSArray *knownCompletionTypes;
                                [TSDKInvoiceRecipientsInvoicesAggregate class],
                                [TSDKWepayAccount class],
                                [TSDKStripeAccount class],
-                               [TSDKPartnerPreferences class]];
+                               [TSDKPartnerPreferences class],
+                               [TSDKSuggestedAssignment class]];
     });
     return _supportedSDKObjects;
 }
