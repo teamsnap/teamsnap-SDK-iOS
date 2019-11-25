@@ -6,8 +6,6 @@
 //  Copyright © 2019 teamsnap. All rights reserved.
 //
 
-#import <TeamSnapSDK/TeamSnapSDK.h>
-
 #import <Foundation/Foundation.h>
 #import "TSDKCollectionObject.h"
 #import "TSDKObjectsRequest.h"
