@@ -54,7 +54,7 @@
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
-		8971F5402371E02F001486FF /* TSDKSuggestedAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 8971F53E2371E02F001486FF /* TSDKSuggestedAssignment.h */; };
+		8971F5402371E02F001486FF /* TSDKSuggestedAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 8971F53E2371E02F001486FF /* TSDKSuggestedAssignment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8971F5412371E02F001486FF /* TSDKSuggestedAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971F53F2371E02F001486FF /* TSDKSuggestedAssignment.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		960107041BE92F5D005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
