@@ -79,20 +79,20 @@
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     TSDKCollectionJSON *collectionJSON = [[TSDKCollectionJSON alloc] initWithJSON:JSON];
     if (!collectionJSON) {
-        XCTAssert(@"Collection JSON Nil");
+        XCTFail(@"Collection JSON Nil");
     }
     
     XCTAssertEqualObjects(collectionJSON.href, [NSURL URLWithString:@"https://api.teamsnap.com/v3/users"]);
     
     if ([collectionJSON.collection count]==0) {
-        XCTAssert(@"No Collection Objects");
+        XCTFail(@"No Collection Objects");
     }
     TSDKCollectionJSON *subCollection = collectionJSON.collection[0];
     if (!subCollection) {
-        XCTAssert(@"Sub Collection JSON Nil");
+        XCTFail(@"Sub Collection JSON Nil");
     }
     if ([subCollection.data count]!=15) {
-        XCTAssert(@"Sub Collection Data count wrong");
+        XCTFail(@"Sub Collection Data count wrong");
     }
     
     NSDictionary *expectedData = @{@"id":@2,@"teams_count":@2,@"facebook_id":[NSNull null],@"receives_newsletter":@0,@"created_at":@"2015-08-12T22:17:13Z",@"address_state":[NSNull null],@"is_eligible_for_free_trial":@0,@"type":@"user",@"birthday":@"1970-05-01",@"first_name":@"Tester",@"facebook_access_token":[NSNull null],@"updated_at":@"2016-01-20T19:15:28Z",@"last_name":@"Joe",@"email":@"manager@example.com",@"address_country":[NSNull null]};

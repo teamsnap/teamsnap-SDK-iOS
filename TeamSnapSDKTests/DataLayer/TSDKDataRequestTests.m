@@ -31,7 +31,7 @@
 #pragma clang diagnostic ignored "-Wnonnull"
     [TSDKDataRequest requestObjectsForPath:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (success || complete) {
-            XCTAssert(@"Returned Success on nil link");
+            XCTFail(@"Returned Success on nil link");
         }
         XCTAssertNil(objects, @"Objects returned on nil array");
         [nilLinkExpectation fulfill];
@@ -44,7 +44,7 @@
     
     [TSDKDataRequest requestObjectsForPath:nil searchParamaters:nil sendDataDictionary:nil method:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (success || complete) {
-            XCTAssert(@"Returned Success on nil link");
+            XCTFail(@"Returned Success on nil link");
         }
         XCTAssertNil(objects, @"Objects returned on nil array");
         [nilLinkExpectation2 fulfill];
@@ -63,7 +63,7 @@
             XCTAssertNotNil(objects, @"Objects returned nil array");
         } else {
             if (!error || (error && [[error.userInfo objectForKey:TSDKTeamSnapSDKHTTPResponseCodeKey] integerValue] != 420)) {
-              XCTAssert(@"Returned !Success on /random");
+              XCTFail(@"Returned !Success on /random");
             } else {
                 DLog(@"Rate Limited - Not full test");
             }
@@ -81,7 +81,7 @@
 #pragma clang diagnostic ignored "-Wnonnull"
     [TSDKDataRequest requestJSONObjectsForPath:nil sendDataDictionary:nil method:@"POST" configuration:nil withCompletion:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
         if (success || complete) {
-            XCTAssert(@"Returned Success on nil link");
+            XCTFail(@"Returned Success on nil link");
         }
         XCTAssertNil(objects, @"Objects returned on nil array");
         

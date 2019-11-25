@@ -39,7 +39,7 @@
     XCTAssertFalse(existing, @"existing request found for new request");
     
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
-        XCTAssert(@"Should not be called");
+        XCTFail(@"Should not be called");
     } forRequest:request];
     
     existing = [[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:request];
@@ -60,7 +60,7 @@
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:nil forRequest:nil];
     
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
-        XCTAssert(@"Shouldn't be called");
+        XCTFail(@"Shouldn't be called");
     } forRequest:nil];
 #pragma clang diagnostic pop
 }
@@ -74,7 +74,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://google.com/"]];
     
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
-        XCTAssert(@"Should not be called");
+        XCTFail(@"Should not be called");
     } forRequest:request];
 
     BOOL existing = [[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:request];
@@ -100,7 +100,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://google.com/"]];
     
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
-        XCTAssert(@"Should not be called");
+        XCTFail(@"Should not be called");
     } forRequest:request];
     
     set = [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request];
@@ -108,7 +108,7 @@
     
     XCTAssertTrue(set.count==1, @"Incorrect set count returned for completion blocks for valid request");
     [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:^(BOOL success, BOOL complete, id  _Nullable objects, NSError * _Nullable error) {
-        XCTAssert(@"Should not be called 2");
+        XCTFail(@"Should not be called 2");
     } forRequest:request];
     
     set = [[TSDKDuplicateCompletionBlockStore sharedInstance] completionBlocksForRequest:request];

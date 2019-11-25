@@ -45,7 +45,7 @@
         XCTAssertNil(user.addressCountry);
         XCTAssertEqualObjects(user.objectIdentifier, @"2");
     } else {
-        XCTAssert(@"Collection JSON parsing failed");
+        XCTFail(@"Collection JSON parsing failed");
     }
 }
 
@@ -93,7 +93,7 @@
         NSString *objectClassName = NSStringFromClass([newUser class]);
         XCTAssertEqualObjects(objectClassName, @"TSDKUser");
     } else {
-        XCTAssert(@"Collection JSON parsing failed");
+        XCTFail(@"Collection JSON parsing failed");
     }
 }
 
@@ -116,7 +116,7 @@
         XCTAssertEqualObjects(user.lastName, @"Joe");
         
     }  else {
-        XCTAssert(@"Collection JSON parsing failed");
+        XCTFail(@"Collection JSON parsing failed");
     }
 }
 
@@ -131,7 +131,7 @@
         NSDictionary *expectedDataToSave = @{@"data":@[@{@"name":@"first_name",@"value":@"First"},@{@"name":@"last_name",@"value":[NSNull null]}]};
         XCTAssertEqualObjects(dataToSave, expectedDataToSave);
     } else {
-        XCTAssert(@"Collection JSON parsing failed");
+        XCTFail(@"Collection JSON parsing failed");
     }
 }
 
@@ -217,13 +217,13 @@
 #pragma clang diagnostic ignored "-Wnonnull"
         [user arrayFromLink:nil withConfiguration:nil completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
             if (success || complete) {
-                XCTAssert(@"Returned Success on nil link");
+                XCTFail(@"Returned Success on nil link");
             }
             XCTAssertTrue(objects.count==0, @"Objects returned on nil array");
             [userExpectation fulfill];
         }];
     } else {
-        XCTAssert(@"Collection JSON parsing failed");
+        XCTFail(@"Collection JSON parsing failed");
     }
 #pragma clang diagnostic pop
     [self waitForExpectationsWithTimeout:5 handler:nil];
