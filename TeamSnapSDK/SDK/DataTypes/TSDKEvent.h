@@ -76,6 +76,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 @property (nonatomic, strong) NSString *_Nullable timeZoneIanaName; //Example: America/New_York
 @property (nonatomic, assign) NSInteger durationInMinutes; //Example: 120
 @property (nonatomic, strong) NSURL *_Nullable linkAvailabilities;
+@property (nonatomic, strong, nullable) NSURL * linkSuggestedAssignments;
 @property (nonatomic, strong) NSURL *_Nullable linkLocation;
 @property (nonatomic, strong) NSURL *_Nullable linkEventStatistics;
 @property (nonatomic, strong) NSURL *_Nullable linkDivisionLocation;
@@ -105,6 +106,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 
 -(void)getAvailabilitiesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAvailabilityGroupCompletionBlock _Nullable)completion;
 -(void)getLocationWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKLocationArrayCompletionBlock _Nullable)completion;
+-(void)getSuggestedAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSuggestedAssignmentsArrayCompletionBlock _Nonnull)completion;
 -(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getDivisionLocationWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAssignmentArrayCompletionBlock _Nullable)completion;

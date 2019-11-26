@@ -7,20 +7,23 @@
 
 @interface TSDKAssignment : TSDKCollectionObject
 
-@property (nonatomic, strong) NSString *_Nullable updatedAt; //Example: **NULL**
-@property (nonatomic, assign) BOOL isEditable; //Example: 1
+@property (nonatomic, strong, nullable) NSString * assignmentDescription; //Example: stuff
+@property (nonatomic, strong, nullable) NSString * logoUrl; //Example: **NULL**
 @property (nonatomic, assign) NSInteger position; //Example: 1
-@property (nonatomic, strong) NSString *_Nullable createdAt; //Example: **NULL**
-@property (nonatomic, strong) NSString *_Nullable memberId; //Example: 1282395
+@property (nonatomic, strong, nullable) NSString * dfpAdUnitId; //Example: <null>
+@property (nonatomic, assign) BOOL isEditable; //Example: 1
+@property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2019-11-01T17:25:36Z
+@property (nonatomic, assign) BOOL isSponsored; //Example: 0
+@property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2019-11-01T17:25:36Z
 @property (nonatomic, assign) BOOL managerCreated; //Example: 1
-@property (nonatomic, strong) NSString *_Nullable assignmentDescription; //Example: Chips?
-@property (nonatomic, strong) NSString *_Nullable eventId; //Example: 2781974
-@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
-@property (nonatomic, strong) NSURL *_Nullable linkMember;
-@property (nonatomic, strong) NSURL *_Nullable linkMemberAssignment;
-@property (nonatomic, strong) NSURL *_Nullable linkMemberAssignments;
-@property (nonatomic, strong) NSURL *_Nullable linkEvent;
-@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong, nullable) NSString * teamId; //Example: 1
+@property (nonatomic, strong, nullable) NSString * eventId; //Example: 13
+@property (nonatomic, strong, nullable) NSString * memberId; //Example: 78
+@property (nonatomic, strong, nullable) NSURL * linkMember;
+@property (nonatomic, strong, nullable) NSURL * linkMemberAssignment;
+@property (nonatomic, strong, nullable) NSURL * linkMemberAssignments;
+@property (nonatomic, strong, nullable) NSURL * linkEvent;
+@property (nonatomic, strong, nullable) NSURL * linkTeam;
 
 
 //+(void)actionSendAssignmentEmailsWithCompletion:(TSDKCompletionBlock)completion; //(null)

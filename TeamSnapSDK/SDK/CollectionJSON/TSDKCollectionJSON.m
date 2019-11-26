@@ -93,22 +93,25 @@
 }
 
 -(void)parseJSON:(NSDictionary *)collection {
-    self.href = [NSURL URLWithString:[collection objectForKey:@"href"]];
-    self.version = [collection objectForKey:@"version"];
     
-    NSArray *datum;
+    self.version = [collection objectForKey:@"version"];
+    if (![[collection objectForKey:@"href"] isEqual:[NSNull null]]) {
+        self.href = [NSURL URLWithString:[collection objectForKey:@"href"]];
+    }
+    
+    NSArray *data;
     if ([[collection objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
-        datum = [NSArray arrayWithArray:[collection objectForKey:@"data"]];
+        data = [NSArray arrayWithArray:[collection objectForKey:@"data"]];
     } else if (![collection objectForKey:@"data"]) {
     } else if ([[collection objectForKey:@"data"] isEqual:[NSNull null]]) {
     }
-    for (NSDictionary *data in datum) {
+    for (NSDictionary *datum in data) {
         // API Is now providing Types for all objects. This will be useful to the SDK miving forward
         //NSString *dataType = [data objectForKey:@"type"];
-        if ([data objectForKey:@"array"]) {
-            [self.data setObject:[data objectForKey:@"array"] forKey:[data objectForKey:@"name"]];
-        } else if ([data objectForKey:@"value"]) {
-            [self.data setObject:[data objectForKey:@"value"] forKey:[data objectForKey:@"name"]];
+        if ([datum objectForKey:@"array"]) {
+            [self.data setObject:[datum objectForKey:@"array"] forKey:[datum objectForKey:@"name"]];
+        } else if ([datum objectForKey:@"value"]) {
+            [self.data setObject:[datum objectForKey:@"value"] forKey:[datum objectForKey:@"name"]];
         }
     }
     
