@@ -10,10 +10,10 @@
 
 @implementation TSDKAssignment
 
-@dynamic assignmentDescription, logoUrl, position, dfpAdUnitId, isEditable, createdAt, isSponsored, updatedAt, managerCreated, teamId, eventId, memberId, linkMember, linkMemberAssignment, linkMemberAssignments, linkEvent, linkTeam;
+@dynamic assignmentDescription, logoUrl, position, isEditable, createdAt, adUnitId, isSponsored, updatedAt, managerCreated, teamId, eventId, memberId, linkMember, linkMemberAssignment, linkMemberAssignments, linkEvent, linkTeam;
 
 + (NSString *)SDKType {
-    return @"assignment";
+  return @"assignment";
 }
 
 @end
