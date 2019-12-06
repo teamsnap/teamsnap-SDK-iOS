@@ -33,67 +33,65 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 
 @interface TSDKEvent : TSDKCollectionObject
 
-@property (nonatomic, strong, nullable) NSString * uniform; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * teamId; //Example: 29
-@property (nonatomic, strong, nullable) NSString * iconColor; //Example: orange
-@property (nonatomic, strong, nullable) NSString * formattedTitle; //Example: vs. Oshowa Otters
-@property (nonatomic, strong, nullable) NSString * opponentId; //Example: 35
-@property (nonatomic, strong, nullable) NSDate * createdAt; //Example: 2019-12-04T15:55:50Z
+@property (nonatomic, strong, readonly) NSString *_Nullable locationName; //Example:
+@property (nonatomic, strong, readonly) NSString *_Nullable opponentName; //Example:
+@property (nonatomic, strong) NSString *_Nullable uniform; //Example:
+@property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
+@property (nonatomic, strong) NSString *_Nullable iconColor; //Example: yellow
+@property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-04-18T02:05:58Z
+@property (nonatomic, strong) NSString *_Nullable opponentId; //Example: 2208702
 @property (nonatomic, assign) BOOL isGame; //Example: 1
-@property (nonatomic, strong, nullable) NSString * label; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * gameType; //Example: Home
-@property (nonatomic, strong, nullable) NSString * shootoutPointsForTeam; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * shootoutPointsForOpponent; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * timeZoneDescription; //Example: America/Detroit
-@property (nonatomic, assign) NSInteger tracksAvailability; //Example: 1
-@property (nonatomic, strong, nullable) NSString * locationName; //Example: Windsor
+@property (nonatomic, strong) NSString *_Nullable label; //Example:
+@property (nonatomic, strong) NSString *_Nullable gameType; //Example: Home
+@property (nonatomic, assign) NSInteger shootoutPointsForTeam; //Example: **NULL**
+@property (nonatomic, assign) NSInteger shootoutPointsForOpponent; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable timeZoneDescription; //Example: Eastern Time (US & Canada)
+@property (nonatomic, assign) BOOL tracksAvailability; //Example: 1
 @property (nonatomic, assign) BOOL isCanceled; //Example: 0
-@property (nonatomic, strong, nullable) NSString * sourceTimeZoneIanaName; //Example: America/Detroit
-@property (nonatomic, strong, nullable) NSString * divisionLocationId; //Example: <null>
-@property (nonatomic, strong, nullable) NSString * additionalLocationDetails; //Example:
-@property (nonatomic, strong, nullable) NSDate * endDate; //Example: 2019-12-17T17:30:18Z
+@property (nonatomic, strong) NSString *_Nullable sourceTimeZoneIanaName; //Example: America/New_York
+@property (nonatomic, strong) NSString *_Nullable divisionLocationId; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable additionalLocationDetails; //Example: **NULL**
+@property (nonatomic, strong) NSDate *_Nullable endDate; //Example: 2012-05-19T06:00:00Z
 @property (nonatomic, assign) BOOL isTbd; //Example: 0
-@property (nonatomic, strong, nullable) NSString * resultsUrl; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable resultsUrl; //Example: **NULL**
 @property (nonatomic, assign) BOOL isLeagueControlled; //Example: 0
-@property (nonatomic, strong, nullable) NSString * name; //Example:
-@property (nonatomic, strong, nullable) NSString * repeatingType; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable name; //Example:
 @property (nonatomic, assign) BOOL isShootout; //Example: 0
-@property (nonatomic, strong, nullable) NSString * opponentName; //Example: Oshowa Otters
-@property (nonatomic, strong, nullable) NSString * pointsForTeam; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * locationId; //Example: 35
+@property (nonatomic, assign) NSInteger pointsForTeam; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable locationId; //Example: 714660
 @property (nonatomic, assign) NSInteger minutesToArriveEarly; //Example: 0
-@property (nonatomic, strong, nullable) NSString * formattedResults; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * repeatingTypeCode; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSDate * startDate; //Example: 2019-12-17T15:30:18Z
-@property (nonatomic, assign) NSInteger doesntCountTowardsRecord; //Example: 0
-@property (nonatomic, strong, nullable) NSString * timeZone; //Example: America/Detroit
-@property (nonatomic, strong, nullable) NSString * pointsForOpponent; //Example: **NULL**
-@property (nonatomic, assign) NSInteger gameTypeCode; //Example: 1
-@property (nonatomic, strong, nullable) NSString * timeZoneOffset; //Example: -05:00
-@property (nonatomic, strong, nullable) NSDate * arrivalDate; //Example: 2019-12-17T15:30:18Z
-@property (nonatomic, strong, nullable) NSString * formattedTitleForMultiTeam; //Example: Maple Syrup Marauders vs. Oshowa Otters
-@property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2019-12-04T15:55:50Z
+@property (nonatomic, strong) NSString *_Nullable formattedResults; //Example: **NULL**
+@property (nonatomic, strong) NSDate *_Nullable startDate; //Example: 2012-05-19T04:00:00Z
+@property (nonatomic, assign) BOOL doesntCountTowardsRecord; //Example: 1
+@property (nonatomic, strong) NSString *_Nullable timeZone; //Example: Eastern Time (US & Canada)
+@property (nonatomic, assign) NSInteger pointsForOpponent; //Example: **NULL**
+@property (nonatomic, assign) TSDKGameTypeCode gameTypeCode; //Example: 1
+@property (nonatomic, strong) NSString *_Nullable timeZoneOffset; //Example: -05:00
+@property (nonatomic, strong) NSDate *_Nullable arrivalDate; //Example: 2012-05-19T04:00:00Z
+@property (nonatomic, strong) NSDate *_Nullable updatedAt; //Example: 2016-02-23T14:28:23Z
 @property (nonatomic, assign) BOOL isOvertime; //Example: 0
-@property (nonatomic, strong, nullable) NSString * repeatingUuid; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * results; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * notes; //Example: **NULL**
-@property (nonatomic, strong, nullable) NSString * timeZoneIanaName; //Example: America/Detroit
+@property (nonatomic, strong) NSString *_Nullable repeatingUuid; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable results; //Example: **NULL**
+@property (nonatomic, strong) NSString *_Nullable notes; //Example:
+@property (nonatomic, strong) NSString *_Nullable timeZoneIanaName; //Example: America/New_York
 @property (nonatomic, assign) NSInteger durationInMinutes; //Example: 120
-@property (nonatomic, strong, nullable) NSURL * linkStatisticData;
-@property (nonatomic, strong, nullable) NSURL * linkCalendarSingleEvent;
-@property (nonatomic, strong, nullable) NSURL * linkAvailabilities;
-@property (nonatomic, strong, nullable) NSURL * linkOpponent;
-@property (nonatomic, strong, nullable) NSURL * linkEventStatistics;
-@property (nonatomic, strong, nullable) NSURL * linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkAvailabilities;
 @property (nonatomic, strong, nullable) NSURL * linkSuggestedAssignments;
-@property (nonatomic, strong, nullable) NSURL * linkLocation;
-@property (nonatomic, strong, nullable) NSURL * linkEventLineups;
-@property (nonatomic, strong, nullable) NSURL * linkDivisionLocation;
-@property (nonatomic, strong, nullable) NSURL * linkAssignments;
+@property (nonatomic, strong) NSURL *_Nullable linkLocation;
+@property (nonatomic, strong) NSURL *_Nullable linkEventStatistics;
+@property (nonatomic, strong) NSURL *_Nullable linkDivisionLocation;
+@property (nonatomic, strong) NSURL *_Nullable linkAssignments;
+@property (nonatomic, strong) NSURL *_Nullable linkMemberAssignments;
+@property (nonatomic, strong) NSURL *_Nullable linkOpponent;
+@property (nonatomic, strong) NSURL *_Nullable linkTeam;
+@property (nonatomic, strong) NSURL *_Nullable linkStatisticData;
+@property (nonatomic, strong) NSURL *_Nullable linkCalendarSingleEvent;
 @property (nonatomic, strong, nullable) NSURL * linkAssignmentsTeam;
 
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *_Nonnull)event completion:(TSDKCompletionBlock _Nullable)completion;
 + (void)getEventWithId:(NSString * _Nonnull)eventId teamId:(NSString * _Nonnull)teamId completion:(TSDKEventCompletionBlock _Nonnull)completion;
+
+@property (nonatomic, assign) TSDKRepeatingEventTypeCode repeatingTypeCode;
 
 + (void)saveEvent:(TSDKEvent * _Nonnull)event notifyTeamAsMember:(TSDKMember * _Nullable)member completion:(TSDKEventArrayCompletionBlock _Nullable)completion;
 - (void)updateFinalScoreWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
