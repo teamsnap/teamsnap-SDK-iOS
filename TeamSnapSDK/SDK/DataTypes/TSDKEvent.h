@@ -101,21 +101,6 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 - (TSDKEventEditMode)editMode;
 - (void)setEditMode:(TSDKEventEditMode)editMode;
 
-//Update the final score for an event
-//+(void)actionUpdateFinalScoreShootoutpointsforteam:(NSString *_Nonnull)shootoutPointsForTeam pointsForOpponent:(NSString *_Nonnull)pointsForOpponent resultsUrl:(NSString *_Nonnull)resultsUrl isShootout:(NSString *_Nonnull)isShootout id:(NSString *_Nonnull)id pointsForTeam:(NSString *_Nonnull)pointsForTeam shootoutPointsForOpponent:(NSString *_Nonnull)shootoutPointsForOpponent isOvertime:(NSString *_Nonnull)isOvertime results:(NSString *_Nonnull)results WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//event_ids = [event_id, event_id]
-//+(void)actionBulkCreateNotifyteamasmemberid:(NSString *_Nonnull)notifyTeamAsMemberId templates:(NSString *_Nonnull)templates notifyTeam:(NSString *_Nonnull)notifyTeam teamId:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//members_to_notify = [member_id, member_id]
-//+(void)actionSendAvailabilityRemindersId:(NSString *_Nonnull)id membersToNotify:(NSString *_Nonnull)membersToNotify notifyTeamAsMemberId:(NSString *_Nonnull)notifyTeamAsMemberId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//+(void)queryOverviewTeamid:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//+(void)querySearchId:(NSString *_Nonnull)id pageNumber:(NSString *_Nonnull)pageNumber updatedSince:(NSString *_Nonnull)updatedSince isGame:(NSString *_Nonnull)isGame sortStartDate:(NSString *_Nonnull)sortStartDate locationId:(NSString *_Nonnull)locationId opponentId:(NSString *_Nonnull)opponentId userId:(NSString *_Nonnull)userId repeatingUuid:(NSString *_Nonnull)repeatingUuid startedBefore:(NSString *_Nonnull)startedBefore startedAfter:(NSString *_Nonnull)startedAfter pageSize:(NSString *_Nonnull)pageSize teamId:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
-//+(void)querySearchGamesTeamid:(NSString *_Nonnull)teamId pageNumber:(NSString *_Nonnull)pageNumber pageSize:(NSString *_Nonnull)pageSize WithCompletion:(TSDKCompletionBlock _Nullable)completion;
-
 @end
 
 @interface TSDKEvent (ForwardedMethods)
@@ -125,6 +110,8 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 -(void)getSuggestedAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSuggestedAssignmentsArrayCompletionBlock _Nonnull)completion;
 -(void)getEventStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getDivisionLocationWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
+-(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAssignmentArrayCompletionBlock _Nullable)completion;
+-(void)getMemberAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberAssignmentArrayCompletionBlock _Nullable)completion;
 -(void)getOpponentWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKOpponentArrayCompletionBlock _Nullable)completion;
 -(void)getTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamArrayCompletionBlock _Nullable)completion;
 -(void)getStatisticDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStatisticDatumArrayCompletionBlock _Nullable)completion;
