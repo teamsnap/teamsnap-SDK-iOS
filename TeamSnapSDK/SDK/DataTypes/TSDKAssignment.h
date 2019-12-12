@@ -14,7 +14,7 @@
 @property (nonatomic, strong, nullable) NSString * adUnitId; //Example: <null>
 @property (nonatomic, assign) BOOL isSponsored; //Example: 0
 @property (nonatomic, strong, nullable) NSDate * updatedAt; //Example: 2019-12-02T21:26:07Z
-@property (nonatomic, assign) NSInteger managerCreated; //Example: 1
+@property (nonatomic, assign) BOOL managerCreated; //Example: 1
 @property (nonatomic, strong, nullable) NSString * teamId; //Example: 3
 @property (nonatomic, strong, nullable) NSString * eventId; //Example: 206
 @property (nonatomic, strong, nullable) NSString * memberId; //Example: <null>
