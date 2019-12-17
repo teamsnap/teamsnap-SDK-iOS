@@ -70,7 +70,8 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) BOOL shareAvailabilityNotes; //Example: 0
 @property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
-@property (nonatomic, assign) BOOL isTeamChatEnabled; // Examople 1
+@property (nonatomic, assign) BOOL isTeamChatEnabled; // Example 1
+@property (nonatomic, assign) BOOL isUnifiedMessagingTeamChat; //Example: 1
 @property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
 @property (nonatomic, strong) NSString *_Nullable gender; //Example: **NULL**
 @property (nonatomic, assign) BOOL filesShowTab; //Example: 1
@@ -86,7 +87,7 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, strong) NSString *_Nullable currencySymbol; //Example: $
 @property (nonatomic, strong) NSString *_Nullable currencyCode; //Example: USD
 @property (nonatomic, assign) NSInteger hideHeader; //Example: 0
-@property (nonatomic, assign) BOOL showInvoicing; //Example: 1 
+@property (nonatomic, assign) BOOL showInvoicing; //Example: 1
 @property (nonatomic, strong) NSURL *_Nullable linkTeam;
 @property (nonatomic, strong) NSURL *_Nullable linkTeamPhoto;
 @property (nonatomic, strong) NSURL *_Nullable linkTeamLogo;
