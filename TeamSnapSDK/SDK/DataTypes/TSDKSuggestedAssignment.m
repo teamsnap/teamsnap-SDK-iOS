@@ -10,7 +10,7 @@
 
 @implementation TSDKSuggestedAssignment
 
-@dynamic isSponsored, name, logoUrl, linkTeam;
+@dynamic analyticLabel, isSponsored, name, logoUrl, linkTeam;
 
 + (NSString *)SDKType {
   return @"suggested_assignment";

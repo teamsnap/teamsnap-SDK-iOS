@@ -12,6 +12,7 @@
 
 @interface TSDKSuggestedAssignment : TSDKCollectionObject
 
+@property (nonatomic, strong, nullable) NSString * analyticLabel; //Example: Gatorade CA 
 @property (nonatomic, assign) BOOL isSponsored; //Example: 1
 @property (nonatomic, strong, nullable) NSString * name; //Example: Gatorade
 @property (nonatomic, strong, nullable) NSString * logoUrl; //Example: https://pod-gatorade.teamsnap.com/images/assignment_sponsorships/gatorade.png
