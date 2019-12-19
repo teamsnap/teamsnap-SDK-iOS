@@ -72,6 +72,7 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
 @property (nonatomic, assign) BOOL isTeamChatEnabled; // Example 1
 @property (nonatomic, assign) BOOL isUnifiedMessagingTeamChat; //Example: 1
+@property (nonatomic, strong, nullable) NSDate * teamChatUnifiedMessagingMigrationDate; //Example: 2020-06-01T00:00:00+00:00 
 @property (nonatomic, assign) NSInteger managerDefaultAvailability; //Example: 0
 @property (nonatomic, strong) NSString *_Nullable gender; //Example: **NULL**
 @property (nonatomic, assign) BOOL filesShowTab; //Example: 1
