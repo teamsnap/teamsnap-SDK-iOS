@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL isSponsored; //Example: 1
 @property (nonatomic, strong, nullable) NSString * name; //Example: Gatorade
 @property (nonatomic, strong, nullable) NSString * logoUrl; //Example: https://pod-gatorade.teamsnap.com/images/assignment_sponsorships/gatorade.png
+@property (nonatomic, strong, nullable) NSString * adUnitId; //Example: <null>
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 
 @end
