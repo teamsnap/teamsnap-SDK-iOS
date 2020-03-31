@@ -1,0 +1,21 @@
+name: CI
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    branches:
+    - develop
+    - master
+  pull_request:
+jobs:
+  test:
+    # Job name is Test
+    name: Test
+    # This job runs on macOS
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Bundle Install
+        run: bundle install
+      - name: Build and test
+        run: bundle exec fastlane test --verbose
