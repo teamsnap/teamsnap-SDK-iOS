@@ -6,9 +6,9 @@
 //  Copyright © 2015 jasonr. All rights reserved.
 //
 
-#import "TSDKinvitationFinder.h"
+#import "TSDKInvitationFinder.h"
 
-@implementation TSDKinvitationFinder
+@implementation TSDKInvitationFinder
 
 
 @dynamic isExistingUser, isInvitationPending, emailAddress;

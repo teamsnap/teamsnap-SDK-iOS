@@ -40,7 +40,7 @@
 #import <TeamSnapSDK/TSDKForumPost.h>
 #import <TeamSnapSDK/TSDKForumTopic.h>
 #import <TeamSnapSDK/TSDKLocation.h>
-#import <TeamSnapSDK/TSDKmemberStatistic.h>
+#import <TeamSnapSDK/TSDKMemberStatistic.h>
 #import <TeamSnapSDK/TSDKOpponent.h>
 #import <TeamSnapSDK/TSDKPlan.h>
 #import <TeamSnapSDK/TSDKSport.h>
