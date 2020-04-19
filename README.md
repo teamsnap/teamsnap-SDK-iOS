@@ -79,7 +79,7 @@ SFSafariViewController *safariViewController = [[TSDKTeamSnap sharedInstance] pr
 in your applicationDelegate:
 ```objective-c
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
-    if ([[TSDKTeamSnap sharedInstance] processLoginCallback:url completion:^(bool success, NSString *message) {
+    if ([[TSDKTeamSnap sharedInstance] processLoginCallback:url completion:^(BOOL success, NSString * _Nullable message) {
         if (success) {
             NSLog(@"Logged in %@", [[[TSDKTeamSnap sharedInstance] teamSnapUser] firstName]);
         } else {
