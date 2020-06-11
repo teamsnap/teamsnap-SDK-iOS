@@ -25,6 +25,9 @@
 @property (nonatomic, strong, nullable) NSURL * linkEvent;
 @property (nonatomic, strong, nullable) NSURL * linkTeam;
 
+//Notifies all members on the team via email regarding upcoming event assignments.
++ (void)actionSendAssignmentEmailsEventids:(NSArray <NSString *> *_Nonnull)eventIds sendingMemberId:(NSString *_Nonnull)sendingMemberId teamId:(NSString *_Nonnull)teamId WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
 @end
 
 @interface TSDKAssignment (ForwardedMethods)
