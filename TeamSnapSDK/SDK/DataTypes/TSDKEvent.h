@@ -87,6 +87,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 @property (nonatomic, strong) NSURL *_Nullable linkStatisticData;
 @property (nonatomic, strong) NSURL *_Nullable linkCalendarSingleEvent;
 @property (nonatomic, strong, nullable) NSURL * linkAssignmentsTeam;
+@property (nonatomic, strong, nullable) NSURL * linkHealthCheckQuestionnaires;
 
 +(void)actionUpdateFinalScoreForEvent:(TSDKEvent *_Nonnull)event completion:(TSDKCompletionBlock _Nullable)completion;
 + (void)getEventWithId:(NSString * _Nonnull)eventId teamId:(NSString * _Nonnull)teamId completion:(TSDKEventCompletionBlock _Nonnull)completion;
@@ -118,5 +119,6 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 -(void)getCalendarSingleEventWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getEventLineupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupCompletionBlock _Nullable)completion;
 -(void)getAssignmentsTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getHealthCheckQuestionnairesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 
 @end
