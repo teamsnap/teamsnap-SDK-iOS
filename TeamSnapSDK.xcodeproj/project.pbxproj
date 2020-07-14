@@ -51,6 +51,8 @@
 		569F9A8F20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 569F9A8D20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m */; };
 		56A1804820D3275B0075775A /* TSDKInvoicePaymentTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 56A1804620D3275B0075775A /* TSDKInvoicePaymentTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56A1804920D3275B0075775A /* TSDKInvoicePaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A1804720D3275B0075775A /* TSDKInvoicePaymentTransaction.m */; };
+		56AA2D7824BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h in Headers */ = {isa = PBXBuildFile; fileRef = 56AA2D7624BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h */; };
+		56AA2D7924BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AA2D7724BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m */; };
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
@@ -313,6 +315,8 @@
 		569F9A8D20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKBatchInvoicesAggregate.m; sourceTree = "<group>"; };
 		56A1804620D3275B0075775A /* TSDKInvoicePaymentTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicePaymentTransaction.h; sourceTree = "<group>"; };
 		56A1804720D3275B0075775A /* TSDKInvoicePaymentTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicePaymentTransaction.m; sourceTree = "<group>"; };
+		56AA2D7624BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKHealthCheckQuestionnaire.h; sourceTree = "<group>"; };
+		56AA2D7724BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKHealthCheckQuestionnaire.m; sourceTree = "<group>"; };
 		56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKSmsGateway.h; sourceTree = "<group>"; };
 		56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSmsGateway.m; sourceTree = "<group>"; };
 		56E7BA301DFB175500FB1BD6 /* TSDKShortPropertyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKShortPropertyTest.h; path = ../TeamSnapSDK/TSDKShortPropertyTest.h; sourceTree = "<group>"; };
@@ -938,6 +942,8 @@
 				56321293222F1D4A00CC4E89 /* TSDKPartnerPreferences.m */,
 				8971F53E2371E02F001486FF /* TSDKSuggestedAssignment.h */,
 				8971F53F2371E02F001486FF /* TSDKSuggestedAssignment.m */,
+				56AA2D7624BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h */,
+				56AA2D7724BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1129,6 +1135,7 @@
 				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				9681418A22D391A500649B58 /* TSDKStripeAccount.h in Headers */,
+				56AA2D7824BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h in Headers */,
 				565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */,
@@ -1335,6 +1342,7 @@
 				566145F720E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m in Sources */,
 				96E94B5F1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
+				56AA2D7924BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m in Sources */,
 				969E80B41BAAE7AB00CA518F /* TSDKCollectionQuery.m in Sources */,
 				969366DD1CCA539700721504 /* TSDKTimeZone.m in Sources */,
 				969E80EA1BAAE7AB00CA518F /* TSDKOpponent.m in Sources */,
