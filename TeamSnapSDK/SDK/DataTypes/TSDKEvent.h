@@ -119,6 +119,6 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 -(void)getCalendarSingleEventWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 -(void)getEventLineupWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventLineupCompletionBlock _Nullable)completion;
 -(void)getAssignmentsTeamWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
--(void)getHealthCheckQuestionnairesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getHealthCheckQuestionnairesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKHealthCheckQuestionnaireArrayCompletionBlock _Nonnull)completion;
 
 @end
