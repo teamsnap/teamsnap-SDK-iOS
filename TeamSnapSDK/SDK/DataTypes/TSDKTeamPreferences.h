@@ -84,6 +84,8 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, assign) BOOL isStoreConfigured;
 @property (nonatomic, assign, readonly) BOOL isEventLineupEnabled;
 @property (nonatomic, assign, readonly) BOOL isDirectMessageEnabled;
+@property (nonatomic, assign, readonly) BOOL isHealthCheckEnabled;
+@property (nonatomic, assign, readonly) NSInteger healthCheckUnlockHours; //Example: 8
 @property (nonatomic, assign) BOOL canSetupWepay;
 @property (nonatomic, strong) NSString *_Nullable currencySymbol; //Example: $
 @property (nonatomic, strong) NSString *_Nullable currencyCode; //Example: USD
