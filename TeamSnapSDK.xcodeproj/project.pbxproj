@@ -51,7 +51,7 @@
 		569F9A8F20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 569F9A8D20C1C7EE005C05BF /* TSDKBatchInvoicesAggregate.m */; };
 		56A1804820D3275B0075775A /* TSDKInvoicePaymentTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 56A1804620D3275B0075775A /* TSDKInvoicePaymentTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56A1804920D3275B0075775A /* TSDKInvoicePaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A1804720D3275B0075775A /* TSDKInvoicePaymentTransaction.m */; };
-		56AA2D7824BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h in Headers */ = {isa = PBXBuildFile; fileRef = 56AA2D7624BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h */; };
+		56AA2D7824BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h in Headers */ = {isa = PBXBuildFile; fileRef = 56AA2D7624BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56AA2D7924BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AA2D7724BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m */; };
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
