@@ -10,7 +10,7 @@
 
 @implementation TSDKPartnerPreferences
 
-@dynamic canDisplayPartner, partnerName, userId, userIsPartner, partnerId;
+@dynamic canDisplayPartner, partnerName, userId, userIsPartner, partnerId, reigningChampsMobileUrl;
  
  + (NSString *)SDKType {
      return @"partner_preferences";
