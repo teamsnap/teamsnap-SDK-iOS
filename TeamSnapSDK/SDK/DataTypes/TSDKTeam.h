@@ -136,6 +136,7 @@
 @property (nonatomic, strong, nullable) NSURL * linkGrantedWepayAccount;
 @property (nonatomic, strong, nullable) NSURL * linkStripeAccounts;
 @property (nonatomic, strong, nullable) NSURL * linkPartnersPreferencesFlipGive;
+@property (nonatomic, strong, nullable) NSURL * linkPartnersPreferencesReigningChamps;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;

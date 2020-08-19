@@ -12,6 +12,7 @@
 @property (nonatomic, strong, nullable) NSString * userId; //Example: <null>
 @property (nonatomic, assign) BOOL userIsPartner; //Example: 0
 @property (nonatomic, strong, nullable) NSString * partnerId; //Example: <null>
+@property (nonatomic, copy, nullable) NSURL * reigningChampsMobileUrl;
 
 @end
 
