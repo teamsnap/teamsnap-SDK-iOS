@@ -31,5 +31,6 @@
 + (void)getNextEventsForPageURL:(NSURL * _Nonnull)url configuration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion;
 + (void)getEventsAndAvailabilityForTeam:(TSDKTeam * _Nonnull)team memberId:(NSString * _Nonnull)memberId pageNumber:(NSNumber * _Nullable)pageNumber pageSize:(NSNumber * _Nullable)pageSize startDate:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate configuration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPagedEventsAndAvailabilitiesCompletionBlock _Nonnull)completion;
 + (void)getNextEventsAndAvailabilityForPageURL:(NSURL * _Nonnull)url configuration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKPagedEventsAndAvailabilitiesCompletionBlock _Nullable)completion;
++ (void)getSingleNextEventForTeam:(TSDKTeam *_Nonnull)team configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKEventCompletionBlock _Nullable)completion;
 
 @end
