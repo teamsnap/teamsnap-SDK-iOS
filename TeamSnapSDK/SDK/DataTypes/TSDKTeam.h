@@ -137,6 +137,7 @@
 @property (nonatomic, strong, nullable) NSURL * linkStripeAccounts;
 @property (nonatomic, strong, nullable) NSURL * linkPartnersPreferencesFlipGive;
 @property (nonatomic, strong, nullable) NSURL * linkPartnersPreferencesReigningChamps;
+@property (nonatomic, strong, nullable) NSURL * linkSuggestedAssignments;
 
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
@@ -291,5 +292,7 @@
 -(void)getGrantedWepayAccountWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
 -(void)getStripeAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStripeAccountCompletionBlock _Nonnull)completion;
 -(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPartnerPreferencesArrayCompletionBlock _Nonnull)completion;
+-(void)getSuggestedAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSuggestedAssignmentArrayCompletionBlock _Nonnull)completion;
+
 
 @end
