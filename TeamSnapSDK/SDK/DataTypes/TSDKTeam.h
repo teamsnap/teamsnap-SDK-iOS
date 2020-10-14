@@ -292,7 +292,7 @@
 -(void)getGrantedWepayAccountWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKWepayAccountsArrayCompletionBlock _Nonnull)completion;
 -(void)getStripeAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStripeAccountCompletionBlock _Nonnull)completion;
 -(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPartnerPreferencesArrayCompletionBlock _Nonnull)completion;
--(void)getSuggestedAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSuggestedAssignmentArrayCompletionBlock _Nonnull)completion;
+-(void)getSuggestedAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSuggestedAssignmentsArrayCompletionBlock _Nonnull)completion;
 
 
 @end
