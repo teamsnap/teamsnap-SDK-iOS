@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		469FCADA2538F17B000AA398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCAD92538F17B000AA398 /* AppDelegate.swift */; };
+		469FCADC2538F17B000AA398 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCADB2538F17B000AA398 /* SceneDelegate.swift */; };
+		469FCADE2538F17B000AA398 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCADD2538F17B000AA398 /* ViewController.swift */; };
+		469FCAE12538F17B000AA398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469FCADF2538F17B000AA398 /* Main.storyboard */; };
+		469FCAE32538F17D000AA398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469FCAE22538F17D000AA398 /* Assets.xcassets */; };
+		469FCAE62538F17D000AA398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469FCAE42538F17D000AA398 /* LaunchScreen.storyboard */; };
+		469FCAF12538F17D000AA398 /* TeamSnap_PracticalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCAF02538F17D000AA398 /* TeamSnap_PracticalTests.swift */; };
+		469FCAFC2538F17E000AA398 /* TeamSnap_PracticalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCAFB2538F17E000AA398 /* TeamSnap_PracticalUITests.swift */; };
+		469FCB112538F268000AA398 /* TeamSnapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FCB102538F268000AA398 /* TeamSnapSDK.framework */; };
+		469FCB122538F268000AA398 /* TeamSnapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 469FCB102538F268000AA398 /* TeamSnapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		469FCB172538F352000AA398 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCB162538F352000AA398 /* Constants.swift */; };
+		469FCB2725390926000AA398 /* BaseTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FCB2625390926000AA398 /* BaseTeamsViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		469FCAED2538F17D000AA398 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 469FCACE2538F17B000AA398 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 469FCAD52538F17B000AA398;
+			remoteInfo = "TeamSnap-Practical";
+		};
+		469FCAF82538F17E000AA398 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 469FCACE2538F17B000AA398 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 469FCAD52538F17B000AA398;
+			remoteInfo = "TeamSnap-Practical";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		469FCB132538F268000AA398 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				469FCB122538F268000AA398 /* TeamSnapSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		469FCAD62538F17B000AA398 /* TeamSnap-Practical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TeamSnap-Practical.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		469FCAD92538F17B000AA398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		469FCADB2538F17B000AA398 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		469FCADD2538F17B000AA398 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		469FCAE02538F17B000AA398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		469FCAE22538F17D000AA398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		469FCAE52538F17D000AA398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		469FCAE72538F17D000AA398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		469FCAEC2538F17D000AA398 /* TeamSnap-PracticalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TeamSnap-PracticalTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		469FCAF02538F17D000AA398 /* TeamSnap_PracticalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSnap_PracticalTests.swift; sourceTree = "<group>"; };
+		469FCAF22538F17D000AA398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		469FCAF72538F17E000AA398 /* TeamSnap-PracticalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TeamSnap-PracticalUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		469FCAFB2538F17E000AA398 /* TeamSnap_PracticalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSnap_PracticalUITests.swift; sourceTree = "<group>"; };
+		469FCAFD2538F17E000AA398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		469FCB102538F268000AA398 /* TeamSnapSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TeamSnapSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		469FCB162538F352000AA398 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		469FCB2625390926000AA398 /* BaseTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTeamsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		469FCAD32538F17B000AA398 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469FCB112538F268000AA398 /* TeamSnapSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469FCAE92538F17D000AA398 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469FCAF42538F17E000AA398 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		469FCACD2538F17B000AA398 = {
+			isa = PBXGroup;
+			children = (
+				469FCAD82538F17B000AA398 /* TeamSnap-Practical */,
+				469FCAEF2538F17D000AA398 /* TeamSnap-PracticalTests */,
+				469FCAFA2538F17E000AA398 /* TeamSnap-PracticalUITests */,
+				469FCAD72538F17B000AA398 /* Products */,
+				469FCB0F2538F268000AA398 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		469FCAD72538F17B000AA398 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				469FCAD62538F17B000AA398 /* TeamSnap-Practical.app */,
+				469FCAEC2538F17D000AA398 /* TeamSnap-PracticalTests.xctest */,
+				469FCAF72538F17E000AA398 /* TeamSnap-PracticalUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		469FCAD82538F17B000AA398 /* TeamSnap-Practical */ = {
+			isa = PBXGroup;
+			children = (
+				469FCAD92538F17B000AA398 /* AppDelegate.swift */,
+				469FCADB2538F17B000AA398 /* SceneDelegate.swift */,
+				469FCADD2538F17B000AA398 /* ViewController.swift */,
+				469FCB2625390926000AA398 /* BaseTeamsViewController.swift */,
+				469FCB162538F352000AA398 /* Constants.swift */,
+				469FCADF2538F17B000AA398 /* Main.storyboard */,
+				469FCAE22538F17D000AA398 /* Assets.xcassets */,
+				469FCAE42538F17D000AA398 /* LaunchScreen.storyboard */,
+				469FCAE72538F17D000AA398 /* Info.plist */,
+			);
+			path = "TeamSnap-Practical";
+			sourceTree = "<group>";
+		};
+		469FCAEF2538F17D000AA398 /* TeamSnap-PracticalTests */ = {
+			isa = PBXGroup;
+			children = (
+				469FCAF02538F17D000AA398 /* TeamSnap_PracticalTests.swift */,
+				469FCAF22538F17D000AA398 /* Info.plist */,
+			);
+			path = "TeamSnap-PracticalTests";
+			sourceTree = "<group>";
+		};
+		469FCAFA2538F17E000AA398 /* TeamSnap-PracticalUITests */ = {
+			isa = PBXGroup;
+			children = (
+				469FCAFB2538F17E000AA398 /* TeamSnap_PracticalUITests.swift */,
+				469FCAFD2538F17E000AA398 /* Info.plist */,
+			);
+			path = "TeamSnap-PracticalUITests";
+			sourceTree = "<group>";
+		};
+		469FCB0F2538F268000AA398 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				469FCB102538F268000AA398 /* TeamSnapSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		469FCAD52538F17B000AA398 /* TeamSnap-Practical */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 469FCB002538F17E000AA398 /* Build configuration list for PBXNativeTarget "TeamSnap-Practical" */;
+			buildPhases = (
+				469FCAD22538F17B000AA398 /* Sources */,
+				469FCAD32538F17B000AA398 /* Frameworks */,
+				469FCAD42538F17B000AA398 /* Resources */,
+				469FCB132538F268000AA398 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TeamSnap-Practical";
+			productName = "TeamSnap-Practical";
+			productReference = 469FCAD62538F17B000AA398 /* TeamSnap-Practical.app */;
+			productType = "com.apple.product-type.application";
+		};
+		469FCAEB2538F17D000AA398 /* TeamSnap-PracticalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 469FCB032538F17E000AA398 /* Build configuration list for PBXNativeTarget "TeamSnap-PracticalTests" */;
+			buildPhases = (
+				469FCAE82538F17D000AA398 /* Sources */,
+				469FCAE92538F17D000AA398 /* Frameworks */,
+				469FCAEA2538F17D000AA398 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				469FCAEE2538F17D000AA398 /* PBXTargetDependency */,
+			);
+			name = "TeamSnap-PracticalTests";
+			productName = "TeamSnap-PracticalTests";
+			productReference = 469FCAEC2538F17D000AA398 /* TeamSnap-PracticalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		469FCAF62538F17E000AA398 /* TeamSnap-PracticalUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 469FCB062538F17E000AA398 /* Build configuration list for PBXNativeTarget "TeamSnap-PracticalUITests" */;
+			buildPhases = (
+				469FCAF32538F17E000AA398 /* Sources */,
+				469FCAF42538F17E000AA398 /* Frameworks */,
+				469FCAF52538F17E000AA398 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				469FCAF92538F17E000AA398 /* PBXTargetDependency */,
+			);
+			name = "TeamSnap-PracticalUITests";
+			productName = "TeamSnap-PracticalUITests";
+			productReference = 469FCAF72538F17E000AA398 /* TeamSnap-PracticalUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		469FCACE2538F17B000AA398 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					469FCAD52538F17B000AA398 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					469FCAEB2538F17D000AA398 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 469FCAD52538F17B000AA398;
+					};
+					469FCAF62538F17E000AA398 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 469FCAD52538F17B000AA398;
+					};
+				};
+			};
+			buildConfigurationList = 469FCAD12538F17B000AA398 /* Build configuration list for PBXProject "TeamSnap-Practical" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 469FCACD2538F17B000AA398;
+			productRefGroup = 469FCAD72538F17B000AA398 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				469FCAD52538F17B000AA398 /* TeamSnap-Practical */,
+				469FCAEB2538F17D000AA398 /* TeamSnap-PracticalTests */,
+				469FCAF62538F17E000AA398 /* TeamSnap-PracticalUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		469FCAD42538F17B000AA398 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469FCAE62538F17D000AA398 /* LaunchScreen.storyboard in Resources */,
+				469FCAE32538F17D000AA398 /* Assets.xcassets in Resources */,
+				469FCAE12538F17B000AA398 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469FCAEA2538F17D000AA398 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469FCAF52538F17E000AA398 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		469FCAD22538F17B000AA398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469FCADE2538F17B000AA398 /* ViewController.swift in Sources */,
+				469FCADA2538F17B000AA398 /* AppDelegate.swift in Sources */,
+				469FCB2725390926000AA398 /* BaseTeamsViewController.swift in Sources */,
+				469FCADC2538F17B000AA398 /* SceneDelegate.swift in Sources */,
+				469FCB172538F352000AA398 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469FCAE82538F17D000AA398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469FCAF12538F17D000AA398 /* TeamSnap_PracticalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469FCAF32538F17E000AA398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469FCAFC2538F17E000AA398 /* TeamSnap_PracticalUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		469FCAEE2538F17D000AA398 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 469FCAD52538F17B000AA398 /* TeamSnap-Practical */;
+			targetProxy = 469FCAED2538F17D000AA398 /* PBXContainerItemProxy */;
+		};
+		469FCAF92538F17E000AA398 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 469FCAD52538F17B000AA398 /* TeamSnap-Practical */;
+			targetProxy = 469FCAF82538F17E000AA398 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		469FCADF2538F17B000AA398 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				469FCAE02538F17B000AA398 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		469FCAE42538F17D000AA398 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				469FCAE52538F17D000AA398 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		469FCAFE2538F17E000AA398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		469FCAFF2538F17E000AA398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		469FCB012538F17E000AA398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = "TeamSnap-Practical/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamsnap.TeamSnap-Practical";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		469FCB022538F17E000AA398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = "TeamSnap-Practical/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamsnap.TeamSnap-Practical";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		469FCB042538F17E000AA398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = "TeamSnap-PracticalTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamsnap.TeamSnap-PracticalTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeamSnap-Practical.app/TeamSnap-Practical";
+			};
+			name = Debug;
+		};
+		469FCB052538F17E000AA398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = "TeamSnap-PracticalTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamsnap.TeamSnap-PracticalTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeamSnap-Practical.app/TeamSnap-Practical";
+			};
+			name = Release;
+		};
+		469FCB072538F17E000AA398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = "TeamSnap-PracticalUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamsnap.TeamSnap-PracticalUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "TeamSnap-Practical";
+			};
+			name = Debug;
+		};
+		469FCB082538F17E000AA398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YN466NRGZP;
+				INFOPLIST_FILE = "TeamSnap-PracticalUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamsnap.TeamSnap-PracticalUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "TeamSnap-Practical";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		469FCAD12538F17B000AA398 /* Build configuration list for PBXProject "TeamSnap-Practical" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				469FCAFE2538F17E000AA398 /* Debug */,
+				469FCAFF2538F17E000AA398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		469FCB002538F17E000AA398 /* Build configuration list for PBXNativeTarget "TeamSnap-Practical" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				469FCB012538F17E000AA398 /* Debug */,
+				469FCB022538F17E000AA398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		469FCB032538F17E000AA398 /* Build configuration list for PBXNativeTarget "TeamSnap-PracticalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				469FCB042538F17E000AA398 /* Debug */,
+				469FCB052538F17E000AA398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		469FCB062538F17E000AA398 /* Build configuration list for PBXNativeTarget "TeamSnap-PracticalUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				469FCB072538F17E000AA398 /* Debug */,
+				469FCB082538F17E000AA398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 469FCACE2538F17B000AA398 /* Project object */;
+}

@@ -14,44 +14,44 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "969E803F1BAAE62D00CA518F"
-               BuildableName = "TeamSnapSDK.framework"
-               BlueprintName = "TeamSnapSDK"
-               ReferencedContainer = "container:TeamSnapSDK.xcodeproj">
+               BlueprintIdentifier = "469FCAD52538F17B000AA398"
+               BuildableName = "TeamSnap-Practical.app"
+               BlueprintName = "TeamSnap-Practical"
+               ReferencedContainer = "container:TeamSnap-Practical.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "969E803F1BAAE62D00CA518F"
-            BuildableName = "TeamSnapSDK.framework"
-            BlueprintName = "TeamSnapSDK"
-            ReferencedContainer = "container:TeamSnapSDK.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "969E80491BAAE62E00CA518F"
-               BuildableName = "TeamSnapSDKTests.xctest"
-               BlueprintName = "TeamSnapSDKTests"
-               ReferencedContainer = "container:TeamSnapSDK.xcodeproj">
+               BlueprintIdentifier = "469FCAEB2538F17D000AA398"
+               BuildableName = "TeamSnap-PracticalTests.xctest"
+               BlueprintName = "TeamSnap-PracticalTests"
+               ReferencedContainer = "container:TeamSnap-Practical.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "469FCAF62538F17E000AA398"
+               BuildableName = "TeamSnap-PracticalUITests.xctest"
+               BlueprintName = "TeamSnap-PracticalUITests"
+               ReferencedContainer = "container:TeamSnap-Practical.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -60,15 +60,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "969E803F1BAAE62D00CA518F"
-            BuildableName = "TeamSnapSDK.framework"
-            BlueprintName = "TeamSnapSDK"
-            ReferencedContainer = "container:TeamSnapSDK.xcodeproj">
+            BlueprintIdentifier = "469FCAD52538F17B000AA398"
+            BuildableName = "TeamSnap-Practical.app"
+            BlueprintName = "TeamSnap-Practical"
+            ReferencedContainer = "container:TeamSnap-Practical.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -76,15 +77,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "969E803F1BAAE62D00CA518F"
-            BuildableName = "TeamSnapSDK.framework"
-            BlueprintName = "TeamSnapSDK"
-            ReferencedContainer = "container:TeamSnapSDK.xcodeproj">
+            BlueprintIdentifier = "469FCAD52538F17B000AA398"
+            BuildableName = "TeamSnap-Practical.app"
+            BlueprintName = "TeamSnap-Practical"
+            ReferencedContainer = "container:TeamSnap-Practical.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
