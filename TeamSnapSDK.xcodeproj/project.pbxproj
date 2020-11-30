@@ -56,6 +56,8 @@
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
+		56FE580F25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 56FE580D25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h */; };
+		56FE581025759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FE580E25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m */; };
 		8971F5402371E02F001486FF /* TSDKSuggestedAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 8971F53E2371E02F001486FF /* TSDKSuggestedAssignment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8971F5412371E02F001486FF /* TSDKSuggestedAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971F53F2371E02F001486FF /* TSDKSuggestedAssignment.m */; };
 		960107031BE92F5B005C4A57 /* TSDKCompletionBlockTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -321,6 +323,8 @@
 		56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKSmsGateway.m; sourceTree = "<group>"; };
 		56E7BA301DFB175500FB1BD6 /* TSDKShortPropertyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKShortPropertyTest.h; path = ../TeamSnapSDK/TSDKShortPropertyTest.h; sourceTree = "<group>"; };
 		56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKShortPropertyTest.m; path = ../TeamSnapSDK/TSDKShortPropertyTest.m; sourceTree = "<group>"; };
+		56FE580D25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKHealthCheckQuestionnaireTemplate.h; sourceTree = "<group>"; };
+		56FE580E25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKHealthCheckQuestionnaireTemplate.m; sourceTree = "<group>"; };
 		8971F53E2371E02F001486FF /* TSDKSuggestedAssignment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKSuggestedAssignment.h; sourceTree = "<group>"; };
 		8971F53F2371E02F001486FF /* TSDKSuggestedAssignment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKSuggestedAssignment.m; sourceTree = "<group>"; };
 		960107001BE92DD5005C4A57 /* TSDKCompletionBlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKCompletionBlockTypes.h; sourceTree = "<group>"; };
@@ -944,6 +948,8 @@
 				8971F53F2371E02F001486FF /* TSDKSuggestedAssignment.m */,
 				56AA2D7624BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h */,
 				56AA2D7724BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m */,
+				56FE580D25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h */,
+				56FE580E25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1040,6 +1046,7 @@
 				969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */,
 				96BA2590207BB72A0097C911 /* TSDKSportPosition.h in Headers */,
 				56879C321E0340EA00FBA9F6 /* TSDKDivisionPreferences.h in Headers */,
+				56FE580F25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h in Headers */,
 				969E80E31BAAE7AB00CA518F /* TSDKForumTopic.h in Headers */,
 				969E80DD1BAAE7AB00CA518F /* TSDKCustomField.h in Headers */,
 				969E80D31BAAE7AB00CA518F /* TSDKAssignment.h in Headers */,
@@ -1366,6 +1373,7 @@
 				964CDDE81BB4514B00909D11 /* TSDKRootLinks.m in Sources */,
 				96E3EC071F8BB12400A1F805 /* TSDKAdvertisement.m in Sources */,
 				969E80E41BAAE7AB00CA518F /* TSDKForumTopic.m in Sources */,
+				56FE581025759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m in Sources */,
 				969B7EDB1C7CBB5000FD3EA0 /* TSDKPaymentNote.m in Sources */,
 				969B7EFA1C7CF30600FD3EA0 /* TSDKOpponentResults.m in Sources */,
 				969E80F21BAAE7AB00CA518F /* TSDKTeamFee.m in Sources */,

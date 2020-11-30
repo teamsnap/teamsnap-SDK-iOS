@@ -294,6 +294,6 @@
 -(void)getStripeAccountsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKStripeAccountCompletionBlock _Nonnull)completion;
 -(void)getPartnersPreferencesFlipGiveWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPartnerPreferencesArrayCompletionBlock _Nonnull)completion;
 -(void)getSuggestedAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKSuggestedAssignmentsArrayCompletionBlock _Nonnull)completion;
--(void)getHealthCheckQuestionnaireTemplateWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
+-(void)getHealthCheckQuestionnaireTemplateWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKHealthCheckQuestionnaireTemplateArrayCompletionBlock _Nonnull)completion;
 
 @end
