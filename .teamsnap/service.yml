@@ -1,10 +1,9 @@
 ---
-classification: 
+classification: lib
 production:
-  tier: 
+  tier: 1
   url: 
   hosting_platform: 
-  logging: false
 performance_monitoring: []
 error_monitoring: []
 continuous_integration: []
