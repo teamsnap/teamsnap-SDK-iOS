@@ -173,7 +173,8 @@ static NSArray *knownCompletionTypes;
                                [TSDKPartnerPreferences class],
                                [TSDKSuggestedAssignment class],
                                [TSDKHealthCheckQuestionnaire class],
-                               [TSDKHealthCheckQuestionnaireTemplate class]];
+                               [TSDKHealthCheckQuestionnaireTemplate class],
+                               [TSDKHealthCheckQuestionnaireTemplateQuestion class]];
     });
     return _supportedSDKObjects;
 }

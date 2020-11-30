@@ -112,3 +112,4 @@
 #import <TeamSnapSDK/TSDKSuggestedAssignment.h>
 #import <TeamSnapSDK/TSDKHealthCheckQuestionnaire.h>
 #import <TeamSnapSDK/TSDKHealthCheckQuestionnaireTemplate.h>
+#import <TeamSnapSDK/TSDKHealthCheckQuestionnaireTemplateQuestion.h>

@@ -31,6 +31,8 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
+		56556E382575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h in Headers */ = {isa = PBXBuildFile; fileRef = 56556E362575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h */; };
+		56556E392575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 56556E372575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m */; };
 		565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		565B9E022162CC6600A337C8 /* TSDKWepayAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */; };
 		566145F620E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -297,6 +299,8 @@
 		5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMessageSender.h; path = Protocols/TSDKMessageSender.h; sourceTree = "<group>"; };
 		564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoicesAggregate.h; sourceTree = "<group>"; };
 		564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKInvoicesAggregate.m; sourceTree = "<group>"; };
+		56556E362575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKHealthCheckQuestionnaireTemplateQuestion.h; sourceTree = "<group>"; };
+		56556E372575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKHealthCheckQuestionnaireTemplateQuestion.m; sourceTree = "<group>"; };
 		565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKWepayAccount.h; sourceTree = "<group>"; };
 		565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDKWepayAccount.m; sourceTree = "<group>"; };
 		566145F420E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKInvoiceRecipientsInvoicesAggregate.h; sourceTree = "<group>"; };
@@ -950,6 +954,8 @@
 				56AA2D7724BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m */,
 				56FE580D25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h */,
 				56FE580E25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m */,
+				56556E362575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h */,
+				56556E372575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -1093,6 +1099,7 @@
 				969E80C91BAAE7AB00CA518F /* TSDKMemberStatistic.h in Headers */,
 				965B7D391C18CA80009AF13E /* TSDKContact.h in Headers */,
 				969E80E51BAAE7AB00CA518F /* TSDKLocation.h in Headers */,
+				56556E382575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h in Headers */,
 				969E80F51BAAE7AB00CA518F /* TSDKTrackedItem.h in Headers */,
 				969E80ED1BAAE7AB00CA518F /* TSDKSport.h in Headers */,
 				4F9F38C71DA45D4200FB0DCA /* TSDKLogging.h in Headers */,
@@ -1347,6 +1354,7 @@
 				9678A3631D86EC4E0078631C /* TSDKLeagueCustomField.m in Sources */,
 				568251DD1E01EEE900B6FE5E /* TSDKDivision.m in Sources */,
 				566145F720E43EFD00269CB9 /* TSDKInvoiceRecipientsInvoicesAggregate.m in Sources */,
+				56556E392575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m in Sources */,
 				96E94B5F1E7C53BF006D7494 /* NSNumber+TSDKConveniences.m in Sources */,
 				965B7D351C18C7EE009AF13E /* TSDKMemberEmailAddress.m in Sources */,
 				56AA2D7924BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.m in Sources */,
