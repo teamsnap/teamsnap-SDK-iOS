@@ -31,7 +31,7 @@
 		5645E4A81CD1514B00FCA40B /* TSDKMessageSender.h in Headers */ = {isa = PBXBuildFile; fileRef = 5645E4A71CD1514B00FCA40B /* TSDKMessageSender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC5204F4D4D00E102B1 /* TSDKInvoicesAggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 564EDDC3204F4D4D00E102B1 /* TSDKInvoicesAggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		564EDDC6204F4D4D00E102B1 /* TSDKInvoicesAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EDDC4204F4D4D00E102B1 /* TSDKInvoicesAggregate.m */; };
-		56556E382575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h in Headers */ = {isa = PBXBuildFile; fileRef = 56556E362575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h */; };
+		56556E382575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h in Headers */ = {isa = PBXBuildFile; fileRef = 56556E362575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56556E392575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 56556E372575A7F7001B7A16 /* TSDKHealthCheckQuestionnaireTemplateQuestion.m */; };
 		565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 565B9DFF2162CC6600A337C8 /* TSDKWepayAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		565B9E022162CC6600A337C8 /* TSDKWepayAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 565B9E002162CC6600A337C8 /* TSDKWepayAccount.m */; };
@@ -58,7 +58,7 @@
 		56BE66131DF5D0CB000AC02D /* TSDKSmsGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BE66111DF5D0CB000AC02D /* TSDKSmsGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56BE66141DF5D0CB000AC02D /* TSDKSmsGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BE66121DF5D0CB000AC02D /* TSDKSmsGateway.m */; };
 		56E7BA351DFB1BBF00FB1BD6 /* TSDKShortPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E7BA311DFB175500FB1BD6 /* TSDKShortPropertyTest.m */; };
-		56FE580F25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 56FE580D25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h */; };
+		56FE580F25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 56FE580D25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56FE581025759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FE580E25759AF600919D6B /* TSDKHealthCheckQuestionnaireTemplate.m */; };
 		8971F5402371E02F001486FF /* TSDKSuggestedAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 8971F53E2371E02F001486FF /* TSDKSuggestedAssignment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8971F5412371E02F001486FF /* TSDKSuggestedAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971F53F2371E02F001486FF /* TSDKSuggestedAssignment.m */; };
