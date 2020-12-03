@@ -10,7 +10,7 @@
 
 @implementation TSDKHealthCheckQuestionnaireTemplateQuestion
 
-@dynamic prompt, localizedPrompt, updatedAt, createdAt, numberArguments, symptomAnswers, displayOrder, symptomFreeAnswer, healthCheckQuestionnaireTemplateId, linkHealthCheckQuestionnaireTemplate;
+@dynamic prompt, localizedPrompt, updatedAt, createdAt, localizedTemperature, symptomAnswers, displayOrder, symptomFreeAnswer, healthCheckQuestionnaireTemplateId, linkHealthCheckQuestionnaireTemplate;
 
 + (NSString *)SDKType {
   return @"health_check_questionnaire_template_question";
