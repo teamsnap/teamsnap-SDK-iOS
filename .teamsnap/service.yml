@@ -6,7 +6,9 @@ production:
   hosting_platform: 
 performance_monitoring: []
 error_monitoring: []
-continuous_integration: []
+continuous_integration:
+  - name: github_actions
+    reference_id: CI
 bug_tracking: []
 documentation: []
 deployment: []
