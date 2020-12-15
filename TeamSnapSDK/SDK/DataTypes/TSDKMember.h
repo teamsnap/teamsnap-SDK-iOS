@@ -111,7 +111,6 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKMemberGender) {
 @property (nullable, nonatomic, strong) NSURL *linkMemberStatistics;
 @property (nullable, nonatomic, strong) NSURL *linkForumPosts;
 @property (nullable, nonatomic, strong) NSURL *linkTeamMedia;
-@property (nullable, nonatomic, strong) NSURL *linkMemberPhotos;
 @property (nullable, nonatomic, strong) NSURL *linkMessageData;
 @property (nullable, nonatomic, strong) NSURL *linkAssignments;
 @property (nullable, nonatomic, strong) NSURL *linkMemberRegistrationSignups;
@@ -150,43 +149,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKMemberGender) {
  */
 - (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size;
 
-
-/**
- Deprecated. Use memberPhotoURLForWidth: instead.
-
- @param width the width of the image
- @param height the height of the image
- @param fitCrop If true, crop = fill
- @param configuration A SDK request configuration object
- @param completion A completion returning the image
- */
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKMemberPhotoArrayCompletionBlock)completion __attribute__((deprecated));
-
 + (NSURL * _Nullable)commissionerQueryFor:(TSDKDivision * _Nonnull)division;
-
-#if TARGET_OS_IPHONE
-+(nonnull TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(nullable TSDKUploadProgressBlock)progressBlock;
-
-/**
- Deprecated. Use memberPhotoURLForWidth: instead.
-
- @param configuration A SDK request configuration object
- @param completion A completion returning the image
- */
--(void)getMemberPhotoWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKImageCompletionBlock)completion __attribute__((deprecated));
-
-/**
- Deprecated. Use memberPhotoURLForWidth: instead.
- 
- @param configuration A SDK request configuration object
- @param completion A completion returning the image
- */
--(void)getMemberThumbnailWithConfiguration:(nonnull TSDKRequestConfiguration *)configuration completion:(nullable TSDKImageCompletionBlock)completion __attribute__((deprecated));
-
-// Returns the object that will receive the progress update callbacks so it can be stored immediately to an associated object and/or directly queried for the upload progress at any time (not just when the progress block is fired).
--(nullable TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(nonnull NSURL *)photoFileURL  progress:(nullable TSDKUploadProgressBlock)progressBlock;
-
-#endif
 
 - (NSInteger)age;
 
@@ -247,7 +210,6 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKMemberGender) {
 -(void)getMemberStatisticsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberStatisticArrayCompletionBlock _Nonnull)completion;
 -(void)getForumPostsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKForumPostArrayCompletionBlock _Nonnull)completion;
 -(void)getTeamMediaWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTeamMediumArrayCompletionBlock _Nonnull)completion;
--(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nonnull)completion;
 -(void)getMessageDataWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getAssignmentsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKAssignmentArrayCompletionBlock _Nonnull)completion;
 -(void)getMemberRegistrationSignupsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;

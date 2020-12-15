@@ -73,7 +73,6 @@
 @property (nonatomic, strong, nullable) NSURL * linkContacts;
 @property (nonatomic, strong, nullable) NSURL * linkMembersCsvExport;
 @property (nonatomic, strong, nullable) NSURL * linkTrackedItemStatuses;
-@property (nonatomic, strong, nullable) NSURL * linkMemberPhotos;
 @property (nonatomic, strong, nullable) NSURL * linkManagers;
 @property (nonatomic, strong, nullable) NSURL * linkCommissioners;
 @property (nonatomic, strong, nullable) NSURL * linkAvailabilitiesCsvExport;
@@ -178,7 +177,6 @@
 
 - (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *_Nonnull)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nullable)completion;
 
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height;
 - (NSURL * _Nullable)teamPhotoForWidth:(NSInteger)width height:(NSInteger)height;
@@ -230,7 +228,6 @@
 -(void)getContactsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKContactArrayCompletionBlock _Nonnull)completion;
 -(void)getMembersCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getTrackedItemStatusesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKTrackedItemStatusArrayCompletionBlock _Nonnull)completion;
--(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock _Nonnull)completion;
 -(void)getManagersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getCommissionersWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;
 -(void)getAvailabilitiesCsvExportWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nonnull)completion;

@@ -15,7 +15,6 @@
 #import "TSDKUser.h"
 #import "NSMutableString+TSDKConveniences.h"
 #import "TSDKBackgroundUploadProgressMonitorDelegate.h"
-#import "TSDKMemberPhoto.h"
 #import "TSDKNotifications.h"
 #import "TSDKConstants.h"
 #import "NSDate+TSDKConveniences.h"
@@ -24,7 +23,7 @@
 
 @implementation TSDKMember
 
- @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, isDeletable, isShownUnreachableForChatBanner, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMemberPhotos, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto, linkMemberPhotoFile;
+ @dynamic lastName, createdAt, teamId, hideAddress, isOwnershipPending, addressStreet2, isPushable, addressState, hasFacebookPostScoresEnabled, hideAge, invitationDeclined, isInvitable, divisionId, addressZip, lastLoggedInAt, invitationCode, position, birthday, isEmailable, isLeagueOwner, isInvited, isActivated, sourceMemberId, addressStreet1, isNonPlayer, addressCity, isAgeHidden, firstName, isManager, jerseyNumber, userId, isOwner, isAddressHidden, updatedAt, isCommissioner, isAlertable, isDeletable, isShownUnreachableForChatBanner, linkBroadcastEmails, linkLeagueCustomFields, linkForumSubscriptions, linkMessages, linkContactEmailAddresses, linkTeam, linkLeagueCustomData, linkMemberStatistics, linkForumPosts, linkTeamMedia, linkMessageData, linkAssignments, linkMemberRegistrationSignups, linkMemberAssignments, linkUser, linkTeamMediumComments, linkMemberPhoneNumbers, linkContacts, linkMemberBalances, linkContactPhoneNumbers, linkCustomFields, linkMemberPayments, linkCustomData, linkTrackedItemStatuses, linkBroadcastAlerts, linkMemberFiles, linkMemberLinks, linkAvailabilities, linkBroadcastEmailAttachments, linkMemberEmailAddresses, linkStatisticData, linkForumTopics, linkDivision, linkLeagueRegistrantDocuments, linkMemberPreferences, linkMemberThumbnail, linkMemberPhoto, linkMemberPhotoFile;
 
 + (NSString *)SDKType {
     return @"member";
@@ -48,21 +47,6 @@
 
 #if TARGET_OS_IPHONE
 
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
-    NSString *cropString = @"fill";
-    if (fitCrop) {
-        cropString = @"fit";
-    }
-    NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
-                                              @"width":[NSNumber numberWithInteger:width],
-                                              @"crop":cropString};
-    
-    [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
-}
 
 - (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size {
     if(self.linkMemberPhotoFile == nil || self.linkMemberPhotoFile.absoluteString.length == 0) {
@@ -84,50 +68,10 @@
     return urlComponents.URL;
 }
 
--(void)getMemberPhotoWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
-    [TSDKDataRequest requestImageForPath:self.linkMemberPhotos configuration:configuration withCompletion:^(UIImage *image) {
-        if (completion) {
-            completion(image);
-        }
-    }];
-}
-
 -(void)getMemberThumbnailWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKImageCompletionBlock)completion {
     [TSDKDataRequest requestImageForPath:self.linkMemberThumbnail configuration:configuration withCompletion:^(UIImage *image) {
         if (completion) {
             completion(image);
-        }
-    }];
-}
-
-+(TSDKBackgroundUploadProgressMonitorDelegate *)actionUploadMemberPhotoFileURL:(NSURL *)photoFileURL memberId:(NSString *_Nonnull)memberId progress:(TSDKUploadProgressBlock)progressBlock {
-    
-    TSDKBackgroundUploadProgressMonitorDelegate *backgroundUploadDelegate = [[TSDKBackgroundUploadProgressMonitorDelegate alloc] initWithProgressBlock:progressBlock];
-    
-    TSDKCollectionCommand *uploadCommand = [self commandForKey:@"upload_member_photo"];
-    uploadCommand.data[@"member_id"] = memberId;
-    uploadCommand.data[@"file_name"] = @"photo.jpg";
-    NSData *imageData = [NSData dataWithContentsOfURL:photoFileURL];
-    
-    uploadCommand.data[@"file"] = imageData;
-    NSURL *url = [NSURL URLWithString:uploadCommand.href];
-    
-    [TSDKDataRequest postDictionary:uploadCommand.data toURL:url delegate:backgroundUploadDelegate];
-    
-    return backgroundUploadDelegate;
-}
-
-- (TSDKBackgroundUploadProgressMonitorDelegate *)uploadMemberPhotoFileURL:(NSURL *)photoFileURL  progress:(TSDKUploadProgressBlock)progressBlock {
-    return [TSDKMember actionUploadMemberPhotoFileURL:photoFileURL memberId:self.objectIdentifier progress:^(TSDKBackgroundUploadProgressMonitorDelegate * _Nullable uploadStatus, NSError * _Nullable error) {
-        if (uploadStatus.complete && uploadStatus.success) {
-            TSDKMemberPhoto *poisonPill = [[TSDKMemberPhoto alloc] init];
-            [poisonPill setString:self.objectIdentifier forKey:@"id"];
-            poisonPill.memberId = self.objectIdentifier;
-            poisonPill.teamId = self.teamId;
-            [TSDKNotifications postInvalidateAssociatedObjects:poisonPill];
-        }
-        if (progressBlock) {
-            progressBlock(uploadStatus, error);
         }
     }];
 }

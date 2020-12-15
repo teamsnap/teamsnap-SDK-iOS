@@ -122,7 +122,6 @@ static NSArray *knownCompletionTypes;
                                [TSDKSport class],
                                [TSDKContact class],
                                [TSDKEventLineupEntry class],
-                               [TSDKMemberPhoto class],
                                [TSDKSportPosition class],
                                [TSDKMemberPreferences class],
                                [TSDKMessage class],

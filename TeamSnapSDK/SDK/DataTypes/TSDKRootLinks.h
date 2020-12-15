@@ -83,7 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSURL * linkPlans;
 @property (nonatomic, strong, nullable) NSURL * linkSelf;
 @property (nonatomic, strong, nullable) NSURL * linkDivisionTeamStandings;
-@property (nonatomic, strong, nullable) NSURL * linkMemberPhotos;
 @property (nonatomic, strong, nullable) NSURL * linkAuthorization;
 @property (nonatomic, strong, nullable) NSURL * linkDivisionMemberEmailAddresses;
 @property (nonatomic, strong, nullable) NSURL * linkDivisionContactEmailAddresses;
@@ -212,7 +211,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getPlansWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPlanArrayCompletionBlock)completion;
 -(void)getSelfWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionTeamStandingsWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
--(void)getMemberPhotosWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion;
 -(void)getAuthorizationWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionMemberEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;
 -(void)getDivisionContactEmailAddressesWithConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock)completion;

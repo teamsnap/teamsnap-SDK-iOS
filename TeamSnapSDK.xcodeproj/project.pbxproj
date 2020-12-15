@@ -253,8 +253,6 @@
 		96F4E7DA1C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */; };
 		96F4FC3F1BBDA389000D04B9 /* TSDKTeamResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96F4FC411BBDA389000D04B9 /* TSDKTeamResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */; };
-		96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96F7C52A1D104A920022FA4C /* TSDKMemberPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F7C5281D104A920022FA4C /* TSDKMemberPhoto.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -524,8 +522,6 @@
 		96F4E7D71C43FDC9009BA3F8 /* NSMutableDictionary+refreshCollectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+refreshCollectionData.m"; sourceTree = "<group>"; };
 		96F4FC3D1BBDA389000D04B9 /* TSDKTeamResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKTeamResults.h; sourceTree = "<group>"; };
 		96F4FC3E1BBDA389000D04B9 /* TSDKTeamResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKTeamResults.m; sourceTree = "<group>"; };
-		96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDKMemberPhoto.h; path = PhotoObjects/TSDKMemberPhoto.h; sourceTree = "<group>"; };
-		96F7C5281D104A920022FA4C /* TSDKMemberPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKMemberPhoto.m; path = PhotoObjects/TSDKMemberPhoto.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1022,8 +1018,6 @@
 		96F7C5221D1049900022FA4C /* PhotoObjects */ = {
 			isa = PBXGroup;
 			children = (
-				96F7C5271D104A920022FA4C /* TSDKMemberPhoto.h */,
-				96F7C5281D104A920022FA4C /* TSDKMemberPhoto.m */,
 			);
 			name = PhotoObjects;
 			sourceTree = "<group>";
@@ -1140,7 +1134,6 @@
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
 				964CDDE91BB4514B00909D11 /* TSDKTslPhotos.h in Headers */,
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
-				96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */,
 				9641AC251DF1BCC3008E4716 /* TSDKTslScore.h in Headers */,
 				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
 				969E80B31BAAE7AB00CA518F /* TSDKCollectionQuery.h in Headers */,
@@ -1323,7 +1316,6 @@
 				969E80C21BAAE7AB00CA518F /* NSString+TSDKConveniences.m in Sources */,
 				969B7EAE1C7CA33500FD3EA0 /* TSDKMemberPreferences.m in Sources */,
 				96BA2591207BB72A0097C911 /* TSDKSportPosition.m in Sources */,
-				96F7C52A1D104A920022FA4C /* TSDKMemberPhoto.m in Sources */,
 				96BA259B207CF2E00097C911 /* TSDKEventLineupEntry.m in Sources */,
 				965B7D3B1C18CA80009AF13E /* TSDKContact.m in Sources */,
 				969E80EE1BAAE7AB00CA518F /* TSDKSport.m in Sources */,

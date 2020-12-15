@@ -31,7 +31,7 @@
     
 }
 
-@dynamic createdAt, isInLeague, hasReachedRosterLimit, planId, locationCountry, memberLimit, locationLatitude, timeZoneDescription, divisionId, hasExportableMedia, mediaStorageUsed, sportId, isRetired, isArchivedSeason, billedAt, lastAccessedAt, isHiddenOnDashboard, seasonName, activeSeasonTeamId, name, leagueName, humanizedMediaStorageUsed, isGameDay, isGatewayRequiredForSms, divisionName, hasPlaayVideo, locationLongitude, playerMemberCount, hasReachedMemberLimit, locationState, timeZoneOffset, updatedAt, canExportMedia, rosterLimit, timeZoneIanaName, nonPlayerMemberCount, leagueUrl, locationPostalCode, activePaymentProvider, defaultPaymentProvider, linkTeamMediaGroups, linkContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkTeamStores, linkOwner, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkMemberPhotos, linkManagers, linkCommissioners, linkAvailabilitiesCsvExport, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkTeamPreferences, linkMobilePlanSelection, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkTeamStore, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMessagingPermissions, linkMembers, linkStatistics, linkBatchInvoicesAggregates, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkTeamPhotoFile, linkLeagueCustomData, linkContactPhoneNumbers, linkMemberFiles, linkAdvertisements, linkMemberPayments, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkSportPositions, linkBroadcastEmails, linkStatisticData, linkTeamLogoPhotoFile, linkTeamChat, linkBatchInvoices, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkMessageData, linkBroadcastAlerts, linkTeamPublicSite, linkInvoiceRecipientsInvoicesAggregates, linkWepayAccounts, linkGrantedWepayAccount, linkStripeAccounts, linkPartnersPreferencesFlipGive, linkPartnersPreferencesReigningChamps;
+@dynamic createdAt, isInLeague, hasReachedRosterLimit, planId, locationCountry, memberLimit, locationLatitude, timeZoneDescription, divisionId, hasExportableMedia, mediaStorageUsed, sportId, isRetired, isArchivedSeason, billedAt, lastAccessedAt, isHiddenOnDashboard, seasonName, activeSeasonTeamId, name, leagueName, humanizedMediaStorageUsed, isGameDay, isGatewayRequiredForSms, divisionName, hasPlaayVideo, locationLongitude, playerMemberCount, hasReachedMemberLimit, locationState, timeZoneOffset, updatedAt, canExportMedia, rosterLimit, timeZoneIanaName, nonPlayerMemberCount, leagueUrl, locationPostalCode, activePaymentProvider, defaultPaymentProvider, linkTeamMediaGroups, linkContactEmailAddresses, linkMembersPreferences, linkAvailabilities, linkForumTopics, linkTeamStores, linkOwner, linkTeamMediumComments, linkForumSubscriptions, linkEvents, linkTeamPaypalPreferences, linkForumPosts, linkTeamMedia, linkCalendarWebcal, linkSport, linkContacts, linkMembersCsvExport, linkTrackedItemStatuses, linkManagers, linkCommissioners, linkAvailabilitiesCsvExport, linkLeagueRegistrantDocuments, linkStatisticAggregates, linkOpponents, linkCalendarHttpGamesOnly, linkCustomData, linkTeamPreferences, linkMobilePlanSelection, linkCalendarHttp, linkDivisionTeamStandings, linkPaymentNotes, linkPlan, linkTeamFees, linkEventsOverview, linkMemberPhoneNumbers, linkMemberLinks, linkTeamStore, linkBroadcastEmailAttachments, linkTeamStatistics, linkMemberEmailAddresses, linkMessagingPermissions, linkMembers, linkStatistics, linkBatchInvoicesAggregates, linkSponsors, linkMemberBalances, linkStatisticGroups, linkMemberStatistics, linkOpponentsResults, linkPaypalCurrency, linkTrackedItems, linkAssignments, linkTeamResults, linkTeamPhotoFile, linkLeagueCustomData, linkContactPhoneNumbers, linkMemberFiles, linkAdvertisements, linkMemberPayments, linkLeagueCustomFields, linkMessages, linkLocations, linkCustomFields, linkSportPositions, linkBroadcastEmails, linkStatisticData, linkTeamLogoPhotoFile, linkTeamChat, linkBatchInvoices, linkEventsCsvExport, linkCalendarWebcalGamesOnly, linkEventStatistics, linkMessageData, linkBroadcastAlerts, linkTeamPublicSite, linkInvoiceRecipientsInvoicesAggregates, linkWepayAccounts, linkGrantedWepayAccount, linkStripeAccounts, linkPartnersPreferencesFlipGive, linkPartnersPreferencesReigningChamps;
 
 + (NSString *)SDKType {
     return @"team";
@@ -254,23 +254,6 @@
     }
     
     [self arrayFromLink:self.linkMessages searchParams:searchParams withConfiguration:configuration completion:completion];
-}
-
-- (void)getMemberPhotosForWidth:(NSInteger)width height:(NSInteger)height cropToFit:(BOOL)fitCrop configuration:(TSDKRequestConfiguration *)configuration completion:(TSDKMemberPhotoArrayCompletionBlock)completion {
-    
-    NSString *cropString = @"fill";
-    if (fitCrop) {
-        cropString = @"fit";
-    }
-    NSDictionary *sizeParameterDictionary = @{@"height":[NSNumber numberWithInteger:height],
-                                              @"width":[NSNumber numberWithInteger:width],
-                                              @"crop":cropString};
-    
-    [self arrayFromLink:self.linkMemberPhotos searchParams:sizeParameterDictionary withConfiguration:configuration completion:^(BOOL success, BOOL complete, NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (completion) {
-            completion(success, complete, objects, error);
-        }
-    }];
 }
 
 - (NSURL * _Nullable)teamLogoForWidth:(NSInteger)width height:(NSInteger)height {

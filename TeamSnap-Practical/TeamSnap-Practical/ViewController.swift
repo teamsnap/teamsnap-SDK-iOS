@@ -8,7 +8,7 @@
 import UIKit
 import TeamSnapSDK
 
-class ViewController: BaseTeamsViewController {
+class ViewController: BaseTeamsViewController, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let team = teams[indexPath.row]
