@@ -55,6 +55,9 @@
 @property (nonatomic, strong, nullable) NSString * locationPostalCode; //Example: 94108
 @property (nonatomic, strong, nullable) NSString * activePaymentProvider; // Example: stripe
 @property (nonatomic, strong, nullable) NSString * defaultPaymentProvider; // Example: stripe
+@property (nonatomic, strong, nullable) NSString * adUnitHeroId; // Postgame ad ID
+@property (nonatomic, strong, nullable) NSString * adUnitHeroTemplateId; // Postgame ad ID
+@property (nonatomic, strong, nullable) NSString * adUnitInlineId; // Postgame ad ID
 @property (nonatomic, strong, nullable) NSURL * linkTeamMediaGroups;
 @property (nonatomic, strong, nullable) NSURL * linkContactEmailAddresses;
 @property (nonatomic, strong, nullable) NSURL * linkMembersPreferences;
