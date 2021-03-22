@@ -189,7 +189,7 @@ NSFileManager static *_fileManager = nil;
         
         NSData *schemaData;
 
-        if (@available(iOS 12, *)) {
+        if (@available(iOS 11, *)) {
             schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray requiringSecureCoding:NO error:&error];
         } else {
 #pragma clang diagnostic push
@@ -228,7 +228,7 @@ NSFileManager static *_fileManager = nil;
         if (cachedVersion && [cachedVersion isEqualToString:schemaVersion]) {
             NSData *schemaData = [NSData dataWithContentsOfURL:fileURL];
             
-            if (@available(iOS 12, *)) {
+            if (@available(iOS 11, *)) {
                 NSSet<Class> *validClasses = [NSSet setWithObjects: [NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSNull class], nil];
                 id obj = [NSKeyedUnarchiver unarchivedObjectOfClasses:validClasses
                                                            fromData:schemaData
