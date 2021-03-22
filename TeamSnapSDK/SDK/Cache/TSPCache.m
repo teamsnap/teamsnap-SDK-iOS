@@ -230,14 +230,14 @@ NSFileManager static *_fileManager = nil;
             
             if (@available(iOS 11, *)) {
                 NSSet<Class> *validClasses = [NSSet setWithObjects: [NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSNull class], nil];
-                id obj = [NSKeyedUnarchiver unarchivedObjectOfClasses:validClasses
+                NSArray* rootSchemaList = [NSKeyedUnarchiver unarchivedObjectOfClasses:validClasses
                                                            fromData:schemaData
                                                               error:&error];
 
                 if (error != nil) {
-                    NSLog(@"Error: %@", error);
+                    NSLog(@"Error unarchiving saved data for root schemas: %@", error);
                 }
-                return obj;
+                return rootSchemaList;
             } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -246,7 +246,16 @@ NSFileManager static *_fileManager = nil;
             }
         } else {
             [[self fileManager] removeItemAtURL:versionFileURL error:&error];
+
+            if (error != nil) {
+                NSLog(@"Error removing old data for version file URLs: %@", error);
+            }
+
             [[self fileManager] removeItemAtURL:fileURL error:&error];
+
+            if (error != nil) {
+                NSLog(@"Error removing old data for root schemas: %@", error);
+            }
         }
         return nil;
     } else {
