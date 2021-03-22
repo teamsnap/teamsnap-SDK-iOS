@@ -83,13 +83,29 @@
 }
 
 - (NSData *)dataEncodedForSave {
-    NSData *saveData = [NSKeyedArchiver archivedDataWithRootObject:self];
-    return saveData;
+    if (@available(iOS 11, *)) {
+        return [NSKeyedArchiver archivedDataWithRootObject:self
+                                     requiringSecureCoding:NO
+                                                     error:nil];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        return [NSKeyedArchiver archivedDataWithRootObject:self];
+#pragma clang diagnostic pop
+    }
 }
 
 + (instancetype)collectionJSONForEncodedData:(NSData *)objectData {
-    id anObject = [NSKeyedUnarchiver unarchiveObjectWithData:objectData];
-    return anObject;
+    if (@available(iOS 11, *)) {
+        return [NSKeyedUnarchiver unarchivedObjectOfClass:[TSDKCollectionJSON class]
+                                                 fromData:objectData
+                                                    error:nil];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        return [NSKeyedUnarchiver unarchiveObjectWithData:objectData];
+#pragma clang diagnostic pop
+    }
 }
 
 -(void)parseJSON:(NSDictionary *)collection {

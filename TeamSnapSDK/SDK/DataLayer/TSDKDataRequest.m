@@ -194,11 +194,25 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
             
 #if TARGET_OS_IPHONE
-            [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
+            if (@available(iOS 13, *)) {
+
+            } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
+#pragma clang diagnostic pop
+            }
 #endif
             NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 #if TARGET_OS_IPHONE
-                [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
+                if (@available(iOS 13, *)) {
+                    
+                } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                    [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
+#pragma clang diagnostic pop
+                }
 #endif
                 
                 dispatch_async([self processingQueue], ^{
@@ -466,11 +480,25 @@ static NSRecursiveLock *accessDetailsLock = nil;
 #endif
     
 #if TARGET_OS_IPHONE
+    if (@available(iOS 13, *)) {
+
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
+#pragma clang diagnostic pop
+    }
 #endif
     NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 #if TARGET_OS_IPHONE
-        [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
+        if (@available(iOS 13, *)) {
+
+        } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
+#pragma clang diagnostic pop
+        }
 #endif
         
         dispatch_async([self processingQueue], ^{
