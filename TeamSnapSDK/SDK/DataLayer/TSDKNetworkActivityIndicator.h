@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+NS_CLASS_DEPRECATED_IOS(3_0, 13_0, "Functionality removed in iOS 13+")
 @interface TSDKNetworkActivityIndicator : NSObject
 
 + (instancetype _Nonnull)sharedInstance;

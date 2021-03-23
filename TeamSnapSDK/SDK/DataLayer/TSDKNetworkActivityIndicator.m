@@ -14,7 +14,10 @@
 
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation TSDKNetworkActivityIndicator
+#pragma clang diagnostic pop
 
 + (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
@@ -44,6 +47,7 @@
     }
     [self setActivityIndicatorVisible:showIndicator];
 }
+
 
 - (void)setActivityIndicatorVisible:(BOOL)visible {
     Class UIApplicationClass = NSClassFromString(@"UIApplication");

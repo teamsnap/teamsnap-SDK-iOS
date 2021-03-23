@@ -187,10 +187,24 @@ NSFileManager static *_fileManager = nil;
         NSURL *fileURL = [schemaCachePath URLByAppendingPathComponent:@"schemaArray"];
 
         
-        NSData *schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray];
+        NSData *schemaData;
+
+        if (@available(iOS 11, *)) {
+            schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray requiringSecureCoding:NO error:&error];
+        } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            schemaData = [NSKeyedArchiver archivedDataWithRootObject:schemaArray];
+#pragma clang diagnostic pop
+        }
+
+        if (error != nil) {
+            return NO;
+        }
+
         [schemaData writeToURL:fileURL options:NSDataWritingAtomic error:&error];
         
-        if (error) {
+        if (error != nil) {
             return NO;
         } else {
             return YES;
@@ -214,11 +228,34 @@ NSFileManager static *_fileManager = nil;
         if (cachedVersion && [cachedVersion isEqualToString:schemaVersion]) {
             NSData *schemaData = [NSData dataWithContentsOfURL:fileURL];
             
-            NSArray *schemaArray = [NSKeyedUnarchiver unarchiveObjectWithData:schemaData];
-            return schemaArray;
+            if (@available(iOS 11, *)) {
+                NSSet<Class> *validClasses = [NSSet setWithObjects: [NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSNull class], nil];
+                NSArray* rootSchemaList = [NSKeyedUnarchiver unarchivedObjectOfClasses:validClasses
+                                                           fromData:schemaData
+                                                              error:&error];
+
+                if (error != nil) {
+                    NSLog(@"Error unarchiving saved data for root schemas: %@", error);
+                }
+                return rootSchemaList;
+            } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                return (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:schemaData];
+#pragma clang diagnostic pop
+            }
         } else {
             [[self fileManager] removeItemAtURL:versionFileURL error:&error];
+
+            if (error != nil) {
+                NSLog(@"Error removing old data for version file URLs: %@", error);
+            }
+
             [[self fileManager] removeItemAtURL:fileURL error:&error];
+
+            if (error != nil) {
+                NSLog(@"Error removing old data for root schemas: %@", error);
+            }
         }
         return nil;
     } else {
