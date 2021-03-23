@@ -183,10 +183,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [request setHTTPBody:data];
             [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         }
-                
-#ifdef DEBUGCURL
-        DLog(@"Curl:\n%@", [request getCurlEquivalent]);
-#endif
+
+        if ([[[NSProcessInfo processInfo] arguments] containsObject:@"-tsdk_request_curl"]) {
+            DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+        }
         
         if([[TSDKDuplicateCompletionBlockStore sharedInstance] existingRequestExistsMatchingRequest:request]) {
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
@@ -461,9 +461,10 @@ static NSRecursiveLock *accessDetailsLock = nil;
     
     [request setHTTPMethod:@"GET"];
     [request setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
-#ifdef DEBUGCURL
-    DLog(@"Curl:\n%@", [request getCurlEquivalent]);
-#endif
+
+    if ([[[NSProcessInfo processInfo] arguments] containsObject:@"-tsdk_request_curl"]) {
+        DLog(@"Curl:\n%@", [request getCurlEquivalent]);
+    }
     
 #if TARGET_OS_IPHONE
     [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
