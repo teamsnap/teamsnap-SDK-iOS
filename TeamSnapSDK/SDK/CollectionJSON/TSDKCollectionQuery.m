@@ -50,6 +50,10 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 -(void)executeWithCompletion:(TSDKCompletionBlock)completion {
     NSURL *destinationURL = [NSURL URLWithString:self.href];
     

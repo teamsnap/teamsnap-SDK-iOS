@@ -48,6 +48,10 @@ static NSMutableDictionary *_classURLs;
     }
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (NSMutableDictionary *)cachedDatesLookup {
     if (!_cachedDatesLookup) {
         _cachedDatesLookup = [[NSMutableDictionary alloc] init];
@@ -665,7 +669,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     [self setObject:value forKey:key];
 }
 
-- (void)setObject:(NSObject<NSCoding> *)value forKey:(NSString *)aKey {
+- (void)setObject:(NSObject<NSSecureCoding> *)value forKey:(NSString *)aKey {
     
     id __block collectionData = nil;
     dispatch_sync(self.collection_access_queue, ^{
@@ -795,7 +799,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     return data;
 }
 
-- (void)setCollectionObject:(NSObject<NSCoding> * _Nullable)object forKey:(NSString *)key {
+- (void)setCollectionObject:(NSObject<NSSecureCoding> * _Nullable)object forKey:(NSString *)key {
     [self setObject:object forKey:key];
 }
 

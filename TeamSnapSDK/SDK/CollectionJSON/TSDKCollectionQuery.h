@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TSDKCompletionBlockTypes.h"
 
-@interface TSDKCollectionQuery : NSObject <NSCopying, NSCoding>
+@interface TSDKCollectionQuery : NSObject <NSCopying, NSSecureCoding>
 
 @property (nonatomic, strong) NSMutableDictionary *_Nullable data;
 @property (nonatomic, strong) NSString *_Nullable href;

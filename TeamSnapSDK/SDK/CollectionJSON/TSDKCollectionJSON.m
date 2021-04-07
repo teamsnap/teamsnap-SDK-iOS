@@ -82,10 +82,14 @@
     
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (NSData *)dataEncodedForSave {
     if (@available(iOS 11, *)) {
         return [NSKeyedArchiver archivedDataWithRootObject:self
-                                     requiringSecureCoding:NO
+                                     requiringSecureCoding:YES
                                                      error:nil];
     } else {
 #pragma clang diagnostic push
