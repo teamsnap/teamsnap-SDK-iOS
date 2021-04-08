@@ -265,10 +265,20 @@ static NSMutableDictionary *_classURLs;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    TSDKCollectionJSON *collection = [aDecoder decodeObjectForKey:@"collection"];
+    NSSet *validCollectionJSONClasses = [NSSet setWithArray:@[
+        [TSDKCollectionJSON class],
+        [NSURL class],
+        [NSString class],
+        [NSDictionary class],
+        [NSMutableArray class],
+        [NSMutableDictionary class],
+        [NSNull class],
+    ]];
+    TSDKCollectionJSON *collection = [aDecoder decodeObjectOfClasses:validCollectionJSONClasses
+                                                            forKey:@"collection"];
     // we currently only persist collection data and the last update date.
     self = [self initWithCollection:collection];
-    self.lastUpdate = [aDecoder decodeObjectForKey:@"lastUpdate"];
+    self.lastUpdate = [aDecoder decodeObjectOfClass:[NSDate class] forKey:@"lastUpdate"];
     return self;
 }
 
