@@ -76,6 +76,16 @@ typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
 - (NSString *_Nonnull)fullName;
 - (NSInteger)age;
 
+/// Fetch a JSON-payload formatted for pass-through to a DSP of your choice.
+///
+/// @note This is a first-party only endpoint unavailable without a first-party app ID/secret.
+///
+/// @param memberId Member ID to fetch payload for
+/// @param kuid Unique identifier for advertising
+/// @param zone Advertising zone
+/// @param completion Completion returning advertising payload as a NSDictionary<String,String>
++(void)queryDspPayloadMemberid:(NSString *_Nonnull)memberId kuid:(NSString *_Nonnull)kuid zone:(NSString *_Nonnull)zone WithCompletion:(TSDKCompletionBlock _Nullable)completion;
+
 @end
 
 @interface TSDKUser (ForwardedMethods)
