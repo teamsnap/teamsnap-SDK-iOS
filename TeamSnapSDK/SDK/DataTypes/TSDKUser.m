@@ -76,6 +76,14 @@
     }];
 }
 
++(void)queryDspPayloadMemberid:(NSString *_Nonnull)memberId kuid:(NSString *_Nonnull)kuid zone:(NSString *_Nonnull)zone WithCompletion:(TSDKCompletionBlock _Nullable)completion {
+    TSDKCollectionQuery *query = [self queryForKey:@"dsp_payload"];
+    query.data[@"member_id"] = memberId;
+    query.data[@"zone"] = zone;
+    query.data[@"kuid"] = kuid;
+    [query executeWithCompletion:completion];
+}
+
 - (void)myMembersOnTeamsWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKArrayCompletionBlock)completion {
     [self getPersonasWithConfiguration:configuration completion:completion];
 }
