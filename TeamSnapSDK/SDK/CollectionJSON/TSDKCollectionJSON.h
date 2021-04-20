@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TSDKCollectionJSON : NSObject <NSCoding, NSCopying>
+@interface TSDKCollectionJSON : NSObject <NSSecureCoding, NSCopying>
 
 @property (nonatomic, strong) NSURL *_Nullable href;
 @property (nonatomic, strong) NSString *_Nullable version;

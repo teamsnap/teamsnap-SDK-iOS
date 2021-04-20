@@ -41,15 +41,31 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
     if (self) {
-        _href = [aDecoder decodeObjectForKey:@"href"];
-        _rel = [aDecoder decodeObjectForKey:@"rel"];
-        _type = [aDecoder decodeObjectForKey:@"type"];
-        _version = [aDecoder decodeObjectForKey:@"version"];
-        _links = [aDecoder decodeObjectForKey:@"links"];
-        _data = [aDecoder decodeObjectForKey:@"data"];
-        _collection = [aDecoder decodeObjectForKey:@"collection"];
-        _commands = [aDecoder decodeObjectForKey:@"commands"];
-        _queries = [aDecoder decodeObjectForKey:@"queries"];
+        _href = [aDecoder decodeObjectOfClass:[NSURL class] forKey:@"href"];
+        _rel = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"rel"];
+        _type = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"type"];
+        _version = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"version"];
+        _links = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:@"links"];
+
+        NSSet *validDataClasses = [NSSet setWithArray:@[
+            [NSMutableDictionary class],
+            [NSArray class],
+            [NSNull class],
+        ]];
+        _data = [aDecoder decodeObjectOfClasses:validDataClasses forKey:@"data"];
+        NSSet *validCollectionJSONClasses = [NSSet setWithArray:@[
+            [TSDKCollectionJSON class],
+            [NSURL class],
+            [NSString class],
+            [NSDictionary class],
+            [NSMutableArray class],
+            [NSMutableDictionary class],
+            [NSNull class],
+        ]];
+        _collection = [aDecoder decodeObjectOfClasses:validCollectionJSONClasses
+                                               forKey:@"collection"];
+        _commands = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:@"commands"];
+        _queries = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:@"queries"];
     }
     return self;
 }
@@ -82,10 +98,14 @@
     
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (NSData *)dataEncodedForSave {
     if (@available(iOS 11, *)) {
         return [NSKeyedArchiver archivedDataWithRootObject:self
-                                     requiringSecureCoding:NO
+                                     requiringSecureCoding:YES
                                                      error:nil];
     } else {
 #pragma clang diagnostic push

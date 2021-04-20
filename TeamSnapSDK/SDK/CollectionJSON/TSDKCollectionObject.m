@@ -48,6 +48,10 @@ static NSMutableDictionary *_classURLs;
     }
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (NSMutableDictionary *)cachedDatesLookup {
     if (!_cachedDatesLookup) {
         _cachedDatesLookup = [[NSMutableDictionary alloc] init];
@@ -261,10 +265,20 @@ static NSMutableDictionary *_classURLs;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    TSDKCollectionJSON *collection = [aDecoder decodeObjectForKey:@"collection"];
+    NSSet *validCollectionJSONClasses = [NSSet setWithArray:@[
+        [TSDKCollectionJSON class],
+        [NSURL class],
+        [NSString class],
+        [NSDictionary class],
+        [NSMutableArray class],
+        [NSMutableDictionary class],
+        [NSNull class],
+    ]];
+    TSDKCollectionJSON *collection = [aDecoder decodeObjectOfClasses:validCollectionJSONClasses
+                                                            forKey:@"collection"];
     // we currently only persist collection data and the last update date.
     self = [self initWithCollection:collection];
-    self.lastUpdate = [aDecoder decodeObjectForKey:@"lastUpdate"];
+    self.lastUpdate = [aDecoder decodeObjectOfClass:[NSDate class] forKey:@"lastUpdate"];
     return self;
 }
 
@@ -665,7 +679,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     [self setObject:value forKey:key];
 }
 
-- (void)setObject:(NSObject<NSCoding> *)value forKey:(NSString *)aKey {
+- (void)setObject:(NSObject<NSSecureCoding> *)value forKey:(NSString *)aKey {
     
     id __block collectionData = nil;
     dispatch_sync(self.collection_access_queue, ^{
@@ -795,7 +809,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     return data;
 }
 
-- (void)setCollectionObject:(NSObject<NSCoding> * _Nullable)object forKey:(NSString *)key {
+- (void)setCollectionObject:(NSObject<NSSecureCoding> * _Nullable)object forKey:(NSString *)key {
     [self setObject:object forKey:key];
 }
 

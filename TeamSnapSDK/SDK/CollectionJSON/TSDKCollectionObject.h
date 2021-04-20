@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TSDKCollectionObject : NSObject <NSCoding, NSCopying, TSDKPersistenceFilePath>
+@interface TSDKCollectionObject : NSObject <NSSecureCoding, NSCopying, TSDKPersistenceFilePath>
 
 @property (nonatomic, copy, readonly, nullable) TSDKCollectionJSON * collection __deprecated;
 @property (nonatomic, copy, readonly, nullable) NSDictionary * changedValues;
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setArray:(NSArray <NSString *> *_Nullable)value forKey:(NSString *)aKey;
 - (NSArray <NSString *> *_Nullable)getArrayForKey:(NSString *)key;
 
-- (void)setCollectionObject:(NSObject<NSCoding> * _Nullable)object forKey:(NSString *)key;
+- (void)setCollectionObject:(NSObject<NSSecureCoding> * _Nullable)object forKey:(NSString *)key;
 - (id)collectionObjectForKey:(NSString *)key;
 - (void)removeCollectionObjectForKey:(NSString *)aKey;
 - (void)setCollectionHref:(NSURL *)href;

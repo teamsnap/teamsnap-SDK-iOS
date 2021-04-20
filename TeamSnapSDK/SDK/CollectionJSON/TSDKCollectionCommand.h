@@ -8,7 +8,7 @@
 
 #import "TSDKCollectionQuery.h"
 
-@interface TSDKCollectionCommand : TSDKCollectionQuery <NSCopying, NSCoding>
+@interface TSDKCollectionCommand : TSDKCollectionQuery <NSCopying, NSSecureCoding>
 
 -(void)executeCollectionJSONTemplateWithCompletion:(TSDKCompletionBlock _Nullable)completion;
 

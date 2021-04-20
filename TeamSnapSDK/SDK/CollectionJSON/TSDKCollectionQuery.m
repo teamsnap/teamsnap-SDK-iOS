@@ -42,12 +42,16 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
     if (self) {
-        _data = [aDecoder decodeObjectForKey:@"data"];
-        _href = [aDecoder decodeObjectForKey:@"href"];
-        _rel = [aDecoder decodeObjectForKey:@"rel"];
-        _prompt = [aDecoder decodeObjectForKey:@"prompt"];
+        _data = [aDecoder decodeObjectOfClass:[NSMutableDictionary class] forKey:@"data"];
+        _href = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"href"];
+        _rel = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"rel"];
+        _prompt = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"prompt"];
     }
     return self;
+}
+
++ (BOOL)supportsSecureCoding {
+    return YES;
 }
 
 -(void)executeWithCompletion:(TSDKCompletionBlock)completion {

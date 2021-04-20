@@ -250,6 +250,8 @@ static NSRecursiveLock *accessDetailsLock = nil;
                             NSInteger errorCode = ((NSHTTPURLResponse *)response).statusCode;
                             if (errorJSON.errorCode != NSNotFound) {
                                 errorCode = [userInfo[@"errorCode"] integerValue];
+                            } else if (userInfo[NSLocalizedDescriptionKey] == nil) {
+                                userInfo[NSLocalizedDescriptionKey] = [NSHTTPURLResponse localizedStringForStatusCode:errorCode];
                             }
                             
                             if([response isKindOfClass:[NSHTTPURLResponse class]]) {
