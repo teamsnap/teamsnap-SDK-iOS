@@ -301,11 +301,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
                 if([value isKindOfClass:[NSArray class]]) {
                     NSString *commaSeparatedString = [[value componentsJoinedByString:@","] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                     [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
-                } else  {
+                } else if ([value respondsToSelector:@selector(stringByAddingPercentEncodingWithAllowedCharacters:)]) {
                     NSString *encodedValue = [value stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                     [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, encodedValue]];
+                } else {
+                    [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, value]];
                 }
-                
             }
             NSString *separator = @"&";
             if ([URLPath rangeOfString:@"?"].location == NSNotFound) {
