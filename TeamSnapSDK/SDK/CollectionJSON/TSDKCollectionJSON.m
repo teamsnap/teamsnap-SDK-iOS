@@ -45,12 +45,19 @@
         _rel = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"rel"];
         _type = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"type"];
         _version = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"version"];
-        _links = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:@"links"];
+
+        NSSet *validDataLinksClasses = [NSSet setWithArray:@[
+            [NSDictionary class],
+            [NSString class],
+        ]];
+        _links = [aDecoder decodeObjectOfClasses:validDataLinksClasses forKey:@"links"];
 
         NSSet *validDataClasses = [NSSet setWithArray:@[
             [NSMutableDictionary class],
             [NSArray class],
             [NSNull class],
+            [NSString class],
+            [NSNumber class],
         ]];
         _data = [aDecoder decodeObjectOfClasses:validDataClasses forKey:@"data"];
         NSSet *validCollectionJSONClasses = [NSSet setWithArray:@[
