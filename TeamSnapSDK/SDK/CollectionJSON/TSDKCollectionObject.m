@@ -1140,6 +1140,15 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     }
 }
 
+- (void)deleteUserWithURL:(NSURL *)url completion:(TSDKArrayCompletionBlock)completion {
+    __typeof__(self) __weak weakSelf = self;
+    [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:nil method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completion) {
+                completion(success, complete, @[weakSelf], error);
+            }
+    }];
+}
+
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
     if (self.isNewObject == NO) {
         NSDictionary *dataToSave = [self dataToSave];
