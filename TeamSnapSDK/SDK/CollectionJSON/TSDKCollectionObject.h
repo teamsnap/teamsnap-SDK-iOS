@@ -103,6 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)saveObject:(TSDKCollectionObject *)object completion:(TSDKArrayCompletionBlock)completion;
 - (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * )queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)saveWithURL:(NSURL * _Nonnull)url completion:(TSDKArrayCompletionBlock _Nullable)completion;
+- (void)deleteUserWithURL:(NSURL * _Nonnull)url completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
