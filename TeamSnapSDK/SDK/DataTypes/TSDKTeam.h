@@ -146,7 +146,7 @@
 - (void)setTimeZone:(NSTimeZone *_Nonnull)timeZone;
 - (NSTimeZone *_Nullable)timeZone;
 
-- (instancetype _Nullable)initWithName:(NSString *_Nonnull)name locationCountry:(NSString *_Nonnull)locationCountry locationPostalCode:(NSString *_Nullable)locationPostalCode ianaTimeZoneName:(NSString *_Nonnull)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId;
+- (instancetype _Nullable)initWithName:(NSString *_Nonnull)name locationCountry:(NSString *_Nonnull)locationCountry locationPostalCode:(NSString *_Nullable)locationPostalCode ianaTimeZoneName:(NSString *_Nullable)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId;
 - (void)bulkLoadDataWithTypes:(NSArray *_Nonnull)dataTypes withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
 - (void)getEventsInDateRange:(NSDate *_Nullable)startDate endDate:(NSDate *_Nullable)endDate withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKPagedEventsCompletionBlock _Nullable)completion;
