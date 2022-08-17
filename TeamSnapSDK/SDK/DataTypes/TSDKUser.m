@@ -196,7 +196,7 @@
 }
 
 - (TSDKHighestRoleType)highestRoleKey {
-    if ([self.highestRole isEqualToString:@"non-player"]) {
+    if ([self.highestRole isEqualToString:@"non_player"]) {
         return TSDKHighestRoleTypeNonPlayer;
     } else if ([self.highestRole isEqualToString:@"player"]) {
         return TSDKHighestRoleTypePlayer;
