@@ -65,22 +65,26 @@
 }
 
 - (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size {
+    return [self memberPhotoURLForSize:size cropValue:@"fill"];
+}
+
+- (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size cropValue:(NSString *)value {
     if(self.linkMemberPhotoFile == nil || self.linkMemberPhotoFile.absoluteString.length == 0) {
         return nil;
     }
-    
+
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:self.linkMemberPhotoFile resolvingAgainstBaseURL:NO];
     if(urlComponents == nil) {
         return nil;
     }
-    
+
     NSMutableArray <NSURLQueryItem *> *queryItems = [NSMutableArray arrayWithArray:[urlComponents queryItems]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"width" value:[[NSNumber numberWithFloat:size.width] stringValue]]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"height" value:[[NSNumber numberWithFloat:size.height] stringValue]]];
     // Potential v3 crop values are "fit", "fill" and "proportional". Of these values, only "fill" uses smart detection to find faces. See Confluence for more detail.
-    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"crop" value:@"fill"]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"crop" value:value]];
     urlComponents.queryItems = queryItems;
-    
+
     return urlComponents.URL;
 }
 

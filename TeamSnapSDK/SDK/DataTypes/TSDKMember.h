@@ -149,7 +149,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKMemberGender) {
  @return A fully specified URL for the photo
  */
 - (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size;
-
+- (NSURL * _Nullable)memberPhotoURLForSize:(CGSize)size cropValue:(NSString *)value;
 
 /**
  Deprecated. Use memberPhotoURLForWidth: instead.
