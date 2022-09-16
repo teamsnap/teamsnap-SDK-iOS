@@ -63,16 +63,19 @@
 - (void)setClientId:(NSString *)clientId {
     [TSDKDataRequest setClientId:clientId];
     _clientId = clientId;
+    NSLog(@"+++ set clientId %@", clientId);
 }
 
 - (void)setClientSecret:(NSString *)clientSecret {
     [TSDKDataRequest setClientSecret:clientSecret];
     _clientSecret = clientSecret;
+    NSLog(@"+++ set clientSecret %@", clientSecret);
 }
 
 - (void)setOAuthToken:(NSString *)OAuthToken {
     [TSDKDataRequest setOAuthToken:OAuthToken];
     _OAuthToken = OAuthToken;
+    NSLog(@"+++ set OAuthToken %@", OAuthToken);
 }
 
 - (void)connectWithConfiguration:(TSDKRequestConfiguration *)configuration completion:(void (^)(BOOL success, TSDKUser *user, NSError *error))completion {
@@ -288,6 +291,7 @@
 
 #pragma mark - Cache
 - (void)setCachePathURL:(NSURL *)cachePath {
+    NSLog(@"+++ setCachePathURL %@", cachePath);
     if (cachePath) {
         [TSPCache setCacheRootPath:cachePath];
     } else {

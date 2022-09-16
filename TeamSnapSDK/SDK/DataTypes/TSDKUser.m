@@ -43,6 +43,7 @@
 }
 
 - (NSString *)fullName {
+
     if ((self.firstName.length>0) && (self.lastName.length>0)) {
         
         NSString *fullName;
@@ -56,7 +57,7 @@
         } else {
             fullName = [@[self.firstName, self.lastName] componentsJoinedByString:@" "];
         }
-        
+        NSLog(@"+++ fullName %@", fullName);
         return [fullName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     } else if (self.firstName.length>0) {
         return self.firstName;

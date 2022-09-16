@@ -212,6 +212,7 @@
 }
 
 - (NSString *_Nullable)memberId {
+    NSLog(@"+++ memberId %@", self.objectIdentifier);
     return self.objectIdentifier;
 }
 

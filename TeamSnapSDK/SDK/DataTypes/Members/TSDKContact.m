@@ -19,10 +19,12 @@
 }
 
 - (BOOL)isAtLeastManager {
+    NSLog(@"+++ isAtLeastManager");
     return (self.isManager || self.isOwner || self.isCommissioner || self.isLeagueOwner);
 }
 
 - (BOOL)isEditable {
+    NSLog(@"+++ isEditable");
     NSNumber *value = [self collectionObjectForKey:@"is_editable"];
     if (value != nil) {
         return [value boolValue];
@@ -56,6 +58,7 @@
 }
 
 - (NSString *_Nullable)contactId {
+    NSLog(@"+++ contactId %@", self.objectIdentifier);
     return self.objectIdentifier;
 }
 
@@ -71,7 +74,8 @@
         } else {
             fullName = [@[self.firstName, self.lastName] componentsJoinedByString:@" "];
         }
-        
+        NSLog(@"+++ contact fullname %@", fullName);
+
         return [fullName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     } else if (self.firstName && self.firstName.length>0) {
         return self.firstName;
