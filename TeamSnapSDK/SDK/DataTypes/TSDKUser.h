@@ -23,8 +23,8 @@ typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
 
 @interface TSDKUser : TSDKCollectionObject
 
-@property (nonatomic, strong, nullable) NSString * firstName; //Example: Skyler
-@property (nonatomic, strong, nullable) NSString * lastName; //Example: Seamans
+@property (nonatomic, strong, nullable) NSString * firstNamex; //Example: Skyler
+@property (nonatomic, strong, nullable) NSString * lastNamex; //Example: Seamans
 @property (nonatomic, strong, nullable) NSString * email; //Example: skyler.seamans@teamsnap.com
 @property (nonatomic, strong, nullable) NSDate * birthday; //Example: 1986-06-01
 @property (nonatomic, strong, nullable) NSString * addressState; //Example:
