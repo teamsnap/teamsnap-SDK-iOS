@@ -25,7 +25,7 @@ typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
 
 @property (nonatomic, strong, nullable) NSString * firstNamex; //Example: Skyler
 @property (nonatomic, strong, nullable) NSString * lastNamex; //Example: Seamans
-@property (nonatomic, strong, nullable) NSString * email; //Example: skyler.seamans@teamsnap.com
+@property (nonatomic, strong, nullable) NSString * emailx; //Example: skyler.seamans@teamsnap.com
 @property (nonatomic, strong, nullable) NSDate * birthday; //Example: 1986-06-01
 @property (nonatomic, strong, nullable) NSString * addressState; //Example:
 @property (nonatomic, strong, nullable) NSString * addressCountry; //Example:
