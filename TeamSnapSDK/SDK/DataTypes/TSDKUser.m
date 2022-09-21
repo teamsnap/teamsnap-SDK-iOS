@@ -42,7 +42,7 @@
     }
 }
 
-- (NSString *)fullName {
+- (NSString *)fullNamex {
 
     if ((self.firstName.length>0) && (self.lastName.length>0)) {
         

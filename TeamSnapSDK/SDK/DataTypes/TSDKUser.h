@@ -73,7 +73,7 @@ typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
 - (void)teamsWithIDs:(NSArray * _Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration * _Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)bulkLoadDataTypes:(NSArray *_Nonnull)objectDataTypes forTeamIds:(NSArray *_Nonnull)teamIds withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKArrayCompletionBlock _Nullable)completion;
 
-- (NSString *_Nonnull)fullName;
+- (NSString *_Nonnull)fullNamex;
 - (NSInteger)age;
 
 /// Fetch a JSON-payload formatted for pass-through to a DSP of your choice.
