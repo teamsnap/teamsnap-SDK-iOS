@@ -67,6 +67,9 @@ typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
 
 // Non Auto-generated
 - (NSArray <NSString *> *_Nonnull)managedTeamIds;
+- (NSArray <NSString *> *_Nonnull)ownedTeamIds;
+- (NSArray <NSString *> *_Nonnull)ownedDivisionIds;
+
 @property (nonatomic, assign, readonly) TSDKHighestRoleType highestRoleKey;
 
 + (void)actionSendTrialExpiringReminderForCurrentUserWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
