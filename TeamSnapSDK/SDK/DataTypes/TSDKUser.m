@@ -42,6 +42,32 @@
     }
 }
 
+- (NSArray <NSString *> *)ownedTeamIds {
+    NSArray <NSNumber *> *teamIdsAsNumbers = [self collectionObjectForKey:@"owned_team_ids"];
+    if(teamIdsAsNumbers) {
+        NSMutableArray <NSString *> *teamIds = [[NSMutableArray alloc] initWithCapacity:teamIdsAsNumbers.count];
+        for (NSNumber *teamId in teamIdsAsNumbers) {
+            [teamIds addObject:[teamId stringValue]];
+        }
+        return [teamIds copy];
+    } else {
+        return [NSArray array];
+    }
+}
+
+- (NSArray <NSString *> *)ownedDivisionIds {
+    NSArray <NSNumber *> *teamIdsAsNumbers = [self collectionObjectForKey:@"owned_division_ids"];
+    if(teamIdsAsNumbers) {
+        NSMutableArray <NSString *> *teamIds = [[NSMutableArray alloc] initWithCapacity:teamIdsAsNumbers.count];
+        for (NSNumber *teamId in teamIdsAsNumbers) {
+            [teamIds addObject:[teamId stringValue]];
+        }
+        return [teamIds copy];
+    } else {
+        return [NSArray array];
+    }
+}
+
 - (NSString *)fullName {
     if ((self.firstName.length>0) && (self.lastName.length>0)) {
         
