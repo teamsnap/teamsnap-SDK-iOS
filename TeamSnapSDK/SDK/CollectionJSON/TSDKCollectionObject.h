@@ -106,6 +106,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deleteUserWithURL:(NSURL * _Nonnull)url userID:(NSString * _Nonnull)userID completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)cancelDeleteUserRequestWithURL:(NSURL * _Nonnull)url completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)getUserAccountDeleteStatusWithURL:(NSURL * _Nonnull)url completion:(TSDKCompletionBlock _Nullable)completion;
+- (void)getTeamCreationOfferWithURL:(NSURL * _Nonnull)url completion:(TSDKCompletionBlock _Nullable)completion;
+- (void)saveTeamCreationOfferSelectionWithURL:(NSURL * _Nonnull)url userID:(NSString * _Nonnull)userID teamID:(NSString * _Nonnull)teamID offerIDs:(NSArray * _Nonnull)offerIDs completion:(TSDKCompletionBlock _Nullable)completion;
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock _Nullable)completion;
 
 - (void)refreshDataWithCompletion:(TSDKArrayCompletionBlock _Nullable)completion;
