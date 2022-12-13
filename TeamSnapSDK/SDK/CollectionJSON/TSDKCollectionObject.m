@@ -1167,6 +1167,32 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
     }];
 }
 
+- (void)getTeamCreationOfferWithURL:(NSURL *)url completion:(TSDKCompletionBlock)completion {
+    [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:nil method:@"GET" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completion) {
+                completion(success, complete, objects, error);
+            }
+    }];
+}
+
+- (void)saveTeamCreationOfferSelectionWithURL:(NSURL *)url userID:(NSString *)userID teamID:(NSString *)teamID offerIDs:(NSArray *)offerIDs completion:(TSDKCompletionBlock)completion {
+    NSDictionary *postObject = @{@"template":
+                                     @{@"data" :
+                                           @[@{@"name" : @"user_id",
+                                               @"value" : userID},
+                                             @{@"name" : @"team_id",
+                                                 @"value" : teamID},
+                                             @{@"name" : @"partner_ids",
+                                                 @"value" : offerIDs}]
+
+                                     }};
+    [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+            if (completion) {
+                completion(success, complete, objects, error);
+            }
+    }];
+}
+
 - (void)deleteWithCompletion:(TSDKSimpleCompletionBlock)completion {
     if (self.isNewObject == NO) {
         NSDictionary *dataToSave = [self dataToSave];
