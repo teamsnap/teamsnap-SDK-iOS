@@ -81,7 +81,6 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, assign) BOOL canTeamAddMembers;
 @property (nonatomic, assign) BOOL canTeamDeleteMembers;
 @property (nonatomic, assign) BOOL canDisplayTeamStore;
-@property (nonatomic, assign) BOOL canDisplayStore;
 @property (nonatomic, strong) NSString *_Nullable storeUrl; //Example: https://teamlocker.squadlocker.com/#/lockers/squadlocker-baseball-and-softball-2023
 @property (nonatomic, assign) BOOL isStoreConfigured;
 @property (nonatomic, assign, readonly) BOOL isEventLineupEnabled;
