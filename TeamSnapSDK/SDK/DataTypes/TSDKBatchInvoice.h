@@ -61,6 +61,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKBatchInvoiceFeesPaidBy) {
                  invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
                           members:(NSArray *_Nonnull)members
              processingFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)processingFeesPaidBy
+                         verified:(BOOL) isVerified
                        completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion;
 
 + (void)cancelInvoiceId:(NSString *_Nonnull)invoiceId completon:(TSDKSimpleCompletionBlock _Nullable)completion;
