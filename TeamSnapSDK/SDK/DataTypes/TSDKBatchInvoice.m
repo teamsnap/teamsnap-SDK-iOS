@@ -43,9 +43,14 @@
                  invoiceLineItems:(NSArray *_Nonnull)invoiceLineItems
                           members:(NSArray<TSDKMember *> *)members
             processingFeesPaidBy:(TSDKBatchInvoiceFeesPaidBy)processingFeesPaidBy
+                         verified:(BOOL) isVerified
                        completion:(TSDKBatchInvoiceCreatedBlock _Nullable)completion {
     
     TSDKCollectionCommand *createInvoiceCommand = [[self commandForKey:@"create_with_invoices"] copy];
+    if (isVerified) {
+        NSString* path = createInvoiceCommand.href;
+        createInvoiceCommand.href = [path stringByReplacingOccurrencesOfString:@"batch_invoices" withString:@"verified_batch_invoices"];
+    }
 
     if (createInvoiceCommand) {
         createInvoiceCommand.data[@"due_at"] = [dueDate YYYYMMDDStringFromGregorianCalendar];    // We're intentionally only sending the year/month/date here. The BE will perform some conversions on it to make it due at 11:59:59 pm in the team's timezone.
