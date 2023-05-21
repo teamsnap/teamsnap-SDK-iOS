@@ -293,11 +293,12 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
-        
-        if (searchParamaters) {
+        NSDictionary *localSearchParams = [NSDictionary dictionaryWithDictionary:searchParamaters];
+
+        if (localSearchParams) {
             NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
-            for (NSString *key in searchParamaters) {
-                id value = [searchParamaters objectForKey:key];
+            for (NSString *key in localSearchParams) {
+                id value = [localSearchParams objectForKey:key];
                 if([value isKindOfClass:[NSArray class]]) {
                     NSString *commaSeparatedString = [[value componentsJoinedByString:@","] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                     [searchParamaterArray addObject:[NSString stringWithFormat:@"%@=%@", key, commaSeparatedString]];
