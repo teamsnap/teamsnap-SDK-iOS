@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *_Nullable teamMediumDescription; //Example: Ball
 @property (nonatomic, assign) NSInteger originalFileSize; //Example: 5176834
 @property (nonatomic, assign) NSInteger position; //Example: 1
-@property (nonatomic, strong) NSURL *_Nullable mediumUrl; //Example: https://35b7f1d7d0790b02114c-1b8897185d70b198c119e1d2b7efd8a2.ssl.cf1.rackcdn.com/user_files/3263711/original/upload_133315715520120601-24224-1knpgia-0.jpg
+@property (nonatomic, strong) NSURL *_Nullable mediumUrl; //Example: https://storage.googleapis.com/ts_assets_prod-user_files/3263711/original/upload_133315715520120601-24224-1knpgia-0.jpg
 @property (nonatomic, strong) NSDate *_Nullable createdAt; //Example: 2012-03-31T01:27:34Z
 @property (nonatomic, strong) NSString *_Nullable teamMediaGroupId; //Example: 56194
 @property (nonatomic, strong) NSString *_Nullable mediaFormat; //Example: image
