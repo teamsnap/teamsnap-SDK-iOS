@@ -56,8 +56,8 @@
 
 -(void)executeWithCompletion:(TSDKCompletionBlock)completion {
     NSURL *destinationURL = [NSURL URLWithString:self.href];
-    
-    [TSDKDataRequest requestObjectsForPath:destinationURL searchParamaters:self.data sendDataDictionary:nil method:@"GET" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
+    NSDictionary* ldata = [self.data copy];
+    [TSDKDataRequest requestObjectsForPath:destinationURL searchParamaters:ldata sendDataDictionary:nil method:@"GET" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
 }
 
 - (TSDKCollectionQuery *)copyWithZone:(NSZone *)zone {

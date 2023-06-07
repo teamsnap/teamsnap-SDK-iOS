@@ -293,7 +293,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         }
         
         NSMutableString *URLPath = [NSMutableString stringWithString:[URL absoluteString]];
-        NSDictionary *localSearchParams = [NSDictionary dictionaryWithDictionary:searchParamaters];
+        NSDictionary *localSearchParams = [searchParamaters copy];
 
         if (localSearchParams) {
             NSMutableArray *searchParamaterArray = [[NSMutableArray alloc] init];
