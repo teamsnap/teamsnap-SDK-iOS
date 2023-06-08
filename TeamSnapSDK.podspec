@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TeamSnapSDK"
-  s.version      = "4.0"
+  s.version      = "4.1"
   s.summary      = "TeamSnap SDK for API v3"
   s.description  = "A library to access TeamSnap API v3"
   s.homepage     = "https://github.com/teamsnap/teamsnap-SDK-iOS"
