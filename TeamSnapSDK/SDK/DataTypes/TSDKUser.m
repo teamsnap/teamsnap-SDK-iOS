@@ -23,7 +23,7 @@
 
 }
 
-@dynamic personUuid, highestRole, birthday, managedDivisionsCount, canSendMessages, updatedAt, activeTeamsCount, addressState, lastName, isEligibleForFreeTrial, teamsCount, email, isAdmin, hasCc, addressCountry, createdAt, displayAdsOnTeamList, firstName, receivesNewsletter, isLabRat, linkActiveTeams, linkMessages, linkDivisionMembers, linkEvents, linkTeamsPreferences, linkActiveDivisions, linkExperiments, linkApnDevices, linkMembers, linkMessageData, linkPayableInvoices, linkFacebookPages, linkTeams, linkTslMetadatum, linkGcmDevices, linkPersonas, linkInvoicesAggregates, linkAdvertisements, linkNextPayableInvoice, linkDivisions, linkContacts;
+@dynamic personUuid, highestRole, birthday, managedDivisionsCount, canSendMessages, updatedAt, activeTeamsCount, addressState, lastName, isEligibleForFreeTrial, teamsCount, email, isAdmin, hasCc, addressCountry, createdAt, displayAdsOnTeamList, firstName, receivesNewsletter, isLabRat, linkActiveTeams, linkMessages, linkDivisionMembers, linkEvents, linkTeamsPreferences, linkActiveDivisions, linkExperiments, linkApnDevices, linkMembers, linkMessageData, linkPayableInvoices, linkFacebookPages, linkTeams, linkTslMetadatum, linkGcmDevices, linkPersonas, linkInvoicesAggregates, linkAdvertisements, linkNextPayableInvoice, linkDivisions, linkContacts, ppid;
 
 + (NSString *)SDKType {
     return @"user";
