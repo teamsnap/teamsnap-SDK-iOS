@@ -31,6 +31,7 @@ typedef NS_CLOSED_ENUM(NSInteger,TSDKHighestRoleType) {
 @property (nonatomic, strong, nullable) NSString * addressCountry; //Example:
 @property (nonatomic, strong, nullable) NSString * highestRole; //Example: league_owner
 @property (nonatomic, strong, nullable) NSString * personUuid; //Example: **NULL**
+@property (nonatomic, strong, nullable) NSString * ppid; //Example: 37fed216826d68e64f1f0b1d299216776dde9b31d62ed8a024ca1aad8f68687f
 @property (nonatomic, assign) NSInteger activeTeamsCount; //Example: 92
 @property (nonatomic, assign) NSInteger teamsCount; //Example: 111
 @property (nonatomic, assign) NSInteger managedDivisionsCount; //Example: 4
