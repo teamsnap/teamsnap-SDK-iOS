@@ -80,7 +80,7 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, strong) NSString *_Nullable ageGroup; //Example: **NULL**
 @property (nonatomic, assign) BOOL canTeamAddMembers;
 @property (nonatomic, assign) BOOL canTeamDeleteMembers;
-@property (nonatomic, assign) BOOL canDisplayTeamStore;
+@property (nonatomic, assign) BOOL canDisplayStore;
 @property (nonatomic, assign) BOOL isStoreConfigured;
 @property (nonatomic, assign, readonly) BOOL isEventLineupEnabled;
 @property (nonatomic, assign, readonly) BOOL isDirectMessageEnabled;
