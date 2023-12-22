@@ -20,7 +20,7 @@ XCODE_VERSION = "15.1"
 platform :ios do
   desc "Builds and executes all unit tests"
   lane :test do
-      xcversion(version: XCODE_VERSION)
+      xcodes(version: XCODE_VERSION)
 
 	  test_devices = [
 	    "iPhone 4s",
