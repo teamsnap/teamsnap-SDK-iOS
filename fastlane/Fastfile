@@ -15,9 +15,12 @@
 
 default_platform(:ios)
 
+XCODE_VERSION = "15.1"
+
 platform :ios do
   desc "Builds and executes all unit tests"
   lane :test do
+      xcodes(version: XCODE_VERSION)
 
 	  test_devices = [
 	    "iPhone 4s",
