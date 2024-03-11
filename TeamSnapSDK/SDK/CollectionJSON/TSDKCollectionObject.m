@@ -283,12 +283,17 @@ static NSMutableDictionary *_classURLs;
 }
 
 static id propertyIMP(id self, SEL _cmd) {
-    NSString *command = [[NSStringFromSelector(_cmd) camelCaseToUnderscores] stripClassNameFromDescriptor:NSStringFromClass([self class])];
-    id value = [self collectionObjectForKey:command];
-    if ([value isEqual:[NSNull null]]) {
+    @try {
+        NSString *command = [[NSStringFromSelector(_cmd) camelCaseToUnderscores] stripClassNameFromDescriptor:NSStringFromClass([self class])];
+        id value = [self collectionObjectForKey:command];
+        if ([value isEqual:[NSNull null]]) {
+            return nil;
+        } else {
+            return value;
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"propertyIMP Exception: %@", exception);
         return nil;
-    } else {
-        return value;
     }
 }
 
