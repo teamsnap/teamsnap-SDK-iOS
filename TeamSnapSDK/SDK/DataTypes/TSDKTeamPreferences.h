@@ -69,6 +69,7 @@ typedef NS_CLOSED_ENUM (NSUInteger, TSDKTeamPreferenceMemberSortOrder) {
 @property (nonatomic, assign) BOOL marketplaceShowTab; //Example: 1
 @property (nonatomic, strong) NSString *_Nullable teamId; //Example: 71118
 @property (nonatomic, assign) BOOL shareAvailabilityNotes; //Example: 0
+@property (nonatomic, assign) BOOL shouldShowPushNotificationBanner;
 @property (nonatomic, assign) BOOL isTslEnabled; //Example: 1
 @property (nonatomic, assign) BOOL isTeamChatEnabled; // Example 1
 @property (nonatomic, assign) BOOL isUnifiedMessagingTeamChat; //Example: 1
