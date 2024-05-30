@@ -69,7 +69,7 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
-+ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
++ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites extraHeaders:(NSDictionary *)extraHeaders completion:(TSDKArrayCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKMember commandForKey:@"import_from_team"];
     command.data[@"destination_team_id"] = destinationTeamId;
     
@@ -85,7 +85,7 @@
         command.data[@"send_invites"] = @"false";
     }
     
-    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+    [command executeWithExtraHeaders:extraHeaders completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         NSArray *result = nil;
         if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
@@ -98,8 +98,12 @@
     }];
 }
 
-- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
-    [TSDKTeam actionImportMembers:members destinationTeamId:self.objectIdentifier sendInvites:sendInvites completion:completion];
+- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites extraHeaders:(NSDictionary *)extraHeaders completion:(TSDKArrayCompletionBlock)completion {
+    [TSDKTeam actionImportMembers:members 
+                destinationTeamId:self.objectIdentifier
+                      sendInvites:sendInvites
+                     extraHeaders:extraHeaders
+                       completion:completion];
 }
 
 + (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
