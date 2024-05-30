@@ -24,9 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)addRequestHeaderValue:(NSString *)value forKey:(NSString *)key;
 + (NSDictionary *)requestHeaders;
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKJSONCompletionBlock _Nullable)completionBlock;
++ (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method extraHeaders:(NSDictionary *_Nullable)extraHeaders configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKJSONCompletionBlock _Nullable)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method extraHeaders:(NSDictionary *_Nullable)extraHeaders withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *_Nullable)searchParamaters sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *_Nullable)searchParamaters sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method extraHeaders:(NSDictionary *_Nullable)extraHeaders withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 + (void)postDictionary:(NSDictionary *)postDictionary toURL:(NSURL *)url delegate:(id<NSURLSessionDataDelegate>_Nullable)delegate;
 
 #if TARGET_OS_IPHONE
