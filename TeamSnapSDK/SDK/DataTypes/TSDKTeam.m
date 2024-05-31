@@ -106,7 +106,7 @@
                        completion:completion];
 }
 
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId extraHeaders:(NSDictionary *)extraHeaders completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
     command.data[@"team_id"] = teamId;
     
@@ -128,7 +128,7 @@
     }
     command.data[@"notify_as_member_id"] = asMemberId;
     
-    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+    [command executeWithExtraHeaders:extraHeaders completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
             completion(success, error);
         }
@@ -137,7 +137,11 @@
 
 
 - (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
-    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
+    [self actionInviteMembersOrContacts:membersOrContacts asMemberId:asMemberId extraHeaders:nil completion:completion];
+}
+
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId extraHeaders:(NSDictionary *)extraHeaders completion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId extraHeaders:extraHeaders completion:completion];
 }
 
 + (void)actionToggleTeamVisibilityOnDashboardTeamIds:(NSArray <NSString *> *_Nonnull)teamIds completion:(TSDKTeamArrayCompletionBlock _Nullable)completion {
