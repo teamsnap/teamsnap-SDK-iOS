@@ -112,7 +112,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
         [mutableRequestHeaders setObject:@"3" forKey:@"X_TEAMSNAP_API_VERSION"];
         [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
-        [mutableRequestHeaders setObject:@"Teams iOS" forKey:@"teamsnap_client_name"];
+        [mutableRequestHeaders setObject:@"Teams iOS" forKey:@"X-TS-Client-Name"];
         if([[TSDKTeamSnap sharedInstance] combinedContactFeatureIsActive]) {
             [mutableRequestHeaders setObject:@"ghost_contact" forKey:@"X-Teamsnap-Api-Features"];
         }
