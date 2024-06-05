@@ -135,10 +135,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKJSONCompletionBlock)completionBlock {
-    [self requestJSONObjectsForPath:URL sendDataDictionary:dataEnvelope method:method extraHeaders:nil configuration:configuration withCompletion:completionBlock];
-}
-
-+ (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method extraHeaders:(NSDictionary *)extraHeaders configuration:(TSDKRequestConfiguration *)configuration withCompletion:(TSDKJSONCompletionBlock)completionBlock {
     if (URL == nil) {
         if (completionBlock) {
             completionBlock(NO, NO, nil, nil);
@@ -168,14 +164,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
         
         for (NSString *headerKeys in self.requestHeaders) {
             [request setValue:[self.requestHeaders objectForKey:headerKeys] forHTTPHeaderField:headerKeys];
-        }
-        if (extraHeaders) {
-            NSArray *existingKeys = [self.requestHeaders allKeys];
-            for (NSString *key in extraHeaders) {
-                if (![existingKeys containsObject:key]) {
-                    [request setValue:[extraHeaders objectForKey:key] forHTTPHeaderField:key];
-                }
-            }
         }
         
         if (OAuthToken) {
@@ -298,10 +286,6 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [self requestObjectsForPath:URL searchParamaters:searchParamaters sendDataDictionary:dataEnvelope method:method extraHeaders:nil withConfiguration:configuration completion:completionBlock];
-}
-
-+ (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *)searchParamaters sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method extraHeaders:(NSDictionary *)extraHeaders withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
         if (!URL) {
             if (completionBlock) {
                 completionBlock(NO, NO, nil, nil);
@@ -333,7 +317,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [URLPath appendFormat:@"%@%@", separator, [searchParamaterArray componentsJoinedByString:@"&"]];
         }
         
-        [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method extraHeaders:extraHeaders configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
+        [self requestJSONObjectsForPath:[NSURL URLWithString:URLPath] sendDataDictionary:dataEnvelope method:method configuration:configuration withCompletion:^(BOOL success, BOOL complete, id objects, NSError *error) {
             dispatch_async([self processingQueue], ^{
                 TSDKCollectionJSON *containerCollection = nil;
                 if ([objects isKindOfClass:[NSDictionary class]]) {
@@ -349,11 +333,11 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [self requestObjectsForPath:URL sendDataDictionary:dataEnvelope method:method extraHeaders:nil withConfiguration:configuration completion:completionBlock];
+    [self requestObjectsForPath:URL sendDataDictionary:dataEnvelope method:method extraParameters:nil withConfiguration:configuration completion:completionBlock];
 }
 
-+ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method extraHeaders:(NSDictionary *)extraHeaders withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [self requestObjectsForPath:URL searchParamaters:nil sendDataDictionary:dataEnvelope method:method extraHeaders:extraHeaders withConfiguration:configuration completion:completionBlock];
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method extraParameters:(NSDictionary *)extraParameters withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    [self requestObjectsForPath:URL searchParamaters:extraParameters sendDataDictionary:dataEnvelope method:method withConfiguration:configuration completion:completionBlock];
 }
 
 # pragma mark - Multipart uploads
