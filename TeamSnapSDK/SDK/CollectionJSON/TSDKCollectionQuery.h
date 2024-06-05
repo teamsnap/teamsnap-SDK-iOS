@@ -18,6 +18,6 @@
 
 - (instancetype _Nullable)initWithJSONDict:(NSDictionary *_Nonnull)jsonDict;
 -(void)executeWithCompletion:(TSDKCompletionBlock _Nullable)completion;
--(void)executeWithExtraHeaders:(NSDictionary *_Nullable)extraHeaders completion:(TSDKCompletionBlock _Nullable)completion;
+-(void)executeWithExtraParameters:(NSDictionary *_Nullable)extraParameters completion:(TSDKCompletionBlock _Nullable)completion;
 
 @end

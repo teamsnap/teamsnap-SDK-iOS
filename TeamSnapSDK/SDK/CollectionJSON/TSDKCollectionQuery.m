@@ -55,17 +55,26 @@
 }
 
 -(void)executeWithCompletion:(TSDKCompletionBlock)completion {
-    [self executeWithExtraHeaders:nil completion:completion];
+    [self executeWithExtraParameters:nil completion:completion];
 }
 
--(void)executeWithExtraHeaders:(NSDictionary *)extraHeaders completion:(TSDKCompletionBlock)completion {
+-(void)executeWithExtraParameters:(NSDictionary *)extraParameters completion:(TSDKCompletionBlock)completion {
     NSURL *destinationURL = [NSURL URLWithString:self.href];
-    NSDictionary* ldata = [self.data copy];
-    [TSDKDataRequest requestObjectsForPath:destinationURL 
+    NSMutableDictionary *ldata = [NSMutableDictionary dictionaryWithDictionary:self.data];
+    if (extraParameters) {
+        if (ldata == nil) {
+            ldata = [[NSMutableDictionary alloc] init];
+        }
+        for (NSString *key in extraParameters) {
+            id value = [extraParameters objectForKey:key];
+            [ldata setObject:value forKey:key];
+        }
+    }
+
+    [TSDKDataRequest requestObjectsForPath:destinationURL
                           searchParamaters:ldata
                         sendDataDictionary:nil
                                     method:@"GET"
-                              extraHeaders:extraHeaders
                          withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES]
                                 completion:completion];
 }
