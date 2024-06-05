@@ -1038,11 +1038,11 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
-    [self saveWithExtraHeaders:nil completion:completion];
+    [self saveWithExtraParameters:nil completion:completion];
 }
 
-- (void)saveWithExtraHeaders:(NSDictionary *)extraHeaders completion:(TSDKSaveCompletionBlock)completion {
-    [self saveWithURL:[self urlForSave] extraHeaders:extraHeaders completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
+- (void)saveWithExtraParameters:(NSDictionary *)extraParameters completion:(TSDKSaveCompletionBlock)completion {
+    [self saveWithURL:[self urlForSave] extraParameters:extraParameters completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
         if(completion) {
             completion(success, [objects firstObject], error);
         }
@@ -1067,10 +1067,10 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 }
 
 - (void)saveWithURL:(NSURL *)url completion:(TSDKArrayCompletionBlock)completion {
-    [self saveWithURL:url extraHeaders:nil completion:completion];
+    [self saveWithURL:url extraParameters:nil completion:completion];
 }
 
-- (void)saveWithURL:(NSURL *)url extraHeaders:(NSDictionary *)extraHeaders completion:(TSDKArrayCompletionBlock)completion {
+- (void)saveWithURL:(NSURL *)url extraParameters:(NSDictionary *)extraParameters completion:(TSDKArrayCompletionBlock)completion {
     NSDictionary *dataToSave = [self dataToSave];
     if ([self isNewObject]) {
         NSDictionary *postObject = @{@"template": dataToSave};
@@ -1079,7 +1079,7 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
         [TSDKDataRequest requestObjectsForPath:url 
                             sendDataDictionary:postObject
                                         method:@"POST"
-                                  extraHeaders:extraHeaders
+                                  extraParameters:extraParameters
                              withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES]
                                     completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {

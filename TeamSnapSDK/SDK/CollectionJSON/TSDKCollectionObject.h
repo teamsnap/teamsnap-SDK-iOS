@@ -100,11 +100,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)undoChanges;
 - (NSURL *)urlForSave;
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock _Nullable)completion;
-- (void)saveWithExtraHeaders:(NSDictionary * _Nullable)extraHeaders completion:(TSDKSaveCompletionBlock)completion;
+- (void)saveWithExtraParameters:(NSDictionary * _Nullable)extraParameters completion:(TSDKSaveCompletionBlock)completion;
 + (void)saveObject:(TSDKCollectionObject *)object completion:(TSDKArrayCompletionBlock)completion;
 - (void)saveWithCustomURLQuery:(NSArray <NSURLQueryItem *> * )queryItems completion:(TSDKSaveCompletionBlock _Nullable)completion;
 - (void)saveWithURL:(NSURL * _Nonnull)url completion:(TSDKArrayCompletionBlock _Nullable)completion;
-- (void)saveWithURL:(NSURL * _Nonnull)url extraHeaders:(NSDictionary *_Nullable)extraHeaders completion:(TSDKArrayCompletionBlock _Nullable)completion;
+- (void)saveWithURL:(NSURL * _Nonnull)url extraParameters:(NSDictionary *_Nullable)extraParameters completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)deleteUserWithURL:(NSURL * _Nonnull)url userID:(NSString * _Nonnull)userID completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)cancelDeleteUserRequestWithURL:(NSURL * _Nonnull)url completion:(TSDKArrayCompletionBlock _Nullable)completion;
 - (void)getUserAccountDeleteStatusWithURL:(NSURL * _Nonnull)url completion:(TSDKCompletionBlock _Nullable)completion;
