@@ -1038,7 +1038,11 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 }
 
 - (void)saveWithCompletion:(TSDKSaveCompletionBlock)completion {
-    [self saveWithURL:[self urlForSave] completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
+    [self saveWithExtraParameters:nil completion:completion];
+}
+
+- (void)saveWithExtraParameters:(NSDictionary *)extraParameters completion:(TSDKSaveCompletionBlock)completion {
+    [self saveWithURL:[self urlForSave] extraParameters:extraParameters completion:^(BOOL success, BOOL complete, NSArray<TSDKCollectionObject *> * _Nonnull objects, NSError * _Nullable error) {
         if(completion) {
             completion(success, [objects firstObject], error);
         }
@@ -1063,12 +1067,21 @@ static void addImplementationForSelector(objc_property_t prop, SEL selector, Cla
 }
 
 - (void)saveWithURL:(NSURL *)url completion:(TSDKArrayCompletionBlock)completion {
+    [self saveWithURL:url extraParameters:nil completion:completion];
+}
+
+- (void)saveWithURL:(NSURL *)url extraParameters:(NSDictionary *)extraParameters completion:(TSDKArrayCompletionBlock)completion {
     NSDictionary *dataToSave = [self dataToSave];
     if ([self isNewObject]) {
         NSDictionary *postObject = @{@"template": dataToSave};
         __typeof__(self) __weak weakSelf = self;
         
-        [TSDKDataRequest requestObjectsForPath:url sendDataDictionary:postObject method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
+        [TSDKDataRequest requestObjectsForPath:url 
+                            sendDataDictionary:postObject
+                                        method:@"POST"
+                                  extraParameters:extraParameters
+                             withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES]
+                                    completion:^(BOOL success, BOOL complete, TSDKCollectionJSON *objects, NSError *error) {
             if (success) {
                 
                 [weakSelf clearChanges];

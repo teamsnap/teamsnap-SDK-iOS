@@ -69,7 +69,7 @@
     [TSDKTeam actionUpdateTimeZone:timeZone offsetEventTimes:offsetEventTimes forTeam:self withConfiguration:configuration completion:completion];
 }
 
-+ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
++ (void)actionImportMembers:(NSArray <TSDKMember *> *)members destinationTeamId:(NSString *_Nonnull)destinationTeamId sendInvites:(BOOL)sendInvites extraParameters:(NSDictionary *)extraParameters completion:(TSDKArrayCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKMember commandForKey:@"import_from_team"];
     command.data[@"destination_team_id"] = destinationTeamId;
     
@@ -85,7 +85,7 @@
         command.data[@"send_invites"] = @"false";
     }
     
-    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+    [command executeWithExtraParameters:extraParameters completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         NSArray *result = nil;
         if (success) {
             if ([[objects collection] isKindOfClass:[NSArray class]]) {
@@ -98,11 +98,15 @@
     }];
 }
 
-- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites completion:(TSDKArrayCompletionBlock)completion {
-    [TSDKTeam actionImportMembers:members destinationTeamId:self.objectIdentifier sendInvites:sendInvites completion:completion];
+- (void)actionImportMembersToTeam:(NSArray <TSDKMember *> *)members sendInvites:(BOOL)sendInvites extraParameters:(NSDictionary *)extraParameters completion:(TSDKArrayCompletionBlock)completion {
+    [TSDKTeam actionImportMembers:members
+                destinationTeamId:self.objectIdentifier
+                      sendInvites:sendInvites
+                     extraParameters:extraParameters
+                       completion:completion];
 }
 
-+ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
++ (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts teamId:(NSString *_Nonnull)teamId asMemberId:(NSString *_Nonnull)asMemberId extraParameters:(NSDictionary *)extraParameters completion:(TSDKSimpleCompletionBlock)completion {
     TSDKCollectionCommand *command = [TSDKTeam commandForKey:@"invite"];
     command.data[@"team_id"] = teamId;
     
@@ -124,7 +128,7 @@
     }
     command.data[@"notify_as_member_id"] = asMemberId;
     
-    [command executeWithCompletion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
+    [command executeWithExtraParameters:extraParameters completion:^(BOOL success, BOOL complete, TSDKCollectionJSON * _Nullable objects, NSError * _Nullable error) {
         if (completion) {
             completion(success, error);
         }
@@ -133,7 +137,11 @@
 
 
 - (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId completion:(TSDKSimpleCompletionBlock)completion {
-    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId completion:completion];
+    [self actionInviteMembersOrContacts:membersOrContacts asMemberId:asMemberId extraParameters:nil completion:completion];
+}
+
+- (void)actionInviteMembersOrContacts:(NSArray <TSDKCollectionObject<TSDKMemberOrContactProtocol> *> *)membersOrContacts asMemberId:(NSString *_Nonnull)asMemberId extraParameters:(NSDictionary *)extraParameters completion:(TSDKSimpleCompletionBlock)completion {
+    [TSDKTeam actionInviteMembersOrContacts:membersOrContacts teamId:self.objectIdentifier asMemberId:asMemberId extraParameters:extraParameters completion:completion];
 }
 
 + (void)actionToggleTeamVisibilityOnDashboardTeamIds:(NSArray <NSString *> *_Nonnull)teamIds completion:(TSDKTeamArrayCompletionBlock _Nullable)completion {

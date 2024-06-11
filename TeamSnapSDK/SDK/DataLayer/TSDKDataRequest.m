@@ -112,6 +112,7 @@ static NSRecursiveLock *accessDetailsLock = nil;
         [mutableRequestHeaders setObject:@"iOS" forKey:@"X-Client-Source"];
         [mutableRequestHeaders setObject:@"3" forKey:@"X_TEAMSNAP_API_VERSION"];
         [mutableRequestHeaders setObject:self.deviceInfo forKey:@"User-Agent"];
+        [mutableRequestHeaders setObject:@"Teams iOS" forKey:@"x-ts-client-name"];
         if([[TSDKTeamSnap sharedInstance] combinedContactFeatureIsActive]) {
             [mutableRequestHeaders setObject:@"ghost_contact" forKey:@"X-Teamsnap-Api-Features"];
         }
@@ -332,7 +333,11 @@ static NSRecursiveLock *accessDetailsLock = nil;
 }
 
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
-    [self requestObjectsForPath:URL searchParamaters:nil sendDataDictionary:dataEnvelope method:method withConfiguration:configuration completion:completionBlock];
+    [self requestObjectsForPath:URL sendDataDictionary:dataEnvelope method:method extraParameters:nil withConfiguration:configuration completion:completionBlock];
+}
+
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *)dataEnvelope method:(NSString *)method extraParameters:(NSDictionary *)extraParameters withConfiguration:(TSDKRequestConfiguration *)configuration completion:(TSDKCompletionBlock)completionBlock {
+    [self requestObjectsForPath:URL searchParamaters:extraParameters sendDataDictionary:dataEnvelope method:method withConfiguration:configuration completion:completionBlock];
 }
 
 # pragma mark - Multipart uploads

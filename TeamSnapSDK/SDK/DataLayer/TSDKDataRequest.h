@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)requestJSONObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method configuration:(TSDKRequestConfiguration *_Nullable)configuration withCompletion:(TSDKJSONCompletionBlock _Nullable)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
++ (void)requestObjectsForPath:(NSURL *)URL sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method extraParameters:(NSDictionary *_Nullable)extraParameters withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 + (void)requestObjectsForPath:(NSURL *)URL searchParamaters:(NSDictionary <NSString *, id> *_Nullable)searchParamaters sendDataDictionary:(NSDictionary *_Nullable)dataEnvelope method:(NSString *_Nullable)method withConfiguration:(TSDKRequestConfiguration *_Nullable)configuration completion:(TSDKCompletionBlock _Nullable)completionBlock;
 + (void)postDictionary:(NSDictionary *)postDictionary toURL:(NSURL *)url delegate:(id<NSURLSessionDataDelegate>_Nullable)delegate;
 
