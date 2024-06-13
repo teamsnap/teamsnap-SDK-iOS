@@ -18,9 +18,18 @@
 }
 
 -(void)executeWithCompletion:(TSDKCompletionBlock)completion {
+    [self executeWithExtraParameters:nil completion:completion];
+}
+
+-(void)executeWithExtraParameters:(NSDictionary *)extraParameters completion:(TSDKCompletionBlock)completion {
     NSURL *destinationURL = [NSURL URLWithString:self.href];
     
-    [TSDKDataRequest requestObjectsForPath:destinationURL sendDataDictionary:self.data method:@"POST" withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES] completion:completion];
+    [TSDKDataRequest requestObjectsForPath:destinationURL
+                        sendDataDictionary:self.data
+                                    method:@"POST"
+                           extraParameters:extraParameters
+                         withConfiguration:[TSDKRequestConfiguration requestConfigurationWithForceReload:YES]
+                                completion:completion];
 }
 
 -(void)executeCollectionJSONTemplateWithCompletion:(TSDKCompletionBlock)completion {

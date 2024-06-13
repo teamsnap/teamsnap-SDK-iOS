@@ -10,6 +10,7 @@
 
 @interface TSDKCollectionCommand : TSDKCollectionQuery <NSCopying, NSSecureCoding>
 
+-(void)executeWithExtraParameters:(NSDictionary *_Nullable)extraParameters completion:(TSDKCompletionBlock _Nullable)completion;
 -(void)executeCollectionJSONTemplateWithCompletion:(TSDKCompletionBlock _Nullable)completion;
 
 @end
