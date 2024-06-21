@@ -263,5 +263,10 @@ NSFileManager static *_fileManager = nil;
     }
 }
 
++(void) clearSchemas {
+    NSError *error = nil;
+    NSURL *schemaCachePath = [self pathForObjectClassName:@"schemas"];
+    [self.fileManager removeItemAtURL:schemaCachePath error:&error];
+}
 
 @end
