@@ -29,5 +29,6 @@
 
 + (BOOL)saveSchemas:(NSArray *_Nonnull)schemaArray WithVersion:(NSString *_Nonnull)schemaVersion;
 + (NSArray *_Nullable)loadSchemasIfCachedVersion:(NSString *_Nonnull)schemaVersion;
++(void) clearSchemas;
 
 @end

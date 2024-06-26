@@ -160,7 +160,7 @@
 		969E805D1BAAE79500CA518F /* TeamSnapSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805A1BAAE79500CA518F /* TeamSnapSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E805E1BAAE79500CA518F /* TSDKTeamSnap.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E805B1BAAE79500CA518F /* TSDKTeamSnap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E805F1BAAE79500CA518F /* TSDKTeamSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E805C1BAAE79500CA518F /* TSDKTeamSnap.m */; };
-		969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80621BAAE7AB00CA518F /* TSPCache.h */; };
+		969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80621BAAE7AB00CA518F /* TSPCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80B21BAAE7AB00CA518F /* TSPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80631BAAE7AB00CA518F /* TSPCache.m */; };
 		969E80B31BAAE7AB00CA518F /* TSDKCollectionQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 969E80651BAAE7AB00CA518F /* TSDKCollectionQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		969E80B41BAAE7AB00CA518F /* TSDKCollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E80661BAAE7AB00CA518F /* TSDKCollectionQuery.m */; };
@@ -1149,6 +1149,7 @@
 				9678A3601D86EC4E0078631C /* TSDKLeagueCustomDatum.h in Headers */,
 				964CDDED1BB4519400909D11 /* TSDKPublicFeatures.h in Headers */,
 				9681418A22D391A500649B58 /* TSDKStripeAccount.h in Headers */,
+				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
 				56AA2D7824BE7AFA001C26E8 /* TSDKHealthCheckQuestionnaire.h in Headers */,
 				565B9E012162CC6600A337C8 /* TSDKWepayAccount.h in Headers */,
 				969E80C11BAAE7AB00CA518F /* NSString+TSDKConveniences.h in Headers */,
@@ -1156,7 +1157,6 @@
 				969E80BF1BAAE7AB00CA518F /* NSObject+TSDKIntegerOtNotFound.h in Headers */,
 				96F7C5291D104A920022FA4C /* TSDKMemberPhoto.h in Headers */,
 				9641AC251DF1BCC3008E4716 /* TSDKTslScore.h in Headers */,
-				969E80B11BAAE7AB00CA518F /* TSPCache.h in Headers */,
 				969E80B31BAAE7AB00CA518F /* TSDKCollectionQuery.h in Headers */,
 				962EB17F20C197D40038E416 /* TSDKInvoiceRecipient.h in Headers */,
 				969E80B91BAAE7AB00CA518F /* NSDate+TSDKConveniences.h in Headers */,
