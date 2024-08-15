@@ -6,7 +6,7 @@
 //  Copyright © 2018 teamsnap. All rights reserved.
 //
 
-#import <TeamSnapSDK/TeamSnapSDK.h>
+#import <TeamSnapSDK.h>
 
 @interface TSDKEventLineup : TSDKCollectionObject
 

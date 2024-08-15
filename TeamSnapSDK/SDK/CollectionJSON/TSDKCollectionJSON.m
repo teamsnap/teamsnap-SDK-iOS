@@ -7,7 +7,7 @@
 //
 
 #import "TSDKCollectionJSON.h"
-#import <TeamSnapSDK/TSDKCompletionBlockTypes.h>
+#import <TSDKCompletionBlockTypes.h>
 #import "NSDictionary+TSDKCollectionJSON.h"
 #import "TSDKCollectionQuery.h"
 #import "TSDKCollectionCommand.h"
