@@ -22,7 +22,7 @@
 #pragma mark - TSDKBundledDataProtocol
 
 + (NSURL *)bundledFileURL {
-    return [[NSBundle bundleForClass:[self class]] URLForResource:[self SDKREL] withExtension:@"json"];
+    return [SWIFTPM_MODULE_BUNDLE URLForResource:[self SDKREL] withExtension:@"json"];
 }
 
 @end

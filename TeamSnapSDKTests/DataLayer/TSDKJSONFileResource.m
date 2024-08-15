@@ -12,8 +12,7 @@
 
 + (TSDKCollectionJSON *)collectionFromJSONFileNamed:(NSString *)fileName {
 
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *resource = [bundle pathForResource:fileName ofType:@"json"];
+    return [SWIFTPM_MODULE_BUNDLE pathForResource:fileName ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:resource];
     NSError* error = nil;
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];

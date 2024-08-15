@@ -30,7 +30,7 @@ static NSString * const lastDateSentKey = @"TSDKAdvertisingIdentifierLastSentSec
 }
 
 + (NSURL *)bundledFileURL {
-    return [[NSBundle bundleForClass:[self class]] URLForResource:[self SDKREL] withExtension:@"json"];
+    return [SWIFTPM_MODULE_BUNDLE URLForResource:[self SDKREL] withExtension:@"json"];
 }
 
 - (void)processSchemasArray:(NSArray *)schemasArray {
