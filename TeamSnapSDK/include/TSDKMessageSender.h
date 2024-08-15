@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Protocols/TSDKMessageSender.h
+../Sources/SDK/Protocols/TSDKMessageSender.h

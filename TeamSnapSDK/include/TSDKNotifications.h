@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/TSDKNotifications.h
+../Sources/SDK/TSDKNotifications.h

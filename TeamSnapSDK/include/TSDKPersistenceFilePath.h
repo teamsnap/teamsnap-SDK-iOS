@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Protocols/TSDKPersistenceFilePath.h
+../Sources/SDK/Protocols/TSDKPersistenceFilePath.h

@@ -1,1 +1,0 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDKTests/DataLayer/TSDKJSONFileResource.h

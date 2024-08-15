@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Conveniences/NSMutableURLRequest+TSDKConveniences.h
+../Sources/SDK/Conveniences/NSMutableURLRequest+TSDKConveniences.h

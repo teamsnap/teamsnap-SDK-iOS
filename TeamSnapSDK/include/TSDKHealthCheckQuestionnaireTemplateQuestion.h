@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKHealthCheckQuestionnaireTemplateQuestion.h
+../Sources/SDK/DataTypes/TSDKHealthCheckQuestionnaireTemplateQuestion.h

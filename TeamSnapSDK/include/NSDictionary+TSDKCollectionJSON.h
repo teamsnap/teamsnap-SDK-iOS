@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Conveniences/NSDictionary+TSDKCollectionJSON.h
+../Sources/SDK/Conveniences/NSDictionary+TSDKCollectionJSON.h

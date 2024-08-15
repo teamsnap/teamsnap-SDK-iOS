@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/TSDKShortPropertyTest.h
+../Sources/TSDKShortPropertyTest.h

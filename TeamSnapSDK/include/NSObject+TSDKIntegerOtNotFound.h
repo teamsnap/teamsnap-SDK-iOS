@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Conveniences/NSObject+TSDKIntegerOtNotFound.h
+../Sources/SDK/Conveniences/NSObject+TSDKIntegerOtNotFound.h

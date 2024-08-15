@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataLayer/NSHTTPURLResponse+convenience.h
+../Sources/SDK/DataLayer/NSHTTPURLResponse+convenience.h

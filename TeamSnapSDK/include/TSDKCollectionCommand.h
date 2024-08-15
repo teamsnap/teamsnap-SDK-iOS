@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/CollectionJSON/TSDKCollectionCommand.h
+../Sources/SDK/CollectionJSON/TSDKCollectionCommand.h

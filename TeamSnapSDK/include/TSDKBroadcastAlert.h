@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKBroadcastAlert.h
+../Sources/SDK/DataTypes/TSDKBroadcastAlert.h

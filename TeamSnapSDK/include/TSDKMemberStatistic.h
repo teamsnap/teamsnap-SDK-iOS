@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Statistics/TSDKMemberStatistic.h
+../Sources/SDK/DataTypes/Statistics/TSDKMemberStatistic.h

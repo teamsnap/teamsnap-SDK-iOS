@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataLayer/TSDKNetworkActivityIndicator.h
+../Sources/SDK/DataLayer/TSDKNetworkActivityIndicator.h

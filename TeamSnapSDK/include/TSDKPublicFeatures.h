@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKPublicFeatures.h
+../Sources/SDK/DataTypes/TSDKPublicFeatures.h

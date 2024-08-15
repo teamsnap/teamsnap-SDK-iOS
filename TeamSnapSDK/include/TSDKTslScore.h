@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSL/TSDKTslScore.h
+../Sources/SDK/DataTypes/TSL/TSDKTslScore.h

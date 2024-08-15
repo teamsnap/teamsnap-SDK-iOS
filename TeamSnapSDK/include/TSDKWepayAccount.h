@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKWepayAccount.h
+../Sources/SDK/DataTypes/TSDKWepayAccount.h

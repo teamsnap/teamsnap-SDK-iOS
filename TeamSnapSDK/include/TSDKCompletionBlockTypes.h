@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/TSDKCompletionBlockTypes.h
+../Sources/SDK/TSDKCompletionBlockTypes.h

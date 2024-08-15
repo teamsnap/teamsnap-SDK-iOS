@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKApnDevice.h
+../Sources/SDK/DataTypes/TSDKApnDevice.h

@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Lineups/TSDKEventLineupEntry.h
+../Sources/SDK/DataTypes/Lineups/TSDKEventLineupEntry.h

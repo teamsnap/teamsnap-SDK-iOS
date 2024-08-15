@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKTrackedItem.h
+../Sources/SDK/DataTypes/TSDKTrackedItem.h

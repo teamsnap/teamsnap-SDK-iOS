@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKInvoicePaymentTransaction.h
+../Sources/SDK/DataTypes/TSDKInvoicePaymentTransaction.h

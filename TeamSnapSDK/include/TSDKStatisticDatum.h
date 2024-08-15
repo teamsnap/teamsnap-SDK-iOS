@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Statistics/TSDKStatisticDatum.h
+../Sources/SDK/DataTypes/Statistics/TSDKStatisticDatum.h

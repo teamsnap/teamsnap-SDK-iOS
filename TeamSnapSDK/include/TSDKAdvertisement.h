@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKAdvertisement.h
+../Sources/SDK/DataTypes/TSDKAdvertisement.h

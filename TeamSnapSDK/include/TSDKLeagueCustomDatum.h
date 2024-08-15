@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Leagues/TSDKLeagueCustomDatum.h
+../Sources/SDK/DataTypes/Leagues/TSDKLeagueCustomDatum.h

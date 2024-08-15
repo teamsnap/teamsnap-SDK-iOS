@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Members/TSDKContactPhoneNumber.h
+../Sources/SDK/DataTypes/Members/TSDKContactPhoneNumber.h

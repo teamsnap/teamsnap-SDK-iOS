@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/TSDKTeamSnap.h
+../Sources/TSDKTeamSnap.h

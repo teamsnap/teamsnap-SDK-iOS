@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Members/TSDKMemberEmailAddress.h
+../Sources/SDK/DataTypes/Members/TSDKMemberEmailAddress.h

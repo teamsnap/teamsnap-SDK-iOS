@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Conveniences/NSURL+TSDKConveniences.h
+../Sources/SDK/Conveniences/NSURL+TSDKConveniences.h

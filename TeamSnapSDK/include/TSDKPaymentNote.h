@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Payments/TSDKPaymentNote.h
+../Sources/SDK/DataTypes/Payments/TSDKPaymentNote.h

@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Messages/TSDKMessageDatum.h
+../Sources/SDK/DataTypes/Messages/TSDKMessageDatum.h

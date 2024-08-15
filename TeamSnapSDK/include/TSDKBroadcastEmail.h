@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKBroadcastEmail.h
+../Sources/SDK/DataTypes/TSDKBroadcastEmail.h

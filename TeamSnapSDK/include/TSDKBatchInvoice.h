@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKBatchInvoice.h
+../Sources/SDK/DataTypes/TSDKBatchInvoice.h

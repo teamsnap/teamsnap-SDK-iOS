@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKOpponent.h
+../Sources/SDK/DataTypes/TSDKOpponent.h

@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/PhotoObjects/TSDKMemberPhoto.h
+../Sources/SDK/DataTypes/PhotoObjects/TSDKMemberPhoto.h

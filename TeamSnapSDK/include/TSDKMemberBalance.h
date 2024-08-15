@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Payments/TSDKMemberBalance.h
+../Sources/SDK/DataTypes/Payments/TSDKMemberBalance.h

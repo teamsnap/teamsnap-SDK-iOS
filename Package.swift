@@ -10,6 +10,6 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        .target(name: "TeamSnapSDK", path: "TeamSnapSDK")
+        .target(name: "TeamSnapSDK", path: "TeamSnapSDK", sources: ["Sources"], cSettings: [.headerSearchPath("Sources")])
     ]
 )

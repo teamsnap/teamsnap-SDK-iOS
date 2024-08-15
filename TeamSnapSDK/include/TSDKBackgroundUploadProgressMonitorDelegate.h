@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataLayer/TSDKBackgroundUploadProgressMonitorDelegate.h
+../Sources/SDK/DataLayer/TSDKBackgroundUploadProgressMonitorDelegate.h

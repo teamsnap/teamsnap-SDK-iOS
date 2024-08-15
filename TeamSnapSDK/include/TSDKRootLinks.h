@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKRootLinks.h
+../Sources/SDK/DataTypes/TSDKRootLinks.h

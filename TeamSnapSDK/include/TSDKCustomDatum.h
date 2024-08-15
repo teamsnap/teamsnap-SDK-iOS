@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKCustomDatum.h
+../Sources/SDK/DataTypes/TSDKCustomDatum.h

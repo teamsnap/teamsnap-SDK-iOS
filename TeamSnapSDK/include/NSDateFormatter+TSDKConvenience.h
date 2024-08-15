@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Conveniences/NSDateFormatter+TSDKConvenience.h
+../Sources/SDK/Conveniences/NSDateFormatter+TSDKConvenience.h

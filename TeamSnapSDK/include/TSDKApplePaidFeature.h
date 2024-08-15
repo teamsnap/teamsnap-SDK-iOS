@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKApplePaidFeature.h
+../Sources/SDK/DataTypes/TSDKApplePaidFeature.h

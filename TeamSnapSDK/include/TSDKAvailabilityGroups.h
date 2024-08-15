@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKAvailabilityGroups.h
+../Sources/SDK/DataTypes/TSDKAvailabilityGroups.h

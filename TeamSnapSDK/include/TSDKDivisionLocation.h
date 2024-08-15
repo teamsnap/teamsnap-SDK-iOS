@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Leagues/TSDKDivisionLocation.h
+../Sources/SDK/DataTypes/Leagues/TSDKDivisionLocation.h

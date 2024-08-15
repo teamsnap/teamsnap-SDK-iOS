@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKForumPost.h
+../Sources/SDK/DataTypes/TSDKForumPost.h

@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKAssignment.h
+../Sources/SDK/DataTypes/TSDKAssignment.h

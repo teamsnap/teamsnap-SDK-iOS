@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataLayer/TSDKObjectsRequest.h
+../Sources/SDK/DataLayer/TSDKObjectsRequest.h

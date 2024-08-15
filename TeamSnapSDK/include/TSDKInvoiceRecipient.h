@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKInvoiceRecipient.h
+../Sources/SDK/DataTypes/TSDKInvoiceRecipient.h

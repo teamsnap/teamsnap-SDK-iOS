@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/TSDKInvitationFinder.h
+../Sources/SDK/DataTypes/TSDKInvitationFinder.h

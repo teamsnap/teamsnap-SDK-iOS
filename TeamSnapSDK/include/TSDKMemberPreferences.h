@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Members/TSDKMemberPreferences.h
+../Sources/SDK/DataTypes/Members/TSDKMemberPreferences.h

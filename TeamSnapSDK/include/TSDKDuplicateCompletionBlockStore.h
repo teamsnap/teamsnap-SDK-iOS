@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataLayer/TSDKDuplicateCompletionBlockStore.h
+../Sources/SDK/DataLayer/TSDKDuplicateCompletionBlockStore.h

@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/DataTypes/Messages/TSDKMessage.h
+../Sources/SDK/DataTypes/Messages/TSDKMessage.h

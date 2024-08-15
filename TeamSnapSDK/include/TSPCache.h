@@ -1,1 +1,1 @@
-/Users/lilishi/Developer/TeamSnap/teamsnap-SDK-iOS/TeamSnapSDK/SDK/Cache/TSPCache.h
+../Sources/SDK/Cache/TSPCache.h
