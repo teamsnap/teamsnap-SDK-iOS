@@ -110,4 +110,7 @@
 #import <TeamSnapSDK/TSDKPartnerPreferences.h>
 #import <TeamSnapSDK/TSDKStripeAccount.h>
 #import <TeamSnapSDK/TSDKSuggestedAssignment.h>
+#import <TeamSnapSDK/TSDKHealthCheckQuestionnaire.h>
+#import <TeamSnapSDK/TSDKHealthCheckQuestionnaireTemplate.h>
+#import <TeamSnapSDK/TSDKHealthCheckQuestionnaireTemplateQuestion.h>
 #import <TeamSnapSDK/TSPCache.h>

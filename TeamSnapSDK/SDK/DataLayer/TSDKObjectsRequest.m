@@ -83,6 +83,7 @@
 #import "TSDKWepayAccount.h"
 #import "TSDKStripeAccount.h"
 #import "TSDKSuggestedAssignment.h"
+#import "TSDKHealthCheckQuestionnaire.h"
 static NSArray *_supportedSDKObjects;
 static NSArray *knownCompletionTypes;
 
@@ -170,7 +171,10 @@ static NSArray *knownCompletionTypes;
                                [TSDKWepayAccount class],
                                [TSDKStripeAccount class],
                                [TSDKPartnerPreferences class],
-                               [TSDKSuggestedAssignment class]];
+                               [TSDKSuggestedAssignment class],
+                               [TSDKHealthCheckQuestionnaire class],
+                               [TSDKHealthCheckQuestionnaireTemplate class],
+                               [TSDKHealthCheckQuestionnaireTemplateQuestion class]];
     });
     return _supportedSDKObjects;
 }
