@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
     "Mark Gallegos" => "mark.gallegos@teamsnap.com",
     "Lars Anderson" => "lars.anderson@teamsnap.com",
   }
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "16.0"
   s.resources    = ['TeamSnapSDK/SDK/Resources/*']
   s.source       = {
     :git => "https://github.com/teamsnap/teamsnap-SDK-iOS.git",
