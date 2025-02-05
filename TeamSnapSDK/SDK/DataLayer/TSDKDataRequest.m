@@ -9,7 +9,6 @@
 #import "TSDKDataRequest.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
-#import "TSDKNetworkActivityIndicator.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #endif
@@ -193,28 +192,8 @@ static NSRecursiveLock *accessDetailsLock = nil;
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
         } else {
             [[TSDKDuplicateCompletionBlockStore sharedInstance] addCompletionBlock:completionBlock forRequest:request];
-            
-#if TARGET_OS_IPHONE
-            if (@available(iOS 13, *)) {
 
-            } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-                [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
-#pragma clang diagnostic pop
-            }
-#endif
             NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-#if TARGET_OS_IPHONE
-                if (@available(iOS 13, *)) {
-                    
-                } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-                    [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
-#pragma clang diagnostic pop
-                }
-#endif
                 
                 dispatch_async([self processingQueue], ^{
                     
@@ -489,28 +468,8 @@ static NSRecursiveLock *accessDetailsLock = nil;
     if ([[[NSProcessInfo processInfo] arguments] containsObject:@"-tsdk_request_curl"]) {
         DLog(@"Curl:\n%@", [request getCurlEquivalent]);
     }
-    
-#if TARGET_OS_IPHONE
-    if (@available(iOS 13, *)) {
 
-    } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    [[TSDKNetworkActivityIndicator sharedInstance] startActivity];
-#pragma clang diagnostic pop
-    }
-#endif
     NSURLSessionDataTask *remoteTask = [[TSDKDataRequest session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-#if TARGET_OS_IPHONE
-        if (@available(iOS 13, *)) {
-
-        } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            [[TSDKNetworkActivityIndicator sharedInstance] stopActivity];
-#pragma clang diagnostic pop
-        }
-#endif
         
         dispatch_async([self processingQueue], ^{
             

@@ -70,8 +70,6 @@
 		960E2FF41CEF63D0004F540E /* TSDKMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 960E2FF31CEF63D0004F540E /* TSDKMemberTests.m */; };
 		96121EBA1C64E41E00E32902 /* TSDKCollectionJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */; };
 		96121EC11C64FE2000E32902 /* NSDictionary+dump.m in Sources */ = {isa = PBXBuildFile; fileRef = 96121EC01C64FE2000E32902 /* NSDictionary+dump.m */; };
-		961257D81D241AEB005B991D /* TSDKNetworkActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 961257D61D241AEB005B991D /* TSDKNetworkActivityIndicator.h */; };
-		961257D91D241AEB005B991D /* TSDKNetworkActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 961257D71D241AEB005B991D /* TSDKNetworkActivityIndicator.m */; };
 		9612CD8E1C9B51AB00816460 /* TSDKNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9612CD901C9B51AB00816460 /* TSDKNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */; };
 		962EB17B20C190DB0038E416 /* TSDKBatchInvoiceLineItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 962EB17920C190DB0038E416 /* TSDKBatchInvoiceLineItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -340,8 +338,6 @@
 		96121EB91C64E41E00E32902 /* TSDKCollectionJSONTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDKCollectionJSONTests.m; path = CollectionJSON/TSDKCollectionJSONTests.m; sourceTree = "<group>"; };
 		96121EBF1C64FE2000E32902 /* NSDictionary+dump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+dump.h"; path = "Conveniences/NSDictionary+dump.h"; sourceTree = "<group>"; };
 		96121EC01C64FE2000E32902 /* NSDictionary+dump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+dump.m"; path = "Conveniences/NSDictionary+dump.m"; sourceTree = "<group>"; };
-		961257D61D241AEB005B991D /* TSDKNetworkActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKNetworkActivityIndicator.h; sourceTree = "<group>"; };
-		961257D71D241AEB005B991D /* TSDKNetworkActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNetworkActivityIndicator.m; sourceTree = "<group>"; };
 		9612CD8C1C9B51AB00816460 /* TSDKNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDKNotifications.h; sourceTree = "<group>"; };
 		9612CD8D1C9B51AB00816460 /* TSDKNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDKNotifications.m; sourceTree = "<group>"; };
 		962EB17920C190DB0038E416 /* TSDKBatchInvoiceLineItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDKBatchInvoiceLineItem.h; sourceTree = "<group>"; };
@@ -833,8 +829,6 @@
 				969B7E971C7BE2A000FD3EA0 /* TSDKRequestConfiguration.m */,
 				561170ED1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.h */,
 				561170EE1D08B01D00255AC8 /* TSDKDuplicateCompletionBlockStore.m */,
-				961257D61D241AEB005B991D /* TSDKNetworkActivityIndicator.h */,
-				961257D71D241AEB005B991D /* TSDKNetworkActivityIndicator.m */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -1073,7 +1067,6 @@
 				969B7EA21C7C9FE300FD3EA0 /* TSDKTeamMediaGroup.h in Headers */,
 				969E80CB1BAAE7AB00CA518F /* TSDKStatistic.h in Headers */,
 				560578DE1DEF7E1B00B93DF7 /* TSDKTslMetadatum.h in Headers */,
-				961257D81D241AEB005B991D /* TSDKNetworkActivityIndicator.h in Headers */,
 				969E80CD1BAAE7AB00CA518F /* TSDKStatisticDatum.h in Headers */,
 				969B7EAC1C7CA33500FD3EA0 /* TSDKMemberPreferences.h in Headers */,
 				969B7EDF1C7CBBB300FD3EA0 /* TSDKMemberPayment.h in Headers */,
@@ -1327,7 +1320,6 @@
 				969E80D41BAAE7AB00CA518F /* TSDKAssignment.m in Sources */,
 				9652304E1CAC65EB0087FC23 /* TSDKDivisionLocation.m in Sources */,
 				969E80E21BAAE7AB00CA518F /* TSDKForumPost.m in Sources */,
-				961257D91D241AEB005B991D /* TSDKNetworkActivityIndicator.m in Sources */,
 				96D756A71D19A02400F389C6 /* TSDKBackgroundUploadProgressMonitorDelegate.m in Sources */,
 				964E1AD11DCA4C9A002B9A73 /* NSURL+TSDKConveniences.m in Sources */,
 				969E80F81BAAE7AB00CA518F /* TSDKTrackedItemStatus.m in Sources */,
@@ -1554,6 +1546,7 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1586,6 +1579,7 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1609,6 +1603,7 @@
 				DEVELOPMENT_TEAM = YN466NRGZP;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1628,6 +1623,7 @@
 				DEVELOPMENT_TEAM = YN466NRGZP;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TeamSnapSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
