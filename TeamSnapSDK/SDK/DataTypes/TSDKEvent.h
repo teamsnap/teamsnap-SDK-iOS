@@ -55,6 +55,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSDKEventEditMode) {
 @property (nonatomic, assign) BOOL isTbd; //Example: 0
 @property (nonatomic, strong) NSString *_Nullable resultsUrl; //Example: **NULL**
 @property (nonatomic, assign) BOOL isLeagueControlled; //Example: 0
+@property (nonatomic, assign) BOOL canTeamEnterScores; //Example: 0
 @property (nonatomic, strong) NSString *_Nullable name; //Example:
 @property (nonatomic, assign) BOOL isShootout; //Example: 0
 @property (nonatomic, assign) NSInteger pointsForTeam; //Example: **NULL**
