@@ -198,6 +198,7 @@
         [super setString:ianaTimeZoneName forKey:@"time_zone_iana_name"];
         [super setString:ianaTimeZoneName forKey:@"time_zone"];
         [super setString:sportId forKey:@"sport_id"];
+        [super setString:createTeamPlan forKey:@"create_team_plan"];
     }
     return self;
 }
