@@ -189,7 +189,7 @@
     }];
 }
 
-- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId {
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId createTeamPlan:(NSString *)createTeamPlan {
     self = [self init];
     if (self) {
         [super setString:name forKey:@"name"];
@@ -198,6 +198,7 @@
         [super setString:ianaTimeZoneName forKey:@"time_zone_iana_name"];
         [super setString:ianaTimeZoneName forKey:@"time_zone"];
         [super setString:sportId forKey:@"sport_id"];
+        [super setString:createTeamPlan forKey:@"create_team_plan"];
     }
     return self;
 }
