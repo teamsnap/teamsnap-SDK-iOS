@@ -189,7 +189,7 @@
     }];
 }
 
-- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId {
+- (instancetype)initWithName:(NSString *)name locationCountry:(NSString *)locationCountry locationPostalCode:(NSString *)locationPostalCode ianaTimeZoneName:(NSString *)ianaTimeZoneName sportId:(NSString *_Nonnull)sportId createTeamPlan:(NSString *)createTeamPlan {
     self = [self init];
     if (self) {
         [super setString:name forKey:@"name"];
