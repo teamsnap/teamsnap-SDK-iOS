@@ -1,1 +1,4 @@
 * @teamsnap/teams-mobile-ios
+.teamsnap/** @teamsnap/platform @teamsnap/teams-mobile-ios
+.github/** @teamsnap/platform @teamsnap/quality @teamsnap/teams-mobile-ios
+CODEOWNERS @teamsnap/platform @teamsnap/teams-mobile-ios
